@@ -20,7 +20,7 @@ Map<String, dynamic> _$VocabularyToJson(Vocabulary instance) =>
     };
 
 ElmValueSet _$ElmValueSetFromJson(Map<String, dynamic> json) => ElmValueSet(
-      json['id'] as String,
+      id: json['id'] as String,
       version: json['version'] as String?,
       name: json['name'] as String?,
       codeSystem: (json['codeSystem'] as List<dynamic>?)

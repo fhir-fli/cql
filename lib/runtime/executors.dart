@@ -44,12 +44,12 @@ class Executor {
       var currentPatient = await patientSource.currentPatient();
       while (currentPatient != null) {
         final patientCtx = PatientContext(
-          library,
-          currentPatient,
-          codeService,
-          parameters,
-          executionDateTime,
-          messageListener,
+          library: library,
+          patient: currentPatient,
+          codeService: codeService,
+          parameters: parameters,
+          executionDateTime: executionDateTime,
+          messageListener: messageListener,
         );
         r.recordPatientResults(
             patientCtx, {expression: expr.execute(patientCtx)});
@@ -65,12 +65,12 @@ class Executor {
   ]) async {
     final r = await execPatientContext(patientSource, executionDateTime);
     final unfilteredContext = UnfilteredContext(
-      library,
-      r,
-      codeService,
-      parameters,
-      executionDateTime,
-      messageListener,
+      library: library,
+      results: r,
+      codeService: codeService,
+      parameters: parameters,
+      executionDateTime: executionDateTime,
+      messageListener: messageListener,
     );
     final resultMap = <String, dynamic>{};
     for (final key in library.expressions.keys) {
@@ -91,12 +91,12 @@ class Executor {
     var currentPatient = await patientSource.currentPatient();
     while (currentPatient != null) {
       final patientCtx = PatientContext(
-        library,
-        currentPatient,
-        codeService,
-        parameters,
-        executionDateTime,
-        messageListener,
+        library: library,
+        patient: currentPatient,
+        codeService: codeService,
+        parameters: parameters,
+        executionDateTime: executionDateTime,
+        messageListener: messageListener,
       );
       final resultMap = <String, dynamic>{};
       for (final key in library.expressions.keys) {

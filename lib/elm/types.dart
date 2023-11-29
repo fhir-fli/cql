@@ -25,13 +25,43 @@ class Vocabulary {
 class ElmValueSet extends Vocabulary {
   final List<CodeSystem>? codeSystem;
 
-  ElmValueSet(String id, {String? version, String? name, this.codeSystem})
+  ElmValueSet(
+      {required String id, String? version, String? name, this.codeSystem})
       : super(id, version: version, name: name);
 
   factory ElmValueSet.fromJson(Map<String, dynamic> json) =>
       _$ElmValueSetFromJson(json);
 
   Map<String, dynamic> toJson() => _$ElmValueSetToJson(this);
+
+  bool get isValueSet {
+    return true;
+  }
+
+  bool hasMatch(dynamic code) {
+    List<dynamic> codesList = toCodeList(code);
+    // InValueSet String Overload
+    if (codesList.length == 1 && codesList[0] is String) {
+      bool matchFound = false;
+      bool multipleCodeSystemsExist = false;
+      for (CodeSystem codeItem in codeSystem ?? <CodeSystem>[]) {
+        // Confirm all code systems match
+        if (codeItem.name != codeSystem![0].name) {
+          multipleCodeSystemsExist = true;
+        }
+        if (codeItem.id == codesList[0]) {
+          matchFound = true;
+        }
+        if (multipleCodeSystemsExist && matchFound) {
+          throw Exception(
+              'In (valueset) is ambiguous -- multiple codes with multiple code systems exist in value set.');
+        }
+      }
+      return matchFound;
+    } else {
+      return codesInList(codesList, codeSystem ?? <CodeSystem>[]);
+    }
+  }
 }
 
 // CodeSystem type

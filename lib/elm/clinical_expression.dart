@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'elm.dart';
+import '../cql.dart';
 
 part 'clinical_expression.g.dart';
 
@@ -323,6 +323,19 @@ class ElmCode extends Expression {
       _$ElmCodeFromJson(json);
 
   Map<String, dynamic> toJson() => _$ElmCodeToJson(this);
+
+  bool get isCode {
+    return true;
+  }
+
+  bool hasMatch(dynamic code) {
+    if (code is String) {
+      // the specific behavior for this is not in the specification. Matching codesystem behavior.
+      return code == this.code;
+    } else {
+      return codesInList(toCodeList(code), [this]);
+    }
+  }
 }
 
 @JsonSerializable()

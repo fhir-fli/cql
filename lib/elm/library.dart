@@ -86,6 +86,10 @@ class ElmLibrary extends ElmElement {
   List<ContextDef> contexts;
   List<ExpressionDef> statements;
 
+  // private List<ModelReference> dataModelsField;
+
+  // private List<LibraryReference> librariesField;
+
   ElmLibrary({
     required this.identifier,
     required this.schemaIdentifier,
