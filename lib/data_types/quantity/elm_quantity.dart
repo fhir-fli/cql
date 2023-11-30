@@ -2,48 +2,19 @@
 
 // Package imports:
 import 'package:fhir/r4.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:units_converter/units_converter.dart';
 
 // Project imports:
-import 'ratios.dart' as unitRatios;
+import 'quantity_ratio.dart';
 import '../../cql.dart';
 
-part 'elm_quantity.freezed.dart';
-part 'elm_quantity.g.dart';
+typedef ElmQuantity = Quantity;
 
-@freezed
-class ElmQuantity extends ElmElement with _$ElmQuantity implements Quantity {
-  ElmQuantity._();
-
-  factory ElmQuantity({
-    FhirDecimal? value,
-    String? unit,
-    FhirUri? system,
-    FhirCode? code,
-  }) = _ElmQuantity;
-
-  ElmQuantity copyWith({
-    FhirDecimal? value,
-    String? unit,
-    FhirUri? system,
-    FhirCode? code,
-  }) =>
-      ElmQuantity(
-        value: value,
-        unit: unit,
-        system: system,
-        code: code,
-      );
-
-  factory ElmQuantity.fromJson(Map<String, dynamic> json) =>
-      _$ElmQuantityFromJson(json);
-
-  factory ElmQuantity.fromString(String quantityString) {
-    if (ElmQuantity.ElmQuantityRegex.hasMatch(
-        quantityString.replaceAll(r"\'", "'"))) {
-      final match = ElmQuantity.ElmQuantityRegex.firstMatch(
-          quantityString.replaceAll(r"\'", "'"));
+extension ElmQuantities on ElmQuantity {
+  Quantity fromString(String quantityString) {
+    if (ElmQuantityRegex.hasMatch(quantityString.replaceAll(r"\'", "'"))) {
+      final match =
+          ElmQuantityRegex.firstMatch(quantityString.replaceAll(r"\'", "'"));
       final value = match?.namedGroup('value');
       if (value == null) {
         throw Exception('Malformed quantity: $quantityString');
@@ -72,7 +43,7 @@ class ElmQuantity extends ElmElement with _$ElmQuantity implements Quantity {
       // Try to normalize time-valued units
       unitString = timeValuedQuantitiesUnits[unitString] ?? unitString;
 
-      return ElmQuantity(
+      return Quantity(
           value: FhirDecimal(double.parse(value)), unit: unitString);
     } else {
       throw Exception('Malformed quantity: $quantityString');
@@ -90,7 +61,7 @@ class ElmQuantity extends ElmElement with _$ElmQuantity implements Quantity {
   double? getValue() => value?.value?.toDouble();
   String? getUnit() => unit;
 
-  Quantity abs() => this.copyWith(
+  Quantity abs() => copyWith(
       value: value?.value?.abs() == null
           ? null
           : FhirDecimal(value!.value!.abs().toDouble()));
@@ -161,8 +132,8 @@ class ElmQuantity extends ElmElement with _$ElmQuantity implements Quantity {
               }
             }
           }
-          return thisAmount?.convertRatioFromTo(
-                  fromUnit as unitRatios.Ratio, toUnit as unitRatios.Ratio) ==
+          return thisAmount?.convertQuantityRatioFromTo(
+                  fromUnit as QuantityRatio, toUnit as QuantityRatio) ==
               thatAmount;
         } else {
           if (equivalent) {
@@ -211,15 +182,15 @@ class ElmQuantity extends ElmElement with _$ElmQuantity implements Quantity {
     } else {
       final fromUnit = stringUnitToProperty[unit];
       final toUnit = stringUnitToProperty[o.unit];
-      if ((fromUnit is unitRatios.Ratio && toUnit is! unitRatios.Ratio) ||
-          (fromUnit is! unitRatios.Ratio && toUnit is unitRatios.Ratio)) {
+      if ((fromUnit is Ratio && toUnit is! Ratio) ||
+          (fromUnit is! Ratio && toUnit is Ratio)) {
         return false;
       } else if (fromUnit is Ratio) {
         if (toUnit is! Ratio) {
           return false;
         } else {
-          final convertedAmount = value?.value?.convertRatioFromTo(
-              fromUnit as unitRatios.Ratio, toUnit as unitRatios.Ratio);
+          final convertedAmount = value?.value?.convertQuantityRatioFromTo(
+              fromUnit as QuantityRatio, toUnit as QuantityRatio);
 
           if (convertedAmount != null) {
             if (o.value == null || o.value!.value == null) {
@@ -480,39 +451,6 @@ class ElmQuantity extends ElmElement with _$ElmQuantity implements Quantity {
       }
     }
   }
-
-  @override
-  Element? get codeElement => codeElement;
-
-  @override
-  QuantityComparator? get comparator => comparator;
-
-  @override
-  Element? get comparatorElement => comparatorElement;
-
-  @override
-  List<FhirExtension>? get extension_ => extension_;
-
-  @override
-  String? get fhirId => fhirId;
-
-  @override
-  Element? get systemElement => systemElement;
-
-  @override
-  Map<String, dynamic> toJson() => toJson();
-
-  @override
-  String toJsonString() => toJsonString();
-
-  @override
-  String toYaml() => toYaml();
-
-  @override
-  Element? get unitElement => unitElement;
-
-  @override
-  Element? get valueElement => valueElement;
 }
 
 enum _Comparator { gt, gte, lt, lte }

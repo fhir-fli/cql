@@ -1,36 +1,77 @@
-import 'dart:convert';
-
 import 'package:fhir/r4.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import '../cql.dart';
 
-part 'expression.g.dart';
-
 /// The Element type defines the abstract base type for all library elements in ELM.
-@JsonSerializable()
-class ElmElement {
-  final String? localId;
-  final String? locator;
-  final QName? resultTypeName;
-  final List<CqlToElmBase>? annotation;
-  final TypeSpecifier? resultTypeSpecifier;
-
-  const ElmElement({
-    this.localId,
-    this.locator,
-    this.resultTypeName,
-    this.annotation,
-    this.resultTypeSpecifier,
-  });
-
-  factory ElmElement.fromJson(Map<String, dynamic> json) =>
-      _$ElmElementFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ElmElementToJson(this);
+abstract mixin class ElmElement {
+  String? localId;
+  String? locator;
+  QName? resultTypeName;
+  List<CqlToElmBase>? annotation;
+  TypeSpecifier? resultTypeSpecifier;
 }
 
-@JsonSerializable()
+class Expression extends ElmElement {
+  Expression? arg;
+  List<Expression>? args;
+  String? localId;
+  String? locator;
+
+  Expression({
+    this.localId,
+    this.locator,
+    this.arg,
+    this.args,
+  });
+
+  Future<dynamic> exec(Context ctx) async {
+    try {
+      if (localId != null) {
+        final execValue = await exec(ctx);
+        ctx.rootContext().setLocalIdWithResult(localId, execValue);
+        return execValue;
+      } else {
+        final execValue = await exec(ctx);
+        return execValue;
+      }
+    } catch (e) {
+      if (e is AnnotatedError) {
+        throw e;
+      }
+      final libraryIdentifier = getRecursiveLibraryIdentifier(ctx);
+      throw AnnotatedError(
+        Error(),
+        runtimeType.toString(),
+        libraryIdentifier,
+        localId: localId,
+        locator: locator,
+      );
+    }
+  }
+
+  Future<dynamic> execArgs(Context ctx) async {
+    if (args != null) {
+      return Future.wait(args!.map((Expression arg) => arg.exec(ctx)));
+    } else if (arg != null) {
+      return arg!.exec(ctx);
+    } else {
+      return null;
+    }
+  }
+
+  String getRecursiveLibraryIdentifier(Context ctx) {
+    var context = ctx as LibraryContext;
+    var identifier = context.library?.source?.library?.identifier;
+    if (identifier != null) {
+      return '${identifier.id}${identifier.version != null ? '|${identifier.version}' : ''}';
+    } else {
+      return ctx.parent != null
+          ? getRecursiveLibraryIdentifier(ctx.parent!)
+          : '(unknown)';
+    }
+  }
+}
+
 class TypeSpecifier extends ElmElement {
   String? localId;
   String? locator;
@@ -45,282 +86,66 @@ class TypeSpecifier extends ElmElement {
     this.annotation,
     this.resultTypeSpecifier,
   });
-
-  factory TypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$TypeSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TypeSpecifierToJson(this);
 }
 
-@JsonSerializable()
 class TupleElementDefinition extends ElmElement {
   String name;
   TypeSpecifier? type; // Deprecated, use elementType
   TypeSpecifier? elementType;
 
   TupleElementDefinition({required this.name});
-
-  factory TupleElementDefinition.fromJson(Map<String, dynamic> json) =>
-      _$TupleElementDefinitionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TupleElementDefinitionToJson(this);
 }
 
-@JsonSerializable()
-class Expression extends ElmElement {
-  Expression([this.value]);
-
-  dynamic value;
-
-  factory Expression.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ExpressionToJson(this);
-}
-
-@JsonSerializable()
 class OperatorExpression extends Expression {
   List<TypeSpecifier>? signature;
 
   OperatorExpression({this.signature});
-
-  factory OperatorExpression.fromJson(Map<String, dynamic> json) =>
-      _$OperatorExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OperatorExpressionToJson(this);
 }
 
-@JsonSerializable()
 class UnaryExpression extends OperatorExpression {
   Expression? operand;
 
   UnaryExpression({this.operand});
-
-  factory UnaryExpression.fromJson(Map<String, dynamic> json) =>
-      _$UnaryExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UnaryExpressionToJson(this);
 }
 
-@JsonSerializable()
 class BinaryExpression extends OperatorExpression {
   List<Expression> operand;
 
   BinaryExpression({required this.operand});
-
-  factory BinaryExpression.fromJson(Map<String, dynamic> json) =>
-      _$BinaryExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$BinaryExpressionToJson(this);
 }
 
-@JsonSerializable()
 class TernaryExpression extends OperatorExpression {
   List<Expression>? operand;
 
   TernaryExpression({this.operand});
-
-  factory TernaryExpression.fromJson(Map<String, dynamic> json) =>
-      _$TernaryExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TernaryExpressionToJson(this);
 }
 
-@JsonSerializable()
 class NaryExpression extends OperatorExpression {
   List<Expression>? operand;
 
   NaryExpression({this.operand});
-
-  factory NaryExpression.fromJson(Map<String, dynamic> json) =>
-      _$NaryExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NaryExpressionToJson(this);
 }
 
 enum AccessModifier { Public, Private }
 
-@JsonSerializable()
-class ExpressionDef extends ElmElement {
-  Expression? expression;
-  String? name;
-  String? context;
-  AccessModifier accessLevel;
-
-  ExpressionDef({
-    required this.name,
-    this.expression,
-    this.context,
-    this.accessLevel = AccessModifier.Public,
-  });
-
-  factory ExpressionDef.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionDefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ExpressionDefToJson(this);
-}
-
-@JsonSerializable()
-class FunctionDef extends ExpressionDef {
-  bool? external;
-  List<OperandDef>? operand;
-
-  FunctionDef({
-    String? name,
-    String? context,
-    AccessModifier accessLevel = AccessModifier.Public,
-    Expression? expression,
-    this.external,
-    this.operand,
-  }) : super(
-          name: name,
-          context: context,
-          accessLevel: accessLevel,
-          expression: expression,
-        );
-
-  factory FunctionDef.fromJson(Map<String, dynamic> json) =>
-      _$FunctionDefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$FunctionDefToJson(this);
-}
-
-@JsonSerializable()
-class ExpressionRef extends Expression {
-  String? name;
-  String? libraryName;
-
-  ExpressionRef({this.name, this.libraryName});
-
-  factory ExpressionRef.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ExpressionRefToJson(this);
-}
-
-@JsonSerializable()
-class FunctionRef extends ExpressionRef {
-  List<TypeSpecifier>? signature;
-  List<Expression>? operand;
-
-  FunctionRef({
-    String? name,
-    String? libraryName,
-    this.signature,
-    this.operand,
-  }) : super(name: name, libraryName: libraryName);
-
-  factory FunctionRef.fromJson(Map<String, dynamic> json) =>
-      _$FunctionRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$FunctionRefToJson(this);
-}
-
-@JsonSerializable()
-class ParameterDef extends ElmElement {
-  String? name;
-  String? parameterType;
-  AccessModifier accessLevel;
-  Expression? defaultExpr;
-  TypeSpecifier? parameterTypeSpecifier;
-
-  ParameterDef({
-    this.name,
-    this.parameterType,
-    this.accessLevel = AccessModifier.Public,
-    this.defaultExpr,
-    this.parameterTypeSpecifier,
-  });
-
-  factory ParameterDef.fromJson(Map<String, dynamic> json) =>
-      _$ParameterDefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ParameterDefToJson(this);
-}
-
-@JsonSerializable()
-class ParameterRef extends Expression {
-  String? name;
-  String? libraryName;
-
-  ParameterRef({this.name, this.libraryName});
-
-  factory ParameterRef.fromJson(Map<String, dynamic> json) =>
-      _$ParameterRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ParameterRefToJson(this);
-}
-
-@JsonSerializable()
-class OperandDef extends ElmElement {
-  String? name;
-  String? operandType;
-  TypeSpecifier? operandTypeSpecifier;
-
-  OperandDef({this.name, this.operandType, this.operandTypeSpecifier});
-
-  factory OperandDef.fromJson(Map<String, dynamic> json) =>
-      _$OperandDefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OperandDefToJson(this);
-}
-
-@JsonSerializable()
-class OperandRef extends Expression {
-  String? name;
-
-  OperandRef({this.name});
-
-  factory OperandRef.fromJson(Map<String, dynamic> json) =>
-      _$OperandRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OperandRefToJson(this);
-}
-
-@JsonSerializable()
-class IdentifierRef extends Expression {
-  String? name;
-  String? libraryName;
-
-  IdentifierRef({this.name, this.libraryName});
-
-  factory IdentifierRef.fromJson(Map<String, dynamic> json) =>
-      _$IdentifierRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IdentifierRefToJson(this);
-}
-
-@JsonSerializable()
 class Literal extends Expression {
   late QName valueType;
   dynamic value;
 
   Literal({required this.valueType, this.value});
 
-  factory Literal.fromJson(Map<String, dynamic> json) =>
-      _$LiteralFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LiteralToJson(this);
-
   String? getValueType() => valueType.toString();
 
   String? getValue() => value.toString();
 }
 
-@JsonSerializable()
 class TupleElement {
   late String name;
   late Expression value;
 
   TupleElement({required this.name, required this.value});
-
-  factory TupleElement.fromJson(Map<String, dynamic> json) =>
-      _$TupleElementFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TupleElementToJson(this);
 }
 
-@JsonSerializable()
 class Tuple extends Expression {
   late List<TupleElement> element;
 
@@ -331,71 +156,29 @@ class Tuple extends Expression {
   Map<String, dynamic> toJson() => _$TupleToJson(this);
 }
 
-@JsonSerializable()
 class InstanceElement {
   late String name;
   late Expression value;
 
   InstanceElement({required this.name, required this.value});
-
-  factory InstanceElement.fromJson(Map<String, dynamic> json) =>
-      _$InstanceElementFromJson(json);
-
-  Map<String, dynamic> toJson() => _$InstanceElementToJson(this);
 }
 
-@JsonSerializable()
 class Instance extends Expression {
   late QName classType;
   late List<InstanceElement> element;
 
   Instance({required this.classType, required this.element});
-
-  factory Instance.fromJson(Map<String, dynamic> json) =>
-      _$InstanceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$InstanceToJson(this);
 }
 
-@JsonSerializable()
-class Interval extends Expression {
-  Object? low;
-  Expression? lowClosedExpression;
-  Object? high;
-  Expression? highClosedExpression;
-  bool lowClosed = true;
-  bool highClosed = true;
-
-  Interval({
-    this.low,
-    this.lowClosedExpression,
-    this.high,
-    this.highClosedExpression,
-    this.lowClosed = true,
-    this.highClosed = true,
-  });
-
-  factory Interval.fromJson(Map<String, dynamic> json) =>
-      _$IntervalFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IntervalToJson(this);
-}
-
-@JsonSerializable()
 class ElmList extends Expression {
   late TypeSpecifier? typeSpecifier;
   late List<Expression> element;
 
   ElmList({this.typeSpecifier, required this.element});
-
-  factory ElmList.fromJson(Map<String, dynamic> json) =>
-      _$ElmListFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ElmListToJson(this);
 }
 
 // Class representing the And operator
-@JsonSerializable()
+
 class And extends BinaryExpression {
   // Add properties if needed
   And({required this.arg1, required this.arg2})
@@ -410,7 +193,7 @@ class And extends BinaryExpression {
 }
 
 // Class representing the Or operator
-@JsonSerializable()
+
 class Or extends BinaryExpression {
   // Add properties if needed
   Or({required this.arg1, required this.arg2})
@@ -425,7 +208,7 @@ class Or extends BinaryExpression {
 }
 
 // Class representing the Xor operator
-@JsonSerializable()
+
 class Xor extends BinaryExpression {
   // Add properties if needed
   Xor({required this.arg1, required this.arg2})
@@ -440,7 +223,7 @@ class Xor extends BinaryExpression {
 }
 
 // Class representing the Implies operator
-@JsonSerializable()
+
 class Implies extends BinaryExpression {
   // Add properties if needed
   Implies({required this.arg1, required this.arg2})
@@ -448,15 +231,10 @@ class Implies extends BinaryExpression {
 
   final dynamic arg1;
   final dynamic arg2;
-
-  factory Implies.fromJson(Map<String, dynamic> json) =>
-      _$ImpliesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ImpliesToJson(this);
 }
 
 // Class representing the Not operator
-@JsonSerializable()
+
 class Not extends UnaryExpression {
   // Add properties if needed
   Not({required super.operand});
@@ -467,7 +245,7 @@ class Not extends UnaryExpression {
 }
 
 // Class representing the If operator
-@JsonSerializable()
+
 class If extends Expression {
   Expression condition;
   Expression then;
@@ -481,36 +259,16 @@ class If extends Expression {
 }
 
 // Class representing a single case item within a Case operator
-@JsonSerializable()
+
 class CaseItem extends ElmElement {
   late Expression when;
   late Expression then;
 
   CaseItem({required this.when, required this.then});
-
-  factory CaseItem.fromJson(Map<String, dynamic> json) =>
-      _$CaseItemFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CaseItemToJson(this);
-
-  @override
-  $ElementCopyWith<Element> get copyWith => throw UnimplementedError();
-
-  @override
-  List<FhirExtension>? get extension_ => toJson()['extension'];
-
-  @override
-  String? get fhirId => toJson()['id'];
-
-  @override
-  String toJsonString() => jsonEncode(toJson());
-
-  @override
-  String toYaml() => json2yaml(toJson());
 }
 
 // Class representing the Case operator
-@JsonSerializable()
+
 class Case extends Expression {
   Expression? comparand;
   List<CaseItem> caseItems;
@@ -524,20 +282,15 @@ class Case extends Expression {
 }
 
 // Class representing the Null operator
-@JsonSerializable()
+
 class NullOperator extends Expression {
   String? valueType;
 
   NullOperator({this.valueType});
-
-  factory NullOperator.fromJson(Map<String, dynamic> json) =>
-      _$NullOperatorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NullOperatorToJson(this);
 }
 
 // Class representing the IsNull operator
-@JsonSerializable()
+
 class IsNull extends UnaryExpression {
   IsNull({required super.operand});
 
@@ -550,7 +303,7 @@ class IsNull extends UnaryExpression {
 /// The IsTrue operator determines whether or not its argument evaluates to true.
 /// If the argument evaluates to true, the result is true;
 /// if the argument evaluates to false or null, the result is false.
-@JsonSerializable()
+
 class IsTrue extends UnaryExpression {
   IsTrue({required super.operand});
 
@@ -563,14 +316,9 @@ class IsTrue extends UnaryExpression {
 /// The IsFalse operator determines whether or not its argument evaluates to false.
 /// If the argument evaluates to false, the result is true;
 /// if the argument evaluates to true or null, the result is false.
-@JsonSerializable()
+
 class IsFalse extends UnaryExpression {
   IsFalse({required super.operand});
-
-  factory IsFalse.fromJson(Map<String, dynamic> json) =>
-      _$IsFalseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IsFalseToJson(this);
 }
 
 /// Class representing the Coalesce operator.
@@ -578,21 +326,16 @@ class IsFalse extends UnaryExpression {
 /// If all arguments evaluate to null, the result is null.
 /// The static type of the first argument determines the type of the result,
 /// and all subsequent arguments must be of that same type.
-@JsonSerializable()
+
 class Coalesce extends NaryExpression {
   Coalesce({required super.operand});
-
-  factory Coalesce.fromJson(Map<String, dynamic> json) =>
-      _$CoalesceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CoalesceToJson(this);
 }
 
 /// Class representing the Is operator.
 /// The Is operator allows the type of a result to be tested.
 /// If the run-time type of the argument is of the type being tested, the result of the operator is true;
 /// otherwise, the result is false.
-@JsonSerializable()
+
 class Is extends UnaryExpression {
   TypeSpecifier? isTypeSpecifier;
   String? isType;
@@ -613,7 +356,7 @@ class Is extends UnaryExpression {
 /// This allows expressions to be written that are statically typed against the expected run-time type of the argument.
 /// If the argument is not of the specified type, and the strict attribute is false (the default), the result is null.
 /// If the argument is not of the specified type and the strict attribute is true, an exception is thrown.
-@JsonSerializable()
+
 class As extends UnaryExpression {
   TypeSpecifier? asTypeSpecifier;
   String? asType;
@@ -634,7 +377,7 @@ class As extends UnaryExpression {
 /// Class representing the Convert operator.
 /// The Convert operator converts a value to a specific type.
 /// If no valid conversion exists from the actual value to the target type, the result is null.
-@JsonSerializable()
+
 class Convert extends UnaryExpression {
   TypeSpecifier? toTypeSpecifier;
   String? toType;
@@ -644,16 +387,11 @@ class Convert extends UnaryExpression {
     this.toTypeSpecifier,
     this.toType,
   }) : super(operand: operand);
-
-  factory Convert.fromJson(Map<String, dynamic> json) =>
-      _$ConvertFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertToJson(this);
 }
 
 /// Class representing the CanConvert operator.
 /// The CanConvert operator returns true if the given value can be converted to a specific type, and false otherwise.
-@JsonSerializable()
+
 class CanConvert extends UnaryExpression {
   TypeSpecifier? toTypeSpecifier;
   String? toType;
@@ -663,14 +401,8 @@ class CanConvert extends UnaryExpression {
     this.toTypeSpecifier,
     this.toType,
   }) : super(operand: operand);
-
-  factory CanConvert.fromJson(Map<String, dynamic> json) =>
-      _$CanConvertFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CanConvertToJson(this);
 }
 
-@JsonSerializable()
 class ToBoolean extends UnaryExpression {
   ToBoolean({required super.operand});
 
@@ -704,14 +436,8 @@ class ToBoolean extends UnaryExpression {
       return null;
     }
   }
-
-  factory ToBoolean.fromJson(Map<String, dynamic> json) =>
-      _$ToBooleanFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToBooleanToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToBoolean extends UnaryExpression {
   ConvertsToBoolean({required super.operand});
 
@@ -743,14 +469,8 @@ class ConvertsToBoolean extends UnaryExpression {
       return false;
     }
   }
-
-  factory ConvertsToBoolean.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToBooleanFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToBooleanToJson(this);
 }
 
-@JsonSerializable()
 class ToConcept extends UnaryExpression {
   ToConcept({required super.operand});
 
@@ -767,14 +487,8 @@ class ToConcept extends UnaryExpression {
       return null;
     }
   }
-
-  factory ToConcept.fromJson(Map<String, dynamic> json) =>
-      _$ToConceptFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToConceptToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToDate extends UnaryExpression {
   ConvertsToDate({required super.operand});
 
@@ -789,14 +503,8 @@ class ConvertsToDate extends UnaryExpression {
     final dateRegex = RegExp(r'^\d{4}-\d{2}-\d{2}$');
     return dateRegex.hasMatch(value);
   }
-
-  factory ConvertsToDate.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToDateFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToDateToJson(this);
 }
 
-@JsonSerializable()
 class ToDate extends UnaryExpression {
   ToDate({required super.operand});
 
@@ -825,7 +533,6 @@ class ToDate extends UnaryExpression {
   Map<String, dynamic> toJson() => _$ToDateToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToDateTime extends UnaryExpression {
   ConvertsToDateTime({required super.operand});
 
@@ -841,14 +548,8 @@ class ConvertsToDateTime extends UnaryExpression {
         r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}(Z|(\+|-)\d{2}:\d{2})?$');
     return dateTimeRegex.hasMatch(value);
   }
-
-  factory ConvertsToDateTime.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToDateTimeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToDateTimeToJson(this);
 }
 
-@JsonSerializable()
 class ToDateTime extends UnaryExpression {
   ToDateTime({required super.operand});
 
@@ -871,14 +572,8 @@ class ToDateTime extends UnaryExpression {
       return null;
     }
   }
-
-  factory ToDateTime.fromJson(Map<String, dynamic> json) =>
-      _$ToDateTimeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToDateTimeToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToDecimal extends UnaryExpression {
   ConvertsToDecimal({required super.operand});
 
@@ -896,14 +591,8 @@ class ConvertsToDecimal extends UnaryExpression {
     final decimalRegex = RegExp(r'^[+-]?(\d+(\.\d+)?|\.\d+)$');
     return decimalRegex.hasMatch(value.toString());
   }
-
-  factory ConvertsToDecimal.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToDecimalFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToDecimalToJson(this);
 }
 
-@JsonSerializable()
 class ToDecimal extends UnaryExpression {
   ToDecimal({required super.operand});
 
@@ -926,14 +615,8 @@ class ToDecimal extends UnaryExpression {
 
     return num.tryParse(valueString);
   }
-
-  factory ToDecimal.fromJson(Map<String, dynamic> json) =>
-      _$ToDecimalFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToDecimalToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToInteger extends UnaryExpression {
   ConvertsToInteger({required super.operand});
 
@@ -961,14 +644,8 @@ class ConvertsToInteger extends UnaryExpression {
       return false;
     }
   }
-
-  factory ConvertsToInteger.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToIntegerFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToIntegerToJson(this);
 }
 
-@JsonSerializable()
 class ToInteger extends UnaryExpression {
   ToInteger({required super.operand});
 
@@ -1001,14 +678,8 @@ class ToInteger extends UnaryExpression {
       return null; // Unsupported type
     }
   }
-
-  factory ToInteger.fromJson(Map<String, dynamic> json) =>
-      _$ToIntegerFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToIntegerToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToLong extends UnaryExpression {
   ConvertsToLong({required super.operand});
 
@@ -1044,14 +715,8 @@ class ConvertsToLong extends UnaryExpression {
       return false; // Unsupported type
     }
   }
-
-  factory ConvertsToLong.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToLongFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToLongToJson(this);
 }
 
-@JsonSerializable()
 class ToLong extends UnaryExpression {
   ToLong({required super.operand});
 
@@ -1096,7 +761,6 @@ class ToLong extends UnaryExpression {
   Map<String, dynamic> toJson() => _$ToLongToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToQuantity extends UnaryExpression {
   ConvertsToQuantity({required super.operand});
 
@@ -1146,14 +810,8 @@ class ConvertsToQuantity extends UnaryExpression {
       return false; // Unsupported type
     }
   }
-
-  factory ConvertsToQuantity.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToQuantityFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToQuantityToJson(this);
 }
 
-@JsonSerializable()
 class ToQuantity extends UnaryExpression {
   ToQuantity({required super.operand});
 
@@ -1207,14 +865,8 @@ class ToQuantity extends UnaryExpression {
 
     return null; // Other types are not supported
   }
-
-  factory ToQuantity.fromJson(Map<String, dynamic> json) =>
-      _$ToQuantityFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToQuantityToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToRatio extends UnaryExpression {
   ConvertsToRatio({required super.operand});
 
@@ -1248,14 +900,8 @@ class ConvertsToRatio extends UnaryExpression {
 
     return false; // Unsupported type
   }
-
-  factory ConvertsToRatio.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToRatioFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToRatioToJson(this);
 }
 
-@JsonSerializable()
 class ToRatio extends UnaryExpression {
   ToRatio({required super.operand});
 
@@ -1295,14 +941,8 @@ class ToRatio extends UnaryExpression {
 
     return null; // Unsupported type or invalid value
   }
-
-  factory ToRatio.fromJson(Map<String, dynamic> json) =>
-      _$ToRatioFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToRatioToJson(this);
 }
 
-@JsonSerializable()
 class ToList extends UnaryExpression {
   ToList({required super.operand});
 
@@ -1321,7 +961,6 @@ class ToList extends UnaryExpression {
   Map<String, dynamic> toJson() => _$ToListToJson(this);
 }
 
-@JsonSerializable()
 class ToChars extends UnaryExpression {
   ToChars({required super.operand});
 
@@ -1334,14 +973,8 @@ class ToChars extends UnaryExpression {
       return value.split('');
     }
   }
-
-  factory ToChars.fromJson(Map<String, dynamic> json) =>
-      _$ToCharsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToCharsToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToString extends UnaryExpression {
   ConvertsToString({required super.operand});
 
@@ -1360,14 +993,8 @@ class ConvertsToString extends UnaryExpression {
           argument is Ratio;
     }
   }
-
-  factory ConvertsToString.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToStringFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToStringToJson(this);
 }
 
-@JsonSerializable()
 class ToString extends UnaryExpression {
   ToString({required super.operand});
 
@@ -1392,14 +1019,8 @@ class ToString extends UnaryExpression {
       return null; // Unsupported type
     }
   }
-
-  factory ToString.fromJson(Map<String, dynamic> json) =>
-      _$ToStringFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ToStringToJson(this);
 }
 
-@JsonSerializable()
 class ConvertsToTime extends UnaryExpression {
   ConvertsToTime({required super.operand});
 
@@ -1433,14 +1054,8 @@ class ConvertsToTime extends UnaryExpression {
       return false; // Unsupported type
     }
   }
-
-  factory ConvertsToTime.fromJson(Map<String, dynamic> json) =>
-      _$ConvertsToTimeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvertsToTimeToJson(this);
 }
 
-@JsonSerializable()
 class ToTime extends UnaryExpression {
   ToTime({required super.operand});
 
@@ -1483,7 +1098,6 @@ class ToTime extends UnaryExpression {
   Map<String, dynamic> toJson() => _$ToTimeToJson(this);
 }
 
-@JsonSerializable()
 class CanConvertQuantity extends BinaryExpression {
   CanConvertQuantity({required this.arg1, required this.arg2, this.targetUnit})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -1508,14 +1122,8 @@ class CanConvertQuantity extends BinaryExpression {
       return false; // Quantity cannot be converted to the target unit
     }
   }
-
-  factory CanConvertQuantity.fromJson(Map<String, dynamic> json) =>
-      _$CanConvertQuantityFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CanConvertQuantityToJson(this);
 }
 
-@JsonSerializable()
 class ConvertQuantity extends BinaryExpression {
   ConvertQuantity({required this.arg1, required this.arg2, this.targetUnit})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -1548,13 +1156,9 @@ class ConvertQuantity extends BinaryExpression {
     }
   }
 
-  // factory ConvertQuantity.fromJson(Map<String, dynamic> json) =>
-  //     _$ConvertQuantityFromJson(json);
-
-  // Map<String, dynamic> toJson() => _$ConvertQuantityToJson(this);
+  //
 }
 
-@JsonSerializable()
 class Equal extends BinaryExpression {
   Equal({required this.arg1, required this.arg2, this.targetUnit})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -1618,7 +1222,6 @@ class Equal extends BinaryExpression {
   Map<String, dynamic> toJson() => _$EqualToJson(this);
 }
 
-@JsonSerializable()
 class Equivalent extends BinaryExpression {
   Equivalent({required super.operand});
 
@@ -1674,28 +1277,16 @@ class Equivalent extends BinaryExpression {
       return false; // Unsupported type for equivalence comparison
     }
   }
-
-  factory Equivalent.fromJson(Map<String, dynamic> json) =>
-      _$EquivalentFromJson(json);
-
-  Map<String, dynamic> toJson() => _$EquivalentToJson(this);
 }
 
-@JsonSerializable()
 class NotEqual extends BinaryExpression {
   NotEqual({required super.operand});
 
   static bool notEqual(dynamic arg1, dynamic arg2) {
     return !(Equal.equals(arg1, arg2));
   }
-
-  factory NotEqual.fromJson(Map<String, dynamic> json) =>
-      _$NotEqualFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NotEqualToJson(this);
 }
 
-@JsonSerializable()
 class Less extends BinaryExpression {
   Less({required super.operand});
 
@@ -1727,7 +1318,6 @@ class Less extends BinaryExpression {
   Map<String, dynamic> toJson() => _$LessToJson(this);
 }
 
-@JsonSerializable()
 class Greater extends BinaryExpression {
   Greater({required super.operand});
 
@@ -1753,14 +1343,8 @@ class Greater extends BinaryExpression {
       return false; // Unsupported type for greater comparison
     }
   }
-
-  factory Greater.fromJson(Map<String, dynamic> json) =>
-      _$GreaterFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GreaterToJson(this);
 }
 
-@JsonSerializable()
 class LessOrEqual extends BinaryExpression {
   LessOrEqual({required super.operand});
 
@@ -1786,28 +1370,17 @@ class LessOrEqual extends BinaryExpression {
       return false; // Unsupported type for less or equal comparison
     }
   }
-
-  factory LessOrEqual.fromJson(Map<String, dynamic> json) =>
-      _$LessOrEqualFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LessOrEqualToJson(this);
 }
 
 /// The GreaterOrEqual operator returns true if the first argument is greater
 /// than or equal to the second argument. (rest of the documentation)
-@JsonSerializable()
+
 class GreaterOrEqual extends BinaryExpression {
   GreaterOrEqual({required super.operand, required this.binaryExpression});
   BinaryExpression
       binaryExpression; // Assuming BinaryExpression is a defined class
-
-  factory GreaterOrEqual.fromJson(Map<String, dynamic> json) =>
-      _$GreaterOrEqualFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GreaterOrEqualToJson(this);
 }
 
-@JsonSerializable()
 class Add extends BinaryExpression {
   BinaryExpression
       binaryExpression; // Assuming BinaryExpression is a defined class
@@ -1819,17 +1392,12 @@ class Add extends BinaryExpression {
   Map<String, dynamic> toJson() => _$AddToJson(this);
 }
 
-@JsonSerializable()
 class Subtract extends BinaryExpression {
   Subtract({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
 
   final dynamic arg1;
   final dynamic arg2;
-  factory Subtract.fromJson(Map<String, dynamic> json) =>
-      _$SubtractFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SubtractToJson(this);
 }
 
 /// The Multiply operator performs numeric multiplication of its arguments.
@@ -1838,17 +1406,13 @@ class Subtract extends BinaryExpression {
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
 /// The Multiply operator is defined for the Integer, Long, Decimal, and Quantity types.
-@JsonSerializable()
+
 class Multiply extends BinaryExpression {
   Multiply({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
 
   final dynamic arg1;
   final dynamic arg2;
-  factory Multiply.fromJson(Map<String, dynamic> json) =>
-      _$MultiplyFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MultiplyToJson(this);
 }
 
 /// The Divide operator performs numeric division of its arguments.
@@ -1860,7 +1424,7 @@ class Multiply extends BinaryExpression {
 /// If the result of the division cannot be represented, or the right argument
 /// is 0, the result is null.
 /// The Divide operator is defined for the Decimal and Quantity types.
-@JsonSerializable()
+
 class Divide extends BinaryExpression {
   Divide({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -1880,18 +1444,13 @@ class Divide extends BinaryExpression {
 /// Quantity types.
 /// For TruncatedDivide operations involving quantities, the resulting quantity
 /// will have the appropriate unit.
-@JsonSerializable()
+
 class TruncatedDivide extends BinaryExpression {
   TruncatedDivide({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
 
   final dynamic arg1;
   final dynamic arg2;
-
-  factory TruncatedDivide.fromJson(Map<String, dynamic> json) =>
-      _$TruncatedDivideFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TruncatedDivideToJson(this);
 }
 
 /// The Modulo operator computes the remainder of the division of its arguments.
@@ -1902,7 +1461,7 @@ class TruncatedDivide extends BinaryExpression {
 /// types.
 /// For Modulo operations involving quantities, the resulting quantity will have
 /// the appropriate unit.
-@JsonSerializable()
+
 class Modulo extends BinaryExpression {
   Modulo({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -1917,22 +1476,17 @@ class Modulo extends BinaryExpression {
 
 /// The Ceiling operator returns the first integer greater than or equal to the argument.
 /// If the argument is null, the result is null.
-@JsonSerializable()
+
 class Ceiling extends UnaryExpression {
   UnaryExpression
       unaryExpression; // Assuming UnaryExpression is a defined class
 
   Ceiling(this.unaryExpression);
-
-  factory Ceiling.fromJson(Map<String, dynamic> json) =>
-      _$CeilingFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CeilingToJson(this);
 }
 
 /// The Floor operator returns the first integer less than or equal to the argument.
 /// If the argument is null, the result is null.
-@JsonSerializable()
+
 class Floor extends UnaryExpression {
   UnaryExpression
       unaryExpression; // Assuming UnaryExpression is a defined class
@@ -1946,17 +1500,12 @@ class Floor extends UnaryExpression {
 
 /// The Truncate operator returns the integer component of its argument.
 /// If the argument is null, the result is null.
-@JsonSerializable()
+
 class Truncate extends UnaryExpression {
   UnaryExpression
       unaryExpression; // Assuming UnaryExpression is a defined class
 
   Truncate(this.unaryExpression);
-
-  factory Truncate.fromJson(Map<String, dynamic> json) =>
-      _$TruncateFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TruncateToJson(this);
 }
 
 /// The Abs operator returns the absolute value of its argument
@@ -1965,7 +1514,7 @@ class Truncate extends UnaryExpression {
 /// If the result of taking the absolute value of the argument cannot be
 /// represented (e.g. Abs(minimum Integer)), the result is null.
 /// The Abs operator is defined for the Integer, Long, Decimal, and Quantity types.
-@JsonSerializable()
+
 class Abs extends UnaryExpression {
   UnaryExpression
       unaryExpression; // Assuming UnaryExpression is a defined class
@@ -1983,7 +1532,7 @@ class Abs extends UnaryExpression {
 /// If the result of negating the argument cannot be represented
 /// (e.g. -(minimum Integer)), the result is null.
 /// The Negate operator is defined for the Integer, Long, Decimal, and Quantity types.
-@JsonSerializable()
+
 class Negate extends UnaryExpression {
   UnaryExpression
       unaryExpression; // Assuming UnaryExpression is a defined class
@@ -2001,7 +1550,7 @@ class Negate extends UnaryExpression {
 /// If the argument is null, the result is null.
 /// Precision determines the decimal place at which the rounding will occur. If
 /// precision is not specified or null, 0 is assumed.
-@JsonSerializable()
+
 class Round extends OperatorExpression {
   Expression operand;
   Expression? precision;
@@ -2016,7 +1565,7 @@ class Round extends OperatorExpression {
 /// The Ln operator computes the natural logarithm of its argument.
 /// If the argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
-@JsonSerializable()
+
 class Ln extends UnaryExpression {
   Ln({required super.operand});
 
@@ -2028,7 +1577,7 @@ class Ln extends UnaryExpression {
 /// The Exp operator returns e raised to the given power.
 /// If the argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
-@JsonSerializable()
+
 class Exp extends UnaryExpression {
   Exp({super.operand});
 
@@ -2041,7 +1590,7 @@ class Exp extends UnaryExpression {
 /// second argument as the base.
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
-@JsonSerializable()
+
 class Log extends BinaryExpression {
   Log({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2057,7 +1606,7 @@ class Log extends BinaryExpression {
 /// The Power operator raises the first argument to the power given by the second argument.
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
-@JsonSerializable()
+
 class Power extends BinaryExpression {
   Power({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2078,14 +1627,9 @@ class Power extends BinaryExpression {
 /// [More documentation...]
 /// If the argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
-@JsonSerializable()
+
 class Successor extends UnaryExpression {
   Successor({required super.operand});
-
-  factory Successor.fromJson(Map<String, dynamic> json) =>
-      _$SuccessorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SuccessorToJson(this);
 }
 
 /// The Predecessor operator returns the predecessor of the argument.
@@ -2096,65 +1640,45 @@ class Successor extends UnaryExpression {
 /// [More documentation...]
 /// If the argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
-@JsonSerializable()
+
 class Predecessor extends UnaryExpression {
   Predecessor({required super.operand});
-
-  factory Predecessor.fromJson(Map<String, dynamic> json) =>
-      _$PredecessorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PredecessorToJson(this);
 }
 
 /// The MinValue operator returns the minimum representable value for the given type.
 /// [Details about MinValue for different types...]
 /// Note that implementations may choose to represent the minimum DateTime
 /// value using a constant offset such as UTC.
-@JsonSerializable()
+
 class MinValue extends Expression {
   String valueType;
 
   MinValue(this.valueType);
-
-  factory MinValue.fromJson(Map<String, dynamic> json) =>
-      _$MinValueFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MinValueToJson(this);
 }
 
 /// The MaxValue operator returns the maximum representable value for the given type.
 /// [Details about MaxValue for different types...]
 /// Note that implementations may choose to represent the maximum DateTime
 /// value using a constant offset such as UTC.
-@JsonSerializable()
+
 class MaxValue extends Expression {
   String valueType;
 
   MaxValue(this.valueType);
-
-  factory MaxValue.fromJson(Map<String, dynamic> json) =>
-      _$MaxValueFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MaxValueToJson(this);
 }
 
 /// The Precision operator returns the number of digits of precision in the value value.
 /// [Details about Precision for Decimal, Date, DateTime, and Time values...]
 /// If the argument is null, the result is null.
-@JsonSerializable()
+
 class Precision extends UnaryExpression {
   Precision({super.operand});
-
-  factory Precision.fromJson(Map<String, dynamic> json) =>
-      _$PrecisionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PrecisionToJson(this);
 }
 
 /// The LowBoundary operator returns the least possible value of the value to the specified precision.
 /// [Details about LowBoundary for Decimal, Date, DateTime, and Time values...]
 /// If the value value is null, the result is null.
-@JsonSerializable()
+
 class LowBoundary extends BinaryExpression {
   LowBoundary({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2162,18 +1686,13 @@ class LowBoundary extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   final int? precision;
-
-  factory LowBoundary.fromJson(Map<String, dynamic> json) =>
-      _$LowBoundaryFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LowBoundaryToJson(this);
 }
 
 /// The HighBoundary operator returns the greatest possible value of the value
 /// to the specified precision.
 /// [Details about HighBoundary for Decimal, Date, DateTime, and Time values...]
 /// If the value value is null, the result is null.
-@JsonSerializable()
+
 class HighBoundary extends BinaryExpression {
   HighBoundary({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2181,25 +1700,15 @@ class HighBoundary extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   final int? precision;
-
-  factory HighBoundary.fromJson(Map<String, dynamic> json) =>
-      _$HighBoundaryFromJson(json);
-
-  Map<String, dynamic> toJson() => _$HighBoundaryToJson(this);
 }
 
 /// The Concatenate operator performs string concatenation of its arguments.
 /// If any argument is null, the result is null.
-@JsonSerializable()
+
 class Concatenate extends NaryExpression {
   Concatenate({required this.arguments});
 
   final List<Expression> arguments;
-
-  factory Concatenate.fromJson(Map<String, dynamic> json) =>
-      _$ConcatenateFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConcatenateToJson(this);
 }
 
 /// The Combine operator combines a list of strings, optionally separating each
@@ -2207,17 +1716,12 @@ class Concatenate extends NaryExpression {
 /// If either argument is null, the result is null. If the source list is empty,
 /// the result is an empty string ('').
 /// For consistency with aggregate operator behavior, null elements in the value list are ignored.
-@JsonSerializable()
+
 class Combine extends OperatorExpression {
   final Expression source;
   final Expression? separator;
 
   Combine({required this.source, this.separator});
-
-  factory Combine.fromJson(Map<String, dynamic> json) =>
-      _$CombineFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CombineToJson(this);
 }
 
 /// The Split operator splits a string into a list of strings using a separator.
@@ -2225,7 +1729,7 @@ class Combine extends OperatorExpression {
 /// If the stringToSplit argument does not contain any appearances of the
 /// separator, the result is a list of strings containing one element that is
 /// the value of the stringToSplit argument.
-@JsonSerializable()
+
 class Split extends OperatorExpression {
   Expression stringToSplit;
   Expression separator;
@@ -2245,24 +1749,19 @@ class Split extends OperatorExpression {
 /// If the stringToSplit argument does not contain any appearances of the
 /// separator pattern, the result is a list of strings containing one element
 /// that is the value value of the stringToSplit argument.
-@JsonSerializable()
+
 class SplitOnMatches extends OperatorExpression {
   Expression stringToSplit;
   Expression separatorPattern;
 
   SplitOnMatches({required this.stringToSplit, required this.separatorPattern});
-
-  factory SplitOnMatches.fromJson(Map<String, dynamic> json) =>
-      _$SplitOnMatchesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SplitOnMatchesToJson(this);
 }
 
 /// The Length operator returns the length of its argument.
 /// For strings, the length is the number of characters in the string.
 /// For lists, the length is the number of elements in the list.
 /// If the argument is null, the result is 0.
-@JsonSerializable()
+
 class Length extends UnaryExpression {
   Length({required super.operand});
 
@@ -2277,7 +1776,7 @@ class Length extends UnaryExpression {
 /// locale-dependent determination, and is not specified by CQL. Implementations
 /// are expected to provide appropriate and consistent handling of locale for their environment.
 /// If the argument is null, the result is null.
-@JsonSerializable()
+
 class Upper extends UnaryExpression {
   Upper({required super.operand});
 
@@ -2294,7 +1793,7 @@ class Upper extends UnaryExpression {
 /// appropriate and consistent
 /// handling of the locale for their environment.
 /// If the argument is null, the result is null.
-@JsonSerializable()
+
 class Lower extends UnaryExpression {
   Lower({required super.operand});
 
@@ -2308,107 +1807,66 @@ class Lower extends UnaryExpression {
 /// If the index is less than 0 or greater than the length of the string or list being indexed,
 /// the result is null.
 /// If either argument is null, the result is null.
-@JsonSerializable()
+
 class Indexer extends BinaryExpression {
   Indexer({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
 
   final dynamic arg1;
   final dynamic arg2;
-
-  factory Indexer.fromJson(Map<String, dynamic> json) =>
-      _$IndexerFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IndexerToJson(this);
 }
 
 /// The PositionOf operator returns the 0-based index of the beginning given
 /// pattern in the given string.
 /// If the pattern is not found, the result is -1.
 /// If either argument is null, the result is null.
-@JsonSerializable()
+
 class PositionOf extends OperatorExpression {
   Expression pattern;
   Expression string;
 
   PositionOf(this.pattern, this.string);
-
-  factory PositionOf.fromJson(Map<String, dynamic> json) =>
-      _$PositionOfFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PositionOfToJson(this);
 }
 
-@JsonSerializable()
 class LastPositionOf extends OperatorExpression {
   LastPositionOf({required this.pattern, required this.string});
 
   final Expression pattern;
   final Expression string;
-
-  factory LastPositionOf.fromJson(Map<String, dynamic> json) =>
-      _$LastPositionOfFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LastPositionOfToJson(this);
 }
 
-@JsonSerializable()
 class Substring extends OperatorExpression {
   Substring({required this.stringToSub, required this.startIndex, this.length});
 
   final Expression stringToSub;
   final Expression startIndex;
   final Expression? length;
-
-  factory Substring.fromJson(Map<String, dynamic> json) =>
-      _$SubstringFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SubstringToJson(this);
 }
 
-@JsonSerializable()
 class StartsWith extends BinaryExpression {
   StartsWith({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
 
   final dynamic arg1;
   final dynamic arg2;
-
-  factory StartsWith.fromJson(Map<String, dynamic> json) =>
-      _$StartsWithFromJson(json);
-
-  Map<String, dynamic> toJson() => _$StartsWithToJson(this);
 }
 
-@JsonSerializable()
 class EndsWith extends BinaryExpression {
   EndsWith({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
 
   final dynamic arg1;
   final dynamic arg2;
-
-  factory EndsWith.fromJson(Map<String, dynamic> json) =>
-      _$EndsWithFromJson(json);
-
-  Map<String, dynamic> toJson() => _$EndsWithToJson(this);
 }
 
-@JsonSerializable()
 class Matches extends BinaryExpression {
   Matches({required this.arg1, required this.arg2})
       : super(operand: [Expression(arg1), Expression(arg2)]);
 
   final dynamic arg1;
   final dynamic arg2;
-
-  factory Matches.fromJson(Map<String, dynamic> json) =>
-      _$MatchesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MatchesToJson(this);
 }
 
-@JsonSerializable()
 class ReplaceMatches extends TernaryExpression {
   ReplaceMatches(
       {required this.pattern,
@@ -2418,11 +1876,6 @@ class ReplaceMatches extends TernaryExpression {
   final Expression pattern;
   final Expression string;
   final Expression substitution;
-
-  factory ReplaceMatches.fromJson(Map<String, dynamic> json) =>
-      _$ReplaceMatchesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ReplaceMatchesToJson(this);
 }
 
 enum ElmDateTimePrecision {
@@ -2436,7 +1889,6 @@ enum ElmDateTimePrecision {
   Millisecond,
 }
 
-@JsonSerializable()
 class DurationBetween extends BinaryExpression {
   DurationBetween({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2444,14 +1896,8 @@ class DurationBetween extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   final ElmDateTimePrecision? precision;
-
-  factory DurationBetween.fromJson(Map<String, dynamic> json) =>
-      _$DurationBetweenFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DurationBetweenToJson(this);
 }
 
-@JsonSerializable()
 class DifferenceBetween extends BinaryExpression {
   DifferenceBetween({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2459,77 +1905,35 @@ class DifferenceBetween extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   final ElmDateTimePrecision? precision;
-
-  factory DifferenceBetween.fromJson(Map<String, dynamic> json) =>
-      _$DifferenceBetweenFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DifferenceBetweenToJson(this);
 }
 
-@JsonSerializable()
 class DateFrom extends UnaryExpression {
   DateFrom({required super.operand});
-
-  factory DateFrom.fromJson(Map<String, dynamic> json) =>
-      _$DateFromFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DateFromToJson(this);
 }
 
-@JsonSerializable()
 class TimeFrom extends UnaryExpression {
   TimeFrom({required super.operand});
-
-  factory TimeFrom.fromJson(Map<String, dynamic> json) =>
-      _$TimeFromFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TimeFromToJson(this);
 }
 
 @Deprecated('as of 1.4')
-@JsonSerializable()
 class TimezoneFrom extends UnaryExpression {
   TimezoneFrom({required super.operand});
-
-  factory TimezoneFrom.fromJson(Map<String, dynamic> json) =>
-      _$TimezoneFromFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TimezoneFromToJson(this);
 }
 
-@JsonSerializable()
 class TimezoneOffsetFrom extends UnaryExpression {
   TimezoneOffsetFrom({required super.operand});
-
-  factory TimezoneOffsetFrom.fromJson(Map<String, dynamic> json) =>
-      _$TimezoneOffsetFromFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TimezoneOffsetFromToJson(this);
 }
 
-@JsonSerializable()
 class DateTimeComponentFrom extends UnaryExpression {
   DateTimeComponentFrom({required super.operand, this.precision});
 
   final ElmDateTimePrecision? precision;
-
-  factory DateTimeComponentFrom.fromJson(Map<String, dynamic> json) =>
-      _$DateTimeComponentFromFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DateTimeComponentFromToJson(this);
 }
 
-@JsonSerializable()
 class TimeOfDay extends OperatorExpression {
   TimeOfDay({super.signature});
-
-  factory TimeOfDay.fromJson(Map<String, dynamic> json) =>
-      _$TimeOfDayFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TimeOfDayToJson(this);
 }
 
-@JsonSerializable()
 class Today extends OperatorExpression {
   Today({super.signature});
 
@@ -2538,7 +1942,6 @@ class Today extends OperatorExpression {
   Map<String, dynamic> toJson() => _$TodayToJson(this);
 }
 
-@JsonSerializable()
 class Now extends OperatorExpression {
   Now({super.signature});
 
@@ -2549,7 +1952,7 @@ class Now extends OperatorExpression {
 
 /// Class representing the Date operator.
 /// The Date operator constructs a date value from the given components.
-@JsonSerializable()
+
 class DateOperator extends OperatorExpression {
   Expression year;
   Expression? month;
@@ -2561,14 +1964,8 @@ class DateOperator extends OperatorExpression {
     this.day,
     super.signature,
   });
-
-  factory DateOperator.fromJson(Map<String, dynamic> json) =>
-      _$DateOperatorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DateOperatorToJson(this);
 }
 
-@JsonSerializable()
 class DateTimeOperator extends OperatorExpression {
   DateTimeOperator({
     required this.year,
@@ -2589,16 +1986,11 @@ class DateTimeOperator extends OperatorExpression {
   final Expression? second;
   final Expression? millisecond;
   final Expression? timezoneOffset;
-
-  factory DateTimeOperator.fromJson(Map<String, dynamic> json) =>
-      _$DateTimeOperatorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DateTimeOperatorToJson(this);
 }
 
 /// Class representing the Time operator.
 /// The Time operator constructs a time value from the given components.
-@JsonSerializable()
+
 class TimeOperator extends OperatorExpression {
   Expression hour;
   Expression? minute;
@@ -2612,14 +2004,8 @@ class TimeOperator extends OperatorExpression {
     this.millisecond,
     super.signature,
   });
-
-  factory TimeOperator.fromJson(Map<String, dynamic> json) =>
-      _$TimeOperatorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TimeOperatorToJson(this);
 }
 
-@JsonSerializable()
 class SameAs extends BinaryExpression {
   SameAs(
       {required this.arg1, required this.arg2, ElmDateTimePrecision? precision})
@@ -2631,7 +2017,6 @@ class SameAs extends BinaryExpression {
   ElmDateTimePrecision? precision;
 }
 
-@JsonSerializable()
 class SameOrBefore extends BinaryExpression {
   SameOrBefore(
       {required this.arg1, required this.arg2, ElmDateTimePrecision? precision})
@@ -2643,7 +2028,6 @@ class SameOrBefore extends BinaryExpression {
   ElmDateTimePrecision? precision;
 }
 
-@JsonSerializable()
 class SameOrAfter extends BinaryExpression {
   SameOrAfter(
       {required this.arg1, required this.arg2, ElmDateTimePrecision? precision})
@@ -2655,17 +2039,10 @@ class SameOrAfter extends BinaryExpression {
   ElmDateTimePrecision? precision;
 }
 
-@JsonSerializable()
 class PointFrom extends UnaryExpression {
   PointFrom({required super.operand});
-
-  factory PointFrom.fromJson(Map<String, dynamic> json) =>
-      _$PointFromFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PointFromToJson(this);
 }
 
-@JsonSerializable()
 class Width extends UnaryExpression {
   Width({required super.operand});
 
@@ -2674,7 +2051,6 @@ class Width extends UnaryExpression {
   Map<String, dynamic> toJson() => _$WidthToJson(this);
 }
 
-@JsonSerializable()
 class Size extends UnaryExpression {
   Size({required super.operand});
 
@@ -2683,12 +2059,10 @@ class Size extends UnaryExpression {
   Map<String, dynamic> toJson() => _$SizeToJson(this);
 }
 
-@JsonSerializable()
 class Start extends UnaryExpression {
   Start({required super.operand});
 }
 
-@JsonSerializable()
 class End extends UnaryExpression {
   End({required super.operand});
 
@@ -2697,7 +2071,6 @@ class End extends UnaryExpression {
   Map<String, dynamic> toJson() => _$EndToJson(this);
 }
 
-@JsonSerializable()
 class Contains extends BinaryExpression {
   Contains({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2705,14 +2078,8 @@ class Contains extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory Contains.fromJson(Map<String, dynamic> json) =>
-      _$ContainsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ContainsToJson(this);
 }
 
-@JsonSerializable()
 class ProperContains extends BinaryExpression {
   ProperContains({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2720,14 +2087,8 @@ class ProperContains extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory ProperContains.fromJson(Map<String, dynamic> json) =>
-      _$ProperContainsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProperContainsToJson(this);
 }
 
-@JsonSerializable()
 class In extends BinaryExpression {
   In({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2741,7 +2102,6 @@ class In extends BinaryExpression {
   Map<String, dynamic> toJson() => _$InToJson(this);
 }
 
-@JsonSerializable()
 class ProperIn extends BinaryExpression {
   ProperIn({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2749,14 +2109,8 @@ class ProperIn extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory ProperIn.fromJson(Map<String, dynamic> json) =>
-      _$ProperInFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProperInToJson(this);
 }
 
-@JsonSerializable()
 class Includes extends BinaryExpression {
   Includes({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2764,14 +2118,8 @@ class Includes extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory Includes.fromJson(Map<String, dynamic> json) =>
-      _$IncludesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IncludesToJson(this);
 }
 
-@JsonSerializable()
 class IncludedIn extends BinaryExpression {
   IncludedIn({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2779,14 +2127,8 @@ class IncludedIn extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory IncludedIn.fromJson(Map<String, dynamic> json) =>
-      _$IncludedInFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IncludedInToJson(this);
 }
 
-@JsonSerializable()
 class ProperIncludes extends BinaryExpression {
   ProperIncludes({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2794,14 +2136,8 @@ class ProperIncludes extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory ProperIncludes.fromJson(Map<String, dynamic> json) =>
-      _$ProperIncludesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProperIncludesToJson(this);
 }
 
-@JsonSerializable()
 class ProperIncludedIn extends BinaryExpression {
   ProperIncludedIn({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2809,14 +2145,8 @@ class ProperIncludedIn extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory ProperIncludedIn.fromJson(Map<String, dynamic> json) =>
-      _$ProperIncludedInFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProperIncludedInToJson(this);
 }
 
-@JsonSerializable()
 class Before extends BinaryExpression {
   Before({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2830,7 +2160,6 @@ class Before extends BinaryExpression {
   Map<String, dynamic> toJson() => _$BeforeToJson(this);
 }
 
-@JsonSerializable()
 class After extends BinaryExpression {
   After({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2844,7 +2173,6 @@ class After extends BinaryExpression {
   Map<String, dynamic> toJson() => _$AfterToJson(this);
 }
 
-@JsonSerializable()
 class Meets extends BinaryExpression {
   Meets({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2858,7 +2186,6 @@ class Meets extends BinaryExpression {
   Map<String, dynamic> toJson() => _$MeetsToJson(this);
 }
 
-@JsonSerializable()
 class MeetsBefore extends BinaryExpression {
   MeetsBefore({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2866,14 +2193,8 @@ class MeetsBefore extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory MeetsBefore.fromJson(Map<String, dynamic> json) =>
-      _$MeetsBeforeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MeetsBeforeToJson(this);
 }
 
-@JsonSerializable()
 class MeetsAfter extends BinaryExpression {
   MeetsAfter({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2881,14 +2202,8 @@ class MeetsAfter extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory MeetsAfter.fromJson(Map<String, dynamic> json) =>
-      _$MeetsAfterFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MeetsAfterToJson(this);
 }
 
-@JsonSerializable()
 class Overlaps extends BinaryExpression {
   Overlaps({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2896,14 +2211,8 @@ class Overlaps extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory Overlaps.fromJson(Map<String, dynamic> json) =>
-      _$OverlapsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OverlapsToJson(this);
 }
 
-@JsonSerializable()
 class OverlapsBefore extends BinaryExpression {
   OverlapsBefore({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2911,14 +2220,8 @@ class OverlapsBefore extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory OverlapsBefore.fromJson(Map<String, dynamic> json) =>
-      _$OverlapsBeforeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OverlapsBeforeToJson(this);
 }
 
-@JsonSerializable()
 class OverlapsAfter extends BinaryExpression {
   OverlapsAfter({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2926,14 +2229,8 @@ class OverlapsAfter extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory OverlapsAfter.fromJson(Map<String, dynamic> json) =>
-      _$OverlapsAfterFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OverlapsAfterToJson(this);
 }
 
-@JsonSerializable()
 class Starts extends BinaryExpression {
   Starts({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2947,7 +2244,6 @@ class Starts extends BinaryExpression {
   Map<String, dynamic> toJson() => _$StartsToJson(this);
 }
 
-@JsonSerializable()
 class Ends extends BinaryExpression {
   Ends({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2961,7 +2257,6 @@ class Ends extends BinaryExpression {
   Map<String, dynamic> toJson() => _$EndsToJson(this);
 }
 
-@JsonSerializable()
 class Collapse extends BinaryExpression {
   Collapse({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2969,14 +2264,8 @@ class Collapse extends BinaryExpression {
   final dynamic arg1;
   final dynamic arg2;
   ElmDateTimePrecision? precision;
-
-  factory Collapse.fromJson(Map<String, dynamic> json) =>
-      _$CollapseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CollapseToJson(this);
 }
 
-@JsonSerializable()
 class Expand extends BinaryExpression {
   Expand({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -2990,7 +2279,6 @@ class Expand extends BinaryExpression {
   Map<String, dynamic> toJson() => _$ExpandToJson(this);
 }
 
-@JsonSerializable()
 class Union extends NaryExpression {
   Union({super.operand});
 
@@ -2999,40 +2287,22 @@ class Union extends NaryExpression {
   Map<String, dynamic> toJson() => _$UnionToJson(this);
 }
 
-@JsonSerializable()
 class Intersect extends NaryExpression {
   Intersect({super.operand});
-
-  factory Intersect.fromJson(Map<String, dynamic> json) =>
-      _$IntersectFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IntersectToJson(this);
 }
 
 abstract mixin class Except {}
 
 // TODO(Dokotela): both valid?
-@JsonSerializable()
+
 class ExceptListList extends NaryExpression with Except {
   ExceptListList({super.operand});
-
-  factory ExceptListList.fromJson(Map<String, dynamic> json) =>
-      _$ExceptListListFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ExceptListListToJson(this);
 }
 
-@JsonSerializable()
 class ExceptIntervalInterval extends NaryExpression with Except {
   ExceptIntervalInterval({super.operand});
-
-  factory ExceptIntervalInterval.fromJson(Map<String, dynamic> json) =>
-      _$ExceptIntervalIntervalFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ExceptIntervalIntervalToJson(this);
 }
 
-@JsonSerializable()
 class Exists extends UnaryExpression {
   Exists({super.operand});
 
@@ -3041,7 +2311,6 @@ class Exists extends UnaryExpression {
   Map<String, dynamic> toJson() => _$ExistsToJson(this);
 }
 
-@JsonSerializable()
 class Times extends BinaryExpression {
   Times({required this.arg1, required this.arg2, this.precision})
       : super(operand: [Expression(arg1), Expression(arg2)]);
@@ -3055,7 +2324,6 @@ class Times extends BinaryExpression {
   Map<String, dynamic> toJson() => _$TimesToJson(this);
 }
 
-@JsonSerializable()
 class Filter extends Expression {
   Filter({required this.source, required this.condition, this.scope});
 
@@ -3068,7 +2336,6 @@ class Filter extends Expression {
   Map<String, dynamic> toJson() => _$FilterToJson(this);
 }
 
-@JsonSerializable()
 class First extends OperatorExpression {
   First({required this.source, this.orderBy});
 
@@ -3080,7 +2347,6 @@ class First extends OperatorExpression {
   Map<String, dynamic> toJson() => _$FirstToJson(this);
 }
 
-@JsonSerializable()
 class Last extends OperatorExpression {
   Last({required this.source, this.orderBy});
 
@@ -3092,7 +2358,6 @@ class Last extends OperatorExpression {
   Map<String, dynamic> toJson() => _$LastToJson(this);
 }
 
-@JsonSerializable()
 class Slice extends OperatorExpression {
   Slice(
       {required this.source, required this.startIndex, required this.endIndex});
@@ -3106,32 +2371,21 @@ class Slice extends OperatorExpression {
   Map<String, dynamic> toJson() => _$SliceToJson(this);
 }
 
-@JsonSerializable()
 class IndexOf extends OperatorExpression {
   IndexOf({required this.source, required this.element});
 
   Expression source;
   Expression element;
-
-  factory IndexOf.fromJson(Map<String, dynamic> json) =>
-      _$IndexOfFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IndexOfToJson(this);
 }
 
 // Flatten operator
-@JsonSerializable()
+
 class Flatten extends UnaryExpression {
   Flatten({required super.operand});
-
-  factory Flatten.fromJson(Map<String, dynamic> json) =>
-      _$FlattenFromJson(json);
-
-  Map<String, dynamic> toJson() => _$FlattenToJson(this);
 }
 
 // // Sort operator
-@JsonSerializable()
+
 class Sort extends Expression {
   Sort(Expression source, List<SortByItem> by)
       : source = source,
@@ -3146,22 +2400,17 @@ class Sort extends Expression {
 }
 
 // ForEach expression
-@JsonSerializable()
+
 class ForEach extends Expression {
   ForEach({required this.source, required this.element, this.scope});
 
   Expression source;
   Expression element;
   String? scope;
-
-  factory ForEach.fromJson(Map<String, dynamic> json) =>
-      _$ForEachFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ForEachToJson(this);
 }
 
 // Repeat expression
-@JsonSerializable()
+
 class Repeat extends Expression {
   Repeat({required this.source, required this.element, this.scope});
 
@@ -3175,44 +2424,29 @@ class Repeat extends Expression {
 }
 
 // Distinct operator
-@JsonSerializable()
+
 class Distinct extends UnaryExpression {
   Distinct({required super.operand});
-
-  factory Distinct.fromJson(Map<String, dynamic> json) =>
-      _$DistinctFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DistinctToJson(this);
 }
 
 // Current expression
-@JsonSerializable()
+
 class Current extends Expression {
   Current({this.scope});
 
   String? scope;
-
-  factory Current.fromJson(Map<String, dynamic> json) =>
-      _$CurrentFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CurrentToJson(this);
 }
 
 // Iteration expression
-@JsonSerializable()
+
 class Iteration extends Expression {
   Iteration({this.scope});
 
   String? scope;
-
-  factory Iteration.fromJson(Map<String, dynamic> json) =>
-      _$IterationFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IterationToJson(this);
 }
 
 // Total expression
-@JsonSerializable()
+
 class Total extends Expression {
   Total({this.scope});
 
@@ -3224,34 +2458,15 @@ class Total extends Expression {
 }
 
 // SingletonFrom expression
-@JsonSerializable()
+
 class SingletonFrom extends UnaryExpression {
   SingletonFrom({required super.operand});
-
-  factory SingletonFrom.fromJson(Map<String, dynamic> json) =>
-      _$SingletonFromFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SingletonFromToJson(this);
 }
 
 // AggregateExpression abstract class
-@JsonSerializable()
-abstract class AggregateExpression extends Expression {
-  AggregateExpression(
-      {required this.signature, required this.source, String? path});
-
-  List<TypeSpecifier> signature;
-  Expression source;
-  String? path;
-
-  factory AggregateExpression.fromJson(Map<String, dynamic> json) =>
-      _$AggregateExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AggregateExpressionToJson(this);
-}
 
 // Aggregate operator
-@JsonSerializable()
+
 class Aggregate extends AggregateExpression {
   Aggregate(
       {required super.signature,
@@ -3262,25 +2477,10 @@ class Aggregate extends AggregateExpression {
 
   Expression iteration;
   Expression? initialValue;
-
-  factory Aggregate.fromJson(Map<String, dynamic> json) =>
-      _$AggregateFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AggregateToJson(this);
-}
-
-// Count operator
-@JsonSerializable()
-class Count extends AggregateExpression {
-  Count({required super.signature, required super.source, super.path});
-
-  factory Count.fromJson(Map<String, dynamic> json) => _$CountFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CountToJson(this);
 }
 
 // Sum operator
-@JsonSerializable()
+
 class Sum extends AggregateExpression {
   Sum({required super.signature, required super.source, super.path});
 
@@ -3290,18 +2490,13 @@ class Sum extends AggregateExpression {
 }
 
 // Product operator
-@JsonSerializable()
+
 class Product extends AggregateExpression {
   Product({required super.signature, required super.source, super.path});
-
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
 
 // Min operator
-@JsonSerializable()
+
 class Min extends AggregateExpression {
   Min({required super.signature, required super.source, super.path});
 
@@ -3311,7 +2506,7 @@ class Min extends AggregateExpression {
 }
 
 // Max operator
-@JsonSerializable()
+
 class Max extends AggregateExpression {
   Max({required super.signature, required super.source, super.path});
 
@@ -3321,7 +2516,7 @@ class Max extends AggregateExpression {
 }
 
 // Avg operator
-@JsonSerializable()
+
 class Avg extends AggregateExpression {
   Avg({required super.signature, required super.source, super.path});
 
@@ -3331,18 +2526,13 @@ class Avg extends AggregateExpression {
 }
 
 // GeometricMean operator
-@JsonSerializable()
+
 class GeometricMean extends AggregateExpression {
   GeometricMean({required super.signature, required super.source, super.path});
-
-  factory GeometricMean.fromJson(Map<String, dynamic> json) =>
-      _$GeometricMeanFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GeometricMeanToJson(this);
 }
 
 // Median operator
-@JsonSerializable()
+
 class Median extends AggregateExpression {
   Median({required super.signature, required super.source, super.path});
 
@@ -3352,7 +2542,7 @@ class Median extends AggregateExpression {
 }
 
 // Mode operator
-@JsonSerializable()
+
 class Mode extends AggregateExpression {
   Mode({required super.signature, required super.source, super.path});
 
@@ -3362,30 +2552,20 @@ class Mode extends AggregateExpression {
 }
 
 // Variance operator
-@JsonSerializable()
+
 class Variance extends AggregateExpression {
   Variance({required super.signature, required super.source, super.path});
-
-  factory Variance.fromJson(Map<String, dynamic> json) =>
-      _$VarianceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$VarianceToJson(this);
 }
 
 // PopulationVariance operator
-@JsonSerializable()
+
 class PopulationVariance extends AggregateExpression {
   PopulationVariance(
       {required super.signature, required super.source, super.path});
-
-  factory PopulationVariance.fromJson(Map<String, dynamic> json) =>
-      _$PopulationVarianceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PopulationVarianceToJson(this);
 }
 
 // StdDev operator
-@JsonSerializable()
+
 class StdDev extends AggregateExpression {
   StdDev({required super.signature, required super.source, super.path});
 
@@ -3395,97 +2575,62 @@ class StdDev extends AggregateExpression {
 }
 
 // PopulationStdDev operator
-@JsonSerializable()
+
 class PopulationStdDev extends AggregateExpression {
   PopulationStdDev(
       {required super.signature, required super.source, super.path});
-
-  factory PopulationStdDev.fromJson(Map<String, dynamic> json) =>
-      _$PopulationStdDevFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PopulationStdDevToJson(this);
 }
 
 // AllTrue operator
-@JsonSerializable()
+
 class AllTrue extends AggregateExpression {
   AllTrue({required super.signature, required super.source, super.path});
-
-  factory AllTrue.fromJson(Map<String, dynamic> json) =>
-      _$AllTrueFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AllTrueToJson(this);
 }
 
 // AnyTrue operator
-@JsonSerializable()
+
 class AnyTrue extends AggregateExpression {
   AnyTrue({required super.signature, required super.source, super.path});
-
-  factory AnyTrue.fromJson(Map<String, dynamic> json) =>
-      _$AnyTrueFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AnyTrueToJson(this);
 }
 
 // Property operator
-@JsonSerializable()
+
 class Property extends Expression {
   final String path;
   final String? scope;
   final Expression? source;
 
   Property({required this.path, this.scope, this.source});
-
-  factory Property.fromJson(Map<String, dynamic> json) =>
-      _$PropertyFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PropertyToJson(this);
 }
 
 // AliasedQuerySource element
-@JsonSerializable()
+
 class AliasedQuerySource extends ElmElement {
   AliasedQuerySource({this.expression, required this.alias});
 
   final Expression? expression;
   final String alias;
-
-  factory AliasedQuerySource.fromJson(Map<String, dynamic> json) =>
-      _$AliasedQuerySourceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AliasedQuerySourceToJson(this);
 }
 
 // LetClause element
-@JsonSerializable()
+
 class LetClause extends ElmElement {
   LetClause({this.expression, required this.identifier});
 
   final Expression? expression;
   final String identifier;
-
-  factory LetClause.fromJson(Map<String, dynamic> json) =>
-      _$LetClauseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LetClauseToJson(this);
 }
 
 // RelationshipClause element
-@JsonSerializable()
+
 abstract class RelationshipClause extends AliasedQuerySource {
   RelationshipClause({this.suchThat, super.expression, required super.alias});
 
   final Expression? suchThat;
-
-  factory RelationshipClause.fromJson(Map<String, dynamic> json) =>
-      _$RelationshipClauseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$RelationshipClauseToJson(this);
 }
 
 // With clause
-@JsonSerializable()
+
 class With extends RelationshipClause {
   With({super.expression, required super.alias});
 
@@ -3495,98 +2640,63 @@ class With extends RelationshipClause {
 }
 
 // Without clause
-@JsonSerializable()
+
 class Without extends RelationshipClause {
   Without({super.expression, required super.alias});
-
-  factory Without.fromJson(Map<String, dynamic> json) =>
-      _$WithoutFromJson(json);
-
-  Map<String, dynamic> toJson() => _$WithoutToJson(this);
 }
 
 // SortDirection enumeration
 enum SortDirection { asc, ascending, desc, descending }
 
 // SortByItem abstract type
-@JsonSerializable()
+
 abstract class SortByItem extends ElmElement {
   SortByItem({this.direction});
 
   final SortDirection? direction;
-
-  factory SortByItem.fromJson(Map<String, dynamic> json) =>
-      _$SortByItemFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SortByItemToJson(this);
 }
 
 // ByDirection element
-@JsonSerializable()
+
 class ByDirection extends SortByItem {
   ByDirection({super.direction});
-
-  factory ByDirection.fromJson(Map<String, dynamic> json) =>
-      _$ByDirectionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ByDirectionToJson(this);
 }
 
 // ByColumn element
-@JsonSerializable()
+
 class ByColumn extends SortByItem {
   ByColumn({super.direction, this.path});
 
   final String? path;
-
-  factory ByColumn.fromJson(Map<String, dynamic> json) =>
-      _$ByColumnFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ByColumnToJson(this);
 }
 
 // ByExpression element
-@JsonSerializable()
+
 class ByExpression extends SortByItem {
   ByExpression({super.direction, required this.expression});
 
   final Expression expression;
-
-  factory ByExpression.fromJson(Map<String, dynamic> json) =>
-      _$ByExpressionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ByExpressionToJson(this);
 }
 
 // SortClause element
-@JsonSerializable()
+
 class SortClause extends ElmElement {
   SortClause({required this.by});
 
   final List<SortByItem> by;
-
-  factory SortClause.fromJson(Map<String, dynamic> json) =>
-      _$SortClauseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SortClauseToJson(this);
 }
 
 // ReturnClause element
-@JsonSerializable()
+
 class ReturnClause extends ElmElement {
   ReturnClause({required this.expression, this.distinct});
 
   final Expression expression;
   final bool? distinct;
-
-  factory ReturnClause.fromJson(Map<String, dynamic> json) =>
-      _$ReturnClauseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ReturnClauseToJson(this);
 }
 
 // AggregateClause element
-@JsonSerializable()
+
 class AggregateClause extends ElmElement {
   AggregateClause({
     required this.expression,
@@ -3599,15 +2709,10 @@ class AggregateClause extends ElmElement {
   final Expression? starting;
   final String identifier;
   final bool distinct;
-
-  factory AggregateClause.fromJson(Map<String, dynamic> json) =>
-      _$AggregateClauseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AggregateClauseToJson(this);
 }
 
 // Query operator
-@JsonSerializable()
+
 class Query extends Expression {
   Query({
     required this.source,
@@ -3629,59 +2734,39 @@ class Query extends Expression {
 }
 
 // AliasRef expression
-@JsonSerializable()
+
 class AliasRef extends Expression {
   AliasRef({this.name});
 
   final String? name;
-
-  factory AliasRef.fromJson(Map<String, dynamic> json) =>
-      _$AliasRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AliasRefToJson(this);
 }
 
 // QueryLetRef expression
-@JsonSerializable()
+
 class QueryLetRef extends Expression {
   QueryLetRef({this.name});
 
   final String? name;
-
-  factory QueryLetRef.fromJson(Map<String, dynamic> json) =>
-      _$QueryLetRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$QueryLetRefToJson(this);
 }
 
 // Children operator
-@JsonSerializable()
+
 class Children extends OperatorExpression {
   Children({required this.source, super.signature});
 
   final Expression source;
-
-  factory Children.fromJson(Map<String, dynamic> json) =>
-      _$ChildrenFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ChildrenToJson(this);
 }
 
 // Descendents operator
-@JsonSerializable()
+
 class Descendents extends OperatorExpression {
   Descendents({required this.source, super.signature});
 
   final Expression source;
-
-  factory Descendents.fromJson(Map<String, dynamic> json) =>
-      _$DescendentsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DescendentsToJson(this);
 }
 
 // Message operator
-@JsonSerializable()
+
 class Message extends OperatorExpression {
   Message({
     required this.source,
@@ -3696,9 +2781,4 @@ class Message extends OperatorExpression {
   Expression? code;
   Expression? severity;
   Expression? message;
-
-  factory Message.fromJson(Map<String, dynamic> json) =>
-      _$MessageFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MessageToJson(this);
 }

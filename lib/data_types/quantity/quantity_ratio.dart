@@ -1,7 +1,7 @@
 // Package imports:
 import 'package:units_converter/units_converter.dart';
 
-enum Ratio {
+enum QuantityRatio {
   /// SAME UNITS
   gramsPerGram,
   milliGramsPerMilliGram,
@@ -87,437 +87,437 @@ enum Ratio {
   kiloCaloriesPerOunce,
 }
 
-extension UnitsFromRatio on Ratio {
+extension UnitsFromQuantityRatio on QuantityRatio {
   dynamic numeratorUnit() {
     switch (this) {
-      case Ratio.nanoMolesPerMole:
+      case QuantityRatio.nanoMolesPerMole:
         return AMOUNT_OF_SUBSTANCE.nanomoles;
 
-      case Ratio.microMolesPerMole:
+      case QuantityRatio.microMolesPerMole:
         return AMOUNT_OF_SUBSTANCE.micromoles;
 
-      case Ratio.milliMolesPerMole:
+      case QuantityRatio.milliMolesPerMole:
         return AMOUNT_OF_SUBSTANCE.millimoles;
 
-      case Ratio.microGramsPerNanoGram:
+      case QuantityRatio.microGramsPerNanoGram:
         return MASS.micrograms;
 
-      case Ratio.nanoGramsPerMilliGram:
+      case QuantityRatio.nanoGramsPerMilliGram:
         return MASS.nanograms;
 
-      case Ratio.microGramsPerMilliGram:
+      case QuantityRatio.microGramsPerMilliGram:
         return MASS.micrograms;
 
-      case Ratio.milliGramsPerMilliGram:
+      case QuantityRatio.milliGramsPerMilliGram:
         return MASS.milligrams;
 
-      case Ratio.nanoGramsPerGram:
+      case QuantityRatio.nanoGramsPerGram:
         return MASS.nanograms;
 
-      case Ratio.microGramsPerGram:
+      case QuantityRatio.microGramsPerGram:
         return MASS.micrograms;
 
-      case Ratio.milliGramsPerGram:
+      case QuantityRatio.milliGramsPerGram:
         return MASS.milligrams;
 
-      case Ratio.gramsPerGram:
+      case QuantityRatio.gramsPerGram:
         return MASS.grams;
 
-      case Ratio.nanoGramsPerKiloGram:
+      case QuantityRatio.nanoGramsPerKiloGram:
         return MASS.nanograms;
 
-      case Ratio.microGramsPerKiloGram:
+      case QuantityRatio.microGramsPerKiloGram:
         return MASS.micrograms;
 
-      case Ratio.milliGramsPerKiloGram:
+      case QuantityRatio.milliGramsPerKiloGram:
         return MASS.milligrams;
 
-      case Ratio.gramsPerKiloGram:
+      case QuantityRatio.gramsPerKiloGram:
         return MASS.grams;
 
-      case Ratio.picoMolesPerMicroMole:
+      case QuantityRatio.picoMolesPerMicroMole:
         return AMOUNT_OF_SUBSTANCE.picomoles;
 
-      case Ratio.nanoMolesPerMilliMole:
+      case QuantityRatio.nanoMolesPerMilliMole:
         return AMOUNT_OF_SUBSTANCE.nanomoles;
 
-      case Ratio.milliLitersPerDeciLiter:
+      case QuantityRatio.milliLitersPerDeciLiter:
         return VOLUME.milliliters;
 
-      case Ratio.picoGramsPerMilliMeter:
+      case QuantityRatio.picoGramsPerMilliMeter:
         return MASS.picograms;
 
-      // case Ratio.milliMolesPerSquareMeter:
+      // case QuantityRatio.milliMolesPerSquareMeter:
       //   return AMOUNT_OF_SUBSTANCE.millimoles;
 
-      case Ratio.femtoMolesPerMilliGram:
+      case QuantityRatio.femtoMolesPerMilliGram:
         return AMOUNT_OF_SUBSTANCE.femtomoles;
 
-      case Ratio.nanoMolesPerMilliGram:
+      case QuantityRatio.nanoMolesPerMilliGram:
         return AMOUNT_OF_SUBSTANCE.nanomoles;
 
-      case Ratio.microMolesPerMilliGram:
+      case QuantityRatio.microMolesPerMilliGram:
         return AMOUNT_OF_SUBSTANCE.micromoles;
 
-      case Ratio.molesPerKiloGram:
+      case QuantityRatio.molesPerKiloGram:
         return AMOUNT_OF_SUBSTANCE.moles;
 
-      case Ratio.femtoMolesPerGram:
+      case QuantityRatio.femtoMolesPerGram:
         return AMOUNT_OF_SUBSTANCE.femtomoles;
 
-      case Ratio.nanoMolesPerGram:
+      case QuantityRatio.nanoMolesPerGram:
         return AMOUNT_OF_SUBSTANCE.nanomoles;
 
-      case Ratio.microMolesPerGram:
+      case QuantityRatio.microMolesPerGram:
         return AMOUNT_OF_SUBSTANCE.micromoles;
 
-      case Ratio.milliMolesPerGram:
+      case QuantityRatio.milliMolesPerGram:
         return AMOUNT_OF_SUBSTANCE.millimoles;
 
-      case Ratio.milliMolesPerKiloGram:
+      case QuantityRatio.milliMolesPerKiloGram:
         return AMOUNT_OF_SUBSTANCE.millimoles;
 
-      case Ratio.milliLitersPerKiloGram:
+      case QuantityRatio.milliLitersPerKiloGram:
         return VOLUME.milliliters;
 
-      case Ratio.litersPerKilogram:
+      case QuantityRatio.litersPerKilogram:
         return VOLUME.liters;
 
-      case Ratio.kiloCaloriesPerOunce:
+      case QuantityRatio.kiloCaloriesPerOunce:
         return ENERGY.kilocalories;
 
-      // case Ratio.gramsPerSquareMeter:
+      // case QuantityRatio.gramsPerSquareMeter:
       //   return MASS.grams;
 
-      case Ratio.kiloGramsPerSquareMeter:
+      case QuantityRatio.kiloGramsPerSquareMeter:
         return MASS.kilograms;
 
-      // case Ratio.microGramsPerSquareMeter:
+      // case QuantityRatio.microGramsPerSquareMeter:
       //   return MASS.micrograms;
 
-      case Ratio.milliGramsPerSquareMeter:
+      case QuantityRatio.milliGramsPerSquareMeter:
         return MASS.milligrams;
 
-      // case Ratio.nanoGramsPerSquareMeter:
+      // case QuantityRatio.nanoGramsPerSquareMeter:
       //   return MASS.nanograms;
 
-      case Ratio.milliGramsPerDeciLiter:
+      case QuantityRatio.milliGramsPerDeciLiter:
         return MASS.milligrams;
 
-      case Ratio.gramsPerDeciLiter:
+      case QuantityRatio.gramsPerDeciLiter:
         return MASS.grams;
 
-      case Ratio.nanoGramsPerLiter:
+      case QuantityRatio.nanoGramsPerLiter:
         return MASS.nanograms;
 
-      case Ratio.picoGramsPerLiter:
+      case QuantityRatio.picoGramsPerLiter:
         return MASS.picograms;
 
-      case Ratio.microGramsPerLiter:
+      case QuantityRatio.microGramsPerLiter:
         return MASS.micrograms;
 
-      case Ratio.milliGramsPerLiter:
+      case QuantityRatio.milliGramsPerLiter:
         return MASS.milligrams;
 
-      case Ratio.gramsPerLiter:
+      case QuantityRatio.gramsPerLiter:
         return MASS.grams;
 
-      case Ratio.kiloGramsPerLiter:
+      case QuantityRatio.kiloGramsPerLiter:
         return MASS.kilograms;
 
-      case Ratio.milliGramsPerCubicMeter:
+      case QuantityRatio.milliGramsPerCubicMeter:
         return MASS.milligrams;
 
-      case Ratio.milliGramsPerCubicCentimeter:
+      case QuantityRatio.milliGramsPerCubicCentimeter:
         return MASS.milligrams;
 
-      case Ratio.gramsPerCubicCentimeter:
+      case QuantityRatio.gramsPerCubicCentimeter:
         return MASS.grams;
 
-      case Ratio.kiloGramsPerCubicMeter:
+      case QuantityRatio.kiloGramsPerCubicMeter:
         return MASS.kilograms;
 
-      case Ratio.femtoMolesPerMilliLiter:
+      case QuantityRatio.femtoMolesPerMilliLiter:
         return AMOUNT_OF_SUBSTANCE.femtomoles;
 
-      case Ratio.picoMolesPerMilliLiter:
+      case QuantityRatio.picoMolesPerMilliLiter:
         return AMOUNT_OF_SUBSTANCE.picomoles;
 
-      case Ratio.nanoMolesPerMilliLiter:
+      case QuantityRatio.nanoMolesPerMilliLiter:
         return AMOUNT_OF_SUBSTANCE.nanomoles;
 
-      case Ratio.microMolesPerMilliLiter:
+      case QuantityRatio.microMolesPerMilliLiter:
         return AMOUNT_OF_SUBSTANCE.micromoles;
 
-      case Ratio.molesPerMilliLiter:
+      case QuantityRatio.molesPerMilliLiter:
         return AMOUNT_OF_SUBSTANCE.moles;
 
-      case Ratio.picoMolesPerDeciLiter:
+      case QuantityRatio.picoMolesPerDeciLiter:
         return AMOUNT_OF_SUBSTANCE.picomoles;
 
-      case Ratio.nanoMolesPerDeciLiter:
+      case QuantityRatio.nanoMolesPerDeciLiter:
         return AMOUNT_OF_SUBSTANCE.nanomoles;
 
-      case Ratio.microMolesPerDeciLiter:
+      case QuantityRatio.microMolesPerDeciLiter:
         return AMOUNT_OF_SUBSTANCE.micromoles;
 
-      case Ratio.milliMolesPerDeciLiter:
+      case QuantityRatio.milliMolesPerDeciLiter:
         return AMOUNT_OF_SUBSTANCE.millimoles;
 
-      case Ratio.milliMolesPerLiter:
+      case QuantityRatio.milliMolesPerLiter:
         return AMOUNT_OF_SUBSTANCE.millimoles;
 
-      case Ratio.picoMolesPerLiter:
+      case QuantityRatio.picoMolesPerLiter:
         return AMOUNT_OF_SUBSTANCE.picomoles;
 
-      case Ratio.nanoMolesPerLiter:
+      case QuantityRatio.nanoMolesPerLiter:
         return AMOUNT_OF_SUBSTANCE.nanomoles;
 
-      case Ratio.microMolesPerLiter:
+      case QuantityRatio.microMolesPerLiter:
         return AMOUNT_OF_SUBSTANCE.micromoles;
 
-      case Ratio.molesPerLiter:
+      case QuantityRatio.molesPerLiter:
         return AMOUNT_OF_SUBSTANCE.moles;
 
-      case Ratio.molesPerCubicMeter:
+      case QuantityRatio.molesPerCubicMeter:
         return AMOUNT_OF_SUBSTANCE.moles;
 
-      case Ratio.gramsPerMilliLiter:
+      case QuantityRatio.gramsPerMilliLiter:
         return MASS.grams;
 
-      case Ratio.nanoGramsPerMilliLiter:
+      case QuantityRatio.nanoGramsPerMilliLiter:
         return MASS.nanograms;
 
-      case Ratio.picoGramsPerMilliLiter:
+      case QuantityRatio.picoGramsPerMilliLiter:
         return MASS.picograms;
 
-      case Ratio.microGramsPerDeciLiter:
+      case QuantityRatio.microGramsPerDeciLiter:
         return MASS.micrograms;
 
-      case Ratio.microGramsPerMilliLiter:
+      case QuantityRatio.microGramsPerMilliLiter:
         return MASS.micrograms;
 
-      case Ratio.milliGramsPerMilliliter:
+      case QuantityRatio.milliGramsPerMilliliter:
         return MASS.milligrams;
     }
   }
 
   dynamic denominatorUnit() {
     switch (this) {
-      case Ratio.nanoMolesPerMole:
+      case QuantityRatio.nanoMolesPerMole:
         return AMOUNT_OF_SUBSTANCE.moles;
 
-      case Ratio.microMolesPerMole:
+      case QuantityRatio.microMolesPerMole:
         return AMOUNT_OF_SUBSTANCE.moles;
 
-      case Ratio.milliMolesPerMole:
+      case QuantityRatio.milliMolesPerMole:
         return AMOUNT_OF_SUBSTANCE.moles;
 
-      case Ratio.microGramsPerNanoGram:
+      case QuantityRatio.microGramsPerNanoGram:
         return MASS.grams;
 
-      case Ratio.nanoGramsPerMilliGram:
+      case QuantityRatio.nanoGramsPerMilliGram:
         return MASS.milligrams;
 
-      case Ratio.microGramsPerMilliGram:
+      case QuantityRatio.microGramsPerMilliGram:
         return MASS.milligrams;
 
-      case Ratio.milliGramsPerMilliGram:
+      case QuantityRatio.milliGramsPerMilliGram:
         return MASS.milligrams;
 
-      case Ratio.nanoGramsPerGram:
+      case QuantityRatio.nanoGramsPerGram:
         return MASS.grams;
 
-      case Ratio.microGramsPerGram:
+      case QuantityRatio.microGramsPerGram:
         return MASS.grams;
 
-      case Ratio.milliGramsPerGram:
+      case QuantityRatio.milliGramsPerGram:
         return MASS.grams;
 
-      case Ratio.gramsPerGram:
+      case QuantityRatio.gramsPerGram:
         return MASS.grams;
 
-      case Ratio.nanoGramsPerKiloGram:
+      case QuantityRatio.nanoGramsPerKiloGram:
         return MASS.kilograms;
 
-      case Ratio.microGramsPerKiloGram:
+      case QuantityRatio.microGramsPerKiloGram:
         return MASS.kilograms;
 
-      case Ratio.milliGramsPerKiloGram:
+      case QuantityRatio.milliGramsPerKiloGram:
         return MASS.kilograms;
 
-      case Ratio.gramsPerKiloGram:
+      case QuantityRatio.gramsPerKiloGram:
         return MASS.kilograms;
 
-      case Ratio.picoMolesPerMicroMole:
+      case QuantityRatio.picoMolesPerMicroMole:
         return AMOUNT_OF_SUBSTANCE.micromoles;
 
-      case Ratio.nanoMolesPerMilliMole:
+      case QuantityRatio.nanoMolesPerMilliMole:
         return AMOUNT_OF_SUBSTANCE.millimoles;
 
-      case Ratio.milliLitersPerDeciLiter:
+      case QuantityRatio.milliLitersPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.picoGramsPerMilliMeter:
+      case QuantityRatio.picoGramsPerMilliMeter:
         return LENGTH.millimeters;
 
-      // case Ratio.milliMolesPerSquareMeter:
+      // case QuantityRatio.milliMolesPerSquareMeter:
       //   return AREA.squareMeters;
 
-      case Ratio.femtoMolesPerMilliGram:
+      case QuantityRatio.femtoMolesPerMilliGram:
         return MASS.milligrams;
 
-      case Ratio.nanoMolesPerMilliGram:
+      case QuantityRatio.nanoMolesPerMilliGram:
         return MASS.milligrams;
 
-      case Ratio.microMolesPerMilliGram:
+      case QuantityRatio.microMolesPerMilliGram:
         return MASS.milligrams;
 
-      case Ratio.molesPerKiloGram:
+      case QuantityRatio.molesPerKiloGram:
         return MASS.kilograms;
 
-      case Ratio.femtoMolesPerGram:
+      case QuantityRatio.femtoMolesPerGram:
         return MASS.grams;
 
-      case Ratio.nanoMolesPerGram:
+      case QuantityRatio.nanoMolesPerGram:
         return MASS.nanograms;
 
-      case Ratio.microMolesPerGram:
+      case QuantityRatio.microMolesPerGram:
         return MASS.grams;
 
-      case Ratio.milliMolesPerGram:
+      case QuantityRatio.milliMolesPerGram:
         return MASS.grams;
 
-      case Ratio.milliMolesPerKiloGram:
+      case QuantityRatio.milliMolesPerKiloGram:
         return MASS.kilograms;
 
-      case Ratio.milliLitersPerKiloGram:
+      case QuantityRatio.milliLitersPerKiloGram:
         return MASS.kilograms;
 
-      case Ratio.litersPerKilogram:
+      case QuantityRatio.litersPerKilogram:
         return MASS.kilograms;
 
-      case Ratio.kiloCaloriesPerOunce:
+      case QuantityRatio.kiloCaloriesPerOunce:
         return MASS.ounces;
 
-      // case Ratio.gramsPerSquareMeter:
+      // case QuantityRatio.gramsPerSquareMeter:
       //   return AREA.squareMeters;
 
-      case Ratio.kiloGramsPerSquareMeter:
+      case QuantityRatio.kiloGramsPerSquareMeter:
         return AREA.squareMeters;
 
-      // case Ratio.microGramsPerSquareMeter:
+      // case QuantityRatio.microGramsPerSquareMeter:
       //   return AREA.squareMeters;
 
-      case Ratio.milliGramsPerSquareMeter:
+      case QuantityRatio.milliGramsPerSquareMeter:
         return AREA.squareMeters;
 
-      // case Ratio.nanoGramsPerSquareMeter:
+      // case QuantityRatio.nanoGramsPerSquareMeter:
       //   return AREA.squareMeters;
 
-      case Ratio.milliGramsPerDeciLiter:
+      case QuantityRatio.milliGramsPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.gramsPerDeciLiter:
+      case QuantityRatio.gramsPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.nanoGramsPerLiter:
+      case QuantityRatio.nanoGramsPerLiter:
         return VOLUME.liters;
 
-      case Ratio.picoGramsPerLiter:
+      case QuantityRatio.picoGramsPerLiter:
         return VOLUME.liters;
 
-      case Ratio.microGramsPerLiter:
+      case QuantityRatio.microGramsPerLiter:
         return VOLUME.liters;
 
-      case Ratio.milliGramsPerLiter:
+      case QuantityRatio.milliGramsPerLiter:
         return VOLUME.liters;
 
-      case Ratio.gramsPerLiter:
+      case QuantityRatio.gramsPerLiter:
         return VOLUME.liters;
 
-      case Ratio.kiloGramsPerLiter:
+      case QuantityRatio.kiloGramsPerLiter:
         return VOLUME.liters;
 
-      case Ratio.milliGramsPerCubicMeter:
+      case QuantityRatio.milliGramsPerCubicMeter:
         return VOLUME.cubicMeters;
 
-      case Ratio.milliGramsPerCubicCentimeter:
+      case QuantityRatio.milliGramsPerCubicCentimeter:
         return VOLUME.cubicCentimeters;
 
-      case Ratio.gramsPerCubicCentimeter:
+      case QuantityRatio.gramsPerCubicCentimeter:
         return VOLUME.cubicCentimeters;
 
-      case Ratio.kiloGramsPerCubicMeter:
+      case QuantityRatio.kiloGramsPerCubicMeter:
         return VOLUME.cubicMeters;
 
-      case Ratio.femtoMolesPerMilliLiter:
+      case QuantityRatio.femtoMolesPerMilliLiter:
         return VOLUME.microliters;
 
-      case Ratio.picoMolesPerMilliLiter:
+      case QuantityRatio.picoMolesPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.nanoMolesPerMilliLiter:
+      case QuantityRatio.nanoMolesPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.microMolesPerMilliLiter:
+      case QuantityRatio.microMolesPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.molesPerMilliLiter:
+      case QuantityRatio.molesPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.picoMolesPerDeciLiter:
+      case QuantityRatio.picoMolesPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.nanoMolesPerDeciLiter:
+      case QuantityRatio.nanoMolesPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.microMolesPerDeciLiter:
+      case QuantityRatio.microMolesPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.milliMolesPerDeciLiter:
+      case QuantityRatio.milliMolesPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.milliMolesPerLiter:
+      case QuantityRatio.milliMolesPerLiter:
         return VOLUME.liters;
 
-      case Ratio.picoMolesPerLiter:
+      case QuantityRatio.picoMolesPerLiter:
         return VOLUME.liters;
 
-      case Ratio.nanoMolesPerLiter:
+      case QuantityRatio.nanoMolesPerLiter:
         return VOLUME.liters;
 
-      case Ratio.microMolesPerLiter:
+      case QuantityRatio.microMolesPerLiter:
         return VOLUME.liters;
 
-      case Ratio.molesPerLiter:
+      case QuantityRatio.molesPerLiter:
         return VOLUME.liters;
 
-      case Ratio.molesPerCubicMeter:
+      case QuantityRatio.molesPerCubicMeter:
         return VOLUME.cubicMeters;
 
-      case Ratio.gramsPerMilliLiter:
+      case QuantityRatio.gramsPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.nanoGramsPerMilliLiter:
+      case QuantityRatio.nanoGramsPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.picoGramsPerMilliLiter:
+      case QuantityRatio.picoGramsPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.microGramsPerDeciLiter:
+      case QuantityRatio.microGramsPerDeciLiter:
         return VOLUME.deciliters;
 
-      case Ratio.microGramsPerMilliLiter:
+      case QuantityRatio.microGramsPerMilliLiter:
         return VOLUME.milliliters;
 
-      case Ratio.milliGramsPerMilliliter:
+      case QuantityRatio.milliGramsPerMilliliter:
         return VOLUME.milliliters;
     }
   }
 }
 
-extension RatioConversions on num {
+extension QuantityRatioConversions on num {
   Property? _type(dynamic checkType) {
     switch (checkType.runtimeType) {
       case ANGLE:
@@ -562,7 +562,7 @@ extension RatioConversions on num {
     }
   }
 
-  double? convertUnitsAsRatioFromTo(
+  double? convertUnitsAsQuantityRatioFromTo(
     dynamic fromNumerator,
     dynamic fromDenominator,
     dynamic toNumerator,
@@ -608,7 +608,8 @@ extension RatioConversions on num {
     }
   }
 
-  double? convertRatioFromTo(Ratio from, Ratio to) => convertUnitsAsRatioFromTo(
+  double? convertQuantityRatioFromTo(QuantityRatio from, QuantityRatio to) =>
+      convertUnitsAsQuantityRatioFromTo(
         from.numeratorUnit(),
         from.denominatorUnit(),
         to.numeratorUnit(),

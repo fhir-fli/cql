@@ -1,17 +1,25 @@
-import '../cql.dart';
+import 'package:fhir/r4.dart';
 
-class ElmConcept {
-  List<dynamic> codes;
-  String? display;
+typedef ElmCode = Coding;
 
-  ElmConcept(List<dynamic>? codes, {this.display}) : codes = codes ?? [];
-
-  bool get isConcept {
-    return true;
-  }
-
+extension ElmCodes on ElmCode {
   bool hasMatch(dynamic code) {
-    return codesInList(toCodeList(code), codes);
+    if (code is String) {
+      return code == this.code.toString();
+    } else {
+      return codesInList(toCodeList(code), [this]);
+    }
+  }
+}
+
+typedef ElmConcept = CodeableConcept;
+
+extension ElmConcepts on ElmConcept {
+  List<dynamic>? get codes => coding;
+  String? get display => text;
+
+  bool hasMatch(Coding code) {
+    return codesInList(toCodeList(code), codes ?? []);
   }
 }
 
@@ -45,13 +53,56 @@ bool codesInList(List<dynamic> cl1, List<dynamic> cl2) {
       }));
 }
 
-bool codesMatch(ElmCode code1, ElmCode code2) {
+bool codesMatch(Coding code1, Coding code2) {
   return code1.code == code2.code && code1.system == code2.system;
 }
 
-class ElmCodeSystem {
+typedef ElmCodeSystem = CodeSystem;
+
+extension ElmCodeSystems on ElmCodeSystem {
+  String? get id => fhirId;
+}
+
+abstract class Vocabulary {
+  String get id;
+  String? get version;
+  String? get name;
+}
+
+// typedef ElmValueSet = ValueSet;
+
+class ElmValueSet extends Vocabulary {
+  final List<CodeSystem>? codeSystem;
   String id;
   String? version;
+  String? name;
 
-  ElmCodeSystem(this.id, {this.version});
+  ElmValueSet({required this.id, this.version, this.name, this.codeSystem});
+
+  bool get isValueSet => true;
+
+  bool hasMatch(dynamic code) {
+    List<dynamic> codesList = toCodeList(code);
+    // InValueSet String Overload
+    if (codesList.length == 1 && codesList[0] is String) {
+      bool matchFound = false;
+      bool multipleCodeSystemsExist = false;
+      for (CodeSystem codeItem in codeSystem ?? <CodeSystem>[]) {
+        // Confirm all code systems match
+        if (codeItem.name != codeSystem![0].name) {
+          multipleCodeSystemsExist = true;
+        }
+        if (codeItem.id == codesList[0]) {
+          matchFound = true;
+        }
+        if (multipleCodeSystemsExist && matchFound) {
+          throw Exception(
+              'In (valueset) is ambiguous -- multiple codes with multiple code systems exist in value set.');
+        }
+      }
+      return matchFound;
+    } else {
+      return codesInList(codesList, codeSystem ?? <CodeSystem>[]);
+    }
+  }
 }

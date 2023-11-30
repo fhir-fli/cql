@@ -306,39 +306,6 @@ class ConceptRef extends Expression {
 }
 
 @JsonSerializable()
-class ElmCode extends Expression {
-  String code;
-  String? display;
-  CodeSystemRef? system;
-  String? version;
-
-  ElmCode({
-    required this.code,
-    this.display,
-    this.system,
-    this.version,
-  });
-
-  factory ElmCode.fromJson(Map<String, dynamic> json) =>
-      _$ElmCodeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ElmCodeToJson(this);
-
-  bool get isCode {
-    return true;
-  }
-
-  bool hasMatch(dynamic code) {
-    if (code is String) {
-      // the specific behavior for this is not in the specification. Matching codesystem behavior.
-      return code == this.code;
-    } else {
-      return codesInList(toCodeList(code), [this]);
-    }
-  }
-}
-
-@JsonSerializable()
 class Concept extends Expression {
   List<ElmCode> code;
   String? display;

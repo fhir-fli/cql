@@ -21,21 +21,38 @@ Annotation _$AnnotationFromJson(Map<String, dynamic> json) => Annotation(
           : Locator.fromJson(json['locator'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AnnotationToJson(Annotation instance) =>
-    <String, dynamic>{
-      's': instance.s,
-      'locator': instance.locator,
-    };
+Map<String, dynamic> _$AnnotationToJson(Annotation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('s', instance.s?.toJson());
+  writeNotNull('locator', instance.locator?.toJson());
+  return val;
+}
 
 Tag _$TagFromJson(Map<String, dynamic> json) => Tag(
       name: json['name'] as String?,
       value: json['value'] as String?,
     );
 
-Map<String, dynamic> _$TagToJson(Tag instance) => <String, dynamic>{
-      'name': instance.name,
-      'value': instance.value,
-    };
+Map<String, dynamic> _$TagToJson(Tag instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('value', instance.value);
+  return val;
+}
 
 Locator _$LocatorFromJson(Map<String, dynamic> json) => Locator(
       startLine: json['startLine'] as int?,
@@ -44,12 +61,21 @@ Locator _$LocatorFromJson(Map<String, dynamic> json) => Locator(
       endChar: json['endChar'] as int?,
     );
 
-Map<String, dynamic> _$LocatorToJson(Locator instance) => <String, dynamic>{
-      'startLine': instance.startLine,
-      'startChar': instance.startChar,
-      'endLine': instance.endLine,
-      'endChar': instance.endChar,
-    };
+Map<String, dynamic> _$LocatorToJson(Locator instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('startLine', instance.startLine);
+  writeNotNull('startChar', instance.startChar);
+  writeNotNull('endLine', instance.endLine);
+  writeNotNull('endChar', instance.endChar);
+  return val;
+}
 
 Narrative _$NarrativeFromJson(Map<String, dynamic> json) => Narrative(
       s: (json['s'] as List<dynamic>?)
@@ -58,10 +84,19 @@ Narrative _$NarrativeFromJson(Map<String, dynamic> json) => Narrative(
       r: json['r'] as String?,
     );
 
-Map<String, dynamic> _$NarrativeToJson(Narrative instance) => <String, dynamic>{
-      's': instance.s,
-      'r': instance.r,
-    };
+Map<String, dynamic> _$NarrativeToJson(Narrative instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('s', instance.s?.map((e) => e.toJson()).toList());
+  writeNotNull('r', instance.r);
+  return val;
+}
 
 CqlToElmError _$CqlToElmErrorFromJson(Map<String, dynamic> json) =>
     CqlToElmError(
@@ -80,18 +115,27 @@ CqlToElmError _$CqlToElmErrorFromJson(Map<String, dynamic> json) =>
       ..endLine = json['endLine'] as int?
       ..endChar = json['endChar'] as int?;
 
-Map<String, dynamic> _$CqlToElmErrorToJson(CqlToElmError instance) =>
-    <String, dynamic>{
-      'startLine': instance.startLine,
-      'startChar': instance.startChar,
-      'endLine': instance.endLine,
-      'endChar': instance.endChar,
-      'message': instance.message,
-      'errorType': _$ErrorTypeEnumMap[instance.errorType]!,
-      'errorSeverity': _$ErrorSeverityEnumMap[instance.errorSeverity],
-      'targetIncludeLibraryId': instance.targetIncludeLibraryId,
-      'targetIncludeLibraryVersionId': instance.targetIncludeLibraryVersionId,
-    };
+Map<String, dynamic> _$CqlToElmErrorToJson(CqlToElmError instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('startLine', instance.startLine);
+  writeNotNull('startChar', instance.startChar);
+  writeNotNull('endLine', instance.endLine);
+  writeNotNull('endChar', instance.endChar);
+  val['message'] = instance.message;
+  val['errorType'] = _$ErrorTypeEnumMap[instance.errorType]!;
+  writeNotNull('errorSeverity', _$ErrorSeverityEnumMap[instance.errorSeverity]);
+  writeNotNull('targetIncludeLibraryId', instance.targetIncludeLibraryId);
+  writeNotNull(
+      'targetIncludeLibraryVersionId', instance.targetIncludeLibraryVersionId);
+  return val;
+}
 
 const _$ErrorTypeEnumMap = {
   ErrorType.environment: 'environment',
@@ -112,8 +156,16 @@ CqlToElmInfo _$CqlToElmInfoFromJson(Map<String, dynamic> json) => CqlToElmInfo(
       translatorOptions: json['translatorOptions'] as String?,
     );
 
-Map<String, dynamic> _$CqlToElmInfoToJson(CqlToElmInfo instance) =>
-    <String, dynamic>{
-      'translatorVersion': instance.translatorVersion,
-      'translatorOptions': instance.translatorOptions,
-    };
+Map<String, dynamic> _$CqlToElmInfoToJson(CqlToElmInfo instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('translatorVersion', instance.translatorVersion);
+  writeNotNull('translatorOptions', instance.translatorOptions);
+  return val;
+}

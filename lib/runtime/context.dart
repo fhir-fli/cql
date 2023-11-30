@@ -156,8 +156,10 @@ class Context {
     return parent != null ? parent!.getConcept(name) : null;
   }
 
-  dynamic get(String identifier) {
-    if (contextValues[identifier] != null) {
+  dynamic get(String? identifier) {
+    if (identifier == null) {
+      return null;
+    } else if (contextValues[identifier] != null) {
       return contextValues[identifier];
     } else if (identifier == '\$this') {
       return contextValues;

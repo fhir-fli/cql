@@ -2,23 +2,55 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../cql.dart';
 
-part 'library.g.dart';
+class ElmLibrary extends ElmElement {
+  // TODO(Dokotela): unclear if the commented out variables are needed
+  //  source: any;
+  UsingDef? usings;
+  List<ParameterDef> parameters;
+  List<CodeSystemDef> codeSystems;
+  List<ValueSetDef> valueSets;
+  List<CodeDef> codes;
+  List<ConceptDef> concepts;
+  List<ContextDef> contexts;
+  // In some versions this seems to be called statements not expressions
+  List<ExpressionDef> expressions;
+  FunctionDef? functions;
+  IncludeDef? includes;
+  VersionedIdentifier? identifier;
+  VersionedIdentifier? schemaIdentifier;
+  // private List<ModelReference> dataModelsField;
+  // private List<LibraryReference> librariesField;
 
-@JsonSerializable()
+  ElmLibrary({
+    this.usings,
+    List<ParameterDef>? parameters,
+    List<CodeSystemDef>? codeSystems,
+    List<ValueSetDef>? valueSets,
+    List<CodeDef>? codes,
+    List<ConceptDef>? concepts,
+    List<ContextDef>? contexts,
+    List<ExpressionDef>? expressions,
+    this.functions,
+    this.includes,
+    this.identifier,
+    this.schemaIdentifier,
+  })  : parameters = parameters ?? <ParameterDef>[],
+        codeSystems = codeSystems ?? <CodeSystemDef>[],
+        valueSets = valueSets ?? <ValueSetDef>[],
+        codes = codes ?? <CodeDef>[],
+        concepts = concepts ?? <ConceptDef>[],
+        contexts = contexts ?? <ContextDef>[],
+        expressions = expressions ?? <ExpressionDef>[];
+}
+
 class VersionedIdentifier {
   String id;
   String? system;
   String? version;
 
   VersionedIdentifier({required this.id, this.system, this.version});
-
-  factory VersionedIdentifier.fromJson(Map<String, dynamic> json) =>
-      _$VersionedIdentifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$VersionedIdentifierToJson(this);
 }
 
-@JsonSerializable()
 class UsingDef {
   String localIdentifier;
   Uri uri;
@@ -28,14 +60,8 @@ class UsingDef {
       : uri = Uri.tryParse(uri) != null
             ? Uri.parse(uri)
             : throw ArgumentError('uri is not a valid Uri');
-
-  factory UsingDef.fromJson(Map<String, dynamic> json) =>
-      _$UsingDefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UsingDefToJson(this);
 }
 
-@JsonSerializable()
 class IncludeDef {
   String localIdentifier;
   Uri mediaType;
@@ -53,65 +79,10 @@ class IncludeDef {
         path = Uri.tryParse(path) != null
             ? Uri.parse(path)
             : Uri.parse('application/elm+xml');
-
-  factory IncludeDef.fromJson(Map<String, dynamic> json) =>
-      _$IncludeDefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IncludeDefToJson(this);
 }
 
-@JsonSerializable()
 class ContextDef extends ElmElement {
   final String name;
 
-  const ContextDef({required this.name});
-
-  factory ContextDef.fromJson(Map<String, dynamic> json) =>
-      _$ContextDefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ContextDefToJson(this);
-}
-
-@JsonSerializable()
-class ElmLibrary extends ElmElement {
-  VersionedIdentifier identifier;
-  VersionedIdentifier schemaIdentifier;
-  UsingDef? usings;
-  IncludeDef? includes;
-  List<ParameterDef> parameters;
-  List<CodeSystemDef> codeSystems;
-  List<ValueSetDef> valueSets;
-  List<CodeDef> codes;
-  List<ConceptDef> concepts;
-  List<ContextDef> contexts;
-  List<ExpressionDef> statements;
-
-  // private List<ModelReference> dataModelsField;
-
-  // private List<LibraryReference> librariesField;
-
-  ElmLibrary({
-    required this.identifier,
-    required this.schemaIdentifier,
-    this.usings,
-    this.includes,
-    List<ParameterDef>? parameters,
-    List<CodeSystemDef>? codeSystems,
-    List<ValueSetDef>? valueSets,
-    List<CodeDef>? codes,
-    List<ConceptDef>? concepts,
-    List<ContextDef>? contexts,
-    List<ExpressionDef>? statements,
-  })  : parameters = parameters ?? <ParameterDef>[],
-        codeSystems = codeSystems ?? <CodeSystemDef>[],
-        valueSets = valueSets ?? <ValueSetDef>[],
-        codes = codes ?? <CodeDef>[],
-        concepts = concepts ?? <ConceptDef>[],
-        contexts = contexts ?? <ContextDef>[],
-        statements = statements ?? <ExpressionDef>[];
-
-  factory ElmLibrary.fromJson(Map<String, dynamic> json) =>
-      _$ElmLibraryFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ElmLibraryToJson(this);
+  ContextDef({required this.name});
 }
