@@ -2458,12 +2458,9 @@ class Total extends Expression {
 }
 
 // SingletonFrom expression
-
 class SingletonFrom extends UnaryExpression {
   SingletonFrom({required super.operand});
 }
-
-// AggregateExpression abstract class
 
 // Aggregate operator
 
@@ -2477,120 +2474,6 @@ class Aggregate extends AggregateExpression {
 
   Expression iteration;
   Expression? initialValue;
-}
-
-// Sum operator
-
-class Sum extends AggregateExpression {
-  Sum({required super.signature, required super.source, super.path});
-
-  factory Sum.fromJson(Map<String, dynamic> json) => _$SumFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SumToJson(this);
-}
-
-// Product operator
-
-class Product extends AggregateExpression {
-  Product({required super.signature, required super.source, super.path});
-}
-
-// Min operator
-
-class Min extends AggregateExpression {
-  Min({required super.signature, required super.source, super.path});
-
-  factory Min.fromJson(Map<String, dynamic> json) => _$MinFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MinToJson(this);
-}
-
-// Max operator
-
-class Max extends AggregateExpression {
-  Max({required super.signature, required super.source, super.path});
-
-  factory Max.fromJson(Map<String, dynamic> json) => _$MaxFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MaxToJson(this);
-}
-
-// Avg operator
-
-class Avg extends AggregateExpression {
-  Avg({required super.signature, required super.source, super.path});
-
-  factory Avg.fromJson(Map<String, dynamic> json) => _$AvgFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AvgToJson(this);
-}
-
-// GeometricMean operator
-
-class GeometricMean extends AggregateExpression {
-  GeometricMean({required super.signature, required super.source, super.path});
-}
-
-// Median operator
-
-class Median extends AggregateExpression {
-  Median({required super.signature, required super.source, super.path});
-
-  factory Median.fromJson(Map<String, dynamic> json) => _$MedianFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MedianToJson(this);
-}
-
-// Mode operator
-
-class Mode extends AggregateExpression {
-  Mode({required super.signature, required super.source, super.path});
-
-  factory Mode.fromJson(Map<String, dynamic> json) => _$ModeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ModeToJson(this);
-}
-
-// Variance operator
-
-class Variance extends AggregateExpression {
-  Variance({required super.signature, required super.source, super.path});
-}
-
-// PopulationVariance operator
-
-class PopulationVariance extends AggregateExpression {
-  PopulationVariance(
-      {required super.signature, required super.source, super.path});
-}
-
-// StdDev operator
-
-class StdDev extends AggregateExpression {
-  StdDev({required super.signature, required super.source, super.path});
-
-  factory StdDev.fromJson(Map<String, dynamic> json) => _$StdDevFromJson(json);
-
-  Map<String, dynamic> toJson() => _$StdDevToJson(this);
-}
-
-// PopulationStdDev operator
-
-class PopulationStdDev extends AggregateExpression {
-  PopulationStdDev(
-      {required super.signature, required super.source, super.path});
-}
-
-// AllTrue operator
-
-class AllTrue extends AggregateExpression {
-  AllTrue({required super.signature, required super.source, super.path});
-}
-
-// AnyTrue operator
-
-class AnyTrue extends AggregateExpression {
-  AnyTrue({required super.signature, required super.source, super.path});
 }
 
 // Property operator

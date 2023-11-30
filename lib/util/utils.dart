@@ -4,17 +4,6 @@ List removeNulls(List things) {
   return things.where((x) => x != null).toList();
 }
 
-List numericalSort(List things, Direction? direction) {
-  return things
-    ..sort((a, b) {
-      if (direction == null || direction == 'asc' || direction == 'ascending') {
-        return (a as num).compareTo(b);
-      } else {
-        return (b as num).compareTo(a);
-      }
-    });
-}
-
 bool isNull(value) {
   return value == null;
 }
