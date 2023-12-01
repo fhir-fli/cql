@@ -1,25 +1,70 @@
 import 'package:fhir/r4.dart';
 
-typedef ElmCode = Coding;
+class CqlCode {
+  String code;
+  String? system;
+  String? version;
+  String? display;
 
-extension ElmCodes on ElmCode {
+  CqlCode(this.code, [this.system, this.version, this.display]);
+
+  bool get isCode => true;
+
   bool hasMatch(dynamic code) {
     if (code is String) {
-      return code == this.code.toString();
+      // Specific behavior may differ from the specification. Matching codesystem behavior.
+      return code == this.code;
     } else {
       return codesInList(toCodeList(code), [this]);
     }
   }
 }
 
-typedef ElmConcept = CodeableConcept;
+class CqlConcept {
+  List<dynamic> codes;
+  String? display;
 
-extension ElmConcepts on ElmConcept {
-  List<dynamic>? get codes => coding;
-  String? get display => text;
+  CqlConcept(List<dynamic>? codes, [this.display]) : this.codes = codes ?? [];
 
-  bool hasMatch(Coding code) {
-    return codesInList(toCodeList(code), codes ?? []);
+  bool get isConcept => true;
+
+  bool hasMatch(dynamic code) {
+    return codesInList(toCodeList(code), codes);
+  }
+}
+
+class CqlValueSet {
+  String oid;
+  String? version;
+  List<dynamic> codes;
+  String? name;
+
+  CqlValueSet(this.oid, [this.version, List<dynamic>? codes])
+      : codes = codes ?? [];
+
+  bool get isValueSet => true;
+
+  bool hasMatch(dynamic code) {
+    final codesList = toCodeList(code);
+    if (codesList.length == 1 && codesList[0] is String) {
+      var matchFound = false;
+      var multipleCodeSystemsExist = false;
+      for (final codeItem in codes) {
+        if (codeItem['system'] != codes[0]['system']) {
+          multipleCodeSystemsExist = true;
+        }
+        if (codeItem['code'] == codesList[0]) {
+          matchFound = true;
+        }
+        if (multipleCodeSystemsExist && matchFound) {
+          throw Exception(
+              'In (valueset) is ambiguous -- multiple codes with multiple code systems exist in value set.');
+        }
+      }
+      return matchFound;
+    } else {
+      return codesInList(codesList, codes);
+    }
   }
 }
 
@@ -57,52 +102,9 @@ bool codesMatch(Coding code1, Coding code2) {
   return code1.code == code2.code && code1.system == code2.system;
 }
 
-typedef ElmCodeSystem = CodeSystem;
-
-extension ElmCodeSystems on ElmCodeSystem {
-  String? get id => fhirId;
-}
-
-abstract class Vocabulary {
-  String get id;
-  String? get version;
-  String? get name;
-}
-
-// typedef ElmValueSet = ValueSet;
-
-class ElmValueSet extends Vocabulary {
-  final List<CodeSystem>? codeSystem;
+class CqlCodeSystem {
   String id;
   String? version;
-  String? name;
 
-  ElmValueSet({required this.id, this.version, this.name, this.codeSystem});
-
-  bool get isValueSet => true;
-
-  bool hasMatch(dynamic code) {
-    List<dynamic> codesList = toCodeList(code);
-    // InValueSet String Overload
-    if (codesList.length == 1 && codesList[0] is String) {
-      bool matchFound = false;
-      bool multipleCodeSystemsExist = false;
-      for (CodeSystem codeItem in codeSystem ?? <CodeSystem>[]) {
-        // Confirm all code systems match
-        if (codeItem.name != codeSystem![0].name) {
-          multipleCodeSystemsExist = true;
-        }
-        if (codeItem.id == codesList[0]) {
-          matchFound = true;
-        }
-        if (multipleCodeSystemsExist && matchFound) {
-          throw Exception(
-              'In (valueset) is ambiguous -- multiple codes with multiple code systems exist in value set.');
-        }
-      }
-      return matchFound;
-    } else {
-      return codesInList(codesList, codeSystem ?? <CodeSystem>[]);
-    }
-  }
+  CqlCodeSystem(this.id, [this.version]);
 }

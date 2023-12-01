@@ -51,7 +51,7 @@ class Interval extends Expression {
   }
 }
 
-// IntegerInterval type
+/// IntegerInterval type
 class IntegerInterval extends Interval {
   final FhirInteger? low;
   final FhirInteger? high;
@@ -59,7 +59,7 @@ class IntegerInterval extends Interval {
   IntegerInterval({this.low, this.high});
 }
 
-// DecimalInterval type
+/// DecimalInterval type
 class DecimalInterval extends Interval {
   final FhirDecimal? low;
   final FhirDecimal? high;
@@ -94,8 +94,7 @@ class QuantityInterval extends Interval {
   }
 }
 
-// DateInterval type
-
+/// DateInterval type
 class DateInterval extends Interval {
   final FhirDate? low;
   final FhirDate? high;
@@ -103,7 +102,7 @@ class DateInterval extends Interval {
   DateInterval({this.low, this.high});
 }
 
-// DateTimeInterval type
+/// DateTimeInterval type
 class DateTimeInterval extends Interval {
   final FhirDateTime? low;
   final FhirDateTime? high;
@@ -111,8 +110,7 @@ class DateTimeInterval extends Interval {
   DateTimeInterval({this.low, this.high});
 }
 
-// TimeInterval type
-
+/// TimeInterval type
 class TimeInterval extends Interval {
   final FhirTime? low;
   final FhirTime? high;
