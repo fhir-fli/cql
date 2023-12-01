@@ -468,3 +468,59 @@ bool isQuantity(value) => value is Quantity
             value['code'] != null &&
             unitCode.contains(value['code'])
         : false;
+
+dynamic doScaledAddition(dynamic a, dynamic b, num scaleForB) {
+  if (a != null &&
+      a.isQuantity &&
+      b != null &&
+      b.isQuantity &&
+      a.value != null &&
+      b.value != null) {
+    final List<dynamic> normalizedValues = normalizeUnitsWhenPossible(
+        a.value, a.unit, b.value * scaleForB, b.unit);
+    final num val1 = normalizedValues[0];
+    final String unit1 = normalizedValues[1];
+    final num val2 = normalizedValues[2];
+    final String unit2 = normalizedValues[3];
+
+    if (unit1 != unit2) {
+      // Not compatible units, so we can't do addition
+      return null;
+    }
+
+    final num sum = val1 + val2;
+    if (overflowsOrUnderflows(sum)) {
+      return null;
+    }
+
+    return Quantity(value: FhirDecimal(sum), unit: unit1);
+  } else if (a != null && a.copy != null && a.add != null) {
+    // Date / DateTime require a CQL time unit
+    final cqlUnitB = convertToCQLDateUnit(b.unit) ?? b.unit;
+    return a.copy().add(b.value * scaleForB, cqlUnitB);
+  } else {
+    throw Exception('Unsupported argument types.');
+  }
+}
+
+dynamic doAddition(dynamic a, dynamic b) {
+  return doScaledAddition(a, b, 1);
+}
+
+dynamic doSubtraction(dynamic a, dynamic b) {
+  return doScaledAddition(a, b, -1);
+}
+
+dynamic doDivision(dynamic a, dynamic b) {
+  if (a != null && a is Quantity) {
+    return a / b;
+  }
+}
+
+dynamic doMultiplication(dynamic a, dynamic b) {
+  if (a != null && a is Quantity) {
+    return a * b;
+  } else {
+    return b * a;
+  }
+}
