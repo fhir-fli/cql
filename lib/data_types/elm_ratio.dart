@@ -1,29 +1,31 @@
-import 'package:fhir/r4.dart';
+import '../cql.dart';
 
-import 'quantity/elm_quantity.dart';
+class ElmRatio {
+  final ElmQuantity numerator;
+  final ElmQuantity denominator;
 
-typedef ElmRatio = Ratio;
+  ElmRatio(this.numerator, this.denominator);
 
-extension ElmRatios on ElmRatio {
   bool get isRatio => true;
 
-  Ratio clone() => this.copyWith();
+  ElmRatio clone() {
+    return ElmRatio(numerator.copyWith(), denominator.copyWith());
+  }
 
-  bool get isValidElmRatio => numerator != null && denominator != null;
+  @override
+  String toString() {
+    return '${numerator.toString()} : ${denominator.toString()}';
+  }
 
-  Quantity? get numeratorQuantity => numerator;
-  Quantity? get denominatorQuantity => denominator;
-
-  bool equals(Ratio other) {
-    if (other.isValidElmRatio && isValidElmRatio) {
-      final dividedThis = (numerator as Quantity) / (denominator as Quantity);
-      final dividedOther =
-          (other.numerator as Quantity) / (other.denominator as Quantity);
-      return dividedThis == dividedOther;
+  bool equals(Object other) {
+    if (other is ElmRatio) {
+      final dividedThis = numerator / denominator;
+      final dividedOther = (other).numerator / other.denominator;
+      return dividedThis.equals(dividedOther);
     } else {
       return false;
     }
   }
 
-  bool equivalent(Ratio other) => equals(other);
+  bool equivalent(Object other) => equals(other);
 }

@@ -14,7 +14,7 @@ class ValueSetDef extends Expression {
   @override
   Future<dynamic> exec(Context ctx) async {
     final valueSet = await ctx.codeService?.findValueSet(id, version) ??
-        ElmValueSet(id: id, version: version);
+        CqlValueSet(id, version);
     ctx.rootContext().set(name, valueSet);
     return valueSet;
   }
@@ -51,7 +51,7 @@ class AnyInValueSet extends Expression {
   @override
   Future<dynamic> exec(Context ctx) async {
     final newValueSet = await valueSet.exec(ctx);
-    if (newValueSet == null || !(newValueSet is ElmValueSet)) {
+    if (newValueSet == null || !(newValueSet is CqlValueSet)) {
       throw Exception('ValueSet must be provided to InValueSet function');
     }
 
@@ -81,7 +81,7 @@ class InValueSet extends Expression {
       return false;
     }
     final valueSetResult = await valueSet.exec(ctx);
-    if (valueSetResult == null || !(valueSetResult is ElmValueSet)) {
+    if (valueSetResult == null || !(valueSetResult is CqlValueSet)) {
       throw Exception('ValueSet must be provided to InValueSet function');
     }
     return valueSetResult
@@ -102,7 +102,7 @@ class CodeSystemDef extends Expression {
 
   @override
   Future<dynamic> exec(Context _ctx) async {
-    return ElmCodeSystem(fhirId: id, version: version);
+    return CqlCodeSystem(id, version);
   }
 }
 
@@ -122,7 +122,11 @@ class CodeDef extends Expression {
   @override
   Future<dynamic> exec(Context ctx) async {
     final system = await ctx.getCodeSystem(systemName).execute(ctx);
-    return ElmCode(fhirId: id, system.id, system.version, display);
+    return ElmCode(
+        code: id,
+        systemName: system.id,
+        version: system.version,
+        display: display);
   }
 }
 
@@ -143,13 +147,19 @@ class CodeRef extends Expression {
   }
 }
 
-class Code extends Expression {
+class ElmCode extends Expression {
   var code;
   String systemName;
   String version;
   String? display;
 
-  Code(Map<String, dynamic> json)
+  ElmCode(
+      {required this.code,
+      required this.systemName,
+      required this.version,
+      this.display});
+
+  ElmCode.fromJson(Map<String, dynamic> json)
       : code = json['code'],
         systemName = json['system']['name'],
         version = json['version'],
@@ -163,7 +173,7 @@ class Code extends Expression {
   @override
   Future<dynamic> exec(Context ctx) async {
     final system = ctx.getCodeSystem(systemName) ?? {};
-    return dt.Code(code, system.id, version, display);
+    return CqlCode(code, system.id, version, display);
   }
 }
 
@@ -184,6 +194,97 @@ class ConceptDef extends Expression {
       final codeDef = ctx.getCode(code['name']);
       return codeDef != null ? codeDef.execute(ctx) : null;
     }));
-    return dt.Concept(codeResults, display);
+    return CqlConcept(codeResults, display);
   }
+}
+
+class ConceptRef extends Expression {
+  late String name;
+
+  ConceptRef(Map<String, dynamic> json) : super.fromJson(json) {
+    name = json['name'];
+  }
+
+  @override
+  Future<dynamic> exec(Context ctx) async {
+    final conceptDef = ctx.getConcept(name);
+    return conceptDef != null ? conceptDef.execute(ctx) : null;
+  }
+}
+
+class Concept extends Expression {
+  late dynamic codes;
+  String? display;
+
+  Concept(Map<String, dynamic> json) : super.fromJson(json) {
+    codes = json['code'];
+    display = json['display'];
+  }
+
+  bool get isConcept => true;
+
+  CqlCode toCode(Context ctx, dynamic code) {
+    final system = ctx.getCodeSystem(code['system']['name']) ?? {};
+    return CqlCode(
+        code['code'], system['id'], code['version'], code['display']);
+  }
+
+  @override
+  Future<dynamic> exec(Context ctx) async {
+    final List<CqlCode> codeList = [];
+    for (final code in codes) {
+      codeList.add(toCode(ctx, code));
+    }
+    return CqlConcept(codeList, display);
+  }
+}
+
+class CalculateAge extends Expression {
+  late String precision;
+
+  CalculateAge(Map<String, dynamic> json) : super.fromJson(json) {
+    precision = json['precision'];
+  }
+
+  @override
+  Future<dynamic> exec(Context ctx) async {
+    final birthDate = await execArgs(ctx);
+    final asOf = (precision.toLowerCase() == 'year' ||
+            precision.toLowerCase() == 'month')
+        ? CqlDateTime.fromJSDate(ctx.getExecutionDateTime()).getDate()
+        : CqlDateTime.fromJSDate(ctx.getExecutionDateTime());
+
+    return calculateAge(precision, birthDate, asOf);
+  }
+}
+
+class CalculateAgeAt extends Expression {
+  late String precision;
+
+  CalculateAgeAt(Map<String, dynamic> json) : super.fromJson(json) {
+    precision = json['precision'];
+  }
+
+  @override
+  Future<dynamic> exec(Context ctx) async {
+    final List<dynamic> values = await execArgs(ctx);
+    final birthDate = values[0];
+    final asOf = values[1];
+    final timeZoneOffset = ctx.getExecutionDateTime().timezoneOffset;
+    return calculateAge(precision, birthDate, asOf, timeZoneOffset);
+  }
+}
+
+dynamic calculateAge(String precision, dynamic birthDate, dynamic asOf,
+    [int? timeZoneOffset]) {
+  if (birthDate != null && asOf != null) {
+    if (asOf.isDate && birthDate.isDateTime) {
+      birthDate = (birthDate as CqlDateTime).getDate();
+    } else if (asOf.isDateTime && birthDate.isDate) {
+      birthDate = birthDate.getDateTime(timeZoneOffset);
+    }
+    final result = birthDate.durationBetween(asOf, precision.toLowerCase());
+    return result?.isPoint() ? result.low : result;
+  }
+  return null;
 }

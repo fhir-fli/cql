@@ -120,7 +120,7 @@ class Context {
     }
   }
 
-  dt.DateTime getExecutionDateTime() {
+  CqlDateTime getExecutionDateTime() {
     if (executionDateTime != null) {
       return executionDateTime;
     } else if (parent != null && parent.getExecutionDateTime != null) {
@@ -305,7 +305,8 @@ class Context {
       case '{urn:hl7-org:elm-types:r1}String':
         return val is String;
       case '{urn:hl7-org:elm-types:r1}Concept':
-        return val is Concept; // assuming Concept is a custom class/interface
+        return val
+            is CqlConcept; // assuming Concept is a custom class/interface
       case '{urn:hl7-org:elm-types:r1}Code':
         return val is FhirCode; // assuming Code is a custom class/interface
       case '{urn:hl7-org:elm-types:r1}DateTime':
@@ -340,7 +341,7 @@ class Context {
     } else if (inst['isCode'] != null) {
       return val is FhirCode; // assuming Code is a custom class/interface
     } else if (inst['isConcept'] != null) {
-      return val is Concept; // assuming Concept is a custom class/interface
+      return val is CqlConcept; // assuming Concept is a custom class/interface
     } else if (inst['isTime'] != null && inst['isTime']()) {
       return val is FhirTime && val.value != null;
     } else if (inst['isDate'] != null) {
@@ -395,13 +396,13 @@ class PatientContext extends Context {
     this.patient,
     TerminologyProvider? codeService,
     Parameter? parameters,
-    dt.DateTime? executionDateTime,
+    CqlDateTime? executionDateTime,
     MessageListener? messageListener,
   }) : super(
           library,
           codeService,
           parameters,
-          executionDateTime ??= dt.DateTime.fromJSDate(DateTime.now()),
+          executionDateTime ??= CqlDateTime.fromJSDate(DateTime.now()),
           messageListener ??= NullMessageListener(),
         );
 

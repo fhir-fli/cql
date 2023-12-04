@@ -403,9 +403,9 @@ extension ElmQuantities on ElmQuantity {
     if (lhs is FhirDate && lhs.isValid && lhs.value != null) {
       final newDate = DateTime.utc(lhs.value!.year + yearAmount,
           lhs.value!.month + monthAmount, lhs.value!.day + dayAmount);
-      if (lhs.precision == DatePrecision.YYYY) {
+      if (lhs.precision == DateTimePrecision.yyyy) {
         return FhirDate(newDate.toString().substring(0, 4));
-      } else if (lhs.precision == DatePrecision.YYYYMM) {
+      } else if (lhs.precision == DateTimePrecision.yyyy_MM) {
         return FhirDate(newDate.toString().substring(0, 7));
       } else {
         return FhirDate(newDate.toString().substring(0, 10));
@@ -440,11 +440,11 @@ extension ElmQuantities on ElmQuantity {
         oldDateTime.second + secondAmount,
         oldDateTime.millisecond + millisecondAmount,
       );
-      if (lhs.precision == DateTimePrecision.YYYY) {
+      if (lhs.precision == DateTimePrecision.yyyy) {
         return FhirDateTime(newDateTime.toIso8601String().substring(0, 4));
-      } else if (lhs.precision == DateTimePrecision.YYYYMM) {
+      } else if (lhs.precision == DateTimePrecision.yyyy_MM) {
         return FhirDateTime(newDateTime.toIso8601String().substring(0, 7));
-      } else if (lhs.precision == DateTimePrecision.YYYYMMDD) {
+      } else if (lhs.precision == DateTimePrecision.yyyy_MM_dd) {
         return FhirDateTime(newDateTime.toIso8601String().substring(0, 10));
       } else {
         return FhirDateTime(newDateTime);

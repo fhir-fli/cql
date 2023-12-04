@@ -1,6 +1,7 @@
 export 'aggregate.dart';
+export 'arithmetic.dart';
 export 'builders.dart';
-export 'clinical_expression.dart';
+export 'clinical.dart';
 export 'cql_annotations.dart';
 export 'expression.dart';
 export 'library.dart';

@@ -1,142 +1,13 @@
-// Require MIN/MAX here because math.js requires this file, and when we make this file require
-// math.js before it exports DateTime and Date, it errors due to the circular dependency...
-// const { MAX_DATETIME_VALUE, MIN_DATETIME_VALUE } = require('../util/math');
-import 'package:fhir/r4.dart';
+import 'package:fhir/primitive_types/primitive_types.dart';
 
-Duration createDuration(int value, String unit) {
-  Duration(
-    days: 1,
-    hours: 1,
-    minutes: 1,
-    milliseconds: 1,
-    microseconds: 1,
-    seconds: unit == 'seconds',
-  );
-}
+import '../cql.dart';
 
-class CustomDateTime {
-  int year;
-  int month;
-  int day;
-  int hour;
-  int minute;
-  int second;
-  int millisecond;
-  int weekday; // Assuming Monday is 1, Sunday is 7
-
-  CustomDateTime(
-      {required this.year,
-      required this.month,
-      required this.day,
-      this.hour = 0,
-      this.minute = 0,
-      this.second = 0,
-      this.millisecond = 0,
-      this.weekday = 1});
-
-  CustomDateTime set(Map<String, dynamic> changes) {
-    if (changes.containsKey('weekday')) {
-      weekday = changes['weekday'];
-    }
-    return this;
-  }
-
-  CustomDateTime minus(Map<String, dynamic> changes) {
-    if (changes.containsKey('weeks') && weekday != 7) {
-      weekday = 7;
-      day -= 7;
-    }
-    return this;
-  }
-
-  CustomDateTime startOf(DateTimeUnit unit) {
-    switch (unit) {
-      case DateTimeUnit.year:
-        month = 1;
-        gotoMonthStart();
-        break;
-      case DateTimeUnit.month:
-        gotoMonthStart();
-        break;
-      case DateTimeUnit.week:
-        gotoWeekStart();
-        break;
-      case DateTimeUnit.day:
-        hour = 0;
-        minute = 0;
-        second = 0;
-        millisecond = 0;
-        break;
-      case DateTimeUnit.hour:
-        minute = 0;
-        second = 0;
-        millisecond = 0;
-        break;
-      case DateTimeUnit.minute:
-        second = 0;
-        millisecond = 0;
-        break;
-      case DateTimeUnit.second:
-        millisecond = 0;
-        break;
-      default:
-        break;
-    }
-    return this;
-  }
-
-  void gotoMonthStart() {
-    day = 1;
-  }
-
-  void gotoWeekStart() {
-    day -= (weekday - 1); // Assuming Monday is 1, Sunday is 7
-  }
-}
-
-CustomDateTime truncateCustomDateTime(
-    CustomDateTime customDateTime, DateTimeUnit unit) {
-  if (unit == DateTimeUnit.week) {
-    if (customDateTime.weekday != 7) {
-      customDateTime = customDateTime.set({'weekday': 7}).minus({'weeks': 1});
-    }
-    unit = DateTimeUnit.day;
-  }
-  return customDateTime.startOf(unit);
-}
-
-enum DurationUnit {
-  years,
-  months,
-  weeks,
-  days,
-  hours,
-  minutes,
-  seconds,
-  milliseconds,
-}
-
-num inUnit(Duration duration, DurationUnit unit) {
-  switch (unit) {
-    // TODO(Dokotela): check if this is a good enough calculation of years & months
-    case DurationUnit.years:
-      return duration.inDays / 365;
-    case DurationUnit.months:
-      return duration.inDays / 30;
-    case DurationUnit.weeks:
-      return duration.inDays / 7;
-    case DurationUnit.days:
-      return duration.inDays;
-    case DurationUnit.hours:
-      return duration.inHours;
-    case DurationUnit.minutes:
-      return duration.inMinutes;
-    case DurationUnit.seconds:
-      return duration.inSeconds;
-    case DurationUnit.milliseconds:
-      return duration.inMilliseconds;
-  }
-}
+final MIN_DATETIME_VALUE = FhirDateTime('0001-01-01T00:00:00.000');
+final MAX_DATETIME_VALUE = FhirDateTime('9999-12-31T23:59:59.999');
+final MIN_DATE_VALUE = FhirDate('0001-01-01');
+final MAX_DATE_VALUE = FhirDate('9999-12-31');
+final MIN_TIME_VALUE = FhirTime('00:00:00.000');
+final MAX_TIME_VALUE = FhirTime('23:59:59.999');
 
 const LENGTH_TO_DATE_FORMAT_MAP = {
   4: 'yyyy',
@@ -164,111 +35,47 @@ const LENGTH_TO_DATETIME_FORMATS_MAP = {
   "yyyy-MM-dd'T'HH:mm:ss.SSSZZ": '2012-01-31T12:30:59.000-04:00',
 };
 
-int wholeLuxonDuration(Duration duration, DurationUnit unit) {
-  final num value = inUnit(duration, unit);
-  return value >= 0 ? value.floor() : value.ceil();
-}
-
-DateTime truncateDateTime(DateTime dateTime, DateTimeUnit unit) {
-  if (unit == DateTimeUnit.week) {
-    if (dateTime.weekday != DateTime.sunday) {
-      dateTime =
-          dateTime.subtract(Duration(days: dateTime.weekday - DateTime.sunday));
-    }
-    unit = DateTimeUnit.day;
-  }
-  return startOf(dateTime, unit);
-}
-
-DateTime startOf(DateTime dateTime, DateTimeUnit unit) {
-  switch (unit) {
-    case DateTimeUnit.year:
-      return DateTime(dateTime.year);
-    case DateTimeUnit.month:
-      return DateTime(dateTime.year, dateTime.month);
-    case DateTimeUnit.week:
-    case DateTimeUnit.day:
-      return DateTime(dateTime.year, dateTime.month, dateTime.day);
-    case DateTimeUnit.hour:
-      return DateTime(
-          dateTime.year, dateTime.month, dateTime.day, dateTime.hour);
-    case DateTimeUnit.minute:
-      return DateTime(dateTime.year, dateTime.month, dateTime.day,
-          dateTime.hour, dateTime.minute);
-    case DateTimeUnit.second:
-      return DateTime(dateTime.year, dateTime.month, dateTime.day,
-          dateTime.hour, dateTime.minute, dateTime.second);
-    case DateTimeUnit.millisecond:
-      return DateTime(
-          dateTime.year,
-          dateTime.month,
-          dateTime.day,
-          dateTime.hour,
-          dateTime.minute,
-          dateTime.second,
-          dateTime.millisecond);
-    default:
-      return dateTime;
-  }
-}
-
-final MIN_DATETIME_VALUE = FhirDateTime('0001-01-01T00:00:00.000');
-final MAX_DATETIME_VALUE = FhirDateTime('9999-12-31T23:59:59.999');
-final MIN_DATE_VALUE = FhirDate('0001-01-01');
-final MAX_DATE_VALUE = FhirDate('9999-12-31');
-final MIN_TIME_VALUE = FhirTime('00:00:00.000');
-final MAX_TIME_VALUE = FhirTime('23:59:59.999');
-
-enum DateTimeUnit {
-  year,
-  month,
-  week,
-  day,
-  hour,
-  minute,
-  second,
-  millisecond,
-}
-
 const DATETIME_PRECISION_VALUE_MAP = {
-  DateTimeUnit.year: 4,
-  DateTimeUnit.month: 6,
-  DateTimeUnit.day: 8,
-  DateTimeUnit.hour: 10,
-  DateTimeUnit.minute: 12,
-  DateTimeUnit.second: 14,
-  DateTimeUnit.millisecond: 17,
+  'year': 4,
+  'month': 6,
+  'day': 8,
+  'hour': 10,
+  'minute': 12,
+  'second': 14,
+  'millisecond': 17,
 };
 
 const TIME_PRECISION_VALUE_MAP = {
-  DateTimeUnit.hour: 2,
-  DateTimeUnit.minute: 4,
-  DateTimeUnit.second: 6,
-  DateTimeUnit.millisecond: 9,
+  'hour': 2,
+  'minute': 4,
+  'second': 6,
+  'millisecond': 9,
 };
 
 abstract class AbstractDate {
-  int? year;
-  int? month;
-  int? day;
+  FhirDateTimeBase value;
 
-  AbstractDate({this.year, this.month, this.day});
+  AbstractDate({required int year, int? month, int? day})
+      : value = FhirDate.fromUnits(year: year, month: month, day: day);
 
   AbstractDate fromDateTime(DateTime dateTime);
 
   String? getPrecision();
-  FhirDateTime getDateTime();
+  FhirDateTimeBase? getDateTime();
   AbstractDate copy();
-  FhirDateTime toLuxonDateTime();
+  int? get year => value.year;
+  int? get month => value.month;
+  int? get day => value.day;
   bool get isDate;
   bool get isDateTime;
+  int? get timezoneOffset => value.value?.timeZoneOffset.inHours;
 
   int? stringToValue(String? string) => string == 'year'
-      ? year
+      ? value.year
       : string == 'month'
-          ? month
+          ? value.month
           : string == 'day'
-              ? day
+              ? value.day
               : null;
 
   bool isPrecise() {
@@ -545,7 +352,7 @@ abstract class AbstractDate {
 
     // You would typically use date-time libraries for date manipulation.
     // For this translation, I'll simulate the behavior using Dart's DateTime.
-    DateTime? dateTime = getDateTime().value;
+    DateTime? dateTime = getDateTime()?.value;
 
     if (field == 'month' ||
         field == 'day' ||
@@ -608,12 +415,14 @@ abstract class AbstractDate {
       }
 
       // Create a new AbstractDate instance with adjusted values
-      AbstractDate result =
-          (this.runtimeType as AbstractDate).fromDateTime(newDateTime);
+      AbstractDate? result = newDateTime == null
+          ? null
+          : (this.runtimeType as AbstractDate).fromDateTime(newDateTime);
 
       // Reset to null if applicable
       if (isDateTime && timezoneOffset == null) {
-        result.timezoneOffset = null;
+        // TODO(Dokotela): fix this
+        // result?.timezoneOffset = null;
       }
 
       return result;
@@ -661,6 +470,706 @@ abstract class AbstractDate {
             'Tried to ceiling a field that has no ceiling value: $field');
     }
   }
+
+  Uncertainty? durationBetween(dynamic other, String unitField);
+
+  Uncertainty? differenceBetween(dynamic other, String unitField);
+}
+
+class CqlDateTime extends AbstractDate {
+  int? hour;
+  int? minute;
+  int? second;
+  int? millisecond;
+
+  int? get timezoneOffset;
+
+  static FhirDateTime? parse(String? string) {
+    if (string == null) {
+      return null;
+    }
+
+    RegExp regExp = RegExp(
+        r'(\d{4})(-(\d{2}))?(-(\d{2}))?(T((\d{2})(:(\d{2})(:(\d{2})(\.(\d+))?)?)?)?(Z|(([+-])(\d{2})(:?(\d{2}))?))?)?');
+    Match? matches = regExp.firstMatch(string);
+
+    if (matches == null) {
+      return null;
+    }
+
+    String? years = matches.group(1);
+    String? months = matches.group(3);
+    String? days = matches.group(5);
+    String? hours = matches.group(8);
+    String? minutes = matches.group(10);
+    String? seconds = matches.group(12);
+    String? milliseconds = matches.group(14);
+    if (milliseconds != null) {
+      milliseconds = normalizeMillisecondsField(milliseconds);
+    }
+    if (milliseconds != null && matches.group(14) != null) {
+      string = normalizeMillisecondsFieldInString(string, matches.group(14)!);
+    }
+
+    if (!isValidDateTimeStringFormat(string)) {
+      return null;
+    }
+
+    // Convert the args to integers
+    List<int?> args =
+        [years, months, days, hours, minutes, seconds, milliseconds].map((arg) {
+      return arg != null ? int.tryParse(arg) : null;
+    }).toList();
+
+    // Convert timezone offset to decimal and add it to arguments
+    if (matches.group(18) != null) {
+      int num = int.parse(matches.group(18)!);
+      num +=
+          matches.group(20) != null ? int.parse(matches.group(20)!) ~/ 60 : 0;
+      args.add(matches.group(17) == '+' ? num : num * -1);
+    } else if (matches.group(15) == 'Z') {
+      args.add(0);
+    }
+
+    return FhirDateTime.fromUnits(
+      year: args[0] ?? 1,
+      month: args[1] ?? 1,
+      day: args[2] ?? 1,
+      hour: args[3] ?? 0,
+      minute: args[4] ?? 0,
+      second: args[5] ?? 0,
+      millisecond: args[6] ?? 0,
+      timezoneOffset: args.length > 7 ? args[7] : null,
+    );
+  }
+
+  static CqlDateTime fromJSDate(dynamic date, [dynamic timezoneOffset]) {
+    if (date is CqlDateTime) {
+      return date;
+    }
+    if (timezoneOffset != null) {
+      date = DateTime.fromMillisecondsSinceEpoch(
+          date.millisecondsSinceEpoch + timezoneOffset * 60 * 60 * 1000);
+      return CqlDateTime(
+          year: date.year,
+          month: date.month,
+          day: date.day,
+          hour: date.hour,
+          minute: date.minute,
+          second: date.second,
+          millisecond: date.millisecond,
+          timezoneOffset: date.timeZoneOffset);
+    } else {
+      return CqlDateTime(
+        year: date.year,
+        month: date.month,
+        day: date.day,
+        hour: date.hour,
+        minute: date.minute,
+        second: date.second,
+        millisecond: date.millisecond,
+      );
+    }
+  }
+
+  CqlDateTime.fromDateTime(DateTime dateTime)
+      : super(year: dateTime.year, month: dateTime.month, day: dateTime.day) {
+    this.hour = dateTime.hour;
+    this.minute = dateTime.minute;
+    this.second = dateTime.second;
+    this.millisecond = dateTime.millisecond;
+    ;
+  }
+
+  CqlDateTime({
+    int? year,
+    int? month,
+    int? day,
+    int? hour,
+    int? minute,
+    int? second,
+    int? millisecond,
+    int? timezoneOffset,
+  }) : super(year: year ?? 1, month: month, day: day) {
+    this.hour = hour;
+    this.minute = minute;
+    this.second = second;
+    this.millisecond = millisecond;
+    if (timezoneOffset == null) {
+      timezoneOffset = (DateTime.now().timeZoneOffset.inHours) * -1;
+    } else {
+      timezoneOffset = timezoneOffset;
+    }
+  }
+
+  bool get isDateTime => true;
+
+  bool get isDate => false;
+
+  CqlDateTime copy() {
+    return CqlDateTime(
+      year: this.year,
+      month: this.month,
+      day: this.day,
+      hour: this.hour,
+      minute: this.minute,
+      second: this.second,
+      millisecond: this.millisecond,
+      timezoneOffset: this.timezoneOffset,
+    );
+  }
+
+  AbstractDate? successor() {
+    if (this.millisecond != null) {
+      return this.add(1, 'millisecond');
+    } else if (this.second != null) {
+      return this.add(1, 'second');
+    } else if (this.minute != null) {
+      return this.add(1, 'minute');
+    } else if (this.hour != null) {
+      return this.add(1, 'hour');
+    } else if (this.day != null) {
+      return this.add(1, 'day');
+    } else if (this.month != null) {
+      return this.add(1, 'month');
+    } else if (this.year != null) {
+      return this.add(1, 'year');
+    }
+    return null;
+  }
+
+  AbstractDate? predecessor() {
+    if (this.millisecond != null) {
+      return this.add(-1, 'millisecond');
+    } else if (this.second != null) {
+      return this.add(-1, 'second');
+    } else if (this.minute != null) {
+      return this.add(-1, 'minute');
+    } else if (this.hour != null) {
+      return this.add(-1, 'hour');
+    } else if (this.day != null) {
+      return this.add(-1, 'day');
+    } else if (this.month != null) {
+      return this.add(-1, 'month');
+    } else if (this.year != null) {
+      return this.add(-1, 'year');
+    }
+    return null;
+  }
+
+  // DateTime convertToTimezoneOffset([int timezoneOffset = 0]) {
+  //   final shiftedLuxonDT =
+  //       this.toLuxonDateTime().setZone(FixedOffsetZone(timezoneOffset * 60));
+  //   final shiftedDT = fromLuxonDateTime(shiftedLuxonDT);
+  //   return shiftedDT.reducedPrecision(this.getPrecision());
+  // }
+
+  Uncertainty? differenceBetween(dynamic other, String unitField) {
+    other = this._implicitlyConvert(other);
+    if (other == null || other is! CqlDateTime) {
+      return null;
+    }
+
+    final Uncertainty? a = this.toLuxonUncertainty();
+    final b = other.toLuxonUncertainty();
+
+    if (['year', 'month', 'week', 'day'].contains(unitField)) {
+      a?.low = a.low.toUTC(0, keepLocalTime: true);
+      a?.high = a.high.toUTC(0, keepLocalTime: true);
+      b?.low = b.low.toUTC(0, keepLocalTime: true);
+      b?.high = b.high.toUTC(0, keepLocalTime: true);
+    }
+
+    a?.low = truncateLuxonDateTime(a.low, unitField);
+    a?.high = truncateLuxonDateTime(a.high, unitField);
+    b?.low = truncateLuxonDateTime(b.low, unitField);
+    b?.high = truncateLuxonDateTime(b.high, unitField);
+
+    return Uncertainty(
+      low: wholeLuxonDuration(b?.low.diff(a?.high, unitField), unitField),
+      high: wholeLuxonDuration(b?.high.diff(a?.low, unitField), unitField),
+    );
+  }
+
+  Uncertainty? durationBetween(dynamic other, String unitField) {
+    other = this._implicitlyConvert(other);
+    if (other == null || !other.isDateTime) {
+      return null;
+    }
+    final a = this.toLuxonUncertainty();
+    final b = other.toLuxonUncertainty();
+    return Uncertainty(
+      low: wholeLuxonDuration(b.low.diff(a?.high, unitField), unitField),
+      high: wholeLuxonDuration(b.high.diff(a?.low, unitField), unitField),
+    );
+  }
+
+  bool isUTC() {
+    // A timezoneOffset of 0 indicates UTC time.
+    return timezoneOffset == 0;
+  }
+
+  String? getPrecision() {
+    String? result;
+    if (year != null) {
+      result = 'year';
+    } else {
+      return result;
+    }
+    if (month != null) {
+      result = 'month';
+    } else {
+      return result;
+    }
+    if (day != null) {
+      result = 'day';
+    } else {
+      return result;
+    }
+    if (hour != null) {
+      result = 'hour';
+    } else {
+      return result;
+    }
+    if (minute != null) {
+      result = 'minute';
+    } else {
+      return result;
+    }
+    if (second != null) {
+      result = 'second';
+    } else {
+      return result;
+    }
+    if (millisecond != null) {
+      result = 'millisecond';
+    }
+    return result;
+  }
+
+  int? getPrecisionValue() {
+    return isTime()
+        ? TIME_PRECISION_VALUE_MAP[this.getPrecision()]
+        : DATETIME_PRECISION_VALUE_MAP[this.getPrecision()];
+  }
+
+  // LuxonDateTime toLuxonDateTime() {
+  //   final offsetMins = timezoneOffset != null
+  //       ? timezoneOffset * 60
+  //       : jsDate().getTimezoneOffset() * -1;
+  //   return LuxonDateTime.fromObject({
+  //     'year': year,
+  //     'month': month,
+  //     'day': day,
+  //     'hour': hour,
+  //     'minute': minute,
+  //     'second': second,
+  //     'millisecond': millisecond,
+  //     'zone': FixedOffsetZone.instance(offsetMins),
+  //   });
+  // }
+
+  Uncertainty? toLuxonUncertainty() {
+    final DateTime? low = this.value.value;
+    if (low == null) {
+      return null;
+    } else {
+      final high = endOf(low, this.getPrecision()!);
+      return Uncertainty(low: low, high: high);
+    }
+  }
+
+  // DateTime toJSDate([bool ignoreTimezone = false]) {
+  //   var luxonDT = this.toLuxonDateTime();
+  //   // I don't know if anyone is using "ignoreTimezone" anymore (we aren't), but just in case
+  //   if (ignoreTimezone) {
+  //     final offset = jsDate().getTimezoneOffset() * -1;
+  //     luxonDT = luxonDT.setZone(FixedOffsetZone.instance(offset),
+  //         keepLocalTime: true);
+  //   }
+  //   return luxonDT.toJSDate();
+  // }
+
+  String toJSON() {
+    return this.toString();
+  }
+
+  String _pad(int num) {
+    return num.toString().padLeft(2, '0');
+  }
+
+  String toString() {
+    if (isTime()) {
+      return toStringTime();
+    } else {
+      return toStringDateTime();
+    }
+  }
+
+  String toStringTime() {
+    String str = '';
+    if (hour != null) {
+      str += _pad(hour!);
+      if (minute != null) {
+        str += ':' + _pad(minute!);
+        if (second != null) {
+          str += ':' + _pad(second!);
+          if (millisecond != null) {
+            str += '.' +
+                (millisecond! < 10
+                    ? '00'
+                    : millisecond! < 100
+                        ? '0'
+                        : '') +
+                millisecond!.toString();
+          }
+        }
+      }
+    }
+    return str;
+  }
+
+  String toStringDateTime() {
+    String str = '';
+    if (year != null) {
+      str += year.toString();
+      if (month != null) {
+        str += '-' + _pad(month!);
+        if (day != null) {
+          str += '-' + _pad(day!);
+          if (hour != null) {
+            str += 'T' + _pad(hour!);
+            if (minute != null) {
+              str += ':' + _pad(minute!);
+              if (second != null) {
+                str += ':' + _pad(second!);
+                if (millisecond != null) {
+                  str += '.' +
+                      (millisecond! < 10
+                          ? '00'
+                          : millisecond! < 100
+                              ? '0'
+                              : '') +
+                      millisecond!.toString();
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (str.contains('T') && timezoneOffset != null) {
+      str += timezoneOffset! < 0 ? '-' : '+';
+      final offsetHours = timezoneOffset!.abs().floor();
+      str += _pad(offsetHours);
+      final offsetMin = ((timezoneOffset!.abs() - offsetHours) * 60).floor();
+      str += ':' + _pad(offsetMin);
+    }
+
+    return str;
+  }
+
+  FhirDateTime? getDateTime() {
+    return value.value == null ? null : FhirDateTime(value.value);
+  }
+
+  DateTime getDate() {
+    return DateTime(year ?? 1, month ?? 1, day ?? 1);
+  }
+
+  DateTime getTime() {
+    // Times no longer have timezoneOffsets, so we must explicitly set it to null
+    return DateTime(
+        0, 1, 1, hour ?? 0, minute ?? 0, second ?? 0, millisecond ?? 0);
+  }
+
+  bool isTime() {
+    return year == 0 && month == 1 && day == 1;
+  }
+
+  _implicitlyConvert(dynamic other) {
+    if (other != null && other.isDate) {
+      return other.getDateTime();
+    }
+    return other;
+  }
+
+  CqlDateTime? reducedPrecision({String? unitField}) {
+    CqlDateTime? reduced = copy();
+    if (unitField != null && unitField != 'millisecond') {
+      final fields = [
+        'year',
+        'month',
+        'day',
+        'hour',
+        'minute',
+        'second',
+        'millisecond',
+        'microsecond'
+      ];
+      final fieldIndex = fields.indexOf(unitField);
+      if (fieldIndex != -1) {
+        final fieldsToRemove = fields.sublist(fieldIndex + 1);
+        for (final field in fieldsToRemove) {
+          final nullFields = reduced?.value.value == null
+              ? null
+              : _setFieldToNull(reduced!.value.value!, field);
+          reduced =
+              nullFields == null ? null : CqlDateTime.fromDateTime(nullFields);
+        }
+      }
+    }
+    return reduced;
+  }
+
+  @override
+  AbstractDate fromDateTime(DateTime dateTime) => CqlDateTime(
+        year: dateTime.year,
+        month: dateTime.month,
+        day: dateTime.day,
+        hour: dateTime.hour,
+        minute: dateTime.minute,
+        second: dateTime.second,
+        millisecond: dateTime.millisecond,
+        timezoneOffset: dateTime.timeZoneOffset.inHours,
+      );
+}
+
+class CqlDate extends AbstractDate {
+  static CqlDate? parse(String? string) {
+    if (string == null) {
+      return null;
+    }
+
+    final matches = RegExp(r'(\d{4})(-(\d{2}))?(-(\d{2}))?').firstMatch(string);
+
+    if (matches == null) {
+      return null;
+    }
+    final years = matches.group(1);
+    final months = matches.group(3);
+    final days = matches.group(5);
+
+    if (!isValidDateStringFormat(string)) {
+      return null;
+    }
+
+    // Convert args to integers
+    final args = [years, months, days]
+        .map((arg) => arg != null ? int.parse(arg) : arg)
+        .toList();
+    final argsInt = args.cast<int>();
+
+    return CqlDate(argsInt[0], argsInt[1], argsInt[2]);
+  }
+
+  CqlDate(int year, [int? month = null, int? day = null])
+      : super(year: year, month: month, day: day);
+
+  bool get isDate {
+    return true;
+  }
+
+  bool get isDateTime {
+    return false;
+  }
+
+  CqlDate copy() {
+    return CqlDate(year ?? 1, month, day);
+  }
+
+  AbstractDate? successor() {
+    if (day != null) {
+      return add(1, 'day');
+    } else if (month != null) {
+      return add(1, 'month');
+    } else if (year != null) {
+      return add(1, 'year');
+    }
+    return null;
+  }
+
+  AbstractDate? predecessor() {
+    if (day != null) {
+      return add(-1, 'day');
+    } else if (month != null) {
+      return add(-1, 'month');
+    } else if (year != null) {
+      return add(-1, 'year');
+    }
+    return null;
+  }
+
+  Uncertainty? differenceBetween(other, unitField) {
+    if (other != null && other is AbstractDate) {
+      return other.differenceBetween(this, unitField);
+    }
+    if (other == null || !other.isDate) {
+      return null;
+    }
+
+    final a = toLuxonUncertainty();
+    final b = other.toLuxonUncertainty();
+
+    a?.low = truncateLuxonDateTime(a.low, unitField);
+    a?.high = truncateLuxonDateTime(a.high, unitField);
+    b.low = truncateLuxonDateTime(b.low, unitField);
+    b.high = truncateLuxonDateTime(b.high, unitField);
+
+    return Uncertainty(
+      low: a?.low.difference(b.high, unitField),
+      high: b.low.difference(a?.high, unitField),
+    );
+  }
+
+  Uncertainty? durationBetween(other, unitField) {
+    // TODO(Dokotela): make this not a comment
+    // if (other != null && other.isDateTime) {
+    //   return durationBetween(other, unitField);
+    // }
+    if (other == null || !other.isDate) {
+      return null;
+    }
+
+    final a = toLuxonUncertainty();
+    final b = other.toLuxonUncertainty();
+
+    return Uncertainty(
+      low: a?.high.difference(b.low, unitField),
+      high: b.high.difference(a?.low, unitField),
+    );
+  }
+
+  String? getPrecision() {
+    String? result;
+    if (year != null) {
+      result = 'year';
+    } else {
+      return result;
+    }
+
+    if (month != null) {
+      result = 'month';
+    } else {
+      return result;
+    }
+
+    if (day != null) {
+      result = 'day';
+    } else {
+      return result;
+    }
+    return result;
+  }
+
+  getPrecisionValue() {
+    return DATETIME_PRECISION_VALUE_MAP[this.getPrecision()];
+  }
+
+  FhirDateTime toLuxonDateTime() {
+    return FhirDateTime.fromUnits(
+      year: year ?? 1,
+      month: month ?? 1,
+      day: day ?? 1,
+      // TODO(Dokotela): are timezones really that important?
+      // timezoneOffset: FixedOffsetZone.utcInstance,
+    );
+  }
+
+  Uncertainty? toLuxonUncertainty() {
+    final low = this.toLuxonDateTime();
+    if (low.value == null) {
+      return null;
+    } else {
+      final high = startOf(endOf(low.value!, (getPrecision() ?? 'day')), 'day');
+      return Uncertainty(low: low, high: high);
+    }
+  }
+
+  CqlDateTime toJSDate() {
+    final y = year;
+    final mo = month != null ? month! - 1 : 0;
+    final d = day != null ? day! : 1;
+    return CqlDateTime(year: y ?? 0, month: mo, day: d);
+  }
+
+  // static CqlDate fromJSDate(dynamic date) {
+  //   if (date is DateTime) {
+  //     return date as Date;
+  //   }
+  //   return Date(date.year, date.month + 1, date.day);
+  // }
+
+  // static Date fromLuxonDateTime(LuxonDateTime luxonDT) {
+  //   if (luxonDT is Date) {
+  //     return luxonDT;
+  //   }
+  //   return Date(luxonDT.year, luxonDT.month, luxonDT.day);
+  // }
+
+  String toJSON() {
+    return this.toString();
+  }
+
+  @override
+  String toString() {
+    String str = '';
+    if (year != null) {
+      str += year.toString();
+      if (month != null) {
+        str += '-' + month.toString().padLeft(2, '0');
+        if (day != null) {
+          str += '-' + day.toString().padLeft(2, '0');
+        }
+      }
+    }
+    return str;
+  }
+
+  FhirDateTime getDateTime([int? timeZoneOffset]) {
+    if (year != null && month != null && day != null) {
+      return FhirDateTime.fromUnits(
+          year: year!,
+          month: month!,
+          day: day!,
+          timezoneOffset: timeZoneOffset);
+    } else {
+      return FhirDateTime.fromUnits(year: year!, month: month!, day: day!);
+    }
+  }
+
+  CqlDate? reducedPrecision({String? unitField}) {
+    CqlDate? reduced = copy();
+    if (unitField != null && unitField != 'millisecond') {
+      final fields = [
+        'year',
+        'month',
+        'day',
+        'hour',
+        'minute',
+        'second',
+        'millisecond',
+        'microsecond'
+      ];
+      final fieldIndex = fields.indexOf(unitField);
+      if (fieldIndex != -1) {
+        final fieldsToRemove = fields.sublist(fieldIndex + 1);
+        for (final field in fieldsToRemove) {
+          final nullFields = reduced?.value.value == null
+              ? null
+              : _setFieldToNull(reduced!.value.value!, field);
+          reduced = nullFields == null ? null : fromDateTime(nullFields);
+        }
+      }
+    }
+    return reduced;
+  }
+
+  @override
+  CqlDate fromDateTime(DateTime dateTime) {
+    return CqlDate(dateTime.year, dateTime.month, dateTime.day);
+  }
 }
 
 bool compareWithDefaultResult(dynamic a, dynamic b, dynamic defaultResult) {
@@ -697,12 +1206,87 @@ bool compareWithDefaultResult(dynamic a, dynamic b, dynamic defaultResult) {
   return true;
 }
 
-int daysInMonth(int? year, int? month) {
-  if (year == null || month == null) {
-    throw ArgumentError('daysInMonth requires year and month as arguments');
+bool isPrecisionUnspecifiedOrGreaterThanDay(dynamic precision) {
+  return precision == null || RegExp(r'^h|mi|s').hasMatch(precision);
+}
+
+DateTime endOf(DateTime dateTime, String unit) {
+  switch (unit) {
+    case 'year':
+      return DateTime(dateTime.year, 12, 31, 23, 59, 59, 999);
+    case 'month':
+      final nextMonth = dateTime.month < 12 ? dateTime.month + 1 : 1;
+      final nextYear = nextMonth == 1 ? dateTime.year + 1 : dateTime.year;
+      final endOfMonth = DateTime(nextYear, nextMonth, 0, 23, 59, 59, 999);
+      return endOfMonth;
+    case 'week':
+      final diff = 7 - dateTime.weekday;
+      final endOfWeek = dateTime.add(Duration(days: diff)).subtract(Duration(
+          seconds: dateTime.second,
+          milliseconds: dateTime.millisecond,
+          microseconds: dateTime.microsecond));
+      return endOfWeek;
+    case 'day':
+      return DateTime(
+          dateTime.year, dateTime.month, dateTime.day, 23, 59, 59, 999);
+    case 'hour':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day,
+          dateTime.hour, 59, 59, 999);
+    case 'minute':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day,
+          dateTime.hour, dateTime.minute, 59, 999);
+    case 'second':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day,
+          dateTime.hour, dateTime.minute, dateTime.second, 999);
+    default:
+      throw ArgumentError('Invalid unit: $unit');
   }
-  // Month is 1-indexed here because of the 0 day
-  return DateTime(year, month + 1, 0).day;
+}
+
+DateTime startOf(DateTime dateTime, String unit) {
+  switch (unit) {
+    case 'year':
+      return DateTime(dateTime.year);
+    case 'month':
+      final nextMonth = dateTime.month < 12 ? dateTime.month + 1 : 1;
+      final nextYear = nextMonth == 1 ? dateTime.year + 1 : dateTime.year;
+      return DateTime(nextYear, nextMonth, 1);
+    case 'week':
+      final diff = dateTime.weekday - DateTime.monday;
+      return dateTime.subtract(Duration(days: diff));
+    case 'day':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day);
+    case 'hour':
+      return DateTime(
+          dateTime.year, dateTime.month, dateTime.day, dateTime.hour);
+    case 'minute':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day,
+          dateTime.hour, dateTime.minute);
+    case 'second':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day,
+          dateTime.hour, dateTime.minute, dateTime.second);
+    case 'millisecond':
+      return DateTime(
+          dateTime.year,
+          dateTime.month,
+          dateTime.day,
+          dateTime.hour,
+          dateTime.minute,
+          dateTime.second,
+          dateTime.millisecond);
+    case 'microsecond':
+      return DateTime(
+          dateTime.year,
+          dateTime.month,
+          dateTime.day,
+          dateTime.hour,
+          dateTime.minute,
+          dateTime.second,
+          dateTime.millisecond,
+          dateTime.microsecond);
+    default:
+      throw ArgumentError('Invalid unit: $unit');
+  }
 }
 
 bool isValidDateStringFormat(dynamic string) {
@@ -735,6 +1319,89 @@ bool isValidDateTimeStringFormat(dynamic string) {
   return FhirDateTime(string.substring(0, string.length)).isValid;
 }
 
-bool isPrecisionUnspecifiedOrGreaterThanDay(dynamic precision) {
-  return precision == null || RegExp(r'^h|mi|s').hasMatch(precision);
+DateTime truncateLuxonDateTime(DateTime luxonDT, String unit) {
+  // Truncating by week (to the previous Sunday) requires different logic than the rest
+  if (unit == 'week') {
+    // Sunday is ISO weekday 7
+    if (luxonDT.weekday != DateTime.sunday) {
+      luxonDT = luxonDT
+          .subtract(Duration(days: luxonDT.weekday - DateTime.sunday))
+          .subtract(Duration(days: 7));
+    }
+    unit = 'day';
+  }
+
+  return startOf(luxonDT, unit);
+}
+
+int? wholeLuxonDuration(Duration duration, String unit) {
+  final num? value = inUnit(duration, unit);
+  return value == null
+      ? null
+      : value >= 0
+          ? value.floor()
+          : value.ceil();
+}
+
+num? inUnit(Duration duration, String unit) {
+  switch (unit) {
+    case 'year':
+      return duration.inDays / 365;
+    case 'month':
+      return duration.inDays / 30;
+    case 'week':
+      return duration.inDays / 7;
+    case 'day':
+      return duration.inDays;
+    case 'hour':
+      return duration.inHours;
+    case 'minute':
+      return duration.inMinutes;
+    case 'second':
+      return duration.inSeconds;
+    case 'millisecond':
+      return duration.inMilliseconds;
+  }
+  return null;
+}
+
+DateTime _setFieldToNull(DateTime dateTime, [String field = 'millisecond']) {
+  switch (field) {
+    case 'year':
+      return DateTime(dateTime.year);
+    case 'month':
+      return DateTime(dateTime.year, dateTime.month);
+    case 'day':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day);
+    case 'hour':
+      return DateTime(
+          dateTime.year, dateTime.month, dateTime.day, dateTime.hour);
+    case 'minute':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day,
+          dateTime.hour, dateTime.minute);
+    case 'second':
+      return DateTime(dateTime.year, dateTime.month, dateTime.day,
+          dateTime.hour, dateTime.minute, dateTime.second);
+    case 'millisecond':
+      return DateTime(
+          dateTime.year,
+          dateTime.month,
+          dateTime.day,
+          dateTime.hour,
+          dateTime.minute,
+          dateTime.second,
+          dateTime.millisecond);
+    case 'microsecond':
+      return DateTime(
+          dateTime.year,
+          dateTime.month,
+          dateTime.day,
+          dateTime.hour,
+          dateTime.minute,
+          dateTime.second,
+          dateTime.millisecond,
+          dateTime.microsecond);
+    default:
+      return dateTime; // No modification for unknown field
+  }
 }
