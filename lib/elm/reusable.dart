@@ -98,6 +98,15 @@ class FunctionRef extends ExpressionRef {
     this.operand,
   }) : super(name: name, library: library);
 
+  FunctionRef.fromJson(Map<String, dynamic> json)
+      : signature = (json['signature'] as List<dynamic>?)
+            ?.map((spec) => TypeSpecifier.fromJson(spec))
+            .toList(),
+        operand = (json['operand'] as List<dynamic>?)
+            ?.map((expr) => Expression.fromJson(expr))
+            .toList(),
+        super.fromJson(json);
+
   Future<dynamic> exec(Context ctx) async {
     List<dynamic>? functionDefs;
     Context? childCtx;

@@ -323,5 +323,8 @@ num decimalAdjust(MathFn type, dynamic value, dynamic exp) {
 }
 
 dynamic decimalOrNull(dynamic value) {
-  return isValidDecimal(value) ? value : null;
+  return (value is List && value.length == 1 && isValidDecimal(value.first)) ||
+          isValidDecimal(value)
+      ? value
+      : null;
 }

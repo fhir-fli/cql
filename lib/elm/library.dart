@@ -1,10 +1,7 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../cql.dart';
 
 class ElmLibrary extends ElmElement {
-  // TODO(Dokotela): unclear if the commented out variables are needed
-  //  source: any;
+  Map<String, dynamic>? json;
   UsingDef? usings;
   List<ParameterDef> parameters;
   List<CodeSystemDef> codeSystems;
@@ -22,6 +19,7 @@ class ElmLibrary extends ElmElement {
   // private List<LibraryReference> librariesField;
 
   ElmLibrary({
+    this.json,
     this.usings,
     List<ParameterDef>? parameters,
     List<CodeSystemDef>? codeSystems,

@@ -5,16 +5,21 @@ import 'package:fhir/r4.dart';
 import '../cql.dart';
 
 class Add extends Expression {
-  Add(Map<String, dynamic> json) : super.fromJson(json);
+  Add.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.isEmpty || args.any((x) => x.isEmpty)) {
+      return [];
     }
 
-    final sum = args.reduce((x, y) {
+    final sum = args.reduce((a, b) {
+      if (a.length != 1 || b.length != 1) {
+        return [];
+      }
+      var x = a.first;
+      var y = b.first;
       if (x is Uncertainty && !(y is Uncertainty)) {
         y = Uncertainty(low: y, high: y);
       } else if (y is Uncertainty && !(x is Uncertainty)) {
@@ -31,34 +36,41 @@ class Add extends Expression {
             x.low is FhirDateTime ||
             x.low is FhirDate ||
             (x.low is FhirTime && x.low.isValid)) {
-          return Uncertainty(
-              low: doAddition(x.low, y.low), high: doAddition(x.high, y.high));
+          return [
+            Uncertainty(
+                low: doAddition(x.low, y.low), high: doAddition(x.high, y.high))
+          ];
         } else {
-          return Uncertainty(low: x.low + y.low, high: x.high + y.high);
+          return [Uncertainty(low: x.low + y.low, high: x.high + y.high)];
         }
       } else {
-        return x + y;
+        return [x + y];
       }
     });
 
-    if (overflowsOrUnderflows(sum)) {
-      return null;
+    if (sum.isNotEmpty && overflowsOrUnderflows(sum.first)) {
+      return [];
     }
     return sum;
   }
 }
 
 class Subtract extends Expression {
-  Subtract(Map<String, dynamic> json) : super.fromJson(json);
+  Subtract.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.any((x) => x.isEmpty)) {
+      return [];
     }
 
-    final difference = args.reduce((x, y) {
+    final difference = args.reduce((a, b) {
+      if (a.length != 1 || b.length != 1) {
+        return [];
+      }
+      var x = a.first;
+      var y = b.first;
       if (x is Uncertainty && !(y is Uncertainty)) {
         y = Uncertainty(low: y, high: y);
       } else if (y is Uncertainty && !(x is Uncertainty)) {
@@ -69,35 +81,42 @@ class Subtract extends Expression {
         return doSubtraction(x, y);
       } else if (x is Uncertainty && y is Uncertainty) {
         if (x.low is Quantity || x.low is DateTime || x.low is FhirDate) {
-          return Uncertainty(
-              low: doSubtraction(x.low, y.high),
-              high: doSubtraction(x.high, y.low));
+          return [
+            Uncertainty(
+                low: doSubtraction(x.low, y.high),
+                high: doSubtraction(x.high, y.low))
+          ];
         } else {
-          return Uncertainty(low: x.low - y.high, high: x.high - y.low);
+          return [Uncertainty(low: x.low - y.high, high: x.high - y.low)];
         }
       } else {
-        return x - y;
+        return [x - y];
       }
     });
 
-    if (overflowsOrUnderflows(difference)) {
-      return null;
+    if (difference.isNotEmpty && overflowsOrUnderflows(difference.first)) {
+      return [];
     }
     return difference;
   }
 }
 
 class Multiply extends Expression {
-  Multiply(Map<String, dynamic> json) : super.fromJson(json);
+  Multiply.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.any((x) => x.isEmpty)) {
+      return [];
     }
 
-    final product = args.reduce((x, y) {
+    final product = args.reduce((a, b) {
+      if (a.length != 1 || b.length != 1) {
+        return [];
+      }
+      var x = a.first;
+      var y = b.first;
       if (x is Uncertainty && !(y is Uncertainty)) {
         y = Uncertainty(low: y, high: y);
       } else if (y is Uncertainty && !(x is Uncertainty)) {
@@ -108,35 +127,42 @@ class Multiply extends Expression {
         return doMultiplication(x, y);
       } else if (x is Uncertainty && y is Uncertainty) {
         if (x.low is Quantity) {
-          return Uncertainty(
-              low: doMultiplication(x.low, y.low),
-              high: doMultiplication(x.high, y.high));
+          return [
+            Uncertainty(
+                low: doMultiplication(x.low, y.low),
+                high: doMultiplication(x.high, y.high))
+          ];
         } else {
-          return Uncertainty(low: x.low * y.low, high: x.high * y.high);
+          return [Uncertainty(low: x.low * y.low, high: x.high * y.high)];
         }
       } else {
-        return x * y;
+        return [x * y];
       }
     });
 
     if (overflowsOrUnderflows(product)) {
-      return null;
+      return [];
     }
     return product;
   }
 }
 
 class Divide extends Expression {
-  Divide(Map<String, dynamic> json) : super.fromJson(json);
+  Divide.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.any((x) => x.isEmpty)) {
+      return [];
     }
 
-    final quotient = args.reduce((x, y) {
+    final quotient = args.reduce((a, b) {
+      if (a.length != 1 || b.length != 1) {
+        return [];
+      }
+      var x = a.first;
+      var y = b.first;
       if (x is Uncertainty && !(y is Uncertainty)) {
         y = Uncertainty(low: y, high: y);
       } else if (y is Uncertainty && !(x is Uncertainty)) {
@@ -147,10 +173,12 @@ class Divide extends Expression {
         return doDivision(x, y);
       } else if (x is Uncertainty && y is Uncertainty) {
         if (x.low is Quantity) {
-          return Uncertainty(
-              low: doDivision(x.low, y.high), high: doDivision(x.high, y.low));
+          return [
+            Uncertainty(
+                low: doDivision(x.low, y.high), high: doDivision(x.high, y.low))
+          ];
         } else {
-          return Uncertainty(low: x.low / y.high, high: x.high / y.low);
+          return [Uncertainty(low: x.low / y.high, high: x.high / y.low)];
         }
       } else {
         return x / y;
@@ -159,100 +187,123 @@ class Divide extends Expression {
 
     // Note: Dart handles division by zero with Infinity, not overflow.
     if (overflowsOrUnderflows(quotient)) {
-      return null;
+      return [];
     }
     return quotient;
   }
 }
 
 class TruncatedDivide extends Expression {
-  TruncatedDivide(Map<String, dynamic> json) : super.fromJson(json);
+  TruncatedDivide.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.any((x) => x.isEmpty)) {
+      return [];
     }
 
-    final quotient = args.reduce((x, y) => x / y);
-    final truncatedQuotient =
-        quotient >= 0 ? quotient.floor() : quotient.ceil();
+    final quotient = args.reduce((a, b) {
+      if (a.length != 1 || b.length != 1) {
+        return [];
+      }
+      var x = a.first;
+      var y = b.first;
+      return [x / y];
+    });
+    final truncatedQuotient = quotient.isEmpty
+        ? []
+        : [
+            quotient.first >= 0 ? quotient.first.floor() : quotient.first.ceil()
+          ];
 
-    if (overflowsOrUnderflows(truncatedQuotient)) {
-      return null;
+    if (truncatedQuotient.isNotEmpty &&
+        overflowsOrUnderflows(truncatedQuotient.first)) {
+      return [];
     }
     return truncatedQuotient;
   }
 }
 
 class Modulo extends Expression {
-  Modulo(Map<String, dynamic> json) : super.fromJson(json);
+  Modulo.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.any((x) => x.isEmpty)) {
+      return [];
     }
 
-    final modulo = args.reduce((x, y) => x % y);
+    final modulo = args.reduce((a, b) {
+      if (a.length != 1 || b.length != 1) {
+        return [];
+      }
+      var x = a.first;
+      var y = b.first;
+      return [x % y];
+    });
 
     return decimalOrNull(modulo);
   }
 }
 
 class Ceiling extends Expression {
-  Ceiling(Map<String, dynamic> json) : super.fromJson(json);
+  Ceiling.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
+    if (arg.length == 1 && arg.first is num) {
+      return [(arg.first as num).ceil()];
+    } else {
+      return [];
     }
-
-    return arg.ceil();
   }
 }
 
 class Floor extends Expression {
-  Floor(Map<String, dynamic> json) : super.fromJson(json);
+  Floor.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
+    if (arg.length == 1 && arg.first is num) {
+      return [(arg.first as num).floor()];
+    } else {
+      return [];
     }
-
-    return arg.floor();
   }
 }
 
 class Truncate extends Expression {
-  Truncate(Map<String, dynamic> json) : super.fromJson(json);
+  Truncate.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<int>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
+    if (arg.isNotEmpty &&
+        arg.length == 1 &&
+        arg.first.length == 1 &&
+        arg.first.first is num) {
+      return [
+        (arg.first.first as num) >= 0
+            ? (arg.first.first as num).floor()
+            : (arg.first.first as num).ceil()
+      ];
+    } else {
+      return [];
     }
-
-    return arg >= 0 ? arg.floor() : arg.ceil();
   }
 }
 
 class Abs extends Expression {
-  Abs(Map<String, dynamic> json) : super.fromJson(json);
+  Abs.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
-    } else if (arg is ElmQuantity) {
+    if (arg is ElmQuantity) {
       return ElmQuantity(
           value: arg.value?.value == null
               ? null
@@ -265,14 +316,12 @@ class Abs extends Expression {
 }
 
 class Negate extends Expression {
-  Negate(Map<String, dynamic> json) : super.fromJson(json);
+  Negate.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
-    } else if (arg is ElmQuantity) {
+    if (arg is ElmQuantity) {
       return ElmQuantity(
           value: arg.value?.value == null
               ? null
@@ -287,16 +336,13 @@ class Negate extends Expression {
 class Round extends Expression {
   dynamic precision;
 
-  Round(Map<String, dynamic> json) : super.fromJson(json) {
+  Round.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
     precision = build(json['precision']);
   }
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
-    }
 
     final dec = precision != null ? await precision.execute(ctx) : 0;
     return (arg * pow(10.0, dec)).round() / pow(10.0, dec);
@@ -304,14 +350,11 @@ class Round extends Expression {
 }
 
 class Ln extends Expression {
-  Ln(Map<String, dynamic> json) : super.fromJson(json);
+  Ln.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
-    }
 
     final ln = arg > 0 ? arg.log() : null;
 
@@ -320,32 +363,29 @@ class Ln extends Expression {
 }
 
 class Exp extends Expression {
-  Exp(Map<String, dynamic> json) : super.fromJson(json);
+  Exp.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
-    }
 
     final power = arg.exp();
 
     if (overflowsOrUnderflows(power)) {
-      return null;
+      return [];
     }
     return power;
   }
 }
 
 class Log extends Expression {
-  Log(Map<String, dynamic> json) : super.fromJson(json);
+  Log.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.any((x) => x.isEmpty)) {
+      return [];
     }
 
     final log = args.reduce((x, y) => x.log() / y.log());
@@ -355,19 +395,19 @@ class Log extends Expression {
 }
 
 class Power extends Expression {
-  Power(Map<String, dynamic> json) : super.fromJson(json);
+  Power.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final args = await execArgs(ctx);
-    if (args == null || args.any((x) => x == null)) {
-      return null;
+    if (args.any((x) => x.isEmpty)) {
+      return [];
     }
 
     final power = args.reduce((x, y) => x.pow(y));
 
     if (overflowsOrUnderflows(power)) {
-      return null;
+      return [];
     }
     return power;
   }
@@ -384,12 +424,12 @@ class MinValue extends Expression {
 
   late final String valueType;
 
-  MinValue(Map<String, dynamic> json) : super.fromJson(json) {
+  MinValue.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
     valueType = json['valueType'];
   }
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     if (MinValue.MIN_VALUES.containsKey(valueType)) {
       if (valueType == '{urn:hl7-org:elm-types:r1}DateTime') {
         final minDateTime = FhirDateTime(
@@ -417,12 +457,12 @@ class MaxValue extends Expression {
 
   late final String valueType;
 
-  MaxValue(Map<String, dynamic> json) : super.fromJson(json) {
+  MaxValue.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
     valueType = json['valueType'];
   }
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     if (MaxValue.MAX_VALUES.containsKey(valueType)) {
       if (valueType == '{urn:hl7-org:elm-types:r1}DateTime') {
         final maxDateTime = FhirDateTime(
@@ -440,50 +480,44 @@ class MaxValue extends Expression {
 }
 
 class Successor extends Expression {
-  Successor(Map<String, dynamic> json) : super.fromJson(json);
+  Successor.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
-    }
 
     dynamic successor = null;
     try {
       successor = successor(
           arg); // Consider using the actual logic for successor from your `MathUtil` class
     } on OverFlowException {
-      return null;
+      return [];
     }
 
     if (overflowsOrUnderflows(successor)) {
-      return null;
+      return [];
     }
     return successor;
   }
 }
 
 class Predecessor extends Expression {
-  Predecessor(Map<String, dynamic> json) : super.fromJson(json);
+  Predecessor.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<List<dynamic>> execute(Context ctx) async {
     final arg = await execArgs(ctx);
-    if (arg == null) {
-      return null;
-    }
 
     dynamic predecessor = null;
     try {
       predecessor = predecessor(
           arg); // Consider using the actual logic for predecessor from your `MathUtil` class
     } on OverFlowException {
-      return null;
+      return [];
     }
 
     if (overflowsOrUnderflows(predecessor)) {
-      return null;
+      return [];
     }
     return predecessor;
   }

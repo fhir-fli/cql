@@ -5,82 +5,87 @@ import 'package:fhir/r4.dart';
 import '../cql.dart';
 
 abstract class AggregateExpression extends Expression {
-  AggregateExpression({required this.source, this.signature, this.path});
-
   AggregateExpression.fromJson(Map<String, dynamic> json)
-      : source = build(json['source']);
+      : source = build(json['source']),
+        super.fromJson(json);
 
-  dynamic source;
-  List<TypeSpecifier>? signature;
-  String? path;
+  List<Expression> source;
 }
 
 class Count extends AggregateExpression {
-  Count(Map<String, dynamic> json) : super.fromJson(json);
+  Count.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    if (source is Expression) {
-      var items = await (source as Expression).exec(ctx);
+  Future<List<int>> execute(Context ctx) async {
+    if (source.length == 1) {
+      var items = await source.first.execute(ctx);
       if (typeIsArray(items)) {
-        return removeNulls(items).length;
+        return [removeNulls(items).length];
       }
     }
-    return 0;
+    return [0];
   }
 }
 
 class Sum extends AggregateExpression {
-  Sum(Map<String, dynamic> json) : super.fromJson(json);
+  Sum.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    var items = await source.exec(ctx);
+  Future<List<ElmQuantity>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return <ElmQuantity>[];
+    }
+    var items = await source.first.execute(ctx);
     if (!typeIsArray(items)) {
-      return null;
+      return <ElmQuantity>[];
     }
 
     try {
       items = processQuantities(items);
     } catch (e) {
-      return null;
+      return <ElmQuantity>[];
     }
 
     if (items.length == 0) {
-      return null;
+      return <ElmQuantity>[];
     }
 
     if (hasOnlyQuantities(items)) {
-      var values = getValuesFromQuantities(items);
+      var values = getValuesFromQuantities(items as List<ElmQuantity>);
       var sum = values.reduce((x, y) => x + y);
-      return ElmQuantity(value: FhirDecimal(sum), unit: items[0].unit);
+      return <ElmQuantity>[
+        ElmQuantity(value: FhirDecimal(sum), unit: items[0].unit)
+      ];
     } else {
-      return items.reduce((x, y) => x + y);
+      return <ElmQuantity>[items.reduce((x, y) => x + y)];
     }
   }
 }
 
 class Min extends AggregateExpression {
-  Min(Map<String, dynamic> json) : super.fromJson(json);
+  Min.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    final list = await this.source.exec(ctx);
-    if (list == null) {
-      return null;
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
     }
-    final listWithoutNulls = removeNulls(list);
+    final items = await source.first.execute(ctx);
+    if (items.isEmpty) {
+      return [];
+    }
+    final listWithoutNulls = removeNulls(items);
 
     // Check for incompatible units and return null. We don't want to convert
     // the units for Min/Max, so we throw away the converted array if it succeeds
     try {
-      processQuantities(list);
+      processQuantities(items);
     } catch (e) {
-      return null;
+      return [];
     }
 
     if (listWithoutNulls.length == 0) {
-      return null;
+      return [];
     }
     // We assume the list is an array of all the same type.
     var minimum = listWithoutNulls[0];
@@ -94,13 +99,17 @@ class Min extends AggregateExpression {
 }
 
 class Max extends AggregateExpression {
-  Max(Map<String, dynamic> json) : super.fromJson(json);
+  Max.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    final items = await this.source.exec(ctx);
-    if (items == null) {
-      return null;
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    final items = await source.first.execute(ctx);
+
+    if (items.isEmpty) {
+      return [];
     }
     final listWithoutNulls = removeNulls(items);
 
@@ -109,11 +118,11 @@ class Max extends AggregateExpression {
     try {
       processQuantities(items);
     } catch (e) {
-      return null;
+      return [];
     }
 
     if (listWithoutNulls.length == 0) {
-      return null;
+      return [];
     }
     // We assume the list is an array of all the same type.
     var maximum = listWithoutNulls[0];
@@ -127,74 +136,83 @@ class Max extends AggregateExpression {
 }
 
 class Avg extends AggregateExpression {
-  Avg(Map<String, dynamic> json) : super.fromJson(json);
+  Avg.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    final items = await this.source.exec(ctx);
-    if (items == null || items.isEmpty) {
-      return null;
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    final items = await source.first.execute(ctx);
+    if (items.isEmpty) {
+      return [];
     }
 
     // Assuming `items` is a list of numeric values
     final listWithoutNulls = items.whereType<num>().toList();
 
     if (listWithoutNulls.isEmpty) {
-      return null;
+      return [];
     }
 
     // Calculate the average
     final sum = listWithoutNulls.reduce((a, b) => a + b);
     final average = sum / listWithoutNulls.length;
-    return average;
+    return [average];
   }
 }
 
 class Median extends AggregateExpression {
-  Median(Map<String, dynamic> json) : super.fromJson(json);
+  Median.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
-  Future<dynamic> exec(Context ctx) async {
-    var items = await this.source.exec(ctx);
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    var items = await source.first.execute(ctx);
     if (!typeIsArray(items)) {
-      return null;
+      return [];
     }
     if (items.isEmpty) {
-      return null;
+      return [];
     }
 
     try {
       items = processQuantities(items);
     } catch (e) {
-      return null;
+      return [];
     }
 
     if (!hasOnlyQuantities(items)) {
-      return medianOfNumbers(items);
+      return [medianOfNumbers(items as List<num>)];
     }
 
-    final values = getValuesFromQuantities(items);
+    final values = getValuesFromQuantities(items as List<ElmQuantity>);
     final median = medianOfNumbers(values);
-    return Quantity(value: FhirDecimal(median), unit: items[0].unit);
+    return [Quantity(value: FhirDecimal(median), unit: items[0].unit)];
   }
 }
 
 class Mode extends AggregateExpression {
-  Mode(Map<String, dynamic> json) : super.fromJson(json);
+  Mode.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
-  Future<dynamic> exec(Context ctx) async {
-    final items = await this.source.exec(ctx);
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    final items = await source.first.execute(ctx);
     if (!typeIsArray(items)) {
-      return null;
+      return [];
     }
     if (items.isEmpty) {
-      return null;
+      return [];
     }
 
     List<dynamic>? filtered;
     try {
       filtered = processQuantities(items);
     } catch (e) {
-      return null;
+      return [];
     }
 
     if (hasOnlyQuantities(filtered)) {
@@ -203,7 +221,7 @@ class Mode extends AggregateExpression {
       if (mode.length == 1) {
         mode = mode[0];
       }
-      return Quantity(value: FhirDecimal(mode), unit: items[0].unit);
+      return [Quantity(value: FhirDecimal(mode), unit: items[0].unit)];
     } else {
       final mode = this.mode(filtered);
       if (mode.length == 1) {
@@ -240,31 +258,34 @@ enum StatisticType {
 }
 
 class StdDev extends AggregateExpression {
-  StdDev(Map<String, dynamic> json) : super.fromJson(json);
+  StdDev.fromJson(Map<String, dynamic> json) : super.fromJson(json);
   StatisticType type = StatisticType.standardDeviation;
 
-  Future<dynamic> exec(Context ctx) async {
-    var items = await this.source.exec(ctx);
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    var items = await source.first.execute(ctx);
     if (!typeIsArray(items)) {
-      return null;
+      return [];
     }
 
     try {
       items = processQuantities(items);
     } catch (e) {
-      return null;
+      return [];
     }
 
     if (items.isEmpty) {
-      return null;
+      return [];
     }
 
     if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items);
+      final values = getValuesFromQuantities(items as List<ElmQuantity>);
       final stdDev = standardDeviation(values);
-      return Quantity(value: FhirDecimal(stdDev), unit: items[0].unit);
+      return [Quantity(value: FhirDecimal(stdDev), unit: items[0].unit)];
     } else {
-      return standardDeviation(items);
+      return [standardDeviation(items as List<num>)];
     }
   }
 
@@ -296,28 +317,31 @@ class StdDev extends AggregateExpression {
 }
 
 class Product extends AggregateExpression {
-  Product(Map<String, dynamic> json) : super.fromJson(json);
+  Product.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
-  Future<dynamic> exec(Context ctx) async {
-    var items = await this.source.exec(ctx);
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    var items = await source.first.execute(ctx);
     if (!typeIsArray(items)) {
-      return null;
+      return [];
     }
 
     try {
       items = processQuantities(items);
     } catch (e) {
-      return null;
+      return [];
     }
     if (items.isEmpty) {
-      return null;
+      return [];
     }
 
     if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items);
+      final values = getValuesFromQuantities(items as List<ElmQuantity>);
       final product = values.reduce((x, y) => x * y);
       // Units are not multiplied for the geometric product
-      return Quantity(value: FhirDecimal(product), unit: items[0].unit);
+      return [Quantity(value: FhirDecimal(product), unit: items[0].unit)];
     } else {
       return items.reduce((x, y) => x * y);
     }
@@ -325,68 +349,73 @@ class Product extends AggregateExpression {
 }
 
 class GeometricMean extends AggregateExpression {
-  GeometricMean(Map<String, dynamic> json) : super.fromJson(json);
+  GeometricMean.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    var items = await source.exec(ctx);
-    if (items is! List) {
-      return null;
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
     }
-
+    var items = await source.first.execute(ctx);
     try {
       items = processQuantities(items);
     } catch (e) {
-      return null;
+      return [];
     }
 
     if (items.isEmpty) {
-      return null;
+      return [];
     }
 
     if (hasOnlyQuantities(items)) {
       final values = getValuesFromQuantities(items as List<ElmQuantity>);
       final product = values.fold(1.0, (x, y) => x * y);
       final geoMean = pow(product, 1.0 / items.length);
-      return Quantity(value: FhirDecimal(geoMean), unit: items[0].unit);
+      return [Quantity(value: FhirDecimal(geoMean), unit: items[0].unit)];
     } else {
       final product = items.fold(1.0, (x, y) => x * y);
-      return pow(product, 1.0 / items.length);
+      return [pow(product, 1.0 / items.length)];
     }
   }
 }
 
 class PopulationStdDev extends StdDev {
-  PopulationStdDev(Map<String, dynamic> json) : super(json);
+  PopulationStdDev.fromJson(Map<String, dynamic> json) : super.fromJson(json);
   final StatisticType type = StatisticType.populationDeviation;
 }
 
 class Variance extends StdDev {
-  Variance(Map<String, dynamic> json) : super(json);
+  Variance.fromJson(Map<String, dynamic> json) : super.fromJson(json);
   final StatisticType type = StatisticType.standardVariance;
 }
 
 class PopulationVariance extends StdDev {
-  PopulationVariance(Map<String, dynamic> json) : super(json);
+  PopulationVariance.fromJson(Map<String, dynamic> json) : super.fromJson(json);
   final StatisticType type = StatisticType.populationVariance;
 }
 
 class AllTrue extends AggregateExpression {
-  AllTrue(Map<String, dynamic> json) : super.fromJson(json);
+  AllTrue.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    final items = await source.execute(ctx);
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    final items = await source.first.execute(ctx);
     return allTrue(removeNulls(items));
   }
 }
 
 class AnyTrue extends AggregateExpression {
-  AnyTrue(Map<String, dynamic> json) : super.fromJson(json);
+  AnyTrue.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
-    final items = await source.execute(ctx);
+  Future<List<dynamic>> execute(Context ctx) async {
+    if (source.length != 1) {
+      return [];
+    }
+    final items = await source.first.execute(ctx);
     return anyTrue(items);
   }
 }

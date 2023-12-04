@@ -5,7 +5,7 @@ import '../cql.dart';
 class Context {
   // Public Constructor args
   var parent;
-  dt.DateTime? executionDateTime;
+  CqlDateTime? executionDateTime;
   MessageListener? messageListener;
 
   // Private Constructor args
@@ -112,7 +112,7 @@ class Context {
 
   int? getTimezoneOffset() {
     if (executionDateTime != null) {
-      return executionDateTime.timezoneOffset;
+      return executionDateTime?.timezoneOffset;
     } else if (parent != null && parent.getTimezoneOffset != null) {
       return parent!.getTimezoneOffset()!;
     } else {
@@ -120,7 +120,7 @@ class Context {
     }
   }
 
-  CqlDateTime getExecutionDateTime() {
+  CqlDateTime? getExecutionDateTime() {
     if (executionDateTime != null) {
       return executionDateTime;
     } else if (parent != null && parent.getExecutionDateTime != null) {
@@ -388,7 +388,7 @@ class Context {
 }
 
 class PatientContext extends Context {
-  Library library;
+  ElmLibrary library;
   PatientObject? patient;
 
   PatientContext({
@@ -415,7 +415,7 @@ class PatientContext extends Context {
   Context getLibraryContext(library) {
     if (libraryContext[library] == null) {
       libraryContext[library] = PatientContext(
-        library: get(library) as Library,
+        library: get(library) as ElmLibrary,
         patient: patient,
         codeService: codeService,
         parameters: parameters,
@@ -429,7 +429,7 @@ class PatientContext extends Context {
   Context getLocalIdContext(String localId) {
     if (localIdContext[localId] == null) {
       localIdContext[localId] = PatientContext(
-        library: get(localId) as Library,
+        library: get(localId) as ElmLibrary,
         patient: patient,
         codeService: codeService,
         parameters: parameters,
@@ -456,13 +456,13 @@ class UnfilteredContext extends Context {
     this.results,
     TerminologyProvider? codeService,
     Parameter? parameters,
-    dt.DateTime? executionDateTime,
+    CqlDateTime? executionDateTime,
     MessageListener? messageListener,
   }) : super(
           library,
           codeService,
           parameters,
-          executionDateTime ??= dt.DateTime.fromJSDate(DateTime.now()),
+          executionDateTime ??= CqlDateTime.fromJSDate(DateTime.now()),
           messageListener ??= NullMessageListener(),
         );
 
@@ -484,21 +484,21 @@ class UnfilteredContext extends Context {
         'Library expressions are not currently supported in Unfiltered Context');
   }
 
-  dynamic get(String identifier) {
-    if (contextValues[identifier] != null) {
+  dynamic get(String? identifier) {
+    if (identifier != null && contextValues[identifier] != null) {
       return contextValues[identifier];
-    }
-
-    if (library.contexts
+    } else if (library.contexts
             .indexWhere((element) => element.name == 'Unfiltered') !=
         -1) {
       return library.contexts
           .firstWhere((element) => element.name == 'Unfiltered');
+    } else if (identifier == null) {
+      return null;
+    } else {
+      return results['patientResults']
+          .values
+          .map((pr) => pr[identifier])
+          .toList();
     }
-
-    return results['patientResults']
-        .values
-        .map((pr) => pr[identifier])
-        .toList();
   }
 }
