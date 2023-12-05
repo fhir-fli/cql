@@ -35,22 +35,34 @@ const LENGTH_TO_DATETIME_FORMATS_MAP = {
   "yyyy-MM-dd'T'HH:mm:ss.SSSZZ": '2012-01-31T12:30:59.000-04:00',
 };
 
-const DATETIME_PRECISION_VALUE_MAP = {
-  'year': 4,
-  'month': 6,
-  'day': 8,
-  'hour': 10,
-  'minute': 12,
-  'second': 14,
-  'millisecond': 17,
+const DATETIME_PRECISION_VALUE_MAP = <CqlDateTimeUnit, int>{
+  CqlDateTimeUnit.year: 4,
+  CqlDateTimeUnit.month: 6,
+  CqlDateTimeUnit.day: 8,
+  CqlDateTimeUnit.hour: 10,
+  CqlDateTimeUnit.minute: 12,
+  CqlDateTimeUnit.second: 14,
+  CqlDateTimeUnit.millisecond: 17,
 };
 
-const TIME_PRECISION_VALUE_MAP = {
-  'hour': 2,
-  'minute': 4,
-  'second': 6,
-  'millisecond': 9,
+const TIME_PRECISION_VALUE_MAP = <CqlDateTimeUnit, int>{
+  CqlDateTimeUnit.hour: 2,
+  CqlDateTimeUnit.minute: 4,
+  CqlDateTimeUnit.second: 6,
+  CqlDateTimeUnit.millisecond: 9,
 };
+
+enum CqlDateTimeUnit {
+  year,
+  month,
+  week,
+  day,
+  hour,
+  minute,
+  second,
+  millisecond,
+  microsecond,
+}
 
 abstract class AbstractDate {
   FhirDateTimeBase value;
@@ -60,7 +72,7 @@ abstract class AbstractDate {
 
   AbstractDate fromDateTime(DateTime dateTime);
 
-  String? getPrecision();
+  CqlDateTimeUnit? getPrecision();
   FhirDateTimeBase? getDateTime();
   AbstractDate copy();
   int? get year => value.year;
@@ -70,11 +82,11 @@ abstract class AbstractDate {
   bool get isDateTime;
   int? get timezoneOffset => value.value?.timeZoneOffset.inHours;
 
-  int? stringToValue(String? string) => string == 'year'
+  int? unitToValue(CqlDateTimeUnit? unit) => unit == CqlDateTimeUnit.year
       ? value.year
-      : string == 'month'
+      : unit == CqlDateTimeUnit.month
           ? value.month
-          : string == 'day'
+          : unit == CqlDateTimeUnit.day
               ? value.day
               : null;
 
@@ -87,15 +99,20 @@ abstract class AbstractDate {
   }
 
   bool isMorePrecise(other) {
-    if (other is String && ['year', 'month', 'day'].contains(other)) {
-      final int? value = stringToValue(other);
+    if (other is CqlDateTimeUnit &&
+        [CqlDateTimeUnit.year, CqlDateTimeUnit.month, CqlDateTimeUnit.day]
+            .contains(other)) {
+      final int? value = unitToValue(other);
       if (value == null) {
         return false;
       }
     } else if (other is AbstractDate) {
-      for (final field in ['year', 'month', 'day']) {
-        if (other.stringToValue(field) != null &&
-            stringToValue(field) == null) {
+      for (final field in [
+        CqlDateTimeUnit.year,
+        CqlDateTimeUnit.month,
+        CqlDateTimeUnit.day
+      ]) {
+        if (other.unitToValue(field) != null && unitToValue(field) == null) {
           return false;
         }
       }
@@ -108,11 +125,15 @@ abstract class AbstractDate {
   }
 
   bool isSamePrecision(AbstractDate other) {
-    for (final field in ['year', 'month', 'day']) {
-      if (stringToValue(field) != null && other.stringToValue(field) == null) {
+    for (final field in [
+      CqlDateTimeUnit.year,
+      CqlDateTimeUnit.month,
+      CqlDateTimeUnit.day
+    ]) {
+      if (unitToValue(field) != null && other.unitToValue(field) == null) {
         return false;
       }
-      if (stringToValue(field) == null && other.stringToValue(field) != null) {
+      if (unitToValue(field) == null && other.unitToValue(field) != null) {
         return false;
       }
     }
@@ -136,7 +157,10 @@ abstract class AbstractDate {
       other = other.getDateTime();
     }
 
-    if (precision != null && ['year', 'month', 'day'].indexOf(precision) < 0) {
+    if (precision != null &&
+        [CqlDateTimeUnit.year, CqlDateTimeUnit.month, CqlDateTimeUnit.day]
+                .indexOf(precision) <
+            0) {
       throw Exception('Invalid precision: $precision');
     }
 
@@ -146,13 +170,17 @@ abstract class AbstractDate {
       }
     }
 
-    for (final field in ['year', 'month', 'day']) {
-      if (stringToValue(field) != null && other.stringToValue(field) != null) {
-        if (stringToValue(field) != other.stringToValue(field)) {
+    for (final field in [
+      CqlDateTimeUnit.year,
+      CqlDateTimeUnit.month,
+      CqlDateTimeUnit.day
+    ]) {
+      if (unitToValue(field) != null && other.unitToValue(field) != null) {
+        if (unitToValue(field) != other.unitToValue(field)) {
           return false;
         }
-      } else if (stringToValue(field) == null &&
-          other.stringToValue(field) == null) {
+      } else if (unitToValue(field) == null &&
+          other.unitToValue(field) == null) {
         if (precision == null) {
           return true;
         } else {
@@ -178,7 +206,9 @@ abstract class AbstractDate {
       other = other.getDateTime();
     }
 
-    if (precision != null && !['year', 'month', 'day'].contains(precision)) {
+    if (precision != null &&
+        ![CqlDateTimeUnit.year, CqlDateTimeUnit.month, CqlDateTimeUnit.day]
+            .contains(precision)) {
       throw Exception('Invalid precision: $precision');
     }
 
@@ -188,15 +218,19 @@ abstract class AbstractDate {
       }
     }
 
-    for (final field in ['year', 'month', 'day']) {
-      if (stringToValue(field) != null && other.stringToValue(field) != null) {
-        if (stringToValue(field)! < other.stringToValue(field)!) {
+    for (final field in [
+      CqlDateTimeUnit.year,
+      CqlDateTimeUnit.month,
+      CqlDateTimeUnit.day
+    ]) {
+      if (unitToValue(field) != null && other.unitToValue(field) != null) {
+        if (unitToValue(field)! < other.unitToValue(field)!) {
           return true;
-        } else if (stringToValue(field)! > other.stringToValue(field)!) {
+        } else if (unitToValue(field)! > other.unitToValue(field)!) {
           return false;
         }
-      } else if (stringToValue(field) == null &&
-          other.stringToValue(field) == null) {
+      } else if (unitToValue(field) == null &&
+          other.unitToValue(field) == null) {
         if (precision == null) {
           return true;
         } else {
@@ -222,7 +256,9 @@ abstract class AbstractDate {
       other = other.getDateTime();
     }
 
-    if (precision != null && !['year', 'month', 'day'].contains(precision)) {
+    if (precision != null &&
+        ![CqlDateTimeUnit.year, CqlDateTimeUnit.month, CqlDateTimeUnit.day]
+            .contains(precision)) {
       throw Exception('Invalid precision: $precision');
     }
 
@@ -232,15 +268,19 @@ abstract class AbstractDate {
       }
     }
 
-    for (final field in ['year', 'month', 'day']) {
-      if (stringToValue(field) != null && other.stringToValue(field) != null) {
-        if (stringToValue(field)! > other.stringToValue(field)!) {
+    for (final field in [
+      CqlDateTimeUnit.year,
+      CqlDateTimeUnit.month,
+      CqlDateTimeUnit.day
+    ]) {
+      if (unitToValue(field) != null && other.unitToValue(field) != null) {
+        if (unitToValue(field)! > other.unitToValue(field)!) {
           return true;
-        } else if (stringToValue(field)! < other.stringToValue(field)!) {
+        } else if (unitToValue(field)! < other.unitToValue(field)!) {
           return false;
         }
-      } else if (stringToValue(field) == null &&
-          other.stringToValue(field) == null) {
+      } else if (unitToValue(field) == null &&
+          other.unitToValue(field) == null) {
         if (precision == null) {
           return true;
         } else {
@@ -266,7 +306,9 @@ abstract class AbstractDate {
       other = other.getDateTime();
     }
 
-    if (precision != null && !['year', 'month', 'day'].contains(precision)) {
+    if (precision != null &&
+        ![CqlDateTimeUnit.year, CqlDateTimeUnit.month, CqlDateTimeUnit.day]
+            .contains(precision)) {
       throw Exception('Invalid precision: $precision');
     }
 
@@ -276,15 +318,19 @@ abstract class AbstractDate {
       }
     }
 
-    for (final field in ['year', 'month', 'day']) {
-      if (stringToValue(field) != null && other.stringToValue(field) != null) {
-        if (stringToValue(field)! < other.stringToValue(field)!) {
+    for (final field in [
+      CqlDateTimeUnit.year,
+      CqlDateTimeUnit.month,
+      CqlDateTimeUnit.day
+    ]) {
+      if (unitToValue(field) != null && other.unitToValue(field) != null) {
+        if (unitToValue(field)! < other.unitToValue(field)!) {
           return true;
-        } else if (stringToValue(field)! > other.stringToValue(field)!) {
+        } else if (unitToValue(field)! > other.unitToValue(field)!) {
           return false;
         }
-      } else if (stringToValue(field) == null &&
-          other.stringToValue(field) == null) {
+      } else if (unitToValue(field) == null &&
+          other.unitToValue(field) == null) {
         if (precision == null) {
           return false;
         } else {
@@ -310,7 +356,9 @@ abstract class AbstractDate {
       other = other.getDateTime();
     }
 
-    if (precision != null && !['year', 'month', 'day'].contains(precision)) {
+    if (precision != null &&
+        ![CqlDateTimeUnit.year, CqlDateTimeUnit.month, CqlDateTimeUnit.day]
+            .contains(precision)) {
       throw Exception('Invalid precision: $precision');
     }
 
@@ -320,15 +368,19 @@ abstract class AbstractDate {
       }
     }
 
-    for (final field in ['year', 'month', 'day']) {
-      if (stringToValue(field) != null && other.stringToValue(field) != null) {
-        if (stringToValue(field)! > other.stringToValue(field)!) {
+    for (final field in [
+      CqlDateTimeUnit.year,
+      CqlDateTimeUnit.month,
+      CqlDateTimeUnit.day
+    ]) {
+      if (unitToValue(field) != null && other.unitToValue(field) != null) {
+        if (unitToValue(field)! > other.unitToValue(field)!) {
           return true;
-        } else if (stringToValue(field)! < other.stringToValue(field)!) {
+        } else if (unitToValue(field)! < other.unitToValue(field)!) {
           return false;
         }
-      } else if (stringToValue(field) == null &&
-          other.stringToValue(field) == null) {
+      } else if (unitToValue(field) == null &&
+          other.unitToValue(field) == null) {
         if (precision == null) {
           return false;
         } else {
@@ -354,34 +406,34 @@ abstract class AbstractDate {
     // For this translation, I'll simulate the behavior using Dart's DateTime.
     DateTime? dateTime = getDateTime()?.value;
 
-    if (field == 'month' ||
-        field == 'day' ||
-        field == 'hour' ||
-        field == 'minute' ||
-        field == 'second' ||
-        field == 'millisecond') {
+    if (field == CqlDateTimeUnit.month ||
+        field == CqlDateTimeUnit.day ||
+        field == CqlDateTimeUnit.hour ||
+        field == CqlDateTimeUnit.minute ||
+        field == CqlDateTimeUnit.second ||
+        field == CqlDateTimeUnit.millisecond) {
       DateTime? newDateTime = dateTime;
 
       // Handle more precise offset
-      if (field == 'month' ||
-          field == 'day' ||
-          field == 'hour' ||
-          field == 'minute' ||
-          field == 'second' ||
-          field == 'millisecond') {
-        if (stringToValue(field) == null && offset < 0) {
-          if (field == 'month') {
+      if (field == CqlDateTimeUnit.month ||
+          field == CqlDateTimeUnit.day ||
+          field == CqlDateTimeUnit.hour ||
+          field == CqlDateTimeUnit.minute ||
+          field == CqlDateTimeUnit.second ||
+          field == CqlDateTimeUnit.millisecond) {
+        if (unitToValue(field) == null && offset < 0) {
+          if (field == CqlDateTimeUnit.month) {
             newDateTime = DateTime(year!, 1);
-          } else if (field == 'day') {
+          } else if (field == CqlDateTimeUnit.day) {
             newDateTime = DateTime(year!, month!);
-          } else if (field == 'hour') {
+          } else if (field == CqlDateTimeUnit.hour) {
             newDateTime = DateTime(year!, month!, day!);
-          } else if (field == 'minute') {
+          } else if (field == CqlDateTimeUnit.minute) {
             newDateTime = DateTime(year!, month!, day!, dateTime?.hour ?? 0);
-          } else if (field == 'second') {
+          } else if (field == CqlDateTimeUnit.second) {
             newDateTime = DateTime(year!, month!, day!, dateTime?.hour ?? 0,
                 dateTime?.minute ?? 0);
-          } else if (field == 'millisecond') {
+          } else if (field == CqlDateTimeUnit.millisecond) {
             newDateTime = DateTime(year!, month!, day!, dateTime?.hour ?? 0,
                 dateTime?.minute ?? 0, dateTime?.second ?? 0);
           }
@@ -389,22 +441,22 @@ abstract class AbstractDate {
       }
 
       // Do the actual addition
-      if (field == 'month') {
+      if (field == CqlDateTimeUnit.month) {
         if (dateTime?.year == null) {
           return null;
         } else {
           newDateTime = DateTime(dateTime!.year, dateTime.month)
               .add(Duration(days: offset * 30));
         }
-      } else if (field == 'day') {
+      } else if (field == CqlDateTimeUnit.day) {
         newDateTime = dateTime?.add(Duration(days: offset));
-      } else if (field == 'hour') {
+      } else if (field == CqlDateTimeUnit.hour) {
         newDateTime = dateTime?.add(Duration(hours: offset));
-      } else if (field == 'minute') {
+      } else if (field == CqlDateTimeUnit.minute) {
         newDateTime = dateTime?.add(Duration(minutes: offset));
-      } else if (field == 'second') {
+      } else if (field == CqlDateTimeUnit.second) {
         newDateTime = dateTime?.add(Duration(seconds: offset));
-      } else if (field == 'millisecond') {
+      } else if (field == CqlDateTimeUnit.millisecond) {
         newDateTime = dateTime?.add(Duration(milliseconds: offset));
       }
 
@@ -433,17 +485,17 @@ abstract class AbstractDate {
 
   int getFieldFloor(field) {
     switch (field) {
-      case 'month':
+      case CqlDateTimeUnit.month:
         return 1;
-      case 'day':
+      case CqlDateTimeUnit.day:
         return 1;
-      case 'hour':
+      case CqlDateTimeUnit.hour:
         return 0;
-      case 'minute':
+      case CqlDateTimeUnit.minute:
         return 0;
-      case 'second':
+      case CqlDateTimeUnit.second:
         return 0;
-      case 'millisecond':
+      case CqlDateTimeUnit.millisecond:
         return 0;
       default:
         throw Exception(
@@ -453,17 +505,17 @@ abstract class AbstractDate {
 
   int getFieldCeiling(field) {
     switch (field) {
-      case 'month':
+      case CqlDateTimeUnit.month:
         return 12;
-      case 'day':
+      case CqlDateTimeUnit.day:
         return DateTime(year!, month! + 1, 0).day;
-      case 'hour':
+      case CqlDateTimeUnit.hour:
         return 23;
-      case 'minute':
+      case CqlDateTimeUnit.minute:
         return 59;
-      case 'second':
+      case CqlDateTimeUnit.second:
         return 59;
-      case 'millisecond':
+      case CqlDateTimeUnit.millisecond:
         return 999;
       default:
         throw Exception(
@@ -471,9 +523,9 @@ abstract class AbstractDate {
     }
   }
 
-  Uncertainty? durationBetween(dynamic other, String unitField);
+  Uncertainty? durationBetween(dynamic other, CqlDateTimeUnit unitField);
 
-  Uncertainty? differenceBetween(dynamic other, String unitField);
+  Uncertainty? differenceBetween(dynamic other, CqlDateTimeUnit unitField);
 }
 
 class CqlDateTime extends AbstractDate {
@@ -621,38 +673,38 @@ class CqlDateTime extends AbstractDate {
 
   AbstractDate? successor() {
     if (this.millisecond != null) {
-      return this.add(1, 'millisecond');
+      return this.add(1, CqlDateTimeUnit.millisecond);
     } else if (this.second != null) {
-      return this.add(1, 'second');
+      return this.add(1, CqlDateTimeUnit.second);
     } else if (this.minute != null) {
-      return this.add(1, 'minute');
+      return this.add(1, CqlDateTimeUnit.minute);
     } else if (this.hour != null) {
-      return this.add(1, 'hour');
+      return this.add(1, CqlDateTimeUnit.hour);
     } else if (this.day != null) {
-      return this.add(1, 'day');
+      return this.add(1, CqlDateTimeUnit.day);
     } else if (this.month != null) {
-      return this.add(1, 'month');
+      return this.add(1, CqlDateTimeUnit.month);
     } else if (this.year != null) {
-      return this.add(1, 'year');
+      return this.add(1, CqlDateTimeUnit.year);
     }
     return null;
   }
 
   AbstractDate? predecessor() {
     if (this.millisecond != null) {
-      return this.add(-1, 'millisecond');
+      return this.add(-1, CqlDateTimeUnit.millisecond);
     } else if (this.second != null) {
-      return this.add(-1, 'second');
+      return this.add(-1, CqlDateTimeUnit.second);
     } else if (this.minute != null) {
-      return this.add(-1, 'minute');
+      return this.add(-1, CqlDateTimeUnit.minute);
     } else if (this.hour != null) {
-      return this.add(-1, 'hour');
+      return this.add(-1, CqlDateTimeUnit.hour);
     } else if (this.day != null) {
-      return this.add(-1, 'day');
+      return this.add(-1, CqlDateTimeUnit.day);
     } else if (this.month != null) {
-      return this.add(-1, 'month');
+      return this.add(-1, CqlDateTimeUnit.month);
     } else if (this.year != null) {
-      return this.add(-1, 'year');
+      return this.add(-1, CqlDateTimeUnit.year);
     }
     return null;
   }
@@ -664,7 +716,7 @@ class CqlDateTime extends AbstractDate {
   //   return shiftedDT.reducedPrecision(this.getPrecision());
   // }
 
-  Uncertainty? differenceBetween(dynamic other, String unitField) {
+  Uncertainty? differenceBetween(dynamic other, CqlDateTimeUnit unitField) {
     other = this._implicitlyConvert(other);
     if (other == null || other is! CqlDateTime) {
       return null;
@@ -673,7 +725,12 @@ class CqlDateTime extends AbstractDate {
     final Uncertainty? a = this.toLuxonUncertainty();
     final b = other.toLuxonUncertainty();
 
-    if (['year', 'month', 'week', 'day'].contains(unitField)) {
+    if ([
+      CqlDateTimeUnit.year,
+      CqlDateTimeUnit.month,
+      'week',
+      CqlDateTimeUnit.day
+    ].contains(unitField)) {
       a?.low = a.low.toUTC(0, keepLocalTime: true);
       a?.high = a.high.toUTC(0, keepLocalTime: true);
       b?.low = b.low.toUTC(0, keepLocalTime: true);
@@ -691,7 +748,7 @@ class CqlDateTime extends AbstractDate {
     );
   }
 
-  Uncertainty? durationBetween(dynamic other, String unitField) {
+  Uncertainty? durationBetween(dynamic other, CqlDateTimeUnit unitField) {
     other = this._implicitlyConvert(other);
     if (other == null || !other.isDateTime) {
       return null;
@@ -709,40 +766,40 @@ class CqlDateTime extends AbstractDate {
     return timezoneOffset == 0;
   }
 
-  String? getPrecision() {
-    String? result;
+  CqlDateTimeUnit? getPrecision() {
+    CqlDateTimeUnit? result;
     if (year != null) {
-      result = 'year';
+      result = CqlDateTimeUnit.year;
     } else {
       return result;
     }
     if (month != null) {
-      result = 'month';
+      result = CqlDateTimeUnit.month;
     } else {
       return result;
     }
     if (day != null) {
-      result = 'day';
+      result = CqlDateTimeUnit.day;
     } else {
       return result;
     }
     if (hour != null) {
-      result = 'hour';
+      result = CqlDateTimeUnit.hour;
     } else {
       return result;
     }
     if (minute != null) {
-      result = 'minute';
+      result = CqlDateTimeUnit.minute;
     } else {
       return result;
     }
     if (second != null) {
-      result = 'second';
+      result = CqlDateTimeUnit.second;
     } else {
       return result;
     }
     if (millisecond != null) {
-      result = 'millisecond';
+      result = CqlDateTimeUnit.millisecond;
     }
     return result;
   }
@@ -758,13 +815,13 @@ class CqlDateTime extends AbstractDate {
   //       ? timezoneOffset * 60
   //       : jsDate().getTimezoneOffset() * -1;
   //   return LuxonDateTime.fromObject({
-  //     'year': year,
-  //     'month': month,
-  //     'day': day,
-  //     'hour': hour,
-  //     'minute': minute,
-  //     'second': second,
-  //     'millisecond': millisecond,
+  //     CqlDateTimeUnit.year: year,
+  //     CqlDateTimeUnit.month: month,
+  //     CqlDateTimeUnit.day: day,
+  //     CqlDateTimeUnit.hour: hour,
+  //     CqlDateTimeUnit.minute: minute,
+  //     CqlDateTimeUnit.second: second,
+  //     CqlDateTimeUnit.millisecond: millisecond,
   //     'zone': FixedOffsetZone.instance(offsetMins),
   //   });
   // }
@@ -774,7 +831,7 @@ class CqlDateTime extends AbstractDate {
     if (low == null) {
       return null;
     } else {
-      final high = endOf(low, this.getPrecision()!);
+      final high = endOf(low, getPrecision()!);
       return Uncertainty(low: low, high: high);
     }
   }
@@ -895,18 +952,17 @@ class CqlDateTime extends AbstractDate {
     return other;
   }
 
-  CqlDateTime? reducedPrecision({String? unitField}) {
+  CqlDateTime? reducedPrecision({CqlDateTimeUnit? unitField}) {
     CqlDateTime? reduced = copy();
-    if (unitField != null && unitField != 'millisecond') {
+    if (unitField != null && unitField != CqlDateTimeUnit.millisecond) {
       final fields = [
-        'year',
-        'month',
-        'day',
-        'hour',
-        'minute',
-        'second',
-        'millisecond',
-        'microsecond'
+        CqlDateTimeUnit.year,
+        CqlDateTimeUnit.month,
+        CqlDateTimeUnit.day,
+        CqlDateTimeUnit.hour,
+        CqlDateTimeUnit.minute,
+        CqlDateTimeUnit.second,
+        CqlDateTimeUnit.millisecond,
       ];
       final fieldIndex = fields.indexOf(unitField);
       if (fieldIndex != -1) {
@@ -981,27 +1037,27 @@ class CqlDate extends AbstractDate {
 
   AbstractDate? successor() {
     if (day != null) {
-      return add(1, 'day');
+      return add(1, CqlDateTimeUnit.day);
     } else if (month != null) {
-      return add(1, 'month');
+      return add(1, CqlDateTimeUnit.month);
     } else if (year != null) {
-      return add(1, 'year');
+      return add(1, CqlDateTimeUnit.year);
     }
     return null;
   }
 
   AbstractDate? predecessor() {
     if (day != null) {
-      return add(-1, 'day');
+      return add(-1, CqlDateTimeUnit.day);
     } else if (month != null) {
-      return add(-1, 'month');
+      return add(-1, CqlDateTimeUnit.month);
     } else if (year != null) {
-      return add(-1, 'year');
+      return add(-1, CqlDateTimeUnit.year);
     }
     return null;
   }
 
-  Uncertainty? differenceBetween(other, unitField) {
+  Uncertainty? differenceBetween(other, CqlDateTimeUnit unitField) {
     if (other != null && other is AbstractDate) {
       return other.differenceBetween(this, unitField);
     }
@@ -1041,22 +1097,22 @@ class CqlDate extends AbstractDate {
     );
   }
 
-  String? getPrecision() {
-    String? result;
+  CqlDateTimeUnit? getPrecision() {
+    CqlDateTimeUnit? result;
     if (year != null) {
-      result = 'year';
+      result = CqlDateTimeUnit.year;
     } else {
       return result;
     }
 
     if (month != null) {
-      result = 'month';
+      result = CqlDateTimeUnit.month;
     } else {
       return result;
     }
 
     if (day != null) {
-      result = 'day';
+      result = CqlDateTimeUnit.day;
     } else {
       return result;
     }
@@ -1082,7 +1138,9 @@ class CqlDate extends AbstractDate {
     if (low.value == null) {
       return null;
     } else {
-      final high = startOf(endOf(low.value!, (getPrecision() ?? 'day')), 'day');
+      final high = startOf(
+          endOf(low.value!, (getPrecision() ?? CqlDateTimeUnit.day)),
+          CqlDateTimeUnit.day);
       return Uncertainty(low: low, high: high);
     }
   }
@@ -1139,18 +1197,17 @@ class CqlDate extends AbstractDate {
     }
   }
 
-  CqlDate? reducedPrecision({String? unitField}) {
+  CqlDate? reducedPrecision({CqlDateTimeUnit? unitField}) {
     CqlDate? reduced = copy();
-    if (unitField != null && unitField != 'millisecond') {
+    if (unitField != null && unitField != CqlDateTimeUnit.millisecond) {
       final fields = [
-        'year',
-        'month',
-        'day',
-        'hour',
-        'minute',
-        'second',
-        'millisecond',
-        'microsecond'
+        CqlDateTimeUnit.year,
+        CqlDateTimeUnit.month,
+        CqlDateTimeUnit.day,
+        CqlDateTimeUnit.hour,
+        CqlDateTimeUnit.minute,
+        CqlDateTimeUnit.second,
+        CqlDateTimeUnit.millisecond,
       ];
       final fieldIndex = fields.indexOf(unitField);
       if (fieldIndex != -1) {
@@ -1184,10 +1241,14 @@ bool compareWithDefaultResult(dynamic a, dynamic b, dynamic defaultResult) {
 
   for (var field in a.constructor.FIELDS) {
     if (a[field] != null && b[field] != null) {
-      if (field == 'second') {
-        final aMillisecond = a['millisecond'] != null ? a['millisecond'] : 0;
+      if (field == CqlDateTimeUnit.second) {
+        final aMillisecond = a[CqlDateTimeUnit.millisecond] != null
+            ? a[CqlDateTimeUnit.millisecond]
+            : 0;
         final aSecondAndMillisecond = a[field] + aMillisecond / 1000;
-        final bMillisecond = b['millisecond'] != null ? b['millisecond'] : 0;
+        final bMillisecond = b[CqlDateTimeUnit.millisecond] != null
+            ? b[CqlDateTimeUnit.millisecond]
+            : 0;
         final bSecondAndMillisecond = b[field] + bMillisecond / 1000;
 
         return aSecondAndMillisecond == bSecondAndMillisecond;
@@ -1210,32 +1271,32 @@ bool isPrecisionUnspecifiedOrGreaterThanDay(dynamic precision) {
   return precision == null || RegExp(r'^h|mi|s').hasMatch(precision);
 }
 
-DateTime endOf(DateTime dateTime, String unit) {
+DateTime endOf(DateTime dateTime, CqlDateTimeUnit unit) {
   switch (unit) {
-    case 'year':
+    case CqlDateTimeUnit.year:
       return DateTime(dateTime.year, 12, 31, 23, 59, 59, 999);
-    case 'month':
+    case CqlDateTimeUnit.month:
       final nextMonth = dateTime.month < 12 ? dateTime.month + 1 : 1;
       final nextYear = nextMonth == 1 ? dateTime.year + 1 : dateTime.year;
       final endOfMonth = DateTime(nextYear, nextMonth, 0, 23, 59, 59, 999);
       return endOfMonth;
-    case 'week':
+    case CqlDateTimeUnit.week:
       final diff = 7 - dateTime.weekday;
       final endOfWeek = dateTime.add(Duration(days: diff)).subtract(Duration(
           seconds: dateTime.second,
           milliseconds: dateTime.millisecond,
           microseconds: dateTime.microsecond));
       return endOfWeek;
-    case 'day':
+    case CqlDateTimeUnit.day:
       return DateTime(
           dateTime.year, dateTime.month, dateTime.day, 23, 59, 59, 999);
-    case 'hour':
+    case CqlDateTimeUnit.hour:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, 59, 59, 999);
-    case 'minute':
+    case CqlDateTimeUnit.minute:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, dateTime.minute, 59, 999);
-    case 'second':
+    case CqlDateTimeUnit.second:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, dateTime.minute, dateTime.second, 999);
     default:
@@ -1243,29 +1304,29 @@ DateTime endOf(DateTime dateTime, String unit) {
   }
 }
 
-DateTime startOf(DateTime dateTime, String unit) {
+DateTime startOf(DateTime dateTime, CqlDateTimeUnit unit) {
   switch (unit) {
-    case 'year':
+    case CqlDateTimeUnit.year:
       return DateTime(dateTime.year);
-    case 'month':
+    case CqlDateTimeUnit.month:
       final nextMonth = dateTime.month < 12 ? dateTime.month + 1 : 1;
       final nextYear = nextMonth == 1 ? dateTime.year + 1 : dateTime.year;
       return DateTime(nextYear, nextMonth, 1);
-    case 'week':
+    case CqlDateTimeUnit.week:
       final diff = dateTime.weekday - DateTime.monday;
       return dateTime.subtract(Duration(days: diff));
-    case 'day':
+    case CqlDateTimeUnit.day:
       return DateTime(dateTime.year, dateTime.month, dateTime.day);
-    case 'hour':
+    case CqlDateTimeUnit.hour:
       return DateTime(
           dateTime.year, dateTime.month, dateTime.day, dateTime.hour);
-    case 'minute':
+    case CqlDateTimeUnit.minute:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, dateTime.minute);
-    case 'second':
+    case CqlDateTimeUnit.second:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, dateTime.minute, dateTime.second);
-    case 'millisecond':
+    case CqlDateTimeUnit.millisecond:
       return DateTime(
           dateTime.year,
           dateTime.month,
@@ -1274,7 +1335,7 @@ DateTime startOf(DateTime dateTime, String unit) {
           dateTime.minute,
           dateTime.second,
           dateTime.millisecond);
-    case 'microsecond':
+    case CqlDateTimeUnit.microsecond:
       return DateTime(
           dateTime.year,
           dateTime.month,
@@ -1319,7 +1380,7 @@ bool isValidDateTimeStringFormat(dynamic string) {
   return FhirDateTime(string.substring(0, string.length)).isValid;
 }
 
-DateTime truncateLuxonDateTime(DateTime luxonDT, String unit) {
+DateTime truncateLuxonDateTime(DateTime luxonDT, CqlDateTimeUnit unit) {
   // Truncating by week (to the previous Sunday) requires different logic than the rest
   if (unit == 'week') {
     // Sunday is ISO weekday 7
@@ -1328,13 +1389,13 @@ DateTime truncateLuxonDateTime(DateTime luxonDT, String unit) {
           .subtract(Duration(days: luxonDT.weekday - DateTime.sunday))
           .subtract(Duration(days: 7));
     }
-    unit = 'day';
+    unit = CqlDateTimeUnit.day;
   }
 
   return startOf(luxonDT, unit);
 }
 
-int? wholeLuxonDuration(Duration duration, String unit) {
+int? wholeLuxonDuration(Duration duration, CqlDateTimeUnit unit) {
   final num? value = inUnit(duration, unit);
   return value == null
       ? null
@@ -1343,46 +1404,48 @@ int? wholeLuxonDuration(Duration duration, String unit) {
           : value.ceil();
 }
 
-num? inUnit(Duration duration, String unit) {
+num? inUnit(Duration duration, CqlDateTimeUnit unit) {
   switch (unit) {
-    case 'year':
+    case CqlDateTimeUnit.year:
       return duration.inDays / 365;
-    case 'month':
+    case CqlDateTimeUnit.month:
       return duration.inDays / 30;
-    case 'week':
+    case CqlDateTimeUnit.week:
       return duration.inDays / 7;
-    case 'day':
+    case CqlDateTimeUnit.day:
       return duration.inDays;
-    case 'hour':
+    case CqlDateTimeUnit.hour:
       return duration.inHours;
-    case 'minute':
+    case CqlDateTimeUnit.minute:
       return duration.inMinutes;
-    case 'second':
+    case CqlDateTimeUnit.second:
       return duration.inSeconds;
-    case 'millisecond':
+    case CqlDateTimeUnit.millisecond:
       return duration.inMilliseconds;
+    case CqlDateTimeUnit.microsecond:
+      return duration.inMicroseconds;
   }
-  return null;
 }
 
-DateTime _setFieldToNull(DateTime dateTime, [String field = 'millisecond']) {
+DateTime _setFieldToNull(DateTime dateTime,
+    [CqlDateTimeUnit field = CqlDateTimeUnit.millisecond]) {
   switch (field) {
-    case 'year':
+    case CqlDateTimeUnit.year:
       return DateTime(dateTime.year);
-    case 'month':
+    case CqlDateTimeUnit.month:
       return DateTime(dateTime.year, dateTime.month);
-    case 'day':
+    case CqlDateTimeUnit.day:
       return DateTime(dateTime.year, dateTime.month, dateTime.day);
-    case 'hour':
+    case CqlDateTimeUnit.hour:
       return DateTime(
           dateTime.year, dateTime.month, dateTime.day, dateTime.hour);
-    case 'minute':
+    case CqlDateTimeUnit.minute:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, dateTime.minute);
-    case 'second':
+    case CqlDateTimeUnit.second:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, dateTime.minute, dateTime.second);
-    case 'millisecond':
+    case CqlDateTimeUnit.millisecond:
       return DateTime(
           dateTime.year,
           dateTime.month,
@@ -1391,7 +1454,7 @@ DateTime _setFieldToNull(DateTime dateTime, [String field = 'millisecond']) {
           dateTime.minute,
           dateTime.second,
           dateTime.millisecond);
-    case 'microsecond':
+    case CqlDateTimeUnit.microsecond:
       return DateTime(
           dateTime.year,
           dateTime.month,

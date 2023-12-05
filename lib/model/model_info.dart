@@ -3,9 +3,6 @@ import 'package:xml/xml.dart';
 
 import '../cql.dart';
 
-part 'model_info.g.dart';
-
-@JsonSerializable()
 class ContextInfo {
   NamedTypeSpecifier? contextType;
   String? name;
@@ -14,14 +11,8 @@ class ContextInfo {
 
   ContextInfo(
       {this.contextType, this.name, this.keyElement, this.birthDateElement});
-
-  factory ContextInfo.fromJson(Map<String, dynamic> json) =>
-      _$ContextInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ContextInfoToJson(this);
 }
 
-@JsonSerializable()
 class RelationshipInfo {
   String context;
   String? relatedKeyElement;
@@ -30,14 +21,8 @@ class RelationshipInfo {
     required this.context,
     this.relatedKeyElement,
   });
-
-  factory RelationshipInfo.fromJson(Map<String, dynamic> json) =>
-      _$RelationshipInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$RelationshipInfoToJson(this);
 }
 
-@JsonSerializable()
 class SearchInfo {
   TypeSpecifier? typeSpecifier;
   String? name;
@@ -57,14 +42,8 @@ class SearchInfo {
       this.description,
       this.definition,
       this.comment});
-
-  factory SearchInfo.fromJson(Map<String, dynamic> json) =>
-      _$SearchInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SearchInfoToJson(this);
 }
 
-@JsonSerializable()
 class ModelInfo {
   List<ModelSpecifier>? requiredModelInfo;
   List<TypeInfo>? typeInfo;
@@ -131,11 +110,6 @@ class ModelInfo {
     return modelInfo;
   }
 
-  factory ModelInfo.fromJson(Map<String, dynamic> json) =>
-      _$ModelInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ModelInfoToJson(this);
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -185,7 +159,6 @@ enum BindingStrength {
   example,
 }
 
-@JsonSerializable()
 class BindingInfo {
   String? name;
   String? description;
@@ -193,14 +166,8 @@ class BindingInfo {
   String? valueSet;
 
   BindingInfo({this.name, this.description, this.strength, this.valueSet});
-
-  factory BindingInfo.fromJson(Map<String, dynamic> json) =>
-      _$BindingInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$BindingInfoToJson(this);
 }
 
-@JsonSerializable()
 class ClassInfoElement {
   TypeSpecifier? typeSpecifier;
   TypeSpecifier? elementTypeSpecifier;
@@ -246,27 +213,15 @@ class ClassInfoElement {
       this.max,
       this.mustSupport = false,
       this.mustSupportSpecified = false});
-
-  factory ClassInfoElement.fromJson(Map<String, dynamic> json) =>
-      _$ClassInfoElementFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ClassInfoElementToJson(this);
 }
 
-@JsonSerializable()
 class ExpressionInfo {
   String? language;
   String? expression;
 
   ExpressionInfo({this.language, this.expression});
-
-  factory ExpressionInfo.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ExpressionInfoToJson(this);
 }
 
-@JsonSerializable()
 class ConstraintInfo {
   List<ExpressionInfo>? expression;
   String? name;
@@ -280,14 +235,8 @@ class ConstraintInfo {
       this.severity,
       this.description,
       this.message});
-
-  factory ConstraintInfo.fromJson(Map<String, dynamic> json) =>
-      _$ConstraintInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConstraintInfoToJson(this);
 }
 
-@JsonSerializable()
 class ClassInfo extends TypeInfo {
   List<TypeParameterInfo>? parameter;
   List<ClassInfoElement>? element;
@@ -327,67 +276,37 @@ class ClassInfo extends TypeInfo {
       this.retrievable = false,
       this.primaryCodePath,
       this.primaryValueSetPath});
-
-  factory ClassInfo.fromJson(Map<String, dynamic> json) =>
-      _$ClassInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ClassInfoToJson(this);
 }
 
-@JsonSerializable()
 class TypeInfo {
   TypeInfo({this.baseTypeSpecifier, this.baseType});
 
   TypeSpecifier? baseTypeSpecifier;
   String? baseType;
-
-  factory TypeInfo.fromJson(Map<String, dynamic> json) =>
-      _$TypeInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TypeInfoToJson(this);
 }
 
-@JsonSerializable()
 class SimpleTypeInfo extends TypeInfo {
   String? namespace;
   String? name;
   String? target;
 
   SimpleTypeInfo({this.namespace, this.name, this.target});
-
-  factory SimpleTypeInfo.fromJson(Map<String, dynamic> json) =>
-      _$SimpleTypeInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SimpleTypeInfoToJson(this);
 }
 
-@JsonSerializable()
 class IntervalTypeInfo extends TypeInfo {
   TypeSpecifier? pointTypeSpecifier;
   String? pointType;
 
   IntervalTypeInfo({this.pointTypeSpecifier, this.pointType});
-
-  factory IntervalTypeInfo.fromJson(Map<String, dynamic> json) =>
-      _$IntervalTypeInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IntervalTypeInfoToJson(this);
 }
 
-@JsonSerializable()
 class ListTypeInfo extends TypeInfo {
   TypeSpecifier? elementTypeSpecifier;
   String? elementType;
 
   ListTypeInfo({this.elementTypeSpecifier, this.elementType});
-
-  factory ListTypeInfo.fromJson(Map<String, dynamic> json) =>
-      _$ListTypeInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ListTypeInfoToJson(this);
 }
 
-@JsonSerializable()
 class TupleTypeInfoElement {
   TypeSpecifier? typeSpecifier;
   TypeSpecifier? elementTypeSpecifier;
@@ -410,29 +329,16 @@ class TupleTypeInfoElement {
     this.oneBased,
     this.oneBasedSpecified,
   });
-
-  factory TupleTypeInfoElement.fromJson(Map<String, dynamic> json) =>
-      _$TupleTypeInfoElementFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TupleTypeInfoElementToJson(this);
 }
 
-@JsonSerializable()
 class TupleTypeInfo extends TypeInfo {
   List<TupleTypeInfoElement>? element;
 
   TupleTypeInfo({this.element});
-
-  factory TupleTypeInfo.fromJson(Map<String, dynamic> json) =>
-      _$TupleTypeInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TupleTypeInfoToJson(this);
 }
 
-@JsonSerializable()
 class ProfileInfo extends ClassInfo {}
 
-@JsonSerializable()
 class ConversionInfo {
   TypeSpecifier? fromTypeSpecifier;
   TypeSpecifier? toTypeSpecifier;
@@ -446,73 +352,42 @@ class ConversionInfo {
       this.functionName,
       this.fromType,
       this.toType});
-
-  factory ConversionInfo.fromJson(Map<String, dynamic> json) =>
-      _$ConversionInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConversionInfoToJson(this);
 }
 
-@JsonSerializable()
 class ChoiceTypeInfo extends TypeInfo {
   List<TypeSpecifier>? type;
   List<TypeSpecifier>? choice;
 
   ChoiceTypeInfo({this.type, this.choice});
-
-  factory ChoiceTypeInfo.fromJson(Map<String, dynamic> json) =>
-      _$ChoiceTypeInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ChoiceTypeInfoToJson(this);
 }
 
-@JsonSerializable()
 class ModelSpecifier {
   String? url;
   String? name;
   String? version;
   ModelSpecifier({this.url, this.name, this.version});
-
-  factory ModelSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$ModelSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ModelSpecifierToJson(this);
 }
 
-@JsonSerializable()
 class NamedTypeSpecifier extends TypeSpecifier {
   String? modelName;
   String? namespace;
   String name;
 
   NamedTypeSpecifier({this.modelName, this.namespace, required this.name});
-
-  factory NamedTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$NamedTypeSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NamedTypeSpecifierToJson(this);
 }
 
-@JsonSerializable()
 class ListTypeSpecifier extends TypeSpecifier {
   TypeSpecifier? elementTypeSpecifier;
   String? elementType;
 }
 
-@JsonSerializable()
 class IntervalTypeSpecifier extends TypeSpecifier {
   IntervalTypeSpecifier({this.pointTypeSpecifier, this.pointType});
 
   TypeSpecifier? pointTypeSpecifier;
   String? pointType;
-
-  factory IntervalTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$IntervalTypeSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IntervalTypeSpecifierToJson(this);
 }
 
-@JsonSerializable()
 class ChoiceTypeSpecifier extends TypeSpecifier {
   @JsonKey(name: 'type')
   List<TypeSpecifier>? type;
@@ -521,28 +396,16 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
   List<TypeSpecifier>? choice;
 
   ChoiceTypeSpecifier({this.type, this.choice});
-
-  factory ChoiceTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$ChoiceTypeSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ChoiceTypeSpecifierToJson(this);
 }
 
-@JsonSerializable()
 class ParameterTypeSpecifier extends TypeSpecifier {
   ParameterTypeSpecifier(
       {required this.name, required this.constraint, this.constraintType});
   String name;
   String constraint;
   String? constraintType;
-
-  factory ParameterTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$ParameterTypeSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ParameterTypeSpecifierToJson(this);
 }
 
-@JsonSerializable()
 class BoundParameterTypeSpecifier extends TypeSpecifier {
   BoundParameterTypeSpecifier(
       {required this.parameterName,
@@ -552,14 +415,8 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
   String parameterName;
   String boundType;
   TypeSpecifier? elementTypeSpecifier;
-
-  factory BoundParameterTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$BoundParameterTypeSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$BoundParameterTypeSpecifierToJson(this);
 }
 
-@JsonSerializable()
 class TypeParameterInfo {
   TypeParameterInfo(
       {this.typeSpecifier,
@@ -571,35 +428,18 @@ class TypeParameterInfo {
   String name;
   String constraint;
   String? constraintType;
-
-  factory TypeParameterInfo.fromJson(Map<String, dynamic> json) =>
-      _$TypeParameterInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TypeParameterInfoToJson(this);
 }
 
-@JsonSerializable()
 class TupleTypeSpecifierElement {
   TupleTypeSpecifierElement({required this.elementType, required this.name});
 
   TypeSpecifier elementType;
   String name;
-
-  factory TupleTypeSpecifierElement.fromJson(Map<String, dynamic> json) =>
-      _$TupleTypeSpecifierElementFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TupleTypeSpecifierElementToJson(this);
 }
 
-@JsonSerializable()
 class TupleTypeSpecifier extends TypeSpecifier {
   @JsonKey(name: 'element')
   List<TupleElementDefinition>? element;
 
   TupleTypeSpecifier({this.element});
-
-  factory TupleTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$TupleTypeSpecifierFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TupleTypeSpecifierToJson(this);
 }

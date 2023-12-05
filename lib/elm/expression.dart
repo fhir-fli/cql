@@ -36,16 +36,16 @@ class Expression extends ElmElement {
     }
   }
 
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     try {
       if (localId != null) {
         // Store the localId and result on the root context of this library
-        final execValue = await exec(ctx);
+        final execValue = exec(ctx);
         ctx.rootContext().setLocalIdWithResult(localId!, execValue);
         return execValue;
       } else {
         // Ensure we await this.exec before returning so AnnotatedError logic gets hit
-        final execValue = await exec(ctx);
+        final execValue = exec(ctx);
         return execValue;
       }
     } catch (e) {
@@ -65,15 +65,16 @@ class Expression extends ElmElement {
     }
   }
 
-  Future<dynamic> exec(Context _ctx) async {
-    return this;
-  }
+  dynamic exec(Context _ctx) => this;
 
-  Future<List<List<dynamic>>> execArgs(Context ctx) async {
+  List<dynamic> execArgs(Context ctx) {
     if (args != null) {
-      return Future.wait(args!.map((arg) => arg.execute(ctx)).toList());
+      return args!
+          .map((arg) => arg.execute(ctx))
+          .expand((element) => element)
+          .toList();
     } else if (arg != null) {
-      return [await arg!.execute(ctx)];
+      return arg!.execute(ctx);
     } else {
       return [];
     }
@@ -101,7 +102,7 @@ class UnimplementedExpression extends Expression {
   UnimplementedExpression.fromJson(Map<String, dynamic> json)
       : super.fromJson(json);
 
-  Future<List<dynamic>> execute(Context _ctx) async {
+  List<dynamic> execute(Context _ctx) {
     throw Exception('Unimplemented Expression: ${json?['type']}');
   }
 }
@@ -122,13 +123,13 @@ class TypeSpecifier extends ElmElement {
   });
 }
 
-// class TupleElementDefinition extends ElmElement {
-//   String name;
-//   TypeSpecifier? type; // Deprecated, use elementType
-//   TypeSpecifier? elementType;
+class TupleElementDefinition extends ElmElement {
+  String name;
+  TypeSpecifier? type; // Deprecated, use elementType
+  TypeSpecifier? elementType;
 
-//   TupleElementDefinition({required this.name});
-// }
+  TupleElementDefinition({required this.name});
+}
 
 // class OperatorExpression extends Expression {
 //   List<TypeSpecifier>? signature;
@@ -849,15 +850,15 @@ class TypeSpecifier extends ElmElement {
 // class ToQuantity extends UnaryExpression {
 //   ToQuantity({required super.operand});
 
-//   ElmQuantity? toThisQuantity() => toQuantity(value);
+//   CqlQuantity? toThisQuantity() => toQuantity(value);
 
-//   static ElmQuantity? toQuantity(dynamic value) {
+//   static CqlQuantity? toQuantity(dynamic value) {
 //     if (value == null) {
 //       return null;
 //     }
 
 //     if (value is int || value is double || value is num) {
-//       return ElmQuantity(value: FhirDecimal(value.toDouble()));
+//       return CqlQuantity(value: FhirDecimal(value.toDouble()));
 //     }
 
 //     if (value is String) {
@@ -882,7 +883,7 @@ class TypeSpecifier extends ElmElement {
 //           unit = parts.sublist(1).join(' ').trim();
 //         }
 
-//         return ElmQuantity(value: FhirDecimal(parsedValue), unit: unit);
+//         return CqlQuantity(value: FhirDecimal(parsedValue), unit: unit);
 //       } catch (e) {
 //         return null; // Parsing error
 //       }
@@ -894,7 +895,7 @@ class TypeSpecifier extends ElmElement {
 //       if (denominator == 0) {
 //         return null; // Division by zero
 //       }
-//       return ElmQuantity(value: FhirDecimal(numerator / denominator));
+//       return CqlQuantity(value: FhirDecimal(numerator / denominator));
 //     }
 
 //     return null; // Other types are not supported
@@ -926,8 +927,8 @@ class TypeSpecifier extends ElmElement {
 //       }
 
 //       List<String> parts = formattedvalue.split(':');
-//       ElmQuantity? firstQuantity = ToQuantity.toQuantity(parts[0].trim());
-//       ElmQuantity? secondQuantity = ToQuantity.toQuantity(parts[1].trim());
+//       CqlQuantity? firstQuantity = ToQuantity.toQuantity(parts[0].trim());
+//       CqlQuantity? secondQuantity = ToQuantity.toQuantity(parts[1].trim());
 
 //       return secondQuantity != null;
 //     }
@@ -961,8 +962,8 @@ class TypeSpecifier extends ElmElement {
 //       }
 
 //       List<String> parts = formattedvalue.split(':');
-//       ElmQuantity? firstQuantity = ToQuantity.toQuantity(parts[0].trim());
-//       ElmQuantity? secondQuantity = ToQuantity.toQuantity(parts[1].trim());
+//       CqlQuantity? firstQuantity = ToQuantity.toQuantity(parts[0].trim());
+//       CqlQuantity? secondQuantity = ToQuantity.toQuantity(parts[1].trim());
 
 //       return firstQuantity == null
 //           ? secondQuantity == null
@@ -1023,7 +1024,7 @@ class TypeSpecifier extends ElmElement {
 //           argument is double ||
 //           argument is DateTime ||
 //           argument is String ||
-//           argument is ElmQuantity ||
+//           argument is CqlQuantity ||
 //           argument is Ratio;
 //     }
 //   }
@@ -1045,7 +1046,7 @@ class TypeSpecifier extends ElmElement {
 //       return value.toIso8601String();
 //     } else if (value is String) {
 //       return value;
-//     } else if (value is ElmQuantity) {
+//     } else if (value is CqlQuantity) {
 //       return '${value.value}${value.unit != null ? ' ${value.unit}' : ''}';
 //     } else if (value is Ratio) {
 //       return '${ToString.toElmString(value.numerator)}:${ToString.toElmString(value.denominator)}';
@@ -1142,7 +1143,7 @@ class TypeSpecifier extends ElmElement {
 
 //   bool canThisConvertQuantity() => canConvertQuantity(value, targetUnit);
 
-//   static bool canConvertQuantity(ElmQuantity quantity, [String? targetUnit]) {
+//   static bool canConvertQuantity(CqlQuantity quantity, [String? targetUnit]) {
 //     if (targetUnit == null) {
 //       return false;
 //     }
@@ -1166,9 +1167,9 @@ class TypeSpecifier extends ElmElement {
 //   final dynamic arg2;
 //   final String? targetUnit;
 
-//   ElmQuantity? convertThisQuantity() => convertQuantity(value, targetUnit);
+//   CqlQuantity? convertThisQuantity() => convertQuantity(value, targetUnit);
 
-//   static ElmQuantity? convertQuantity(dynamic valueQuantity,
+//   static CqlQuantity? convertQuantity(dynamic valueQuantity,
 //       [String? targetUnit]) {
 //     if (targetUnit == null) {
 //       return null;
@@ -1176,8 +1177,8 @@ class TypeSpecifier extends ElmElement {
 
 //     // Placeholder logic assuming simple quantity conversion
 //     // Replace this with proper UCUM-compliant unit conversion logic
-//     if (valueQuantity is ElmQuantity && valueQuantity.unit == targetUnit) {
-//       return ElmQuantity(
+//     if (valueQuantity is CqlQuantity && valueQuantity.unit == targetUnit) {
+//       return CqlQuantity(
 //           value: valueQuantity.value,
 //           unit: targetUnit); // Quantity with the same unit
 //     } else {
@@ -1211,7 +1212,7 @@ class TypeSpecifier extends ElmElement {
 //         arg1 is String ||
 //         arg1 is bool) {
 //       return arg1 == arg2;
-//     } else if (arg1 is ElmQuantity && arg2 is ElmQuantity) {
+//     } else if (arg1 is CqlQuantity && arg2 is CqlQuantity) {
 //       // Check if dimensions are the same
 //       // Note: This is a placeholder; actual quantity comparison might involve more complex logic
 //       return arg1.value == arg2.value;
@@ -1272,7 +1273,7 @@ class TypeSpecifier extends ElmElement {
 //     } else if (arg1 is String && arg2 is String) {
 //       // Compare strings while ignoring case and normalizing whitespace
 //       return arg1.trim().toLowerCase() == arg2.trim().toLowerCase();
-//     } else if (arg1 is ElmQuantity && arg2 is ElmQuantity) {
+//     } else if (arg1 is CqlQuantity && arg2 is CqlQuantity) {
 //       // Check if quantities are equivalent
 //       // This is a placeholder; actual quantity comparison might involve unit conversion and value comparison
 //       return false; // Implement logic for quantity equivalence here
@@ -1338,7 +1339,7 @@ class TypeSpecifier extends ElmElement {
 //       // Comparison for DateTime values
 //       // This is a placeholder; actual comparison involves comparing each precision
 //       return arg1.isBefore(arg2);
-//     } else if (arg1 is ElmQuantity && arg2 is ElmQuantity) {
+//     } else if (arg1 is CqlQuantity && arg2 is CqlQuantity) {
 //       // Comparison for quantities
 //       // This is a placeholder; actual comparison might involve unit conversion and value comparison
 //       return false; // Implement logic for quantity comparison here
@@ -1369,7 +1370,7 @@ class TypeSpecifier extends ElmElement {
 //       // Comparison for DateTime values
 //       // This is a placeholder; actual comparison involves comparing each precision
 //       return arg1.isAfter(arg2);
-//     } else if (arg1 is ElmQuantity && arg2 is ElmQuantity) {
+//     } else if (arg1 is CqlQuantity && arg2 is CqlQuantity) {
 //       // Comparison for quantities
 //       // This is a placeholder; actual comparison might involve unit conversion and value comparison
 //       return false; // Implement logic for quantity comparison here
@@ -1396,7 +1397,7 @@ class TypeSpecifier extends ElmElement {
 //       // Comparison for DateTime values
 //       // This is a placeholder; actual comparison involves comparing each precision
 //       return FhirDateTime(arg1) == FhirDateTime(arg2);
-//     } else if (arg1 is ElmQuantity && arg2 is ElmQuantity) {
+//     } else if (arg1 is CqlQuantity && arg2 is CqlQuantity) {
 //       // Comparison for quantities
 //       // This is a placeholder; actual comparison might involve unit conversion and value comparison
 //       return false; // Implement logic for quantity comparison here

@@ -5,16 +5,19 @@ import 'package:fhir/r4.dart';
 import 'package:units_converter/units_converter.dart';
 
 // Project imports:
-import 'quantity_ratio.dart';
 import '../../cql.dart';
 
-typedef ElmQuantity = Quantity;
+typedef CqlQuantity = Quantity;
 
-extension ElmQuantities on ElmQuantity {
+extension CqlQuantities on CqlQuantity {
+  static CqlQuantity simple(num value, String unit) {
+    return CqlQuantity(value: FhirDecimal(value), unit: unit);
+  }
+
   Quantity fromString(String quantityString) {
-    if (ElmQuantityRegex.hasMatch(quantityString.replaceAll(r"\'", "'"))) {
+    if (CqlQuantityRegex.hasMatch(quantityString.replaceAll(r"\'", "'"))) {
       final match =
-          ElmQuantityRegex.firstMatch(quantityString.replaceAll(r"\'", "'"));
+          CqlQuantityRegex.firstMatch(quantityString.replaceAll(r"\'", "'"));
       final value = match?.namedGroup('value');
       if (value == null) {
         throw Exception('Malformed quantity: $quantityString');
@@ -50,7 +53,7 @@ extension ElmQuantities on ElmQuantity {
     }
   }
 
-  static RegExp ElmQuantityRegex = RegExp(
+  static RegExp CqlQuantityRegex = RegExp(
       r"^(?<value>(\+|-)?\d+(\.\d+)?)\s*('(?<unit>[^']+)'|(?<time>[a-zA-Z]+))?$");
 
   num? get amount => value?.value;
@@ -471,7 +474,7 @@ bool isQuantity(value) => value is Quantity
 
 dynamic doScaledAddition(dynamic a, dynamic b, num scaleForB) {
   if (a != null &&
-      a.isQuantity &&
+      a is CqlQuantity &&
       b != null &&
       b.isQuantity &&
       a.value != null &&

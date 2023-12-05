@@ -24,7 +24,7 @@ class RetrieveDetails {
   final String? templateId;
   final String? codeProperty;
   final List<ElmCode>? codes;
-  final ElmValueSet? valueSet;
+  final CqlValueSet? valueSet;
   final String? dateProperty;
   final Interval? dateRange;
 

@@ -12,7 +12,7 @@ class If extends Expression {
   }
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<dynamic> exec(Context ctx)  {
     if (await condition.execute(ctx)) {
       return th.execute(ctx);
     } else {
@@ -44,7 +44,7 @@ class Case extends Expression {
     els = build(json['else']);
   }
 
-  Future<dynamic> exec(Context ctx) async {
+  Future<dynamic> exec(Context ctx)  {
     if (comparand != null) {
       return execSelected(ctx);
     } else {
@@ -52,7 +52,7 @@ class Case extends Expression {
     }
   }
 
-  Future<dynamic> execSelected(Context ctx) async {
+  Future<dynamic> execSelected(Context ctx)  {
     var val = await comparand.execute(ctx);
     for (var ci in caseItems) {
       if (equals(await ci.when.execute(ctx), val) ?? false) {
@@ -62,7 +62,7 @@ class Case extends Expression {
     return els.execute(ctx);
   }
 
-  Future<dynamic> execStandard(Context ctx) async {
+  Future<dynamic> execStandard(Context ctx)  {
     for (var ci in caseItems) {
       if (await ci.when.execute(ctx)) {
         return ci.then.execute(ctx);

@@ -1,6 +1,5 @@
 import '../cql.dart';
 
-/// Lookup of all codes used based on their ValueSet
 class ValueSetDictionary {
   Map<String, Map<String, List<Map<String, String>>>> entries = {};
 
@@ -14,22 +13,51 @@ class ValueSetDictionary {
   }
 }
 
-/// Lookup of ValueSet objects
 class ValueSetObject {
-  Map<String, Map<String, ElmValueSet>> entries = {};
+  Map<String, Map<String, CqlValueSet>> entries = {};
 
   void addEntry(
     String oid,
     String version,
-    ElmValueSet valueSet,
+    CqlValueSet valueSet,
   ) {
     entries[oid] ??= {};
     entries[oid]![version] = valueSet;
   }
 }
 
-/// Structure of an implementation to look up ValueSets based on oid and version
 abstract class TerminologyProvider {
-  Future<List<ElmValueSet>> findValueSetsByOid(String oid);
-  Future<ElmValueSet?> findValueSet(String oid, [String? version]);
+  Future<List<CqlValueSet>> findValueSetsByOid(String oid);
+  Future<CqlValueSet?> findValueSet(String oid, [String? version]);
+}
+
+class ValueSetDictionaryExtended {
+  final Map<String, Map<String, List<ValueSetCode>>> _valueSets;
+
+  ValueSetDictionaryExtended(this._valueSets);
+
+  Map<String, Map<String, List<ValueSetCode>>> get valueSets => _valueSets;
+
+  void addEntry(String oid, String version, List<ValueSetCode> codes) {
+    _valueSets[oid] ??= {};
+    _valueSets[oid]![version] = codes;
+  }
+}
+
+class ValueSetObjectExtended {
+  final Map<String, Map<String, ValueSet>> _valueSetObjects;
+
+  ValueSetObjectExtended(this._valueSetObjects);
+
+  Map<String, Map<String, ValueSet>> get valueSetObjects => _valueSetObjects;
+
+  void addEntry(String oid, String version, ValueSet valueSet) {
+    _valueSetObjects[oid] ??= {};
+    _valueSetObjects[oid]![version] = valueSet;
+  }
+}
+
+abstract class TerminologyProviderExtended {
+  List<ValueSet> findValueSetsByOid(String oid);
+  ValueSet? findValueSet(String oid, [String? version]);
 }

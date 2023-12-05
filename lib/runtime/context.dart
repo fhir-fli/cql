@@ -71,7 +71,7 @@ class Context {
 
   // Method: findRecords
   Future<dynamic> findRecords(String? profile,
-      [RetrieveDetails? retrieveDetails]) async {
+      [RetrieveDetails? retrieveDetails])  {
     return parent != null
         ? await parent.findRecords(profile, retrieveDetails)
         : null;
@@ -440,7 +440,7 @@ class PatientContext extends Context {
   }
 
   Future<dynamic> findRecords(profile,
-      [RetrieveDetails? retrieveDetails]) async {
+      [RetrieveDetails? retrieveDetails])  {
     return patient != null
         ? patient!.findRecords(profile, retrieveDetails)
         : null;
@@ -473,7 +473,7 @@ class UnfilteredContext extends Context {
 
   @override
   Future<dynamic> findRecords(String? profile,
-      [RetrieveDetails? retrieveDetails]) async {
+      [RetrieveDetails? retrieveDetails])  {
     throw Exception(
         'Retrieves are not currently supported in Unfiltered Context');
   }

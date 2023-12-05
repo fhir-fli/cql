@@ -59,22 +59,22 @@ String getTimezoneSeparatorFromString(String? string) {
 
 typedef SortCompareFn<T> = Future<int> Function(T a, T b);
 
-Future<List<T>> asyncMergeSort<T>(
-    List<T> arr, SortCompareFn<T> compareFn) async {
+Future<List<T>> MergeSort<T>(
+    List<T> arr, SortCompareFn<T> compareFn)  {
   if (arr.length <= 1) {
     return arr;
   }
 
   final midpoint = (arr.length / 2).floor();
 
-  final left = await asyncMergeSort(arr.sublist(0, midpoint), compareFn);
-  final right = await asyncMergeSort(arr.sublist(midpoint), compareFn);
+  final left = await MergeSort(arr.sublist(0, midpoint), compareFn);
+  final right = await MergeSort(arr.sublist(midpoint), compareFn);
 
   return merge(left, right, compareFn);
 }
 
 Future<List<T>> merge<T>(
-    List<T> left, List<T> right, SortCompareFn<T> compareFn) async {
+    List<T> left, List<T> right, SortCompareFn<T> compareFn)  {
   final sorted = <T>[];
   while (left.isNotEmpty && right.isNotEmpty) {
     if (await compareFn(left[0], right[0]) <= 0) {

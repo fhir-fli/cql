@@ -4,7 +4,7 @@ class Less extends Expression {
   Less(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<dynamic> exec(Context ctx)  {
     final args = (await this.execArgs(ctx)).map((x) => Uncertainty.from(x));
     if (args[0] == null || args[1] == null) {
       return null;
@@ -17,7 +17,7 @@ class LessOrEqual extends Expression {
   LessOrEqual(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<dynamic> exec(Context ctx)  {
     final args = (await this.execArgs(ctx)).map((x) => Uncertainty.from(x));
     if (args[0] == null || args[1] == null) {
       return null;
@@ -30,7 +30,7 @@ class Greater extends Expression {
   Greater(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<dynamic> exec(Context ctx)  {
     final args = (await this.execArgs(ctx)).map((x) => Uncertainty.from(x));
     if (args[0] == null || args[1] == null) {
       return null;
@@ -43,7 +43,7 @@ class GreaterOrEqual extends Expression {
   GreaterOrEqual(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<dynamic> exec(Context ctx) async {
+  Future<dynamic> exec(Context ctx)  {
     final args = (await this.execArgs(ctx)).map((x) => Uncertainty.from(x));
     if (args[0] == null || args[1] == null) {
       return null;

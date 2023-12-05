@@ -1,5 +1,3 @@
-import 'package:fhir/r4.dart';
-
 class CqlCode {
   String code;
   String? system;
@@ -18,6 +16,25 @@ class CqlCode {
       return codesInList(toCodeList(code), [this]);
     }
   }
+
+  @override
+  String toString() {
+    return 'CqlCode{code: $code, system: $system, version: $version, display: $display}';
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CqlCode &&
+          runtimeType == other.runtimeType &&
+          code == other.code &&
+          system == other.system &&
+          version == other.version &&
+          display == other.display;
+
+  @override
+  int get hashCode =>
+      code.hashCode ^ system.hashCode ^ version.hashCode ^ display.hashCode;
 }
 
 class CqlConcept {
@@ -77,10 +94,16 @@ List<dynamic> toCodeList(dynamic c) {
       list.addAll(toCodeList(c2));
     }
     return list;
-  } else if (c.codes is List) {
-    return c.codes;
   } else {
-    return [c];
+    try {
+      if (c.codes is List) {
+        return c.codes;
+      } else {
+        return [c];
+      }
+    } catch (e) {
+      return [c];
+    }
   }
 }
 
@@ -91,14 +114,16 @@ bool codesInList(List<dynamic> cl1, List<dynamic> cl2) {
         if (c1 is String) {
           // for "string in codesystem" this should compare the string to
           // the code's "code" field according to the specification.
-          return c1 == c2.code;
-        } else {
+          return c1 == c2 is CqlCode ? (c2 as CqlCode).code : c2;
+        } else if (c1 is CqlCode && c2 is CqlCode) {
           return codesMatch(c1, c2);
+        } else {
+          return false;
         }
       }));
 }
 
-bool codesMatch(Coding code1, Coding code2) {
+bool codesMatch(CqlCode code1, CqlCode code2) {
   return code1.code == code2.code && code1.system == code2.system;
 }
 

@@ -16,9 +16,9 @@ class Count extends AggregateExpression {
   Count.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<int>> execute(Context ctx) async {
+  List<int> execute(Context ctx) {
     if (source.length == 1) {
-      var items = await source.first.execute(ctx);
+      var items = source.first.execute(ctx);
       if (typeIsArray(items)) {
         return [removeNulls(items).length];
       }
@@ -31,33 +31,33 @@ class Sum extends AggregateExpression {
   Sum.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<ElmQuantity>> execute(Context ctx) async {
+  List<CqlQuantity> execute(Context ctx) {
     if (source.length != 1) {
-      return <ElmQuantity>[];
+      return <CqlQuantity>[];
     }
-    var items = await source.first.execute(ctx);
+    var items = source.first.execute(ctx);
     if (!typeIsArray(items)) {
-      return <ElmQuantity>[];
+      return <CqlQuantity>[];
     }
 
     try {
       items = processQuantities(items);
     } catch (e) {
-      return <ElmQuantity>[];
+      return <CqlQuantity>[];
     }
 
     if (items.length == 0) {
-      return <ElmQuantity>[];
+      return <CqlQuantity>[];
     }
 
     if (hasOnlyQuantities(items)) {
-      var values = getValuesFromQuantities(items as List<ElmQuantity>);
+      var values = getValuesFromQuantities(items as List<CqlQuantity>);
       var sum = values.reduce((x, y) => x + y);
-      return <ElmQuantity>[
-        ElmQuantity(value: FhirDecimal(sum), unit: items[0].unit)
+      return <CqlQuantity>[
+        CqlQuantity(value: FhirDecimal(sum), unit: items[0].unit)
       ];
     } else {
-      return <ElmQuantity>[items.reduce((x, y) => x + y)];
+      return <CqlQuantity>[items.reduce((x, y) => x + y)];
     }
   }
 }
@@ -66,11 +66,11 @@ class Min extends AggregateExpression {
   Min.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    final items = await source.first.execute(ctx);
+    final items = source.first.execute(ctx);
     if (items.isEmpty) {
       return [];
     }
@@ -102,11 +102,11 @@ class Max extends AggregateExpression {
   Max.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    final items = await source.first.execute(ctx);
+    final items = source.first.execute(ctx);
 
     if (items.isEmpty) {
       return [];
@@ -139,11 +139,11 @@ class Avg extends AggregateExpression {
   Avg.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    final items = await source.first.execute(ctx);
+    final items = source.first.execute(ctx);
     if (items.isEmpty) {
       return [];
     }
@@ -165,11 +165,11 @@ class Avg extends AggregateExpression {
 class Median extends AggregateExpression {
   Median.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    var items = await source.first.execute(ctx);
+    var items = source.first.execute(ctx);
     if (!typeIsArray(items)) {
       return [];
     }
@@ -187,7 +187,7 @@ class Median extends AggregateExpression {
       return [medianOfNumbers(items as List<num>)];
     }
 
-    final values = getValuesFromQuantities(items as List<ElmQuantity>);
+    final values = getValuesFromQuantities(items as List<CqlQuantity>);
     final median = medianOfNumbers(values);
     return [Quantity(value: FhirDecimal(median), unit: items[0].unit)];
   }
@@ -196,39 +196,37 @@ class Median extends AggregateExpression {
 class Mode extends AggregateExpression {
   Mode.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    final items = await source.first.execute(ctx);
-    if (!typeIsArray(items)) {
-      return [];
-    }
-    if (items.isEmpty) {
+    final List<dynamic> items = source.first.execute(ctx);
+    if (!typeIsArray(items) || items.isEmpty) {
       return [];
     }
 
-    List<dynamic>? filtered;
     try {
-      filtered = processQuantities(items);
+      List<dynamic>? filtered = processQuantities(items);
+      if (hasOnlyQuantities(filtered)) {
+        final values = getValuesFromQuantities(filtered as List<CqlQuantity>);
+        var mode = this.mode(values);
+        if (mode.length == 1) {
+          mode = mode[0];
+        }
+        return [
+          Quantity(
+              value: FhirDecimal(mode), unit: (items[0] as CqlQuantity).unit)
+        ];
+      } else {
+        final mode = this.mode(filtered);
+        if (mode.length == 1) {
+          return mode[0];
+        } else {
+          return mode;
+        }
+      }
     } catch (e) {
       return [];
-    }
-
-    if (hasOnlyQuantities(filtered)) {
-      final values = getValuesFromQuantities(filtered as List<ElmQuantity>);
-      var mode = this.mode(values);
-      if (mode.length == 1) {
-        mode = mode[0];
-      }
-      return [Quantity(value: FhirDecimal(mode), unit: items[0].unit)];
-    } else {
-      final mode = this.mode(filtered);
-      if (mode.length == 1) {
-        return mode[0];
-      } else {
-        return mode;
-      }
     }
   }
 
@@ -261,11 +259,11 @@ class StdDev extends AggregateExpression {
   StdDev.fromJson(Map<String, dynamic> json) : super.fromJson(json);
   StatisticType type = StatisticType.standardDeviation;
 
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    var items = await source.first.execute(ctx);
+    var items = source.first.execute(ctx);
     if (!typeIsArray(items)) {
       return [];
     }
@@ -281,7 +279,7 @@ class StdDev extends AggregateExpression {
     }
 
     if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items as List<ElmQuantity>);
+      final values = getValuesFromQuantities(items as List<CqlQuantity>);
       final stdDev = standardDeviation(values);
       return [Quantity(value: FhirDecimal(stdDev), unit: items[0].unit)];
     } else {
@@ -319,11 +317,11 @@ class StdDev extends AggregateExpression {
 class Product extends AggregateExpression {
   Product.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    var items = await source.first.execute(ctx);
+    var items = source.first.execute(ctx);
     if (!typeIsArray(items)) {
       return [];
     }
@@ -338,7 +336,7 @@ class Product extends AggregateExpression {
     }
 
     if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items as List<ElmQuantity>);
+      final values = getValuesFromQuantities(items as List<CqlQuantity>);
       final product = values.reduce((x, y) => x * y);
       // Units are not multiplied for the geometric product
       return [Quantity(value: FhirDecimal(product), unit: items[0].unit)];
@@ -352,11 +350,11 @@ class GeometricMean extends AggregateExpression {
   GeometricMean.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    var items = await source.first.execute(ctx);
+    var items = source.first.execute(ctx);
     try {
       items = processQuantities(items);
     } catch (e) {
@@ -368,7 +366,7 @@ class GeometricMean extends AggregateExpression {
     }
 
     if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items as List<ElmQuantity>);
+      final values = getValuesFromQuantities(items as List<CqlQuantity>);
       final product = values.fold(1.0, (x, y) => x * y);
       final geoMean = pow(product, 1.0 / items.length);
       return [Quantity(value: FhirDecimal(geoMean), unit: items[0].unit)];
@@ -398,11 +396,11 @@ class AllTrue extends AggregateExpression {
   AllTrue.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    final items = await source.first.execute(ctx);
+    final items = source.first.execute(ctx);
     return allTrue(removeNulls(items));
   }
 }
@@ -411,11 +409,11 @@ class AnyTrue extends AggregateExpression {
   AnyTrue.fromJson(Map<String, dynamic> json) : super.fromJson(json);
 
   @override
-  Future<List<dynamic>> execute(Context ctx) async {
+  List<dynamic> execute(Context ctx) {
     if (source.length != 1) {
       return [];
     }
-    final items = await source.first.execute(ctx);
+    final items = source.first.execute(ctx);
     return anyTrue(items);
   }
 }
@@ -423,7 +421,7 @@ class AnyTrue extends AggregateExpression {
 List<dynamic> processQuantities(List<dynamic> values) {
   final items = removeNulls(values);
   if (hasOnlyQuantities(items)) {
-    return convertAllUnits(items.cast<ElmQuantity>());
+    return convertAllUnits(items.cast<CqlQuantity>());
   } else if (hasSomeQuantities(items)) {
     throw Exception(
         'Cannot perform aggregate operations on mixed values of Quantities and non Quantities');
@@ -432,20 +430,20 @@ List<dynamic> processQuantities(List<dynamic> values) {
   }
 }
 
-List<num> getValuesFromQuantities(List<ElmQuantity> quantities) {
+List<num> getValuesFromQuantities(List<CqlQuantity> quantities) {
   quantities.removeWhere((element) => element.value?.value == null);
-  return quantities.map((ElmQuantity) => ElmQuantity.value!.value!).toList();
+  return quantities.map((CqlQuantity) => CqlQuantity.value!.value!).toList();
 }
 
 bool hasOnlyQuantities(List<dynamic> arr) {
-  return arr.every((x) => x is ElmQuantity);
+  return arr.every((x) => x is CqlQuantity);
 }
 
 bool hasSomeQuantities(List<dynamic> arr) {
-  return arr.any((x) => x is ElmQuantity);
+  return arr.any((x) => x is CqlQuantity);
 }
 
-List<ElmQuantity> convertAllUnits(List<ElmQuantity> arr) {
+List<CqlQuantity> convertAllUnits(List<CqlQuantity> arr) {
   // Convert all quantities in the array to match the unit of the first item
   return arr
       .map((Quantity q) => q.value?.value == null ||

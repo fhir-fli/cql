@@ -15,11 +15,14 @@ const MAX_FLOAT_VALUE = 99999999999999999999.99999999;
 const MIN_FLOAT_VALUE = -99999999999999999999.99999999;
 const MIN_FLOAT_PRECISION_VALUE = 0.00000001; // equivalent to Math.pow(10, -8)
 
-bool overflowsOrUnderflows(value) {
-  if (value == null) {
+bool overflowsOrUnderflows(dynamic value) {
+  if (value == null || (value is List && value.length != 1)) {
     return false;
   }
-  if (value is ElmQuantity) {
+  if (value is List) {
+    value = value.first;
+  }
+  if (value is CqlQuantity) {
     if (!isValidDecimal(value.value?.value)) {
       return true;
     }
@@ -72,19 +75,18 @@ bool isValidInteger(int integer) {
   return true;
 }
 
-bool isValidDecimal(double? decimal) {
-  if (decimal == null) {
+bool isValidDecimal(dynamic decimal) {
+  if (decimal == null || decimal is! num) {
     return false;
   } else if (decimal.isNaN) {
     return false;
-  }
-  if (decimal > MAX_FLOAT_VALUE) {
+  } else if (decimal > MAX_FLOAT_VALUE) {
     return false;
-  }
-  if (decimal < MIN_FLOAT_VALUE) {
+  } else if (decimal < MIN_FLOAT_VALUE) {
     return false;
+  } else {
+    return true;
   }
-  return true;
 }
 
 double limitDecimalPrecision(double decimal) {
@@ -123,23 +125,26 @@ dynamic successor(dynamic val) {
         return val + MIN_FLOAT_PRECISION_VALUE;
       }
     }
-  } else if (val is FhirTime) {
-    if (val == MAX_TIME_VALUE) {
-      throw OverFlowException();
-    } else {
-      return successor(val);
-    }
-  } else if (val is FhirDateTime) {
-    if (val == MAX_DATETIME_VALUE) {
-      throw OverFlowException();
-    } else {
-      return successor(val);
-    }
-  } else if (val is FhirDate) {
-    if (val == MAX_DATE_VALUE) {
-      throw OverFlowException();
-    } else {
-      return successor(val);
+  } else if (val is CqlDateTime) {
+    if (val.isTime()) {
+      // TODO(Dokotela) this isn't right
+      if (val.value == MAX_TIME_VALUE) {
+        throw OverFlowException();
+      } else {
+        return val.successor();
+      }
+    } else if (val.isDateTime) {
+      if (val == MAX_DATETIME_VALUE) {
+        throw OverFlowException();
+      } else {
+        return val.successor();
+      }
+    } else if (val.isDate) {
+      if (val == MAX_DATE_VALUE) {
+        throw OverFlowException();
+      } else {
+        return val.successor();
+      }
     }
   } else if (val is Uncertainty) {
     final high = (() {
@@ -322,9 +327,9 @@ num decimalAdjust(MathFn type, dynamic value, dynamic exp) {
   return value;
 }
 
-dynamic decimalOrNull(dynamic value) {
-  return (value is List && value.length == 1 && isValidDecimal(value.first)) ||
-          isValidDecimal(value)
-      ? value
-      : null;
-}
+List<num> decimalOrNull(dynamic value) =>
+    (value is List && value.length == 1 && isValidDecimal(value.first))
+        ? value as List<num>
+        : isValidDecimal(value)
+            ? [value]
+            : <num>[];

@@ -19,7 +19,8 @@ class Uncertainty {
     };
 
     final isNonEnumerable = (val) =>
-        val != null && (val is ElmCode || val is Concept || val is ElmValueSet);
+        val != null &&
+        (val is CqlCode || val is CqlConcept || val is CqlValueSet);
 
     if (this.high == null) {
       this.high = this.low;
@@ -71,7 +72,7 @@ class Uncertainty {
         (gte(this.low, this.high) ?? false);
   }
 
-  bool equals({required dynamic other, dynamic nowThis}) {
+  bool? equals({required dynamic other, dynamic nowThis}) {
     if ((nowThis ?? this).isPoint()) {
       if (!(other is Uncertainty)) {
         return equals(nowThis: (nowThis ?? this).low, other: other);
@@ -113,11 +114,11 @@ class Uncertainty {
     return Uncertainty.from(other).lessThan(this);
   }
 
-  bool lessThanOrEquals(other) {
+  bool? lessThanOrEquals(other) {
     return ThreeValuedLogic.not(this.greaterThan(Uncertainty.from(other)));
   }
 
-  bool greaterThanOrEquals(other) {
+  bool? greaterThanOrEquals(other) {
     return ThreeValuedLogic.not(this.lessThan(Uncertainty.from(other)));
   }
 

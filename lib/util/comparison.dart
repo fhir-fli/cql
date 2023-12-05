@@ -2,81 +2,81 @@ import 'package:fhir/r4.dart';
 
 import '../cql.dart';
 
-bool areNumbers(dynamic a, dynamic b) {
+bool compAreNumbers(dynamic a, dynamic b) {
   return a is num && b is num;
 }
 
-bool areStrings(dynamic a, dynamic b) {
+bool compAreStrings(dynamic a, dynamic b) {
   return a is String && b is String;
 }
 
-bool areDateTimesOrQuantities(dynamic a, dynamic b) {
+bool compAreDateTimesOrQuantities(dynamic a, dynamic b) {
   return (a is DateTime && b is DateTime) ||
       (a is FhirDate && b is FhirDate) ||
       (a is Quantity && b is Quantity);
 }
 
-bool isUncertainty(dynamic x) {
+bool compIsUncertainty(dynamic x) {
   return x is Uncertainty;
 }
 
-bool? lessThan(dynamic a, dynamic b, [dynamic precision]) {
-  if (areNumbers(a, b) || areStrings(a, b)) {
+bool? compLessThan(dynamic a, dynamic b, [dynamic precision]) {
+  if (compAreNumbers(a, b) || compAreStrings(a, b)) {
     return a < b;
-  } else if (areDateTimesOrQuantities(a, b)) {
+  } else if (compAreDateTimesOrQuantities(a, b)) {
     return a.before(b, precision);
-  } else if (isUncertainty(a)) {
+  } else if (compIsUncertainty(a)) {
     return a.lessThan(b);
-  } else if (isUncertainty(b)) {
+  } else if (compIsUncertainty(b)) {
     return Uncertainty.from(a).lessThan(b);
   } else {
     return null;
   }
 }
 
-bool? lessThanOrEquals(dynamic a, dynamic b, [dynamic precision]) {
-  if (areNumbers(a, b) || areStrings(a, b)) {
+bool? compLessThanOrEquals(dynamic a, dynamic b, [dynamic precision]) {
+  if (compAreNumbers(a, b) || compAreStrings(a, b)) {
     return a <= b;
-  } else if (areDateTimesOrQuantities(a, b)) {
+  } else if (compAreDateTimesOrQuantities(a, b)) {
     return a.sameOrBefore(b, precision);
-  } else if (isUncertainty(a)) {
+  } else if (compIsUncertainty(a)) {
     return a.lessThanOrEquals(b);
-  } else if (isUncertainty(b)) {
+  } else if (compIsUncertainty(b)) {
     return Uncertainty.from(a).lessThanOrEquals(b);
   } else {
     return null;
   }
 }
 
-bool? greaterThan(dynamic a, dynamic b, [dynamic precision]) {
-  if (areNumbers(a, b) || areStrings(a, b)) {
+bool? compGreaterThan(dynamic a, dynamic b, [dynamic precision]) {
+  if (compAreNumbers(a, b) || compAreStrings(a, b)) {
     return a > b;
-  } else if (areDateTimesOrQuantities(a, b)) {
+  } else if (compAreDateTimesOrQuantities(a, b)) {
     return a.after(b, precision);
-  } else if (isUncertainty(a)) {
+  } else if (compIsUncertainty(a)) {
     return a.greaterThan(b);
-  } else if (isUncertainty(b)) {
+  } else if (compIsUncertainty(b)) {
     return Uncertainty.from(a).greaterThan(b);
   } else {
     return null;
   }
 }
 
-bool? greaterThanOrEquals(dynamic a, dynamic b, [dynamic precision]) {
-  if (areNumbers(a, b) || areStrings(a, b)) {
+bool? compGreaterThanOrEquals(dynamic a, dynamic b, [dynamic precision]) {
+  if (compAreNumbers(a, b) || compAreStrings(a, b)) {
     return a >= b;
-  } else if (areDateTimesOrQuantities(a, b)) {
+  } else if (compAreDateTimesOrQuantities(a, b)) {
     return a.sameOrAfter(b, precision);
-  } else if (isUncertainty(a)) {
+  } else if (compIsUncertainty(a)) {
     return a.greaterThanOrEquals(b);
-  } else if (isUncertainty(b)) {
+  } else if (compIsUncertainty(b)) {
     return Uncertainty.from(a).greaterThanOrEquals(b);
   } else {
     return null;
   }
 }
 
-bool? equivalent(dynamic a, dynamic b) {
+bool? compEquivalent(dynamic a, dynamic b) {
   if (a == null && b == null) {
     return true;
   }
@@ -84,8 +84,8 @@ bool? equivalent(dynamic a, dynamic b) {
     return false;
   }
 
-  if (isCode(a)) {
-    return codesAreEquivalent(a, b);
+  if (compIsCode(a)) {
+    return compCodesAreEquivalent(a, b);
   }
 
   if (a.isQuantity) {
@@ -101,34 +101,34 @@ bool? equivalent(dynamic a, dynamic b) {
 
   switch (aClass) {
     case 'List<dynamic>':
-      return compareEveryItemInArrays(a, b, equivalent);
+      return compCompareEveryItemInArrays(a, b, compEquivalent);
     case '_InternalLinkedHashMap<dynamic, dynamic>':
-      return compareObjects(a, b, equivalent);
+      return compCompareObjects(a, b, compEquivalent);
     case 'String':
       if (bClass == 'String') {
         a = a.replaceAll(RegExp(r'\s'), ' ');
         b = b.replaceAll(RegExp(r'\s'), ' ');
-        return a.compareTo(b) == 0;
+        return a.compcompAreTo(b) == 0;
       }
       break;
   }
 
-  return equals(a, b);
+  return compEquals(a, b);
 }
 
-bool isCode(dynamic object) {
+bool compIsCode(dynamic object) {
   return object.hasMatch != null && object.hasMatch is Function;
 }
 
-bool codesAreEquivalent(dynamic code1, dynamic code2) {
+bool compCodesAreEquivalent(dynamic code1, dynamic code2) {
   return code1.hasMatch(code2);
 }
 
-List<String> getClassOfObjects(dynamic object1, dynamic object2) {
+List<String> compGetClassOfObjects(dynamic object1, dynamic object2) {
   return [object1, object2].map((obj) => obj.runtimeType.toString()).toList();
 }
 
-bool compareEveryItemInArrays(
+bool compCompareEveryItemInArrays(
     List<dynamic> array1, List<dynamic> array2, Function comparisonFunction) {
   return array1.length == array2.length &&
       List.generate(
@@ -137,23 +137,23 @@ bool compareEveryItemInArrays(
       ).every((element) => element);
 }
 
-bool? compareObjects(dynamic a, dynamic b, Function comparisonFunction) {
-  if (!classesEqual(a, b)) {
+bool? compCompareObjects(dynamic a, dynamic b, Function comparisonFunction) {
+  if (!compClassesEqual(a, b)) {
     return false;
   }
-  return deepCompareKeysAndValues(a, b, comparisonFunction);
+  return compDeepCompareKeysAndValues(a, b, comparisonFunction);
 }
 
-bool classesEqual(dynamic object1, dynamic object2) {
+bool compClassesEqual(dynamic object1, dynamic object2) {
   return object2.runtimeType == object1.runtimeType &&
       object1.runtimeType == object2.runtimeType;
 }
 
-bool? deepCompareKeysAndValues(
+bool? compDeepCompareKeysAndValues(
     dynamic a, dynamic b, Function comparisonFunction) {
   var finalComparisonResult;
-  var aKeys = getKeysFromObject(a).toList()..sort();
-  var bKeys = getKeysFromObject(b).toList()..sort();
+  var aKeys = compGetKeysFromObject(a).toList()..sort();
+  var bKeys = compGetKeysFromObject(b).toList()..sort();
   var shouldReturnNull = false;
 
   if (aKeys.length == bKeys.length &&
@@ -181,30 +181,30 @@ bool? deepCompareKeysAndValues(
   return finalComparisonResult;
 }
 
-List<String> getKeysFromObject(dynamic object) {
-  return object.keys.where((k) => !isFunction(object[k])).toList();
+List<String> compGetKeysFromObject(dynamic object) {
+  return object.keys.where((k) => !compIsFunction(object[k])).toList();
 }
 
-bool isFunction(dynamic input) {
+bool compIsFunction(dynamic input) {
   return input is Function;
   // Can add this back in, but need to included dart:mirrors
   // || {}.toString.call(input) == '[object Function]';
   // return reflect(input).type.reflectedType == Function;
 }
 
-bool? equals(a, b) {
+bool? compEquals(a, b) {
   // Handle null cases first: spec says if either is null, return null
   if (a == null || b == null) {
     return null;
   }
 
   // If one is a Quantity, use the Quantity equals function
-  if (a != null && a.isQuantity) {
+  if (a != null && a is CqlQuantity) {
     return a.equals(b);
   }
 
   // If one is a Ratio, use the ratio equals function
-  if (a != null && a.isRatio) {
+  if (a != null && a is CqlRatio) {
     return a.equals(b);
   }
 
@@ -220,14 +220,14 @@ bool? equals(a, b) {
     return a == b;
   }
 
-  // Return true if the objects are primitives and are strictly equal
+  // Return true if the objects compAre primitives and compAre strictly equal
   if ((a.runtimeType == b.runtimeType && a.runtimeType == String) ||
       a.runtimeType == int ||
       a.runtimeType == bool) {
     return a == b;
   }
 
-  // Return false if they are instances of different classes
+  // Return false if they compAre instances of different classes
   var aClass = a.runtimeType.toString();
   var bClass = b.runtimeType.toString();
   if (aClass != bClass) {
@@ -236,11 +236,11 @@ bool? equals(a, b) {
 
   switch (aClass) {
     case 'DateTime':
-      // Compare the ms since epoch
+      // CompcompAre the ms since epoch
       return (a as DateTime).millisecondsSinceEpoch ==
           (b as DateTime).millisecondsSinceEpoch;
     case 'RegExp':
-      // Compare the components of the regular expression
+      // CompcompAre the components of the regular expression
       return ['source', 'global', 'ignoreCase', 'multiline']
           .every((p) => (a as RegExp).pattern == (b as RegExp).pattern);
     case '_GrowableList':
@@ -250,9 +250,9 @@ bool? equals(a, b) {
           b.contains(null)) {
         return null;
       }
-      return compareEveryItemInArrays(a, b, equals);
+      return compCompareEveryItemInArrays(a, b, compEquals);
     case '_InternalLinkedHashMap':
-      return compareObjects(a, b, equals);
+      return compCompareObjects(a, b, compEquals);
     case 'Function':
       return a.toString() == b.toString();
   }

@@ -1,15 +1,15 @@
 import '../cql.dart';
 
-class ElmRatio {
-  final ElmQuantity numerator;
-  final ElmQuantity denominator;
+class CqlRatio {
+  final CqlQuantity numerator;
+  final CqlQuantity denominator;
 
-  ElmRatio(this.numerator, this.denominator);
+  CqlRatio(this.numerator, this.denominator);
 
   bool get isRatio => true;
 
-  ElmRatio clone() {
-    return ElmRatio(numerator.copyWith(), denominator.copyWith());
+  CqlRatio clone() {
+    return CqlRatio(numerator.copyWith(), denominator.copyWith());
   }
 
   @override
@@ -18,7 +18,7 @@ class ElmRatio {
   }
 
   bool equals(Object other) {
-    if (other is ElmRatio) {
+    if (other is CqlRatio) {
       final dividedThis = numerator / denominator;
       final dividedOther = (other).numerator / other.denominator;
       return dividedThis.equals(dividedOther);

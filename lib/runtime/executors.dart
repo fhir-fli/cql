@@ -37,7 +37,7 @@ class Executor {
     dynamic expression,
     DataProvider patientSource,
     DateTime executionDateTime,
-  ) async {
+  )  {
     final r = Results();
     final expr = library.expressions[expression];
     if (expr != null) {
@@ -62,7 +62,7 @@ class Executor {
   Future<Results> exec(
     DataProvider patientSource, [
     DateTime? executionDateTime,
-  ]) async {
+  ])  {
     final r = await execPatientContext(patientSource, executionDateTime);
     final unfilteredContext = UnfilteredContext(
       library: library,
@@ -86,7 +86,7 @@ class Executor {
   Future<Results> execPatientContext(
     DataProvider patientSource, [
     DateTime? executionDateTime,
-  ]) async {
+  ])  {
     final r = Results();
     var currentPatient = await patientSource.currentPatient();
     while (currentPatient != null) {
