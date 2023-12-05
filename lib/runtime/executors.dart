@@ -33,80 +33,84 @@ class Executor {
     return this;
   }
 
-  Future<Results> execExpression(
+  Results execExpression(
     dynamic expression,
     DataProvider patientSource,
     DateTime executionDateTime,
-  )  {
+  ) {
     final r = Results();
     final expr = library.expressions[expression];
     if (expr != null) {
-      var currentPatient = await patientSource.currentPatient();
+      var currentPatient = patientSource.currentPatient();
       while (currentPatient != null) {
         final patientCtx = PatientContext(
           library: library,
           patient: currentPatient,
           codeService: codeService,
           parameters: parameters,
-          executionDateTime: executionDateTime,
+          executionDateTime: CqlDateTime.fromDateTime(executionDateTime),
           messageListener: messageListener,
         );
         r.recordPatientResults(
             patientCtx, {expression: expr.execute(patientCtx)});
-        currentPatient = await patientSource.nextPatient();
+        currentPatient = patientSource.nextPatient();
       }
     }
     return r;
   }
 
-  Future<Results> exec(
+  Results exec(
     DataProvider patientSource, [
     DateTime? executionDateTime,
-  ])  {
-    final r = await execPatientContext(patientSource, executionDateTime);
+  ]) {
+    final r = execPatientContext(patientSource, executionDateTime);
     final unfilteredContext = UnfilteredContext(
       library: library,
       results: r,
       codeService: codeService,
       parameters: parameters,
-      executionDateTime: executionDateTime,
+      executionDateTime: executionDateTime == null
+          ? null
+          : CqlDateTime.fromDateTime(executionDateTime),
       messageListener: messageListener,
     );
     final resultMap = <String, dynamic>{};
     for (final key in library.expressions.keys) {
       final expr = library.expressions[key]!;
       if (expr.context == 'Unfiltered') {
-        resultMap[key] = await expr.exec(unfilteredContext);
+        resultMap[key] = expr.exec(unfilteredContext);
       }
     }
     r.recordUnfilteredResults(resultMap);
     return r;
   }
 
-  Future<Results> execPatientContext(
+  Results execPatientContext(
     DataProvider patientSource, [
     DateTime? executionDateTime,
-  ])  {
+  ]) {
     final r = Results();
-    var currentPatient = await patientSource.currentPatient();
+    var currentPatient = patientSource.currentPatient();
     while (currentPatient != null) {
       final patientCtx = PatientContext(
         library: library,
         patient: currentPatient,
         codeService: codeService,
         parameters: parameters,
-        executionDateTime: executionDateTime,
+        executionDateTime: executionDateTime == null
+            ? null
+            : CqlDateTime.fromDateTime(executionDateTime),
         messageListener: messageListener,
       );
       final resultMap = <String, dynamic>{};
       for (final key in library.expressions.keys) {
         final expr = library.expressions[key]!;
         if (expr.context == 'Patient') {
-          resultMap[key] = await expr.execute(patientCtx);
+          resultMap[key] = expr.execute(patientCtx);
         }
       }
       r.recordPatientResults(patientCtx, resultMap);
-      currentPatient = await patientSource.nextPatient();
+      currentPatient = patientSource.nextPatient();
     }
     return r;
   }

@@ -41,7 +41,7 @@ class Sum extends AggregateExpression {
     }
 
     try {
-      items = processQuantities(items);
+      items = _processQuantities(items);
     } catch (e) {
       return <CqlQuantity>[];
     }
@@ -50,8 +50,8 @@ class Sum extends AggregateExpression {
       return <CqlQuantity>[];
     }
 
-    if (hasOnlyQuantities(items)) {
-      var values = getValuesFromQuantities(items as List<CqlQuantity>);
+    if (_hasOnlyQuantities(items)) {
+      var values = _getValuesFromQuantities(items as List<CqlQuantity>);
       var sum = values.reduce((x, y) => x + y);
       return <CqlQuantity>[
         CqlQuantity(value: FhirDecimal(sum), unit: items[0].unit)
@@ -79,7 +79,7 @@ class Min extends AggregateExpression {
     // Check for incompatible units and return null. We don't want to convert
     // the units for Min/Max, so we throw away the converted array if it succeeds
     try {
-      processQuantities(items);
+      _processQuantities(items);
     } catch (e) {
       return [];
     }
@@ -90,7 +90,7 @@ class Min extends AggregateExpression {
     // We assume the list is an array of all the same type.
     var minimum = listWithoutNulls[0];
     for (final element in listWithoutNulls) {
-      if (lessThan(element, minimum) ?? false) {
+      if (compLessThan(element, minimum) ?? false) {
         minimum = element;
       }
     }
@@ -116,7 +116,7 @@ class Max extends AggregateExpression {
     // Check for incompatible units and return null. We don't want to convert
     // the units for Min/Max, so we throw away the converted array if it succeeds
     try {
-      processQuantities(items);
+      _processQuantities(items);
     } catch (e) {
       return [];
     }
@@ -127,7 +127,7 @@ class Max extends AggregateExpression {
     // We assume the list is an array of all the same type.
     var maximum = listWithoutNulls[0];
     for (final element in listWithoutNulls) {
-      if (greaterThan(element, maximum) ?? false) {
+      if (compGreaterThan(element, maximum) ?? false) {
         maximum = element;
       }
     }
@@ -178,17 +178,17 @@ class Median extends AggregateExpression {
     }
 
     try {
-      items = processQuantities(items);
+      items = _processQuantities(items);
     } catch (e) {
       return [];
     }
 
-    if (!hasOnlyQuantities(items)) {
-      return [medianOfNumbers(items as List<num>)];
+    if (!_hasOnlyQuantities(items)) {
+      return [_medianOfNumbers(items as List<num>)];
     }
 
-    final values = getValuesFromQuantities(items as List<CqlQuantity>);
-    final median = medianOfNumbers(values);
+    final values = _getValuesFromQuantities(items as List<CqlQuantity>);
+    final median = _medianOfNumbers(values);
     return [Quantity(value: FhirDecimal(median), unit: items[0].unit)];
   }
 }
@@ -206,9 +206,9 @@ class Mode extends AggregateExpression {
     }
 
     try {
-      List<dynamic>? filtered = processQuantities(items);
-      if (hasOnlyQuantities(filtered)) {
-        final values = getValuesFromQuantities(filtered as List<CqlQuantity>);
+      List<dynamic>? filtered = _processQuantities(items);
+      if (_hasOnlyQuantities(filtered)) {
+        final values = _getValuesFromQuantities(filtered as List<CqlQuantity>);
         var mode = this.mode(values);
         if (mode.length == 1) {
           mode = mode[0];
@@ -269,7 +269,7 @@ class StdDev extends AggregateExpression {
     }
 
     try {
-      items = processQuantities(items);
+      items = _processQuantities(items);
     } catch (e) {
       return [];
     }
@@ -278,8 +278,8 @@ class StdDev extends AggregateExpression {
       return [];
     }
 
-    if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items as List<CqlQuantity>);
+    if (_hasOnlyQuantities(items)) {
+      final values = _getValuesFromQuantities(items as List<CqlQuantity>);
       final stdDev = standardDeviation(values);
       return [Quantity(value: FhirDecimal(stdDev), unit: items[0].unit)];
     } else {
@@ -327,7 +327,7 @@ class Product extends AggregateExpression {
     }
 
     try {
-      items = processQuantities(items);
+      items = _processQuantities(items);
     } catch (e) {
       return [];
     }
@@ -335,8 +335,8 @@ class Product extends AggregateExpression {
       return [];
     }
 
-    if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items as List<CqlQuantity>);
+    if (_hasOnlyQuantities(items)) {
+      final values = _getValuesFromQuantities(items as List<CqlQuantity>);
       final product = values.reduce((x, y) => x * y);
       // Units are not multiplied for the geometric product
       return [Quantity(value: FhirDecimal(product), unit: items[0].unit)];
@@ -356,7 +356,7 @@ class GeometricMean extends AggregateExpression {
     }
     var items = source.first.execute(ctx);
     try {
-      items = processQuantities(items);
+      items = _processQuantities(items);
     } catch (e) {
       return [];
     }
@@ -365,8 +365,8 @@ class GeometricMean extends AggregateExpression {
       return [];
     }
 
-    if (hasOnlyQuantities(items)) {
-      final values = getValuesFromQuantities(items as List<CqlQuantity>);
+    if (_hasOnlyQuantities(items)) {
+      final values = _getValuesFromQuantities(items as List<CqlQuantity>);
       final product = values.fold(1.0, (x, y) => x * y);
       final geoMean = pow(product, 1.0 / items.length);
       return [Quantity(value: FhirDecimal(geoMean), unit: items[0].unit)];
@@ -401,7 +401,7 @@ class AllTrue extends AggregateExpression {
       return [];
     }
     final items = source.first.execute(ctx);
-    return allTrue(removeNulls(items));
+    return [allTrue(removeNulls(items))];
   }
 }
 
@@ -414,15 +414,15 @@ class AnyTrue extends AggregateExpression {
       return [];
     }
     final items = source.first.execute(ctx);
-    return anyTrue(items);
+    return [anyTrue(items)];
   }
 }
 
-List<dynamic> processQuantities(List<dynamic> values) {
+List<dynamic> _processQuantities(List<dynamic> values) {
   final items = removeNulls(values);
-  if (hasOnlyQuantities(items)) {
-    return convertAllUnits(items.cast<CqlQuantity>());
-  } else if (hasSomeQuantities(items)) {
+  if (_hasOnlyQuantities(items)) {
+    return _convertAllUnits(items.cast<CqlQuantity>());
+  } else if (_hasSomeQuantities(items)) {
     throw Exception(
         'Cannot perform aggregate operations on mixed values of Quantities and non Quantities');
   } else {
@@ -430,20 +430,20 @@ List<dynamic> processQuantities(List<dynamic> values) {
   }
 }
 
-List<num> getValuesFromQuantities(List<CqlQuantity> quantities) {
+List<num> _getValuesFromQuantities(List<CqlQuantity> quantities) {
   quantities.removeWhere((element) => element.value?.value == null);
   return quantities.map((CqlQuantity) => CqlQuantity.value!.value!).toList();
 }
 
-bool hasOnlyQuantities(List<dynamic> arr) {
+bool _hasOnlyQuantities(List<dynamic> arr) {
   return arr.every((x) => x is CqlQuantity);
 }
 
-bool hasSomeQuantities(List<dynamic> arr) {
+bool _hasSomeQuantities(List<dynamic> arr) {
   return arr.any((x) => x is CqlQuantity);
 }
 
-List<CqlQuantity> convertAllUnits(List<CqlQuantity> arr) {
+List<CqlQuantity> _convertAllUnits(List<CqlQuantity> arr) {
   // Convert all quantities in the array to match the unit of the first item
   return arr
       .map((Quantity q) => q.value?.value == null ||
@@ -457,8 +457,8 @@ List<CqlQuantity> convertAllUnits(List<CqlQuantity> arr) {
       .toList();
 }
 
-num medianOfNumbers(List<num> numbers) {
-  final items = numericalSort(numbers, 'asc');
+num _medianOfNumbers(List<num> numbers) {
+  final items = _numericalSort(numbers, 'asc');
   if (items.length % 2 == 1) {
     // Odd number of items
     return items[(items.length - 1) ~/ 2];
@@ -468,7 +468,7 @@ num medianOfNumbers(List<num> numbers) {
   }
 }
 
-List<num> numericalSort(List<num> things, String direction) {
+List<num> _numericalSort(List<num> things, String direction) {
   things.sort((a, b) {
     if (direction == 'asc' || direction == 'ascending') {
       return a.compareTo(b);

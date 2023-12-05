@@ -119,6 +119,10 @@ class ElmLibrary {
     }
   }
 
+  Map<String, dynamic> toJson() {
+    return source;
+  }
+
   List<FunctionDef>? getFunction(String identifier) {
     return functions[identifier];
   }

@@ -1,28 +1,33 @@
 import '../cql.dart';
 
 class Repository {
-  late dynamic data;
-  late List<ElmLibrary> libraries;
+  dynamic data;
+  List<ElmLibrary>? libraries;
 
-  Repository(dynamic data) {
-    this.data = data;
-    this.libraries = List.from(data.values);
+  Repository(this.data) {
+    libraries = List.from(data.values);
   }
 
+  // TODO(Dokotela): I don't trust these json conversions
   ElmLibrary? resolve(String path, [String? version]) {
-    for (final lib in libraries) {
-      final String id = lib.identifier.id;
-      final String? system = lib.identifier.system;
-      final String? libraryVersion = lib.identifier.version;
-      final libraryUri = '$system/$id';
+    for (var library in libraries ?? <ElmLibrary>[]) {
+      final lib = library.toJson();
+      if (lib['library'] != null && lib['library']['identifier'] != null) {
+        final identifier = lib['library']['identifier'];
+        final id = identifier['id'];
+        final system = identifier['system'];
+        final libraryVersion = identifier['version'];
 
-      if (path == libraryUri || path == id) {
-        if (version != null) {
-          if (libraryVersion == version) {
-            return lib;
+        final libraryUri = '$system/$id';
+
+        if (path == libraryUri || path == id) {
+          if (version != null) {
+            if (libraryVersion == version) {
+              return ElmLibrary(lib, this);
+            }
+          } else {
+            return ElmLibrary(lib, this);
           }
-        } else {
-          return lib;
         }
       }
     }

@@ -68,8 +68,10 @@ num? convertUnit(FhirDecimal fromVal, String fromUnit, String toUnit,
   fromUnit = fixUnit(fromUnit);
   toUnit = fixUnit(toUnit);
 
-  final result = utils.convertUnitTo(fromVal.value, fromUnit, toUnit);
-  if (result.status != 'succeeded') {
+  final result = fromVal.value == null
+      ? null
+      : utils.convertUnitTo(fromVal.value!, fromUnit, toUnit);
+  if (result == null || result.status != 'succeeded') {
     return null;
   }
   return adjustPrecision
@@ -132,7 +134,7 @@ String? convertToCQLDateUnit(dynamic unit) {
 
 int? compareUnits(dynamic unit1, dynamic unit2) {
   try {
-    final c = convertUnit(1, unit1, unit2);
+    final c = convertUnit(FhirDecimal(1), unit1, unit2);
     if (c != null) {
       if (c > 1) {
         return 1;

@@ -724,17 +724,16 @@ class CqlDateTime extends AbstractDate {
 
     final Uncertainty? a = this.toLuxonUncertainty();
     final b = other.toLuxonUncertainty();
-
     if ([
       CqlDateTimeUnit.year,
       CqlDateTimeUnit.month,
       'week',
       CqlDateTimeUnit.day
     ].contains(unitField)) {
-      a?.low = a.low.toUTC(0, keepLocalTime: true);
-      a?.high = a.high.toUTC(0, keepLocalTime: true);
-      b?.low = b.low.toUTC(0, keepLocalTime: true);
-      b?.high = b.high.toUTC(0, keepLocalTime: true);
+      a?.low = a.low.toUtc(); //(0, keepLocalTime: true);
+      a?.high = a.high.toUtc(); //(0, keepLocalTime: true);
+      b?.low = b.low.toUtc(); //(0, keepLocalTime: true);
+      b?.high = b.high.toUtc(); //(0, keepLocalTime: true);
     }
 
     a?.low = truncateLuxonDateTime(a.low, unitField);
@@ -1299,6 +1298,16 @@ DateTime endOf(DateTime dateTime, CqlDateTimeUnit unit) {
     case CqlDateTimeUnit.second:
       return DateTime(dateTime.year, dateTime.month, dateTime.day,
           dateTime.hour, dateTime.minute, dateTime.second, 999);
+    case CqlDateTimeUnit.millisecond:
+      return DateTime(
+          dateTime.year,
+          dateTime.month,
+          dateTime.day,
+          dateTime.hour,
+          dateTime.minute,
+          dateTime.second,
+          dateTime.millisecond,
+          999);
     default:
       throw ArgumentError('Invalid unit: $unit');
   }

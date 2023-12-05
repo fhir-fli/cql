@@ -27,6 +27,6 @@ class ValueSetObject {
 }
 
 abstract class TerminologyProvider {
-  Future<List<CqlValueSet>> findValueSetsByOid(String oid);
-  Future<CqlValueSet?> findValueSet(String oid, [String? version]);
+  List<CqlValueSet> findValueSetsByOid(String oid);
+  CqlValueSet? findValueSet(String oid, [String? version]);
 }

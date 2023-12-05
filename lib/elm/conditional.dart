@@ -12,8 +12,8 @@ class If extends Expression {
   }
 
   @override
-  Future<dynamic> exec(Context ctx)  {
-    if (await condition.execute(ctx)) {
+  List<dynamic> execute(Context ctx) {
+    if (condition.execute(ctx)) {
       return th.execute(ctx);
     } else {
       return els.execute(ctx);
@@ -44,7 +44,7 @@ class Case extends Expression {
     els = build(json['else']);
   }
 
-  Future<dynamic> exec(Context ctx)  {
+  List<dynamic> execute(Context ctx) {
     if (comparand != null) {
       return execSelected(ctx);
     } else {
@@ -52,19 +52,19 @@ class Case extends Expression {
     }
   }
 
-  Future<dynamic> execSelected(Context ctx)  {
-    var val = await comparand.execute(ctx);
+  List<dynamic> execSelected(Context ctx) {
+    var val = comparand.execute(ctx);
     for (var ci in caseItems) {
-      if (equals(await ci.when.execute(ctx), val) ?? false) {
+      if (compEquals(ci.when.execute(ctx), val) ?? false) {
         return ci.then.execute(ctx);
       }
     }
     return els.execute(ctx);
   }
 
-  Future<dynamic> execStandard(Context ctx)  {
+  List<dynamic> execStandard(Context ctx) {
     for (var ci in caseItems) {
-      if (await ci.when.execute(ctx)) {
+      if (ci.when.execute(ctx)) {
         return ci.then.execute(ctx);
       }
     }

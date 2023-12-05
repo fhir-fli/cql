@@ -399,7 +399,7 @@ class Log extends Expression {
 
   @override
   List<dynamic> execute(Context ctx) {
-    List<List<dynamic>> args = execArgs(ctx);
+    List<dynamic> args = execArgs(ctx);
     if (args.any((x) => x.length != 1 && x.first is! num)) {
       return [];
     }

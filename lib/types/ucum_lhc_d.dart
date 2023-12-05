@@ -46,7 +46,7 @@ class ValidationResponse {
 
 class ConversionResponse {
   String status;
-  String toVal;
+  num toVal;
   List<String> msg;
   List<ConversionSuggestion>? suggestions;
   Unit fromUnit;
@@ -79,7 +79,7 @@ class UcumLhcUtils {
     // Implement the logic for converting a unit
     return ConversionResponse(
       status: 'succeeded',
-      toVal: 'convertedValue',
+      toVal: 1,
       msg: [],
       fromUnit: Unit(code: '', name: '', guidance: '', csCode_: ''),
       toUnit: Unit(code: '', name: '', guidance: '', csCode_: ''),

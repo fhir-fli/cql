@@ -2,8 +2,8 @@ import '../cql.dart';
 
 /// Iterator for the patients provided to the execution engine
 abstract class DataProvider {
-  Future<PatientObject?> currentPatient();
-  Future<PatientObject?> nextPatient();
+  PatientObject? currentPatient();
+  PatientObject? nextPatient();
 }
 
 /// Structure of a Record
@@ -41,6 +41,6 @@ class RetrieveDetails {
 
 /// Patient data object that implements logic for searching for records based on the Patient
 abstract class PatientObject implements RecordObject {
-  Future<List<RecordObject>> findRecords(String? profile,
+  List<RecordObject> findRecords(String? profile,
       [RetrieveDetails? retrieveDetails]);
 }

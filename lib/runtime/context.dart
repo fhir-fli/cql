@@ -70,11 +70,8 @@ class Context {
   }
 
   // Method: findRecords
-  Future<dynamic> findRecords(String? profile,
-      [RetrieveDetails? retrieveDetails])  {
-    return parent != null
-        ? await parent.findRecords(profile, retrieveDetails)
-        : null;
+  dynamic findRecords(String? profile, [RetrieveDetails? retrieveDetails]) {
+    return parent != null ? parent.findRecords(profile, retrieveDetails) : null;
   }
 
   // Method: childContext
@@ -439,8 +436,7 @@ class PatientContext extends Context {
     return localIdContext[localId]!;
   }
 
-  Future<dynamic> findRecords(profile,
-      [RetrieveDetails? retrieveDetails])  {
+  List<RecordObject>? findRecords(profile, [RetrieveDetails? retrieveDetails]) {
     return patient != null
         ? patient!.findRecords(profile, retrieveDetails)
         : null;
@@ -473,7 +469,7 @@ class UnfilteredContext extends Context {
 
   @override
   Future<dynamic> findRecords(String? profile,
-      [RetrieveDetails? retrieveDetails])  {
+      [RetrieveDetails? retrieveDetails]) {
     throw Exception(
         'Retrieves are not currently supported in Unfiltered Context');
   }
@@ -487,11 +483,13 @@ class UnfilteredContext extends Context {
   dynamic get(String? identifier) {
     if (identifier != null && contextValues[identifier] != null) {
       return contextValues[identifier];
-    } else if (library.contexts
-            .indexWhere((element) => element.name == 'Unfiltered') !=
+    } else if (library.expressions.keys
+            .toList()
+            .indexWhere((element) => element == 'Unfiltered') !=
         -1) {
-      return library.contexts
-          .firstWhere((element) => element.name == 'Unfiltered');
+      return library.expressions.keys
+          .toList()
+          .firstWhere((element) => element == 'Unfiltered');
     } else if (identifier == null) {
       return null;
     } else {
