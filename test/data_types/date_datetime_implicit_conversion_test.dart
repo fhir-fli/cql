@@ -7,23 +7,22 @@ void main() {
   group('DateTime.differenceBetween with implicit conversion of first variable',
       () {
     test('should handle difference between', () {
-      final a = CqlDateTime.fromDateTime(DateTime.parse('2009-06-15'));
-      final b =
-          CqlDateTime.fromDateTime(DateTime.parse('2009-06-15T12:37:45.0'));
-      expect(a.differenceBetween(b, CqlDateTimeUnit.year),
+      final a = CqlDate.parse('2009-06-15');
+      final b = CqlDateTime.parse('2009-06-15T12:37:45.0');
+      expect(a?.differenceBetween(b, CqlDateTimeUnit.year),
           equals(Uncertainty(low: 0)));
-      expect(a.differenceBetween(b, CqlDateTimeUnit.month),
+      expect(a?.differenceBetween(b, CqlDateTimeUnit.month),
           equals(Uncertainty(low: 0)));
-      expect(a.differenceBetween(b, CqlDateTimeUnit.day),
+      expect(a?.differenceBetween(b, CqlDateTimeUnit.day),
           equals(Uncertainty(low: 0)));
-      expect(a.differenceBetween(b, CqlDateTimeUnit.hour),
+      expect(a?.differenceBetween(b, CqlDateTimeUnit.hour),
           equals(Uncertainty(low: -11, high: 12)));
-      expect(a.differenceBetween(b, CqlDateTimeUnit.minute),
+      expect(a?.differenceBetween(b, CqlDateTimeUnit.minute),
           equals(Uncertainty(low: -682, high: 757)));
-      expect(a.differenceBetween(b, CqlDateTimeUnit.second),
+      expect(a?.differenceBetween(b, CqlDateTimeUnit.second),
           equals(Uncertainty(low: -40934, high: 45465)));
       expect(
-          a.differenceBetween(b, CqlDateTimeUnit.millisecond),
+          a?.differenceBetween(b, CqlDateTimeUnit.millisecond),
           equals(
             Uncertainty(low: -40934999, high: 45465000),
           ));
