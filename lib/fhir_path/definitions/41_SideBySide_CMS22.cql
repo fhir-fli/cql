@@ -1,0 +1,26 @@
+
+using QDM version '5.0.2'
+
+valueset "ONC Administrative Sex": 'urn:oid:2.16.840.1.113762.1.4.1'
+valueset "Race": 'urn:oid:2.16.840.1.114222.4.11.836'
+valueset "Ethnicity": 'urn:oid:2.16.840.1.114222.4.11.837'
+valueset "Payer": 'urn:oid:2.16.840.1.114222.4.11.3591'
+valueset "Diagnosis of hypertension": 'urn:oid:2.16.840.1.113883.3.600.263'
+valueset "ECG 12 lead or study order": 'urn:oid:2.16.840.1.113883.3.600.2448'
+valueset "BP Screening Encounter Codes": 'urn:oid:2.16.840.1.113883.3.600.1920'
+valueset "Dietary Recommendations": 'urn:oid:2.16.840.1.113883.3.600.1515'
+valueset "Followup within 4 weeks": 'urn:oid:2.16.840.1.113883.3.600.1537'
+valueset "Followup within one year": 'urn:oid:2.16.840.1.113883.3.600.1474'
+valueset "Lifestyle Recommendation": 'urn:oid:2.16.840.1.113883.3.600.1508'
+valueset "Moderation of ETOH Consumption Recommendation": 'urn:oid:2.16.840.1.113883.3.600.823'
+valueset "Physical Activity Recommendation": 'urn:oid:2.16.840.1.113883.3.600.1518'
+valueset "Referral to Alternative Provider / Primary Care Provider": 'urn:oid:2.16.840.1.113883.3.600.1475'
+valueset "Weight Reduction Recommended": 'urn:oid:2.16.840.1.113883.3.600.1510'
+valueset "Patient Reason refused": 'urn:oid:2.16.840.1.113883.3.600.791'
+valueset "Laboratory Tests for Hypertension": 'urn:oid:2.16.840.1.113883.3.600.1482'
+valueset "Anti-Hypertensive Pharmacologic Therapy": 'urn:oid:2.16.840.1.113883.3.600.1476'
+valueset "Diastolic Blood Pressure": 'urn:oid:2.16.840.1.113883.3.526.3.1033'
+valueset "Systolic Blood Pressure": 'urn:oid:2.16.840.1.113883.3.526.3.1032'
+valueset "Medical or Other reason not done": 'urn:oid:2.16.840.1.113883.3.600.1.1502'
+
+parameter "Measurement Period" Interval<DateTime>

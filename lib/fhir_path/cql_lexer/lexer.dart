@@ -6,296 +6,357 @@ import '../fhir_path.dart';
 class CqlLexer extends GrammarDefinition {
   Parser start() => ref0(library).end();
 
-  final Parser library = libraryDefinition.optional() &
-      definition.star() &
-      statement.star() &
+  Parser library() =>
+      ref0(libraryDefinition).optional() &
+      ref0(definition).star() &
+      ref0(statement).star() &
       endOfInput();
 
-  final Parser definition = usingDefinition |
-      includeDefinition |
-      codesystemDefinition |
-      valuesetDefinition |
-      codeDefinition |
-      conceptDefinition |
-      parameterDefinition;
+  Parser definition() =>
+      ref0(usingDefinition) |
+      ref0(includeDefinition) |
+      ref0(codesystemDefinition) |
+      ref0(valuesetDefinition) |
+      ref0(codeDefinition) |
+      ref0(conceptDefinition) |
+      ref0(parameterDefinition);
 
-  final Parser libraryDefinition = string('library') &
-      qualifiedIdentifier &
-      (string('version') & versionSpecifier).optional();
+  Parser libraryDefinition() =>
+      string('library') &
+      ref0(qualifiedIdentifier) &
+      (string('version') & ref0(versionSpecifier)).optional();
 
-  final Parser usingDefinition = string('using') &
-      modelIdentifier &
-      (string('version') & versionSpecifier).optional();
+  Parser usingDefinition() =>
+      string('using') &
+      ref0(modelIdentifier) &
+      (string('version') & ref0(versionSpecifier)).optional();
 
-  final Parser includeDefinition = string('include') &
-      qualifiedIdentifier &
-      (string('version') & versionSpecifier).optional() &
-      (string('called') & localIdentifier).optional();
+  Parser includeDefinition() =>
+      string('include') &
+      ref0(qualifiedIdentifier) &
+      (string('version') & ref0(versionSpecifier)).optional() &
+      (string('called') & ref0(localIdentifier)).optional();
 
-  final Parser localIdentifier = identifier;
+  Parser localIdentifier() => ref0(identifier);
 
-  final Parser accessModifier = string('public') | string('private');
+  Parser accessModifier() => string('public') | string('private');
 
-  final Parser parameterDefinition = (accessModifier.optional() &
+  Parser parameterDefinition() =>
+      ref0(accessModifier).optional() &
       string('parameter') &
-      identifier &
-      typeSpecifier.optional() &
-      (string('default') & expression).optional());
+      ref0(identifier) &
+      ref0(typeSpecifier).optional() &
+      (string('default') & ref0(expression)).optional();
 
-  final Parser codesystemDefinition = (accessModifier.optional() &
+  Parser codesystemDefinition() =>
+      ref0(accessModifier).optional() &
       string('codesystem') &
-      identifier &
+      ref0(identifier) &
       char(':') &
-      codesystemId &
-      (string('version') & versionSpecifier).optional());
+      ref0(codesystemId) &
+      (string('version') & ref0(versionSpecifier)).optional();
 
-  final Parser valuesetDefinition = (accessModifier.optional() &
+  Parser valuesetDefinition() =>
+      ref0(accessModifier).optional() &
       string('valueset') &
-      identifier &
+      ref0(identifier) &
       char(':') &
-      valuesetId &
-      (string('version') & versionSpecifier).optional() &
-      codesystems.optional());
+      ref0(valuesetId) &
+      (string('version') & ref0(versionSpecifier)).optional() &
+      ref0(codesystems).optional();
 
-  final Parser codesystems = (string('codesystems') &
+  Parser codesystems() =>
+      string('codesystems') &
       char('{') &
-      (codesystemIdentifier & (char(',') & codesystemIdentifier).star())
+      (ref0(codesystemIdentifier) &
+              (char(',') & ref0(codesystemIdentifier)).star())
           .optional() &
-      char('}'));
+      char('}');
 
-  final Parser codesystemIdentifier =
-      (libraryIdentifier.optional() & char('.') & identifier) | identifier;
+  Parser codesystemIdentifier() =>
+      (ref0(libraryIdentifier).optional() & char('.') & ref0(identifier)) |
+      ref0(identifier);
 
-  final Parser libraryIdentifier = identifier;
+  Parser libraryIdentifier() => ref0(identifier);
 
-  final Parser codeDefinition = (accessModifier.optional() &
+  Parser codeDefinition() =>
+      ref0(accessModifier).optional() &
       string('code') &
-      identifier &
+      ref0(identifier) &
       char(':') &
-      codeId &
+      ref0(codeId) &
       string('from') &
-      codesystemIdentifier &
-      displayClause.optional());
+      ref0(codesystemIdentifier) &
+      ref0(displayClause).optional();
 
-  final Parser conceptDefinition = (accessModifier.optional() &
+  Parser conceptDefinition() =>
+      ref0(accessModifier).optional() &
       string('concept') &
-      identifier &
+      ref0(identifier) &
       char(':') &
       char('{') &
-      (codeIdentifier & (char(',') & codeIdentifier).star()).optional() &
+      (ref0(codeIdentifier) & (char(',') & ref0(codeIdentifier)).star())
+          .optional() &
       char('}') &
-      displayClause.optional());
+      ref0(displayClause).optional();
 
-  final Parser codeIdentifier =
-      (libraryIdentifier.optional() & char('.') & identifier) | identifier;
+  Parser codeIdentifier() =>
+      (ref0(libraryIdentifier).optional() & char('.') & ref0(identifier)) |
+      ref0(identifier);
 
-  final Parser codesystemId = stringLexer;
+  Parser codesystemId() => stringLexer;
 
-  final Parser valuesetId = stringLexer;
+  Parser valuesetId() => stringLexer;
 
-  final Parser versionSpecifier = stringLexer;
+  Parser versionSpecifier() => stringLexer;
 
-  final Parser codeId = stringLexer;
+  Parser codeId() => stringLexer;
 
-  final Parser typeSpecifier = namedTypeSpecifier |
-      listTypeSpecifier |
-      intervalTypeSpecifier |
-      tupleTypeSpecifier |
-      choiceTypeSpecifier;
-  final Parser namedTypeSpecifier = (qualifier.flatten() & char('.')).star() &
-      referentialOrTypeNameIdentifier;
+  Parser typeSpecifier() =>
+      ref0(namedTypeSpecifier) |
+      ref0(listTypeSpecifier) |
+      ref0(intervalTypeSpecifier) |
+      ref0(tupleTypeSpecifier) |
+      ref0(choiceTypeSpecifier);
 
-  final Parser modelIdentifier = identifier.token();
+  Parser namedTypeSpecifier() =>
+      (ref0(qualifier).flatten() & char('.')).star() &
+      ref0(referentialOrTypeNameIdentifier);
 
-  final Parser listTypeSpecifier =
-      string('List') & char('<').token() & typeSpecifier & char('>').token();
+  Parser modelIdentifier() => ref0(identifier).token();
 
-  final Parser intervalTypeSpecifier = string('Interval') &
+  Parser listTypeSpecifier() =>
+      string('List') &
       char('<').token() &
-      typeSpecifier &
+      ref0(typeSpecifier) &
       char('>').token();
 
-  final Parser tupleTypeSpecifier = string('Tuple') &
+  Parser intervalTypeSpecifier() =>
+      string('Interval') &
+      char('<').token() &
+      ref0(typeSpecifier) &
+      char('>').token();
+
+  Parser tupleTypeSpecifier() =>
+      string('Tuple') &
       string('{') &
-      tupleElementDefinition.timesSeparated(char(','), 1) &
+      ref0(tupleElementDefinition).timesSeparated(char(','), 1) &
       string('}');
 
-  final Parser tupleElementDefinition = referentialIdentifier & typeSpecifier;
+  Parser tupleElementDefinition() =>
+      ref0(referentialIdentifier) & ref0(typeSpecifier);
 
-  final Parser choiceTypeSpecifier = string('Choice') &
+  Parser choiceTypeSpecifier() =>
+      string('Choice') &
       char('<').token() &
-      typeSpecifier.separatedBy(char(',')) &
+      ref0(typeSpecifier).timesSeparated(char(','), 1) &
       char('>').token();
 
-  final Parser statement =
-      expressionDefinition | contextDefinition | functionDefinition;
+  Parser statement() =>
+      ref0(expressionDefinition) |
+      ref0(contextDefinition) |
+      ref0(functionDefinition);
 
-  final Parser expressionDefinition = string('define') &
-      (accessModifier.optional() & identifier & char(':') & expression);
+  Parser expressionDefinition() =>
+      string('define') &
+      (ref0(accessModifier).optional() &
+          ref0(identifier) &
+          char(':') &
+          ref0(expression));
 
-  final Parser contextDefinition =
-      string('context') & (modelIdentifier & char('.')).optional() & identifier;
+  Parser contextDefinition() =>
+      string('context') &
+      (ref0(modelIdentifier) & char('.')).optional() &
+      ref0(identifier);
 
-  final Parser functionDefinition = string('define') &
-      (accessModifier.optional() &
+  Parser functionDefinition() =>
+      string('define') &
+      (ref0(accessModifier).optional() &
           string('fluent').optional() &
           string('function') &
-          identifierOrFunctionIdentifier &
+          ref0(identifierOrFunctionIdentifier) &
           char('(') &
-          (operandDefinition & (char(',') & operandDefinition).star())
+          (ref0(operandDefinition) &
+                  (char(',') & ref0(operandDefinition)).star())
               .optional() &
           char(')') &
-          (string('returns') & typeSpecifier).optional() &
+          (string('returns') & ref0(typeSpecifier)).optional() &
           char(':') &
-          (functionBody | string('external')));
+          (ref0(functionBody) | string('external')));
 
-  final Parser operandDefinition = referentialIdentifier & typeSpecifier;
+  Parser operandDefinition() =>
+      ref0(referentialIdentifier) & ref0(typeSpecifier);
 
-  final Parser functionBody = expression;
+  Parser functionBody() => ref0(expression);
 
-  final Parser querySource = retrieve |
-      qualifiedIdentifierExpression |
-      (char('(') & expression & char(')'));
+  Parser querySource() =>
+      ref0(retrieve) |
+      ref0(qualifiedIdentifierExpression) |
+      (char('(') & ref0(expression) & char(')'));
 
-  final Parser aliasedQuerySource = querySource & alias;
+  Parser aliasedQuerySource() => ref0(querySource) & ref0(alias);
 
-  final Parser alias = identifier;
+  Parser alias() => ref0(identifier);
 
-  final Parser queryInclusionClause = withClause | withoutClause;
+  Parser queryInclusionClause() => ref0(withClause) | ref0(withoutClause);
 
-  final Parser withClause =
-      string('with') & aliasedQuerySource & string('such that') & expression;
+  Parser withClause() =>
+      string('with') &
+      ref0(aliasedQuerySource) &
+      string('such that') &
+      ref0(expression);
 
-  final Parser withoutClause =
-      string('without') & aliasedQuerySource & string('such that') & expression;
+  Parser withoutClause() =>
+      string('without') &
+      ref0(aliasedQuerySource) &
+      string('such that') &
+      ref0(expression);
 
-  final Parser retrieve = char('[') &
-      (contextIdentifier & string('->')).optional() &
-      namedTypeSpecifier &
-      (char(':') & (codePath & codeComparator).optional() & terminology)
+  Parser retrieve() =>
+      char('[') &
+      (ref0(contextIdentifier) & string('->')).optional() &
+      ref0(namedTypeSpecifier) &
+      (char(':') &
+              (ref0(codePath) & ref0(codeComparator)).optional() &
+              ref0(terminology))
           .optional() &
       char(']');
 
-  final Parser contextIdentifier = qualifiedIdentifierExpression;
+  Parser contextIdentifier() => ref0(qualifiedIdentifierExpression);
 
-  final Parser codePath = simplePath;
+  Parser codePath() => ref0(simplePath);
 
-  final Parser codeComparator = string('in') | char('=') | string('~');
+  Parser codeComparator() => string('in') | char('=') | string('~');
 
-  final Parser terminology = qualifiedIdentifierExpression | expression;
+  Parser terminology() =>
+      ref0(qualifiedIdentifierExpression) | ref0(expression);
 
-  final Parser qualifier = identifier;
+  Parser qualifier() => ref0(identifier);
 
-  final Parser query = sourceClause &
-      letClause.optional() &
-      queryInclusionClause.star() &
-      whereClause.optional() &
-      (aggregateClause | returnClause).optional() &
-      sortClause.optional();
+  Parser query() =>
+      ref0(sourceClause) &
+      ref0(letClause).optional() &
+      ref0(queryInclusionClause).star() &
+      ref0(whereClause).optional() &
+      (ref0(aggregateClause) | ref0(returnClause)).optional() &
+      ref0(sortClause).optional();
 
-  final Parser sourceClause = (string('from').optional() &
-      aliasedQuerySource &
-      (char(',') & aliasedQuerySource).star());
+  Parser sourceClause() => (string('from').optional() &
+      ref0(aliasedQuerySource) &
+      (char(',') & ref0(aliasedQuerySource)).star());
 
-  final Parser letClause =
-      string('let') & letClauseItem & (char(',') & letClauseItem).star();
+  Parser letClause() =>
+      string('let') &
+      ref0(letClauseItem) &
+      (char(',') & ref0(letClauseItem)).star();
 
-  final Parser letClauseItem = identifier & char(':') & expression;
+  Parser letClauseItem() => ref0(identifier) & char(':') & ref0(expression);
 
-  final Parser whereClause = string('where') & expression;
+  Parser whereClause() => string('where') & ref0(expression);
 
-  final Parser returnClause = string('return') &
+  Parser returnClause() =>
+      string('return') &
       (string('all') | string('distinct')).optional() &
-      expression;
+      ref0(expression);
 
-  final Parser aggregateClause = string('aggregate') &
+  Parser aggregateClause() =>
+      string('aggregate') &
       (string('all') | string('distinct')).optional() &
-      identifier &
-      startingClause.optional() &
+      ref0(identifier) &
+      ref0(startingClause).optional() &
       char(':') &
-      expression;
+      ref0(expression);
 
-  final Parser startingClause = string('starting') &
-      (simpleLiteral | quantity | (char('(') & expression & char(')')));
+  Parser startingClause() =>
+      string('starting') &
+      (ref0(simpleLiteral) |
+          ref0(quantity) |
+          (char('(') & ref0(expression) & char(')')));
 
-  final Parser sortClause = string('sort') &
-      (sortDirection |
-          (string('by') & sortByItem & (char(',') & sortByItem).star()));
+  Parser sortClause() =>
+      string('sort') &
+      (ref0(sortDirection) |
+          (string('by') &
+              ref0(sortByItem) &
+              (char(',') & ref0(sortByItem)).star()));
 
-  final Parser sortDirection = string('asc') |
+  Parser sortDirection() =>
+      string('asc') |
       string('ascending') |
       string('desc') |
       string('descending');
 
-  final Parser sortByItem = expressionTerm & sortDirection.optional();
+  Parser sortByItem() => ref0(expressionTerm) & ref0(sortDirection).optional();
 
-  final Parser qualifiedIdentifier =
-      (qualifier & char('.')).star() & identifier;
+  Parser qualifiedIdentifier() =>
+      (ref0(qualifier) & char('.')).star() & ref0(identifier);
 
-  final Parser qualifiedIdentifierExpression =
-      (qualifierExpression & char('.')).star() & referentialIdentifier;
+  Parser qualifiedIdentifierExpression() =>
+      (ref0(qualifierExpression) & char('.')).star() &
+      ref0(referentialIdentifier);
 
-  final Parser qualifierExpression = referentialIdentifier;
+  Parser qualifierExpression() => ref0(referentialIdentifier);
 
-  final Parser simplePath = referentialIdentifier |
-      (simplePath & char('.') & referentialIdentifier) |
-      (simplePath & char('[') & simpleLiteral & char(']'));
+  Parser simplePath() =>
+      ref0(referentialIdentifier) |
+      (ref0(simplePath) & char('.') & ref0(referentialIdentifier)) |
+      (ref0(simplePath) & char('[') & ref0(simpleLiteral) & char(']'));
 
-  final Parser simpleLiteral = stringLexer |
-      digit().plus().flatten().trim(); // Assumes stringLexer parser for STRING
+  Parser simpleLiteral() => stringLexer | digit().plus().flatten().trim();
 
-  final Parser expression = expressionTerm |
-      retrieve |
-      query |
-      (expression &
+  Parser expression() =>
+      ref0(expressionTerm) |
+      ref0(retrieve) |
+      ref0(query) |
+      (ref0(expression) &
           string('is') &
           string('not').optional() &
           (string('null') | string('true') | string('false'))) |
-      (expression & (string('is') | string('as')) & typeSpecifier) |
-      (string('cast') & expression & string('as') & typeSpecifier) |
-      (string('not') & expression) |
-      (string('exists') & expression) |
-      (expression &
+      (ref0(expression) & (string('is') | string('as')) & ref0(typeSpecifier)) |
+      (string('cast') & ref0(expression) & string('as') & ref0(typeSpecifier)) |
+      (string('not') & ref0(expression)) |
+      (string('exists') & ref0(expression)) |
+      (ref0(expression) &
           string('properly').optional() &
           string('between') &
-          expressionTerm &
+          ref0(expressionTerm) &
           string('and') &
-          expressionTerm) |
+          ref0(expressionTerm)) |
       ((string('duration') & string('in').optional()).optional() &
-          pluralDateTimePrecision &
+          ref0(pluralDateTimePrecision) &
           string('between') &
-          expressionTerm &
+          ref0(expressionTerm) &
           string('and') &
-          expressionTerm) |
+          ref0(expressionTerm)) |
       (string('difference') &
           string('in') &
-          pluralDateTimePrecision &
+          ref0(pluralDateTimePrecision) &
           string('between') &
-          expressionTerm &
+          ref0(expressionTerm) &
           string('and') &
-          expressionTerm) |
-      (expression &
+          ref0(expressionTerm)) |
+      (ref0(expression) &
           (string('<=') | string('<') | string('>') | string('>=')) &
-          expression) |
-      (expression & intervalOperatorPhrase & expression) |
-      (expression &
+          ref0(expression)) |
+      (ref0(expression) & ref0(intervalOperatorPhrase) & ref0(expression)) |
+      (ref0(expression) &
           (string('=') | string('!=') | string('~') | string('!~')) &
-          expression) |
-      (expression &
+          ref0(expression)) |
+      (ref0(expression) &
           (string('in') | string('contains')) &
-          dateTimePrecisionSpecifier.optional() &
-          expression) |
-      (expression & string('and') & expression) |
-      (expression & (string('or') | string('xor')) & expression) |
-      (expression & string('implies') & expression) |
-      (expression &
+          ref0(dateTimePrecisionSpecifier).optional() &
+          ref0(expression)) |
+      (ref0(expression) & string('and') & ref0(expression)) |
+      (ref0(expression) & (string('or') | string('xor')) & ref0(expression)) |
+      (ref0(expression) & string('implies') & ref0(expression)) |
+      (ref0(expression) &
           (string('|') |
               string('union') |
               string('intersect') |
               string('except')) &
-          expression);
+          ref0(expression));
 
-  final Parser dateTimePrecision = (string('year') |
+  Parser dateTimePrecision() => (string('year') |
           string('month') |
           string('week') |
           string('day') |
@@ -306,12 +367,12 @@ class CqlLexer extends GrammarDefinition {
       .trim()
       .token();
 
-  final Parser dateTimeComponent =
+  Parser dateTimeComponent() =>
       (string('date') | string('time') | string('timezoneoffset'))
           .trim()
           .token();
 
-  final Parser pluralDateTimePrecision = (string('years') |
+  Parser pluralDateTimePrecision() => (string('years') |
           string('months') |
           string('weeks') |
           string('days') |
@@ -322,275 +383,312 @@ class CqlLexer extends GrammarDefinition {
       .trim()
       .token();
 
-  final Parser expressionTerm = (termExpressionTerm |
-          invocationExpressionTerm |
-          indexedExpressionTerm |
-          conversionExpressionTerm |
-          polarityExpressionTerm |
-          timeBoundaryExpressionTerm |
-          timeUnitExpressionTerm |
-          durationExpressionTerm |
-          differenceExpressionTerm |
-          widthExpressionTerm |
-          successorExpressionTerm |
-          predecessorExpressionTerm |
-          elementExtractorExpressionTerm |
-          pointExtractorExpressionTerm |
-          typeExtentExpressionTerm |
-          powerExpressionTerm |
-          multiplicationExpressionTerm |
-          additionExpressionTerm |
-          ifThenElseExpressionTerm |
-          caseExpressionTerm |
-          aggregateExpressionTerm |
-          setAggregateExpressionTerm)
+  Parser expressionTerm() => (ref0(termExpressionTerm) |
+          ref0(invocationExpressionTerm) |
+          ref0(indexedExpressionTerm) |
+          ref0(conversionExpressionTerm) |
+          ref0(polarityExpressionTerm) |
+          ref0(timeBoundaryExpressionTerm) |
+          ref0(timeUnitExpressionTerm) |
+          ref0(durationExpressionTerm) |
+          ref0(differenceExpressionTerm) |
+          ref0(widthExpressionTerm) |
+          ref0(successorExpressionTerm) |
+          ref0(predecessorExpressionTerm) |
+          ref0(elementExtractorExpressionTerm) |
+          ref0(pointExtractorExpressionTerm) |
+          ref0(typeExtentExpressionTerm) |
+          ref0(powerExpressionTerm) |
+          ref0(multiplicationExpressionTerm) |
+          ref0(additionExpressionTerm) |
+          ref0(ifThenElseExpressionTerm) |
+          ref0(caseExpressionTerm) |
+          ref0(aggregateExpressionTerm) |
+          ref0(setAggregateExpressionTerm))
       .token();
 
-  final Parser termExpressionTerm = term.token();
+  Parser termExpressionTerm() => ref0(term).token();
 
-  final Parser invocationExpressionTerm =
-      expressionTerm & char('.').token() & qualifiedInvocation;
+  Parser invocationExpressionTerm() =>
+      ref0(expressionTerm) & char('.').token() & ref0(qualifiedInvocation);
 
-  final Parser indexedExpressionTerm =
-      expressionTerm & char('[').token() & expression & char(']').token();
+  Parser indexedExpressionTerm() =>
+      ref0(expressionTerm) &
+      char('[').token() &
+      ref0(expression) &
+      char(']').token();
 
-  final Parser conversionExpressionTerm = string('convert').token() &
-      expression &
+  Parser conversionExpressionTerm() =>
+      string('convert').token() &
+      ref0(expression) &
       string('to').token() &
-      (typeSpecifier | unitLexer).token();
+      (ref0(typeSpecifier) | unitLexer).token();
 
-  final Parser polarityExpressionTerm =
-      (char('+') | char('-')).token() & expressionTerm;
+  Parser polarityExpressionTerm() =>
+      (char('+') | char('-')).token() & ref0(expressionTerm);
 
-  final Parser timeBoundaryExpressionTerm =
+  Parser timeBoundaryExpressionTerm() =>
       (string('start') | string('end')).token() &
-          string('of').token() &
-          expressionTerm;
-
-  final Parser timeUnitExpressionTerm =
-      dateTimeComponent.token() & string('from').token() & expressionTerm;
-
-  final Parser durationExpressionTerm = string('duration').token() &
-      string('in').token() &
-      pluralDateTimePrecision.token() &
       string('of').token() &
-      expressionTerm;
+      ref0(expressionTerm);
 
-  final Parser differenceExpressionTerm = string('difference').token() &
+  Parser timeUnitExpressionTerm() =>
+      ref0(dateTimeComponent).token() &
+      string('from').token() &
+      ref0(expressionTerm);
+
+  Parser durationExpressionTerm() =>
+      string('duration').token() &
       string('in').token() &
-      pluralDateTimePrecision.token() &
+      ref0(pluralDateTimePrecision).token() &
       string('of').token() &
-      expressionTerm;
+      ref0(expressionTerm);
 
-  final Parser widthExpressionTerm =
-      string('width').token() & string('of').token() & expressionTerm;
+  Parser differenceExpressionTerm() =>
+      string('difference').token() &
+      string('in').token() &
+      ref0(pluralDateTimePrecision).token() &
+      string('of').token() &
+      ref0(expressionTerm);
 
-  final Parser successorExpressionTerm =
-      string('successor').token() & string('of').token() & expressionTerm;
+  Parser widthExpressionTerm() =>
+      string('width').token() & string('of').token() & ref0(expressionTerm);
 
-  final Parser predecessorExpressionTerm =
-      string('predecessor').token() & string('of').token() & expressionTerm;
+  Parser successorExpressionTerm() =>
+      string('successor').token() & string('of').token() & ref0(expressionTerm);
 
-  final Parser elementExtractorExpressionTerm =
-      string('singleton').token() & string('from').token() & expressionTerm;
+  Parser predecessorExpressionTerm() =>
+      string('predecessor').token() &
+      string('of').token() &
+      ref0(expressionTerm);
 
-  final Parser pointExtractorExpressionTerm =
-      string('point').token() & string('from').token() & expressionTerm;
+  Parser elementExtractorExpressionTerm() =>
+      string('singleton').token() &
+      string('from').token() &
+      ref0(expressionTerm);
 
-  final Parser typeExtentExpressionTerm =
+  Parser pointExtractorExpressionTerm() =>
+      string('point').token() & string('from').token() & ref0(expressionTerm);
+
+  Parser typeExtentExpressionTerm() =>
       (string('minimum') | string('maximum')).token() &
-          namedTypeSpecifier.token();
+      ref0(namedTypeSpecifier).token();
 
-  final Parser powerExpressionTerm =
-      expressionTerm & char('^').token() & expressionTerm;
+  Parser powerExpressionTerm() =>
+      ref0(expressionTerm) & char('^').token() & ref0(expressionTerm);
 
-  final Parser multiplicationExpressionTerm = expressionTerm &
+  Parser multiplicationExpressionTerm() =>
+      ref0(expressionTerm) &
       (char('*') | char('/') | string('div') | string('mod')).token() &
-      expressionTerm;
+      ref0(expressionTerm);
 
-  final Parser additionExpressionTerm = expressionTerm &
+  Parser additionExpressionTerm() =>
+      ref0(expressionTerm) &
       (char('+') | char('-') | char('&')).token() &
-      expressionTerm;
+      ref0(expressionTerm);
 
-  final Parser ifThenElseExpressionTerm = string('if').token() &
-      expression &
+  Parser ifThenElseExpressionTerm() =>
+      string('if').token() &
+      ref0(expression) &
       string('then').token() &
-      expression &
+      ref0(expression) &
       string('else').token() &
-      expression;
+      ref0(expression);
 
-  final Parser caseExpressionTerm = (string('case') & expression.optional()) &
-      caseExpressionItem.plus() &
+  Parser caseExpressionTerm() =>
+      (string('case') & ref0(expression).optional()) &
+      ref0(caseExpressionItem).plus() &
       string('else').token() &
-      expression &
+      ref0(expression) &
       string('end').token();
 
-  final Parser aggregateExpressionTerm =
-      (string('distinct') | string('flatten')).token() & expression;
+  Parser aggregateExpressionTerm() =>
+      (string('distinct') | string('flatten')).token() & ref0(expression);
 
-  final Parser setAggregateExpressionTerm =
+  Parser setAggregateExpressionTerm() =>
       (string('expand') | string('collapse')).token() &
-          expression &
-          string('per').token() &
-          (dateTimePrecision | expression).token();
+      ref0(expression) &
+      string('per').token() &
+      (ref0(dateTimePrecision) | ref0(expression)).token();
 
-  final Parser caseExpressionItem =
-      string('when') & expression & string('then') & expression;
+  Parser caseExpressionItem() =>
+      string('when') & ref0(expression) & string('then') & ref0(expression);
 
-  final Parser dateTimePrecisionSpecifier =
-      dateTimePrecision.token() & string('of').token();
+  Parser dateTimePrecisionSpecifier() =>
+      ref0(dateTimePrecision).token() & string('of').token();
 
-  final Parser relativeQualifier =
+  Parser relativeQualifier() =>
       string('or before').token() | string('or after').token();
 
-  final Parser offsetRelativeQualifier =
+  Parser offsetRelativeQualifier() =>
       string('or more').token() | string('or less').token();
 
-  final Parser exclusiveRelativeQualifier =
+  Parser exclusiveRelativeQualifier() =>
       string('less than').token() | string('more than').token();
 
-  final Parser quantityOffset =
-      ((quantity & offsetRelativeQualifier.optional()) |
-              (exclusiveRelativeQualifier & quantity))
+  Parser quantityOffset() =>
+      ((ref0(quantity) & ref0(offsetRelativeQualifier).optional()) |
+              (ref0(exclusiveRelativeQualifier) & ref0(quantity)))
           .token();
 
-  final Parser temporalRelationship =
+  Parser temporalRelationship() =>
       ((string('on').optional() & (string('before') | string('after'))) |
               ((string('before') | string('after')) & string('or').optional()))
           .token();
 
-  final Parser intervalOperatorPhrase = ((string('starts') |
-                      string('ends') |
-                      string('occurs'))
-                  .optional() &
-              string('same').optional() &
-              dateTimePrecision.optional() &
-              (relativeQualifier | string('as')).optional() &
-              (string('start') | string('end')).optional() |
-          string('properly').optional() &
-              string('includes') &
-              dateTimePrecisionSpecifier.optional() &
-              (string('start') | string('end')).optional() |
-          (string('starts') | string('ends') | string('occurs')).optional() &
+  // TODO(Dokotela): review
+  Parser intervalOperatorPhrase() =>
+      ((string('starts') | string('ends') | string('occurs')).optional() &
+                  string('same').optional() &
+                  ref0(dateTimePrecision).optional() &
+                  (ref0(relativeQualifier) | string('as')).optional() &
+                  (string('start') | string('end')).optional() |
               string('properly').optional() &
-              (string('during') | string('included in')) &
-              dateTimePrecisionSpecifier.optional() |
-          (string('starts') | string('ends') | string('occurs')).optional() &
-              quantityOffset.optional() &
-              temporalRelationship &
-              dateTimePrecisionSpecifier.optional() &
-              (string('start') | string('end')).optional() |
-          (string('starts') | string('ends') | string('occurs')).optional() &
-              string('properly').optional() &
-              string('within') &
-              quantity &
-              string('of') &
-              (string('start') | string('end')).optional() |
-          string('meets') &
-              (string('before') | string('after')).optional() &
-              dateTimePrecisionSpecifier.optional() |
-          string('overlaps') &
-              (string('before') | string('after')).optional() &
-              dateTimePrecisionSpecifier.optional() |
-          string('starts') & dateTimePrecisionSpecifier.optional() |
-          string('ends') & dateTimePrecisionSpecifier.optional())
-      .token();
+                  string('includes') &
+                  ref0(dateTimePrecisionSpecifier).optional() &
+                  (string('start') | string('end')).optional() |
+              (string('starts') | string('ends') | string('occurs'))
+                      .optional() &
+                  string('properly').optional() &
+                  (string('during') | string('included in')) &
+                  ref0(dateTimePrecisionSpecifier).optional() |
+              (string('starts') | string('ends') | string('occurs'))
+                      .optional() &
+                  ref0(quantityOffset).optional() &
+                  ref0(temporalRelationship) &
+                  ref0(dateTimePrecisionSpecifier).optional() &
+                  (string('start') | string('end')).optional() |
+              (string('starts') | string('ends') | string('occurs'))
+                      .optional() &
+                  string('properly').optional() &
+                  string('within') &
+                  ref0(quantity) &
+                  string('of') &
+                  (string('start') | string('end')).optional() |
+              string('meets') &
+                  (string('before') | string('after')).optional() &
+                  ref0(dateTimePrecisionSpecifier))
+          .optional() |
+      string('overlaps') &
+          (string('before') | string('after')).optional() &
+          ref0(dateTimePrecisionSpecifier).optional() |
+      string('starts') & ref0(dateTimePrecisionSpecifier).optional() |
+      string('ends') & ref0(dateTimePrecisionSpecifier).optional().token();
 
-  final Parser term = (invocation |
-          literal |
+  Parser term() => (ref0(invocation) |
+          ref0(literal) |
           externalConstantLexer |
-          intervalSelector |
-          tupleSelector |
-          instanceSelector |
-          listSelector |
-          codeSelector |
-          conceptSelector |
-          (char('(') & expression & char(')')))
+          ref0(intervalSelector) |
+          ref0(tupleSelector) |
+          ref0(instanceSelector) |
+          ref0(listSelector) |
+          ref0(codeSelector) |
+          ref0(conceptSelector) |
+          (char('(') & ref0(expression) & char(')')))
       .token();
 
-  final Parser qualifiedInvocation =
-      (referentialIdentifier | qualifiedFunction).token();
+  Parser qualifiedInvocation() =>
+      (ref0(referentialIdentifier) | ref0(qualifiedFunction)).token();
 
-  final Parser qualifiedFunction =
-      identifierOrFunctionIdentifier & char('(') & paramList.star() & char(')');
+  Parser qualifiedFunction() =>
+      ref0(identifierOrFunctionIdentifier) &
+      char('(') &
+      ref0(paramList).star() &
+      char(')');
 
-  final Parser paramList =
-      fhirPathLexer() & (char(',') & fhirPathLexer()).star();
+  Parser paramList() => fhirPathLexer() & (char(',') & fhirPathLexer()).star();
 
-  final Parser invocation = referentialIdentifier |
-      function |
+  Parser invocation() =>
+      ref0(referentialIdentifier) |
+      ref0(function) |
       string(r'$this') |
       string(r'$index') |
       string(r'$total');
 
-  final Parser function =
-      referentialIdentifier & char('(') & paramList.star() & char(')');
+  Parser function() =>
+      ref0(referentialIdentifier) &
+      char('(') &
+      ref0(paramList).star() &
+      char(')');
 
-  final Parser ratio = quantity & char(':') & quantity;
+  Parser ratio() => ref0(quantity) & char(':') & ref0(quantity);
 
-  final Parser quantity = numberLexer &
-      whiteSpacePlus &
-      (dateTimePrecision | pluralDateTimePrecision | stringLexer).token();
+  Parser quantity() =>
+      numberLexer &
+      ref0(whiteSpacePlus) &
+      (ref0(dateTimePrecision) | ref0(pluralDateTimePrecision) | stringLexer)
+          .token();
 
-  final Parser whiteSpacePlus = (whiteSpaceLexer & ignored).token();
+  Parser whiteSpacePlus() => (whiteSpaceLexer & ref0(ignored)).token();
 
-  final Parser ignored =
+  Parser ignored() =>
       (whiteSpaceLexer | lineCommentLexer | multiLineCommentLexer | escLexer)
           .star()
           .token();
 
-  final Parser literal = (booleanLexer |
+  Parser literal() => (booleanLexer |
           string('null') |
           stringLexer |
           numberLexer |
-          longNumber |
+          ref0(longNumber) |
           dateTimeLexer |
           dateLexer |
           timeLexer |
           quantityLexer |
-          ratio)
+          ref0(ratio))
       .token();
 
-  final Parser intervalSelector = string('Interval') &
-      (string('[') & expression & string(']') |
-          string('(') & expression & string(')'));
+  Parser intervalSelector() =>
+      string('Interval') &
+      (string('[') & ref0(expression) & string(']') |
+          string('(') & ref0(expression) & string(')'));
 
-  final Parser tupleSelector = (string('Tuple')).star() &
+  Parser tupleSelector() =>
+      (string('Tuple')).star() &
       string('{') &
       (string(':') |
-          (tupleElementSelector & (char(',') & tupleElementSelector).star()));
+          (ref0(tupleElementSelector) &
+              (char(',') & ref0(tupleElementSelector)).star()));
 
-  final Parser tupleElementSelector =
-      referentialIdentifier & string(':') & expression;
+  Parser tupleElementSelector() =>
+      ref0(referentialIdentifier) & string(':') & ref0(expression);
 
-  final Parser instanceSelector = namedTypeSpecifier &
+  Parser instanceSelector() =>
+      ref0(namedTypeSpecifier) &
       string('{') &
       (string(':') |
-          (instanceElementSelector &
-              (char(',') & instanceElementSelector).star()));
+          (ref0(instanceElementSelector) &
+              (char(',') & ref0(instanceElementSelector)).star()));
 
-  final Parser instanceElementSelector =
-      referentialIdentifier & string(':') & expression;
+  Parser instanceElementSelector() =>
+      ref0(referentialIdentifier) & string(':') & ref0(expression);
 
-  final Parser listSelector =
-      (string('List').star() & string('<') & typeSpecifier & string('>')) &
-          string('{') &
-          (expression & (char(',') & expression).star()).optional();
+  Parser listSelector() =>
+      (string('List').star() &
+          string('<') &
+          ref0(typeSpecifier) &
+          string('>')) &
+      string('{') &
+      (ref0(expression) & (char(',') & ref0(expression)).star()).optional();
 
-  final Parser displayClause = string('display') & stringLexer;
+  Parser displayClause() => string('display') & stringLexer;
 
-  final Parser codeSelector = string('Code') &
+  Parser codeSelector() =>
+      string('Code') &
       stringLexer &
       string('from') &
-      codesystemIdentifier &
-      (displayClause).star();
+      ref0(codesystemIdentifier) &
+      ref0(displayClause).star();
 
-  final Parser conceptSelector = string('Concept') &
+  Parser conceptSelector() =>
+      string('Concept') &
       string('{') &
-      (codeSelector & (char(',') & codeSelector).star()).optional() &
+      (ref0(codeSelector) & (char(',') & ref0(codeSelector)).star())
+          .optional() &
       string('}');
 
-  final Parser keyword = string('after') |
+  Parser keyword() =>
+      string('after') |
       string('aggregate') |
       string('all') |
       string('and') |
@@ -714,7 +812,8 @@ class CqlLexer extends GrammarDefinition {
       string('years');
 
 // NOTE: Not used, this is the set of reserved words that may not appear as identifiers in ambiguous contexts
-  final Parser reservedWord = string('aggregate') |
+  Parser reservedWord() =>
+      string('aggregate') |
       string('all') |
       string('and') |
       string('as') |
@@ -788,7 +887,8 @@ class CqlLexer extends GrammarDefinition {
 
   /// Keyword identifiers are keywords that may be used as identifiers in a referential context
   /// Effectively, keyword except reservedWord
-  final Parser keywordIdentifier = string('asc') |
+  Parser keywordIdentifier() =>
+      string('asc') |
       string('ascending') |
       string('by') |
       string('called') |
@@ -847,7 +947,8 @@ class CqlLexer extends GrammarDefinition {
   /// parsing performance. In 4.6+, having them as identifiers resulted in incorrect parsing. See
   /// Github issue [#343](https://github.com/cqframework/clinical_quality_language/issues/343) for more
   /// detail This should no longer be an issue with 1.4 due to the introduction of reserved words
-  final Parser obsoleteIdentifier = string('all') |
+  Parser obsoleteIdentifier() =>
+      string('all') |
       string('Code') |
       string('code') |
       string('Concept') |
@@ -866,7 +967,8 @@ class CqlLexer extends GrammarDefinition {
       string('where');
 
 // Function identifiers are keywords that may be used as identifiers for functions
-  final Parser functionIdentifier = string('after') |
+  Parser functionIdentifier() =>
+      string('after') |
       string('aggregate') |
       string('all') |
       string('and') |
@@ -987,28 +1089,29 @@ class CqlLexer extends GrammarDefinition {
       string('year') |
       string('years');
 
-  /// Reserved words that are also type names
-  final Parser typeNameIdentifier =
+//   /// Reserved words that are also type names
+  Parser typeNameIdentifier() =>
       string('Code') | string('Concept') | string('date') | string('time');
 
-  final Parser referentialIdentifier = identifier | keywordIdentifier;
+  Parser referentialIdentifier() => ref0(identifier) | ref0(keywordIdentifier);
 
-  final Parser referentialOrTypeNameIdentifier =
-      referentialIdentifier | typeNameIdentifier;
+  Parser referentialOrTypeNameIdentifier() =>
+      ref0(referentialIdentifier) | ref0(typeNameIdentifier);
 
-  final Parser identifierOrFunctionIdentifier = identifier | functionIdentifier;
+  Parser identifierOrFunctionIdentifier() =>
+      ref0(identifier) | ref0(functionIdentifier);
 
-  final Parser identifier =
-      identifierLexer | delimitedIdentifierLexer | quotedIdentifier;
+  Parser identifier() =>
+      identifierLexer | delimitedIdentifierLexer | ref0(quotedIdentifier);
 
-  final Parser quotedIdentifier =
+  Parser quotedIdentifier() =>
       char('"') & (escLexer | char('"').neg()).star() & char('"');
 
-  final Parser cqlDateTime = (char('@') &
-      dateFormatLexer &
-      char('T') &
-      timeFormatLexer.optional() &
-      timeZoneOffsetFormatLexer.optional());
+//   Parser cqlDateTime() =>(char('@') &
+//       dateFormatLexer &
+//       char('T') &
+//       timeFormatLexer.optional() &
+//       timeZoneOffsetFormatLexer.optional());
 
-  final Parser longNumber = (digit().plus() & char('L'));
+  Parser longNumber() => (digit().plus() & char('L'));
 }

@@ -1,6 +1,30 @@
 import 'dart:io';
 
-import 'lexer.dart';
+import 'package:antlr4/antlr4.dart';
+
+import 'cqlLexer.dart';
+import 'cqlParser.dart';
+
+ParseTree parse(String pathExpression) {
+  final input = InputStream.fromString(pathExpression);
+  final lexer = cqlLexer(input);
+  final tokens = CommonTokenStream(lexer);
+  final parser = cqlParser(tokens);
+  parser.addErrorListener(DiagnosticErrorListener());
+  parser.buildParseTree = true;
+  return parser.library_();
+}
+
+void printTree(ParseTree? ctx, [String indent = '']) {
+  if (ctx == null) return;
+  print('$indent${ctx.runtimeType} ${ctx.text}');
+  for (var i = 0; i < ctx.childCount; i++) {
+    final child = ctx.getChild(i);
+    if (child != null) {
+      printTree(ctx.getChild(i)!, '$indent  ');
+    }
+  }
+}
 
 Future<void> main() async {
   final librariesDir = Directory('../libraries');
@@ -9,7 +33,8 @@ Future<void> main() async {
     if (file is File) {
       print(file.path);
       final pathExpression = await file.readAsString();
-      library.parse(pathExpression).value;
+      final parsed = parse(pathExpression);
+      printTree(parsed);
     }
   }
   final definitionsDir = Directory('../definitions');
@@ -20,23 +45,18 @@ Future<void> main() async {
       print('$i: ${file.path}');
       i++;
       final pathExpression = await file.readAsString();
-      library.parse(pathExpression).value;
+      final parsed = parse(pathExpression);
+      printTree(parsed);
     }
   }
-  // final librariesAndDefinitionsDir = Directory('../libraries_and_definitions');
-  // final librariesAndDefinitionsFi les = librariesAndDefinitionsDir.listSync();
-  // for (final file in librariesAndDef initionsFiles) {
-  //   if (file is File) {
-  //     print(file.path);
-  //     final pathExpression = await file.readAsString();
-  //     cqlLexer().parse(pathExpression).value;
-  //   }
-  // }
-  // final pathExpression =
-  //     await File('../libraries_and_definitions/CMS55v1_NQF0495.cql')
-  //         .readAsString();
-  // cqlLexer().parse(pathExpression).value;
-  // progress(cqlLexer()).parse(pathExpression).value;
-  // trace(cqlLexer()).parse(pathExpression).value;
-  // cqlExpressionLexer().parse('AgeInYears() >= 16');
+  final librariesAndDefinitionsDir = Directory('../libraries_and_definitions');
+  final librariesAndDefinitionsFiles = librariesAndDefinitionsDir.listSync();
+  for (final file in librariesAndDefinitionsFiles) {
+    if (file is File) {
+      print(file.path);
+      final pathExpression = await file.readAsString();
+      final parsed = parse(pathExpression);
+      printTree(parsed);
+    }
+  }
 }
