@@ -12,6 +12,7 @@ dependencies:
     path: ../fhir/fhir
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
+  petitparser: ^6.0.2
   units_converter: ^2.1.1
 
 dev_dependencies:
