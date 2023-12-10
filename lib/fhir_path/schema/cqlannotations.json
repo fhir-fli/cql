@@ -1,0 +1,89 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema#",
+    "id": "urn:hl7-org:cql-annotations:r1#",
+    "definitions": {
+        "Locator": {
+            "type": "object",
+            "properties": {
+                "startLine": {"type": "integer"},
+                "startChar": {"type": "integer"},
+                "endLine": {"type": "integer"},
+                "endChar": {"type": "integer"}
+            }
+        },
+        "CqlToElmError": {
+            "required": [
+                "message",
+                "errorType"
+            ],
+            "allOf": [
+                {"$ref": "#/definitions/Locator"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "message": {"type": "string"},
+                        "errorType": {"$ref": "#/definitions/ErrorType"},
+                        "errorSeverity": {"$ref": "#/definitions/ErrorSeverity"},
+                        "targetIncludeLibraryId": {"type": "string"},
+                        "targetIncludeLibraryVersionId": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "CqlToElmInfo": {
+            "type": "object",
+            "properties": {
+                "translatorVersion": {"type": "string"},
+                "translatorOptions": {"type": "string"}
+            }
+        },
+        "Narrative": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"type": "string"},
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "s": {"$ref": "#/definitions/Narrative"}
+                                }
+                            }
+                        ]
+                    }
+                },
+                "r": {"type": "string"}
+            }
+        },
+        "Annotation": {
+            "type": "object",
+            "properties": {
+                "s": {"$ref": "#/definitions/Narrative"},
+                "locator": {"$ref": "#/definitions/Locator"}
+            }
+        },
+        "ErrorType": {
+            "type": "string",
+            "enum": [
+                "environment",
+                "syntax",
+                "include",
+                "semantic",
+                "internal"
+            ]
+        },
+        "ErrorSeverity": {
+            "type": "string",
+            "enum": [
+                "info",
+                "warning",
+                "error"
+            ]
+        }
+    },
+    "properties": {
+        "s": {"$ref": "#/definitions/Narrative"}
+    }
+}

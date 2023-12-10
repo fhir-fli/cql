@@ -1,0 +1,373 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema#",
+    "id": "urn:hl7-org:elm-modelinfo:r1#",
+    "definitions": {
+        "ModelSpecifier": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+                "name": {"type": "string"},
+                "version": {"type": "string"}
+            }
+        },
+        "TypeSpecifier": {
+            "type": "object",
+            "properties": {}
+        },
+        "TypeInfo": {
+            "type": "object",
+            "properties": {
+                "baseTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "baseType": {"type": "string"}
+            }
+        },
+        "ConversionInfo": {
+            "type": "object",
+            "required": ["functionName"],
+            "properties": {
+                "fromTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "toTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "functionName": {"type": "string"},
+                "fromType": {"type": "string"},
+                "toType": {"type": "string"}
+            }
+        },
+        "NamedTypeSpecifier": {
+            "required": ["name"],
+            "allOf": [
+                {"$ref": "#/definitions/TypeSpecifier"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "modelName": {"type": "string"},
+                        "namespace": {"type": "string"},
+                        "name": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "ContextInfo": {
+            "type": "object",
+            "required": [
+                "contextType",
+                "name"
+            ],
+            "properties": {
+                "contextType": {"$ref": "#/definitions/NamedTypeSpecifier"},
+                "name": {"type": "string"},
+                "keyElement": {"type": "string"},
+                "birthDateElement": {"type": "string"}
+            }
+        },
+        "ModelInfo": {
+            "type": "object",
+            "required": [
+                "name",
+                "url"
+            ],
+            "properties": {
+                "requiredModelInfo": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ModelSpecifier"},
+                    "minItems": 0
+                },
+                "typeInfo": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/TypeInfo"},
+                    "minItems": 0
+                },
+                "conversionInfo": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ConversionInfo"},
+                    "minItems": 0
+                },
+                "contextInfo": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ContextInfo"},
+                    "minItems": 0
+                },
+                "name": {"type": "string"},
+                "version": {"type": "string"},
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "schemaLocation": {"type": "string"},
+                "targetQualifier": {"type": "object"},
+                "patientClassName": {"type": "string"},
+                "patientClassIdentifier": {"type": "string"},
+                "patientBirthDatePropertyName": {"type": "string"},
+                "caseSensitive": {"type": "boolean"},
+                "strictRetrieveTyping": {"type": "boolean"},
+                "defaultContext": {"type": "string"}
+            }
+        },
+        "IntervalTypeInfo": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeInfo"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "pointTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                        "pointType": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "ParameterTypeSpecifier": {
+            "required": ["parameterName"],
+            "allOf": [
+                {"$ref": "#/definitions/TypeSpecifier"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "parameterName": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "TupleTypeInfoElement": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+                "typeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "elementTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "name": {"type": "string"},
+                "type": {"type": "string"},
+                "elementType": {"type": "string"},
+                "prohibited": {"type": "boolean"},
+                "oneBased": {"type": "boolean"}
+            }
+        },
+        "TupleTypeSpecifierElement": {
+            "type": "object",
+            "required": [
+                "elementType",
+                "name"
+            ],
+            "properties": {
+                "elementType": {"$ref": "#/definitions/TypeSpecifier"},
+                "name": {"type": "string"}
+            }
+        },
+        "TupleTypeSpecifier": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeSpecifier"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "element": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/TupleTypeSpecifierElement"},
+                            "minItems": 0
+                        }
+                    }
+                }
+            ]
+        },
+        "ClassInfoElement": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+                "typeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "elementTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "name": {"type": "string"},
+                "type": {"type": "string"},
+                "elementType": {"type": "string"},
+                "prohibited": {"type": "boolean"},
+                "oneBased": {"type": "boolean"},
+                "target": {"type": "string"}
+            }
+        },
+        "IntervalTypeSpecifier": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeSpecifier"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "pointTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                        "pointType": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "RelationshipInfo": {
+            "type": "object",
+            "required": ["context"],
+            "properties": {
+                "context": {"type": "string"},
+                "relatedKeyElement": {"type": "string"}
+            }
+        },
+        "TypeParameterInfo": {
+            "type": "object",
+            "required": [
+                "name",
+                "constraint"
+            ],
+            "properties": {
+                "typeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                "name": {"type": "string"},
+                "constraint": {"type": "string"},
+                "constraintType": {"type": "string"}
+            }
+        },
+        "SimpleTypeInfo": {
+            "required": ["name"],
+            "allOf": [
+                {"$ref": "#/definitions/TypeInfo"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "namespace": {"type": "string"},
+                        "name": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "BoundParameterTypeSpecifier": {
+            "required": [
+                "parameterName",
+                "boundType"
+            ],
+            "allOf": [
+                {"$ref": "#/definitions/TypeSpecifier"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "elementTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                        "parameterName": {"type": "string"},
+                        "boundType": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "ClassInfo": {
+            "required": ["name"],
+            "allOf": [
+                {"$ref": "#/definitions/TypeInfo"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "parameter": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/TypeParameterInfo"},
+                            "minItems": 0
+                        },
+                        "element": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/ClassInfoElement"},
+                            "minItems": 0
+                        },
+                        "contextRelationship": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/RelationshipInfo"},
+                            "minItems": 0
+                        },
+                        "targetContextRelationship": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/RelationshipInfo"},
+                            "minItems": 0
+                        },
+                        "namespace": {"type": "string"},
+                        "name": {"type": "string"},
+                        "identifier": {"type": "string"},
+                        "label": {"type": "string"},
+                        "retrievable": {
+                            "type": "boolean",
+                            "default": "false"
+                        },
+                        "primaryCodePath": {"type": "string"},
+                        "primaryValueSetPath": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "ProfileInfo": {
+            "allOf": [
+                {"$ref": "#/definitions/ClassInfo"},
+                {
+                    "type": "object",
+                    "properties": {}
+                }
+            ]
+        },
+        "TupleTypeInfo": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeInfo"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "element": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/TupleTypeInfoElement"},
+                            "minItems": 0
+                        }
+                    }
+                }
+            ]
+        },
+        "ChoiceTypeInfo": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeInfo"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/TypeSpecifier"},
+                            "minItems": 0
+                        },
+                        "choice": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/TypeSpecifier"},
+                            "minItems": 0
+                        }
+                    }
+                }
+            ]
+        },
+        "ListTypeInfo": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeInfo"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "elementTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                        "elementType": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "ListTypeSpecifier": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeSpecifier"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "elementTypeSpecifier": {"$ref": "#/definitions/TypeSpecifier"},
+                        "elementType": {"type": "string"}
+                    }
+                }
+            ]
+        },
+        "ChoiceTypeSpecifier": {
+            "allOf": [
+                {"$ref": "#/definitions/TypeSpecifier"},
+                {
+                    "type": "object",
+                    "properties": {
+                        "choice": {
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/TypeSpecifier"},
+                            "minItems": 0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "properties": {
+        "modelInfo": {"$ref": "#/definitions/ModelInfo"}
+    }
+}
