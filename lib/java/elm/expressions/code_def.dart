@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 class CodeDef extends Expression {
   String name;

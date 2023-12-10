@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 abstract class TerminologyProvider {
   List<CqlValueSet> findValueSetsByOid(String oid);

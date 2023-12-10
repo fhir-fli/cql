@@ -1,0 +1,37 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "translatorVersion" : "2.11.0",
+         "translatorOptions" : "",
+         "type" : "CqlToElmInfo"
+      } ],
+      "identifier" : {
+         "id" : "CMS135_QDM"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_0_1_draft",
+            "version" : "5.0.2"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Care Services in Long-Term Residential Facility",
+            "id" : "...",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Heart Failure",
+            "id" : "...",
+            "accessLevel" : "Public"
+         } ]
+      }
+   }
+}

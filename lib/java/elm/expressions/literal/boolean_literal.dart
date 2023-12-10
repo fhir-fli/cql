@@ -1,4 +1,4 @@
-import '../../elm.dart';
+import '../../../../cql/cql-to-elm/elm/elm.dart';
 
 class BooleanLiteral extends Literal {
   BooleanLiteral.fromJson(Map<String, dynamic> json) : super.fromJson(json) {

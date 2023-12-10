@@ -1,4 +1,4 @@
-import '../../elm.dart';
+import '../../../../cql/cql-to-elm/elm/elm.dart';
 
 class DecimalLiteral extends Literal {
   DecimalLiteral.fromJson(Map<String, dynamic> json) : super.fromJson(json) {

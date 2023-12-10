@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/schema/schema.dart';
 
 class ElmLibrary {
   late Map<String, dynamic> source;

@@ -1,4 +1,4 @@
-import 'elm.dart';
+import '../../cql/cql-to-elm/elm/elm.dart';
 
 /// The Element type defines the abstract base type for all library elements in ELM.
 abstract mixin class ElmElement {

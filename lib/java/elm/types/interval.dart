@@ -1,6 +1,6 @@
 import 'package:fhir/r4.dart';
 
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 class Interval {
   final dynamic low;

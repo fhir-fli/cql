@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 /// Iterator for the patients provided to the execution engine
 abstract class DataProvider {

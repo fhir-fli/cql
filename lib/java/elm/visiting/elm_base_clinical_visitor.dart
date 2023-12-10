@@ -1,6 +1,6 @@
 import 'package:fhir/r4.dart';
 
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 class ElmBaseClinicalVisitor<T, C> extends ElmBaseVisitor<T, C>
     implements ElmClinicalVisitor<T, C> {
@@ -227,10 +227,8 @@ class ElmBaseClinicalVisitor<T, C> extends ElmBaseVisitor<T, C>
     T result = defaultResult(elm, context);
     T childResult = visitElement(elm.code, context);
     result = aggregateResult(result, childResult);
-    if (elm.codesystem != null) {
-      childResult = visitElement(elm.codesystem!, context);
-      result = aggregateResult(result, childResult);
-    }
+    childResult = visitElement(elm.codesystem, context);
+    result = aggregateResult(result, childResult);
     if (elm.codesystemExpression != null) {
       T childResult = visitElement(elm.codesystemExpression!, context);
       result = aggregateResult(result, childResult);
@@ -242,10 +240,8 @@ class ElmBaseClinicalVisitor<T, C> extends ElmBaseVisitor<T, C>
     T result = defaultResult(elm, context);
     T childResult = visitElement(elm.codes, context);
     result = aggregateResult(result, childResult);
-    if (elm.codesystem != null) {
-      childResult = visitElement(elm.codesystem!, context);
-      result = aggregateResult(result, childResult);
-    }
+    childResult = visitElement(elm.codesystem, context);
+    result = aggregateResult(result, childResult);
     if (elm.codesystemExpression != null) {
       T childResult = visitElement(elm.codesystemExpression!, context);
       result = aggregateResult(result, childResult);
@@ -257,10 +253,8 @@ class ElmBaseClinicalVisitor<T, C> extends ElmBaseVisitor<T, C>
     T result = defaultResult(elm, context);
     T childResult = visitElement(elm.code, context);
     result = aggregateResult(result, childResult);
-    if (elm.valueset != null) {
-      childResult = visitElement(elm.valueset!, context);
-      result = aggregateResult(result, childResult);
-    }
+    childResult = visitElement(elm.valueset, context);
+    result = aggregateResult(result, childResult);
     if (elm.valuesetExpression != null) {
       T childResult = visitElement(elm.valuesetExpression!, context);
       result = aggregateResult(result, childResult);
@@ -272,10 +266,8 @@ class ElmBaseClinicalVisitor<T, C> extends ElmBaseVisitor<T, C>
     T result = defaultResult(elm, context);
     T childResult = visitElement(elm.codes, context);
     result = aggregateResult(result, childResult);
-    if (elm.valueset != null) {
-      childResult = visitElement(elm.valueset!, context);
-      result = aggregateResult(result, childResult);
-    }
+    childResult = visitElement(elm.valueset, context);
+    result = aggregateResult(result, childResult);
     if (elm.valuesetExpression != null) {
       T childResult = visitElement(elm.valuesetExpression!, context);
       result = aggregateResult(result, childResult);

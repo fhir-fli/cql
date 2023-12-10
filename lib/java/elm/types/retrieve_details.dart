@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 /// Structure of the information about an ELM retrieve
 /// Passed back to DataProviders to allow for more advanced record filtering

@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 class ValueSetObject {
   Map<String, Map<String, CqlValueSet>> entries = {};

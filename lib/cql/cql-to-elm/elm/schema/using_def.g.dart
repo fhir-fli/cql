@@ -1,0 +1,41 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'using_def.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+UsingDef _$UsingDefFromJson(Map<String, dynamic> json) => UsingDef(
+      localIdentifier: json['localIdentifier'] as String?,
+      uri: json['uri'] as String?,
+      version: json['version'] as String?,
+    )
+      ..annotation = json['annotation'] as List<dynamic>?
+      ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+          ? null
+          : ExpTypeSpecifier.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..localId = json['localId'] as String?
+      ..locator = json['locator'] as String?
+      ..resultTypeName = json['resultTypeName'] as String?;
+
+Map<String, dynamic> _$UsingDefToJson(UsingDef instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('annotation', instance.annotation);
+  writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('localId', instance.localId);
+  writeNotNull('locator', instance.locator);
+  writeNotNull('resultTypeName', instance.resultTypeName);
+  writeNotNull('localIdentifier', instance.localIdentifier);
+  writeNotNull('uri', instance.uri);
+  writeNotNull('version', instance.version);
+  return val;
+}

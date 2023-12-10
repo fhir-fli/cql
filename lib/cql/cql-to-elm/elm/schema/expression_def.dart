@@ -1,0 +1,33 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../../cql.dart';
+
+part 'expression_def.g.dart';
+
+/// Expression definition with an associated name that can be referenced by any
+/// expression in the artifact.
+@JsonSerializable()
+class ExpressionDef extends Element {
+  /// Expression associated with the definition.
+  Expression? expression;
+
+  /// Name of the expression.
+  String name;
+
+  /// Execution context.
+  String? context;
+
+  /// Access level, defaults to Public.
+  AccessModifier accessLevel;
+
+  ExpressionDef(
+      {this.expression,
+      required this.name,
+      this.context,
+      this.accessLevel = AccessModifier.Public});
+
+  factory ExpressionDef.fromJson(Map<String, dynamic> json) =>
+      _$ExpressionDefFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ExpressionDefToJson(this);
+}

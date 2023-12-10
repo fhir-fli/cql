@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 final functionMap = <String, Function>{
   'Count': Count.fromJson,

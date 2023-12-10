@@ -1,4 +1,4 @@
-import '../../elm.dart';
+import '../../../../cql/cql-to-elm/elm/elm.dart';
 
 class IntegerLiteral extends Literal {
   IntegerLiteral.fromJson(Map<String, dynamic> json) : super.fromJson(json) {

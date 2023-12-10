@@ -1,4 +1,4 @@
-import '../elm.dart';
+import '../../../cql/cql-to-elm/elm/elm.dart';
 
 class ChoiceType extends DataType {
   final List<DataType> _types = [];
