@@ -1,0 +1,64 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestPatientContext"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_3",
+                    "version": "5.3"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                        "value": "true",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Patients",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Patient",
+                        "type": "ExpressionRef"
+                    }
+                }
+            ]
+        }
+    }
+}

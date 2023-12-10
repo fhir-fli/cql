@@ -1,0 +1,544 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 10,
+                "startChar": 0,
+                "endLine": 10,
+                "endChar": 0,
+                "message": "Syntax error at Coalesce",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 37,
+                "startChar": 22,
+                "endLine": 37,
+                "endChar": 22,
+                "message": "Syntax error at :",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 37,
+                "startChar": 35,
+                "endLine": 37,
+                "endChar": 35,
+                "message": "Syntax error at :",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 0,
+                "message": "Syntax error at define",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0,
+                "message": "Syntax error at define",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 50,
+                "startChar": 27,
+                "endLine": 50,
+                "endChar": 27,
+                "message": "Syntax error at (",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 58,
+                "endChar": 0,
+                "message": "Syntax error at list",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 68,
+                "startChar": 30,
+                "endLine": 68,
+                "endChar": 30,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 68,
+                "startChar": 30,
+                "endLine": 68,
+                "endChar": 30,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 68,
+                "startChar": 31,
+                "endLine": 68,
+                "endChar": 31,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 69,
+                "startChar": 16,
+                "endLine": 69,
+                "endChar": 16,
+                "message": "Syntax error at all",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 69,
+                "startChar": 30,
+                "endLine": 69,
+                "endChar": 30,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 69,
+                "startChar": 30,
+                "endLine": 69,
+                "endChar": 30,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9388336560069319129tmp",
+                "libraryId": "rep9388336560069319129tmp",
+                "startLine": 69,
+                "startChar": 31,
+                "endLine": 69,
+                "endChar": 31,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 16,
+                "startChar": 25,
+                "endLine": 16,
+                "endChar": 30,
+                "message": "Could not resolve identifier PointA in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 17,
+                "startChar": 28,
+                "endLine": 17,
+                "endChar": 36,
+                "message": "Could not resolve identifier IntervalA in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 18,
+                "startChar": 33,
+                "endLine": 18,
+                "endChar": 38,
+                "message": "Could not resolve identifier PointA in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 22,
+                "startChar": 26,
+                "endLine": 22,
+                "endChar": 36,
+                "message": "Could not resolve type name Encounter.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 26,
+                "startChar": 26,
+                "endLine": 26,
+                "endChar": 31,
+                "message": "Could not resolve identifier PointA in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 31,
+                "startChar": 10,
+                "endLine": 31,
+                "endChar": 20,
+                "message": "Could not resolve type name Encounter.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 37,
+                "startChar": 1,
+                "endLine": 37,
+                "endChar": 45,
+                "message": "Function Add is marked external but does not declare a return type.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 38,
+                "startChar": 1,
+                "endLine": 38,
+                "endChar": 41,
+                "message": "Function Add is marked external but does not declare a return type.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 40,
+                "startChar": 25,
+                "endLine": 40,
+                "endChar": 52,
+                "message": "A named type is required in this context.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 50,
+                "startChar": 1,
+                "endLine": 54,
+                "endChar": 11,
+                "message": "Identifier CodeExpression is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 68,
+                "startChar": 17,
+                "endLine": 68,
+                "endChar": 19,
+                "message": "Could not resolve identifier any in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 69,
+                "startChar": 17,
+                "endLine": 69,
+                "endChar": 21,
+                "message": "Could not resolve identifier X in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "DurationBetweenExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "DurationBetween",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "31",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "DifferenceBetweenExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "DifferenceBetween",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "31",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "PointExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "IntervalExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "PointIntervalExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "OccursExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "WithinExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "QueryExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TupleExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "CodeExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{urn:hl7-org:elm-types:r1}Code",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "code",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "XYZ",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "system",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "http://uri",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "AnyCode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "AllCode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

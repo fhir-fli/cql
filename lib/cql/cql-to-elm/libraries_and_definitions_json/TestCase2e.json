@@ -1,0 +1,233 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestCase2e"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Date Filter Expression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "type": "Start",
+                                            "operand": {
+                                                "name": "ToInterval",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "strict": false,
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "path": "onset",
+                                                            "scope": "C",
+                                                            "type": "Property"
+                                                        },
+                                                        "asTypeSpecifier": {
+                                                            "name": "{http://hl7.org/fhir}Period",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "Interval",
+                                            "low": {
+                                                "type": "ToDateTime",
+                                                "operand": {
+                                                    "path": "low",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "lowClosed": true,
+                                                        "highClosed": false,
+                                                        "type": "Interval",
+                                                        "low": {
+                                                            "type": "Subtract",
+                                                            "operand": [
+                                                                {
+                                                                    "type": "Today"
+                                                                },
+                                                                {
+                                                                    "value": 90,
+                                                                    "unit": "days",
+                                                                    "type": "Quantity"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "high": {
+                                                            "type": "Today"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "lowClosedExpression": {
+                                                "path": "lowClosed",
+                                                "type": "Property",
+                                                "source": {
+                                                    "lowClosed": true,
+                                                    "highClosed": false,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "type": "Subtract",
+                                                        "operand": [
+                                                            {
+                                                                "type": "Today"
+                                                            },
+                                                            {
+                                                                "value": 90,
+                                                                "unit": "days",
+                                                                "type": "Quantity"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "high": {
+                                                        "type": "Today"
+                                                    }
+                                                }
+                                            },
+                                            "high": {
+                                                "type": "ToDateTime",
+                                                "operand": {
+                                                    "path": "high",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "lowClosed": true,
+                                                        "highClosed": false,
+                                                        "type": "Interval",
+                                                        "low": {
+                                                            "type": "Subtract",
+                                                            "operand": [
+                                                                {
+                                                                    "type": "Today"
+                                                                },
+                                                                {
+                                                                    "value": 90,
+                                                                    "unit": "days",
+                                                                    "type": "Quantity"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "high": {
+                                                            "type": "Today"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "highClosedExpression": {
+                                                "path": "highClosed",
+                                                "type": "Property",
+                                                "source": {
+                                                    "lowClosed": true,
+                                                    "highClosed": false,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "type": "Subtract",
+                                                        "operand": [
+                                                            {
+                                                                "type": "Today"
+                                                            },
+                                                            {
+                                                                "value": 90,
+                                                                "unit": "days",
+                                                                "type": "Quantity"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "high": {
+                                                        "type": "Today"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Not",
+                                    "operand": {
+                                        "type": "IsNull",
+                                        "operand": {
+                                            "type": "Today"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

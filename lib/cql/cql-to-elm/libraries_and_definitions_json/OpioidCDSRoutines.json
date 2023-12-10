@@ -1,0 +1,680 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 53,
+                "message": "Could not load source for library OpioidCDSCommon, version 1.2.3.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "OpioidCDSCommon",
+                "targetIncludeLibraryVersionId": "1.2.3",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 59,
+                "message": "Could not load source for library OpioidCDSCommonConfig, version 1.2.3.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "OpioidCDSCommonConfig",
+                "targetIncludeLibraryVersionId": "1.2.3",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 58,
+                "startChar": 5,
+                "endLine": 58,
+                "endChar": 43,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 45,
+                "startChar": 9,
+                "endLine": 45,
+                "endChar": 51,
+                "message": "Could not validate reference to expression Conditions Indicating End Of Life Present because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 214,
+                "startChar": 14,
+                "endLine": 214,
+                "endChar": 70,
+                "message": "Could not resolve library name Config.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 227,
+                "startChar": 3,
+                "endLine": 227,
+                "endChar": 36,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 220,
+                "startChar": 3,
+                "endLine": 220,
+                "endChar": 41,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 224,
+                "startChar": 3,
+                "endLine": 224,
+                "endChar": 82,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 249,
+                "startChar": 10,
+                "endLine": 249,
+                "endChar": 67,
+                "message": "Could not validate reference to expression Encounters with Cancer Diagnosis During Encounter Period because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 252,
+                "startChar": 3,
+                "endLine": 252,
+                "endChar": 69,
+                "message": "Could not validate reference to expression Number of Enounters with Cancer Diagnosis During Encounter Period because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 73,
+                "startChar": 14,
+                "endLine": 73,
+                "endChar": 49,
+                "message": "Could not resolve library name Config.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 130,
+                "startChar": 14,
+                "endLine": 130,
+                "endChar": 61,
+                "message": "Could not resolve library name Config.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 126,
+                "startChar": 3,
+                "endLine": 126,
+                "endChar": 38,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 121,
+                "startChar": 8,
+                "endLine": 121,
+                "endChar": 70,
+                "message": "Could not validate reference to expression Has Opioid RX with Ambulatory Abuse Potential In Past 90 Days because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 174,
+                "startChar": 14,
+                "endLine": 174,
+                "endChar": 57,
+                "message": "Could not resolve library name Config.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 169,
+                "startChar": 3,
+                "endLine": 169,
+                "endChar": 83,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 273,
+                "startChar": 18,
+                "endLine": 273,
+                "endChar": 89,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSRoutines",
+                "libraryVersion": "1.2.3",
+                "startLine": 295,
+                "startChar": 16,
+                "endLine": 295,
+                "endChar": 87,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "OpioidCDSRoutines",
+            "version": "1.2.3"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "3.0.0"
+                },
+                {
+                    "localIdentifier": "Common",
+                    "path": "OpioidCDSCommon",
+                    "version": "1.2.3"
+                },
+                {
+                    "localIdentifier": "Config",
+                    "path": "OpioidCDSCommonConfig",
+                    "version": "1.2.3"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Palliative Care Lookback Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Today"
+                                },
+                                {
+                                    "value": 90,
+                                    "unit": "days",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "Today"
+                        }
+                    }
+                },
+                {
+                    "name": "Conditions Indicating End Of Life Present",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": false,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Now"
+                                },
+                                {
+                                    "value": 12,
+                                    "unit": "months",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "Now"
+                        }
+                    }
+                },
+                {
+                    "name": "Active Cancer Diagnoses",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Oncologist Practitioner Roles",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "PractitionerRole",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": []
+                    }
+                },
+                {
+                    "name": "Encounters with Cancer Diagnosis During Encounter Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Number of Enounters with Cancer Diagnosis During Encounter Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Has Two or More Encounters with Cancer Diagnosis During Encounter Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Is Active Cancer Treatment?",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Conditions Including Cancer To Exclude Opioid Management Indicating End-Stage Disease Present",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Is Opioid Review Useful?",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Prescription/Dispense Inclusion Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Now"
+                                },
+                                {
+                                    "value": 90,
+                                    "unit": "days",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Now"
+                                },
+                                {
+                                    "value": 24,
+                                    "unit": "hours",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Report Inclusion Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": false,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Now"
+                                },
+                                {
+                                    "value": 90,
+                                    "unit": "days",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Now"
+                                },
+                                {
+                                    "value": 24,
+                                    "unit": "hours",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Opioid RX with Ambulatory Abuse Potential In Past 90 Days",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Rx",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Opioid RX with Ambulatory Abuse Potential In Past 90 Days",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Opioid Dispense with Ambulatory Abuse Potential In Past 90 Days",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "OpioidDispense",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Opioid Dispense with Ambulatory Abuse Potential In Past 90 Days",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Is Opioid Naive?",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Get Active or Completed Medication Statements during Report Inclusion Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Statement",
+                                "expression": {
+                                    "name": "value",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "name": "ToString",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "status",
+                                                    "scope": "Statement",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "active",
+                                                    "type": "Literal"
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "completed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "precision": "Day",
+                                    "type": "IncludedIn",
+                                    "operand": [
+                                        {
+                                            "name": "ToInterval",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "asType": "{http://hl7.org/fhir}Period",
+                                                    "type": "As",
+                                                    "operand": {
+                                                        "path": "effective",
+                                                        "scope": "Statement",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Report Inclusion Period",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}MedicationStatement",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

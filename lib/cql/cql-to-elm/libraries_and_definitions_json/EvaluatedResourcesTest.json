@@ -1,0 +1,131 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "EvaluatedResourcesTest",
+            "version": "1.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Encounter",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "Condition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Condition",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "Union",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Union",
+                        "operand": [
+                            {
+                                "type": "As",
+                                "operand": {
+                                    "name": "Encounter",
+                                    "type": "ExpressionRef"
+                                },
+                                "asTypeSpecifier": {
+                                    "type": "ListTypeSpecifier",
+                                    "elementType": {
+                                        "type": "ChoiceTypeSpecifier",
+                                        "choice": [
+                                            {
+                                                "name": "{http://hl7.org/fhir}Encounter",
+                                                "type": "NamedTypeSpecifier"
+                                            },
+                                            {
+                                                "name": "{http://hl7.org/fhir}Condition",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "As",
+                                "operand": {
+                                    "name": "Condition",
+                                    "type": "ExpressionRef"
+                                },
+                                "asTypeSpecifier": {
+                                    "type": "ListTypeSpecifier",
+                                    "elementType": {
+                                        "type": "ChoiceTypeSpecifier",
+                                        "choice": [
+                                            {
+                                                "name": "{http://hl7.org/fhir}Encounter",
+                                                "type": "NamedTypeSpecifier"
+                                            },
+                                            {
+                                                "name": "{http://hl7.org/fhir}Condition",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

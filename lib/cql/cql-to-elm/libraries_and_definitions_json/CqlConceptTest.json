@@ -1,0 +1,106 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CqlConceptTest"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "system1",
+                    "id": "http://system-1.org",
+                    "version": "1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "systemA",
+                    "id": "http://system-a.org",
+                    "version": "a",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "code123",
+                    "id": "123-value",
+                    "display": "123-display",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "system1"
+                    }
+                },
+                {
+                    "name": "code234",
+                    "id": "234-value",
+                    "display": "234-display",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "system1"
+                    }
+                },
+                {
+                    "name": "codeAbc",
+                    "id": "abc-value",
+                    "display": "abc-display",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "systemA"
+                    }
+                }
+            ]
+        },
+        "concepts": {
+            "def": [
+                {
+                    "name": "testConcept",
+                    "display": "test-concept-display",
+                    "accessLevel": "Public",
+                    "code": [
+                        {
+                            "name": "code123"
+                        },
+                        {
+                            "name": "code234"
+                        },
+                        {
+                            "name": "codeAbc"
+                        }
+                    ]
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "testConceptRef",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "testConcept",
+                        "type": "ConceptRef"
+                    }
+                }
+            ]
+        }
+    }
+}

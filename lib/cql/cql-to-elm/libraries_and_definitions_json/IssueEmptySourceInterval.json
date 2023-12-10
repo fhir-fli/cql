@@ -1,0 +1,47 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "IssueEmptySourceInterval",
+                "startLine": 4,
+                "startChar": 16,
+                "endLine": 4,
+                "endChar": 16,
+                "message": "Syntax error at <EOF>",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "IssueEmptySourceInterval",
+            "version": "0.1.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Meow",
+                    "context": "Patient",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

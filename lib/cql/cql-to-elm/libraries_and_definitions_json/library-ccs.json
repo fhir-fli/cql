@@ -1,0 +1,616 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 46,
+                "startChar": 3,
+                "endLine": 46,
+                "endChar": 34,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 48,
+                "startChar": 15,
+                "endLine": 48,
+                "endChar": 31,
+                "message": "Member performedDateTime not found for type FHIR.Procedure.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 51,
+                "startChar": 3,
+                "endLine": 51,
+                "endChar": 41,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 53,
+                "startChar": 15,
+                "endLine": 53,
+                "endChar": 31,
+                "message": "Member effectiveDateTime not found for type FHIR.DiagnosticReport.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 56,
+                "startChar": 3,
+                "endLine": 56,
+                "endChar": 36,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 58,
+                "startChar": 13,
+                "endLine": 58,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 65,
+                "startChar": 3,
+                "endLine": 65,
+                "endChar": 26,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 67,
+                "startChar": 15,
+                "endLine": 67,
+                "endChar": 31,
+                "message": "Member performedDateTime not found for type FHIR.Procedure.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 70,
+                "startChar": 3,
+                "endLine": 70,
+                "endChar": 33,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 72,
+                "startChar": 15,
+                "endLine": 72,
+                "endChar": 31,
+                "message": "Member effectiveDateTime not found for type FHIR.DiagnosticReport.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 75,
+                "startChar": 3,
+                "endLine": 75,
+                "endChar": 28,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 77,
+                "startChar": 13,
+                "endLine": 77,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 82,
+                "startChar": 3,
+                "endLine": 82,
+                "endChar": 29,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CCS",
+                "libraryVersion": "1",
+                "startLine": 86,
+                "startChar": 3,
+                "endLine": 86,
+                "endChar": 34,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CCS",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "HPV Tests",
+                    "id": "HPV Tests",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cervical Cytology",
+                    "id": "2.16.840.1.113883.3.464.1004.1208",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hysterectomy",
+                    "id": "Hysterectomy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Absence of Cervix",
+                    "id": "Absence of Cervix",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Lookback Interval Five Years",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Start",
+                                    "operand": {
+                                        "name": "MeasurementPeriod",
+                                        "type": "ParameterRef"
+                                    }
+                                },
+                                {
+                                    "value": 5,
+                                    "unit": "years",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "End",
+                            "operand": {
+                                "name": "MeasurementPeriod",
+                                "type": "ParameterRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "In Demographic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "And",
+                        "operand": [
+                            {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "gender",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Patient",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "female",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "GreaterOrEqual",
+                                "operand": [
+                                    {
+                                        "precision": "Year",
+                                        "type": "CalculateAgeAt",
+                                        "operand": [
+                                            {
+                                                "type": "ToDateTime",
+                                                "operand": {
+                                                    "path": "birthDate.value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "Patient",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Start",
+                                                "operand": {
+                                                    "name": "MeasurementPeriod",
+                                                    "type": "ParameterRef"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "40",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Pap Smear Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "H",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Cervical Cytology",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Pap Smear DiagnosticReport",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "R",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}DiagnosticReport",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Cervical Cytology",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Pap Smear Observation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "R",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Cervical Cytology",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "HPV Test Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "H",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "HPV Tests",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "HPV Test DiagnosticReport",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "R",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}DiagnosticReport",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "HPV Tests",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "HPV Test Observation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "R",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "HPV Tests",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Hysterectomy Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Hysterectomy",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "status",
+                                        "scope": "A",
+                                        "type": "Property"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "completed",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Hx Hysterectomy Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Absence of Cervix",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "status",
+                                        "scope": "A",
+                                        "type": "Property"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "completed",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

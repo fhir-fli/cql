@@ -1,0 +1,1250 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CqlQueryTests"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "list",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "A",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "B",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "C",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "D",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "RightShift",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "L1",
+                                "expression": {
+                                    "name": "list",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "L2",
+                                "expression": {
+                                    "type": "Indexer",
+                                    "operand": [
+                                        {
+                                            "name": "list",
+                                            "type": "ExpressionRef"
+                                        },
+                                        {
+                                            "type": "Subtract",
+                                            "operand": [
+                                                {
+                                                    "type": "IndexOf",
+                                                    "source": {
+                                                        "name": "list",
+                                                        "type": "ExpressionRef"
+                                                    },
+                                                    "element": {
+                                                        "name": "L1",
+                                                        "type": "AliasRef"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "L2",
+                                "type": "QueryLetRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "LeftShift",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "L1",
+                                "expression": {
+                                    "name": "list",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "L2",
+                                "expression": {
+                                    "type": "Indexer",
+                                    "operand": [
+                                        {
+                                            "name": "list",
+                                            "type": "ExpressionRef"
+                                        },
+                                        {
+                                            "type": "Add",
+                                            "operand": [
+                                                {
+                                                    "type": "IndexOf",
+                                                    "source": {
+                                                        "name": "list",
+                                                        "type": "ExpressionRef"
+                                                    },
+                                                    "element": {
+                                                        "name": "L1",
+                                                        "type": "AliasRef"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "L2",
+                                "type": "QueryLetRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "LeftShift2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "L1",
+                                "expression": {
+                                    "name": "list",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "L3",
+                                "expression": {
+                                    "type": "Indexer",
+                                    "operand": [
+                                        {
+                                            "name": "list",
+                                            "type": "ExpressionRef"
+                                        },
+                                        {
+                                            "type": "Add",
+                                            "operand": [
+                                                {
+                                                    "type": "IndexOf",
+                                                    "source": {
+                                                        "name": "list",
+                                                        "type": "ExpressionRef"
+                                                    },
+                                                    "element": {
+                                                        "name": "L1",
+                                                        "type": "AliasRef"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "L3",
+                                "type": "QueryLetRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "dummyA",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "billablePeriod",
+                                "value": {
+                                    "type": "Tuple",
+                                    "element": [
+                                        {
+                                            "name": "start",
+                                            "value": {
+                                                "type": "DateTime",
+                                                "year": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2012",
+                                                    "type": "Literal"
+                                                },
+                                                "month": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "day": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "hour": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "12",
+                                                    "type": "Literal"
+                                                },
+                                                "minute": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                },
+                                                "second": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                },
+                                                "millisecond": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "end",
+                                            "value": {
+                                                "type": "DateTime",
+                                                "year": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2012",
+                                                    "type": "Literal"
+                                                },
+                                                "month": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "day": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "31",
+                                                    "type": "Literal"
+                                                },
+                                                "hour": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "23",
+                                                    "type": "Literal"
+                                                },
+                                                "minute": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "59",
+                                                    "type": "Literal"
+                                                },
+                                                "second": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "59",
+                                                    "type": "Literal"
+                                                },
+                                                "millisecond": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "999",
+                                                    "type": "Literal"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "dummyB",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "period",
+                                "value": {
+                                    "type": "Tuple",
+                                    "element": [
+                                        {
+                                            "name": "start",
+                                            "value": {
+                                                "type": "DateTime",
+                                                "year": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2012",
+                                                    "type": "Literal"
+                                                },
+                                                "month": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "day": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "hour": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "13",
+                                                    "type": "Literal"
+                                                },
+                                                "minute": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                },
+                                                "second": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                },
+                                                "millisecond": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "end",
+                                            "value": {
+                                                "type": "DateTime",
+                                                "year": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2012",
+                                                    "type": "Literal"
+                                                },
+                                                "month": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "day": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "hour": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "14",
+                                                    "type": "Literal"
+                                                },
+                                                "minute": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                },
+                                                "second": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                },
+                                                "millisecond": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "a",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "periods",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    }
+                                                },
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "4",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "b",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "periods",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    }
+                                                },
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "4",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Multisource",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "name": "a",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "B",
+                                "expression": {
+                                    "name": "b",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "A",
+                                        "value": {
+                                            "name": "A",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "B",
+                                        "value": {
+                                            "name": "B",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "aa",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "periods",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    }
+                                                },
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "4",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "periods",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    }
+                                                },
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "4",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "bb",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "periods",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    }
+                                                },
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "4",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "11",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "periods",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    }
+                                                },
+                                                {
+                                                    "lowClosed": true,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    "high": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "4",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Complex Multisource",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "name": "aa",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "B",
+                                "expression": {
+                                    "name": "bb",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "A",
+                                        "value": {
+                                            "name": "A",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "B",
+                                        "value": {
+                                            "name": "B",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "List 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "i",
+                                "expression": {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "i",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "List 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "i",
+                                "expression": {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "4",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "5",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "6",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "i",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "List of Lists",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "name": "List 1",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "List 2",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Let Test Fails",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "IntegerList",
+                                "expression": {
+                                    "name": "List of Lists",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "renamedIntegerList",
+                                "expression": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "i",
+                                            "expression": {
+                                                "name": "IntegerList",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "renamedIntegerList",
+                                "type": "QueryLetRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "List 3",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "7",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "8",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "9",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Triple Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "name": "List 1",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "B",
+                                "expression": {
+                                    "name": "List 2",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "name": "List 3",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "A",
+                                        "value": {
+                                            "name": "A",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "B",
+                                        "value": {
+                                            "name": "B",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "C",
+                                        "value": {
+                                            "name": "C",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "A",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "B",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "C",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "3",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Let Expression in Multi Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "name": "A",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "B",
+                                "expression": {
+                                    "name": "B",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "sum",
+                                "expression": {
+                                    "type": "Add",
+                                    "operand": [
+                                        {
+                                            "name": "A",
+                                            "type": "AliasRef"
+                                        },
+                                        {
+                                            "name": "B",
+                                            "type": "AliasRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "sum",
+                                "type": "QueryLetRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Accessing Third Element of Triple Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "name": "A",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "B",
+                                "expression": {
+                                    "name": "B",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "name": "C",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "C",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

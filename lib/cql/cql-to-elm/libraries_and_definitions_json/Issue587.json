@@ -1,0 +1,77 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "Issue587",
+                "startLine": 6,
+                "startChar": 30,
+                "endLine": 6,
+                "endChar": 42,
+                "message": "Could not resolve call to operator Collapse with signature (System.Any,System.Quantity).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Issue587",
+                "startLine": 7,
+                "startChar": 30,
+                "endLine": 7,
+                "endChar": 44,
+                "message": "Could not determine signature for invocation of operator System.Collapse.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "type": "Annotation",
+                "t": [
+                    {
+                        "name": "issue",
+                        "value": "[#587](https://github.com/cqframework/clinical_quality_language/issues/587)"
+                    }
+                ]
+            }
+        ],
+        "identifier": {
+            "id": "Issue587"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CollapseWithNullPer1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "CollapseWithNullPer2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

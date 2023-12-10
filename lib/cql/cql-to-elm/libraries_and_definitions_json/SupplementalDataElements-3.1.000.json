@@ -1,0 +1,370 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "SupplementalDataElements",
+                "libraryVersion": "3.1.000",
+                "startLine": 14,
+                "startChar": 1,
+                "endLine": 14,
+                "endChar": 56,
+                "message": "Could not load source for library FHIRHelpers, version 4.1.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "4.1.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "SupplementalDataElements",
+                "libraryVersion": "3.1.000",
+                "startLine": 24,
+                "startChar": 3,
+                "endLine": 24,
+                "endChar": 19,
+                "message": "Could not resolve model with namespace http://hl7.org/fhir",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "SupplementalDataElements",
+                "libraryVersion": "3.1.000",
+                "startLine": 38,
+                "startChar": 3,
+                "endLine": 38,
+                "endChar": 14,
+                "message": "Could not resolve model with namespace http://hl7.org/fhir",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "type": "Annotation",
+                "t": [
+                    {
+                        "name": "update",
+                        "value": "BTR 2020-03-31 ->\nIncremented version to 2.0.0"
+                    },
+                    {
+                        "name": "update",
+                        "value": "BTR 2022-05-26 ->\nUpdated FHIR version to 4.0.1\nUpdated FHIRHelpers version to 4.0.002\nUpdated for AU 2022 Content"
+                    }
+                ]
+            }
+        ],
+        "identifier": {
+            "id": "SupplementalDataElements",
+            "version": "3.1.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.1.000"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Ethnicity",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ONC Administrative Sex",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Payer",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Race",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Payer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Payer",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Coverage",
+                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Payer",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "name": "ToConcept",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "type",
+                                                    "scope": "Payer",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "period",
+                                        "value": {
+                                            "name": "ToInterval",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "period",
+                                                    "scope": "Payer",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Race",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "R",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Sex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Case",
+                        "caseItem": [
+                            {
+                                "when": {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "gender",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "male",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                "then": {
+                                    "classType": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "Instance",
+                                    "element": [
+                                        {
+                                            "name": "code",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "M",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        {
+                                            "name": "system",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org/fhir/v3/AdministrativeGender",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        {
+                                            "name": "display",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Male",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "when": {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "gender",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "female",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                "then": {
+                                    "classType": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "Instance",
+                                    "element": [
+                                        {
+                                            "name": "code",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "F",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        {
+                                            "name": "system",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org/fhir/v3/AdministrativeGender",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        {
+                                            "name": "display",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Female",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "else": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Code",
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

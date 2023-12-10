@@ -1,0 +1,62 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TestQuotedForwards",
+                "startLine": 9,
+                "startChar": 34,
+                "endLine": 9,
+                "endChar": 42,
+                "message": "A named type is required in this context.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TestQuotedForwards",
+                "startLine": 9,
+                "startChar": 1,
+                "endLine": 9,
+                "endChar": 50,
+                "message": "class org.hl7.elm.r1.Null cannot be cast to class org.hl7.elm.r1.TypeSpecifier (org.hl7.elm.r1.Null and org.hl7.elm.r1.TypeSpecifier are in unnamed module of loader 'app')",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "type": "Annotation",
+                "t": [
+                    {
+                        "name": "issue",
+                        "value": "[1204](https://github.com/cqframework/clinical_quality_language/issues/1204)"
+                    }
+                ]
+            }
+        ],
+        "identifier": {
+            "id": "TestQuotedForwards"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        }
+    }
+}

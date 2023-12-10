@@ -1,0 +1,112 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Issue1226"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "USCore",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "All Medication Requests",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                        "templateId": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "Most Recent Medication Request",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "First",
+                        "source": {
+                            "name": "All Medication Requests",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Most Recent Medication Request reference",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "reference",
+                            "type": "Property",
+                            "source": {
+                                "name": "ToValue",
+                                "libraryName": "FHIRHelpers",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "path": "medication",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "Most Recent Medication Request",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

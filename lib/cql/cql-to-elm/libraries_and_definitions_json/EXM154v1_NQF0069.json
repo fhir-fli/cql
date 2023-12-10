@@ -1,0 +1,462 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 88,
+                "startChar": 3,
+                "endLine": 88,
+                "endChar": 29,
+                "message": "Could not resolve identifier Office Visit in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 96,
+                "startChar": 3,
+                "endLine": 96,
+                "endChar": 17,
+                "message": "Could not validate reference to expression ValidEncounters because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 100,
+                "startChar": 3,
+                "endLine": 100,
+                "endChar": 44,
+                "message": "Could not resolve identifier Upper Respiratory Infection in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 103,
+                "startChar": 3,
+                "endLine": 103,
+                "endChar": 14,
+                "message": "Could not validate reference to expression URIDiagnosis because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 112,
+                "startChar": 3,
+                "endLine": 112,
+                "endChar": 16,
+                "message": "Could not validate reference to expression ValidDiagnosis because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 119,
+                "startChar": 3,
+                "endLine": 119,
+                "endChar": 16,
+                "message": "Could not validate reference to expression ValidDiagnosis because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 120,
+                "startChar": 24,
+                "endLine": 120,
+                "endChar": 73,
+                "message": "Could not resolve code path medication.code for the type of the retrieve QUICK.MedicationPrescription.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 124,
+                "startChar": 1,
+                "endLine": 124,
+                "endChar": 18,
+                "message": "Could not resolve context name Population in model QUICK.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 127,
+                "startChar": 11,
+                "endLine": 127,
+                "endChar": 19,
+                "message": "Could not validate reference to expression Numerator because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 127,
+                "startChar": 30,
+                "endLine": 127,
+                "endChar": 40,
+                "message": "Boolean-valued expression was promoted to a list.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "EXM154",
+                "libraryVersion": "1",
+                "startLine": 127,
+                "startChar": 30,
+                "endLine": 127,
+                "endChar": 40,
+                "message": "Boolean-valued expression was promoted to a list.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "EXM154",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "default": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2013",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "patient-qicore-qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "InDemographic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "And",
+                        "operand": [
+                            {
+                                "type": "GreaterOrEqual",
+                                "operand": [
+                                    {
+                                        "precision": "Month",
+                                        "type": "CalculateAgeAt",
+                                        "operand": [
+                                            {
+                                                "path": "birthDate",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            },
+                                            {
+                                                "type": "Start",
+                                                "operand": {
+                                                    "name": "MeasurementPeriod",
+                                                    "type": "ParameterRef"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "3",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "LessOrEqual",
+                                "operand": [
+                                    {
+                                        "precision": "Year",
+                                        "type": "CalculateAgeAt",
+                                        "operand": [
+                                            {
+                                                "path": "birthDate",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            },
+                                            {
+                                                "type": "Start",
+                                                "operand": {
+                                                    "name": "MeasurementPeriod",
+                                                    "type": "ParameterRef"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "18",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "ValidEncounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "EncountersDuringMeasurementPeriod",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "URIDiagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "ValidDiagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "U",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "InitialPopulation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "V",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "name": "InDemographic",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                        "value": "true",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Numerator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "V",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "MeasureScore",
+                    "context": "Population",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

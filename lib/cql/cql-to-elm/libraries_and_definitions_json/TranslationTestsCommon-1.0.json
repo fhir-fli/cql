@@ -1,0 +1,237 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TranslationTestsCommon",
+            "version": "1.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestMessage",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "name": "condition",
+                            "type": "OperandRef"
+                        },
+                        "then": {
+                            "type": "Concatenate",
+                            "operand": [
+                                {
+                                    "name": "testName",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": " TEST PASSED",
+                                    "type": "Literal"
+                                }
+                            ]
+                        },
+                        "else": {
+                            "type": "Message",
+                            "source": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "TEST SUITE FAILED",
+                                "type": "Literal"
+                            },
+                            "condition": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "value": "true",
+                                "type": "Literal"
+                            },
+                            "code": {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Test ",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "name": "testName",
+                                                "type": "OperandRef"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": " failed",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            "severity": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Warning",
+                                "type": "Literal"
+                            },
+                            "message": {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "type": "Concatenate",
+                                                "operand": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "Expected ",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "name": "expected",
+                                                        "type": "OperandRef"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": " Found ",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "result",
+                                        "type": "OperandRef"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "condition",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "testName",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "expected",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "result",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "IsNull",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "null",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "type": "ToString",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "IsNull",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "null",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "type": "ToString",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

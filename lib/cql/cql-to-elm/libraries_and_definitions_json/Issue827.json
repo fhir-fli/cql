@@ -1,0 +1,49 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Issue827"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "This is the \"referenced\" expression",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "The reference resolved!",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Referencing Expression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "This is the \"referenced\" expression",
+                        "type": "ExpressionRef"
+                    }
+                }
+            ]
+        }
+    }
+}

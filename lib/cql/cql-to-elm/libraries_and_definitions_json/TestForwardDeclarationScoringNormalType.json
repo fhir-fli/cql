@@ -1,0 +1,90 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TestForwardDeclarationScoringNormalType",
+                "startLine": 3,
+                "startChar": 15,
+                "endLine": 3,
+                "endChar": 15,
+                "message": "Syntax error at (",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TestForwardDeclarationScoringNormalType",
+                "startLine": 5,
+                "startChar": 15,
+                "endLine": 5,
+                "endChar": 15,
+                "message": "Syntax error at (",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TestForwardDeclarationScoringNormalType",
+                "startLine": 7,
+                "startChar": 15,
+                "endLine": 7,
+                "endChar": 15,
+                "message": "Syntax error at (",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TestForwardDeclarationScoringNormalType",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 43,
+                "message": "Identifier ToString is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TestForwardDeclarationScoringNormalType",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 8,
+                "endChar": 24,
+                "message": "Identifier ToString is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TestForwardDeclarationScoringNormalType"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ToString",
+                    "context": "Patient",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

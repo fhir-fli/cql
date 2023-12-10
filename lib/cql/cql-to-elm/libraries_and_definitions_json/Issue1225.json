@@ -1,0 +1,186 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Issue1225"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "USCore",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Address",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Flatten",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "$this",
+                                    "expression": {
+                                        "path": "address",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "Patient",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                }
+                            ],
+                            "where": {
+                                "type": "Not",
+                                "operand": {
+                                    "type": "IsNull",
+                                    "operand": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "line",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "$this",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "return": {
+                                "distinct": false,
+                                "expression": {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "line",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "$this",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Address Line 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Indexer",
+                        "operand": [
+                            {
+                                "type": "Flatten",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "$this",
+                                            "expression": {
+                                                "path": "address",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "where": {
+                                        "type": "Not",
+                                        "operand": {
+                                            "type": "IsNull",
+                                            "operand": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "line",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "$this",
+                                                        "type": "AliasRef"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "line",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "$this",
+                                                    "type": "AliasRef"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

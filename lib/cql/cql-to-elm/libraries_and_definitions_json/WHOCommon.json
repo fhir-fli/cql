@@ -1,0 +1,338 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "WHOCommon"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "ModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "domainResource",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "name": "ToString",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "url",
+                                            "scope": "E",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Concatenate",
+                                    "operand": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "http://fhir.org/guides/who/core/StructureDefinition/",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "name": "id",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ModifierExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single WHO core modifier extension (if present) on the given resource with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "ModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "domainResource",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "id",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any WHO core modifier extensions defined on the given element with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the CQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "element",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "name": "ToString",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "url",
+                                            "scope": "E",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Concatenate",
+                                    "operand": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "http://fhir.org/guides/who/core/StructureDefinition/",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "name": "id",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}BackboneElement",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ModifierExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single WHO core modifier extension (if present) on the given element with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "ModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "element",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "id",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}BackboneElement",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

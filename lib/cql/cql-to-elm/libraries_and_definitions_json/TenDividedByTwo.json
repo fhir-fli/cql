@@ -1,0 +1,97 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TenDividedByTwo",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 58,
+                "message": "Could not load source for library TranslationTestsCommon, version 1.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "TranslationTestsCommon",
+                "targetIncludeLibraryVersionId": "1.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TenDividedByTwo",
+                "startLine": 8,
+                "startChar": 98,
+                "endLine": 8,
+                "endChar": 110,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TenDividedByTwo"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Common",
+                    "path": "TranslationTestsCommon",
+                    "version": "1.0"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TenDividedByTwo",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Divide",
+                        "operand": [
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "test_TenDividedByTwo",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

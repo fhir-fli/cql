@@ -1,0 +1,357 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "VTEICU_QICore4",
+                "libraryVersion": "4.0.000",
+                "startLine": 15,
+                "startChar": 1,
+                "endLine": 15,
+                "endChar": 72,
+                "message": "Could not load source for library MATGlobalCommonFunctions_QICore4, version 5.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "MATGlobalCommonFunctions_QICore4",
+                "targetIncludeLibraryVersionId": "5.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "VTEICU_QICore4",
+                "libraryVersion": "4.0.000",
+                "startLine": 25,
+                "startChar": 43,
+                "endLine": 25,
+                "endChar": 85,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "VTEICU_QICore4",
+                "libraryVersion": "4.0.000",
+                "startLine": 38,
+                "startChar": 17,
+                "endLine": 38,
+                "endChar": 54,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "VTEICU_QICore4",
+                "libraryVersion": "4.0.000",
+                "startLine": 31,
+                "startChar": 43,
+                "endLine": 31,
+                "endChar": 85,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "VTEICU_QICore4",
+            "version": "4.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "http://hl7.org/fhir",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "update"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                },
+                {
+                    "localIdentifier": "Global",
+                    "path": "MATGlobalCommonFunctions_QICore4",
+                    "version": "5.0.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "default": {
+                        "lowClosed": true,
+                        "highClosed": false,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2019",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2020",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    },
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Intensive Care Unit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.23",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "FirstInpatientIntensiveCareUnit",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "First",
+                        "source": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "HospitalLocation",
+                                    "expression": {
+                                        "path": "location",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "Encounter",
+                                            "type": "OperandRef"
+                                        }
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Null"
+                            },
+                            "sort": {
+                                "by": [
+                                    {
+                                        "direction": "asc",
+                                        "type": "ByExpression",
+                                        "expression": {
+                                            "type": "Start",
+                                            "operand": {
+                                                "name": "ToInterval",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "name": "period",
+                                                        "type": "IdentifierRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "Encounter",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Encounter",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "FirstICULocationPeriod",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "ToInterval",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "path": "period",
+                                "type": "Property",
+                                "source": {
+                                    "name": "FirstInpatientIntensiveCareUnit",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "name": "Encounter",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "Encounter",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Encounter",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "StartOfFirstICU",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Start",
+                        "operand": {
+                            "name": "FirstICULocationPeriod",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "Encounter",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "Encounter",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Encounter",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

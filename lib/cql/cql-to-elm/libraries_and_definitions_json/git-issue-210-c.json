@@ -1,0 +1,258 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Test",
+            "version": "0.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_3",
+                    "version": "5.3"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Dapsone and pyrimethamine",
+                    "id": "urn:oid:2.16.840.1.113883.3.464.1003.196.12.1202",
+                    "version": "urn:hl7:version:eCQM%20Update%202017-05-05",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Leucovorin",
+                    "id": "urn:oid:2.16.840.1.113883.3.464.1003.196.12.1205",
+                    "version": "urn:hl7:version:eCQM%20Update%202017-05-05",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{urn:healthit-gov:qdm:v5_3}Patient",
+                            "templateId": "Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "CD4+ Count With Results and Medications 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MOL",
+                                "expression": {
+                                    "dataType": "{urn:healthit-gov:qdm:v5_3}PositiveMedicationOrder",
+                                    "templateId": "PositiveMedicationOrder",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Leucovorin",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [
+                            {
+                                "alias": "DapsoneOrder",
+                                "type": "With",
+                                "expression": {
+                                    "dataType": "{urn:healthit-gov:qdm:v5_3}PositiveMedicationOrder",
+                                    "templateId": "PositiveMedicationOrder",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Dapsone and pyrimethamine",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                },
+                                "suchThat": {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "In",
+                                            "operand": [
+                                                {
+                                                    "path": "authorDatetime",
+                                                    "scope": "DapsoneOrder",
+                                                    "type": "Property"
+                                                },
+                                                {
+                                                    "lowClosed": false,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "path": "authorDatetime",
+                                                        "scope": "MOL",
+                                                        "type": "Property"
+                                                    },
+                                                    "high": {
+                                                        "type": "Add",
+                                                        "operand": [
+                                                            {
+                                                                "path": "authorDatetime",
+                                                                "scope": "MOL",
+                                                                "type": "Property"
+                                                            },
+                                                            {
+                                                                "value": 1,
+                                                                "unit": "days",
+                                                                "type": "Quantity"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Not",
+                                            "operand": {
+                                                "type": "IsNull",
+                                                "operand": {
+                                                    "path": "authorDatetime",
+                                                    "scope": "MOL",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "alias": "MODP",
+                                "type": "With",
+                                "expression": {
+                                    "dataType": "{urn:healthit-gov:qdm:v5_3}PositiveMedicationOrder",
+                                    "templateId": "PositiveMedicationOrder",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Dapsone and pyrimethamine",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                },
+                                "suchThat": {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "In",
+                                            "operand": [
+                                                {
+                                                    "path": "authorDatetime",
+                                                    "scope": "MODP",
+                                                    "type": "Property"
+                                                },
+                                                {
+                                                    "lowClosed": false,
+                                                    "highClosed": true,
+                                                    "type": "Interval",
+                                                    "low": {
+                                                        "path": "authorDatetime",
+                                                        "scope": "MOL",
+                                                        "type": "Property"
+                                                    },
+                                                    "high": {
+                                                        "type": "Add",
+                                                        "operand": [
+                                                            {
+                                                                "path": "authorDatetime",
+                                                                "scope": "MOL",
+                                                                "type": "Property"
+                                                            },
+                                                            {
+                                                                "value": 1,
+                                                                "unit": "day",
+                                                                "type": "Quantity"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Not",
+                                            "operand": {
+                                                "type": "IsNull",
+                                                "operand": {
+                                                    "path": "authorDatetime",
+                                                    "scope": "MOL",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "where": {
+                            "type": "Not",
+                            "operand": {
+                                "type": "IsNull",
+                                "operand": {
+                                    "path": "authorDatetime",
+                                    "scope": "MOL",
+                                    "type": "Property"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

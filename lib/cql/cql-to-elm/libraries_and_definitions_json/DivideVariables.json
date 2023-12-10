@@ -1,0 +1,115 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "DivideVariables",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 58,
+                "message": "Could not load source for library TranslationTestsCommon, version 1.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "TranslationTestsCommon",
+                "targetIncludeLibraryVersionId": "1.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "DivideVariables",
+                "startLine": 11,
+                "startChar": 99,
+                "endLine": 11,
+                "endChar": 112,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "DivideVariables"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Common",
+                    "path": "TranslationTestsCommon",
+                    "version": "1.0"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Hundred",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "100",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Four",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "4",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "DivideVariables",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Divide",
+                        "operand": [
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "name": "Hundred",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "name": "Four",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "test_DivideVariables",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

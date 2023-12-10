@@ -1,0 +1,143 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 80,
+                "startChar": 3,
+                "endLine": 80,
+                "endChar": 28,
+                "message": "Could not resolve identifier MedicationRequestIntervals in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "FactorialOfFive",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Num",
+                                "expression": {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "4",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "5",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "aggregate": {
+                            "identifier": "Result",
+                            "expression": {
+                                "type": "Multiply",
+                                "operand": [
+                                    {
+                                        "name": "Result",
+                                        "type": "QueryLetRef"
+                                    },
+                                    {
+                                        "name": "Num",
+                                        "type": "AliasRef"
+                                    }
+                                ]
+                            },
+                            "starting": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "RolledOutIntervals",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "aggregate": {
+                            "identifier": "R",
+                            "expression": {
+                                "type": "Null"
+                            },
+                            "starting": {
+                                "strict": false,
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                },
+                                "asTypeSpecifier": {
+                                    "type": "ListTypeSpecifier",
+                                    "elementType": {
+                                        "type": "IntervalTypeSpecifier",
+                                        "pointType": {
+                                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

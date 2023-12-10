@@ -1,0 +1,169 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestIntervalImplicitConversion"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir/us/qicore",
+                    "version": "3.3.0"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir/us/qicore}Patient",
+                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "LengthInDays",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "DifferenceBetween",
+                        "operand": [
+                            {
+                                "type": "Start",
+                                "operand": {
+                                    "name": "Value",
+                                    "type": "OperandRef"
+                                }
+                            },
+                            {
+                                "type": "End",
+                                "operand": {
+                                    "name": "Value",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "Value",
+                            "operandTypeSpecifier": {
+                                "type": "IntervalTypeSpecifier",
+                                "pointType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir/us/qicore}Encounter",
+                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "LessOrEqual",
+                                    "operand": [
+                                        {
+                                            "name": "LengthInDays",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "period",
+                                                    "scope": "Encounter",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "120",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "type": "End",
+                                            "operand": {
+                                                "path": "period",
+                                                "scope": "Encounter",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "Measurement Period",
+                                            "type": "ParameterRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,891 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 57,
+                "startChar": 16,
+                "endLine": 57,
+                "endChar": 16,
+                "message": "Could not resolve identifier O in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 61,
+                "startChar": 3,
+                "endLine": 61,
+                "endChar": 35,
+                "message": "Could not validate reference to expression Zika Exposure Assessment Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 79,
+                "startChar": 5,
+                "endLine": 79,
+                "endChar": 47,
+                "message": "Could not validate reference to expression Zika Exposure Assessment Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 87,
+                "startChar": 5,
+                "endLine": 87,
+                "endChar": 47,
+                "message": "Could not validate reference to expression Zika Exposure Assessment Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 94,
+                "startChar": 5,
+                "endLine": 94,
+                "endChar": 47,
+                "message": "Could not validate reference to expression Zika Exposure Assessment Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 101,
+                "startChar": 5,
+                "endLine": 101,
+                "endChar": 47,
+                "message": "Could not validate reference to expression Zika Exposure Assessment Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 108,
+                "startChar": 5,
+                "endLine": 108,
+                "endChar": 47,
+                "message": "Could not validate reference to expression Zika Exposure Assessment Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 114,
+                "startChar": 12,
+                "endLine": 114,
+                "endChar": 44,
+                "message": "Could not validate reference to expression Time Since Returned From Travel because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 118,
+                "startChar": 5,
+                "endLine": 118,
+                "endChar": 47,
+                "message": "Could not validate reference to expression Zika Exposure Assessment Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 124,
+                "startChar": 3,
+                "endLine": 124,
+                "endChar": 49,
+                "message": "Could not validate reference to expression Resident of or Frequent Traveler to Zika Area because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 133,
+                "startChar": 16,
+                "endLine": 133,
+                "endChar": 16,
+                "message": "Could not resolve identifier S in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 137,
+                "startChar": 42,
+                "endLine": 137,
+                "endChar": 61,
+                "message": "Could not validate reference to expression Zika Symptom Onset because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 140,
+                "startChar": 8,
+                "endLine": 140,
+                "endChar": 37,
+                "message": "Could not validate reference to expression Has Zika Exposure Assessment because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 143,
+                "startChar": 4,
+                "endLine": 143,
+                "endChar": 31,
+                "message": "Could not validate reference to expression Has Possible Zika Exposure because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 147,
+                "startChar": 4,
+                "endLine": 147,
+                "endChar": 31,
+                "message": "Could not validate reference to expression Has Possible Zika Exposure because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 152,
+                "startChar": 4,
+                "endLine": 152,
+                "endChar": 31,
+                "message": "Could not validate reference to expression Has Possible Zika Exposure because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "zika-virus-intervention-logic",
+                "libraryVersion": "1.0.0",
+                "startLine": 156,
+                "startChar": 3,
+                "endLine": 156,
+                "endChar": 31,
+                "message": "Could not validate reference to expression Planned Travel to Zika Area because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "zika-virus-intervention-logic",
+            "version": "1.0.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Current Encounter",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{http://hl7.org/fhir}Encounter",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "Example Questionnaires",
+                    "id": "http://example.org/questionnaires",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Pregnancy",
+                    "id": "urn:oid:X.Y.Z",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Affected Areas",
+                    "id": "urn:oid:2.16.840.1.114222.4.11.7457",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus Signs and Symptoms",
+                    "id": "2.16.840.1.114222.4.11.7459",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "General Arbovirus Signs and Symptoms",
+                    "id": "2.16.840.1.114222.4.11.7460",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus Tests",
+                    "id": "2.16.840.1.114222.4.11.7480",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Arbovirus Tests",
+                    "id": "2.16.840.1.114222.4.11.4120",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chikungunya Tests",
+                    "id": "2.16.840.1.114222.4.11.7339",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dengue Tests",
+                    "id": "2.16.840.1.114222.4.11.4141",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus IgM ELISA Results",
+                    "id": "2.16.840.1.114222.4.11.7476",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus Neutralizing Antibody Results",
+                    "id": "2.16.840.1.114222.4.11.7477",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Arbovirus Test Results",
+                    "id": "2.16.840.1.114222.4.11.4003",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chikungunya Test Results",
+                    "id": "2.16.840.1.114222.4.11.7343",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dengue Test Results",
+                    "id": "2.16.840.1.114222.4.11.4025",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "CDE: Resident of or Frequent Traveler to Zika Area",
+                    "id": "CDE: Resident of or Frequent Traveler to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Recent Travel to Zika Area",
+                    "id": "CDE: Recent Travel to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Time Since Returned From Travel",
+                    "id": "CDE: Time Since Returned From Travel",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Recent Sexual Encounter With Traveler to Zika Area",
+                    "id": "CDE: Recent Sexual Encounter With Traveler to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Time Since Sexual Encounter",
+                    "id": "CDE: Time Since Sexual Encounter",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Planned Travel to Zika Area",
+                    "id": "CDE: Planned Travel to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Pregnancy Conditions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Pregnancy",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "name": "ToString",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "clinicalStatus",
+                                                            "scope": "C",
+                                                            "type": "Property"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "active",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "name": "ToString",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "verificationStatus",
+                                                            "scope": "C",
+                                                            "type": "Property"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "confirmed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "GreaterOrEqual",
+                                            "operand": [
+                                                {
+                                                    "type": "ToDateTime",
+                                                    "operand": {
+                                                        "type": "Today"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "ToDateTime",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "asType": "{http://hl7.org/fhir}dateTime",
+                                                            "type": "As",
+                                                            "operand": {
+                                                                "path": "onset",
+                                                                "scope": "C",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "LessOrEqual",
+                                            "operand": [
+                                                {
+                                                    "type": "ToDateTime",
+                                                    "operand": {
+                                                        "type": "Today"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "ToDateTime",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "asType": "{http://hl7.org/fhir}dateTime",
+                                                            "type": "As",
+                                                            "operand": {
+                                                                "path": "abatement",
+                                                                "scope": "C",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Is Patient Pregnant",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "And",
+                        "operand": [
+                            {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "name": "ToString",
+                                        "libraryName": "FHIRHelpers",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "path": "gender",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "female",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Exists",
+                                "operand": {
+                                    "name": "Pregnancy Conditions",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Zika Exposure Assessment",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "code": "Zika Virus Exposure Assessment",
+                        "type": "Code",
+                        "system": {
+                            "name": "Example Questionnaires"
+                        }
+                    }
+                },
+                {
+                    "name": "Zika Exposure Assessment Result",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Has Zika Exposure Assessment",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Zika Symptoms",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Zika Virus Signs and Symptoms",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "name": "ToString",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "clinicalStatus",
+                                                            "scope": "C",
+                                                            "type": "Property"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "active",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "name": "ToString",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "verificationStatus",
+                                                            "scope": "C",
+                                                            "type": "Property"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "confirmed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "name": "ToString",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "reference",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "context",
+                                                        "scope": "C",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "ToString",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "id",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "Current Encounter",
+                                                        "type": "ParameterRef"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Has Zika Symptoms",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "name": "Zika Symptoms",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "No Zika Symptoms",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Not",
+                        "operand": {
+                            "name": "Has Zika Symptoms",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Yes",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Resident of or Frequent Traveler to Zika Area",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Recent Travel to Zika Area",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Time Since Returned From Travel",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Recent Sexual Encounter With Traveler to Zika Area",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Time Since Sexual Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Time Since Possible Exposure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Planned Travel to Zika Area",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Has Possible Zika Exposure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Zika Symptom Onset",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Time Since Symptom Onset",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Should Administer Zika Exposure Assessment",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Should Order Serum + Urine rRT-PCR Test",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Should Order Serum Zika Virus IgM + Dengue Virus IgM",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Should Consider IgM Antibody Testing",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Should Provide Mosquito Prevention and Contraception Advice",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

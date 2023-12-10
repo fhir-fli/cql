@@ -1,0 +1,485 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestFhirExecution",
+            "version": "1.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MAXYEAR",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{urn:hl7-org:elm-types:r1}Integer",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "MedicationRequests",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "testCoalesce",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "name": "MedicationRequests",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Coalesce",
+                                "operand": [
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "frequencyMax",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "repeat",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "timing",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "type": "Indexer",
+                                                        "operand": [
+                                                            {
+                                                                "path": "dosageInstruction",
+                                                                "scope": "M",
+                                                                "type": "Property"
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                "value": "0",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "frequency",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "repeat",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "timing",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "type": "Indexer",
+                                                        "operand": [
+                                                            {
+                                                                "path": "dosageInstruction",
+                                                                "scope": "M",
+                                                                "type": "Property"
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                "value": "0",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "MeasurementPeriod",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "type": "Subtract",
+                                "operand": [
+                                    {
+                                        "name": "MAXYEAR",
+                                        "type": "ParameterRef"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "1",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "10",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "name": "MAXYEAR",
+                                "type": "ParameterRef"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "4",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "30",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "testMonthFrom",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "I",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Immunization",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "In",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "date",
+                                        "scope": "I",
+                                        "type": "Property"
+                                    }
+                                },
+                                {
+                                    "name": "MeasurementPeriod",
+                                    "type": "ExpressionRef"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Immunizations between October and December",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "I",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Immunization",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "In",
+                            "operand": [
+                                {
+                                    "precision": "Month",
+                                    "type": "DateTimeComponentFrom",
+                                    "operand": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "date",
+                                            "scope": "I",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "10",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "11",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "12",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Immunizations between January and April",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "I",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Immunization",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "In",
+                            "operand": [
+                                {
+                                    "precision": "Month",
+                                    "type": "DateTimeComponentFrom",
+                                    "operand": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "date",
+                                            "scope": "I",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "4",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Immunizations in range",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "OctDec",
+                                "expression": {
+                                    "name": "Immunizations between October and December",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "JanApr",
+                                "expression": {
+                                    "name": "Immunizations between January and April",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "precision": "Year",
+                                    "type": "DateTimeComponentFrom",
+                                    "operand": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "date",
+                                            "scope": "OctDec",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "Subtract",
+                                    "operand": [
+                                        {
+                                            "precision": "Year",
+                                            "type": "DateTimeComponentFrom",
+                                            "operand": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "date",
+                                                    "scope": "JanApr",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "Union",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "type": "ToList",
+                                        "operand": {
+                                            "name": "OctDec",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "type": "ToList",
+                                        "operand": {
+                                            "name": "JanApr",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Resource Id",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "id",
+                                    "scope": "E",
+                                    "type": "Property"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

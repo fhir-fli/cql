@@ -1,0 +1,110 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "ReferencingLibrary",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 31,
+                "message": "Could not load source for library BaseLibrary, version null.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "BaseLibrary",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ReferencingLibrary",
+                "startLine": 6,
+                "startChar": 19,
+                "endLine": 6,
+                "endChar": 39,
+                "message": "Could not resolve library name Base.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ReferencingLibrary",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 60,
+                "message": "class org.hl7.elm.r1.Null cannot be cast to class org.hl7.elm.r1.CodeSystemRef (org.hl7.elm.r1.Null and org.hl7.elm.r1.CodeSystemRef are in unnamed module of loader 'app')",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ReferencingLibrary",
+                "startLine": 8,
+                "startChar": 34,
+                "endLine": 8,
+                "endChar": 47,
+                "message": "Could not resolve library name Base.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ReferencingLibrary",
+                "startLine": 10,
+                "startChar": 43,
+                "endLine": 10,
+                "endChar": 69,
+                "message": "Could not resolve library name Base.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "ReferencingLibrary"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Base",
+                    "path": "BaseLibrary"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ReferenceExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "GenderExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

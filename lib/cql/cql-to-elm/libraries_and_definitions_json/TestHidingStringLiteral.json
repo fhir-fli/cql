@@ -1,0 +1,90 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestHidingStringLiteral"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IWantToBeHidden",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "1",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "IWantToHide",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "IWantToBeHidden",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "iWantToHide",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "IWantToHide",
+                        "type": "Literal"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "iWantToHide",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "IWantToHide",
+                        "type": "Literal"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

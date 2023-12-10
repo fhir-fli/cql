@@ -1,0 +1,102 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestHidingUnionSameAliasEachHides"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "X",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "X",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Y",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Y",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "IWantToBeHidden",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "E",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "UnionSameAlias",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Union",
+                        "operand": [
+                            {
+                                "type": "ToList",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "IWantToBeHidden",
+                                            "expression": {
+                                                "name": "X",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": []
+                                }
+                            },
+                            {
+                                "type": "ToList",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "IWantToBeHidden",
+                                            "expression": {
+                                                "name": "Y",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": []
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

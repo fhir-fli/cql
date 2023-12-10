@@ -1,22 +1,25 @@
 {
-   "library" : {
-      "annotation" : [ {
-         "translatorVersion" : "2.11.0",
-         "translatorOptions" : "",
-         "type" : "CqlToElmInfo"
-      }, {
-         "startLine" : 1,
-         "startChar" : 1,
-         "endLine" : 17,
-         "endChar" : 55,
-         "message" : "Could not resolve namespace name Example",
-         "errorType" : "semantic",
-         "errorSeverity" : "error",
-         "type" : "CqlToElmError"
-      } ],
-      "schemaIdentifier" : {
-         "id" : "urn:hl7-org:elm",
-         "version" : "r1"
-      }
-   }
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 1,
+                "startChar": 1,
+                "endLine": 17,
+                "endChar": 55,
+                "message": "Could not resolve namespace name Example",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        }
+    }
 }

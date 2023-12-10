@@ -1,0 +1,639 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TimeAdd",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "value": 1,
+                                "unit": "hour",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TimeAfter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "After",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "00",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "00",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TimeBefore",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Before",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TimeHour",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "TimeMinute",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "TimeSecond",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "TimeMillisecond",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "HourFromTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "DateTimeComponentFrom",
+                        "operand": {
+                            "type": "Time",
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "MinuteFromTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Minute",
+                        "type": "DateTimeComponentFrom",
+                        "operand": {
+                            "type": "Time",
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "SecondFromTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Second",
+                        "type": "DateTimeComponentFrom",
+                        "operand": {
+                            "type": "Time",
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "MillisecondFromTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Millisecond",
+                        "type": "DateTimeComponentFrom",
+                        "operand": {
+                            "type": "Time",
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "DifferenceBetweenExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "DurationBetween",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "45",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "DurationBetweenExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "DurationBetween",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "45",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TimeOfDayExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "TimeOfDay"
+                    }
+                },
+                {
+                    "name": "SameAsExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "SameAs",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "45",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SameOrAfterExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "SameOrAfter",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "9",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SameOrBeforeExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "SameOrBefore",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "11",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TimeSubtract",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Subtract",
+                        "operand": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "value": 1,
+                                "unit": "hour",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,202 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestSoMuchNestingHidingComplex"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SoMuchNesting",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "SoMuchNesting",
+                                "expression": {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "type": "List",
+                                                    "element": [
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "1",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "2",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "3",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "List",
+                                                    "element": [
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "1",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "2",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "3",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "type": "List",
+                                                    "element": [
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "4",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "5",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "6",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "List",
+                                                    "element": [
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "4",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "5",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "6",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "type": "List",
+                                                    "element": [
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "7",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "8",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "9",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "List",
+                                                    "element": [
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "7",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "8",
+                                                            "type": "Literal"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "9",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "SoMuchNesting",
+                                "expression": {
+                                    "type": "First",
+                                    "source": {
+                                        "name": "SoMuchNesting",
+                                        "type": "AliasRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "SoMuchNesting",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

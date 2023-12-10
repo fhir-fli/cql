@@ -1,0 +1,214 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 24,
+                "startChar": 3,
+                "endLine": 24,
+                "endChar": 22,
+                "message": "Could not resolve type name Diagnosis.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 33,
+                "startChar": 3,
+                "endLine": 33,
+                "endChar": 39,
+                "message": "Could not resolve type name Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 39,
+                "startChar": 3,
+                "endLine": 39,
+                "endChar": 39,
+                "message": "Could not validate reference to expression Inpatient Visits With AMI Diagnosis because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 48,
+                "startChar": 3,
+                "endLine": 48,
+                "endChar": 40,
+                "message": "Could not resolve type name Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 53,
+                "startChar": 3,
+                "endLine": 53,
+                "endChar": 40,
+                "message": "Could not validate reference to expression Outpatient Visits With AMI Diagnosis because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 62,
+                "startChar": 3,
+                "endLine": 62,
+                "endChar": 45,
+                "message": "Could not resolve identifier AMI Diagnosis Prior To Measurement Period in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 67,
+                "startChar": 9,
+                "endLine": 67,
+                "endChar": 30,
+                "message": "Could not validate reference to expression Qualifying Diagnoses because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "AMI Diagnosis Prior to Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Inpatient Visits With AMI Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "I",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "First Inpatient Visit With AMI Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Outpatient Visits With AMI Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "First Of At Least Two Outpatient Visits With AMI Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Qualifying Diagnoses",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Has At Least 2 Qualifying Diagnoses",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

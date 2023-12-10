@@ -1,0 +1,197 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestHidingCommaMissingInListConstruction"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "1",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "2",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "3",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "3",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "4",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "4",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "5",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "5",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Four With Five",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "5",
+                                "expression": {
+                                    "name": "4",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": []
+                    }
+                },
+                {
+                    "name": "Query Four",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "X",
+                                "expression": {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "name": "4",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "X",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Four With Alias",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "15",
+                                "expression": {
+                                    "name": "4",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "Add",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "name": "15",
+                                        "type": "AliasRef"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "1",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ListTest6",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "name": "1",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "2",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "3",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "5",
+                                        "expression": {
+                                            "name": "4",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                ],
+                                "relationship": []
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

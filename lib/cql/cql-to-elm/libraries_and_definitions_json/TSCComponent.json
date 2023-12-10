@@ -1,0 +1,1875 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 56,
+                "message": "Could not load source for library FHIRHelpers, version 4.0.001.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "4.0.001",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 66,
+                "message": "Could not load source for library SupplementalDataElementsFHIR4, version 2.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SupplementalDataElementsFHIR4",
+                "targetIncludeLibraryVersionId": "2.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 69,
+                "message": "Could not load source for library MATGlobalCommonFunctionsFHIR4, version 5.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "MATGlobalCommonFunctionsFHIR4",
+                "targetIncludeLibraryVersionId": "5.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 45,
+                "startChar": 7,
+                "endLine": 45,
+                "endChar": 21,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 48,
+                "startChar": 7,
+                "endLine": 48,
+                "endChar": 17,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 51,
+                "startChar": 7,
+                "endLine": 51,
+                "endChar": 16,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 54,
+                "startChar": 7,
+                "endLine": 54,
+                "endChar": 15,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 57,
+                "startChar": 5,
+                "endLine": 57,
+                "endChar": 42,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 58,
+                "startChar": 13,
+                "endLine": 58,
+                "endChar": 91,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 59,
+                "startChar": 13,
+                "endLine": 59,
+                "endChar": 72,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 60,
+                "startChar": 13,
+                "endLine": 60,
+                "endChar": 61,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 61,
+                "startChar": 13,
+                "endLine": 61,
+                "endChar": 75,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 62,
+                "startChar": 13,
+                "endLine": 62,
+                "endChar": 85,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 63,
+                "startChar": 40,
+                "endLine": 63,
+                "endChar": 45,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 74,
+                "startChar": 59,
+                "endLine": 74,
+                "endChar": 88,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "message": "List-valued expression was demoted to a singleton.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 153,
+                "startChar": 5,
+                "endLine": 153,
+                "endChar": 95,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "message": "List-valued expression was demoted to a singleton.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 154,
+                "startChar": 13,
+                "endLine": 154,
+                "endChar": 164,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 155,
+                "startChar": 13,
+                "endLine": 155,
+                "endChar": 53,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 156,
+                "startChar": 13,
+                "endLine": 156,
+                "endChar": 60,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 157,
+                "startChar": 13,
+                "endLine": 157,
+                "endChar": 41,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 158,
+                "startChar": 13,
+                "endLine": 158,
+                "endChar": 54,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 159,
+                "startChar": 13,
+                "endLine": 159,
+                "endChar": 56,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 160,
+                "startChar": 13,
+                "endLine": 160,
+                "endChar": 64,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 161,
+                "startChar": 13,
+                "endLine": 161,
+                "endChar": 56,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 162,
+                "startChar": 13,
+                "endLine": 162,
+                "endChar": 43,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 163,
+                "startChar": 13,
+                "endLine": 163,
+                "endChar": 58,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 164,
+                "startChar": 41,
+                "endLine": 164,
+                "endChar": 46,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 81,
+                "startChar": 3,
+                "endLine": 81,
+                "endChar": 42,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 82,
+                "startChar": 42,
+                "endLine": 82,
+                "endChar": 47,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 212,
+                "startChar": 11,
+                "endLine": 212,
+                "endChar": 25,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 200,
+                "startChar": 15,
+                "endLine": 200,
+                "endChar": 119,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 206,
+                "startChar": 13,
+                "endLine": 206,
+                "endChar": 136,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 88,
+                "startChar": 3,
+                "endLine": 88,
+                "endChar": 64,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 88,
+                "startChar": 3,
+                "endLine": 88,
+                "endChar": 64,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 89,
+                "startChar": 58,
+                "endLine": 89,
+                "endChar": 63,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 100,
+                "startChar": 3,
+                "endLine": 100,
+                "endChar": 51,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 101,
+                "startChar": 20,
+                "endLine": 101,
+                "endChar": 82,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 111,
+                "startChar": 3,
+                "endLine": 111,
+                "endChar": 64,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 111,
+                "startChar": 3,
+                "endLine": 111,
+                "endChar": 64,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 112,
+                "startChar": 56,
+                "endLine": 112,
+                "endChar": 61,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 122,
+                "startChar": 3,
+                "endLine": 122,
+                "endChar": 51,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 123,
+                "startChar": 47,
+                "endLine": 123,
+                "endChar": 52,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 133,
+                "startChar": 22,
+                "endLine": 133,
+                "endChar": 66,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 168,
+                "startChar": 10,
+                "endLine": 168,
+                "endChar": 49,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 169,
+                "startChar": 22,
+                "endLine": 169,
+                "endChar": 72,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 175,
+                "startChar": 10,
+                "endLine": 175,
+                "endChar": 49,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 176,
+                "startChar": 22,
+                "endLine": 176,
+                "endChar": 72,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 183,
+                "startChar": 11,
+                "endLine": 183,
+                "endChar": 68,
+                "message": "Could not validate reference to expression Most Recent Tobacco Use Screening Indicates Tobacco User because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 186,
+                "startChar": 3,
+                "endLine": 186,
+                "endChar": 64,
+                "message": "Could not validate reference to expression Most Recent Tobacco Use Screening Indicates Tobacco Non User because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TSCComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 190,
+                "startChar": 3,
+                "endLine": 190,
+                "endChar": 64,
+                "message": "Could not validate reference to expression Most Recent Tobacco Use Screening Indicates Tobacco Non User because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TSCComponent",
+            "version": "0.0.001"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.001"
+                },
+                {
+                    "localIdentifier": "SDE",
+                    "path": "SupplementalDataElementsFHIR4",
+                    "version": "2.0.000"
+                },
+                {
+                    "localIdentifier": "Global",
+                    "path": "MATGlobalCommonFunctionsFHIR4",
+                    "version": "5.0.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CPT",
+                    "id": "http://www.ama-assn.org/go/cpt",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Annual Wellness Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1240",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Face-to-Face Interaction",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1048",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Home Healthcare Services",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1016",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Limited Life Expectancy",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1259",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Occupational Therapy Evaluation",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1011",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Office Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ophthalmological Services",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1285",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Physical Therapy Evaluation",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1022",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Preventive Care Services - Established Office Visit, 18 and Up",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1025",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Preventive Care Services - Group Counseling",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1027",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Preventive Care Services - Other",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1030",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Preventive Care Services-Individual Counseling",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1026",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Preventive Care Services-Initial Office Visit, 18 and Up",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1023",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Psych Visit - Diagnostic Evaluation",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1492",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Psych Visit - Psychotherapy",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1496",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Psychoanalysis",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1141",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Speech and Hearing Evaluation",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1530",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tobacco Non-User",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1189",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tobacco Use Cessation Counseling",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.509",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tobacco Use Cessation Pharmacotherapy",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1190",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tobacco Use Screening",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1278",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tobacco User",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1170",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Birth date",
+                    "id": "21112-8",
+                    "display": "Birth date",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Health behavior assessment, or re-assessment (ie, health-focused clinical interview, behavioral observations, clinical decision making)",
+                    "id": "96156",
+                    "display": "Health behavior assessment, or re-assessment (ie, health-focused clinical interview, behavioral observations, clinical decision making)",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CPT"
+                    }
+                },
+                {
+                    "name": "Health behavior intervention, individual, face-to-face; initial 30 minutes",
+                    "id": "96158",
+                    "display": "Health behavior intervention, individual, face-to-face; initial 30 minutes",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CPT"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Payer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Race",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Sex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Preventive Visit During Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "PreventiveEncounter",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "type": "Union",
+                                            "operand": [
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Annual Wellness Visit",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Preventive Care Services - Established Office Visit, 18 and Up",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Preventive Care Services - Group Counseling",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Preventive Care Services - Other",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Union",
+                                            "operand": [
+                                                {
+                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                    "codeProperty": "type",
+                                                    "codeComparator": "in",
+                                                    "type": "Retrieve",
+                                                    "codes": {
+                                                        "name": "Preventive Care Services-Individual Counseling",
+                                                        "preserve": true,
+                                                        "type": "ValueSetRef"
+                                                    }
+                                                },
+                                                {
+                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                    "codeProperty": "type",
+                                                    "codeComparator": "in",
+                                                    "type": "Retrieve",
+                                                    "codes": {
+                                                        "name": "Preventive Care Services-Initial Office Visit, 18 and Up",
+                                                        "preserve": true,
+                                                        "type": "ValueSetRef"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Office Based Visit During Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "OfficeBasedEncounter",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "type": "Union",
+                                            "operand": [
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "type": "Union",
+                                                            "operand": [
+                                                                {
+                                                                    "type": "Union",
+                                                                    "operand": [
+                                                                        {
+                                                                            "type": "Union",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                                    "codeProperty": "type",
+                                                                                    "codeComparator": "~",
+                                                                                    "type": "Retrieve",
+                                                                                    "codes": {
+                                                                                        "type": "ToList",
+                                                                                        "operand": {
+                                                                                            "name": "Health behavior intervention, individual, face-to-face; initial 30 minutes",
+                                                                                            "type": "CodeRef"
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                                    "codeProperty": "type",
+                                                                                    "codeComparator": "~",
+                                                                                    "type": "Retrieve",
+                                                                                    "codes": {
+                                                                                        "type": "ToList",
+                                                                                        "operand": {
+                                                                                            "name": "Health behavior assessment, or re-assessment (ie, health-focused clinical interview, behavioral observations, clinical decision making)",
+                                                                                            "type": "CodeRef"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "Union",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                                    "codeProperty": "type",
+                                                                                    "codeComparator": "in",
+                                                                                    "type": "Retrieve",
+                                                                                    "codes": {
+                                                                                        "name": "Home Healthcare Services",
+                                                                                        "preserve": true,
+                                                                                        "type": "ValueSetRef"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                                    "codeProperty": "type",
+                                                                                    "codeComparator": "in",
+                                                                                    "type": "Retrieve",
+                                                                                    "codes": {
+                                                                                        "name": "Occupational Therapy Evaluation",
+                                                                                        "preserve": true,
+                                                                                        "type": "ValueSetRef"
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Union",
+                                                                    "operand": [
+                                                                        {
+                                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                            "codeProperty": "type",
+                                                                            "codeComparator": "in",
+                                                                            "type": "Retrieve",
+                                                                            "codes": {
+                                                                                "name": "Office Visit",
+                                                                                "preserve": true,
+                                                                                "type": "ValueSetRef"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                            "codeProperty": "type",
+                                                                            "codeComparator": "in",
+                                                                            "type": "Retrieve",
+                                                                            "codes": {
+                                                                                "name": "Ophthalmological Services",
+                                                                                "preserve": true,
+                                                                                "type": "ValueSetRef"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Union",
+                                                            "operand": [
+                                                                {
+                                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                    "codeProperty": "type",
+                                                                    "codeComparator": "in",
+                                                                    "type": "Retrieve",
+                                                                    "codes": {
+                                                                        "name": "Physical Therapy Evaluation",
+                                                                        "preserve": true,
+                                                                        "type": "ValueSetRef"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                                    "codeProperty": "type",
+                                                                    "codeComparator": "in",
+                                                                    "type": "Retrieve",
+                                                                    "codes": {
+                                                                        "name": "Psych Visit - Diagnostic Evaluation",
+                                                                        "preserve": true,
+                                                                        "type": "ValueSetRef"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Psych Visit - Psychotherapy",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Psychoanalysis",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                            "codeProperty": "type",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Speech and Hearing Evaluation",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Initial Population",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "And",
+                        "operand": [
+                            {
+                                "type": "Exists",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "BirthDate",
+                                            "expression": {
+                                                "dataType": "{http://hl7.org/fhir}Patient",
+                                                "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                                                "type": "Retrieve"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Or",
+                                "operand": [
+                                    {
+                                        "type": "GreaterOrEqual",
+                                        "operand": [
+                                            {
+                                                "type": "Count",
+                                                "source": {
+                                                    "name": "Office Based Visit During Measurement Period",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "name": "Preventive Visit During Measurement Period",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Denominator 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Initial Population",
+                        "type": "ExpressionRef"
+                    }
+                },
+                {
+                    "name": "Denominator 3",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Initial Population",
+                        "type": "ExpressionRef"
+                    }
+                },
+                {
+                    "name": "GetModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "res",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "res",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "GetModiferExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "GetModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "res",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "url",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "res",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Not Done",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "Not",
+                            "operand": {
+                                "type": "IsNull",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "R",
+                                            "expression": {
+                                                "name": "res",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "true",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "false",
+                            "type": "Literal"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "res",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Not Done Reason in Medical Reason",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "Not",
+                            "operand": {
+                                "type": "IsNull",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "R",
+                                            "expression": {
+                                                "name": "res",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "true",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "false",
+                            "type": "Literal"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "res",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Medical Reason for Not Screening for Tobacco Use",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "NoTobaccoUseScreening",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Tobacco Use Screening",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Medical Reason for Not Ordering Tobacco Cessation Pharmacotherapy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "NoCessationPharmacotherapyOrdered",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                            "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                            "codeProperty": "medication",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Tobacco Use Cessation Pharmacotherapy",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        },
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                            "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                            "codeProperty": "medication",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Tobacco Use Cessation Pharmacotherapy",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Medical Reason for Not Counseling Tobacco User",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "NoTobaccoCessationCounseling",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Tobacco Use Cessation Counseling",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Tobacco Cessation Pharmacotherapy Ordered",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "CessationPharmacotherapyOrdered",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                            "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                            "codeProperty": "medication",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Tobacco Use Cessation Pharmacotherapy",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        },
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                            "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                            "codeProperty": "medication",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Tobacco Use Cessation Pharmacotherapy",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Tobacco Cessation Counseling Given",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "TobaccoCessationCounseling",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Tobacco Use Cessation Counseling",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Numerator 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Or",
+                        "operand": [
+                            {
+                                "type": "Exists",
+                                "operand": {
+                                    "name": "Tobacco Cessation Counseling Given",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "type": "Exists",
+                                "operand": {
+                                    "name": "Tobacco Cessation Pharmacotherapy Ordered",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Has Limited Life Expectancy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "LimitedLifeExpectancy",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                        "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator Exceptions 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Or",
+                        "operand": [
+                            {
+                                "type": "Exists",
+                                "operand": {
+                                    "name": "Medical Reason for Not Screening for Tobacco Use",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "Has Limited Life Expectancy",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Denominator Exceptions 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Or",
+                        "operand": [
+                            {
+                                "type": "Or",
+                                "operand": [
+                                    {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "name": "Medical Reason for Not Counseling Tobacco User",
+                                            "type": "ExpressionRef"
+                                        }
+                                    },
+                                    {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "name": "Medical Reason for Not Ordering Tobacco Cessation Pharmacotherapy",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Has Limited Life Expectancy",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Denominator Exceptions 3",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Or",
+                        "operand": [
+                            {
+                                "type": "Or",
+                                "operand": [
+                                    {
+                                        "type": "Or",
+                                        "operand": [
+                                            {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "name": "Medical Reason for Not Screening for Tobacco Use",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            },
+                                            {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "name": "Medical Reason for Not Counseling Tobacco User",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "name": "Medical Reason for Not Ordering Tobacco Cessation Pharmacotherapy",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Has Limited Life Expectancy",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Most Recent Tobacco Use Screening Indicates Tobacco Non User",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MostRecentTobaccoUseScreening",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Most Recent Tobacco Use Screening Indicates Tobacco User",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MostRecentTobaccoUseScreening",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Numerator 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Numerator 3",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

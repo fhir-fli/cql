@@ -1,0 +1,123 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestHiddenIdentifierFromReturn"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "HiddenIdentifiersFromReturn",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "X",
+                                "expression": {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "var",
+                                "expression": {
+                                    "type": "Add",
+                                    "operand": [
+                                        {
+                                            "name": "X",
+                                            "type": "AliasRef"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "varalias",
+                                        "expression": {
+                                            "name": "var",
+                                            "type": "QueryLetRef"
+                                        }
+                                    }
+                                ],
+                                "let": [
+                                    {
+                                        "identifier": "var",
+                                        "expression": {
+                                            "type": "Add",
+                                            "operand": [
+                                                {
+                                                    "name": "varalias",
+                                                    "type": "AliasRef"
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "return": {
+                                    "expression": {
+                                        "name": "varalias",
+                                        "type": "AliasRef"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

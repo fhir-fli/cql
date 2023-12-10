@@ -1,0 +1,436 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestInclude"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMED",
+                    "id": "http://snomed.info/sct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RXNORM",
+                    "id": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "aspirin 325 MG / oxycodone hydrochloride 4.84 MG Oral Tablet",
+                    "id": "848768",
+                    "display": "aspirin 325 MG / oxycodone hydrochloride 4.84 MG Oral Tablet",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "RXNORM"
+                    }
+                },
+                {
+                    "name": "Acute hepatic failure",
+                    "id": "197270009",
+                    "display": "Acute hepatic failure",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED"
+                    }
+                },
+                {
+                    "name": "HIV Negative",
+                    "id": "165815009",
+                    "display": "HIV Negative",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "TestPractitionerSearch1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Practitioner",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+                        "codeProperty": "?name",
+                        "codeComparator": "=",
+                        "type": "Retrieve",
+                        "codes": {
+                            "type": "ToList",
+                            "operand": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "ABC",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestPractitionerSearch1A",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Practitioner",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "name",
+                                    "scope": "P",
+                                    "type": "Search"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "ABC",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "TestMedicationRequest1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MR",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equivalent",
+                            "operand": [
+                                {
+                                    "name": "ToConcept",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "code",
+                                            "type": "Property",
+                                            "source": {
+                                                "asType": "{http://hl7.org/fhir}Medication",
+                                                "type": "As",
+                                                "operand": {
+                                                    "name": "resolve",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "name": "ToString",
+                                                            "libraryName": "FHIRHelpers",
+                                                            "type": "FunctionRef",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "reference",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "medication",
+                                                                        "scope": "MR",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "ToConcept",
+                                    "operand": {
+                                        "name": "aspirin 325 MG / oxycodone hydrochloride 4.84 MG Oral Tablet",
+                                        "type": "CodeRef"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "TestMedicationRequest1A",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MR",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [
+                            {
+                                "alias": "M",
+                                "type": "With",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Medication",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Medication",
+                                    "type": "Retrieve"
+                                },
+                                "suchThat": {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "asType": "{http://hl7.org/fhir}Reference",
+                                                    "type": "As",
+                                                    "operand": {
+                                                        "path": "medication",
+                                                        "scope": "MR",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "reference",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "name": "M",
+                                                            "type": "AliasRef"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Equivalent",
+                                            "operand": [
+                                                {
+                                                    "name": "ToConcept",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "code",
+                                                            "scope": "M",
+                                                            "type": "Property"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "ToConcept",
+                                                    "operand": {
+                                                        "name": "aspirin 325 MG / oxycodone hydrochloride 4.84 MG Oral Tablet",
+                                                        "type": "CodeRef"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestMedicationRequest1B",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MR",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [
+                            {
+                                "alias": "M",
+                                "type": "With",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Medication",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Medication",
+                                    "type": "Retrieve",
+                                    "context": {
+                                        "path": "medication",
+                                        "scope": "MR",
+                                        "type": "Property"
+                                    }
+                                },
+                                "suchThat": {
+                                    "type": "Equivalent",
+                                    "operand": [
+                                        {
+                                            "name": "ToConcept",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "code",
+                                                    "scope": "M",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "ToConcept",
+                                            "operand": {
+                                                "name": "aspirin 325 MG / oxycodone hydrochloride 4.84 MG Oral Tablet",
+                                                "type": "CodeRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestMedicationRequest1C",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MR",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "M",
+                                "expression": {
+                                    "type": "SingletonFrom",
+                                    "operand": {
+                                        "dataType": "{http://hl7.org/fhir}Medication",
+                                        "templateId": "http://hl7.org/fhir/StructureDefinition/Medication",
+                                        "type": "Retrieve",
+                                        "context": {
+                                            "path": "medication",
+                                            "scope": "MR",
+                                            "type": "Property"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equivalent",
+                            "operand": [
+                                {
+                                    "name": "ToConcept",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "code",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "M",
+                                                "type": "QueryLetRef"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "ToConcept",
+                                    "operand": {
+                                        "name": "aspirin 325 MG / oxycodone hydrochloride 4.84 MG Oral Tablet",
+                                        "type": "CodeRef"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,372 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TestFhirDataProviderDstu3",
+                "libraryVersion": "1.0",
+                "startLine": 26,
+                "startChar": 3,
+                "endLine": 26,
+                "endChar": 59,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TestFhirDataProviderDstu3",
+                "libraryVersion": "1.0",
+                "startLine": 26,
+                "startChar": 3,
+                "endLine": 26,
+                "endChar": 59,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TestFhirDataProviderDstu3",
+            "version": "1.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Ambulatory Abuse Potential Opioids",
+                    "id": "http://hl7.org/fhir/ig/opioid-cds/ValueSet/opioids-abused-in-ambulatory-care",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "MedReqs",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "testChoiceTypes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "name": "MedReqs",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "path": "asNeeded",
+                                "type": "Property",
+                                "source": {
+                                    "type": "Indexer",
+                                    "operand": [
+                                        {
+                                            "path": "dosageInstruction",
+                                            "scope": "M",
+                                            "type": "Property"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "0",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "testDateType",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "GreaterOrEqual",
+                        "operand": [
+                            {
+                                "precision": "Year",
+                                "type": "CalculateAgeAt",
+                                "operand": [
+                                    {
+                                        "path": "birthDate.value",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "Patient",
+                                            "type": "ExpressionRef"
+                                        }
+                                    },
+                                    {
+                                        "type": "Today"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "13",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "testFhirObjectEqual",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}positiveInt",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "classType": "{http://hl7.org/fhir}positiveInt",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "testFhirObjectEquivalent",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Equivalent",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}positiveInt",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "classType": "{http://hl7.org/fhir}positiveInt",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Active Ambulatory Opioid Rx",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Rx",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                            "codeProperty": "medication",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Ambulatory Abuse Potential Opioids",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        },
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                            "codeProperty": "medication",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Ambulatory Abuse Potential Opioids",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "Rx",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "active",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "precision": "Day",
+                                    "type": "SameOrBefore",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "authoredOn",
+                                                "scope": "Rx",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "type": "ToDateTime",
+                                            "operand": {
+                                                "type": "Today"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GetProvenance",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "path": "contained",
+                                    "type": "Property",
+                                    "source": {
+                                        "type": "First",
+                                        "source": {
+                                            "dataType": "{http://hl7.org/fhir}Condition",
+                                            "type": "Retrieve"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Not",
+                            "operand": {
+                                "type": "IsNull",
+                                "operand": {
+                                    "path": "Provenance",
+                                    "scope": "C",
+                                    "type": "Property"
+                                }
+                            }
+                        },
+                        "return": {
+                            "expression": {
+                                "path": "Provenance",
+                                "scope": "C",
+                                "type": "Property"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

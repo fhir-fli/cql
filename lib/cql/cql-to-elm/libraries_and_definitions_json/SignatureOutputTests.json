@@ -1,0 +1,476 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "SignatureOutputTests"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "OverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "value",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "OverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "left",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "left",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "right",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "MultipleOverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "5",
+                        "type": "Literal"
+                    },
+                    "operand": []
+                },
+                {
+                    "name": "MultipleOverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "value",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "MultipleOverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "value",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "MultipleOverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "left",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "left",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "right",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "MultipleOverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "right",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "left",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "right",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "MultipleOverloadTest",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "middle",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "left",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "middle",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "right",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "TestAdd",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "5",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "5",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestDateAdd",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            {
+                                "type": "Date",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2012",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "value": 1,
+                                "unit": "month",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "TestAvg",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Avg",
+                        "source": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "X",
+                                    "expression": {
+                                        "type": "List",
+                                        "element": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "3",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "4",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "5",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "return": {
+                                "distinct": false,
+                                "expression": {
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "name": "X",
+                                        "type": "AliasRef"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestDivide",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Divide",
+                        "operand": [
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "4",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestIntegerOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "OverloadTest",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestDecimalOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "OverloadTest",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "1.0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestMultipleOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "MultipleOverloadTest",
+                        "type": "FunctionRef",
+                        "operand": []
+                    }
+                },
+                {
+                    "name": "TestIntegerMultipleOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "MultipleOverloadTest",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestDecimalMultipleOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "MultipleOverloadTest",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestIntegerAndDecimalMultipleOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "MultipleOverloadTest",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "2.0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "2.0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

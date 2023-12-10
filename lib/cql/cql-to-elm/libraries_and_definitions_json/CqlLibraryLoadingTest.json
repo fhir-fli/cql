@@ -1,0 +1,60 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CqlLibraryLoadingTest",
+                "startLine": 6,
+                "startChar": 6,
+                "endLine": 6,
+                "endChar": 6,
+                "message": "Syntax error at <EOF>",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CqlLibraryLoadingTest",
+                "startLine": 6,
+                "startChar": 4,
+                "endLine": 6,
+                "endChar": 6,
+                "message": "Could not determine signature for invocation of operator System.Add.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CqlLibraryLoadingTest"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

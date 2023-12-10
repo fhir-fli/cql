@@ -1,0 +1,249 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 38,
+                "startChar": 1,
+                "endLine": 38,
+                "endChar": 75,
+                "message": "Identifier DurationInDays is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 41,
+                "startChar": 1,
+                "endLine": 41,
+                "endChar": 95,
+                "message": "Identifier DifferenceInDays is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 47,
+                "startChar": 1,
+                "endLine": 47,
+                "endChar": 70,
+                "message": "Identifier DurationInDays is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 48,
+                "startChar": 1,
+                "endLine": 48,
+                "endChar": 70,
+                "message": "Identifier DurationInDays is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "UncertainDurationInMonths",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "DurationBetween",
+                        "operand": [
+                            {
+                                "type": "Date",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2012",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Date",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2012",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "DurationInDays",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "DurationBetween",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2017",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "8",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "17",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2017",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "8",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "14",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "DifferenceInDays",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "DifferenceBetween",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2017",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "22",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2017",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

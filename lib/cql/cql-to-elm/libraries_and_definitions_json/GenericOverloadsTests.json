@@ -1,0 +1,232 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "GenericOverloadsTests"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{http://hl7.org/fhir}Encounter",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "id",
+                                "value": {
+                                    "classType": "{http://hl7.org/fhir}id",
+                                    "type": "Instance",
+                                    "element": [
+                                        {
+                                            "name": "value",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "123",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Stringify",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Encounter / Domain",
+                        "type": "Literal"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Encounter",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "value2",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}DomainResource",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Stringify",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Domain / Encounter",
+                        "type": "Literal"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}DomainResource",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "value2",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Encounter",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Stringify",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Encounter / Encounter",
+                        "type": "Literal"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Encounter",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "value2",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Encounter",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Stringify",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Domain / Domain",
+                        "type": "Literal"
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}DomainResource",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "value2",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}DomainResource",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Test",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Stringify",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "name": "Encounter",
+                                        "type": "ExpressionRef"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "strict": false,
+                                        "type": "As",
+                                        "operand": {
+                                            "name": "Encounter",
+                                            "type": "ExpressionRef"
+                                        },
+                                        "asTypeSpecifier": {
+                                            "name": "{http://hl7.org/fhir}DomainResource",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

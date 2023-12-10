@@ -1,0 +1,296 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 9,
+                "startChar": 3,
+                "endLine": 9,
+                "endChar": 56,
+                "message": "Could not resolve type name Medication, Administered.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 16,
+                "startChar": 3,
+                "endLine": 16,
+                "endChar": 56,
+                "message": "Could not resolve type name Medication, Administered.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 24,
+                "startChar": 1,
+                "endLine": 25,
+                "endChar": 56,
+                "message": "Identifier Antithrombotic Administered is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 30,
+                "startChar": 1,
+                "endLine": 31,
+                "endChar": 60,
+                "message": "Identifier Antithrombotic Not Administered is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 36,
+                "startChar": 1,
+                "endLine": 38,
+                "endChar": 58,
+                "message": "Identifier Antithrombotic Not Administered is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 47,
+                "startChar": 3,
+                "endLine": 47,
+                "endChar": 68,
+                "message": "Could not resolve type name Assessment, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 59,
+                "startChar": 3,
+                "endLine": 59,
+                "endChar": 37,
+                "message": "Could not resolve type name Care Goal.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 74,
+                "startChar": 3,
+                "endLine": 74,
+                "endChar": 56,
+                "message": "Could not resolve type name Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 81,
+                "startChar": 14,
+                "endLine": 81,
+                "endChar": 47,
+                "message": "Could not resolve type name Medication, Active.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 86,
+                "startChar": 7,
+                "endLine": 86,
+                "endChar": 30,
+                "message": "Could not validate reference to expression Warfarin Usage Periods because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 94,
+                "startChar": 3,
+                "endLine": 94,
+                "endChar": 22,
+                "message": "Could not resolve type name Allergy.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 97,
+                "startChar": 3,
+                "endLine": 97,
+                "endChar": 40,
+                "message": "Could not resolve type name Adverse Event/Intolerance.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 108,
+                "startChar": 3,
+                "endLine": 108,
+                "endChar": 48,
+                "message": "Could not resolve type name Medication, Administered.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 114,
+                "startChar": 1,
+                "endLine": 116,
+                "endChar": 63,
+                "message": "Identifier Medication Administrations during Measurement Period is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Antithrombotic Administered",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Medication",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Medication",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Weight Target Achieved",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Transfer to Acute Care Hospital",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Warfarin Usage Periods",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Cumulative Warfarin Days",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Allergy to Latex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Reaction to Latex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Medication Administrations during Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Medication",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

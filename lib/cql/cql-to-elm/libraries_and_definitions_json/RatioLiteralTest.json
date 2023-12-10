@@ -1,0 +1,60 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SimpleRatio",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Ratio",
+                        "numerator": {
+                            "value": 5,
+                            "unit": "1"
+                        },
+                        "denominator": {
+                            "value": 5,
+                            "unit": "1"
+                        }
+                    }
+                },
+                {
+                    "name": "QuantityRatio",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Ratio",
+                        "numerator": {
+                            "value": 5,
+                            "unit": "mg"
+                        },
+                        "denominator": {
+                            "value": 100,
+                            "unit": "mL"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

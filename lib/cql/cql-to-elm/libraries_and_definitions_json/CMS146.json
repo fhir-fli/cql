@@ -1,0 +1,443 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 40,
+                "message": "Could not load source for library Common, version 1.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "Common",
+                "targetIncludeLibraryVersionId": "1",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 32,
+                "startChar": 13,
+                "endLine": 32,
+                "endChar": 29,
+                "message": "Member negationRationale not found for type Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 38,
+                "startChar": 43,
+                "endLine": 38,
+                "endChar": 70,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 42,
+                "startChar": 3,
+                "endLine": 42,
+                "endChar": 43,
+                "message": "Could not validate reference to expression Pharyngitis Encounters With Antibiotics because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 56,
+                "startChar": 38,
+                "endLine": 56,
+                "endChar": 53,
+                "message": "Member signedDatetime not found for type Medication, Order.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 59,
+                "startChar": 3,
+                "endLine": 59,
+                "endChar": 43,
+                "message": "Could not validate reference to expression Pharyngitis Encounters With Antibiotics because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 63,
+                "startChar": 3,
+                "endLine": 63,
+                "endChar": 23,
+                "message": "Could not validate reference to expression Excluded Encounters because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 76,
+                "startChar": 3,
+                "endLine": 76,
+                "endChar": 43,
+                "message": "Could not validate reference to expression Pharyngitis Encounters With Antibiotics because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "3",
+                "startLine": 83,
+                "startChar": 3,
+                "endLine": 83,
+                "endChar": 25,
+                "message": "Could not validate reference to expression Strep Test Encounters because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CMS146",
+            "version": "3"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_6"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Common",
+                    "path": "Common",
+                    "version": "1"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Acute Pharyngitis",
+                    "id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Acute Tonsillitis",
+                    "id": "2.16.840.1.113883.3.464.1003.102.12.1012",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ambulatory/ED Visit",
+                    "id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antibiotic Medications",
+                    "id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Group A Streptococcus Test",
+                    "id": "2.16.840.1.113883.3.464.1003.198.12.1012",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{urn:healthit-gov:qdm:v5_6}Patient",
+                            "templateId": "Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "In Demographic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "And",
+                        "operand": [
+                            {
+                                "type": "GreaterOrEqual",
+                                "operand": [
+                                    {
+                                        "precision": "Year",
+                                        "type": "CalculateAgeAt",
+                                        "operand": [
+                                            {
+                                                "path": "birthDatetime",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            },
+                                            {
+                                                "type": "Start",
+                                                "operand": {
+                                                    "name": "MeasurementPeriod",
+                                                    "type": "ParameterRef"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Less",
+                                "operand": [
+                                    {
+                                        "precision": "Year",
+                                        "type": "CalculateAgeAt",
+                                        "operand": [
+                                            {
+                                                "path": "birthDatetime",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            },
+                                            {
+                                                "type": "Start",
+                                                "operand": {
+                                                    "name": "MeasurementPeriod",
+                                                    "type": "ParameterRef"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "18",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Antibiotics",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "dataType": "{urn:healthit-gov:qdm:v5_6}PositiveMedicationOrder",
+                                    "templateId": "PositiveMedicationOrder",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Antibiotic Medications",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Not",
+                            "operand": {
+                                "type": "IsNull",
+                                "operand": {
+                                    "path": "negationRationale",
+                                    "scope": "M",
+                                    "type": "Property"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Pharyngitis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Union",
+                        "operand": [
+                            {
+                                "dataType": "{urn:healthit-gov:qdm:v5_6}Diagnosis",
+                                "codeProperty": "code",
+                                "codeComparator": "in",
+                                "type": "Retrieve",
+                                "codes": {
+                                    "name": "Acute Pharyngitis",
+                                    "preserve": true,
+                                    "type": "ValueSetRef"
+                                }
+                            },
+                            {
+                                "dataType": "{urn:healthit-gov:qdm:v5_6}Diagnosis",
+                                "codeProperty": "code",
+                                "codeComparator": "in",
+                                "type": "Retrieve",
+                                "codes": {
+                                    "name": "Acute Tonsillitis",
+                                    "preserve": true,
+                                    "type": "ValueSetRef"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Measurement Period Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "dataType": "{urn:healthit-gov:qdm:v5_6}PositiveEncounterPerformed",
+                                    "templateId": "PositiveEncounterPerformed",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Ambulatory/ED Visit",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Pharyngitis Encounters With Antibiotics",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Initial Population",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Pharyngitis With Prior Antibiotics",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Excluded Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "DenominatorExclusions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Strep Test Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Numerator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,1634 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CqlInternalTypeRepresentationSuite",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "BoolTrue",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                        "value": "true",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "BoolFalse",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                        "value": "false",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "IntOne",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "1",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "DecimalTenth",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value": "0.1",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "StringTrue",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "true",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "DateTimeX",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "456",
+                            "type": "Literal"
+                        },
+                        "timezoneOffset": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                            "value": "0.0",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTimeFX",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "456",
+                            "type": "Literal"
+                        },
+                        "timezoneOffset": {
+                            "type": "ToDecimal",
+                            "operand": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TimeX",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "456",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_Year",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_Month",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_Day",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_Hour",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_Minute",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_Second",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_Millisecond",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "456",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "DateTime_TimezoneOffset",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "15",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "456",
+                            "type": "Literal"
+                        },
+                        "timezoneOffset": {
+                            "type": "Negate",
+                            "operand": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "8.0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Time_Hour",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "Time_Minute",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "Time_Second",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "Time_Millisecond",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Time",
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "12",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "10",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "59",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "456",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "Clinical_quantity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "value": 12,
+                        "unit": "a",
+                        "type": "Quantity"
+                    }
+                },
+                {
+                    "name": "Clinical_QuantityA",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{urn:hl7-org:elm-types:r1}Quantity",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "unit",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "a",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "value",
+                                "value": {
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "12",
+                                        "type": "Literal"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Clinical_CodeA",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{urn:hl7-org:elm-types:r1}Code",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "system",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "http://loinc.org",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "code",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "12345",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "version",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "display",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Test Code",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Clinical_ConceptA",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{urn:hl7-org:elm-types:r1}Concept",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "codes",
+                                "value": {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "name": "Clinical_CodeA",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "display",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Test Concept",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Structured_tuple",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "a",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "b",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Structured_TupleA",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "class",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Portable CQL Test Suite",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "versionNum",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "date",
+                                "value": {
+                                    "type": "DateTime",
+                                    "year": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2018",
+                                        "type": "Literal"
+                                    },
+                                    "month": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "7",
+                                        "type": "Literal"
+                                    },
+                                    "day": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "18",
+                                        "type": "Literal"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "developer",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Christopher Schuler",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Interval_Open",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": false,
+                        "highClosed": false,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2012",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2013",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Interval_LeftOpen",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": false,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2012",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2013",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Interval_RightOpen",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": false,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2012",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2013",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Interval_Closed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2012",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2013",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Code1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{urn:hl7-org:elm-types:r1}Code",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "system",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "http://loinc.org",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "code",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "12345",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "version",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "display",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Test Code",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Code2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{urn:hl7-org:elm-types:r1}Code",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "system",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "http://loinc.org",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "code",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "123456",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "version",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "display",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Another Test Code",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Three",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_BoolList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "value": "true",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "value": "false",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "value": "true",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_IntList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "9",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "7",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "8",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_DecimalList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "1.0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "2.1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "3.2",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_StringList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "a",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "bee",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "see",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_DateTimeList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2012",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "59",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "456",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "0.0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2012",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "59",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "456",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "0.0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2012",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "4",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "59",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "456",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "0.0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_TimeList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "12",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "59",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "456",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "59",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "456",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Time",
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "14",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "59",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "456",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_QuantityList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "value": 1.0,
+                                "unit": "m",
+                                "type": "Quantity"
+                            },
+                            {
+                                "value": 2.1,
+                                "unit": "m",
+                                "type": "Quantity"
+                            },
+                            {
+                                "value": 3.2,
+                                "unit": "m",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_CodeList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "name": "Code1",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "Code2",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_ConceptList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "classType": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "codes",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "name": "Code1",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "display",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "Test Concept",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "classType": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "codes",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "name": "Code2",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "display",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "Another Test Concept",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_TupleList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "a",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "b",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "x",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "z",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_ListList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "1",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "3",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "a",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "b",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "c",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_IntervalList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": false,
+                                "highClosed": false,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "9",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": false,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "8",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_MixedList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "two",
+                                "type": "Literal"
+                            },
+                            {
+                                "name": "Three",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "List_EmptyList",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,183 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 28,
+                "message": "Could not load source for library SignatureOutputTests, version null.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SignatureOutputTests",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 5,
+                "startChar": 43,
+                "endLine": 5,
+                "endChar": 64,
+                "message": "Could not resolve library name SignatureOutputTests.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 6,
+                "startChar": 49,
+                "endLine": 6,
+                "endChar": 71,
+                "message": "Could not resolve library name SignatureOutputTests.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 7,
+                "startChar": 53,
+                "endLine": 7,
+                "endChar": 77,
+                "message": "Could not resolve library name SignatureOutputTests.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 8,
+                "startChar": 50,
+                "endLine": 8,
+                "endChar": 75,
+                "message": "Could not resolve library name SignatureOutputTests.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 9,
+                "startChar": 54,
+                "endLine": 9,
+                "endChar": 83,
+                "message": "Could not resolve library name SignatureOutputTests.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 10,
+                "startChar": 59,
+                "endLine": 10,
+                "endChar": 86,
+                "message": "Could not resolve library name SignatureOutputTests.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedSignatureOutputTests",
+                "startLine": 11,
+                "startChar": 59,
+                "endLine": 11,
+                "endChar": 91,
+                "message": "Could not resolve library name SignatureOutputTests.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "IncludedSignatureOutputTests"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "SignatureOutputTests",
+                    "path": "SignatureOutputTests"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "TestOverloadOneInt",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "TestOverloadOneDecimal",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "TestOverloadTwoInts",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "TestOverloadTwoDecimals",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "TestOverloadOneIntOneDecimal",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "TestOverloadOneIntTwoDecimal",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

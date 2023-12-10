@@ -1,0 +1,141 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ToDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "precision": "Year",
+                            "type": "DateTimeComponentFrom",
+                            "operand": {
+                                "name": "Value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "month": {
+                            "precision": "Month",
+                            "type": "DateTimeComponentFrom",
+                            "operand": {
+                                "name": "Value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "day": {
+                            "precision": "Day",
+                            "type": "DateTimeComponentFrom",
+                            "operand": {
+                                "name": "Value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "timezoneOffset": {
+                            "type": "TimezoneOffsetFrom",
+                            "operand": {
+                                "name": "Value",
+                                "type": "OperandRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "Value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "TestToDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToDate",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2018",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "9",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "26",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "23",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

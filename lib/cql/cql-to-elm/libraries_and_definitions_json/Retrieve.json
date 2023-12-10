@@ -1,0 +1,294 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 2,
+                "startChar": 1,
+                "endLine": 2,
+                "endChar": 28,
+                "message": "Could not resolve model info provider for model Simple, version 1.0.0.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 4,
+                "startChar": 1,
+                "endLine": 4,
+                "endChar": 32,
+                "message": "Could not load source for library Included, version null.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "Included",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 11,
+                "startChar": 20,
+                "endLine": 11,
+                "endChar": 30,
+                "message": "Could not resolve type name Condition.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 12,
+                "startChar": 20,
+                "endLine": 12,
+                "endChar": 30,
+                "message": "Could not resolve type name Encounter.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 13,
+                "startChar": 31,
+                "endLine": 13,
+                "endChar": 71,
+                "message": "Could not resolve type name Condition.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 14,
+                "startChar": 30,
+                "endLine": 14,
+                "endChar": 63,
+                "message": "Could not resolve type name Encounter.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 15,
+                "startChar": 33,
+                "endLine": 15,
+                "endChar": 74,
+                "message": "Could not resolve type name Encounter.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 16,
+                "startChar": 23,
+                "endLine": 16,
+                "endChar": 56,
+                "message": "Could not resolve type name Condition.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 17,
+                "startChar": 27,
+                "endLine": 17,
+                "endChar": 70,
+                "message": "Could not resolve type name Encounter.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 18,
+                "startChar": 26,
+                "endLine": 18,
+                "endChar": 62,
+                "message": "Could not resolve type name Condition.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Retrieve",
+                "libraryVersion": "1",
+                "startLine": 19,
+                "startChar": 29,
+                "endLine": 19,
+                "endChar": 60,
+                "message": "Could not resolve type name Condition.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "Retrieve",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "included",
+                    "path": "Included"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMED",
+                    "id": "2.16.840.1.113883.6.96",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Ambulatory/ED Visit",
+                    "id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Annual Wellness Visit",
+                    "id": "2.16.840.1.113883.3.526.3.1240",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Viral pharyngitis code",
+                    "id": "1532007",
+                    "display": "Viral pharyngitis (disorder)",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED"
+                    }
+                }
+            ]
+        },
+        "concepts": {
+            "def": [
+                {
+                    "name": "Viral pharyngitis",
+                    "display": "Viral pharyngitis (disorder)",
+                    "accessLevel": "Public",
+                    "code": [
+                        {
+                            "name": "Viral pharyngitis code"
+                        }
+                    ]
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Conditions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "PharyngitisConditions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "AmbulatoryEncounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "EncountersByServiceType",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "WrongValueSet",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "WrongCodeProperty",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "ConditionsByCode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "ConditionsByConcept",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

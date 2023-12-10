@@ -1,0 +1,373 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 47,
+                "startChar": 3,
+                "endLine": 47,
+                "endChar": 33,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 49,
+                "startChar": 13,
+                "endLine": 49,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 54,
+                "startChar": 3,
+                "endLine": 54,
+                "endChar": 28,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 56,
+                "startChar": 13,
+                "endLine": 56,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 61,
+                "startChar": 3,
+                "endLine": 61,
+                "endChar": 30,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 63,
+                "startChar": 13,
+                "endLine": 63,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 67,
+                "startChar": 3,
+                "endLine": 67,
+                "endChar": 30,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "WCCABA",
+                "libraryVersion": "1",
+                "startLine": 69,
+                "startChar": 13,
+                "endLine": 69,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "WCCABA",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "BMI Percentile",
+                    "id": "BMI Percentile",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BMI Value",
+                    "id": "BMI Value",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Body Height",
+                    "id": "Body Height",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Body Weight",
+                    "id": "Body Weight",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Lookback Interval Two Years",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Start",
+                                    "operand": {
+                                        "name": "MeasurementPeriod",
+                                        "type": "ParameterRef"
+                                    }
+                                },
+                                {
+                                    "value": 2,
+                                    "unit": "years",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "End",
+                            "operand": {
+                                "name": "MeasurementPeriod",
+                                "type": "ParameterRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "In Demographic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "GreaterOrEqual",
+                        "operand": [
+                            {
+                                "precision": "Year",
+                                "type": "CalculateAgeAt",
+                                "operand": [
+                                    {
+                                        "type": "ToDateTime",
+                                        "operand": {
+                                            "path": "birthDate.value",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Patient",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Start",
+                                        "operand": {
+                                            "name": "MeasurementPeriod",
+                                            "type": "ParameterRef"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "18",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "BMI Percent",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "BMI Percentile",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Body Mass Index (BMI) Value",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "V",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "BMI Value",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Height",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Body Height",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Weight",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Body Weight",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,101 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "type": "Annotation",
+                "t": [
+                    {
+                        "name": "issue",
+                        "value": "[#581](https://github.com/cqframework/clinical_quality_language/issues/581)"
+                    }
+                ]
+            }
+        ],
+        "identifier": {
+            "id": "Scratchpad"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Quantity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "Not",
+                            "operand": {
+                                "type": "IsNull",
+                                "operand": {
+                                    "name": "value",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        },
+                        "then": {
+                            "classType": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "Instance",
+                            "element": [
+                                {
+                                    "name": "value",
+                                    "value": {
+                                        "name": "value",
+                                        "type": "OperandRef"
+                                    }
+                                },
+                                {
+                                    "name": "unit",
+                                    "value": {
+                                        "name": "unit",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            ]
+                        },
+                        "else": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "unit",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

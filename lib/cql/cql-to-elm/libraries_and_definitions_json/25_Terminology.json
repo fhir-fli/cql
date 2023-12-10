@@ -1,0 +1,106 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 15,
+                "startChar": 17,
+                "endLine": 15,
+                "endChar": 46,
+                "message": "Member diagnoses not found for type Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_0_1_draft",
+                    "version": "5.0.2"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Atrial Fibrillation/Flutter",
+                    "id": "urn:oid:2.16.840.1.113883.3.117.1.7.1.202",
+                    "version": "urn:hl7:profile:Most%20Recent%20Code%20System%20Versions%20in%20VSAC",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounter with Principle Diagnosis of Ischemic Stroke",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                        "templateId": "PositiveEncounterPerformed",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "Current Diagnosis Atrial FibrillationFlutter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "NonElectiveEncounter",
+                                "expression": {
+                                    "name": "Encounter with Principle Diagnosis of Ischemic Stroke",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "InValueSet",
+                            "code": {
+                                "path": "diagnosis",
+                                "scope": "NonElectiveEncounter",
+                                "type": "Property"
+                            },
+                            "valuesetExpression": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "CurrentAtrialFibrillationFlutter",
+                                        "expression": {
+                                            "name": "Atrial Fibrillation/Flutter",
+                                            "preserve": true,
+                                            "type": "ValueSetRef"
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "where": {
+                                    "type": "Null"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

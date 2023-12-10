@@ -1,0 +1,75 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 9,
+                "startChar": 1,
+                "endLine": 9,
+                "endChar": 15,
+                "message": "Could not resolve context name Patient in model System.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "x",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Shiver my timbers, shiver my soul",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "y",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Yo ho ho ho",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "z",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Going to deliver Bink's sake!",
+                        "type": "Literal"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,179 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "mCODE",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "3.0.1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "ECOG performance code",
+                    "id": "89262-0",
+                    "display": "ECOG Performance Status [Interpretation]",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Karnofsky performance code",
+                    "id": "89245-5",
+                    "display": "Karnofsky Performance Status [Interpretation]",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                }
+            ]
+        },
+        "concepts": {
+            "def": [
+                {
+                    "name": "ECOG performance score",
+                    "accessLevel": "Public",
+                    "code": [
+                        {
+                            "name": "ECOG performance code"
+                        }
+                    ]
+                },
+                {
+                    "name": "Karnofsky performance score",
+                    "accessLevel": "Public",
+                    "code": [
+                        {
+                            "name": "Karnofsky performance code"
+                        }
+                    ]
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestCodeComparison",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equivalent",
+                            "operand": [
+                                {
+                                    "name": "ToConcept",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "code",
+                                            "scope": "O",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "ToConcept",
+                                    "operand": {
+                                        "name": "ECOG performance code",
+                                        "type": "CodeRef"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "TestConceptComparison",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equivalent",
+                            "operand": [
+                                {
+                                    "name": "ToConcept",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "code",
+                                            "scope": "O",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "ECOG performance score",
+                                    "type": "ConceptRef"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

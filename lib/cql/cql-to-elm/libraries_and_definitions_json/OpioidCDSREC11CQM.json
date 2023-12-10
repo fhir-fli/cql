@@ -1,0 +1,151 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "OpioidCDSREC11CQM",
+                "libraryVersion": "2.0.1",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 38,
+                "message": "Could not load source for library OpioidCDSREC11, version 2.0.1.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "OpioidCDSREC11",
+                "targetIncludeLibraryVersionId": "2.0.1",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSREC11CQM",
+                "libraryVersion": "2.0.1",
+                "startLine": 8,
+                "startChar": 1,
+                "endLine": 8,
+                "endChar": 57,
+                "message": "Could not load source for library OpioidCDSRoutines, version 2.0.1.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "OpioidCDSRoutines",
+                "targetIncludeLibraryVersionId": "2.0.1",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSREC11CQM",
+                "libraryVersion": "2.0.1",
+                "startLine": 13,
+                "startChar": 12,
+                "endLine": 13,
+                "endChar": 37,
+                "message": "Could not resolve library name Routines.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "OpioidCDSREC11CQM",
+                "libraryVersion": "2.0.1",
+                "startLine": 19,
+                "startChar": 18,
+                "endLine": 19,
+                "endChar": 48,
+                "message": "Could not resolve library name OpioidCDSREC11.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "OpioidCDSREC11CQM",
+            "version": "2.0.1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.0"
+                },
+                {
+                    "localIdentifier": "OpioidCDSREC11",
+                    "path": "OpioidCDSREC11",
+                    "version": "2.0.1"
+                },
+                {
+                    "localIdentifier": "Routines",
+                    "path": "OpioidCDSRoutines",
+                    "version": "2.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Initial Population",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                        "value": "true",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Numerator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

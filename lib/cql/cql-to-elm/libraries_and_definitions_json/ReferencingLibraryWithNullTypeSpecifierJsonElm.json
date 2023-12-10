@@ -1,0 +1,80 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "ReferencingLibraryWithNullTypeSpecifierJsonElm",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 84,
+                "message": "Could not load source for library SupplementalDataElements_FHIR4_Null_TypeSpecifier, version 2.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SupplementalDataElements_FHIR4_Null_TypeSpecifier",
+                "targetIncludeLibraryVersionId": "2.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ReferencingLibraryWithNullTypeSpecifierJsonElm",
+                "startLine": 8,
+                "startChar": 5,
+                "endLine": 8,
+                "endChar": 19,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "ReferencingLibraryWithNullTypeSpecifierJsonElm"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "SDE",
+                    "path": "SupplementalDataElements_FHIR4_Null_TypeSpecifier",
+                    "version": "2.0.0"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Race",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

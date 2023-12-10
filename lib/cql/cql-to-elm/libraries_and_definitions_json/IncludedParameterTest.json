@@ -1,0 +1,90 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "IncludedParameterTest",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 44,
+                "message": "Could not load source for library IncludedParameterTestCommon, version null.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "IncludedParameterTestCommon",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "IncludedParameterTest",
+                "startLine": 9,
+                "startChar": 7,
+                "endLine": 9,
+                "endChar": 26,
+                "message": "Could not resolve library name P.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "IncludedParameterTest"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "P",
+                    "path": "IncludedParameterTestCommon"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{urn:hl7-org:elm-types:r1}Integer",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Included Parameter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Local Parameter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Measurement Period",
+                        "type": "ParameterRef"
+                    }
+                }
+            ]
+        }
+    }
+}

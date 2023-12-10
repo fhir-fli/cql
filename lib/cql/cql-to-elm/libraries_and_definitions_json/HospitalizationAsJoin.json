@@ -1,0 +1,110 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 4,
+                "startChar": 3,
+                "endLine": 4,
+                "endChar": 17,
+                "message": "Could not resolve identifier AMI Encounter in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 19,
+                "startChar": 5,
+                "endLine": 19,
+                "endChar": 19,
+                "message": "Could not resolve identifier AMI Encounter in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Hospitalization",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "RelatedEDVisit",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "alias": "Hospitalization",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "Encounter",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

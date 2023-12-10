@@ -1,0 +1,230 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "librarySystem": "/tmp/rep9214333432420702296tmp",
+                "libraryId": "rep9214333432420702296tmp",
+                "startLine": 24,
+                "startChar": 6,
+                "endLine": 24,
+                "endChar": 6,
+                "message": "Syntax error at {",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9214333432420702296tmp",
+                "libraryId": "rep9214333432420702296tmp",
+                "startLine": 24,
+                "startChar": 6,
+                "endLine": 24,
+                "endChar": 6,
+                "message": "Syntax error at {",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9214333432420702296tmp",
+                "libraryId": "rep9214333432420702296tmp",
+                "startLine": 33,
+                "startChar": 6,
+                "endLine": 33,
+                "endChar": 6,
+                "message": "Syntax error at {",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9214333432420702296tmp",
+                "libraryId": "rep9214333432420702296tmp",
+                "startLine": 33,
+                "startChar": 6,
+                "endLine": 33,
+                "endChar": 6,
+                "message": "Syntax error at {",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9214333432420702296tmp",
+                "libraryId": "rep9214333432420702296tmp",
+                "startLine": 37,
+                "startChar": 70,
+                "endLine": 37,
+                "endChar": 70,
+                "message": "Syntax error at desc",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep9214333432420702296tmp",
+                "libraryId": "rep9214333432420702296tmp",
+                "startLine": 61,
+                "startChar": 2,
+                "endLine": 61,
+                "endChar": 2,
+                "message": "Syntax error at [",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 9,
+                "startChar": 3,
+                "endLine": 9,
+                "endChar": 53,
+                "message": "Could not resolve type name Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 21,
+                "startChar": 3,
+                "endLine": 21,
+                "endChar": 39,
+                "message": "Could not resolve type name Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 29,
+                "startChar": 3,
+                "endLine": 29,
+                "endChar": 40,
+                "message": "Could not validate reference to expression HIV Visits During Measurement Period because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 37,
+                "startChar": 9,
+                "endLine": 37,
+                "endChar": 29,
+                "message": "Could not validate reference to expression HIV Followup Visits because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 48,
+                "startChar": 3,
+                "endLine": 48,
+                "endChar": 46,
+                "message": "Could not resolve type name Laboratory Test, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 55,
+                "startChar": 1,
+                "endLine": 58,
+                "endChar": 95,
+                "message": "Identifier CD4+ Count With Results and Medications is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 61,
+                "startChar": 3,
+                "endLine": 61,
+                "endChar": 52,
+                "message": "Could not resolve type name Medication, Order.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Valid Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "HIV Visits During Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "HIV Followup Visits",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Most Recent HIV Followup Visit",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "CD4+ Count With Results and Medications",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Dapsone and pyrimethamine Orders with CD4+ Count Laboratory Tests",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

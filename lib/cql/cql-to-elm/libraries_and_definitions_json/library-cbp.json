@@ -1,0 +1,1391 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CBP",
+                "libraryVersion": "1",
+                "startLine": 145,
+                "startChar": 44,
+                "endLine": 145,
+                "endChar": 44,
+                "message": "Could not resolve identifier D in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CBP",
+                "libraryVersion": "1",
+                "startLine": 182,
+                "startChar": 1,
+                "endLine": 185,
+                "endChar": 68,
+                "message": "Identifier Outpatient Encounter is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CBP",
+                "libraryVersion": "1",
+                "startLine": 187,
+                "startChar": 1,
+                "endLine": 190,
+                "endChar": 68,
+                "message": "Identifier Non-Acute Inpatient Admission is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CBP",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "1.6"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "1.6"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Systolic Blood Pressure",
+                    "id": "2.16.840.1.113883.3.526.3.1032",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diastolic Blood Pressure",
+                    "id": "2.16.840.1.113883.3.526.3.1033",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Essential Hypertension",
+                    "id": "2.16.840.1.113883.3.464.1003.104.12.1011",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Without UBREV",
+                    "id": "2.16.840.1.113883.3.464.1004.1203",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "End Stage Renal Disease",
+                    "id": "2.16.840.1.113883.3.526.3.353",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Kidney Transplant",
+                    "id": "2.16.840.1.113883.3.464.1003.109.12.1012",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Stay",
+                    "id": "2.16.840.1.113883.3.464.1004.1395",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Insulin or Hypo-/Antihyper-glycemics",
+                    "id": "Insulin or Hypo-/Antihyper-glycemics",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pregnancy",
+                    "id": "2.16.840.1.113883.3.600.1622",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Gestational or Steroid-induced Diabetes",
+                    "id": "Gestational or Steroid-induced Diabetes",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Lookback Interval One Year",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Start",
+                                    "operand": {
+                                        "name": "MeasurementPeriod",
+                                        "type": "ParameterRef"
+                                    }
+                                },
+                                {
+                                    "value": 1,
+                                    "unit": "years",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "End",
+                            "operand": {
+                                "name": "MeasurementPeriod",
+                                "type": "ParameterRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Lookback Interval Three Years",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Start",
+                                    "operand": {
+                                        "name": "MeasurementPeriod",
+                                        "type": "ParameterRef"
+                                    }
+                                },
+                                {
+                                    "value": 3,
+                                    "unit": "years",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "End",
+                            "operand": {
+                                "name": "MeasurementPeriod",
+                                "type": "ParameterRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "In Demographic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "GreaterOrEqual",
+                        "operand": [
+                            {
+                                "precision": "Year",
+                                "type": "CalculateAgeAt",
+                                "operand": [
+                                    {
+                                        "type": "ToDateTime",
+                                        "operand": {
+                                            "path": "birthDate.value",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Patient",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Start",
+                                        "operand": {
+                                            "name": "MeasurementPeriod",
+                                            "type": "ParameterRef"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "40",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "BP: Systolic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Systolic Blood Pressure",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "O",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "final",
+                                                    "type": "Literal"
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "amended",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "effectiveDateTime",
+                                                "scope": "O",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lookback Interval One Year",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "BP: Diastolic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Diastolic Blood Pressure",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "O",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "final",
+                                                    "type": "Literal"
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "amended",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "effectiveDateTime",
+                                                "scope": "O",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lookback Interval One Year",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "BP: Systolic Less Than 140",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "S",
+                                "expression": {
+                                    "name": "BP: Systolic",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Less",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "valueQuantity",
+                                            "scope": "S",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "140",
+                                        "type": "Literal"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "BP: Systolic Greater Than/Equal To 140",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "S",
+                                "expression": {
+                                    "name": "BP: Systolic",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "GreaterOrEqual",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "valueQuantity",
+                                            "scope": "S",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "140",
+                                        "type": "Literal"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "BP: Diastolic Less Than 80",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "name": "BP: Diastolic",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Less",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "valueQuantity",
+                                            "scope": "D",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "80",
+                                        "type": "Literal"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "BP: Diastolic 80-89",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "name": "BP: Diastolic",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "GreaterOrEqual",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "valueQuantity",
+                                                    "scope": "D",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "80",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "LessOrEqual",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "valueQuantity",
+                                                    "scope": "D",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "89",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "BP: Diastolic Greater Than/Equal To 90",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "name": "BP: Diastolic",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "GreaterOrEqual",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "valueQuantity",
+                                            "scope": "D",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "90",
+                                        "type": "Literal"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Hypertension Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "H",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Essential Hypertension",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "clinicalStatus",
+                                                        "scope": "H",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "active",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "verificationStatus",
+                                                        "scope": "H",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "confirmed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "onsetDateTime",
+                                                "scope": "H",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lookback Interval Three Years",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Hx HTN",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Outpatient Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Outpatient Without UBREV",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "In",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "start",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "period",
+                                            "scope": "E",
+                                            "type": "Property"
+                                        }
+                                    }
+                                },
+                                {
+                                    "lowClosed": true,
+                                    "highClosed": true,
+                                    "type": "Interval",
+                                    "low": {
+                                        "type": "Start",
+                                        "operand": {
+                                            "name": "MeasurementPeriod",
+                                            "type": "ParameterRef"
+                                        }
+                                    },
+                                    "high": {
+                                        "type": "Add",
+                                        "operand": [
+                                            {
+                                                "type": "Start",
+                                                "operand": {
+                                                    "name": "MeasurementPeriod",
+                                                    "type": "ParameterRef"
+                                                }
+                                            },
+                                            {
+                                                "value": 6,
+                                                "unit": "months",
+                                                "type": "Quantity"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "End Stage Renal Disease Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "End Stage Renal Disease",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "clinicalStatus",
+                                                        "scope": "C",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "active",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "verificationStatus",
+                                                        "scope": "C",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "confirmed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "precision": "Day",
+                                    "type": "SameOrBefore",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "onsetDateTime",
+                                                "scope": "C",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "type": "End",
+                                            "operand": {
+                                                "name": "MeasurementPeriod",
+                                                "type": "ParameterRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Kidney Transplant Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Kidney Transplant",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "P",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "completed",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "precision": "Day",
+                                    "type": "SameOrBefore",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "performedDateTime",
+                                                "scope": "P",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "type": "End",
+                                            "operand": {
+                                                "name": "MeasurementPeriod",
+                                                "type": "ParameterRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Pregnancy Condition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Pregnancy",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "verificationStatus",
+                                                "scope": "P",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "confirmed",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Overlaps",
+                                    "operand": [
+                                        {
+                                            "lowClosed": true,
+                                            "highClosed": true,
+                                            "type": "Interval",
+                                            "low": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "onsetDateTime",
+                                                    "scope": "P",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            "high": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "abatementDateTime",
+                                                    "scope": "P",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "MeasurementPeriod",
+                                            "type": "ParameterRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Non-Acute Inpatient Admission",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Inpatient Stay",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "E",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "finished",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "end",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "period",
+                                                    "scope": "E",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "MeasurementPeriod",
+                                            "type": "ParameterRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "MedicationDispense",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationDispense",
+                                    "codeProperty": "medicationCodeableConcept",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Insulin or Hypo-/Antihyper-glycemics",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "M",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "completed",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "whenHandedOver",
+                                                "scope": "M",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lookback Interval One Year",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Any Setting Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "E",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "finished",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "start",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "period",
+                                                    "scope": "E",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "Lookback Interval One Year",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Gestational or Steroid-induced Diabetes Condition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Gestational or Steroid-induced Diabetes",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "clinicalStatus",
+                                                        "scope": "C",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "active",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "verificationStatus",
+                                                        "scope": "C",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "confirmed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "onsetDateTime",
+                                                "scope": "C",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lookback Interval One Year",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

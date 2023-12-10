@@ -1,0 +1,1761 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IntervalAfter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "After",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "PointIntervalAfter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "After",
+                        "operand": [
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "type": "IsNull",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    }
+                                },
+                                "then": {
+                                    "type": "Null",
+                                    "resultTypeSpecifier": {
+                                        "type": "IntervalTypeSpecifier",
+                                        "pointType": {
+                                            "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                },
+                                "else": {
+                                    "lowClosed": true,
+                                    "highClosed": true,
+                                    "type": "Interval",
+                                    "low": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    },
+                                    "high": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    }
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalPointAfter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "After",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "type": "IsNull",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    }
+                                },
+                                "then": {
+                                    "type": "Null",
+                                    "resultTypeSpecifier": {
+                                        "type": "IntervalTypeSpecifier",
+                                        "pointType": {
+                                            "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                },
+                                "else": {
+                                    "lowClosed": true,
+                                    "highClosed": true,
+                                    "type": "Interval",
+                                    "low": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    },
+                                    "high": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalBefore",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Before",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "PointIntervalBefore",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Before",
+                        "operand": [
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "type": "IsNull",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    }
+                                },
+                                "then": {
+                                    "type": "Null",
+                                    "resultTypeSpecifier": {
+                                        "type": "IntervalTypeSpecifier",
+                                        "pointType": {
+                                            "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                },
+                                "else": {
+                                    "lowClosed": true,
+                                    "highClosed": true,
+                                    "type": "Interval",
+                                    "low": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    },
+                                    "high": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    }
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalPointBefore",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Before",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "type": "IsNull",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    }
+                                },
+                                "then": {
+                                    "type": "Null",
+                                    "resultTypeSpecifier": {
+                                        "type": "IntervalTypeSpecifier",
+                                        "pointType": {
+                                            "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                },
+                                "else": {
+                                    "lowClosed": true,
+                                    "highClosed": true,
+                                    "type": "Interval",
+                                    "low": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    },
+                                    "high": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalCollapse",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Collapse",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "5",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "7",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "5",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "10",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "50",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "100",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "resultTypeName": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "Null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalCollapseWithPer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Collapse",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "5",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "7",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "5",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "10",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "50",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "100",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "value": 1,
+                                "unit": "1",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalCollapseNull",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Collapse",
+                        "operand": [
+                            {
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                },
+                                "asTypeSpecifier": {
+                                    "type": "ListTypeSpecifier",
+                                    "elementType": {
+                                        "type": "IntervalTypeSpecifier",
+                                        "pointType": {
+                                            "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "resultTypeName": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "Null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalContains",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Contains",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "3",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalEnd",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "End",
+                        "operand": {
+                            "lowClosed": true,
+                            "highClosed": true,
+                            "type": "Interval",
+                            "low": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "high": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "5",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "IntervalEnds",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Ends",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalEqual",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalExcept",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Except",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalExpand",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "5",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "value": 1,
+                                "unit": "1",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "DecimalIntervalExpand",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                            "value": "1.0",
+                                            "type": "Literal"
+                                        },
+                                        "high": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                            "value": "2.0",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "value": 0.1,
+                                "unit": "1",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "QuantityIntervalExpand",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "value": 1,
+                                            "unit": "m",
+                                            "type": "Quantity"
+                                        },
+                                        "high": {
+                                            "value": 2,
+                                            "unit": "m",
+                                            "type": "Quantity"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "value": 0.1,
+                                "unit": "m",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "DateTimeIntervalExpand",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "type": "DateTime",
+                                            "year": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2012",
+                                                "type": "Literal"
+                                            },
+                                            "month": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            "day": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            "hour": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "10",
+                                                "type": "Literal"
+                                            },
+                                            "minute": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            },
+                                            "second": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        "high": {
+                                            "type": "DateTime",
+                                            "year": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2012",
+                                                "type": "Literal"
+                                            },
+                                            "month": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            "day": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            "hour": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "11",
+                                                "type": "Literal"
+                                            },
+                                            "minute": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            },
+                                            "second": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "value": 1.0,
+                                "unit": "minute",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "DateIntervalExpand",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "type": "Date",
+                                            "year": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2012",
+                                                "type": "Literal"
+                                            },
+                                            "month": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            "day": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        "high": {
+                                            "type": "Date",
+                                            "year": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2012",
+                                                "type": "Literal"
+                                            },
+                                            "month": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1",
+                                                "type": "Literal"
+                                            },
+                                            "day": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "31",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "value": 1.0,
+                                "unit": "day",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TimeIntervalExpand",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "lowClosed": true,
+                                        "highClosed": true,
+                                        "type": "Interval",
+                                        "low": {
+                                            "type": "Time",
+                                            "hour": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "10",
+                                                "type": "Literal"
+                                            },
+                                            "minute": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            },
+                                            "second": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        "high": {
+                                            "type": "Time",
+                                            "hour": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "11",
+                                                "type": "Literal"
+                                            },
+                                            "minute": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            },
+                                            "second": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "value": 1.0,
+                                "unit": "minute",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SingleIntervalExpand",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "resultTypeName": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "Null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SingleIntervalExpandPer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "value": 2,
+                                "unit": "1",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "ExpandNull",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Expand",
+                        "operand": [
+                            {
+                                "strict": false,
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                },
+                                "asTypeSpecifier": {
+                                    "type": "IntervalTypeSpecifier",
+                                    "pointType": {
+                                        "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "type": "NamedTypeSpecifier"
+                                    }
+                                }
+                            },
+                            {
+                                "resultTypeName": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "Null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalIn",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "In",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "5",
+                                "type": "Literal"
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalIncludes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Includes",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalIncludedIn",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "IncludedIn",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalIntersect",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Intersect",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalMeets",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Meets",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "6",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalMeetsBefore",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "MeetsBefore",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "6",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalMeetsAfter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "MeetsAfter",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "6",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalOverlaps",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Overlaps",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalOverlapsBefore",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "OverlapsBefore",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalOverlapsAfter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "OverlapsAfter",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalProperIncludes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "ProperIncludes",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalProperIncludedIn",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "ProperIncludedIn",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalStart",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Start",
+                        "operand": {
+                            "lowClosed": true,
+                            "highClosed": true,
+                            "type": "Interval",
+                            "low": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "high": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "10",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "IntervalStarts",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Starts",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalUnion",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Union",
+                        "operand": [
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "7",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "lowClosed": true,
+                                "highClosed": true,
+                                "type": "Interval",
+                                "low": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "high": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "IntervalWidth",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Width",
+                        "operand": {
+                            "lowClosed": true,
+                            "highClosed": true,
+                            "type": "Interval",
+                            "low": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "high": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "10",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "IntervalPointFrom",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "PointFrom",
+                        "operand": {
+                            "lowClosed": true,
+                            "highClosed": true,
+                            "type": "Interval",
+                            "low": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "high": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "IntervalSize",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Size",
+                        "operand": {
+                            "lowClosed": true,
+                            "highClosed": true,
+                            "type": "Interval",
+                            "low": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "high": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

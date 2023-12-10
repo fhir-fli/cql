@@ -1,0 +1,71 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "ReferencingLibraryXmlElm",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 65,
+                "message": "Could not load source for library SupplementalDataElements_FHIR4, version 2.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SupplementalDataElements_FHIR4",
+                "targetIncludeLibraryVersionId": "2.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ReferencingLibraryXmlElm",
+                "startLine": 6,
+                "startChar": 7,
+                "endLine": 6,
+                "endChar": 21,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "ReferencingLibraryXmlElm"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "SDE",
+                    "path": "SupplementalDataElements_FHIR4",
+                    "version": "2.0.0"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

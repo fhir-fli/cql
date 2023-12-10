@@ -1,0 +1,1558 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 37,
+                "message": "Could not load source for library FHIRHelpers, version 4.1.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "4.1.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 80,
+                "startChar": 27,
+                "endLine": 80,
+                "endChar": 61,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 106,
+                "startChar": 25,
+                "endLine": 106,
+                "endChar": 72,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 80,
+                "startChar": 27,
+                "endLine": 80,
+                "endChar": 61,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 127,
+                "startChar": 4,
+                "endLine": 127,
+                "endChar": 38,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 80,
+                "startChar": 27,
+                "endLine": 80,
+                "endChar": 61,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 106,
+                "startChar": 25,
+                "endLine": 106,
+                "endChar": 72,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 80,
+                "startChar": 27,
+                "endLine": 80,
+                "endChar": 61,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 80,
+                "startChar": 27,
+                "endLine": 80,
+                "endChar": 61,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 106,
+                "startChar": 25,
+                "endLine": 106,
+                "endChar": 72,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 80,
+                "startChar": 27,
+                "endLine": 80,
+                "endChar": 61,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 142,
+                "startChar": 10,
+                "endLine": 142,
+                "endChar": 20,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 160,
+                "startChar": 10,
+                "endLine": 160,
+                "endChar": 20,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 179,
+                "startChar": 10,
+                "endLine": 179,
+                "endChar": 20,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 197,
+                "startChar": 10,
+                "endLine": 197,
+                "endChar": 20,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 215,
+                "startChar": 10,
+                "endLine": 215,
+                "endChar": 66,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 233,
+                "startChar": 10,
+                "endLine": 233,
+                "endChar": 66,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 251,
+                "startChar": 10,
+                "endLine": 251,
+                "endChar": 66,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRCommon",
+                "libraryVersion": "4.1.000",
+                "startLine": 269,
+                "startChar": 10,
+                "endLine": 269,
+                "endChar": 66,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "FHIRCommon",
+            "version": "4.1.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.1.000"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMEDCT",
+                    "id": "http://snomed.info/sct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RoleCode",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis Role",
+                    "id": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RequestIntent",
+                    "id": "http://terminology.hl7.org/CodeSystem/request-intent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MedicationRequestCategory",
+                    "id": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionClinicalStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionVerificationStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AllergyIntoleranceClinicalStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AllergyIntoleranceVerificationStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Birthdate",
+                    "id": "21112-8",
+                    "display": "Birth date",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Dead",
+                    "id": "419099009",
+                    "display": "Dead",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMEDCT"
+                    }
+                },
+                {
+                    "name": "ER",
+                    "id": "ER",
+                    "display": "Emergency room",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "RoleCode"
+                    }
+                },
+                {
+                    "name": "ICU",
+                    "id": "ICU",
+                    "display": "Intensive care unit",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "RoleCode"
+                    }
+                },
+                {
+                    "name": "Billing",
+                    "id": "billing",
+                    "display": "Billing",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "active",
+                    "id": "active",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "recurrence",
+                    "id": "recurrence",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "relapse",
+                    "id": "relapse",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "inactive",
+                    "id": "inactive",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "remission",
+                    "id": "remission",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "resolved",
+                    "id": "resolved",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "unconfirmed",
+                    "id": "unconfirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "provisional",
+                    "id": "provisional",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "differential",
+                    "id": "differential",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "confirmed",
+                    "id": "confirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "refuted",
+                    "id": "refuted",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "entered-in-error",
+                    "id": "entered-in-error",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-active",
+                    "id": "active",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-inactive",
+                    "id": "inactive",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-resolved",
+                    "id": "resolved",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-unconfirmed",
+                    "id": "unconfirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-confirmed",
+                    "id": "confirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-refuted",
+                    "id": "refuted",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "Community",
+                    "id": "community",
+                    "display": "Community",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "MedicationRequestCategory"
+                    }
+                },
+                {
+                    "name": "Discharge",
+                    "id": "discharge",
+                    "display": "Discharge",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "MedicationRequestCategory"
+                    }
+                },
+                {
+                    "name": "AD",
+                    "id": "AD",
+                    "display": "Admission diagnosis",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "DD",
+                    "id": "DD",
+                    "display": "Discharge diagnosis",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "CC",
+                    "id": "CC",
+                    "display": "Chief complaint",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "CM",
+                    "id": "CM",
+                    "display": "Comorbidity diagnosis",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "pre-op",
+                    "id": "pre-op",
+                    "display": "pre-op diagnosis",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "post-op",
+                    "id": "post-op",
+                    "display": "post-op diagnosis",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "billing",
+                    "id": "billing",
+                    "display": "billing diagnosis",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Extensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any extensions defined on the given resource with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the\nCQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "extension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "domainResource",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Extension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single extension (if present) on the given resource with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "Extensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "domainResource",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "url",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Extensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any extensions defined on the given element with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the CQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "extension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "element",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Element",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Extension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single extension (if present) on the given element with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "Extensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "element",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "url",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Element",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any modifier extensions defined on the given resource with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the\nCQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "domainResource",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ModifierExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single modifier extension (if present) on the given resource with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "ModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "domainResource",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "url",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any modifier extensions defined on the given element with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the CQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "element",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}BackboneElement",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ModifierExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single modifier extension (if present) on the given element with the specified url."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "ModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "element",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "url",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}BackboneElement",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any base-FHIR extensions defined on the given resource with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the CQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "extension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "domainResource",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single base-FHIR extension (if present) on the given resource with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "BaseExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "domainResource",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "id",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any base-FHIR extensions defined on the given element with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the CQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "extension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "element",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Element",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single base-FHIR extension (if present) on the given element with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "BaseExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "element",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "id",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Element",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any base-FHIR modifier extensions defined on the given resource with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the CQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "domainResource",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseModifierExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single base-FHIR modifier extension (if present) on the given resource with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "BaseModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "domainResource",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "id",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "domainResource",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns any base-FHIR modifier extensions defined on the given element with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "NOTE: Extensions are not the preferred approach, but are used as a way to access\ncontent that is defined by extensions but not yet surfaced in the CQL model info."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "element",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}BackboneElement",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "BaseModifierExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "annotation": [
+                        {
+                            "type": "Annotation",
+                            "t": [
+                                {
+                                    "name": "description",
+                                    "value": "Returns the single base-FHIR extension (if present) on the given element with the specified id."
+                                },
+                                {
+                                    "name": "comment",
+                                    "value": "This function uses singleton from to ensure that a run-time exception is thrown if there\nis more than one extension on the given resource with the specified url."
+                                }
+                            ]
+                        }
+                    ],
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "BaseModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "element",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "id",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "element",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}BackboneElement",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

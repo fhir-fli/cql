@@ -1,0 +1,197 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "DataRequirementsLibraryTest",
+                "libraryVersion": "1.0.000",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 75,
+                "message": "Could not load source for library DataRequirementsLibraryTestDependency, version 1.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "DataRequirementsLibraryTestDependency",
+                "targetIncludeLibraryVersionId": "1.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "DataRequirementsLibraryTest",
+                "libraryVersion": "1.0.000",
+                "startLine": 33,
+                "startChar": 8,
+                "endLine": 33,
+                "endChar": 19,
+                "message": "Could not resolve library name LET2.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "DataRequirementsLibraryTest",
+                "libraryVersion": "1.0.000",
+                "startLine": 36,
+                "startChar": 13,
+                "endLine": 36,
+                "endChar": 48,
+                "message": "Could not validate reference to expression Encounters from Dependency Library because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "DataRequirementsLibraryTest",
+            "version": "1.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "LET2",
+                    "path": "DataRequirementsLibraryTestDependency",
+                    "version": "1.0.000"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Bone Narrowing Conditions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Condition",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Osteonecrosis Knee Conditions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Condition",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Angular Deformity Knee Conditions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Condition",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Presence of significant radiographic findings, which may include knee joint destruction, angular deformity, or severe narrowing",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Or",
+                        "operand": [
+                            {
+                                "type": "Or",
+                                "operand": [
+                                    {
+                                        "name": "Has Bone Narrowing Conditions",
+                                        "type": "ExpressionRef"
+                                    },
+                                    {
+                                        "name": "Has Osteonecrosis Knee Conditions",
+                                        "type": "ExpressionRef"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Has Angular Deformity Knee Conditions",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Has Failure of Previous Proximal Tibial or Distal Femoral Osteotomy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Procedure",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Procedure",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounters from Dependency Library",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Has Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

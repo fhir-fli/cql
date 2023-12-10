@@ -1,0 +1,378 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 66,
+                "startChar": 98,
+                "endLine": 66,
+                "endChar": 98,
+                "message": "Syntax error at ,",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 78,
+                "startChar": 38,
+                "endLine": 78,
+                "endChar": 38,
+                "message": "Syntax error at Period",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 9,
+                "startChar": 23,
+                "endLine": 9,
+                "endChar": 28,
+                "message": "A named type is required in this context.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 9,
+                "startChar": 1,
+                "endLine": 9,
+                "endChar": 71,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 43,
+                "startChar": 22,
+                "endLine": 43,
+                "endChar": 47,
+                "message": "Could not resolve identifier Inpatient in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 44,
+                "startChar": 28,
+                "endLine": 44,
+                "endChar": 67,
+                "message": "Could not resolve code path medication.code for the type of the retrieve QUICK.MedicationAdministration.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 44,
+                "startChar": 28,
+                "endLine": 44,
+                "endChar": 67,
+                "message": "Could not resolve identifier Warfarin in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 45,
+                "startChar": 30,
+                "endLine": 45,
+                "endChar": 87,
+                "message": "Could not resolve code path medication.code for the type of the retrieve QUICK.MedicationAdministration.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 45,
+                "startChar": 30,
+                "endLine": 45,
+                "endChar": 87,
+                "message": "Could not resolve identifier Parenteral Anticoagulation in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 48,
+                "startChar": 5,
+                "endLine": 48,
+                "endChar": 16,
+                "message": "Could not validate reference to expression Encounters because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 53,
+                "startChar": 10,
+                "endLine": 53,
+                "endChar": 21,
+                "message": "Could not validate reference to expression Encounters because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 62,
+                "startChar": 9,
+                "endLine": 62,
+                "endChar": 20,
+                "message": "Could not validate reference to expression Encounters because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 66,
+                "startChar": 49,
+                "endLine": 66,
+                "endChar": 49,
+                "message": "Could not resolve identifier W in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 75,
+                "startChar": 17,
+                "endLine": 75,
+                "endChar": 54,
+                "message": "Could not resolve type name AllergyOrIntolerance.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 9,
+                "startChar": 23,
+                "endLine": 9,
+                "endChar": 28,
+                "message": "A named type is required in this context.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 81,
+                "startChar": 13,
+                "endLine": 81,
+                "endChar": 63,
+                "message": "Could not resolve type name Documentation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 86,
+                "startChar": 68,
+                "endLine": 86,
+                "endChar": 123,
+                "message": "Could not resolve type name Encounter, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Guideline_2zc_VTE3",
+                "startLine": 89,
+                "startChar": 5,
+                "endLine": 89,
+                "endChar": 16,
+                "message": "Could not validate reference to expression 18 or over because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "Guideline_2zc_VTE3"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "VTE Diagnosis Valueset",
+                    "id": "XYZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Warfarin Medication Valueset",
+                    "id": "XYZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter Valueset",
+                    "id": "XYZ",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "patient-qicore-qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Warfarin Therapy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Parenteral Therapy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounters with Warfarin and Parenteral Therapies",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounters with overlapping Warfarin and Parenteral Therapies",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounters with appropriate overlap therapy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "overlapDuration",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Patient has no allergy or intolerance to Penicillin",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "18 or over",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Comfort Measures Only",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "VTE Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

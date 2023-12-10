@@ -1,0 +1,48 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "IncludedCodeRefTestCommon"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "MedicationRequestCategory",
+                    "id": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Community",
+                    "id": "community",
+                    "display": "Community",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "MedicationRequestCategory"
+                    }
+                }
+            ]
+        }
+    }
+}

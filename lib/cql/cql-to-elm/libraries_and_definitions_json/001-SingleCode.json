@@ -1,0 +1,124 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "librarySystem": "/tmp/rep16049146493961667273tmp",
+                "libraryId": "rep16049146493961667273tmp",
+                "startLine": 3,
+                "startChar": 44,
+                "endLine": 3,
+                "endChar": 44,
+                "message": "Syntax error at system",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep16049146493961667273tmp",
+                "libraryId": "rep16049146493961667273tmp",
+                "startLine": 3,
+                "startChar": 51,
+                "endLine": 3,
+                "endChar": 51,
+                "message": "Syntax error at \"SNOMED-CT\"",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep16049146493961667273tmp",
+                "libraryId": "rep16049146493961667273tmp",
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 11,
+                "endChar": 0,
+                "message": "Syntax error at \"Risk Assessment, Performed: Breastfeeding intention\"",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep16049146493961667273tmp",
+                "libraryId": "rep16049146493961667273tmp",
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 11,
+                "endChar": 0,
+                "message": "Syntax error at \"Risk Assessment, Performed: Breastfeeding intention\"",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 3,
+                "startChar": 45,
+                "endLine": 3,
+                "endChar": 50,
+                "message": "Could not resolve reference to code system system.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 50,
+                "message": "class org.hl7.elm.r1.Null cannot be cast to class org.hl7.elm.r1.CodeSystemRef (org.hl7.elm.r1.Null and org.hl7.elm.r1.CodeSystemRef are in unnamed module of loader 'app')",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 6,
+                "startChar": 3,
+                "endLine": 6,
+                "endChar": 59,
+                "message": "Could not resolve type name Risk Assessment, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMED-CT",
+                    "id": "2.16.840.1.113883.6.96",
+                    "version": "2016A",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Breastfeeding Intention",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

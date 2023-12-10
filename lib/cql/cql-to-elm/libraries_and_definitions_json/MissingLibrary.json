@@ -1,0 +1,64 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CMS146",
+                "libraryVersion": "2",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 37,
+                "message": "Could not load source for library CMSAll, version 1.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "CMSAll",
+                "targetIncludeLibraryVersionId": "1",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CMS146",
+            "version": "2"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "foo",
+                    "path": "CMSAll",
+                    "version": "1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Dummy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Dummy",
+                        "type": "Literal"
+                    }
+                }
+            ]
+        }
+    }
+}

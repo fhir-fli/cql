@@ -1,0 +1,148 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestContext"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Practitioner"
+                },
+                {
+                    "name": "Encounter"
+                },
+                {
+                    "name": "RelatedPerson"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Encounter",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "Practitioner",
+                    "context": "Practitioner",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Practitioner",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Patients",
+                    "context": "Practitioner",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Patient",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "Encounter",
+                    "context": "Encounter",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Encounter",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Observations",
+                    "context": "Encounter",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Observation",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Observation",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "RelatedPerson",
+                    "context": "RelatedPerson",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}RelatedPerson",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "AdverseEvents",
+                    "context": "RelatedPerson",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}AdverseEvent",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/AdverseEvent",
+                        "type": "Retrieve"
+                    }
+                }
+            ]
+        }
+    }
+}

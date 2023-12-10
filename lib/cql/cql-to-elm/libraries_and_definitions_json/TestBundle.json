@@ -1,0 +1,131 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "BundleHelpers"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestBundle",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{http://hl7.org/fhir}Bundle",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "id",
+                                "value": {
+                                    "classType": "{http://hl7.org/fhir}id",
+                                    "type": "Instance",
+                                    "element": [
+                                        {
+                                            "name": "value",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "x",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestBundleEntry",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "entry",
+                        "type": "Property",
+                        "source": {
+                            "name": "TestBundle",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Bundle",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "classType": "{http://hl7.org/fhir}Bundle",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "entry",
+                                "value": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "R",
+                                            "expression": {
+                                                "name": "Resources",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "return": {
+                                        "expression": {
+                                            "classType": "{http://hl7.org/fhir}Bundle.EntryComponent",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "resource",
+                                                    "value": {
+                                                        "name": "R",
+                                                        "type": "AliasRef"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "Resources",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Resource",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,172 +1,194 @@
 {
-   "library" : {
-      "annotation" : [ {
-         "translatorVersion" : "2.11.0",
-         "translatorOptions" : "",
-         "type" : "CqlToElmInfo"
-      } ],
-      "identifier" : {
-         "id" : "ChlamydiaScreening_CQM",
-         "version" : "2"
-      },
-      "schemaIdentifier" : {
-         "id" : "urn:hl7-org:elm",
-         "version" : "r1"
-      },
-      "usings" : {
-         "def" : [ {
-            "localIdentifier" : "System",
-            "uri" : "urn:hl7-org:elm-types:r1"
-         }, {
-            "localIdentifier" : "QUICK",
-            "uri" : "http://hl7.org/fhir"
-         } ]
-      },
-      "parameters" : {
-         "def" : [ {
-            "name" : "MeasurementPeriod",
-            "accessLevel" : "Public",
-            "default" : {
-               "lowClosed" : true,
-               "highClosed" : true,
-               "type" : "Interval",
-               "low" : {
-                  "type" : "DateTime",
-                  "year" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "2013",
-                     "type" : "Literal"
-                  },
-                  "month" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "1",
-                     "type" : "Literal"
-                  },
-                  "day" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "1",
-                     "type" : "Literal"
-                  },
-                  "hour" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  },
-                  "minute" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  },
-                  "second" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  },
-                  "millisecond" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  }
-               },
-               "high" : {
-                  "type" : "DateTime",
-                  "year" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "2014",
-                     "type" : "Literal"
-                  },
-                  "month" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "1",
-                     "type" : "Literal"
-                  },
-                  "day" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "1",
-                     "type" : "Literal"
-                  },
-                  "hour" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  },
-                  "minute" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  },
-                  "second" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  },
-                  "millisecond" : {
-                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
-                     "value" : "0",
-                     "type" : "Literal"
-                  }
-               }
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
             }
-         } ]
-      },
-      "valueSets" : {
-         "def" : [ {
-            "name" : "Female Administrative Sex",
-            "id" : "2.16.840.1.113883.3.560.100.2",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Other Female Reproductive Conditions",
-            "id" : "2.16.840.1.113883.3.464.1003.111.12.1006",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Genital Herpes",
-            "id" : "2.16.840.1.113883.3.464.1003.110.12.1049",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Genococcal Infections and Venereal Diseases",
-            "id" : "2.16.840.1.113883.3.464.1003.112.12.1001",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Inflammatory Diseases of Female Reproductive Organs",
-            "id" : "2.16.840.1.113883.3.464.1003.112.12.1004",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Chlamydia",
-            "id" : "2.16.840.1.113883.3.464.1003.112.12.1003",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "HIV",
-            "id" : "2.16.840.1.113883.3.464.1003.120.12.1003",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Syphilis",
-            "id" : "2.16.840.1.113883.3.464.1003.112.12.1002",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Complications of Pregnancy, Childbirth and the Puerperium",
-            "id" : "2.16.840.1.113883.3.464.1003.111.12.1012",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Pregnancy Test",
-            "id" : "2.16.840.1.113883.3.464.1003.111.12.1011",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Pap Test",
-            "id" : "2.16.840.1.113883.3.464.1003.108.12.1017",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Lab Tests During Pregnancy",
-            "id" : "2.16.840.1.113883.3.464.1003.111.12.1007",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Lab Tests for Sexually Transmitted Infections",
-            "id" : "2.16.840.1.113883.3.464.1003.110.12.1051",
-            "accessLevel" : "Public"
-         }, {
-            "name" : "Chlamydia Screening",
-            "id" : "2.16.840.1.113883.3.464.1003.110.12.1052",
-            "accessLevel" : "Public"
-         } ]
-      }
-   }
+        ],
+        "identifier": {
+            "id": "ChlamydiaScreening_CQM",
+            "version": "2"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "default": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2013",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Female Administrative Sex",
+                    "id": "2.16.840.1.113883.3.560.100.2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Other Female Reproductive Conditions",
+                    "id": "2.16.840.1.113883.3.464.1003.111.12.1006",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Genital Herpes",
+                    "id": "2.16.840.1.113883.3.464.1003.110.12.1049",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Genococcal Infections and Venereal Diseases",
+                    "id": "2.16.840.1.113883.3.464.1003.112.12.1001",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inflammatory Diseases of Female Reproductive Organs",
+                    "id": "2.16.840.1.113883.3.464.1003.112.12.1004",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chlamydia",
+                    "id": "2.16.840.1.113883.3.464.1003.112.12.1003",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HIV",
+                    "id": "2.16.840.1.113883.3.464.1003.120.12.1003",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Syphilis",
+                    "id": "2.16.840.1.113883.3.464.1003.112.12.1002",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Complications of Pregnancy, Childbirth and the Puerperium",
+                    "id": "2.16.840.1.113883.3.464.1003.111.12.1012",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pregnancy Test",
+                    "id": "2.16.840.1.113883.3.464.1003.111.12.1011",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pap Test",
+                    "id": "2.16.840.1.113883.3.464.1003.108.12.1017",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lab Tests During Pregnancy",
+                    "id": "2.16.840.1.113883.3.464.1003.111.12.1007",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lab Tests for Sexually Transmitted Infections",
+                    "id": "2.16.840.1.113883.3.464.1003.110.12.1051",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chlamydia Screening",
+                    "id": "2.16.840.1.113883.3.464.1003.110.12.1052",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
 }

@@ -1,0 +1,112 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestParameterContext"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{http://hl7.org/fhir}Patient",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Less",
+                        "operand": [
+                            {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "birthDate",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "Patient",
+                                        "type": "ParameterRef"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Today"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestExtensionExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "name": "extension",
+                            "libraryName": "FHIRHelpers",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "Patient",
+                                    "type": "ParameterRef"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "http://hl7.org/fhir/StructureDefinition/birth-time",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

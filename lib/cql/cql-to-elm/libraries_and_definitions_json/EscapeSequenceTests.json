@@ -1,0 +1,328 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "EmptyString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "SingleQuoteEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello 'World'",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "DoubleQuoteEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello \"World\"",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "BacktickEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello `World`",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "StringWithDoubleQuotes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "This string has \"double-quotes\"",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "StringWithBackticks",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "This string has `backticks`",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "NEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\n",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "FEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\f",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "REscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\r",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "TEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\t",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "SlashEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "/",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "BackslashEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\\",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "CharacterEscapesString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\f\n\r\t/\\",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "UnicodeEscapeString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": " ",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "EmbeddedEscapesString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "This is a string with 'multiple' embedded \t escapes \r\nno really, \r\n\f\t/\\lots of them",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Hello 'World'",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello 'World'",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Hello \"World\"",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello \"World\"",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Hello `World`",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello `World`",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Hello 'World'2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello 'World'2",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Hello `World`2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Hello `World`2",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "\n",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\n",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "\f",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\f",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "\r",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\r",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "\t",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\t",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "/",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "/",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "\\",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\\",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "\f\n\r\t/\\",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "\f\n\r\t/\\",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": " ",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": " ",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "This is an identifier with \"multiple\" embedded \t escapes \r\nno really, \r\n\f\t/\\lots of them",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "This is an identifier with \"multiple\" embedded \t escapes \r\nno really, \r\n\f\t/\\lots of them",
+                        "type": "Literal"
+                    }
+                }
+            ]
+        }
+    }
+}

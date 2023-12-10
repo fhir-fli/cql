@@ -1,0 +1,87 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TestMeasure",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 36,
+                "message": "Could not load source for library TestCommon, version null.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "TestCommon",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TestMeasure"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_5",
+                    "version": "5.5"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "TestCommon",
+                    "path": "TestCommon"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{urn:healthit-gov:qdm:v5_5}Patient",
+                            "templateId": "Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "TestMeasure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "birthDatetime",
+                        "type": "Property",
+                        "source": {
+                            "name": "Patient",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

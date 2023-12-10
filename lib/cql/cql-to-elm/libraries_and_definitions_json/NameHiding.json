@@ -1,0 +1,267 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "NameHiding",
+                "startLine": 16,
+                "startChar": 38,
+                "endLine": 16,
+                "endChar": 38,
+                "message": "Could not resolve identifier B in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "NameHiding"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Test Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Test Value Set",
+                    "id": "1.2.3.4.5",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Source 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "id",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "name": "relevantPeriod",
+                                        "value": {
+                                            "lowClosed": true,
+                                            "highClosed": true,
+                                            "type": "Interval",
+                                            "low": {
+                                                "type": "Date",
+                                                "year": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2016",
+                                                    "type": "Literal"
+                                                },
+                                                "month": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                },
+                                                "day": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1",
+                                                    "type": "Literal"
+                                                }
+                                            },
+                                            "high": {
+                                                "type": "Date",
+                                                "year": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2017",
+                                                    "type": "Literal"
+                                                },
+                                                "month": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "12",
+                                                    "type": "Literal"
+                                                },
+                                                "day": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "31",
+                                                    "type": "Literal"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Query 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "name": "Test Value Set",
+                                    "preserve": true,
+                                    "type": "ValueSetRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Exists",
+                            "operand": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "A",
+                                        "expression": {
+                                            "name": "Source 1",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "where": {
+                                    "type": "IncludedIn",
+                                    "operand": [
+                                        {
+                                            "type": "Interval",
+                                            "low": {
+                                                "type": "ToDateTime",
+                                                "operand": {
+                                                    "path": "low",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "relevantPeriod",
+                                                        "scope": "A",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            },
+                                            "lowClosedExpression": {
+                                                "path": "lowClosed",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "relevantPeriod",
+                                                    "scope": "A",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            "high": {
+                                                "type": "ToDateTime",
+                                                "operand": {
+                                                    "path": "high",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "relevantPeriod",
+                                                        "scope": "A",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            },
+                                            "highClosedExpression": {
+                                                "path": "highClosed",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "relevantPeriod",
+                                                    "scope": "A",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "Test Period",
+                                            "type": "ParameterRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Query 3",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "name": "Source 1",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Query 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "B",
+                                "expression": {
+                                    "name": "Source 1",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Exists",
+                            "operand": {
+                                "name": "Query 3",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

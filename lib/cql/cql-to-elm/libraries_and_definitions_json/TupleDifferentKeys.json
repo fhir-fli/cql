@@ -1,0 +1,90 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TupleDifferentKeys",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 58,
+                "message": "Could not load source for library TranslationTestsCommon, version 1.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "TranslationTestsCommon",
+                "targetIncludeLibraryVersionId": "1.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TupleDifferentKeys",
+                "startLine": 6,
+                "startChar": 37,
+                "endLine": 6,
+                "endChar": 76,
+                "message": "Could not resolve call to operator Equal with signature (tuple{Foo:System.Any},tuple{Bar:System.Any}).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TupleDifferentKeys",
+                "startLine": 8,
+                "startChar": 61,
+                "endLine": 8,
+                "endChar": 87,
+                "message": "Could not validate reference to expression NotEqual_TupleDifferentKeys because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TupleDifferentKeys"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Common",
+                    "path": "TranslationTestsCommon",
+                    "version": "1.0"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "NotEqual_TupleDifferentKeys",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "test_NotEqual_TupleDifferentKeys",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

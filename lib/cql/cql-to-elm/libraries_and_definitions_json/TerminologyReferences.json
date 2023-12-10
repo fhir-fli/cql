@@ -1,0 +1,185 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TerminologyReferences"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Test1",
+                    "id": "http://example.org/fhir/ValueSet/test1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Test2",
+                    "id": "http://example.org/fhir/ValueSet/test2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Test3",
+                    "id": "http://example.org/fhir/ValueSet/test3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Test4",
+                    "id": "http://example.org/fhir/ValueSet/test4",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "EncountersInValueSet",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Encounter",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                        "codeProperty": "type",
+                        "codeComparator": "in",
+                        "type": "Retrieve"
+                    },
+                    "operand": [
+                        {
+                            "name": "Test",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}ValueSet",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "EncountersInCodeSystem",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Encounter",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                        "codeProperty": "type",
+                        "codeComparator": "in",
+                        "type": "Retrieve"
+                    },
+                    "operand": [
+                        {
+                            "name": "Test",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}CodeSystem",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Union",
+                        "operand": [
+                            {
+                                "type": "Union",
+                                "operand": [
+                                    {
+                                        "name": "EncountersInValueSet",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "name": "Test1",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "EncountersInValueSet",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "name": "Test2",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Union",
+                                "operand": [
+                                    {
+                                        "name": "EncountersInValueSet",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "name": "Test3",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "EncountersInValueSet",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "name": "Test4",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

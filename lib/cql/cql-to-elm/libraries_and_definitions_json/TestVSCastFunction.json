@@ -1,0 +1,337 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestVSCastFunction"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Narcolepsy",
+                    "id": "https://example.org/fhir/ValueSet/narcolepsy",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "VS Cast Function",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "VSetCodes",
+                                "expression": {
+                                    "path": "codes",
+                                    "type": "Property",
+                                    "source": {
+                                        "strict": true,
+                                        "type": "As",
+                                        "operand": {
+                                            "type": "Indexer",
+                                            "operand": [
+                                                {
+                                                    "type": "List",
+                                                    "element": [
+                                                        {
+                                                            "name": "VSet",
+                                                            "type": "OperandRef"
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "1",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        },
+                                        "asTypeSpecifier": {
+                                            "type": "TupleTypeSpecifier",
+                                            "element": [
+                                                {
+                                                    "name": "codes",
+                                                    "elementType": {
+                                                        "type": "ListTypeSpecifier",
+                                                        "elementType": {
+                                                            "name": "{urn:hl7-org:elm-types:r1}Code",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "oid",
+                                                    "elementType": {
+                                                        "name": "{urn:hl7-org:elm-types:r1}String",
+                                                        "type": "NamedTypeSpecifier"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "version",
+                                                    "elementType": {
+                                                        "name": "{urn:hl7-org:elm-types:r1}String",
+                                                        "type": "NamedTypeSpecifier"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "classType": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "path": "code",
+                                            "scope": "VSetCodes",
+                                            "type": "Property"
+                                        }
+                                    },
+                                    {
+                                        "name": "system",
+                                        "value": {
+                                            "path": "system",
+                                            "scope": "VSetCodes",
+                                            "type": "Property"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "VSet",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Conditions in ValueSet",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "name": "conditions",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "In",
+                            "operand": [
+                                {
+                                    "name": "ToConcept",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "code",
+                                            "scope": "C",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "X",
+                                            "expression": {
+                                                "name": "codes",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToConcept",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "conditions",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Condition",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "codes",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "TestConditions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "InValueSet",
+                            "code": {
+                                "name": "ToConcept",
+                                "libraryName": "FHIRHelpers",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "path": "code",
+                                        "scope": "C",
+                                        "type": "Property"
+                                    }
+                                ]
+                            },
+                            "valueset": {
+                                "name": "Narcolepsy",
+                                "preserve": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestConditionsViaFunction",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Conditions in ValueSet",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "dataType": "{http://hl7.org/fhir}Condition",
+                                "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                "type": "Retrieve"
+                            },
+                            {
+                                "name": "VS Cast Function",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "type": "ExpandValueSet",
+                                        "operand": {
+                                            "name": "Narcolepsy",
+                                            "preserve": true,
+                                            "type": "ValueSetRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestConditionsDirectly",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Conditions in ValueSet",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "dataType": "{http://hl7.org/fhir}Condition",
+                                "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                "type": "Retrieve"
+                            },
+                            {
+                                "type": "ExpandValueSet",
+                                "operand": {
+                                    "name": "Narcolepsy",
+                                    "preserve": true,
+                                    "type": "ValueSetRef"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

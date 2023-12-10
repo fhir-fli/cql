@@ -1,0 +1,562 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Query"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Singular Source",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "id",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "name",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "John Doe",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Plural Source",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "name": "Singular Source",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Singular Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "X",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "id",
+                                    "scope": "X",
+                                    "type": "Property"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Plural Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "X",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "id",
+                                    "scope": "X",
+                                    "type": "Property"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Singular Multiple Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "S1",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "S2",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "id",
+                                    "scope": "S1",
+                                    "type": "Property"
+                                },
+                                {
+                                    "path": "id",
+                                    "scope": "S2",
+                                    "type": "Property"
+                                }
+                            ]
+                        },
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "S1",
+                                        "value": {
+                                            "name": "S1",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "S2",
+                                        "value": {
+                                            "name": "S2",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Plural Multiple Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P1",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "P2",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "id",
+                                    "scope": "P1",
+                                    "type": "Property"
+                                },
+                                {
+                                    "path": "id",
+                                    "scope": "P2",
+                                    "type": "Property"
+                                }
+                            ]
+                        },
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "P1",
+                                        "value": {
+                                            "name": "P1",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "P2",
+                                        "value": {
+                                            "name": "P2",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Mixed Multiple Source Query",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "S",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "id",
+                                    "scope": "S",
+                                    "type": "Property"
+                                },
+                                {
+                                    "path": "id",
+                                    "scope": "P",
+                                    "type": "Property"
+                                }
+                            ]
+                        },
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "S",
+                                        "value": {
+                                            "name": "S",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "P",
+                                        "value": {
+                                            "name": "P",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Mixed Multiple Source Query 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "S",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "id",
+                                    "scope": "S",
+                                    "type": "Property"
+                                },
+                                {
+                                    "path": "id",
+                                    "scope": "P",
+                                    "type": "Property"
+                                }
+                            ]
+                        },
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "P",
+                                        "value": {
+                                            "name": "P",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "S",
+                                        "value": {
+                                            "name": "S",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Mixed Multiple Source Query With Return",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "S",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "id",
+                                    "scope": "S",
+                                    "type": "Property"
+                                },
+                                {
+                                    "path": "id",
+                                    "scope": "P",
+                                    "type": "Property"
+                                }
+                            ]
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "S",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Singular Source With Plural Relationship",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "S",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [
+                            {
+                                "alias": "P",
+                                "type": "With",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                },
+                                "suchThat": {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "id",
+                                            "scope": "S",
+                                            "type": "Property"
+                                        },
+                                        {
+                                            "path": "id",
+                                            "scope": "P",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Plural Source With Singular Relationship",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [
+                            {
+                                "alias": "S",
+                                "type": "With",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                },
+                                "suchThat": {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "id",
+                                            "scope": "P",
+                                            "type": "Property"
+                                        },
+                                        {
+                                            "path": "id",
+                                            "scope": "S",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Singular Source With Plural Relationship And Return",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "S",
+                                "expression": {
+                                    "name": "Singular Source",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [
+                            {
+                                "alias": "P",
+                                "type": "With",
+                                "expression": {
+                                    "name": "Plural Source",
+                                    "type": "ExpressionRef"
+                                },
+                                "suchThat": {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "id",
+                                            "scope": "S",
+                                            "type": "Property"
+                                        },
+                                        {
+                                            "path": "id",
+                                            "scope": "P",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "return": {
+                            "expression": {
+                                "name": "S",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

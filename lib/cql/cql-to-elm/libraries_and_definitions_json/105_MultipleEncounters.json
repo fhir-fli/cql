@@ -1,0 +1,112 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 22,
+                "startChar": 2,
+                "endLine": 22,
+                "endChar": 27,
+                "message": "Could not resolve identifier SUD Treatment Encounters in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 26,
+                "startChar": 3,
+                "endLine": 26,
+                "endChar": 18,
+                "message": "Could not validate reference to expression SUD Encounters because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 32,
+                "startChar": 3,
+                "endLine": 32,
+                "endChar": 72,
+                "message": "Could not resolve identifier SUD Encounter During Identification Period with Patient Age at Start in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SUD Encounters",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "New SUD Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Follow Up QOL Assessment",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "NewSUDEncounter",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "alias": "BaselineAssessment",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "alias": "FollowupAssessment",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "FollowupAssessment",
+                                "type": "AliasRef"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

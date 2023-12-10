@@ -1,0 +1,102 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 4,
+                "startChar": 3,
+                "endLine": 4,
+                "endChar": 48,
+                "message": "Could not resolve type name Procedure.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 8,
+                "startChar": 5,
+                "endLine": 8,
+                "endChar": 29,
+                "message": "Could not validate reference to expression Unilateral Mastectomies because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 13,
+                "startChar": 3,
+                "endLine": 13,
+                "endChar": 31,
+                "message": "Could not validate reference to expression Unilateral Mastectomy Pairs because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 19,
+                "startChar": 1,
+                "endLine": 28,
+                "endChar": 5,
+                "message": "Identifier Unilateral Mastectomy Pairs is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 30,
+                "startChar": 1,
+                "endLine": 33,
+                "endChar": 33,
+                "message": "Identifier Unique Unilateral Mastectomy Pairs is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Unilateral Mastectomies",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Unilateral Mastectomy Pairs",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Unique Unilateral Mastectomy Pairs",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

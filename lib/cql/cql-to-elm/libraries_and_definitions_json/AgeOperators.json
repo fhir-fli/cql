@@ -1,0 +1,860 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_3",
+                    "version": "5.3"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{urn:healthit-gov:qdm:v5_3}Patient",
+                            "templateId": "Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInYears",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Year",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "type": "ToDate",
+                            "operand": {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInMonths",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "type": "ToDate",
+                            "operand": {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInWeeks",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Week",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "path": "birthDatetime",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInDays",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "path": "birthDatetime",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInHours",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "path": "birthDatetime",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInMinutes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Minute",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "path": "birthDatetime",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInSeconds",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Second",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "path": "birthDatetime",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "TestDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Date",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "TestDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "DateTime",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2012",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        },
+                        "hour": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "minute": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "second": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        },
+                        "millisecond": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "0",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "TestAgeInYearsAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Year",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInYearsAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Year",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "type": "ToDate",
+                                "operand": {
+                                    "path": "birthDatetime",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "Patient",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInMonthsAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInMonthsAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "type": "ToDate",
+                                "operand": {
+                                    "path": "birthDatetime",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "Patient",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInWeeksAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Week",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInWeeksAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Week",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "type": "ToDate",
+                                "operand": {
+                                    "path": "birthDatetime",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "Patient",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInDaysAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInDaysAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "type": "ToDate",
+                                "operand": {
+                                    "path": "birthDatetime",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "Patient",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInHoursAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInMinutesAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Minute",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestAgeInSecondsAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Second",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "path": "birthDatetime",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Patient",
+                                    "type": "ExpressionRef"
+                                }
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInYearsDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Year",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDateTime",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInYearsDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Year",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDate",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDateTime",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDate",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Week",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDateTime",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Week",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDate",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInDaysDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDateTime",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInDaysDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDate",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInHoursDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDateTime",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInMinutesDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Minute",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDateTime",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInSecondsDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Second",
+                        "type": "CalculateAge",
+                        "operand": {
+                            "name": "TestDateTime",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInYearsAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Year",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInYearsAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Year",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Week",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Week",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInDaysAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInDaysAtDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Day",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDate",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInHoursAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInMinutesAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Minute",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestCalculateAgeInSecondsAtDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Second",
+                        "type": "CalculateAgeAt",
+                        "operand": [
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "TestDateTime",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

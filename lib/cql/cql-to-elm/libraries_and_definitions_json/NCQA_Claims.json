@@ -1,0 +1,2604 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 53,
+                "message": "Could not load source for library NCQA_FHIRBase, version 1.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "NCQA_FHIRBase",
+                "targetIncludeLibraryVersionId": "1.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 59,
+                "message": "Could not load source for library NCQA_Terminology, version 1.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "NCQA_Terminology",
+                "targetIncludeLibraryVersionId": "1.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 14,
+                "startChar": 84,
+                "endLine": 14,
+                "endChar": 97,
+                "message": "Could not resolve library name Terminology.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 20,
+                "startChar": 83,
+                "endLine": 20,
+                "endChar": 92,
+                "message": "Could not resolve library name Terminology.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 24,
+                "startChar": 87,
+                "endLine": 24,
+                "endChar": 100,
+                "message": "Could not resolve library name Terminology.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 30,
+                "startChar": 88,
+                "endLine": 30,
+                "endChar": 97,
+                "message": "Could not resolve library name Terminology.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 58,
+                "startChar": 33,
+                "endLine": 58,
+                "endChar": 67,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 76,
+                "startChar": 33,
+                "endLine": 76,
+                "endChar": 67,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 115,
+                "startChar": 29,
+                "endLine": 115,
+                "endChar": 72,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 142,
+                "startChar": 126,
+                "endLine": 142,
+                "endChar": 160,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 190,
+                "startChar": 35,
+                "endLine": 190,
+                "endChar": 78,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 233,
+                "startChar": 41,
+                "endLine": 233,
+                "endChar": 84,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 260,
+                "startChar": 31,
+                "endLine": 260,
+                "endChar": 74,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 311,
+                "startChar": 33,
+                "endLine": 311,
+                "endChar": 76,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 271,
+                "startChar": 12,
+                "endLine": 271,
+                "endChar": 197,
+                "message": "Could not resolve call to operator Get Corresponding Claim for Services and Conditions with signature (list<FHIR.ClaimResponse>,list<FHIR.Claim>,list<System.Code>,list<System.Code>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 340,
+                "startChar": 33,
+                "endLine": 340,
+                "endChar": 76,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 279,
+                "startChar": 12,
+                "endLine": 279,
+                "endChar": 196,
+                "message": "Could not resolve call to operator Get Corresponding Claim for Services or Conditions with signature (list<FHIR.ClaimResponse>,list<FHIR.Claim>,list<System.Code>,list<System.Code>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 369,
+                "startChar": 33,
+                "endLine": 369,
+                "endChar": 76,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 286,
+                "startChar": 12,
+                "endLine": 286,
+                "endChar": 168,
+                "message": "Could not resolve call to operator Get Corresponding Claim for Services Only with signature (list<FHIR.ClaimResponse>,list<FHIR.Claim>,list<System.Code>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 398,
+                "startChar": 34,
+                "endLine": 398,
+                "endChar": 77,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 293,
+                "startChar": 12,
+                "endLine": 293,
+                "endChar": 176,
+                "message": "Could not resolve call to operator Get Corresponding Claim for Pharmacy Services with signature (list<FHIR.ClaimResponse>,list<FHIR.Claim>,list<System.Code>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 311,
+                "startChar": 33,
+                "endLine": 311,
+                "endChar": 76,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 340,
+                "startChar": 33,
+                "endLine": 340,
+                "endChar": 76,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 369,
+                "startChar": 33,
+                "endLine": 369,
+                "endChar": 76,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 398,
+                "startChar": 34,
+                "endLine": 398,
+                "endChar": 77,
+                "message": "Could not resolve call to operator Get All Paid Claim Reponses with signature (list<FHIR.ClaimResponse>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 438,
+                "startChar": 34,
+                "endLine": 438,
+                "endChar": 70,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 517,
+                "startChar": 35,
+                "endLine": 517,
+                "endChar": 66,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 572,
+                "startChar": 35,
+                "endLine": 572,
+                "endChar": 47,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_Claims",
+                "libraryVersion": "1.0.0",
+                "startLine": 628,
+                "startChar": 35,
+                "endLine": 628,
+                "endChar": 47,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "NCQA_Claims",
+            "version": "1.0.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                },
+                {
+                    "localIdentifier": "FHIRBase",
+                    "path": "NCQA_FHIRBase",
+                    "version": "1.0.0"
+                },
+                {
+                    "localIdentifier": "Terminology",
+                    "path": "NCQA_Terminology",
+                    "version": "1.0.0"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Inpatient Stay",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1395",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Nonacute Inpatient Stay",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1398",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Professional or Institutional Claims",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MedicalClaim",
+                                "expression": {
+                                    "name": "claim",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Pharmacy Claims",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "PharmacyClaim",
+                                "expression": {
+                                    "name": "claim",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Professional or Institutional Claims Response",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "MedicalResponse",
+                                "expression": {
+                                    "name": "claimResponse",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claimResponse",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}ClaimResponse",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Pharmacy Claims Response",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "PharmacyResponse",
+                                "expression": {
+                                    "name": "claimResponse",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claimResponse",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}ClaimResponse",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Claim With Procedure",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "Claim",
+                                "value": {
+                                    "name": "cList",
+                                    "type": "OperandRef"
+                                }
+                            },
+                            {
+                                "name": "Items",
+                                "value": {
+                                    "type": "If",
+                                    "condition": {
+                                        "type": "IsNull",
+                                        "operand": {
+                                            "name": "cList",
+                                            "type": "OperandRef"
+                                        }
+                                    },
+                                    "then": {
+                                        "type": "As",
+                                        "operand": {
+                                            "type": "Null"
+                                        },
+                                        "asTypeSpecifier": {
+                                            "type": "ListTypeSpecifier",
+                                            "elementType": {
+                                                "name": "{http://hl7.org/fhir}Claim.Item",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        }
+                                    },
+                                    "else": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "ItemOnLine",
+                                                "expression": {
+                                                    "path": "item",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "cList",
+                                                        "type": "OperandRef"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "relationship": [],
+                                        "where": {
+                                            "type": "Or",
+                                            "operand": [
+                                                {
+                                                    "type": "Exists",
+                                                    "operand": {
+                                                        "type": "Query",
+                                                        "source": [
+                                                            {
+                                                                "alias": "LineCode",
+                                                                "expression": {
+                                                                    "path": "coding",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "productOrService",
+                                                                        "scope": "ItemOnLine",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ],
+                                                        "relationship": [],
+                                                        "where": {
+                                                            "type": "Or",
+                                                            "operand": [
+                                                                {
+                                                                    "type": "In",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "value",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "code",
+                                                                                "scope": "LineCode",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "name": "stringList",
+                                                                            "type": "OperandRef"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Exists",
+                                                                    "operand": {
+                                                                        "type": "Query",
+                                                                        "source": [
+                                                                            {
+                                                                                "alias": "RevCode",
+                                                                                "expression": {
+                                                                                    "path": "coding",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "revenue",
+                                                                                        "scope": "ItemOnLine",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "relationship": [],
+                                                                        "where": {
+                                                                            "type": "In",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "value",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "code",
+                                                                                        "scope": "RevCode",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "name": "stringList",
+                                                                                    "type": "OperandRef"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "Exists",
+                                                    "operand": {
+                                                        "type": "Query",
+                                                        "source": [
+                                                            {
+                                                                "alias": "HeaderCode",
+                                                                "expression": {
+                                                                    "type": "Flatten",
+                                                                    "operand": {
+                                                                        "type": "Query",
+                                                                        "source": [
+                                                                            {
+                                                                                "alias": "$this",
+                                                                                "expression": {
+                                                                                    "type": "Query",
+                                                                                    "source": [
+                                                                                        {
+                                                                                            "alias": "$this",
+                                                                                            "expression": {
+                                                                                                "path": "procedure",
+                                                                                                "type": "Property",
+                                                                                                "source": {
+                                                                                                    "name": "cList",
+                                                                                                    "type": "OperandRef"
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "where": {
+                                                                                        "type": "Not",
+                                                                                        "operand": {
+                                                                                            "type": "IsNull",
+                                                                                            "operand": {
+                                                                                                "path": "procedure",
+                                                                                                "type": "Property",
+                                                                                                "source": {
+                                                                                                    "name": "$this",
+                                                                                                    "type": "AliasRef"
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "return": {
+                                                                                        "distinct": false,
+                                                                                        "expression": {
+                                                                                            "path": "procedure",
+                                                                                            "type": "Property",
+                                                                                            "source": {
+                                                                                                "name": "$this",
+                                                                                                "type": "AliasRef"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "where": {
+                                                                            "type": "Not",
+                                                                            "operand": {
+                                                                                "type": "IsNull",
+                                                                                "operand": {
+                                                                                    "path": "coding",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "name": "$this",
+                                                                                        "type": "AliasRef"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "return": {
+                                                                            "distinct": false,
+                                                                            "expression": {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "name": "$this",
+                                                                                    "type": "AliasRef"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        ],
+                                                        "relationship": [],
+                                                        "where": {
+                                                            "type": "In",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "value",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "code",
+                                                                        "scope": "HeaderCode",
+                                                                        "type": "Property"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "stringList",
+                                                                    "type": "OperandRef"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "cList",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Claim",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "stringList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}String",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get All Professional and Institutional Claims and Claim Responses",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "MedicalClaimResponse",
+                                "value": {
+                                    "name": "Professional or Institutional Claims Response",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "name": "claimResponse",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "MedicalClaim",
+                                "value": {
+                                    "name": "Professional or Institutional Claims",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "name": "claim",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "claimResponse",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}ClaimResponse",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get All Pharmacy Claims and Claim Responses",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Tuple",
+                        "element": [
+                            {
+                                "name": "PharmacyClaimResponse",
+                                "value": {
+                                    "name": "Pharmacy Claims Response",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "name": "claimResponse",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "PharmacyClaim",
+                                "value": {
+                                    "name": "Pharmacy Claims",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "name": "claim",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "claimResponse",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}ClaimResponse",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get All Claims With Procedure and Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "ProcedureClaims",
+                                "expression": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "AllClaims",
+                                            "expression": {
+                                                "name": "claim",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "And",
+                                        "operand": [
+                                            {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "ProductOrServiceCode",
+                                                            "expression": {
+                                                                "type": "Flatten",
+                                                                "operand": {
+                                                                    "type": "Query",
+                                                                    "source": [
+                                                                        {
+                                                                            "alias": "$this",
+                                                                            "expression": {
+                                                                                "type": "Query",
+                                                                                "source": [
+                                                                                    {
+                                                                                        "alias": "$this",
+                                                                                        "expression": {
+                                                                                            "path": "item",
+                                                                                            "scope": "AllClaims",
+                                                                                            "type": "Property"
+                                                                                        }
+                                                                                    }
+                                                                                ],
+                                                                                "where": {
+                                                                                    "type": "Not",
+                                                                                    "operand": {
+                                                                                        "type": "IsNull",
+                                                                                        "operand": {
+                                                                                            "path": "productOrService",
+                                                                                            "type": "Property",
+                                                                                            "source": {
+                                                                                                "name": "$this",
+                                                                                                "type": "AliasRef"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "return": {
+                                                                                    "distinct": false,
+                                                                                    "expression": {
+                                                                                        "path": "productOrService",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "name": "$this",
+                                                                                            "type": "AliasRef"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "where": {
+                                                                        "type": "Not",
+                                                                        "operand": {
+                                                                            "type": "IsNull",
+                                                                            "operand": {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "name": "$this",
+                                                                                    "type": "AliasRef"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "return": {
+                                                                        "distinct": false,
+                                                                        "expression": {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "name": "$this",
+                                                                                "type": "AliasRef"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToCode",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "name": "ProductOrServiceCode",
+                                                                        "type": "AliasRef"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "ProductOrServiceValueSet",
+                                                                "type": "OperandRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "DiagnosisCode",
+                                                            "expression": {
+                                                                "type": "Flatten",
+                                                                "operand": {
+                                                                    "type": "Query",
+                                                                    "source": [
+                                                                        {
+                                                                            "alias": "$this",
+                                                                            "expression": {
+                                                                                "type": "Query",
+                                                                                "source": [
+                                                                                    {
+                                                                                        "alias": "$this",
+                                                                                        "expression": {
+                                                                                            "path": "diagnosis",
+                                                                                            "scope": "AllClaims",
+                                                                                            "type": "Property"
+                                                                                        }
+                                                                                    }
+                                                                                ],
+                                                                                "where": {
+                                                                                    "type": "Not",
+                                                                                    "operand": {
+                                                                                        "type": "IsNull",
+                                                                                        "operand": {
+                                                                                            "path": "diagnosis",
+                                                                                            "type": "Property",
+                                                                                            "source": {
+                                                                                                "name": "$this",
+                                                                                                "type": "AliasRef"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "return": {
+                                                                                    "distinct": false,
+                                                                                    "expression": {
+                                                                                        "path": "diagnosis",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "name": "$this",
+                                                                                            "type": "AliasRef"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "where": {
+                                                                        "type": "Not",
+                                                                        "operand": {
+                                                                            "type": "IsNull",
+                                                                            "operand": {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "name": "$this",
+                                                                                    "type": "AliasRef"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "return": {
+                                                                        "distinct": false,
+                                                                        "expression": {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "name": "$this",
+                                                                                "type": "AliasRef"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToCode",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "name": "DiagnosisCode",
+                                                                        "type": "AliasRef"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "DiagnosisValueSet",
+                                                                "type": "OperandRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "ClaimofInterest",
+                                        "value": {
+                                            "name": "ProcedureClaims",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "ClaimID",
+                                        "value": {
+                                            "path": "id",
+                                            "scope": "ProcedureClaims",
+                                            "type": "Property"
+                                        }
+                                    },
+                                    {
+                                        "name": "LineItems",
+                                        "value": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "ResponseItem",
+                                                    "expression": {
+                                                        "path": "item",
+                                                        "scope": "ProcedureClaims",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "ProductOrServiceCode",
+                                                            "expression": {
+                                                                "path": "coding",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "productOrService",
+                                                                    "scope": "ResponseItem",
+                                                                    "type": "Property"
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToCode",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "name": "ProductOrServiceCode",
+                                                                        "type": "AliasRef"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "ProductOrServiceValueSet",
+                                                                "type": "OperandRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "ProductOrServiceValueSet",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "DiagnosisValueSet",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get All Claims With Procedure or Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "ProcedureClaims",
+                                "expression": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "AllClaims",
+                                            "expression": {
+                                                "name": "claim",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Or",
+                                        "operand": [
+                                            {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "ProductOrServiceCode",
+                                                            "expression": {
+                                                                "type": "Flatten",
+                                                                "operand": {
+                                                                    "type": "Query",
+                                                                    "source": [
+                                                                        {
+                                                                            "alias": "$this",
+                                                                            "expression": {
+                                                                                "type": "Query",
+                                                                                "source": [
+                                                                                    {
+                                                                                        "alias": "$this",
+                                                                                        "expression": {
+                                                                                            "path": "item",
+                                                                                            "scope": "AllClaims",
+                                                                                            "type": "Property"
+                                                                                        }
+                                                                                    }
+                                                                                ],
+                                                                                "where": {
+                                                                                    "type": "Not",
+                                                                                    "operand": {
+                                                                                        "type": "IsNull",
+                                                                                        "operand": {
+                                                                                            "path": "productOrService",
+                                                                                            "type": "Property",
+                                                                                            "source": {
+                                                                                                "name": "$this",
+                                                                                                "type": "AliasRef"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "return": {
+                                                                                    "distinct": false,
+                                                                                    "expression": {
+                                                                                        "path": "productOrService",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "name": "$this",
+                                                                                            "type": "AliasRef"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "where": {
+                                                                        "type": "Not",
+                                                                        "operand": {
+                                                                            "type": "IsNull",
+                                                                            "operand": {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "name": "$this",
+                                                                                    "type": "AliasRef"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "return": {
+                                                                        "distinct": false,
+                                                                        "expression": {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "name": "$this",
+                                                                                "type": "AliasRef"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToCode",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "name": "ProductOrServiceCode",
+                                                                        "type": "AliasRef"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "ProductOrServiceValueSet",
+                                                                "type": "OperandRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "DiagnosisCode",
+                                                            "expression": {
+                                                                "type": "Flatten",
+                                                                "operand": {
+                                                                    "type": "Query",
+                                                                    "source": [
+                                                                        {
+                                                                            "alias": "$this",
+                                                                            "expression": {
+                                                                                "type": "Query",
+                                                                                "source": [
+                                                                                    {
+                                                                                        "alias": "$this",
+                                                                                        "expression": {
+                                                                                            "path": "diagnosis",
+                                                                                            "scope": "AllClaims",
+                                                                                            "type": "Property"
+                                                                                        }
+                                                                                    }
+                                                                                ],
+                                                                                "where": {
+                                                                                    "type": "Not",
+                                                                                    "operand": {
+                                                                                        "type": "IsNull",
+                                                                                        "operand": {
+                                                                                            "path": "diagnosis",
+                                                                                            "type": "Property",
+                                                                                            "source": {
+                                                                                                "name": "$this",
+                                                                                                "type": "AliasRef"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "return": {
+                                                                                    "distinct": false,
+                                                                                    "expression": {
+                                                                                        "path": "diagnosis",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "name": "$this",
+                                                                                            "type": "AliasRef"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "where": {
+                                                                        "type": "Not",
+                                                                        "operand": {
+                                                                            "type": "IsNull",
+                                                                            "operand": {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "name": "$this",
+                                                                                    "type": "AliasRef"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "return": {
+                                                                        "distinct": false,
+                                                                        "expression": {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "name": "$this",
+                                                                                "type": "AliasRef"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToCode",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "name": "DiagnosisCode",
+                                                                        "type": "AliasRef"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "DiagnosisValueSet",
+                                                                "type": "OperandRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "If",
+                                "condition": {
+                                    "type": "Exists",
+                                    "operand": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "ResponseItem",
+                                                "expression": {
+                                                    "path": "item",
+                                                    "scope": "ProcedureClaims",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        ],
+                                        "relationship": [],
+                                        "where": {
+                                            "type": "Exists",
+                                            "operand": {
+                                                "type": "Query",
+                                                "source": [
+                                                    {
+                                                        "alias": "ProductOrServiceCode",
+                                                        "expression": {
+                                                            "path": "coding",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "path": "productOrService",
+                                                                "scope": "ResponseItem",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "relationship": [],
+                                                "where": {
+                                                    "type": "In",
+                                                    "operand": [
+                                                        {
+                                                            "name": "ToCode",
+                                                            "libraryName": "FHIRHelpers",
+                                                            "type": "FunctionRef",
+                                                            "operand": [
+                                                                {
+                                                                    "name": "ProductOrServiceCode",
+                                                                    "type": "AliasRef"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "ProductOrServiceValueSet",
+                                                            "type": "OperandRef"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "type": "Tuple",
+                                    "element": [
+                                        {
+                                            "name": "ClaimofInterest",
+                                            "value": {
+                                                "name": "ProcedureClaims",
+                                                "type": "AliasRef"
+                                            }
+                                        },
+                                        {
+                                            "name": "ClaimID",
+                                            "value": {
+                                                "path": "id",
+                                                "scope": "ProcedureClaims",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "LineItems",
+                                            "value": {
+                                                "type": "Query",
+                                                "source": [
+                                                    {
+                                                        "alias": "ResponseItem",
+                                                        "expression": {
+                                                            "path": "item",
+                                                            "scope": "ProcedureClaims",
+                                                            "type": "Property"
+                                                        }
+                                                    }
+                                                ],
+                                                "relationship": [],
+                                                "where": {
+                                                    "type": "Exists",
+                                                    "operand": {
+                                                        "type": "Query",
+                                                        "source": [
+                                                            {
+                                                                "alias": "ProductOrServiceCode",
+                                                                "expression": {
+                                                                    "path": "coding",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "productOrService",
+                                                                        "scope": "ResponseItem",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ],
+                                                        "relationship": [],
+                                                        "where": {
+                                                            "type": "In",
+                                                            "operand": [
+                                                                {
+                                                                    "name": "ToCode",
+                                                                    "libraryName": "FHIRHelpers",
+                                                                    "type": "FunctionRef",
+                                                                    "operand": [
+                                                                        {
+                                                                            "name": "ProductOrServiceCode",
+                                                                            "type": "AliasRef"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "ProductOrServiceValueSet",
+                                                                    "type": "OperandRef"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "else": {
+                                    "type": "Tuple",
+                                    "element": [
+                                        {
+                                            "name": "ClaimofInterest",
+                                            "value": {
+                                                "name": "ProcedureClaims",
+                                                "type": "AliasRef"
+                                            }
+                                        },
+                                        {
+                                            "name": "ClaimID",
+                                            "value": {
+                                                "path": "id",
+                                                "scope": "ProcedureClaims",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "LineItems",
+                                            "value": {
+                                                "type": "Query",
+                                                "source": [
+                                                    {
+                                                        "alias": "ResponseItem",
+                                                        "expression": {
+                                                            "path": "item",
+                                                            "scope": "ProcedureClaims",
+                                                            "type": "Property"
+                                                        }
+                                                    }
+                                                ],
+                                                "relationship": [],
+                                                "where": {
+                                                    "type": "Equal",
+                                                    "operand": [
+                                                        {
+                                                            "path": "value",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "path": "sequence",
+                                                                "scope": "ResponseItem",
+                                                                "type": "Property"
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "1",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "ProductOrServiceValueSet",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "DiagnosisValueSet",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get All Claims With Procedure Only",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "AllClaims",
+                                "expression": {
+                                    "name": "claim",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Exists",
+                            "operand": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "ProductOrServiceCode",
+                                        "expression": {
+                                            "type": "Flatten",
+                                            "operand": {
+                                                "type": "Query",
+                                                "source": [
+                                                    {
+                                                        "alias": "$this",
+                                                        "expression": {
+                                                            "type": "Query",
+                                                            "source": [
+                                                                {
+                                                                    "alias": "$this",
+                                                                    "expression": {
+                                                                        "path": "item",
+                                                                        "scope": "AllClaims",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "where": {
+                                                                "type": "Not",
+                                                                "operand": {
+                                                                    "type": "IsNull",
+                                                                    "operand": {
+                                                                        "path": "productOrService",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "name": "$this",
+                                                                            "type": "AliasRef"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "return": {
+                                                                "distinct": false,
+                                                                "expression": {
+                                                                    "path": "productOrService",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "name": "$this",
+                                                                        "type": "AliasRef"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "where": {
+                                                    "type": "Not",
+                                                    "operand": {
+                                                        "type": "IsNull",
+                                                        "operand": {
+                                                            "path": "coding",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "$this",
+                                                                "type": "AliasRef"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "return": {
+                                                    "distinct": false,
+                                                    "expression": {
+                                                        "path": "coding",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "name": "$this",
+                                                            "type": "AliasRef"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "where": {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "name": "ToCode",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "name": "ProductOrServiceCode",
+                                                    "type": "AliasRef"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "ProductOrServiceValueSet",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "return": {
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "ClaimofInterest",
+                                        "value": {
+                                            "name": "AllClaims",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "ClaimID",
+                                        "value": {
+                                            "path": "id",
+                                            "scope": "AllClaims",
+                                            "type": "Property"
+                                        }
+                                    },
+                                    {
+                                        "name": "LineItems",
+                                        "value": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "ResponseItem",
+                                                    "expression": {
+                                                        "path": "item",
+                                                        "scope": "AllClaims",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "ProductOrServiceCode",
+                                                            "expression": {
+                                                                "path": "coding",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "productOrService",
+                                                                    "scope": "ResponseItem",
+                                                                    "type": "Property"
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToCode",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "name": "ProductOrServiceCode",
+                                                                        "type": "AliasRef"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "ProductOrServiceValueSet",
+                                                                "type": "OperandRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "ProductOrServiceValueSet",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Claim With Corresponding Claim Response",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Claim",
+                                "expression": {
+                                    "name": "claim",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "claimResponse",
+                                "expression": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "CR",
+                                            "expression": {
+                                                "name": "claimResponse",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            },
+                            {
+                                "identifier": "OClaim",
+                                "expression": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "C",
+                                            "expression": {
+                                                "name": "claim",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "ClaimResponse",
+                                        "value": {
+                                            "name": "claimResponse",
+                                            "type": "QueryLetRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "OriginalClaim",
+                                        "value": {
+                                            "name": "OClaim",
+                                            "type": "QueryLetRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claimResponse",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}ClaimResponse",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Medical Claims With Nonacute or Acute Inpatient Discharge",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "ClaimWithInpatientStay",
+                                "expression": {
+                                    "type": "Tuple",
+                                    "element": [
+                                        {
+                                            "name": "MedicalClaim",
+                                            "value": {
+                                                "name": "Professional or Institutional Claims",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "name": "claim",
+                                                        "type": "OperandRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "LineItemDefinition",
+                                        "expression": {
+                                            "type": "Tuple",
+                                            "element": [
+                                                {
+                                                    "name": "InpatientStayLineItems",
+                                                    "value": {
+                                                        "type": "If",
+                                                        "condition": {
+                                                            "type": "IsNull",
+                                                            "operand": {
+                                                                "path": "MedicalClaim",
+                                                                "scope": "ClaimWithInpatientStay",
+                                                                "type": "Property"
+                                                            }
+                                                        },
+                                                        "then": {
+                                                            "type": "As",
+                                                            "operand": {
+                                                                "type": "Null"
+                                                            },
+                                                            "asTypeSpecifier": {
+                                                                "type": "ListTypeSpecifier",
+                                                                "elementType": {
+                                                                    "name": "{http://hl7.org/fhir}Claim",
+                                                                    "type": "NamedTypeSpecifier"
+                                                                }
+                                                            }
+                                                        },
+                                                        "else": {
+                                                            "type": "Query",
+                                                            "source": [
+                                                                {
+                                                                    "alias": "c",
+                                                                    "expression": {
+                                                                        "path": "MedicalClaim",
+                                                                        "scope": "ClaimWithInpatientStay",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "relationship": [],
+                                                            "where": {
+                                                                "type": "Exists",
+                                                                "operand": {
+                                                                    "type": "Query",
+                                                                    "source": [
+                                                                        {
+                                                                            "alias": "i",
+                                                                            "expression": {
+                                                                                "path": "item",
+                                                                                "scope": "c",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "relationship": [],
+                                                                    "where": {
+                                                                        "type": "Exists",
+                                                                        "operand": {
+                                                                            "type": "Query",
+                                                                            "source": [
+                                                                                {
+                                                                                    "alias": "rev",
+                                                                                    "expression": {
+                                                                                        "path": "coding",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "path": "revenue",
+                                                                                            "scope": "i",
+                                                                                            "type": "Property"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ],
+                                                                            "relationship": [],
+                                                                            "where": {
+                                                                                "type": "InValueSet",
+                                                                                "code": {
+                                                                                    "name": "ToCode",
+                                                                                    "libraryName": "FHIRHelpers",
+                                                                                    "type": "FunctionRef",
+                                                                                    "operand": [
+                                                                                        {
+                                                                                            "name": "rev",
+                                                                                            "type": "AliasRef"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "valueset": {
+                                                                                    "name": "Inpatient Stay",
+                                                                                    "preserve": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "NonacuteInpatientLineItems",
+                                                    "value": {
+                                                        "type": "If",
+                                                        "condition": {
+                                                            "type": "IsNull",
+                                                            "operand": {
+                                                                "path": "MedicalClaim",
+                                                                "scope": "ClaimWithInpatientStay",
+                                                                "type": "Property"
+                                                            }
+                                                        },
+                                                        "then": {
+                                                            "type": "As",
+                                                            "operand": {
+                                                                "type": "Null"
+                                                            },
+                                                            "asTypeSpecifier": {
+                                                                "type": "ListTypeSpecifier",
+                                                                "elementType": {
+                                                                    "name": "{http://hl7.org/fhir}Claim",
+                                                                    "type": "NamedTypeSpecifier"
+                                                                }
+                                                            }
+                                                        },
+                                                        "else": {
+                                                            "type": "Query",
+                                                            "source": [
+                                                                {
+                                                                    "alias": "c",
+                                                                    "expression": {
+                                                                        "path": "MedicalClaim",
+                                                                        "scope": "ClaimWithInpatientStay",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "relationship": [],
+                                                            "where": {
+                                                                "type": "Or",
+                                                                "operand": [
+                                                                    {
+                                                                        "type": "Exists",
+                                                                        "operand": {
+                                                                            "type": "Query",
+                                                                            "source": [
+                                                                                {
+                                                                                    "alias": "i",
+                                                                                    "expression": {
+                                                                                        "path": "item",
+                                                                                        "scope": "c",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                }
+                                                                            ],
+                                                                            "relationship": [],
+                                                                            "where": {
+                                                                                "type": "Exists",
+                                                                                "operand": {
+                                                                                    "type": "Query",
+                                                                                    "source": [
+                                                                                        {
+                                                                                            "alias": "rev",
+                                                                                            "expression": {
+                                                                                                "path": "coding",
+                                                                                                "type": "Property",
+                                                                                                "source": {
+                                                                                                    "path": "revenue",
+                                                                                                    "scope": "i",
+                                                                                                    "type": "Property"
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "relationship": [],
+                                                                                    "where": {
+                                                                                        "type": "InValueSet",
+                                                                                        "code": {
+                                                                                            "name": "ToCode",
+                                                                                            "libraryName": "FHIRHelpers",
+                                                                                            "type": "FunctionRef",
+                                                                                            "operand": [
+                                                                                                {
+                                                                                                    "name": "rev",
+                                                                                                    "type": "AliasRef"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        "valueset": {
+                                                                                            "name": "Nonacute Inpatient Stay",
+                                                                                            "preserve": true
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "Exists",
+                                                                        "operand": {
+                                                                            "type": "Query",
+                                                                            "source": [
+                                                                                {
+                                                                                    "alias": "tob",
+                                                                                    "expression": {
+                                                                                        "path": "coding",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "path": "subType",
+                                                                                            "scope": "c",
+                                                                                            "type": "Property"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ],
+                                                                            "relationship": [],
+                                                                            "where": {
+                                                                                "type": "InValueSet",
+                                                                                "code": {
+                                                                                    "name": "ToCode",
+                                                                                    "libraryName": "FHIRHelpers",
+                                                                                    "type": "FunctionRef",
+                                                                                    "operand": [
+                                                                                        {
+                                                                                            "name": "tob",
+                                                                                            "type": "AliasRef"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "valueset": {
+                                                                                    "name": "Nonacute Inpatient Stay",
+                                                                                    "preserve": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "return": {
+                                    "expression": {
+                                        "type": "Tuple",
+                                        "element": [
+                                            {
+                                                "name": "InpatientDischarge",
+                                                "value": {
+                                                    "path": "InpatientStayLineItems",
+                                                    "scope": "LineItemDefinition",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "name": "NonacuteInpatientDischarge",
+                                                "value": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "nonAcuteInpatientStay",
+                                                            "expression": {
+                                                                "path": "NonacuteInpatientLineItems",
+                                                                "scope": "LineItemDefinition",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [
+                                                        {
+                                                            "alias": "inpatientStay",
+                                                            "type": "With",
+                                                            "expression": {
+                                                                "path": "InpatientStayLineItems",
+                                                                "scope": "LineItemDefinition",
+                                                                "type": "Property"
+                                                            },
+                                                            "suchThat": {
+                                                                "type": "Equal",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "id",
+                                                                        "scope": "nonAcuteInpatientStay",
+                                                                        "type": "Property"
+                                                                    },
+                                                                    {
+                                                                        "path": "id",
+                                                                        "scope": "inpatientStay",
+                                                                        "type": "Property"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "AcuteInpatientDischarge",
+                                                "value": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "inpatientStay",
+                                                            "expression": {
+                                                                "path": "InpatientStayLineItems",
+                                                                "scope": "LineItemDefinition",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [
+                                                        {
+                                                            "alias": "nonAcuteInpatientStay",
+                                                            "type": "Without",
+                                                            "expression": {
+                                                                "path": "NonacuteInpatientLineItems",
+                                                                "scope": "LineItemDefinition",
+                                                                "type": "Property"
+                                                            },
+                                                            "suchThat": {
+                                                                "type": "Equal",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "id",
+                                                                        "scope": "inpatientStay",
+                                                                        "type": "Property"
+                                                                    },
+                                                                    {
+                                                                        "path": "id",
+                                                                        "scope": "nonAcuteInpatientStay",
+                                                                        "type": "Property"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "claim",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Claim",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

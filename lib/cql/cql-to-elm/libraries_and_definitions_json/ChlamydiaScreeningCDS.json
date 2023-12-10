@@ -1,0 +1,923 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 49,
+                "startChar": 40,
+                "endLine": 49,
+                "endChar": 40,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 50,
+                "startChar": 88,
+                "endLine": 50,
+                "endChar": 88,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 51,
+                "startChar": 45,
+                "endLine": 51,
+                "endChar": 45,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 52,
+                "startChar": 74,
+                "endLine": 52,
+                "endChar": 74,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 53,
+                "startChar": 34,
+                "endLine": 53,
+                "endChar": 34,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 54,
+                "startChar": 82,
+                "endLine": 54,
+                "endChar": 82,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 55,
+                "startChar": 67,
+                "endLine": 55,
+                "endChar": 67,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 56,
+                "startChar": 39,
+                "endLine": 56,
+                "endChar": 39,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 58,
+                "startChar": 72,
+                "endLine": 58,
+                "endChar": 72,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 59,
+                "startChar": 64,
+                "endLine": 59,
+                "endChar": 64,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 61,
+                "startChar": 62,
+                "endLine": 61,
+                "endChar": 62,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 62,
+                "startChar": 81,
+                "endLine": 62,
+                "endChar": 81,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 63,
+                "startChar": 44,
+                "endLine": 63,
+                "endChar": 44,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 64,
+                "startChar": 50,
+                "endLine": 64,
+                "endChar": 50,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 66,
+                "startChar": 56,
+                "endLine": 66,
+                "endChar": 56,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 68,
+                "startChar": 57,
+                "endLine": 68,
+                "endChar": 57,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 70,
+                "startChar": 56,
+                "endLine": 70,
+                "endChar": 56,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 71,
+                "startChar": 43,
+                "endLine": 71,
+                "endChar": 43,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 73,
+                "startChar": 56,
+                "endLine": 73,
+                "endChar": 56,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 74,
+                "startChar": 46,
+                "endLine": 74,
+                "endChar": 46,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 76,
+                "startChar": 54,
+                "endLine": 76,
+                "endChar": 54,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 77,
+                "startChar": 61,
+                "endLine": 77,
+                "endChar": 61,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 78,
+                "startChar": 76,
+                "endLine": 78,
+                "endChar": 76,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 98,
+                "startChar": 67,
+                "endLine": 98,
+                "endChar": 67,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 107,
+                "startChar": 70,
+                "endLine": 107,
+                "endChar": 70,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 120,
+                "startChar": 81,
+                "endLine": 120,
+                "endChar": 81,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 131,
+                "startChar": 69,
+                "endLine": 131,
+                "endChar": 69,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 140,
+                "startChar": 16,
+                "endLine": 140,
+                "endChar": 16,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 146,
+                "startChar": 24,
+                "endLine": 146,
+                "endChar": 24,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 155,
+                "startChar": 32,
+                "endLine": 155,
+                "endChar": 32,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 166,
+                "startChar": 39,
+                "endLine": 166,
+                "endChar": 39,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 203,
+                "startChar": 44,
+                "endLine": 203,
+                "endChar": 44,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 221,
+                "startChar": 43,
+                "endLine": 221,
+                "endChar": 43,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 231,
+                "startChar": 40,
+                "endLine": 231,
+                "endChar": 40,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 244,
+                "startChar": 19,
+                "endLine": 244,
+                "endChar": 19,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 251,
+                "startChar": 35,
+                "endLine": 251,
+                "endChar": 35,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 280,
+                "startChar": 42,
+                "endLine": 280,
+                "endChar": 42,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 286,
+                "startChar": 45,
+                "endLine": 286,
+                "endChar": 45,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 317,
+                "startChar": 46,
+                "endLine": 317,
+                "endChar": 46,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 333,
+                "startChar": 35,
+                "endLine": 333,
+                "endChar": 35,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 357,
+                "startChar": 24,
+                "endLine": 357,
+                "endChar": 24,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 368,
+                "startChar": 24,
+                "endLine": 368,
+                "endChar": 24,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 384,
+                "startChar": 29,
+                "endLine": 384,
+                "endChar": 29,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 390,
+                "startChar": 31,
+                "endLine": 390,
+                "endChar": 31,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 394,
+                "startChar": 37,
+                "endLine": 394,
+                "endChar": 37,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 399,
+                "startChar": 26,
+                "endLine": 399,
+                "endChar": 26,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "startLine": 404,
+                "startChar": 38,
+                "endLine": 404,
+                "endChar": 38,
+                "message": "Syntax error at =",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 140,
+                "startChar": 1,
+                "endLine": 141,
+                "endChar": 55,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 146,
+                "startChar": 1,
+                "endLine": 148,
+                "endChar": 26,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 155,
+                "startChar": 1,
+                "endLine": 157,
+                "endChar": 89,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 166,
+                "startChar": 1,
+                "endLine": 174,
+                "endChar": 105,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 203,
+                "startChar": 1,
+                "endLine": 211,
+                "endChar": 93,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 221,
+                "startChar": 1,
+                "endLine": 224,
+                "endChar": 104,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 231,
+                "startChar": 1,
+                "endLine": 235,
+                "endChar": 92,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 244,
+                "startChar": 1,
+                "endLine": 246,
+                "endChar": 87,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 251,
+                "startChar": 1,
+                "endLine": 257,
+                "endChar": 110,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 280,
+                "startChar": 1,
+                "endLine": 283,
+                "endChar": 121,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 286,
+                "startChar": 1,
+                "endLine": 290,
+                "endChar": 125,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 317,
+                "startChar": 1,
+                "endLine": 323,
+                "endChar": 102,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 333,
+                "startChar": 1,
+                "endLine": 342,
+                "endChar": 96,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 357,
+                "startChar": 1,
+                "endLine": 361,
+                "endChar": 77,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 368,
+                "startChar": 1,
+                "endLine": 371,
+                "endChar": 43,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 384,
+                "startChar": 1,
+                "endLine": 388,
+                "endChar": 28,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 390,
+                "startChar": 1,
+                "endLine": 392,
+                "endChar": 28,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 394,
+                "startChar": 1,
+                "endLine": 397,
+                "endChar": 28,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 399,
+                "startChar": 1,
+                "endLine": 401,
+                "endChar": 27,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ChlamydiaScreeningCDS",
+                "libraryVersion": "1",
+                "startLine": 404,
+                "startChar": 1,
+                "endLine": 406,
+                "endChar": 23,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "ChlamydiaScreeningCDS",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Diagnosis, Active: Chlamydia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: Complications of Pregnancy, Childbirth and the Puerperium",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: Genital Herpes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: Genococcal Infections and Venereal Diseases",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: HIV",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: Inflammatory Diseases of Female Reproductive Organs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: Other Female Reproductive Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: Syphilis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnostic Study, Order: Diagnostic Studies During Pregnancy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnostic Study, Order: X-Ray Study (all inclusive)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Laboratory Test, Order: Lab Tests During Pregnancy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Laboratory Test, Order: Lab Tests for Sexually Transmitted Infections",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Laboratory Test, Order: Pap Test",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Laboratory Test, Order: Pregnancy Test",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Laboratory Test, Result: Chlamydia Screening",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication, Active: Contraceptive Medications",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication, Order: Contraceptive Medications",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication, Order: Isotretinoin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Characteristic Birthdate: birth date",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Characteristic Sex: Female",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Procedure, Performed: Delivery Live Births",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Procedure, Performed: Procedures During Pregnancy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Procedure, Performed: Procedures Involving Contraceptive Devices",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Characteristic Sexual Activity: sexually active",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication, Reason: Contraceptive for Pregnancy Prevention",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis, Active: Non-Birth Control Uses for Oral Contraceptive Pill",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Risk Evaluation, Document: Sexually Transmitted Infection",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "patient-qicore-qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

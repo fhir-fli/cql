@@ -1,0 +1,1520 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 56,
+                "message": "Could not load source for library FHIRHelpers, version 4.0.001.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "4.0.001",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 66,
+                "message": "Could not load source for library SupplementalDataElementsFHIR4, version 2.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SupplementalDataElementsFHIR4",
+                "targetIncludeLibraryVersionId": "2.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 69,
+                "message": "Could not load source for library MATGlobalCommonFunctionsFHIR4, version 5.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "MATGlobalCommonFunctionsFHIR4",
+                "targetIncludeLibraryVersionId": "5.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 40,
+                "startChar": 7,
+                "endLine": 40,
+                "endChar": 21,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 43,
+                "startChar": 7,
+                "endLine": 43,
+                "endChar": 17,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 46,
+                "startChar": 7,
+                "endLine": 46,
+                "endChar": 16,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 49,
+                "startChar": 7,
+                "endLine": 49,
+                "endChar": 15,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 235,
+                "startChar": 3,
+                "endLine": 235,
+                "endChar": 55,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 236,
+                "startChar": 35,
+                "endLine": 236,
+                "endChar": 40,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 175,
+                "startChar": 41,
+                "endLine": 175,
+                "endChar": 80,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 176,
+                "startChar": 38,
+                "endLine": 176,
+                "endChar": 43,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 179,
+                "startChar": 38,
+                "endLine": 179,
+                "endChar": 78,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 191,
+                "startChar": 41,
+                "endLine": 191,
+                "endChar": 80,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 192,
+                "startChar": 60,
+                "endLine": 192,
+                "endChar": 94,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 195,
+                "startChar": 38,
+                "endLine": 195,
+                "endChar": 78,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 207,
+                "startChar": 41,
+                "endLine": 207,
+                "endChar": 80,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 208,
+                "startChar": 38,
+                "endLine": 208,
+                "endChar": 43,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 211,
+                "startChar": 38,
+                "endLine": 211,
+                "endChar": 78,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 220,
+                "startChar": 41,
+                "endLine": 220,
+                "endChar": 80,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 221,
+                "startChar": 38,
+                "endLine": 221,
+                "endChar": 43,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 224,
+                "startChar": 38,
+                "endLine": 224,
+                "endChar": 78,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 166,
+                "startChar": 14,
+                "endLine": 166,
+                "endChar": 57,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 167,
+                "startChar": 15,
+                "endLine": 167,
+                "endChar": 62,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 168,
+                "startChar": 15,
+                "endLine": 168,
+                "endChar": 57,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 169,
+                "startChar": 15,
+                "endLine": 169,
+                "endChar": 78,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 170,
+                "startChar": 15,
+                "endLine": 170,
+                "endChar": 80,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 171,
+                "startChar": 72,
+                "endLine": 171,
+                "endChar": 106,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 58,
+                "startChar": 25,
+                "endLine": 58,
+                "endChar": 80,
+                "message": "Could not validate reference to expression Encounter with Order for Intervention for Hypertension because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 93,
+                "startChar": 12,
+                "endLine": 93,
+                "endChar": 56,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 94,
+                "startChar": 58,
+                "endLine": 94,
+                "endChar": 92,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 113,
+                "startChar": 12,
+                "endLine": 113,
+                "endChar": 77,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 114,
+                "startChar": 51,
+                "endLine": 114,
+                "endChar": 85,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 98,
+                "startChar": 12,
+                "endLine": 98,
+                "endChar": 55,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 99,
+                "startChar": 57,
+                "endLine": 99,
+                "endChar": 91,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 108,
+                "startChar": 12,
+                "endLine": 108,
+                "endChar": 64,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 109,
+                "startChar": 59,
+                "endLine": 109,
+                "endChar": 93,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 160,
+                "startChar": 14,
+                "endLine": 160,
+                "endChar": 53,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 161,
+                "startChar": 15,
+                "endLine": 161,
+                "endChar": 43,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 162,
+                "startChar": 46,
+                "endLine": 162,
+                "endChar": 80,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 103,
+                "startChar": 12,
+                "endLine": 103,
+                "endChar": 72,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 103,
+                "startChar": 12,
+                "endLine": 103,
+                "endChar": 72,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 104,
+                "startChar": 69,
+                "endLine": 104,
+                "endChar": 103,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 89,
+                "startChar": 63,
+                "endLine": 89,
+                "endChar": 92,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 119,
+                "startChar": 14,
+                "endLine": 119,
+                "endChar": 53,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 120,
+                "startChar": 15,
+                "endLine": 120,
+                "endChar": 43,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 121,
+                "startChar": 15,
+                "endLine": 121,
+                "endChar": 59,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 122,
+                "startChar": 15,
+                "endLine": 122,
+                "endChar": 58,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 123,
+                "startChar": 15,
+                "endLine": 123,
+                "endChar": 80,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 124,
+                "startChar": 15,
+                "endLine": 124,
+                "endChar": 58,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 125,
+                "startChar": 15,
+                "endLine": 125,
+                "endChar": 62,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 126,
+                "startChar": 15,
+                "endLine": 126,
+                "endChar": 57,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 127,
+                "startChar": 15,
+                "endLine": 127,
+                "endChar": 78,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 128,
+                "startChar": 15,
+                "endLine": 128,
+                "endChar": 80,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 129,
+                "startChar": 15,
+                "endLine": 129,
+                "endChar": 67,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 130,
+                "startChar": 15,
+                "endLine": 130,
+                "endChar": 75,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 130,
+                "startChar": 15,
+                "endLine": 130,
+                "endChar": 75,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 131,
+                "startChar": 19,
+                "endLine": 131,
+                "endChar": 56,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 137,
+                "startChar": 14,
+                "endLine": 137,
+                "endChar": 53,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 138,
+                "startChar": 15,
+                "endLine": 138,
+                "endChar": 55,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 139,
+                "startChar": 21,
+                "endLine": 139,
+                "endChar": 55,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 246,
+                "startChar": 11,
+                "endLine": 246,
+                "endChar": 25,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 240,
+                "startChar": 15,
+                "endLine": 240,
+                "endChar": 119,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 147,
+                "startChar": 3,
+                "endLine": 147,
+                "endChar": 98,
+                "message": "Could not validate reference to expression Encounter with Medical Reason for Not Obtaining or Patient Declined Blood Pressure Measurement because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 152,
+                "startChar": 12,
+                "endLine": 152,
+                "endChar": 51,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 153,
+                "startChar": 26,
+                "endLine": 153,
+                "endChar": 61,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "HBPComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 156,
+                "startChar": 3,
+                "endLine": 156,
+                "endChar": 22,
+                "message": "Could not validate reference to expression Initial Population because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "HBPComponent",
+            "version": "0.0.001"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.001"
+                },
+                {
+                    "localIdentifier": "SDE",
+                    "path": "SupplementalDataElementsFHIR4",
+                    "version": "2.0.000"
+                },
+                {
+                    "localIdentifier": "Global",
+                    "path": "MATGlobalCommonFunctionsFHIR4",
+                    "version": "5.0.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Diagnosis of Hypertension",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.263",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dietary Recommendations",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1515",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter to Screen for Blood Pressure",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1920",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ethnicity",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Finding of Elevated Blood Pressure or Hypertension",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.514",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up Within 4 Weeks",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1578",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up Within One Year",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1579",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Laboratory Tests for Hypertension",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1482",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lifestyle Recommendation",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1581",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ONC Administrative Sex",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Declined",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1582",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pharmacologic Therapy for Hypertension",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.1577",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Recommendation to Increase Physical Activity",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1518",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Referral or Counseling for Alcohol Consumption",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1583",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Referral to Primary Care or Alternate Provider",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1580",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Weight Reduction Recommended",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1510",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Birth date",
+                    "id": "21112-8",
+                    "display": "Birth date",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Diastolic blood pressure",
+                    "id": "8462-4",
+                    "display": "Diastolic blood pressure",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "EKG 12 channel panel",
+                    "id": "34534-8",
+                    "display": "EKG 12 channel panel",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "EKG study",
+                    "id": "11524-6",
+                    "display": "EKG study",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Systolic blood pressure",
+                    "id": "8480-6",
+                    "display": "Systolic blood pressure",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Payer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Race",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Sex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Qualifying Encounter During Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "ValidEncounter",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Encounter to Screen for Blood Pressure",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounter with High Blood Pressure Reading",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "QualifyingEncounter",
+                                "expression": {
+                                    "name": "Qualifying Encounter During Measurement Period",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "EncounterLastSystolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "identifier": "EncounterLastDiastolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounter with High Blood Pressure Reading Within Year Prior",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "QualifyingEncounter",
+                                "expression": {
+                                    "name": "Qualifying Encounter During Measurement Period",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "EncounterLastSystolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "identifier": "EncounterLastDiastolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounter with Second Hypertensive Reading",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Intersect",
+                        "operand": [
+                            {
+                                "name": "Encounter with High Blood Pressure Reading",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "Encounter with High Blood Pressure Reading Within Year Prior",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Encounter with Normal Blood Pressure Reading",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "QualifyingEncounter",
+                                "expression": {
+                                    "name": "Qualifying Encounter During Measurement Period",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "EncounterLastSystolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "identifier": "EncounterLastDiastolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounter with Prehypertensive Blood Pressure Reading",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "QualifyingEncounter",
+                                "expression": {
+                                    "name": "Qualifying Encounter During Measurement Period",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "EncounterLastSystolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            },
+                            {
+                                "identifier": "EncounterLastDiastolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounter with Order for Intervention for Hypertension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter with Order for Follow Up Within One Year",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter with Referral to Alternate Provider for High Blood Pressure Reading",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter with First Hypertensive Reading",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Except",
+                        "operand": [
+                            {
+                                "name": "Encounter with High Blood Pressure Reading",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "Encounter with High Blood Pressure Reading Within Year Prior",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Encounter with Order for Follow Up Within 4 Weeks",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter with Order for Laboratory Test for Hypertension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter with Order for Electrocardiogram for Hypertension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter with Order for Hypertension Medication",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Numerator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Initial Population",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Encounter with Order for Hypertension Follow Up Declined by Patient",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "GetModifierExtensions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "path": "modifierExtension",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "res",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        },
+                        "return": {
+                            "expression": {
+                                "name": "E",
+                                "type": "AliasRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "res",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "GetModiferExtension",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "name": "GetModifierExtensions",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "res",
+                                    "type": "OperandRef"
+                                },
+                                {
+                                    "name": "url",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "res",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Not Done",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "Not",
+                            "operand": {
+                                "type": "IsNull",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "R",
+                                            "expression": {
+                                                "name": "res",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "true",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "false",
+                            "type": "Literal"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "res",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}DomainResource",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Encounter with Medical Reason for Not Obtaining or Patient Declined Blood Pressure Measurement",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

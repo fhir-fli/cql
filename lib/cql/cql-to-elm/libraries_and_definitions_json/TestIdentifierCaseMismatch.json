@@ -1,0 +1,53 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TestIdentifierCaseMismatch",
+                "startLine": 6,
+                "startChar": 34,
+                "endLine": 6,
+                "endChar": 42,
+                "message": "A named type is required in this context.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "TestIdentifierCaseMismatch",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 50,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TestIdentifierCaseMismatch"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        }
+    }
+}

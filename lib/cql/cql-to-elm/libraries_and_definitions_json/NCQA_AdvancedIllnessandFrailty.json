@@ -1,0 +1,496 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 53,
+                "message": "Could not load source for library NCQA_FHIRBase, version 1.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "NCQA_FHIRBase",
+                "targetIncludeLibraryVersionId": "1.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 49,
+                "message": "Could not load source for library NCQA_Status, version 1.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "NCQA_Status",
+                "targetIncludeLibraryVersionId": "1.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 8,
+                "startChar": 1,
+                "endLine": 8,
+                "endChar": 56,
+                "message": "Could not load source for library NCQA_Encounter, version 1.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "NCQA_Encounter",
+                "targetIncludeLibraryVersionId": "1.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 9,
+                "startChar": 1,
+                "endLine": 9,
+                "endChar": 49,
+                "message": "Could not load source for library NCQA_Claims, version 1.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "NCQA_Claims",
+                "targetIncludeLibraryVersionId": "1.0.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 59,
+                "startChar": 22,
+                "endLine": 59,
+                "endChar": 76,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 33,
+                "startChar": 11,
+                "endLine": 33,
+                "endChar": 43,
+                "message": "Could not validate reference to expression Has Criteria Indicating Frailty because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 90,
+                "startChar": 14,
+                "endLine": 95,
+                "endChar": 45,
+                "message": "Could not resolve library name Status.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 80,
+                "startChar": 8,
+                "endLine": 80,
+                "endChar": 52,
+                "message": "Could not validate reference to expression Outpatient Encounters with Advanced Illness because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 103,
+                "startChar": 55,
+                "endLine": 103,
+                "endChar": 125,
+                "message": "Could not resolve library name Claims.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 111,
+                "startChar": 12,
+                "endLine": 111,
+                "endChar": 52,
+                "message": "Could not resolve library name FHIRBase.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 73,
+                "startChar": 7,
+                "endLine": 73,
+                "endChar": 65,
+                "message": "Could not validate reference to expression Outpatient Encounters or Discharges with Advanced Illness because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 114,
+                "startChar": 21,
+                "endLine": 114,
+                "endChar": 75,
+                "message": "Could not resolve library name Status.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 121,
+                "startChar": 62,
+                "endLine": 121,
+                "endChar": 132,
+                "message": "Could not resolve library name Claims.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 128,
+                "startChar": 21,
+                "endLine": 128,
+                "endChar": 91,
+                "message": "Could not resolve library name Status.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "NCQA_AdvancedIllnessandFrailty",
+                "libraryVersion": "1.0.0",
+                "startLine": 50,
+                "startChar": 9,
+                "endLine": 50,
+                "endChar": 41,
+                "message": "Could not validate reference to expression Has Criteria Indicating Frailty because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "NCQA_AdvancedIllnessandFrailty",
+            "version": "1.0.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                },
+                {
+                    "localIdentifier": "FHIRBase",
+                    "path": "NCQA_FHIRBase",
+                    "version": "1.0.0"
+                },
+                {
+                    "localIdentifier": "Status",
+                    "path": "NCQA_Status",
+                    "version": "1.0.0"
+                },
+                {
+                    "localIdentifier": "Encounters",
+                    "path": "NCQA_Encounter",
+                    "version": "1.0.0"
+                },
+                {
+                    "localIdentifier": "Claims",
+                    "path": "NCQA_Claims",
+                    "version": "1.0.0"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Acute Inpatient",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1810",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Advanced Illness",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1465",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dementia Medications",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1729",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ED",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1086",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Frailty Device",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1530",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Frailty Diagnosis",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1531",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Frailty Encounter",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1532",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Frailty Symptom",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1533",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Nonacute Inpatient",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1189",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Observation",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1191",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Online Assessments",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1446",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1202",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Telephone Visits",
+                    "id": "https://www.ncqa.org/fhir/valueset/2.16.840.1.113883.3.464.1004.1246",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Criteria Indicating Frailty",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Outpatient Encounters with Advanced Illness",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "EncounterWithDiagnosis",
+                                "expression": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "OutpatientEncounter",
+                                            "expression": {
+                                                "type": "Null"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Advanced Illness ValueSet",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Nonacute Inpatient Discharge with Advanced Illness",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "InpatientDischarge",
+                                "expression": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "DischargeWithDiagnosis",
+                                            "expression": {
+                                                "type": "Null"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Outpatient Encounters or Discharges with Advanced Illness",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Two Outpatient Visits with Advanced Illness on Different Dates of Service",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Acute Inpatient Encounter with Advanced Illness",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Acute Inpatient Discharge with Advanced Illness",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Dementia Medications In Year Before or During Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Advanced Illness and Frailty Exclusion Including Over Age 80",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Advanced Illness and Frailty Exclusion Not Including Over Age 80",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,1968 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 56,
+                "message": "Could not load source for library FHIRHelpers, version 4.3.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "4.3.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 48,
+                "message": "Could not load source for library Hospice, version 6.7.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "Hospice",
+                "targetIncludeLibraryVersionId": "6.7.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 62,
+                "message": "Could not load source for library PalliativeCare, version 1.7.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "PalliativeCare",
+                "targetIncludeLibraryVersionId": "1.7.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 8,
+                "startChar": 1,
+                "endLine": 8,
+                "endChar": 58,
+                "message": "Could not load source for library QICoreCommon, version 1.5.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "QICoreCommon",
+                "targetIncludeLibraryVersionId": "1.5.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 9,
+                "startChar": 1,
+                "endLine": 9,
+                "endChar": 61,
+                "message": "Could not load source for library SupplementalDataElements, version 3.4.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SupplementalDataElements",
+                "targetIncludeLibraryVersionId": "3.4.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 46,
+                "startChar": 11,
+                "endLine": 46,
+                "endChar": 32,
+                "message": "Could not resolve library name Hospice.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 180,
+                "startChar": 66,
+                "endLine": 180,
+                "endChar": 73,
+                "message": "Could not resolve library name QICoreCommon.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 63,
+                "startChar": 25,
+                "endLine": 63,
+                "endChar": 38,
+                "message": "Could not resolve call to operator toInterval with signature (choice<System.DateTime,interval<System.DateTime>>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 72,
+                "startChar": 25,
+                "endLine": 72,
+                "endChar": 38,
+                "message": "Could not resolve call to operator toInterval with signature (choice<System.DateTime,interval<System.DateTime>>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 95,
+                "startChar": 37,
+                "endLine": 95,
+                "endChar": 57,
+                "message": "Could not resolve call to operator isProblemListItem with signature (QICore.Condition).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 109,
+                "startChar": 35,
+                "endLine": 109,
+                "endChar": 53,
+                "message": "Could not resolve call to operator isHealthConcern with signature (QICore.Condition).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 87,
+                "startChar": 57,
+                "endLine": 87,
+                "endChar": 68,
+                "message": "Could not resolve call to operator toInterval with signature (choice<System.DateTime,interval<System.DateTime>>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 51,
+                "startChar": 10,
+                "endLine": 51,
+                "endChar": 42,
+                "message": "Could not validate reference to expression High BMI and Follow up Provided because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 67,
+                "startChar": 25,
+                "endLine": 67,
+                "endChar": 38,
+                "message": "Could not resolve call to operator toInterval with signature (choice<System.DateTime,interval<System.DateTime>>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 131,
+                "startChar": 33,
+                "endLine": 131,
+                "endChar": 51,
+                "message": "Could not resolve call to operator isHealthConcern with signature (QICore.Condition).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 144,
+                "startChar": 33,
+                "endLine": 144,
+                "endChar": 51,
+                "message": "Could not resolve call to operator isHealthConcern with signature (QICore.Condition).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 157,
+                "startChar": 58,
+                "endLine": 157,
+                "endChar": 69,
+                "message": "Could not resolve call to operator toInterval with signature (choice<System.DateTime,interval<System.DateTime>>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 167,
+                "startChar": 27,
+                "endLine": 167,
+                "endChar": 39,
+                "message": "Could not resolve model with namespace http://hl7.org/fhir",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 119,
+                "startChar": 33,
+                "endLine": 119,
+                "endChar": 46,
+                "message": "Could not resolve call to operator toInterval with signature (choice<System.DateTime,interval<System.DateTime>,QICore.Timing,System.DateTime>).",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 57,
+                "startChar": 15,
+                "endLine": 57,
+                "endChar": 76,
+                "message": "Could not validate reference to expression Medical Reason or Patient Reason for Not Performing BMI Exam because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 190,
+                "startChar": 7,
+                "endLine": 190,
+                "endChar": 21,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 193,
+                "startChar": 7,
+                "endLine": 193,
+                "endChar": 17,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 196,
+                "startChar": 7,
+                "endLine": 196,
+                "endChar": 16,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "PCSBMIScreenAndFollowUpFHIR",
+                "libraryVersion": "0.1.000",
+                "startLine": 199,
+                "startChar": 7,
+                "endLine": 199,
+                "endChar": 15,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "PCSBMIScreenAndFollowUpFHIR",
+            "version": "0.1.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.3.000"
+                },
+                {
+                    "localIdentifier": "Hospice",
+                    "path": "Hospice",
+                    "version": "6.7.000"
+                },
+                {
+                    "localIdentifier": "PalliativeCare",
+                    "path": "PalliativeCare",
+                    "version": "1.7.000"
+                },
+                {
+                    "localIdentifier": "QICoreCommon",
+                    "path": "QICoreCommon",
+                    "version": "1.5.000"
+                },
+                {
+                    "localIdentifier": "SDE",
+                    "path": "SupplementalDataElements",
+                    "version": "3.4.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "default": {
+                        "lowClosed": true,
+                        "highClosed": false,
+                        "type": "Interval",
+                        "low": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2024",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        },
+                        "high": {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2025",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            "millisecond": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        }
+                    },
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ActCode",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ICD10CM",
+                    "id": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ObservationCategoryCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Encounter to Evaluate BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1751",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up for Above Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1525",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up for Below Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1528",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medications for Above Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1561",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medications for Below Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1562",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Overweight or Obese",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.502",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Declined",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1582",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pregnancy or Other Related Diagnoses",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1623",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Referrals Where Weight Assessment May Occur",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1527",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Underweight",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1563",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Body mass index (BMI) [Ratio]",
+                    "id": "39156-5",
+                    "display": "Body mass index (BMI) [Ratio]",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Encounter for palliative care",
+                    "id": "Z51.5",
+                    "display": "Encounter for palliative care",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD10CM"
+                    }
+                },
+                {
+                    "name": "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)",
+                    "id": "71007-9",
+                    "display": "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "virtual",
+                    "id": "VR",
+                    "display": "virtual",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ActCode"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Qualifying Encounter during Day of Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "BMIEncounter",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Encounter to Evaluate BMI",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "precision": "Day",
+                                            "type": "IncludedIn",
+                                            "operand": [
+                                                {
+                                                    "name": "ToInterval",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "period",
+                                                            "scope": "BMIEncounter",
+                                                            "type": "Property"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Measurement Period",
+                                                    "type": "ParameterRef"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Not",
+                                            "operand": {
+                                                "type": "Equivalent",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToCode",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "class",
+                                                                "scope": "BMIEncounter",
+                                                                "type": "Property"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "virtual",
+                                                        "type": "CodeRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "status",
+                                                "scope": "BMIEncounter",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "finished",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Initial Population",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "QualifyingEncounter",
+                                    "expression": {
+                                        "name": "Qualifying Encounter during Day of Measurement Period",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "GreaterOrEqual",
+                                "operand": [
+                                    {
+                                        "precision": "Year",
+                                        "type": "CalculateAgeAt",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "birthDate",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "Patient",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "DateFrom",
+                                                "operand": {
+                                                    "type": "Start",
+                                                    "operand": {
+                                                        "name": "ToInterval",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "period",
+                                                                "scope": "QualifyingEncounter",
+                                                                "type": "Property"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "18",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Initial Population",
+                        "type": "ExpressionRef"
+                    }
+                },
+                {
+                    "name": "Pregnancy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "BMI during Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "BMI",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/bmi",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Documented High BMI during Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "BMI",
+                                "expression": {
+                                    "name": "BMI during Measurement Period",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "High BMI Interventions Ordered",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "HighInterventionsOrdered",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "type": "As",
+                                            "operand": {
+                                                "type": "Union",
+                                                "operand": [
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest",
+                                                        "codeProperty": "code",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Follow Up for Above Normal BMI",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    },
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest",
+                                                        "codeProperty": "code",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Referrals Where Weight Assessment May Occur",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "asTypeSpecifier": {
+                                                "type": "ListTypeSpecifier",
+                                                "elementType": {
+                                                    "type": "ChoiceTypeSpecifier",
+                                                    "choice": [
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        },
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}MedicationRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "As",
+                                            "operand": {
+                                                "type": "Union",
+                                                "operand": [
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest",
+                                                        "codeProperty": "medication",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Medications for Above Normal BMI",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    },
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest",
+                                                        "codeProperty": "medication",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Medications for Above Normal BMI",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "asTypeSpecifier": {
+                                                "type": "ListTypeSpecifier",
+                                                "elementType": {
+                                                    "type": "ChoiceTypeSpecifier",
+                                                    "choice": [
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        },
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}MedicationRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Or",
+                            "operand": [
+                                {
+                                    "type": "AnyInValueSet",
+                                    "codes": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "$this",
+                                                "expression": {
+                                                    "path": "reasonCode",
+                                                    "scope": "HighInterventionsOrdered",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        ],
+                                        "return": {
+                                            "distinct": false,
+                                            "expression": {
+                                                "name": "ToConcept",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "name": "$this",
+                                                        "type": "AliasRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "valueset": {
+                                        "name": "Overweight or Obese",
+                                        "preserve": true
+                                    }
+                                },
+                                {
+                                    "type": "Exists",
+                                    "operand": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "OverweightObese",
+                                                "expression": {
+                                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition",
+                                                    "codeProperty": "code",
+                                                    "codeComparator": "in",
+                                                    "type": "Retrieve",
+                                                    "codes": {
+                                                        "name": "Overweight or Obese",
+                                                        "preserve": true,
+                                                        "type": "ValueSetRef"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "relationship": [],
+                                        "where": {
+                                            "type": "Null"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "High BMI Interventions Performed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "HighInterventionsPerformed",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Follow Up for Above Normal BMI",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Or",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "AnyInValueSet",
+                                            "codes": {
+                                                "type": "Query",
+                                                "source": [
+                                                    {
+                                                        "alias": "$this",
+                                                        "expression": {
+                                                            "path": "reasonCode",
+                                                            "scope": "HighInterventionsPerformed",
+                                                            "type": "Property"
+                                                        }
+                                                    }
+                                                ],
+                                                "return": {
+                                                    "distinct": false,
+                                                    "expression": {
+                                                        "name": "ToConcept",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "name": "$this",
+                                                                "type": "AliasRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "valueset": {
+                                                "name": "Overweight or Obese",
+                                                "preserve": true
+                                            }
+                                        },
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "status",
+                                                        "scope": "HighInterventionsPerformed",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "completed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Exists",
+                                    "operand": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "OverweightObese",
+                                                "expression": {
+                                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition",
+                                                    "codeProperty": "code",
+                                                    "codeComparator": "in",
+                                                    "type": "Retrieve",
+                                                    "codes": {
+                                                        "name": "Overweight or Obese",
+                                                        "preserve": true,
+                                                        "type": "ValueSetRef"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "relationship": [],
+                                        "where": {
+                                            "type": "Null"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "High BMI and Follow up Provided",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Documented Low BMI during Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "BMI",
+                                "expression": {
+                                    "name": "BMI during Measurement Period",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Low BMI Interventions Ordered",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "LowInterventionsOrdered",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "type": "As",
+                                            "operand": {
+                                                "type": "Union",
+                                                "operand": [
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest",
+                                                        "codeProperty": "code",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Follow Up for Below Normal BMI",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    },
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest",
+                                                        "codeProperty": "code",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Referrals Where Weight Assessment May Occur",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "asTypeSpecifier": {
+                                                "type": "ListTypeSpecifier",
+                                                "elementType": {
+                                                    "type": "ChoiceTypeSpecifier",
+                                                    "choice": [
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        },
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}MedicationRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "As",
+                                            "operand": {
+                                                "type": "Union",
+                                                "operand": [
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest",
+                                                        "codeProperty": "medication",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Medications for Below Normal BMI",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    },
+                                                    {
+                                                        "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest",
+                                                        "codeProperty": "medication",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Medications for Below Normal BMI",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "asTypeSpecifier": {
+                                                "type": "ListTypeSpecifier",
+                                                "elementType": {
+                                                    "type": "ChoiceTypeSpecifier",
+                                                    "choice": [
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        },
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}MedicationRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Or",
+                            "operand": [
+                                {
+                                    "type": "AnyInValueSet",
+                                    "codes": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "$this",
+                                                "expression": {
+                                                    "path": "reasonCode",
+                                                    "scope": "LowInterventionsOrdered",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        ],
+                                        "return": {
+                                            "distinct": false,
+                                            "expression": {
+                                                "name": "ToConcept",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "name": "$this",
+                                                        "type": "AliasRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "valueset": {
+                                        "name": "Underweight",
+                                        "preserve": true
+                                    }
+                                },
+                                {
+                                    "type": "Exists",
+                                    "operand": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "Underweight",
+                                                "expression": {
+                                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition",
+                                                    "codeProperty": "code",
+                                                    "codeComparator": "in",
+                                                    "type": "Retrieve",
+                                                    "codes": {
+                                                        "name": "Underweight",
+                                                        "preserve": true,
+                                                        "type": "ValueSetRef"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "relationship": [],
+                                        "where": {
+                                            "type": "Null"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Low BMI Interventions Performed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "LowInterventionsPerformed",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Follow Up for Below Normal BMI",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Or",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "AnyInValueSet",
+                                            "codes": {
+                                                "type": "Query",
+                                                "source": [
+                                                    {
+                                                        "alias": "$this",
+                                                        "expression": {
+                                                            "path": "reasonCode",
+                                                            "scope": "LowInterventionsPerformed",
+                                                            "type": "Property"
+                                                        }
+                                                    }
+                                                ],
+                                                "return": {
+                                                    "distinct": false,
+                                                    "expression": {
+                                                        "name": "ToConcept",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "name": "$this",
+                                                                "type": "AliasRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "valueset": {
+                                                "name": "Underweight",
+                                                "preserve": true
+                                            }
+                                        },
+                                        {
+                                            "type": "Equal",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "status",
+                                                        "scope": "LowInterventionsPerformed",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "completed",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Exists",
+                                    "operand": {
+                                        "type": "Query",
+                                        "source": [
+                                            {
+                                                "alias": "Underweight",
+                                                "expression": {
+                                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                                    "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition",
+                                                    "codeProperty": "code",
+                                                    "codeComparator": "in",
+                                                    "type": "Retrieve",
+                                                    "codes": {
+                                                        "name": "Underweight",
+                                                        "preserve": true,
+                                                        "type": "ValueSetRef"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "relationship": [],
+                                        "where": {
+                                            "type": "Null"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Low BMI and Follow up Provided",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Has Normal BMI",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "And",
+                        "operand": [
+                            {
+                                "type": "Exists",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "BMI",
+                                            "expression": {
+                                                "name": "BMI during Measurement Period",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "In",
+                                        "operand": [
+                                            {
+                                                "name": "ToQuantity",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "scope": "BMI",
+                                                        "type": "Property"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "lowClosed": true,
+                                                "highClosed": true,
+                                                "type": "Interval",
+                                                "low": {
+                                                    "value": 18.5,
+                                                    "unit": "kg/m2",
+                                                    "type": "Quantity"
+                                                },
+                                                "high": {
+                                                    "value": 24.9,
+                                                    "unit": "kg/m2",
+                                                    "type": "Quantity"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Not",
+                                "operand": {
+                                    "type": "Or",
+                                    "operand": [
+                                        {
+                                            "type": "Exists",
+                                            "operand": {
+                                                "name": "Documented High BMI during Measurement Period",
+                                                "type": "ExpressionRef"
+                                            }
+                                        },
+                                        {
+                                            "type": "Exists",
+                                            "operand": {
+                                                "name": "Documented Low BMI during Measurement Period",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Numerator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Medical Reason for Not Documenting a Follow up Plan for Low or High BMI",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Union",
+                        "operand": [
+                            {
+                                "type": "As",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "NoBMIFollowUp",
+                                            "expression": {
+                                                "type": "Union",
+                                                "operand": [
+                                                    {
+                                                        "type": "Union",
+                                                        "operand": [
+                                                            {
+                                                                "type": "Union",
+                                                                "operand": [
+                                                                    {
+                                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested",
+                                                                        "codeProperty": "code",
+                                                                        "codeComparator": "in",
+                                                                        "type": "Retrieve",
+                                                                        "codes": {
+                                                                            "name": "Referrals Where Weight Assessment May Occur",
+                                                                            "preserve": true,
+                                                                            "type": "ValueSetRef"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested",
+                                                                        "codeProperty": "code",
+                                                                        "codeComparator": "~",
+                                                                        "type": "Retrieve",
+                                                                        "codes": {
+                                                                            "name": "Referrals Where Weight Assessment May Occur",
+                                                                            "preserve": true,
+                                                                            "type": "ValueSetRef"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "Union",
+                                                                "operand": [
+                                                                    {
+                                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested",
+                                                                        "codeProperty": "code",
+                                                                        "codeComparator": "in",
+                                                                        "type": "Retrieve",
+                                                                        "codes": {
+                                                                            "name": "Follow Up for Above Normal BMI",
+                                                                            "preserve": true,
+                                                                            "type": "ValueSetRef"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                                        "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested",
+                                                                        "codeProperty": "code",
+                                                                        "codeComparator": "~",
+                                                                        "type": "Retrieve",
+                                                                        "codes": {
+                                                                            "name": "Follow Up for Above Normal BMI",
+                                                                            "preserve": true,
+                                                                            "type": "ValueSetRef"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Union",
+                                                        "operand": [
+                                                            {
+                                                                "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested",
+                                                                "codeProperty": "code",
+                                                                "codeComparator": "in",
+                                                                "type": "Retrieve",
+                                                                "codes": {
+                                                                    "name": "Follow Up for Below Normal BMI",
+                                                                    "preserve": true,
+                                                                    "type": "ValueSetRef"
+                                                                }
+                                                            },
+                                                            {
+                                                                "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested",
+                                                                "codeProperty": "code",
+                                                                "codeComparator": "~",
+                                                                "type": "Retrieve",
+                                                                "codes": {
+                                                                    "name": "Follow Up for Below Normal BMI",
+                                                                    "preserve": true,
+                                                                    "type": "ValueSetRef"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [
+                                        {
+                                            "alias": "QualifyingEncounter",
+                                            "type": "With",
+                                            "expression": {
+                                                "name": "Qualifying Encounter during Day of Measurement Period",
+                                                "type": "ExpressionRef"
+                                            },
+                                            "suchThat": {
+                                                "precision": "Day",
+                                                "type": "SameAs",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "authoredOn",
+                                                            "scope": "NoBMIFollowUp",
+                                                            "type": "Property"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "Start",
+                                                        "operand": {
+                                                            "name": "ToInterval",
+                                                            "libraryName": "FHIRHelpers",
+                                                            "type": "FunctionRef",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "period",
+                                                                    "scope": "QualifyingEncounter",
+                                                                    "type": "Property"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "where": {
+                                        "type": "Null"
+                                    }
+                                },
+                                "asTypeSpecifier": {
+                                    "type": "ListTypeSpecifier",
+                                    "elementType": {
+                                        "type": "ChoiceTypeSpecifier",
+                                        "choice": [
+                                            {
+                                                "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                "type": "NamedTypeSpecifier"
+                                            },
+                                            {
+                                                "name": "{http://hl7.org/fhir}MedicationRequest",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "As",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "NoBMIFollowUp",
+                                            "expression": {
+                                                "type": "Union",
+                                                "operand": [
+                                                    {
+                                                        "type": "Union",
+                                                        "operand": [
+                                                            {
+                                                                "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotrequested",
+                                                                "codeProperty": "medication",
+                                                                "codeComparator": "in",
+                                                                "type": "Retrieve",
+                                                                "codes": {
+                                                                    "name": "Medications for Above Normal BMI",
+                                                                    "preserve": true,
+                                                                    "type": "ValueSetRef"
+                                                                }
+                                                            },
+                                                            {
+                                                                "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotrequested",
+                                                                "codeProperty": "medication",
+                                                                "codeComparator": "~",
+                                                                "type": "Retrieve",
+                                                                "codes": {
+                                                                    "name": "Medications for Above Normal BMI",
+                                                                    "preserve": true,
+                                                                    "type": "ValueSetRef"
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Union",
+                                                        "operand": [
+                                                            {
+                                                                "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotrequested",
+                                                                "codeProperty": "medication",
+                                                                "codeComparator": "in",
+                                                                "type": "Retrieve",
+                                                                "codes": {
+                                                                    "name": "Medications for Below Normal BMI",
+                                                                    "preserve": true,
+                                                                    "type": "ValueSetRef"
+                                                                }
+                                                            },
+                                                            {
+                                                                "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotrequested",
+                                                                "codeProperty": "medication",
+                                                                "codeComparator": "~",
+                                                                "type": "Retrieve",
+                                                                "codes": {
+                                                                    "name": "Medications for Below Normal BMI",
+                                                                    "preserve": true,
+                                                                    "type": "ValueSetRef"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [
+                                        {
+                                            "alias": "QualifyingEncounter",
+                                            "type": "With",
+                                            "expression": {
+                                                "name": "Qualifying Encounter during Day of Measurement Period",
+                                                "type": "ExpressionRef"
+                                            },
+                                            "suchThat": {
+                                                "precision": "Day",
+                                                "type": "SameAs",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "authoredOn",
+                                                            "scope": "NoBMIFollowUp",
+                                                            "type": "Property"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "Start",
+                                                        "operand": {
+                                                            "name": "ToInterval",
+                                                            "libraryName": "FHIRHelpers",
+                                                            "type": "FunctionRef",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "period",
+                                                                    "scope": "QualifyingEncounter",
+                                                                    "type": "Property"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "where": {
+                                        "type": "And",
+                                        "operand": [
+                                            {
+                                                "type": "Equivalent",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "status",
+                                                            "scope": "NoBMIFollowUp",
+                                                            "type": "Property"
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "completed",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "AnyInValueSet",
+                                                "codes": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "$this",
+                                                            "expression": {
+                                                                "path": "reasonCode",
+                                                                "scope": "NoBMIFollowUp",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "return": {
+                                                        "distinct": false,
+                                                        "expression": {
+                                                            "name": "ToConcept",
+                                                            "libraryName": "FHIRHelpers",
+                                                            "type": "FunctionRef",
+                                                            "operand": [
+                                                                {
+                                                                    "name": "$this",
+                                                                    "type": "AliasRef"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "valueset": {
+                                                    "name": "Medical Reason",
+                                                    "preserve": true
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "asTypeSpecifier": {
+                                    "type": "ListTypeSpecifier",
+                                    "elementType": {
+                                        "type": "ChoiceTypeSpecifier",
+                                        "choice": [
+                                            {
+                                                "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                "type": "NamedTypeSpecifier"
+                                            },
+                                            {
+                                                "name": "{http://hl7.org/fhir}MedicationRequest",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Medical Reason or Patient Reason for Not Performing BMI Exam",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Payer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Race",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Sex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

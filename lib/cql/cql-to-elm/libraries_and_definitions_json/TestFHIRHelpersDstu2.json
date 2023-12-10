@@ -1,0 +1,735 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestFHIRHelpersDstu2",
+            "version": "0.1.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "1.0.2"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "1.0.2"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestPeriodToInterval",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToInterval",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}Period",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "start",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}dateTime",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "type": "DateTime",
+                                                        "year": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "2017",
+                                                            "type": "Literal"
+                                                        },
+                                                        "month": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "5",
+                                                            "type": "Literal"
+                                                        },
+                                                        "day": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "6",
+                                                            "type": "Literal"
+                                                        },
+                                                        "hour": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "18",
+                                                            "type": "Literal"
+                                                        },
+                                                        "minute": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "8",
+                                                            "type": "Literal"
+                                                        },
+                                                        "second": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "end",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}dateTime",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "type": "DateTime",
+                                                        "year": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "2017",
+                                                            "type": "Literal"
+                                                        },
+                                                        "month": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "5",
+                                                            "type": "Literal"
+                                                        },
+                                                        "day": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "6",
+                                                            "type": "Literal"
+                                                        },
+                                                        "hour": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "19",
+                                                            "type": "Literal"
+                                                        },
+                                                        "minute": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "8",
+                                                            "type": "Literal"
+                                                        },
+                                                        "second": {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToQuantity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToQuantity",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}Quantity",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}decimal",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                        "value": "1.0",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "unit",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}string",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "mcg/h",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestRangeToInterval",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToInterval",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}Range",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "low",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}SimpleQuantity",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "classType": "{http://hl7.org/fhir}decimal",
+                                                        "type": "Instance",
+                                                        "element": [
+                                                            {
+                                                                "name": "value",
+                                                                "value": {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                                    "value": "1.0",
+                                                                    "type": "Literal"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "unit",
+                                                    "value": {
+                                                        "classType": "{http://hl7.org/fhir}string",
+                                                        "type": "Instance",
+                                                        "element": [
+                                                            {
+                                                                "name": "value",
+                                                                "value": {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                    "value": "mcg/h",
+                                                                    "type": "Literal"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "high",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}SimpleQuantity",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "classType": "{http://hl7.org/fhir}decimal",
+                                                        "type": "Instance",
+                                                        "element": [
+                                                            {
+                                                                "name": "value",
+                                                                "value": {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                                    "value": "2.0",
+                                                                    "type": "Literal"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "unit",
+                                                    "value": {
+                                                        "classType": "{http://hl7.org/fhir}string",
+                                                        "type": "Instance",
+                                                        "element": [
+                                                            {
+                                                                "name": "value",
+                                                                "value": {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                    "value": "mcg/h",
+                                                                    "type": "Literal"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToConcept",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToConcept",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}CodeableConcept",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "coding",
+                                        "value": {
+                                            "type": "List",
+                                            "element": [
+                                                {
+                                                    "classType": "{http://hl7.org/fhir}Coding",
+                                                    "type": "Instance",
+                                                    "element": [
+                                                        {
+                                                            "name": "code",
+                                                            "value": {
+                                                                "classType": "{http://hl7.org/fhir}code",
+                                                                "type": "Instance",
+                                                                "element": [
+                                                                    {
+                                                                        "name": "value",
+                                                                        "value": {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                            "value": "123",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "system",
+                                                            "value": {
+                                                                "classType": "{http://hl7.org/fhir}uri",
+                                                                "type": "Instance",
+                                                                "element": [
+                                                                    {
+                                                                        "name": "value",
+                                                                        "value": {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                            "value": "http://loinc.org",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "version",
+                                                            "value": {
+                                                                "classType": "{http://hl7.org/fhir}string",
+                                                                "type": "Instance",
+                                                                "element": [
+                                                                    {
+                                                                        "name": "value",
+                                                                        "value": {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                            "value": "201601",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "display",
+                                                            "value": {
+                                                                "classType": "{http://hl7.org/fhir}string",
+                                                                "type": "Instance",
+                                                                "element": [
+                                                                    {
+                                                                        "name": "value",
+                                                                        "value": {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                            "value": "the code",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "text",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}string",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "the code",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToCode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToCode",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}Coding",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "code",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}code",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "123",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "system",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}uri",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "http://loinc.org",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "version",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}string",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "201601",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "display",
+                                        "value": {
+                                            "classType": "{http://hl7.org/fhir}string",
+                                            "type": "Instance",
+                                            "element": [
+                                                {
+                                                    "name": "value",
+                                                    "value": {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "the code",
+                                                        "type": "Literal"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToString",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}uuid",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "1234567",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestRequestStatusToString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToString",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}MedicationOrderStatus",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "active",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToDateTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToDateTime",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}dateTime",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "type": "DateTime",
+                                            "year": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2017",
+                                                "type": "Literal"
+                                            },
+                                            "month": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "5",
+                                                "type": "Literal"
+                                            },
+                                            "day": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "6",
+                                                "type": "Literal"
+                                            },
+                                            "hour": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "18",
+                                                "type": "Literal"
+                                            },
+                                            "minute": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "8",
+                                                "type": "Literal"
+                                            },
+                                            "second": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToTime",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToTime",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}time",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "type": "Time",
+                                            "hour": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "18",
+                                                "type": "Literal"
+                                            },
+                                            "minute": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "8",
+                                                "type": "Literal"
+                                            },
+                                            "second": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToInteger",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToInteger",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}integer",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToDecimal",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToDecimal",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}decimal",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                            "value": "1.0",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TestToBoolean",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "ToBoolean",
+                        "libraryName": "FHIRHelpers",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "classType": "{http://hl7.org/fhir}boolean",
+                                "type": "Instance",
+                                "element": [
+                                    {
+                                        "name": "value",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                            "value": "true",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

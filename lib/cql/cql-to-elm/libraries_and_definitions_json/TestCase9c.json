@@ -1,0 +1,124 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestCase9c"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "MedicationRequestWithEncounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationRequest",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "E",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                                    "codeProperty": "id",
+                                    "codeComparator": "=",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "type": "ToList",
+                                        "operand": {
+                                            "type": "Last",
+                                            "source": {
+                                                "type": "Split",
+                                                "stringToSplit": {
+                                                    "name": "ToString",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "reference",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "path": "encounter",
+                                                                "scope": "M",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "separator": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": "/",
+                                                    "type": "Literal"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": []
+                    }
+                }
+            ]
+        }
+    }
+}

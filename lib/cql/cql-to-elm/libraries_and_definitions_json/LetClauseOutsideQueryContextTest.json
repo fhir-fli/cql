@@ -1,0 +1,147 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "LetClauseOutsideQueryContextTest",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "list",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "3",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "4",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "First Position of list",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "L1",
+                                "expression": {
+                                    "name": "list",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "L2",
+                                "expression": {
+                                    "type": "Indexer",
+                                    "operand": [
+                                        {
+                                            "name": "list",
+                                            "type": "ExpressionRef"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "0",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "L2",
+                                "type": "QueryLetRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Third Position of list With Same Name of Let As First",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "L1",
+                                "expression": {
+                                    "name": "list",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "L2",
+                                "expression": {
+                                    "type": "Indexer",
+                                    "operand": [
+                                        {
+                                            "name": "list",
+                                            "type": "ExpressionRef"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "name": "L2",
+                                "type": "QueryLetRef"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

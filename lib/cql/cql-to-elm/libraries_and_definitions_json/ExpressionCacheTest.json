@@ -1,0 +1,79 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "ExpressionCacheTest",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 49,
+                "message": "Could not load source for library ExpressionCacheTestCommon, version null.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "ExpressionCacheTestCommon",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ExpressionCacheTest",
+                "startLine": 9,
+                "startChar": 14,
+                "endLine": 9,
+                "endChar": 25,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "ExpressionCacheTest"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Common",
+                    "path": "ExpressionCacheTestCommon"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Expression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "5",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "IncludedExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

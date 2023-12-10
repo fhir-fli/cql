@@ -1,0 +1,813 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 74,
+                "startChar": 3,
+                "endLine": 74,
+                "endChar": 31,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 76,
+                "startChar": 13,
+                "endLine": 76,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 79,
+                "startChar": 3,
+                "endLine": 79,
+                "endChar": 45,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 81,
+                "startChar": 13,
+                "endLine": 81,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 84,
+                "startChar": 3,
+                "endLine": 84,
+                "endChar": 38,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 86,
+                "startChar": 13,
+                "endLine": 86,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 89,
+                "startChar": 3,
+                "endLine": 89,
+                "endChar": 47,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 91,
+                "startChar": 13,
+                "endLine": 91,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 96,
+                "startChar": 3,
+                "endLine": 96,
+                "endChar": 27,
+                "message": "Could not resolve type name MedicationOrder.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 126,
+                "startChar": 3,
+                "endLine": 126,
+                "endChar": 27,
+                "message": "Could not resolve type name MedicationOrder.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 133,
+                "startChar": 3,
+                "endLine": 133,
+                "endChar": 44,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 135,
+                "startChar": 13,
+                "endLine": 135,
+                "endChar": 29,
+                "message": "Member performedDateTime not found for type FHIR.Procedure.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 138,
+                "startChar": 3,
+                "endLine": 138,
+                "endChar": 53,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 140,
+                "startChar": 13,
+                "endLine": 140,
+                "endChar": 29,
+                "message": "Member performedDateTime not found for type FHIR.Procedure.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 143,
+                "startChar": 3,
+                "endLine": 143,
+                "endChar": 71,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 145,
+                "startChar": 13,
+                "endLine": 145,
+                "endChar": 29,
+                "message": "Member performedDateTime not found for type FHIR.Procedure.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 150,
+                "startChar": 3,
+                "endLine": 150,
+                "endChar": 43,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 152,
+                "startChar": 13,
+                "endLine": 152,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 155,
+                "startChar": 3,
+                "endLine": 155,
+                "endChar": 52,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 157,
+                "startChar": 13,
+                "endLine": 157,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 162,
+                "startChar": 3,
+                "endLine": 162,
+                "endChar": 46,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CDC",
+                "libraryVersion": "1",
+                "startLine": 164,
+                "startChar": 13,
+                "endLine": 164,
+                "endChar": 29,
+                "message": "Member effectiveDateTime not found for type FHIR.Observation.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CDC",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "HbA1c Tests",
+                    "id": "2.16.840.1.113883.3.464.1004.1116",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HbA1c Level Less than 7.0",
+                    "id": "2.16.840.1.113883.3.464.1004.1115",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HbA1c Level 7.0-9.0",
+                    "id": "2.16.840.1.113883.3.464.1004.1113",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HbA1c Level Greater Than 9.0",
+                    "id": "2.16.840.1.113883.3.464.1004.1114",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening",
+                    "id": "2.16.840.1.113883.3.464.1004.1078",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening Negative",
+                    "id": "2.16.840.1.113883.3.464.1004.1079",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening With Eye Care Professional",
+                    "id": "2.16.840.1.113883.3.464.1004.1080",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Urine Macroalbumin Tests",
+                    "id": "2.16.840.1.113883.3.464.1004.1257",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Positive Urine Macroalbumin Tests",
+                    "id": "2.16.840.1.113883.3.464.1004.1216",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Urine Protein Test",
+                    "id": "Urine Protein Test",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Lookback Interval One Year",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Start",
+                                    "operand": {
+                                        "name": "MeasurementPeriod",
+                                        "type": "ParameterRef"
+                                    }
+                                },
+                                {
+                                    "value": 1,
+                                    "unit": "years",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "End",
+                            "operand": {
+                                "name": "MeasurementPeriod",
+                                "type": "ParameterRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Lookback Interval Two Years",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "lowClosed": true,
+                        "highClosed": true,
+                        "type": "Interval",
+                        "low": {
+                            "type": "Subtract",
+                            "operand": [
+                                {
+                                    "type": "Start",
+                                    "operand": {
+                                        "name": "MeasurementPeriod",
+                                        "type": "ParameterRef"
+                                    }
+                                },
+                                {
+                                    "value": 2,
+                                    "unit": "years",
+                                    "type": "Quantity"
+                                }
+                            ]
+                        },
+                        "high": {
+                            "type": "End",
+                            "operand": {
+                                "name": "MeasurementPeriod",
+                                "type": "ParameterRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "In Demographic",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "GreaterOrEqual",
+                        "operand": [
+                            {
+                                "precision": "Year",
+                                "type": "CalculateAgeAt",
+                                "operand": [
+                                    {
+                                        "type": "ToDateTime",
+                                        "operand": {
+                                            "path": "birthDate.value",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Patient",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Start",
+                                        "operand": {
+                                            "name": "MeasurementPeriod",
+                                            "type": "ParameterRef"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "40",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Heamoglobin A1C Tests",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "T",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "HbA1c Tests",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Heamoglobin A1C Level Less than 7.0",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "H",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "HbA1c Level Less than 7.0",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Heamoglobin A1C Level 7.0-9.0",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "H",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "HbA1c Level 7.0-9.0",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Heamoglobin A1C Level Greater than 9.0",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "H",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "HbA1c Level Greater Than 9.0",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "ARB Medication Order",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "ACE Medication Order",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "A",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Diabetic Retinal Screening Eye Exam",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Diabetic Retinal Screening",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Diabetic Retinal Screening Negative Eye Exam",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Diabetic Retinal Screening Negative",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Diabetic Retinal Screening With Eye Care Professional Eye Exam",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Diabetic Retinal Screening With Eye Care Professional",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Macroalbumin Results",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Urine Macroalbumin Tests",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Positive Macroalbumin Tests",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "M",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Positive Urine Macroalbumin Tests",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Diabetic Retinopathy Detected",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "D",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Diabetic Retinal Screening",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

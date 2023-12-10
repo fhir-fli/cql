@@ -1,0 +1,908 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 56,
+                "message": "Could not load source for library FHIRHelpers, version 4.0.001.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "4.0.001",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 66,
+                "message": "Could not load source for library SupplementalDataElementsFHIR4, version 2.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SupplementalDataElementsFHIR4",
+                "targetIncludeLibraryVersionId": "2.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 69,
+                "message": "Could not load source for library MATGlobalCommonFunctionsFHIR4, version 5.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "MATGlobalCommonFunctionsFHIR4",
+                "targetIncludeLibraryVersionId": "5.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 8,
+                "startChar": 1,
+                "endLine": 8,
+                "endChar": 89,
+                "message": "Could not load source for library AdultOutpatientEncountersFHIR4, version 2.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "AdultOutpatientEncountersFHIR4",
+                "targetIncludeLibraryVersionId": "2.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 9,
+                "startChar": 1,
+                "endLine": 9,
+                "endChar": 53,
+                "message": "Could not load source for library HospiceFHIR4, version 2.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "HospiceFHIR4",
+                "targetIncludeLibraryVersionId": "2.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 10,
+                "startChar": 1,
+                "endLine": 10,
+                "endChar": 85,
+                "message": "Could not load source for library AdvancedIllnessandFrailtyExclusionECQMFHIR4, version 5.12.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "AdvancedIllnessandFrailtyExclusionECQMFHIR4",
+                "targetIncludeLibraryVersionId": "5.12.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 40,
+                "startChar": 7,
+                "endLine": 40,
+                "endChar": 21,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 43,
+                "startChar": 7,
+                "endLine": 43,
+                "endChar": 17,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 46,
+                "startChar": 7,
+                "endLine": 46,
+                "endChar": 16,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 49,
+                "startChar": 7,
+                "endLine": 49,
+                "endChar": 15,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 52,
+                "startChar": 3,
+                "endLine": 52,
+                "endChar": 27,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 57,
+                "startChar": 3,
+                "endLine": 57,
+                "endChar": 22,
+                "message": "Could not validate reference to expression Initial Population because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 60,
+                "startChar": 7,
+                "endLine": 60,
+                "endChar": 49,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 61,
+                "startChar": 15,
+                "endLine": 61,
+                "endChar": 74,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 62,
+                "startChar": 17,
+                "endLine": 62,
+                "endChar": 65,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 68,
+                "startChar": 3,
+                "endLine": 68,
+                "endChar": 44,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 69,
+                "startChar": 20,
+                "endLine": 69,
+                "endChar": 88,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 74,
+                "startChar": 3,
+                "endLine": 74,
+                "endChar": 43,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 75,
+                "startChar": 20,
+                "endLine": 75,
+                "endChar": 87,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 80,
+                "startChar": 3,
+                "endLine": 80,
+                "endChar": 48,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 81,
+                "startChar": 20,
+                "endLine": 81,
+                "endChar": 76,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 85,
+                "startChar": 3,
+                "endLine": 85,
+                "endChar": 37,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 86,
+                "startChar": 20,
+                "endLine": 86,
+                "endChar": 82,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 91,
+                "startChar": 12,
+                "endLine": 91,
+                "endChar": 44,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 92,
+                "startChar": 24,
+                "endLine": 92,
+                "endChar": 67,
+                "message": "Could not resolve library name Global.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 99,
+                "startChar": 11,
+                "endLine": 99,
+                "endChar": 23,
+                "message": "Could not resolve library name Hospice.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 115,
+                "startChar": 7,
+                "endLine": 115,
+                "endChar": 48,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 116,
+                "startChar": 15,
+                "endLine": 116,
+                "endChar": 74,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "BCSComponent",
+                "libraryVersion": "0.0.001",
+                "startLine": 117,
+                "startChar": 17,
+                "endLine": 117,
+                "endChar": 64,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "BCSComponent",
+            "version": "0.0.001"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.001"
+                },
+                {
+                    "localIdentifier": "SDE",
+                    "path": "SupplementalDataElementsFHIR4",
+                    "version": "2.0.000"
+                },
+                {
+                    "localIdentifier": "Global",
+                    "path": "MATGlobalCommonFunctionsFHIR4",
+                    "version": "5.0.000"
+                },
+                {
+                    "localIdentifier": "AdultOutpatientEncounters",
+                    "path": "AdultOutpatientEncountersFHIR4",
+                    "version": "2.0.000"
+                },
+                {
+                    "localIdentifier": "Hospice",
+                    "path": "HospiceFHIR4",
+                    "version": "2.0.000"
+                },
+                {
+                    "localIdentifier": "Frailty",
+                    "path": "AdvancedIllnessandFrailtyExclusionECQMFHIR4",
+                    "version": "5.12.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMEDCT",
+                    "id": "http://snomed.info/sct",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Bilateral Mastectomy",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1005",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ethnicity",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Female",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.560.100.2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "History of bilateral mastectomy",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1068",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.122.12.1036",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mammography",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ONC Administrative Sex",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Payer",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Race",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.122.12.1035",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Status Post Left Mastectomy",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1069",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Status Post Right Mastectomy",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1070",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy Left",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1133",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy Right",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1134",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy, Unspecified Laterality",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1071",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Birth date",
+                    "id": "21112-8",
+                    "display": "Birth date",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Left (qualifier value)",
+                    "id": "7771000",
+                    "display": "Left (qualifier value)",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMEDCT"
+                    }
+                },
+                {
+                    "name": "Right (qualifier value)",
+                    "id": "24028007",
+                    "display": "Right (qualifier value)",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMEDCT"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Payer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Race",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Sex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Initial Population",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Right Mastectomy Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "RightMastectomy",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}Condition",
+                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                            "codeProperty": "code",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Status Post Right Mastectomy",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        },
+                                        {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "UnilateralMastectomyDiagnosis",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                                        "codeProperty": "code",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Unilateral Mastectomy, Unspecified Laterality",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "Null"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Right Mastectomy Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "UnilateralMastectomyRightPerformed",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Unilateral Mastectomy Right",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Left Mastectomy Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "UnilateralMastectomyLeftPerformed",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Unilateral Mastectomy Left",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Bilateral Mastectomy Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "BilateralMastectomyHistory",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "History of bilateral mastectomy",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Bilateral Mastectomy Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "BilateralMastectomyPerformed",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "templateId": "http://hl7.org/fhir/StructureDefinition/Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Bilateral Mastectomy",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Numerator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "Mammogram",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}DiagnosticReport",
+                                        "templateId": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+                                        "codeProperty": "code",
+                                        "codeComparator": "in",
+                                        "type": "Retrieve",
+                                        "codes": {
+                                            "name": "Mammography",
+                                            "preserve": true,
+                                            "type": "ValueSetRef"
+                                        }
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Left Mastectomy",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "LeftMastectomy",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}Condition",
+                                            "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                            "codeProperty": "code",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Status Post Left Mastectomy",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        },
+                                        {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "UnilateralMastectomyDiagnosis",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "templateId": "http://hl7.org/fhir/StructureDefinition/Condition",
+                                                        "codeProperty": "code",
+                                                        "codeComparator": "in",
+                                                        "type": "Retrieve",
+                                                        "codes": {
+                                                            "name": "Unilateral Mastectomy, Unspecified Laterality",
+                                                            "preserve": true,
+                                                            "type": "ValueSetRef"
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "Null"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator Exclusion",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

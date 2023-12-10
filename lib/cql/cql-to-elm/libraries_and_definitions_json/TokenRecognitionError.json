@@ -1,0 +1,59 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "librarySystem": "/tmp/rep87548113603345133tmp",
+                "libraryId": "rep87548113603345133tmp",
+                "startLine": 1,
+                "startChar": 30,
+                "endLine": 1,
+                "endChar": 30,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TimeOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "ToString",
+                        "operand": {
+                            "type": "Ratio",
+                            "numerator": {
+                                "value": 30,
+                                "unit": "1"
+                            },
+                            "denominator": {
+                                "value": 0.0,
+                                "unit": "1"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

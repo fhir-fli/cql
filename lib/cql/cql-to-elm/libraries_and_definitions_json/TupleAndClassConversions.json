@@ -1,0 +1,196 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CodeExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{urn:hl7-org:elm-types:r1}Code",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "code",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "123",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "name": "version",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "ElementExpression",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "classType": "{http://hl7.org/fhir}Element",
+                        "type": "Instance",
+                        "element": [
+                            {
+                                "name": "id",
+                                "value": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "123",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TupleToClass",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "asType": "{http://hl7.org/fhir}Element",
+                        "type": "As",
+                        "operand": {
+                            "type": "Tuple",
+                            "element": [
+                                {
+                                    "name": "id",
+                                    "value": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "123",
+                                        "type": "Literal"
+                                    }
+                                },
+                                {
+                                    "name": "extension",
+                                    "value": {
+                                        "type": "List"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ClassToTuple",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "As",
+                        "operand": {
+                            "name": "TupleToClass",
+                            "type": "ExpressionRef"
+                        },
+                        "asTypeSpecifier": {
+                            "type": "TupleTypeSpecifier",
+                            "element": [
+                                {
+                                    "name": "id",
+                                    "elementType": {
+                                        "name": "{urn:hl7-org:elm-types:r1}String",
+                                        "type": "NamedTypeSpecifier"
+                                    }
+                                },
+                                {
+                                    "name": "extension",
+                                    "elementType": {
+                                        "type": "ListTypeSpecifier",
+                                        "elementType": {
+                                            "name": "{http://hl7.org/fhir}Extension",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ImplicitClassToTuple",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "name": "TupleToClass",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "asType": "{http://hl7.org/fhir}Element",
+                                "type": "As",
+                                "operand": {
+                                    "type": "Tuple",
+                                    "element": [
+                                        {
+                                            "name": "id",
+                                            "value": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "123",
+                                                "type": "Literal"
+                                            }
+                                        },
+                                        {
+                                            "name": "extension",
+                                            "value": {
+                                                "strict": false,
+                                                "type": "As",
+                                                "operand": {
+                                                    "type": "Null"
+                                                },
+                                                "asTypeSpecifier": {
+                                                    "type": "ListTypeSpecifier",
+                                                    "elementType": {
+                                                        "name": "{http://hl7.org/fhir}Extension",
+                                                        "type": "NamedTypeSpecifier"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "EmptyTuple",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Tuple"
+                    }
+                }
+            ]
+        }
+    }
+}

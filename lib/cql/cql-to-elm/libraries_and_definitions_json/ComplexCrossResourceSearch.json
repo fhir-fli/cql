@@ -1,0 +1,412 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "ComplexXResourceSearch",
+                "libraryVersion": "1",
+                "startLine": 10,
+                "startChar": 10,
+                "endLine": 10,
+                "endChar": 32,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "ComplexXResourceSearch",
+                "libraryVersion": "1",
+                "startLine": 11,
+                "startChar": 10,
+                "endLine": 11,
+                "endChar": 34,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "ComplexXResourceSearch",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Diabetes",
+                    "id": "2.16.840.1.113883.3.464.1003.103.12.1001",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "XSearchUsingMultipleSources",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Diabetes",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            },
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Diabetes",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "code",
+                                                "type": "Property",
+                                                "source": {
+                                                    "type": "Indexer",
+                                                    "operand": [
+                                                        {
+                                                            "path": "coding",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "path": "code",
+                                                                "scope": "C",
+                                                                "type": "Property"
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "190390000",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "code",
+                                                "type": "Property",
+                                                "source": {
+                                                    "type": "Indexer",
+                                                    "operand": [
+                                                        {
+                                                            "path": "coding",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "path": "code",
+                                                                "scope": "O",
+                                                                "type": "Property"
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "190390000",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "return": {
+                            "distinct": true,
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "C",
+                                        "value": {
+                                            "name": "C",
+                                            "type": "AliasRef"
+                                        }
+                                    },
+                                    {
+                                        "name": "O",
+                                        "value": {
+                                            "name": "O",
+                                            "type": "AliasRef"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "getCondition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "X",
+                                "expression": {
+                                    "name": "XSearchUsingMultipleSources",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "path": "C",
+                                "scope": "X",
+                                "type": "Property"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "firstCondition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "First",
+                        "source": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "C",
+                                    "expression": {
+                                        "name": "getCondition",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            ],
+                            "relationship": []
+                        }
+                    }
+                },
+                {
+                    "name": "conditionCode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "F",
+                                "expression": {
+                                    "name": "firstCondition",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "code",
+                                    "type": "Property",
+                                    "source": {
+                                        "type": "Indexer",
+                                        "operand": [
+                                            {
+                                                "path": "coding",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "code",
+                                                    "scope": "F",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "getObservation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "X",
+                                "expression": {
+                                    "name": "XSearchUsingMultipleSources",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "path": "O",
+                                "scope": "X",
+                                "type": "Property"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "firstObservation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "First",
+                        "source": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "O",
+                                    "expression": {
+                                        "name": "getObservation",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            ],
+                            "relationship": []
+                        }
+                    }
+                },
+                {
+                    "name": "observationCode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "F",
+                                "expression": {
+                                    "name": "firstObservation",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "code",
+                                    "type": "Property",
+                                    "source": {
+                                        "type": "Indexer",
+                                        "operand": [
+                                            {
+                                                "path": "coding",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "code",
+                                                    "scope": "F",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "0",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,130 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "Arithmetic_Mixed",
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 58,
+                "message": "Could not load source for library TranslationTestsCommon, version 1.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "TranslationTestsCommon",
+                "targetIncludeLibraryVersionId": "1.0",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "Arithmetic_Mixed",
+                "startLine": 8,
+                "startChar": 102,
+                "endLine": 8,
+                "endChar": 115,
+                "message": "Could not resolve library name Common.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "Arithmetic_Mixed"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Common",
+                    "path": "TranslationTestsCommon",
+                    "version": "1.0"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Arithmetic_Mixed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Subtract",
+                        "operand": [
+                            {
+                                "type": "ToDecimal",
+                                "operand": {
+                                    "type": "Add",
+                                    "operand": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "type": "Multiply",
+                                            "operand": [
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "5",
+                                                    "type": "Literal"
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "10",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Divide",
+                                "operand": [
+                                    {
+                                        "type": "ToDecimal",
+                                        "operand": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "15",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "type": "ToDecimal",
+                                        "operand": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "test_Arithmetic_Mixed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

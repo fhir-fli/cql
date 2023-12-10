@@ -1,0 +1,163 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestChoiceUnion"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Union of Different Types",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "R",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "type": "As",
+                                            "operand": {
+                                                "dataType": "{http://hl7.org/fhir}Procedure",
+                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure",
+                                                "type": "Retrieve"
+                                            },
+                                            "asTypeSpecifier": {
+                                                "type": "ListTypeSpecifier",
+                                                "elementType": {
+                                                    "type": "ChoiceTypeSpecifier",
+                                                    "choice": [
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        },
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}Procedure",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "As",
+                                            "operand": {
+                                                "dataType": "{http://hl7.org/fhir}ServiceRequest",
+                                                "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest",
+                                                "type": "Retrieve"
+                                            },
+                                            "asTypeSpecifier": {
+                                                "type": "ListTypeSpecifier",
+                                                "elementType": {
+                                                    "type": "ChoiceTypeSpecifier",
+                                                    "choice": [
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}ServiceRequest",
+                                                            "type": "NamedTypeSpecifier"
+                                                        },
+                                                        {
+                                                            "name": "{http://hl7.org/fhir}Procedure",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "return": {
+                            "expression": {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "performed",
+                                        "value": {
+                                            "name": "ToValue",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "performed",
+                                                    "scope": "R",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "authoredOn",
+                                        "value": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "authoredOn",
+                                                "scope": "R",
+                                                "type": "Property"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

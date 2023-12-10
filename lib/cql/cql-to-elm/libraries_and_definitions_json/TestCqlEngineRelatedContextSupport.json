@@ -1,0 +1,173 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "TestCqlEngineRelatedContextSupport",
+                "libraryVersion": "1.0",
+                "startLine": 9,
+                "startChar": 47,
+                "endLine": 9,
+                "endChar": 114,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TestCqlEngineRelatedContextSupport",
+            "version": "1.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Primary Care Doctor",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Practitioner",
+                            "templateId": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+                            "codeProperty": "id",
+                            "codeComparator": "in",
+                            "type": "Retrieve",
+                            "codes": {
+                                "type": "ToList",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "$this",
+                                            "expression": {
+                                                "type": "Query",
+                                                "source": [
+                                                    {
+                                                        "alias": "$this",
+                                                        "expression": {
+                                                            "path": "generalPractitioner",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "Patient",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "where": {
+                                                    "type": "Not",
+                                                    "operand": {
+                                                        "type": "IsNull",
+                                                        "operand": {
+                                                            "path": "reference",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "$this",
+                                                                "type": "AliasRef"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "return": {
+                                                    "distinct": false,
+                                                    "expression": {
+                                                        "path": "reference",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "name": "$this",
+                                                            "type": "AliasRef"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "where": {
+                                        "type": "Not",
+                                        "operand": {
+                                            "type": "IsNull",
+                                            "operand": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "$this",
+                                                    "type": "AliasRef"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "$this",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "All Patient for GP",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Patient",
+                        "templateId": "http://hl7.org/fhir/StructureDefinition/Patient",
+                        "type": "Retrieve",
+                        "context": {
+                            "name": "Primary Care Doctor",
+                            "type": "ExpressionRef"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

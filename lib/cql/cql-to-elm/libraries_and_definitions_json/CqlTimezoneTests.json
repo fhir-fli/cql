@@ -1,0 +1,418 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CqlTimeZoneTests"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "After_SameHour",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "After",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "25",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "200",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "14",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "47",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "500",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SameAs_SameHour",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "SameAs",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "25",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "200",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "14",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "47",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "500",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SameOrAfter_HourBefore",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "SameOrAfter",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "25",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "200",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "14",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "14",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "47",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "500",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SameOrBefore_SameHour",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Hour",
+                        "type": "SameOrBefore",
+                        "operand": [
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "30",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "25",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "200",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "DateTime",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2000",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "3",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "15",
+                                    "type": "Literal"
+                                },
+                                "hour": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "13",
+                                    "type": "Literal"
+                                },
+                                "minute": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "14",
+                                    "type": "Literal"
+                                },
+                                "second": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "47",
+                                    "type": "Literal"
+                                },
+                                "millisecond": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "500",
+                                    "type": "Literal"
+                                },
+                                "timezoneOffset": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "1.0",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,278 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "DataRequirements"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.0"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "ESRD Diagnosis",
+                    "id": "http://fakeurl.com/ersd-diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hospice Encounter",
+                    "id": "http://fakeurl.com/hospice-encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HEDIS2020_Independent_Laboratory",
+                    "id": "com:testmi:valueset:xyz-33475",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ED",
+                    "id": "http://fakeurl.com/ed",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "ESRD Observations",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Observation",
+                        "codeProperty": "code",
+                        "codeComparator": "in",
+                        "type": "Retrieve",
+                        "codes": {
+                            "name": "ESRD Diagnosis",
+                            "preserve": true,
+                            "type": "ValueSetRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Observations",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "name": "ToString",
+                                    "libraryName": "FHIRHelpers",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "path": "status",
+                                            "scope": "O",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "final",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "HospiceEncounterClaimsA",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "CEncounter",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Claim",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Exists",
+                            "operand": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "IEncounter",
+                                        "expression": {
+                                            "path": "item",
+                                            "scope": "CEncounter",
+                                            "type": "Property"
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "where": {
+                                    "type": "InValueSet",
+                                    "code": {
+                                        "name": "ToConcept",
+                                        "libraryName": "FHIRHelpers",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "path": "revenue",
+                                                "scope": "IEncounter",
+                                                "type": "Property"
+                                            }
+                                        ]
+                                    },
+                                    "valueset": {
+                                        "name": "Hospice Encounter",
+                                        "preserve": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "HospiceEncounterClaimsBUnboundDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "CEncounter",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Claim",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Exists",
+                            "operand": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "IEncounter",
+                                        "expression": {
+                                            "path": "item",
+                                            "scope": "CEncounter",
+                                            "type": "Property"
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "where": {
+                                    "precision": "Day",
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "type": "ToDateTime",
+                                            "operand": {
+                                                "type": "DateFrom",
+                                                "operand": {
+                                                    "name": "ToDateTime",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "start",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "path": "serviced",
+                                                                "scope": "IEncounter",
+                                                                "type": "Property"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "Measurement Period",
+                                            "type": "ParameterRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,171 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 7,
+                "startChar": 16,
+                "endLine": 7,
+                "endChar": 16,
+                "message": "Syntax error at [",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 33,
+                "startChar": 16,
+                "endLine": 33,
+                "endChar": 16,
+                "message": "Syntax error at [",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 59,
+                "startChar": 16,
+                "endLine": 59,
+                "endChar": 16,
+                "message": "Syntax error at [",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 89,
+                "startChar": 16,
+                "endLine": 89,
+                "endChar": 16,
+                "message": "Syntax error at [",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 118,
+                "startChar": 41,
+                "endLine": 118,
+                "endChar": 41,
+                "message": "Syntax error at [",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 118,
+                "startChar": 61,
+                "endLine": 118,
+                "endChar": 61,
+                "message": "Syntax error at ]",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 119,
+                "startChar": 0,
+                "endLine": 119,
+                "endChar": 0,
+                "message": "Syntax error at {",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 15,
+                "message": "Could not resolve context name PATIENT in model FHIR.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 33,
+                "startChar": 1,
+                "endLine": 57,
+                "endChar": 1,
+                "message": "Identifier retrieve is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 59,
+                "startChar": 1,
+                "endLine": 86,
+                "endChar": 1,
+                "message": "Identifier retrieve is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 89,
+                "startChar": 1,
+                "endLine": 115,
+                "endChar": 1,
+                "message": "Identifier retrieve is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "FHIRMap",
+                "startLine": 118,
+                "startChar": 1,
+                "endLine": 126,
+                "endChar": 1,
+                "message": "Internal translator error.",
+                "errorType": "internal",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "FHIRMap"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "retrieve",
+                    "context": "PATIENT",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

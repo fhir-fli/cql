@@ -1,0 +1,132 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0,
+                "message": "Syntax error at [",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 58,
+                "startChar": 4,
+                "endLine": 58,
+                "endChar": 4,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 58,
+                "startChar": 8,
+                "endLine": 58,
+                "endChar": 8,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 58,
+                "startChar": 11,
+                "endLine": 58,
+                "endChar": 11,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 58,
+                "startChar": 15,
+                "endLine": 58,
+                "endChar": 15,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 58,
+                "startChar": 18,
+                "endLine": 58,
+                "endChar": 18,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 58,
+                "startChar": 24,
+                "endLine": 58,
+                "endChar": 24,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 60,
+                "startChar": 7,
+                "endLine": 60,
+                "endChar": 7,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep8766283899572332400tmp",
+                "libraryId": "rep8766283899572332400tmp",
+                "startLine": 60,
+                "startChar": 11,
+                "endLine": 60,
+                "endChar": 11,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

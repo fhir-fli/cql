@@ -1,0 +1,60 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "librarySystem": "/tmp/rep1882846722394298989tmp",
+                "libraryId": "rep1882846722394298989tmp",
+                "startLine": 2,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0,
+                "message": "Syntax error at (",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep1882846722394298989tmp",
+                "libraryId": "rep1882846722394298989tmp",
+                "startLine": 337,
+                "startChar": 18,
+                "endLine": 337,
+                "endChar": 18,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep1882846722394298989tmp",
+                "libraryId": "rep1882846722394298989tmp",
+                "startLine": 338,
+                "startChar": 19,
+                "endLine": 338,
+                "endChar": 19,
+                "message": "Syntax error",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

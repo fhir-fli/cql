@@ -1,0 +1,367 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CqlListDistinguishedOverloads"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "toString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "IsNull",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "null",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "type": "ToString",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "IsNull",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "null",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "type": "Concatenate",
+                            "operand": [
+                                {
+                                    "type": "Concatenate",
+                                    "operand": [
+                                        {
+                                            "type": "Concatenate",
+                                            "operand": [
+                                                {
+                                                    "type": "Concatenate",
+                                                    "operand": [
+                                                        {
+                                                            "type": "Concatenate",
+                                                            "operand": [
+                                                                {
+                                                                    "type": "Concatenate",
+                                                                    "operand": [
+                                                                        {
+                                                                            "type": "Concatenate",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "type": "Concatenate",
+                                                                                    "operand": [
+                                                                                        {
+                                                                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                                            "value": "Code { code: ",
+                                                                                            "type": "Literal"
+                                                                                        },
+                                                                                        {
+                                                                                            "path": "code",
+                                                                                            "type": "Property",
+                                                                                            "source": {
+                                                                                                "name": "value",
+                                                                                                "type": "OperandRef"
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                                    "value": " system: ",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "path": "system",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "name": "value",
+                                                                                "type": "OperandRef"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                    "value": " version: ",
+                                                                    "type": "Literal"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "path": "version",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "value",
+                                                                "type": "OperandRef"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                    "value": " display: ",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "path": "display",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "value",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": " }",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "IsNull",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "null",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "type": "Combine",
+                            "source": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "V",
+                                        "expression": {
+                                            "name": "value",
+                                            "type": "OperandRef"
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "return": {
+                                    "expression": {
+                                        "name": "toString",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "name": "V",
+                                                "type": "AliasRef"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            "separator": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": ", ",
+                                "type": "Literal"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toString",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "IsNull",
+                            "operand": {
+                                "name": "value",
+                                "type": "OperandRef"
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "null",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "type": "Combine",
+                            "source": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "V",
+                                        "expression": {
+                                            "name": "value",
+                                            "type": "OperandRef"
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "return": {
+                                    "expression": {
+                                        "name": "toString",
+                                        "type": "FunctionRef",
+                                        "operand": [
+                                            {
+                                                "name": "V",
+                                                "type": "AliasRef"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            "separator": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": ", ",
+                                "type": "Literal"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "value",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Test",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "toString",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "type": "List",
+                                "element": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "1",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "3",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "4",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

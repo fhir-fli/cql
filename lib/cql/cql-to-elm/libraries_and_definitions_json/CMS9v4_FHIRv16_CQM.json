@@ -1,0 +1,909 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 38,
+                "message": "Could not load source for library FHIRHelpers, version null.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 35,
+                "startChar": 3,
+                "endLine": 35,
+                "endChar": 36,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 36,
+                "startChar": 11,
+                "endLine": 36,
+                "endChar": 39,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 41,
+                "startChar": 3,
+                "endLine": 41,
+                "endChar": 53,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 42,
+                "startChar": 11,
+                "endLine": 42,
+                "endChar": 54,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 46,
+                "startChar": 4,
+                "endLine": 46,
+                "endChar": 35,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 47,
+                "startChar": 11,
+                "endLine": 47,
+                "endChar": 66,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 48,
+                "startChar": 11,
+                "endLine": 48,
+                "endChar": 45,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 55,
+                "startChar": 3,
+                "endLine": 55,
+                "endChar": 37,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 56,
+                "startChar": 11,
+                "endLine": 56,
+                "endChar": 40,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 59,
+                "startChar": 3,
+                "endLine": 59,
+                "endChar": 29,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 60,
+                "startChar": 11,
+                "endLine": 60,
+                "endChar": 45,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 65,
+                "startChar": 74,
+                "endLine": 65,
+                "endChar": 125,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 73,
+                "startChar": 3,
+                "endLine": 73,
+                "endChar": 51,
+                "message": "Could not validate reference to expression Live Birth Infants without Parenteral Nutrition because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 90,
+                "startChar": 61,
+                "endLine": 90,
+                "endChar": 117,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 98,
+                "startChar": 3,
+                "endLine": 98,
+                "endChar": 43,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 99,
+                "startChar": 11,
+                "endLine": 99,
+                "endChar": 38,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 102,
+                "startChar": 3,
+                "endLine": 102,
+                "endChar": 69,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 103,
+                "startChar": 11,
+                "endLine": 103,
+                "endChar": 43,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 107,
+                "startChar": 50,
+                "endLine": 107,
+                "endChar": 98,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 127,
+                "startChar": 3,
+                "endLine": 127,
+                "endChar": 51,
+                "message": "Could not validate reference to expression Live Birth Infants without Parenteral Nutrition because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 164,
+                "startChar": 3,
+                "endLine": 164,
+                "endChar": 50,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 169,
+                "startChar": 17,
+                "endLine": 169,
+                "endChar": 65,
+                "message": "Could not resolve library name FHIRHelpers.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 173,
+                "startChar": 11,
+                "endLine": 173,
+                "endChar": 39,
+                "message": "Could not validate reference to expression Intention Not To Breastfeed because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9_CQM",
+                "libraryVersion": "4.1.6",
+                "startLine": 180,
+                "startChar": 3,
+                "endLine": 180,
+                "endChar": 15,
+                "message": "Could not validate reference to expression Numerator 1 because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CMS9_CQM",
+            "version": "4.1.6"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "1.6"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "Example Data Elements",
+                    "id": "http://example.org/dataelements",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Breastfeeding Intention Code System",
+                    "id": "http://example.org/codesystem-breastfeeding-intention",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Feeding Intention-Breast",
+                    "id": "2.16.840.1.113762.1.4.1045.29",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Feeding Intention-Not-To-Breast",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Galactosemia",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.35",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Birth",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.25",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Born Newborn Born in Hospital",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.26",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter Inpatient",
+                    "id": "2.16.840.1.113883.3.666.5.307",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Estimated Gestational Age at Birth",
+                    "id": "2.16.840.1.113762.1.4.1045.47",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Parenteral Nutrition",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.38",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Breast Milk",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.30",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dietary Intake Other than Breast Milk",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.27",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Neonatal Intensive Care Unit (NICU)",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.75",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Expired",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.309",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Discharge To Acute Care Facility",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.87",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ethnicity CDCREC",
+                    "id": "2.16.840.1.114222.4.11.837",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Payer SOP",
+                    "id": "2.16.840.1.114222.4.11.3591",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Race CDCREC",
+                    "id": "2.16.840.1.114222.4.11.836",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ONC Administrative Sex AdministrativeGender",
+                    "id": "2.16.840.1.113762.1.4.1",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Encounter Inpatient",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Gestational Age at Birth <= 37 weeks",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Observation",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Observation",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Estimated Gestational Age at Birth",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Single Live Birth Condition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Condition",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}Condition",
+                                            "codeProperty": "code",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Single Live Birth",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        },
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}Condition",
+                                            "codeProperty": "code",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Single Live Born Newborn Born in Hospital",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Infant Birth Date",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "abatementDateTime",
+                        "type": "Property",
+                        "source": {
+                            "type": "Last",
+                            "source": {
+                                "name": "Single Live Birth Condition",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Parenteral Nutrition Procedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Procedure",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Procedure",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Parenteral Nutrition",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Galactosemia Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Condition",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Condition",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Galactosemia",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Live Birth Infants without Parenteral Nutrition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Initial Population 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                        "value": "true",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Denominator Exclusions 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Encounter",
+                                "expression": {
+                                    "name": "Inpatient Encounter",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Or",
+                            "operand": [
+                                {
+                                    "type": "Not",
+                                    "operand": {
+                                        "type": "IsNull",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "Hospitalization",
+                                                    "expression": {
+                                                        "path": "hospitalization",
+                                                        "scope": "Encounter",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "Null"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "Not",
+                                    "operand": {
+                                        "type": "IsNull",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "Hospitalization",
+                                                    "expression": {
+                                                        "path": "hospitalization",
+                                                        "scope": "Encounter",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "Null"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Breast Milk Feeding",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Feeding",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationAdministration",
+                                    "codeProperty": "medicationCodeableConcept",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Breast Milk",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Other Than Breast Milk Feeding",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "OtherFeeding",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}MedicationAdministration",
+                                    "codeProperty": "medicationCodeableConcept",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Dietary Intake Other than Breast Milk",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Numerator 1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Initial Population 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Breastfeeding Intention Code",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "code": "breastfeeding-intention",
+                        "type": "Code",
+                        "system": {
+                            "name": "Example Data Elements"
+                        }
+                    }
+                },
+                {
+                    "name": "Positive Breastfeeding Intention Code",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "code": "positive",
+                        "display": "Intention to breastfeed",
+                        "type": "Code",
+                        "system": {
+                            "name": "Breastfeeding Intention Code System"
+                        }
+                    }
+                },
+                {
+                    "name": "Negative Breastfeeding Intention Code",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "code": "negative",
+                        "display": "Intention not to breastfeed",
+                        "type": "Code",
+                        "system": {
+                            "name": "Breastfeeding Intention Code System"
+                        }
+                    }
+                },
+                {
+                    "name": "Breastfeeding Intention Assessment",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "Assessment",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}RiskAssessment",
+                                    "codeProperty": "code",
+                                    "codeComparator": "~",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "type": "ToList",
+                                        "operand": {
+                                            "name": "Breastfeeding Intention Code",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": []
+                    }
+                },
+                {
+                    "name": "Intention Not To Breastfeed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator Exclusions 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Numerator 2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

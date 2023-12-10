@@ -1,0 +1,652 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 33,
+                "startChar": 3,
+                "endLine": 33,
+                "endChar": 45,
+                "message": "Could not resolve identifier Gestational Age At Birth in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 36,
+                "startChar": 1,
+                "endLine": 38,
+                "endChar": 68,
+                "message": "Identifier Single Live Birth is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 40,
+                "startChar": 1,
+                "endLine": 41,
+                "endChar": 39,
+                "message": "Identifier Parenteral Nutrition is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 48,
+                "startChar": 10,
+                "endLine": 48,
+                "endChar": 47,
+                "message": "Could not validate reference to expression Gestational Age at Birth <= 37 weeks because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 56,
+                "startChar": 3,
+                "endLine": 56,
+                "endChar": 51,
+                "message": "Could not validate reference to expression Live Birth Infants without Parenteral Nutrition because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 63,
+                "startChar": 3,
+                "endLine": 63,
+                "endChar": 22,
+                "message": "Could not validate reference to expression InitialPopulation1 because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 71,
+                "startChar": 19,
+                "endLine": 71,
+                "endChar": 30,
+                "message": "Member Location not found for type QUICK.Encounter.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 82,
+                "startChar": 3,
+                "endLine": 82,
+                "endChar": 45,
+                "message": "Could not resolve code path medication.code for the type of the retrieve QUICK.MedicationAdministration.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 82,
+                "startChar": 3,
+                "endLine": 82,
+                "endChar": 45,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 85,
+                "startChar": 3,
+                "endLine": 85,
+                "endChar": 71,
+                "message": "Could not resolve code path medication.code for the type of the retrieve QUICK.MedicationAdministration.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 85,
+                "startChar": 3,
+                "endLine": 85,
+                "endChar": 71,
+                "message": "Could not resolve membership operator for terminology target of the retrieve.",
+                "errorType": "semantic",
+                "errorSeverity": "warning",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 89,
+                "startChar": 46,
+                "endLine": 89,
+                "endChar": 64,
+                "message": "Member effectiveDateTime not found for type QUICK.MedicationAdministration.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 109,
+                "startChar": 3,
+                "endLine": 109,
+                "endChar": 51,
+                "message": "Could not validate reference to expression Live Birth Infants without Parenteral Nutrition because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 121,
+                "startChar": 3,
+                "endLine": 121,
+                "endChar": 41,
+                "message": "Could not resolve type name Patient Characteristic.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 127,
+                "startChar": 13,
+                "endLine": 127,
+                "endChar": 57,
+                "message": "Could not resolve identifier Feeding Intention-Breast in the current library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 134,
+                "startChar": 11,
+                "endLine": 134,
+                "endChar": 40,
+                "message": "Could not validate reference to expression Intention Not To Breast Feed because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "CMS9",
+                "libraryVersion": "4",
+                "startLine": 141,
+                "startChar": 3,
+                "endLine": 141,
+                "endChar": 14,
+                "message": "Could not validate reference to expression Numerator1 because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "CMS9",
+            "version": "4"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "From Patient to Provider: Feeding Intention-Breast",
+                    "id": "2.16.840.1.113762.1.4.1045.29",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Galactosemia",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.35",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Birth",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.25)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Born Newborn Born in Hospital",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.26",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter Inpatient",
+                    "id": "2.16.840.1.113883.3.666.5.307",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Estimated Gestational Age at Birth",
+                    "id": "2.16.840.1.113762.1.4.1045.47",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Parenteral Nutrition",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.38",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Breast Milk",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.30",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dietary Intake Other than Breast Milk",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.27",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Neonatal Intensive Care Unit (NICU)",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.75",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Expired",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.309",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Discharge To Acute Care Facility",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.87",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ethnicity CDCREC",
+                    "id": "2.16.840.1.114222.4.11.837",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Payer SOP",
+                    "id": "2.16.840.1.114222.4.11.3591",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Race CDCREC",
+                    "id": "2.16.840.1.114222.4.11.836",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ONC Administrative Sex AdministrativeGender",
+                    "id": "2.16.840.1.113762.1.4.1",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "patient-qicore-qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "EncounterInpatient",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Encounter",
+                                    "templateId": "encounter-qicore-qicore-encounter",
+                                    "codeProperty": "type",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Encounter Inpatient",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "LessOrEqual",
+                                    "operand": [
+                                        {
+                                            "precision": "Day",
+                                            "type": "DurationBetween",
+                                            "operand": [
+                                                {
+                                                    "type": "Start",
+                                                    "operand": {
+                                                        "path": "period",
+                                                        "scope": "E",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "End",
+                                                    "operand": {
+                                                        "path": "period",
+                                                        "scope": "E",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "120",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "type": "End",
+                                            "operand": {
+                                                "path": "period",
+                                                "scope": "E",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "name": "MeasurementPeriod",
+                                            "type": "ParameterRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Gestational Age at Birth <= 37 weeks",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Single Live Birth",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Union",
+                        "operand": [
+                            {
+                                "dataType": "{http://hl7.org/fhir}Condition",
+                                "templateId": "condition-qicore-qicore-condition",
+                                "codeProperty": "code",
+                                "codeComparator": "in",
+                                "type": "Retrieve",
+                                "codes": {
+                                    "name": "Single Live Birth",
+                                    "preserve": true,
+                                    "type": "ValueSetRef"
+                                }
+                            },
+                            {
+                                "dataType": "{http://hl7.org/fhir}Condition",
+                                "templateId": "condition-qicore-qicore-condition",
+                                "codeProperty": "code",
+                                "codeComparator": "in",
+                                "type": "Retrieve",
+                                "codes": {
+                                    "name": "Single Live Born Newborn Born in Hospital",
+                                    "preserve": true,
+                                    "type": "ValueSetRef"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Parenteral Nutrition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Procedure",
+                        "templateId": "procedure-qicore-qicore-procedure",
+                        "codeProperty": "type",
+                        "codeComparator": "in",
+                        "type": "Retrieve",
+                        "codes": {
+                            "name": "Parenteral Nutrition",
+                            "preserve": true,
+                            "type": "ValueSetRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Galactosemia Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}Condition",
+                        "templateId": "condition-qicore-qicore-condition",
+                        "codeProperty": "code",
+                        "codeComparator": "in",
+                        "type": "Retrieve",
+                        "codes": {
+                            "name": "Galactosemia",
+                            "preserve": true,
+                            "type": "ValueSetRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Live Birth Infants without Parenteral Nutrition",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "InitialPopulation1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "DenominatorExclusions1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "E",
+                                "expression": {
+                                    "name": "EncounterInpatient",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Breast Milk Feeding",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}MedicationAdministration",
+                        "templateId": "medicationadministration-qicore-qicore-medicationadministration",
+                        "codeProperty": "medication.code",
+                        "codeComparator": "in",
+                        "type": "Retrieve",
+                        "codes": {
+                            "name": "Breast Milk",
+                            "preserve": true,
+                            "type": "ValueSetRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Other Than Breast Milk Feeding",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}MedicationAdministration",
+                        "templateId": "medicationadministration-qicore-qicore-medicationadministration",
+                        "codeProperty": "medication.code",
+                        "codeComparator": "in",
+                        "type": "Retrieve",
+                        "codes": {
+                            "name": "Dietary Intake Other than Breast Milk",
+                            "preserve": true,
+                            "type": "ValueSetRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Numerator1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "InitialPopulation2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Infant Birth Date",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Intention Not To Breast Feed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "DenominatorExclusions2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Numerator2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

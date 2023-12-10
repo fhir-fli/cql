@@ -1,0 +1,683 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 5,
+                "startChar": 1,
+                "endLine": 5,
+                "endChar": 56,
+                "message": "Could not load source for library FHIRHelpers, version 4.1.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "4.1.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 6,
+                "startChar": 1,
+                "endLine": 6,
+                "endChar": 61,
+                "message": "Could not load source for library SupplementalDataElements, version 3.1.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "SupplementalDataElements",
+                "targetIncludeLibraryVersionId": "3.1.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 7,
+                "startChar": 1,
+                "endLine": 7,
+                "endChar": 52,
+                "message": "Could not load source for library CQMCommon, version 1.0.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "CQMCommon",
+                "targetIncludeLibraryVersionId": "1.0.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 8,
+                "startChar": 1,
+                "endLine": 8,
+                "endChar": 54,
+                "message": "Could not load source for library FHIRCommon, version 4.1.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRCommon",
+                "targetIncludeLibraryVersionId": "4.1.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 9,
+                "startChar": 1,
+                "endLine": 9,
+                "endChar": 58,
+                "message": "Could not load source for library QICoreCommon, version 1.2.000.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "QICoreCommon",
+                "targetIncludeLibraryVersionId": "1.2.000",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 32,
+                "startChar": 7,
+                "endLine": 32,
+                "endChar": 21,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 35,
+                "startChar": 7,
+                "endLine": 35,
+                "endChar": 17,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 38,
+                "startChar": 7,
+                "endLine": 38,
+                "endChar": 16,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 41,
+                "startChar": 7,
+                "endLine": 41,
+                "endChar": 15,
+                "message": "Could not resolve library name SDE.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 67,
+                "startChar": 30,
+                "endLine": 67,
+                "endChar": 80,
+                "message": "Could not resolve library name QICoreCommon.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 62,
+                "startChar": 16,
+                "endLine": 62,
+                "endChar": 54,
+                "message": "Could not validate reference to expression Primary Open Angle Glaucoma Encounter because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 44,
+                "startChar": 3,
+                "endLine": 44,
+                "endChar": 22,
+                "message": "Could not validate reference to expression Initial Population because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 88,
+                "startChar": 10,
+                "endLine": 88,
+                "endChar": 48,
+                "message": "Could not validate reference to expression Primary Open Angle Glaucoma Encounter because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 47,
+                "startChar": 10,
+                "endLine": 47,
+                "endChar": 62,
+                "message": "Could not validate reference to expression Medical Reason for Not Performing Cup to Disc Ratio because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 94,
+                "startChar": 10,
+                "endLine": 94,
+                "endChar": 48,
+                "message": "Could not validate reference to expression Primary Open Angle Glaucoma Encounter because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 72,
+                "startChar": 10,
+                "endLine": 72,
+                "endChar": 48,
+                "message": "Could not validate reference to expression Primary Open Angle Glaucoma Encounter because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 78,
+                "startChar": 10,
+                "endLine": 78,
+                "endChar": 48,
+                "message": "Could not validate reference to expression Primary Open Angle Glaucoma Encounter because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "libraryId": "POAGOpticNerveEvaluationFHIR",
+                "libraryVersion": "0.0.003",
+                "startLine": 83,
+                "startChar": 10,
+                "endLine": 83,
+                "endChar": 50,
+                "message": "Could not validate reference to expression Cup to Disc Ratio Performed with Result because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "POAGOpticNerveEvaluationFHIR",
+            "version": "0.0.003"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.1.000"
+                },
+                {
+                    "localIdentifier": "SDE",
+                    "path": "SupplementalDataElements",
+                    "version": "3.1.000"
+                },
+                {
+                    "localIdentifier": "CQMCommon",
+                    "path": "CQMCommon",
+                    "version": "1.0.000"
+                },
+                {
+                    "localIdentifier": "FHIRCommon",
+                    "path": "FHIRCommon",
+                    "version": "4.1.000"
+                },
+                {
+                    "localIdentifier": "QICoreCommon",
+                    "path": "QICoreCommon",
+                    "version": "1.2.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ActCode",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Care Services in Long-Term Residential Facility",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cup to Disc Ratio",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1333",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Face-to-Face Interaction",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1048",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Nursing Facility Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1012",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Office Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ophthalmological Services",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1285",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Optic Disc Exam for Structural Abnormalities",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1334",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Consultation",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1008",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Primary Open-Angle Glaucoma",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.326",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "virtual",
+                    "id": "VR",
+                    "display": "virtual",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ActCode"
+                    }
+                },
+                {
+                    "name": "AMB",
+                    "id": "AMB",
+                    "display": "Ambulatory",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ActCode"
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Payer",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Race",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "SDE Sex",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Qualifying Encounter During Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "QualifyingEncounter",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "type": "Union",
+                                            "operand": [
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Office Visit",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Ophthalmological Services",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Outpatient Consultation",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
+                                                            "codeProperty": "type",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Nursing Facility Visit",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "dataType": "{http://hl7.org/fhir}Encounter",
+                                            "templateId": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
+                                            "codeProperty": "type",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Care Services in Long-Term Residential Facility",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "And",
+                                    "operand": [
+                                        {
+                                            "type": "IncludedIn",
+                                            "operand": [
+                                                {
+                                                    "name": "ToInterval",
+                                                    "libraryName": "FHIRHelpers",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "path": "period",
+                                                            "scope": "QualifyingEncounter",
+                                                            "type": "Property"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Measurement Period",
+                                                    "type": "ParameterRef"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Not",
+                                            "operand": {
+                                                "type": "Equivalent",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToCode",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "class",
+                                                                "scope": "QualifyingEncounter",
+                                                                "type": "Property"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "virtual",
+                                                        "type": "CodeRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Equivalent",
+                                    "operand": [
+                                        {
+                                            "name": "ToCode",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "class",
+                                                    "scope": "QualifyingEncounter",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "AMB",
+                                            "type": "CodeRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Primary Open Angle Glaucoma Encounter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Initial Population",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Medical Reason for Not Performing Cup to Disc Ratio",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Medical Reason for Not Performing Optic Disc Exam",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Cup to Disc Ratio Performed with Result",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Optic Disc Exam Performed with Result",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Numerator",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

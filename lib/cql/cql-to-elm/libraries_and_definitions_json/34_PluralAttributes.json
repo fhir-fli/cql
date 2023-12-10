@@ -1,0 +1,161 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_0_1_draft",
+                    "version": "5.0.2"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Atrial Fibrillation/Flutter",
+                    "id": "urn:oid:2.16.840.1.113883.3.117.1.7.1.202",
+                    "version": "urn:hl7:profile:Most%20Recent%20Code%20System%20Versions%20in%20VSAC",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounter with Principle Diagnosis of Ischemic Stroke",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                        "templateId": "PositiveEncounterPerformed",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "Current Diagnosis Atrial FibrillationFlutter",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "NonElectiveEncounter",
+                                "expression": {
+                                    "name": "Encounter with Principle Diagnosis of Ischemic Stroke",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "InValueSet",
+                            "code": {
+                                "path": "diagnosis",
+                                "scope": "NonElectiveEncounter",
+                                "type": "Property"
+                            },
+                            "valueset": {
+                                "name": "Atrial Fibrillation/Flutter",
+                                "preserve": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Encounter Has Diagnosis",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "In",
+                        "operand": [
+                            {
+                                "path": "diagnosis",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Encounter",
+                                    "type": "OperandRef"
+                                }
+                            },
+                            {
+                                "name": "ValueSet",
+                                "type": "OperandRef"
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "Encounter",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "ValueSet",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Code",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Current Diagnosis Atrial FibrillationFlutter (QDM 5.3)",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "NonElectiveEncounter",
+                                "expression": {
+                                    "name": "Encounter with Principle Diagnosis of Ischemic Stroke",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "name": "Encounter Has Diagnosis",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "NonElectiveEncounter",
+                                    "type": "AliasRef"
+                                },
+                                {
+                                    "type": "ExpandValueSet",
+                                    "operand": {
+                                        "name": "Atrial Fibrillation/Flutter",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

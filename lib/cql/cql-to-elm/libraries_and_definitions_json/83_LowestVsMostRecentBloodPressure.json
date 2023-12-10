@@ -1,0 +1,272 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "librarySystem": "/tmp/rep2459426129632351725tmp",
+                "libraryId": "rep2459426129632351725tmp",
+                "startLine": 51,
+                "startChar": 4,
+                "endLine": 51,
+                "endChar": 4,
+                "message": "Syntax error at order",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep2459426129632351725tmp",
+                "libraryId": "rep2459426129632351725tmp",
+                "startLine": 57,
+                "startChar": 10,
+                "endLine": 57,
+                "endChar": 10,
+                "message": "Syntax error at by",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep2459426129632351725tmp",
+                "libraryId": "rep2459426129632351725tmp",
+                "startLine": 57,
+                "startChar": 10,
+                "endLine": 57,
+                "endChar": 10,
+                "message": "Syntax error at by",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep2459426129632351725tmp",
+                "libraryId": "rep2459426129632351725tmp",
+                "startLine": 58,
+                "startChar": 2,
+                "endLine": 58,
+                "endChar": 2,
+                "message": "Syntax error at )",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep2459426129632351725tmp",
+                "libraryId": "rep2459426129632351725tmp",
+                "startLine": 63,
+                "startChar": 10,
+                "endLine": 63,
+                "endChar": 10,
+                "message": "Syntax error at by",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep2459426129632351725tmp",
+                "libraryId": "rep2459426129632351725tmp",
+                "startLine": 63,
+                "startChar": 10,
+                "endLine": 63,
+                "endChar": 10,
+                "message": "Syntax error at by",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "librarySystem": "/tmp/rep2459426129632351725tmp",
+                "libraryId": "rep2459426129632351725tmp",
+                "startLine": 64,
+                "startChar": 2,
+                "endLine": 64,
+                "endChar": 2,
+                "message": "Syntax error at )",
+                "errorType": "syntax",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 11,
+                "startChar": 2,
+                "endLine": 11,
+                "endChar": 57,
+                "message": "Could not resolve type name Physical Exam, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 16,
+                "startChar": 7,
+                "endLine": 16,
+                "endChar": 37,
+                "message": "Could not validate reference to expression Diastolic Blood Pressure Exam because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 31,
+                "startChar": 1,
+                "endLine": 36,
+                "endChar": 61,
+                "message": "Identifier Diastolic Blood Pressure Exam is already in use in this library.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 39,
+                "startChar": 2,
+                "endLine": 39,
+                "endChar": 56,
+                "message": "Could not resolve type name Physical Exam, Performed.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 46,
+                "startChar": 4,
+                "endLine": 46,
+                "endChar": 34,
+                "message": "Could not validate reference to expression Diastolic Blood Pressure Exam because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 50,
+                "startChar": 8,
+                "endLine": 50,
+                "endChar": 28,
+                "message": "Could not validate reference to expression Blood Pressure Days because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 55,
+                "startChar": 9,
+                "endLine": 55,
+                "endChar": 39,
+                "message": "Could not validate reference to expression Diastolic Blood Pressure Exam because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 61,
+                "startChar": 9,
+                "endLine": 61,
+                "endChar": 38,
+                "message": "Could not validate reference to expression Systolic Blood Pressure Exam because its definition contains errors.",
+                "errorType": "semantic",
+                "errorSeverity": "error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {},
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Diastolic Blood Pressure Exam",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "DiastolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Has Diastolic Blood Pressure Less Than 90",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Systolic Blood Pressure Exam",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "SystolicBP",
+                                "expression": {
+                                    "type": "Null"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Null"
+                        }
+                    }
+                },
+                {
+                    "name": "Blood Pressure Days",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Most Recent Blood Pressure Day",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Lowest Diastolic on Most Recent Blood Pressure Day",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                },
+                {
+                    "name": "Lowest Systolic on Most Recent Blood Pressure Day",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Null"
+                    }
+                }
+            ]
+        }
+    }
+}

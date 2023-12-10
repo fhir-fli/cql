@@ -1,0 +1,507 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Cataracts2040BCVAwithin90Days",
+            "version": "9.2.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "urn:healthit-gov:qdm:v5_5",
+                    "version": "5.5"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Acute and Subacute Iridocyclitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1241",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Amblyopia",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1448",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Best Corrected Visual Acuity Exam Using Snellen Chart",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1560",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Burn Confined to Eye and Adnexa",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1409",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract Secondary to Ocular Disorders",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1410",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract Surgery",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1411",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract, Congenital",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1412",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract, Mature or Hypermature",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1413",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract, Posterior Polar",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1414",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Central Corneal Ulcer",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1428",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Certain Types of Iridocyclitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1415",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Choroidal Degenerations",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1450",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Choroidal Detachment",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1451",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Choroidal Hemorrhage and Rupture",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1452",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chronic Iridocyclitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1416",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Vascular Disorders of Iris and Ciliary Body",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1445",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Visual Field Defects",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1446",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{urn:healthit-gov:qdm:v5_5}Patient",
+                            "templateId": "Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Cataract Surgery Between January and September of Measurement Period",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "CataractSurgery",
+                                "expression": {
+                                    "dataType": "{urn:healthit-gov:qdm:v5_5}PositiveProcedurePerformed",
+                                    "templateId": "PositiveProcedurePerformed",
+                                    "codeProperty": "code",
+                                    "codeComparator": "in",
+                                    "type": "Retrieve",
+                                    "codes": {
+                                        "name": "Cataract Surgery",
+                                        "preserve": true,
+                                        "type": "ValueSetRef"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "And",
+                            "operand": [
+                                {
+                                    "type": "IncludedIn",
+                                    "operand": [
+                                        {
+                                            "path": "relevantPeriod",
+                                            "scope": "CataractSurgery",
+                                            "type": "Property"
+                                        },
+                                        {
+                                            "name": "Measurement Period",
+                                            "type": "ParameterRef"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "SameOrBefore",
+                                    "operand": [
+                                        {
+                                            "type": "Start",
+                                            "operand": {
+                                                "path": "relevantPeriod",
+                                                "scope": "CataractSurgery",
+                                                "type": "Property"
+                                            }
+                                        },
+                                        {
+                                            "type": "Subtract",
+                                            "operand": [
+                                                {
+                                                    "type": "End",
+                                                    "operand": {
+                                                        "name": "Measurement Period",
+                                                        "type": "ParameterRef"
+                                                    }
+                                                },
+                                                {
+                                                    "value": 93,
+                                                    "unit": "days",
+                                                    "type": "Quantity"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "CataractSurgeryPerformed",
+                                "expression": {
+                                    "name": "Cataract Surgery Between January and September of Measurement Period",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        ],
+                        "relationship": [
+                            {
+                                "alias": "ComorbidDiagnosis",
+                                "type": "With",
+                                "expression": {
+                                    "type": "Union",
+                                    "operand": [
+                                        {
+                                            "type": "Union",
+                                            "operand": [
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "type": "Union",
+                                                            "operand": [
+                                                                {
+                                                                    "type": "Union",
+                                                                    "operand": [
+                                                                        {
+                                                                            "type": "Union",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "type": "Union",
+                                                                                    "operand": [
+                                                                                        {
+                                                                                            "type": "Union",
+                                                                                            "operand": [
+                                                                                                {
+                                                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                                    "codeProperty": "code",
+                                                                                                    "codeComparator": "in",
+                                                                                                    "type": "Retrieve",
+                                                                                                    "codes": {
+                                                                                                        "name": "Acute and Subacute Iridocyclitis",
+                                                                                                        "preserve": true,
+                                                                                                        "type": "ValueSetRef"
+                                                                                                    }
+                                                                                                },
+                                                                                                {
+                                                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                                    "codeProperty": "code",
+                                                                                                    "codeComparator": "in",
+                                                                                                    "type": "Retrieve",
+                                                                                                    "codes": {
+                                                                                                        "name": "Amblyopia",
+                                                                                                        "preserve": true,
+                                                                                                        "type": "ValueSetRef"
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "Union",
+                                                                                            "operand": [
+                                                                                                {
+                                                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                                    "codeProperty": "code",
+                                                                                                    "codeComparator": "in",
+                                                                                                    "type": "Retrieve",
+                                                                                                    "codes": {
+                                                                                                        "name": "Burn Confined to Eye and Adnexa",
+                                                                                                        "preserve": true,
+                                                                                                        "type": "ValueSetRef"
+                                                                                                    }
+                                                                                                },
+                                                                                                {
+                                                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                                    "codeProperty": "code",
+                                                                                                    "codeComparator": "in",
+                                                                                                    "type": "Retrieve",
+                                                                                                    "codes": {
+                                                                                                        "name": "Cataract Secondary to Ocular Disorders",
+                                                                                                        "preserve": true,
+                                                                                                        "type": "ValueSetRef"
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "Union",
+                                                                                    "operand": [
+                                                                                        {
+                                                                                            "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                            "codeProperty": "code",
+                                                                                            "codeComparator": "in",
+                                                                                            "type": "Retrieve",
+                                                                                            "codes": {
+                                                                                                "name": "Cataract, Congenital",
+                                                                                                "preserve": true,
+                                                                                                "type": "ValueSetRef"
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                            "codeProperty": "code",
+                                                                                            "codeComparator": "in",
+                                                                                            "type": "Retrieve",
+                                                                                            "codes": {
+                                                                                                "name": "Cataract, Mature or Hypermature",
+                                                                                                "preserve": true,
+                                                                                                "type": "ValueSetRef"
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "Union",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                    "codeProperty": "code",
+                                                                                    "codeComparator": "in",
+                                                                                    "type": "Retrieve",
+                                                                                    "codes": {
+                                                                                        "name": "Cataract, Posterior Polar",
+                                                                                        "preserve": true,
+                                                                                        "type": "ValueSetRef"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                                    "codeProperty": "code",
+                                                                                    "codeComparator": "in",
+                                                                                    "type": "Retrieve",
+                                                                                    "codes": {
+                                                                                        "name": "Central Corneal Ulcer",
+                                                                                        "preserve": true,
+                                                                                        "type": "ValueSetRef"
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Union",
+                                                                    "operand": [
+                                                                        {
+                                                                            "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                            "codeProperty": "code",
+                                                                            "codeComparator": "in",
+                                                                            "type": "Retrieve",
+                                                                            "codes": {
+                                                                                "name": "Certain Types of Iridocyclitis",
+                                                                                "preserve": true,
+                                                                                "type": "ValueSetRef"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                            "codeProperty": "code",
+                                                                            "codeComparator": "in",
+                                                                            "type": "Retrieve",
+                                                                            "codes": {
+                                                                                "name": "Choroidal Degenerations",
+                                                                                "preserve": true,
+                                                                                "type": "ValueSetRef"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Union",
+                                                            "operand": [
+                                                                {
+                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                    "codeProperty": "code",
+                                                                    "codeComparator": "in",
+                                                                    "type": "Retrieve",
+                                                                    "codes": {
+                                                                        "name": "Choroidal Detachment",
+                                                                        "preserve": true,
+                                                                        "type": "ValueSetRef"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                                    "codeProperty": "code",
+                                                                    "codeComparator": "in",
+                                                                    "type": "Retrieve",
+                                                                    "codes": {
+                                                                        "name": "Choroidal Hemorrhage and Rupture",
+                                                                        "preserve": true,
+                                                                        "type": "ValueSetRef"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Union",
+                                                    "operand": [
+                                                        {
+                                                            "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                            "codeProperty": "code",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Chronic Iridocyclitis",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                                            "codeProperty": "code",
+                                                            "codeComparator": "in",
+                                                            "type": "Retrieve",
+                                                            "codes": {
+                                                                "name": "Vascular Disorders of Iris and Ciliary Body",
+                                                                "preserve": true,
+                                                                "type": "ValueSetRef"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "dataType": "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                                            "codeProperty": "code",
+                                            "codeComparator": "in",
+                                            "type": "Retrieve",
+                                            "codes": {
+                                                "name": "Visual Field Defects",
+                                                "preserve": true,
+                                                "type": "ValueSetRef"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "suchThat": {
+                                    "type": "OverlapsBefore",
+                                    "operand": [
+                                        {
+                                            "path": "prevalencePeriod",
+                                            "scope": "ComorbidDiagnosis",
+                                            "type": "Property"
+                                        },
+                                        {
+                                            "path": "relevantPeriod",
+                                            "scope": "CataractSurgeryPerformed",
+                                            "type": "Property"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

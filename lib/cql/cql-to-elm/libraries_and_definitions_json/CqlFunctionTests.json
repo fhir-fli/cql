@@ -1,0 +1,427 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "2.11.0",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CqlFunctionTests",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "f1",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "name": "arg",
+                        "type": "OperandRef"
+                    },
+                    "operand": [
+                        {
+                            "name": "arg",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "FunctionTestStringArg",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f1",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "hello",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "FunctionTestNullStringArg",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f1",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "strict": false,
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                },
+                                "asTypeSpecifier": {
+                                    "name": "{urn:hl7-org:elm-types:r1}String",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "f2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "name": "arg",
+                                "type": "OperandRef"
+                            },
+                            {
+                                "type": "ToString",
+                                "operand": {
+                                    "name": "anotherArg",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "arg",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "anotherArg",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "FunctionTestMultipleArgs",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f2",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "hell",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "FunctionTestNullMultipleArgs",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f2",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "hell",
+                                "type": "Literal"
+                            },
+                            {
+                                "asType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "f2",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "name": "arg",
+                                        "type": "OperandRef"
+                                    },
+                                    {
+                                        "type": "ToString",
+                                        "operand": {
+                                            "name": "anotherArg",
+                                            "type": "OperandRef"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "ToString",
+                                "operand": {
+                                    "name": "yetAnotherArg",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ]
+                    },
+                    "operand": [
+                        {
+                            "name": "arg",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "anotherArg",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        },
+                        {
+                            "name": "yetAnotherArg",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "FunctionTestOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f2",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "hell",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "0.000",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "FunctionTestNullOverload",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f2",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "hell",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            },
+                            {
+                                "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "f3",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "path": "y",
+                        "type": "Property",
+                        "source": {
+                            "name": "x",
+                            "type": "OperandRef"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "x",
+                            "operandTypeSpecifier": {
+                                "type": "TupleTypeSpecifier",
+                                "element": [
+                                    {
+                                        "name": "y",
+                                        "elementType": {
+                                            "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "NamedTypeSpecifier"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "FunctionTestTupleArg",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f3",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "y",
+                                        "value": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "FunctionTestNullTupleArg",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f3",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "type": "Tuple",
+                                "element": [
+                                    {
+                                        "name": "y",
+                                        "value": {
+                                            "strict": false,
+                                            "type": "As",
+                                            "operand": {
+                                                "type": "Null"
+                                            },
+                                            "asTypeSpecifier": {
+                                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "f3",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "path": "unit",
+                        "type": "Property",
+                        "source": {
+                            "name": "x",
+                            "type": "OperandRef"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "x",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "FunctionTestQuantityArg",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f3",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "value": 12,
+                                "unit": "cm",
+                                "type": "Quantity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "FunctionTestNullQuantityArg",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "f3",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "strict": false,
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                },
+                                "asTypeSpecifier": {
+                                    "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
