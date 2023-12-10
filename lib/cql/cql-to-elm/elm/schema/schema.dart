@@ -6,6 +6,7 @@ export 'code_system_ref.dart';
 export 'concept_def.dart';
 export 'cql_annotations.dart';
 export 'element.dart';
+export 'exp_type_specifier.dart';
 export 'expression_def.dart';
 export 'expression.dart';
 export 'include_def.dart';

@@ -1,22 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'expression.dart';
+part of 'exp_type_specifier.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Expression _$ExpressionFromJson(Map<String, dynamic> json) => Expression()
-  ..annotation = json['annotation'] as List<dynamic>?
-  ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
-      ? null
-      : ExpTypeSpecifier.fromJson(
-          json['resultTypeSpecifier'] as Map<String, dynamic>)
-  ..localId = json['localId'] as String?
-  ..locator = json['locator'] as String?
-  ..resultTypeName = json['resultTypeName'] as String?;
+ExpTypeSpecifier _$ExpTypeSpecifierFromJson(Map<String, dynamic> json) =>
+    ExpTypeSpecifier()
+      ..annotation = json['annotation'] as List<dynamic>?
+      ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+          ? null
+          : ExpTypeSpecifier.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..localId = json['localId'] as String?
+      ..locator = json['locator'] as String?
+      ..resultTypeName = json['resultTypeName'] as String?;
 
-Map<String, dynamic> _$ExpressionToJson(Expression instance) {
+Map<String, dynamic> _$ExpTypeSpecifierToJson(ExpTypeSpecifier instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

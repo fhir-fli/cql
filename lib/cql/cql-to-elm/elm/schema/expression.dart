@@ -9,10 +9,6 @@ part 'expression.g.dart';
 @JsonSerializable()
 abstract class Expression extends Element {}
 
-// TypeSpecifier is the abstract base type for all type specifiers.
-@JsonSerializable()
-abstract class ExpTypeSpecifier extends Element {}
-
 // NamedTypeSpecifier defines a type identified by a name, such as Integer, String,
 // Patient, or Encounter.
 class ExpNamedTypeSpecifier extends ExpTypeSpecifier {
