@@ -5,7 +5,7 @@ import '../../../cql.dart';
 part 'element.g.dart';
 
 @JsonSerializable()
-abstract class Element {
+class Element {
   // The annotation element provides a mechanism for decorating expressions
   // with application-specific information such as translation hints, visual
   // designer information, or debug symbols.

@@ -4,6 +4,18 @@ import '../../../cql.dart';
 
 part 'value_set_def.g.dart';
 
+@JsonSerializable()
+class ValueSetDefs {
+  List<ValueSetDef> def = [];
+
+  ValueSetDefs();
+
+  factory ValueSetDefs.fromJson(Map<String, dynamic> json) =>
+      _$ValueSetDefsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ValueSetDefsToJson(this);
+}
+
 /// The ValueSetDef type defines a value set identifier that can be referenced
 /// by name anywhere within an expression.
 ///
@@ -30,24 +42,24 @@ class ValueSetDef extends Element {
   /// system used. The codeSystem elements are provided only to ensure static
   /// binding can be achieved when the value set definition does not specify
   /// code system versions as part of the definition header.
-  late List<CodeSystemRef> codeSystem;
+  List<CodeSystemRef>? codeSystem;
 
   /// The name of the value set.
-  late String? name;
+  String? name;
 
   /// The unique identifier of the value set to be retrieved.
-  late String id;
+  String? id;
 
   /// The version of the value set to be retrieved. If no version is provided, the most current published version of the value set is assumed.
-  late String? version;
+  String? version;
 
   /// Specifies the access level; default is Public.
-  late AccessModifier accessLevel;
+  AccessModifier accessLevel;
 
   ValueSetDef(
-      {required this.codeSystem,
+      {this.codeSystem,
       this.name,
-      required this.id,
+      this.id,
       this.version,
       this.accessLevel = AccessModifier.Public});
 

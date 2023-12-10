@@ -15,21 +15,22 @@ Library _$LibraryFromJson(Map<String, dynamic> json) => Library(
           ? null
           : VersionedIdentifier.fromJson(
               json['schemaIdentifier'] as Map<String, dynamic>),
-      usings: (json['usings'] as List<dynamic>?)
-          ?.map((e) => UsingDef.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      includes: (json['includes'] as List<dynamic>?)
-          ?.map((e) => IncludeDef.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      usings: json['usings'] == null
+          ? null
+          : UsingDefs.fromJson(json['usings'] as Map<String, dynamic>),
+      includes: json['includes'] == null
+          ? null
+          : IncludeDefs.fromJson(json['includes'] as Map<String, dynamic>),
       parameters: (json['parameters'] as List<dynamic>?)
           ?.map((e) => ParameterDef.fromJson(e as Map<String, dynamic>))
           .toList(),
-      codeSystems: (json['codeSystems'] as List<dynamic>?)
-          ?.map((e) => CodeSystemDef.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      valueSets: (json['valueSets'] as List<dynamic>?)
-          ?.map((e) => ValueSetDef.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      codeSystems: json['codeSystems'] == null
+          ? null
+          : CodeSystemDefs.fromJson(
+              json['codeSystems'] as Map<String, dynamic>),
+      valueSets: json['valueSets'] == null
+          ? null
+          : ValueSetDefs.fromJson(json['valueSets'] as Map<String, dynamic>),
       codes: (json['codes'] as List<dynamic>?)
           ?.map((e) => CodeDef.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -65,14 +66,12 @@ Map<String, dynamic> _$LibraryToJson(Library instance) {
   writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('identifier', instance.identifier?.toJson());
   writeNotNull('schemaIdentifier', instance.schemaIdentifier?.toJson());
-  writeNotNull('usings', instance.usings?.map((e) => e.toJson()).toList());
-  writeNotNull('includes', instance.includes?.map((e) => e.toJson()).toList());
+  writeNotNull('usings', instance.usings?.toJson());
+  writeNotNull('includes', instance.includes?.toJson());
   writeNotNull(
       'parameters', instance.parameters?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'codeSystems', instance.codeSystems?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'valueSets', instance.valueSets?.map((e) => e.toJson()).toList());
+  writeNotNull('codeSystems', instance.codeSystems?.toJson());
+  writeNotNull('valueSets', instance.valueSets?.toJson());
   writeNotNull('codes', instance.codes?.map((e) => e.toJson()).toList());
   writeNotNull('concepts', instance.concepts?.map((e) => e.toJson()).toList());
   writeNotNull(

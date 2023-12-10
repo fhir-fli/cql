@@ -6,6 +6,16 @@ part of 'include_def.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+IncludeDefs _$IncludeDefsFromJson(Map<String, dynamic> json) => IncludeDefs()
+  ..def = (json['def'] as List<dynamic>)
+      .map((e) => IncludeDef.fromJson(e as Map<String, dynamic>))
+      .toList();
+
+Map<String, dynamic> _$IncludeDefsToJson(IncludeDefs instance) =>
+    <String, dynamic>{
+      'def': instance.def.map((e) => e.toJson()).toList(),
+    };
+
 IncludeDef _$IncludeDefFromJson(Map<String, dynamic> json) => IncludeDef(
       localIdentifier: json['localIdentifier'] as String?,
       mediaType: json['mediaType'] as String?,

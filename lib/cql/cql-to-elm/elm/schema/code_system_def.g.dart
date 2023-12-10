@@ -6,10 +6,21 @@ part of 'code_system_def.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+CodeSystemDefs _$CodeSystemDefsFromJson(Map<String, dynamic> json) =>
+    CodeSystemDefs()
+      ..def = (json['def'] as List<dynamic>)
+          .map((e) => CodeSystemDef.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+Map<String, dynamic> _$CodeSystemDefsToJson(CodeSystemDefs instance) =>
+    <String, dynamic>{
+      'def': instance.def.map((e) => e.toJson()).toList(),
+    };
+
 CodeSystemDef _$CodeSystemDefFromJson(Map<String, dynamic> json) =>
     CodeSystemDef(
-      name: json['name'] as String,
-      id: json['id'] as String,
+      name: json['name'] as String?,
+      id: json['id'] as String?,
       version: json['version'] as String?,
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
@@ -38,8 +49,8 @@ Map<String, dynamic> _$CodeSystemDefToJson(CodeSystemDef instance) {
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
   writeNotNull('resultTypeName', instance.resultTypeName);
-  val['name'] = instance.name;
-  val['id'] = instance.id;
+  writeNotNull('name', instance.name);
+  writeNotNull('id', instance.id);
   writeNotNull('version', instance.version);
   val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
   return val;

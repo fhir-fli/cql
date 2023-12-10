@@ -4,6 +4,18 @@ import '../../../cql.dart';
 
 part 'using_def.g.dart';
 
+@JsonSerializable()
+class UsingDefs {
+  List<UsingDef> def = [];
+
+  UsingDefs();
+
+  factory UsingDefs.fromJson(Map<String, dynamic> json) =>
+      _$UsingDefsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UsingDefsToJson(this);
+}
+
 /// Defines a data model that is available within the artifact.
 @JsonSerializable()
 class UsingDef extends Element {

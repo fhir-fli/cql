@@ -6,6 +6,15 @@ part of 'using_def.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+UsingDefs _$UsingDefsFromJson(Map<String, dynamic> json) => UsingDefs()
+  ..def = (json['def'] as List<dynamic>)
+      .map((e) => UsingDef.fromJson(e as Map<String, dynamic>))
+      .toList();
+
+Map<String, dynamic> _$UsingDefsToJson(UsingDefs instance) => <String, dynamic>{
+      'def': instance.def.map((e) => e.toJson()).toList(),
+    };
+
 UsingDef _$UsingDefFromJson(Map<String, dynamic> json) => UsingDef(
       localIdentifier: json['localIdentifier'] as String?,
       uri: json['uri'] as String?,

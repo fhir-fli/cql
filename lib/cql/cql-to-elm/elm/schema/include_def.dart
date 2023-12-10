@@ -4,6 +4,18 @@ import '../../../cql.dart';
 
 part 'include_def.g.dart';
 
+@JsonSerializable()
+class IncludeDefs {
+  List<IncludeDef> def = [];
+
+  IncludeDefs();
+
+  factory IncludeDefs.fromJson(Map<String, dynamic> json) =>
+      _$IncludeDefsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$IncludeDefsToJson(this);
+}
+
 /// Includes a library for use within the artifact.
 @JsonSerializable()
 class IncludeDef extends Element {

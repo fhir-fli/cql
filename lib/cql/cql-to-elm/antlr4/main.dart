@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:antlr4/antlr4.dart';
@@ -87,8 +88,15 @@ Future<void> main() async {
   final parsed = parse(cqlExpression);
   final visitor = cqlBaseVisitor();
   visitor.visit(parsed);
-  print(visitor.library.toJson());
+  print(jsonPrettyPrint(visitor.result));
+
   // printTree(parsed);
   // }
   // }
 }
+
+const jsonEncoder = JsonEncoder.withIndent('    ');
+
+String jsonPrettyPrint(Map<String, dynamic> map) => jsonEncoder.convert(map);
+
+String prettyPrintJson(Map<String, dynamic> map) => jsonPrettyPrint(map);

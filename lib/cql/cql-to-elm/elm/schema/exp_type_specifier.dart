@@ -7,7 +7,7 @@ import '../../../cql.dart';
 part 'exp_type_specifier.g.dart';
 
 @JsonSerializable()
-abstract class ExpTypeSpecifier extends Element {
+class ExpTypeSpecifier extends Element {
   ExpTypeSpecifier();
 
   factory ExpTypeSpecifier.fromJson(Map<String, dynamic> json) =>

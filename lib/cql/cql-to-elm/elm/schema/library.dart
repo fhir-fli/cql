@@ -16,19 +16,19 @@ class Library extends Element {
   VersionedIdentifier? schemaIdentifier;
 
   /// Set of data models referenced in the Expression objects in this knowledge artifact.
-  List<UsingDef>? usings;
+  UsingDefs? usings;
 
   /// Set of libraries referenced by this artifact. Components of referenced libraries may be used within this artifact.
-  List<IncludeDef>? includes;
+  IncludeDefs? includes;
 
   /// The parameters defined within this library.
   List<ParameterDef>? parameters;
 
   /// The code systems defined within this library.
-  List<CodeSystemDef>? codeSystems;
+  CodeSystemDefs? codeSystems;
 
   /// The value sets defined within this library.
-  List<ValueSetDef>? valueSets;
+  ValueSetDefs? valueSets;
 
   /// The codes defined within this library.
   List<CodeDef>? codes;

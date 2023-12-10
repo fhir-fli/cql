@@ -6,12 +6,22 @@ part of 'value_set_def.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+ValueSetDefs _$ValueSetDefsFromJson(Map<String, dynamic> json) => ValueSetDefs()
+  ..def = (json['def'] as List<dynamic>)
+      .map((e) => ValueSetDef.fromJson(e as Map<String, dynamic>))
+      .toList();
+
+Map<String, dynamic> _$ValueSetDefsToJson(ValueSetDefs instance) =>
+    <String, dynamic>{
+      'def': instance.def.map((e) => e.toJson()).toList(),
+    };
+
 ValueSetDef _$ValueSetDefFromJson(Map<String, dynamic> json) => ValueSetDef(
-      codeSystem: (json['codeSystem'] as List<dynamic>)
-          .map((e) => CodeSystemRef.fromJson(e as Map<String, dynamic>))
+      codeSystem: (json['codeSystem'] as List<dynamic>?)
+          ?.map((e) => CodeSystemRef.fromJson(e as Map<String, dynamic>))
           .toList(),
       name: json['name'] as String?,
-      id: json['id'] as String,
+      id: json['id'] as String?,
       version: json['version'] as String?,
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
@@ -40,9 +50,10 @@ Map<String, dynamic> _$ValueSetDefToJson(ValueSetDef instance) {
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
   writeNotNull('resultTypeName', instance.resultTypeName);
-  val['codeSystem'] = instance.codeSystem.map((e) => e.toJson()).toList();
+  writeNotNull(
+      'codeSystem', instance.codeSystem?.map((e) => e.toJson()).toList());
   writeNotNull('name', instance.name);
-  val['id'] = instance.id;
+  writeNotNull('id', instance.id);
   writeNotNull('version', instance.version);
   val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
   return val;

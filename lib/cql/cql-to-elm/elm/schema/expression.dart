@@ -7,7 +7,14 @@ part 'expression.g.dart';
 
 // The Expression type defines the abstract base type for all expressions used in the ELM expression language.
 @JsonSerializable()
-abstract class Expression extends Element {}
+class Expression extends Element {
+  Expression();
+
+  factory Expression.fromJson(Map<String, dynamic> json) =>
+      _$ExpressionFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ExpressionToJson(this);
+}
 
 // NamedTypeSpecifier defines a type identified by a name, such as Integer, String,
 // Patient, or Encounter.
