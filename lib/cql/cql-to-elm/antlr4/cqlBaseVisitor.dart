@@ -11,6 +11,7 @@ enum Which {
   includes,
   codeSystems,
   valueSets,
+  parameters,
 }
 
 /// This class provides an empty implementation of [cqlVisitor],
@@ -26,6 +27,7 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
     Which.includes: false,
     Which.codeSystems: false,
     Which.valueSets: false,
+    Which.parameters: false,
   };
 
   bool isWhichTrue(Which which) => this.which[which] ?? false;
@@ -46,7 +48,7 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  void visitLibrary(LibraryContext ctx) => visitChildren(ctx);
+  dynamic visitLibrary(LibraryContext ctx) => visitChildren(ctx);
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
@@ -110,10 +112,26 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitParameterDefinition(ParameterDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+  void visitParameterDefinition(ParameterDefinitionContext ctx) {
+    print('${ctx.runtimeType.toString()}   ${ctx.text}      ${ctx.childCount}');
+    if (library.parameters == null) {
+      library.parameters = ParameterDefs();
+    }
+    setWhichTrue(Which.parameters);
+    String name = '';
+    TypeSpecifier? typeSpecifier;
 
-    visitChildren(ctx);
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is TypeSpecifierContext) {
+        typeSpecifier = visitTypeSpecifier(child);
+      }
+    }
+    if (typeSpecifier != null) {
+      library.parameters!.def
+          .add(ParameterDef(name: name, parameterTypeSpecifier: typeSpecifier));
+    }
   }
 
   /// The default implementation returns the result of calling
@@ -132,8 +150,19 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   void visitValuesetDefinition(ValuesetDefinitionContext ctx) {
     library.valueSets ??= ValueSetDefs();
     setWhichTrue(Which.valueSets);
+
+    String name = '';
+    String id = '';
     print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    visitChildren(ctx);
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is ValuesetIdContext) {
+        id = visitValuesetId(child);
+      }
+    }
+
+    library.valueSets!.def.add(ValueSetDef(id: id, name: name));
   }
 
   /// The default implementation returns the result of calling
@@ -212,17 +241,8 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitValuesetId(ValuesetIdContext ctx) {
-    if (library.valueSets == null) {
-      library.valueSets = ValueSetDefs();
-    }
-    if (library.valueSets!.def.isEmpty) {
-      library.valueSets!.def.add(ValueSetDef(id: ctx.text));
-    } else {
-      library.valueSets!.def.last.id = ctx.text;
-    }
     print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+    return _noQuoteString(ctx.text);
   }
 
   /// The default implementation returns the result of calling
@@ -230,17 +250,18 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   void visitVersionSpecifier(VersionSpecifierContext ctx) {
     print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    final version = _noQuoteString(ctx.text);
     if (isWhichTrue(Which.includes)) {
       if (library.includes == null) {
         library.includes = IncludeDefs();
       }
       if (library.includes!.def.isEmpty) {
-        library.includes!.def.add(IncludeDef(version: ctx.text));
+        library.includes!.def.add(IncludeDef(version: version));
       } else {
-        library.includes!.def.last.version = ctx.text;
+        library.includes!.def.last.version = version;
       }
     } else {
-      library.identifier!.version = ctx.text;
+      library.identifier!.version = version;
     }
     visitChildren(ctx);
   }
@@ -257,19 +278,31 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitTypeSpecifier(TypeSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+  TypeSpecifier? visitTypeSpecifier(TypeSpecifierContext ctx) {
+    print('${ctx.runtimeType.toString()}   ${ctx.text}    ${ctx.childCount}');
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is NamedTypeSpecifierContext) {
+        return visitNamedTypeSpecifier(child);
+      } else if (child is ListTypeSpecifierContext) {
+        return visitListTypeSpecifier(child);
+      } else if (child is IntervalTypeSpecifierContext) {
+        return visitIntervalTypeSpecifier(child);
+      } else if (child is TupleTypeSpecifierContext) {
+        return visitTupleTypeSpecifier(child);
+      } else if (child is ChoiceTypeSpecifierContext) {
+        return visitChoiceTypeSpecifier(child);
+      }
+    }
+    return null;
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitNamedTypeSpecifier(NamedTypeSpecifierContext ctx) {
+  NamedTypeSpecifier? visitNamedTypeSpecifier(NamedTypeSpecifierContext ctx) {
     print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+    return NamedTypeSpecifier(
+        modelName: ctx.text, namespace: 'urn:hl7-org:elm-types:r1');
   }
 
   /// The default implementation returns the result of calling
@@ -292,10 +325,15 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitIntervalTypeSpecifier(IntervalTypeSpecifierContext ctx) {
+  IntervalTypeSpecifier visitIntervalTypeSpecifier(
+      IntervalTypeSpecifierContext ctx) {
     print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is TypeSpecifierContext) {
+        return IntervalTypeSpecifier(pointType: visitTypeSpecifier(child));
+      }
+    }
+    throw ArgumentError('Invalid IntervalTypeSpecifier');
   }
 
   /// The default implementation returns the result of calling
@@ -1656,17 +1694,16 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  void visitIdentifier(IdentifierContext ctx) {
+  dynamic visitIdentifier(IdentifierContext ctx) {
     var identifier = _noQuoteString(ctx.text);
     if (library.identifier == null) {
       library.identifier = VersionedIdentifier();
     }
     if (which[Which.usings]!) {
       library.usings ??= UsingDefs();
-      if (library.usings!.def.isEmpty) {
-        library.usings!.def.add(UsingDef(localIdentifier: identifier));
-      } else {
-        library.usings!.def.last.localIdentifier = identifier;
+      library.usings!.def.add(UsingDef(localIdentifier: identifier));
+      if (identifier == 'QUICK') {
+        library.usings!.def.last.uri = 'http://hl7.org/fhir';
       }
     } else if (which[Which.includes]!) {
       library.includes ??= IncludeDefs();
@@ -1690,13 +1727,8 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
       } else {
         library.codeSystems!.def.last.name = identifier;
       }
-    } else if (which[Which.valueSets]!) {
-      library.valueSets ??= ValueSetDefs();
-      if (library.valueSets!.def.isEmpty) {
-        library.valueSets!.def.add(ValueSetDef(name: identifier));
-      } else {
-        library.valueSets!.def.last.name = identifier;
-      }
+    } else if (which[Which.valueSets]! || which[Which.parameters]!) {
+      return identifier;
     } else {
       library.identifier!.id = identifier;
     }

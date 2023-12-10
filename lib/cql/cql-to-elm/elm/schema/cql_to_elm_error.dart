@@ -1,41 +1,8 @@
-/// Represents the Annotation type
-class Annotation {
-  /// Narrative element
-  Narrative? s;
+import 'package:json_annotation/json_annotation.dart';
 
-  /// Locator element
-  Locator? locator;
+import '../../../cql.dart';
 
-  Annotation({this.s, this.locator});
-}
-
-/// Represents the Locator type
-class Locator {
-  /// startLine attribute
-  int? startLine;
-
-  /// startChar attribute
-  int? startChar;
-
-  /// endLine attribute
-  int? endLine;
-
-  /// endChar attribute
-  int? endChar;
-
-  Locator({this.startLine, this.startChar, this.endLine, this.endChar});
-}
-
-/// Represents the Narrative type with mixed content
-class Narrative {
-  /// r attribute
-  String? r;
-
-  /// Nested Narrative elements
-  List<Narrative>? s;
-
-  Narrative({this.r, this.s});
-}
+part 'cql_to_elm_error.g.dart';
 
 /// Enum representing the severity of an error
 enum ErrorSeverity { info, warning, error }
@@ -50,6 +17,7 @@ enum ErrorType {
 }
 
 /// Represents the CqlToElmError type
+@JsonSerializable()
 class CqlToElmError extends Locator {
   /// message attribute
   String message;
@@ -82,15 +50,9 @@ class CqlToElmError extends Locator {
           endLine: endLine,
           endChar: endChar,
         );
-}
 
-/// Represents the CqlToElmInfo type
-class CqlToElmInfo {
-  /// translatorVersion attribute
-  String? translatorVersion;
+  factory CqlToElmError.fromJson(Map<String, dynamic> json) =>
+      _$CqlToElmErrorFromJson(json);
 
-  /// translatorOptions attribute
-  String? translatorOptions;
-
-  CqlToElmInfo({this.translatorVersion, this.translatorOptions});
+  Map<String, dynamic> toJson() => _$CqlToElmErrorToJson(this);
 }

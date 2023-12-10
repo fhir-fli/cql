@@ -26,10 +26,12 @@ CodeSystemDef _$CodeSystemDefFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
               AccessModifier.Public,
     )
-      ..annotation = json['annotation'] as List<dynamic>?
+      ..annotation = (json['annotation'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
+          .toList()
       ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
           ? null
-          : ExpTypeSpecifier.fromJson(
+          : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
       ..localId = json['localId'] as String?
       ..locator = json['locator'] as String?

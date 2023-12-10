@@ -4,6 +4,18 @@ import '../../../cql.dart';
 
 part 'expression_def.g.dart';
 
+@JsonSerializable()
+class ExpressionDefs {
+  List<ExpressionDef> expressions = <ExpressionDef>[];
+
+  ExpressionDefs();
+
+  factory ExpressionDefs.fromJson(Map<String, dynamic> json) =>
+      _$ExpressionDefsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ExpressionDefsToJson(this);
+}
+
 /// Expression definition with an associated name that can be referenced by any
 /// expression in the artifact.
 @JsonSerializable()

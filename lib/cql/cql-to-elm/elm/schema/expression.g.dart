@@ -7,10 +7,12 @@ part of 'expression.dart';
 // **************************************************************************
 
 Expression _$ExpressionFromJson(Map<String, dynamic> json) => Expression()
-  ..annotation = json['annotation'] as List<dynamic>?
+  ..annotation = (json['annotation'] as List<dynamic>?)
+      ?.map((e) => e as Map<String, dynamic>)
+      .toList()
   ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
       ? null
-      : ExpTypeSpecifier.fromJson(
+      : TypeSpecifier.fromJson(
           json['resultTypeSpecifier'] as Map<String, dynamic>)
   ..localId = json['localId'] as String?
   ..locator = json['locator'] as String?

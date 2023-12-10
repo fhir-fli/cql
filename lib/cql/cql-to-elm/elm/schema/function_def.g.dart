@@ -1,31 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'value_set_def.dart';
+part of 'function_def.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ValueSetDefs _$ValueSetDefsFromJson(Map<String, dynamic> json) => ValueSetDefs()
-  ..def = (json['def'] as List<dynamic>)
-      .map((e) => ValueSetDef.fromJson(e as Map<String, dynamic>))
+FunctionDefs _$FunctionDefsFromJson(Map<String, dynamic> json) => FunctionDefs()
+  ..functions = (json['functions'] as List<dynamic>)
+      .map((e) => FunctionDef.fromJson(e as Map<String, dynamic>))
       .toList();
 
-Map<String, dynamic> _$ValueSetDefsToJson(ValueSetDefs instance) =>
+Map<String, dynamic> _$FunctionDefsToJson(FunctionDefs instance) =>
     <String, dynamic>{
-      'def': instance.def.map((e) => e.toJson()).toList(),
+      'functions': instance.functions.map((e) => e.toJson()).toList(),
     };
 
-ValueSetDef _$ValueSetDefFromJson(Map<String, dynamic> json) => ValueSetDef(
-      codeSystem: (json['codeSystem'] as List<dynamic>?)
-          ?.map((e) => CodeSystemRef.fromJson(e as Map<String, dynamic>))
+FunctionDef _$FunctionDefFromJson(Map<String, dynamic> json) => FunctionDef(
+      operand: (json['operand'] as List<dynamic>?)
+          ?.map((e) => OperandDef.fromJson(e as Map<String, dynamic>))
           .toList(),
-      name: json['name'] as String?,
-      id: json['id'] as String?,
-      version: json['version'] as String?,
-      accessLevel:
-          $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
-              AccessModifier.Public,
+      external: json['external'] as bool?,
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)
@@ -36,9 +31,15 @@ ValueSetDef _$ValueSetDefFromJson(Map<String, dynamic> json) => ValueSetDef(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
       ..localId = json['localId'] as String?
       ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?;
+      ..resultTypeName = json['resultTypeName'] as String?
+      ..expression = json['expression'] == null
+          ? null
+          : Expression.fromJson(json['expression'] as Map<String, dynamic>)
+      ..name = json['name'] as String
+      ..context = json['context'] as String?
+      ..accessLevel = $enumDecode(_$AccessModifierEnumMap, json['accessLevel']);
 
-Map<String, dynamic> _$ValueSetDefToJson(ValueSetDef instance) {
+Map<String, dynamic> _$FunctionDefToJson(FunctionDef instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -52,12 +53,12 @@ Map<String, dynamic> _$ValueSetDefToJson(ValueSetDef instance) {
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
   writeNotNull('resultTypeName', instance.resultTypeName);
-  writeNotNull(
-      'codeSystem', instance.codeSystem?.map((e) => e.toJson()).toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('id', instance.id);
-  writeNotNull('version', instance.version);
+  writeNotNull('expression', instance.expression?.toJson());
+  val['name'] = instance.name;
+  writeNotNull('context', instance.context);
   val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
+  writeNotNull('operand', instance.operand?.map((e) => e.toJson()).toList());
+  writeNotNull('external', instance.external);
   return val;
 }
 

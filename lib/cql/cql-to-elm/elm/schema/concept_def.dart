@@ -4,6 +4,18 @@ import '../../../cql.dart';
 
 part 'concept_def.g.dart';
 
+@JsonSerializable()
+class ConceptDefs {
+  List<ConceptDef>? concepts;
+
+  ConceptDefs({this.concepts});
+
+  factory ConceptDefs.fromJson(Map<String, dynamic> json) =>
+      _$ConceptDefsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ConceptDefsToJson(this);
+}
+
 /// The ConceptDef type defines a concept identifier that can then be used to
 /// reference single concepts anywhere within an expression.
 @JsonSerializable()

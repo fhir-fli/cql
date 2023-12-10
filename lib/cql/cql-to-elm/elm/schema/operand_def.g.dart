@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'concept_def.dart';
+part of 'operand_def.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ConceptDefs _$ConceptDefsFromJson(Map<String, dynamic> json) => ConceptDefs(
-      concepts: (json['concepts'] as List<dynamic>?)
-          ?.map((e) => ConceptDef.fromJson(e as Map<String, dynamic>))
+OperandDefs _$OperandDefsFromJson(Map<String, dynamic> json) => OperandDefs(
+      operands: (json['operands'] as List<dynamic>?)
+          ?.map((e) => OperandDef.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$ConceptDefsToJson(ConceptDefs instance) {
+Map<String, dynamic> _$OperandDefsToJson(OperandDefs instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -21,19 +21,19 @@ Map<String, dynamic> _$ConceptDefsToJson(ConceptDefs instance) {
     }
   }
 
-  writeNotNull('concepts', instance.concepts?.map((e) => e.toJson()).toList());
+  writeNotNull('operands', instance.operands?.map((e) => e.toJson()).toList());
   return val;
 }
 
-ConceptDef _$ConceptDefFromJson(Map<String, dynamic> json) => ConceptDef(
-      code: (json['code'] as List<dynamic>)
-          .map((e) => CodeRef.fromJson(e as Map<String, dynamic>))
-          .toList(),
+OperandDef _$OperandDefFromJson(Map<String, dynamic> json) => OperandDef(
+      operandTypeSpecifier: json['operandTypeSpecifier'] == null
+          ? null
+          : TypeSpecifier.fromJson(
+              json['operandTypeSpecifier'] as Map<String, dynamic>),
       name: json['name'] as String,
-      display: json['display'] as String?,
-      accessLevel:
-          $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
-              AccessModifier.Public,
+      operandType: json['operandType'] == null
+          ? null
+          : QName.fromJson(json['operandType'] as Map<String, dynamic>),
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)
@@ -46,7 +46,7 @@ ConceptDef _$ConceptDefFromJson(Map<String, dynamic> json) => ConceptDef(
       ..locator = json['locator'] as String?
       ..resultTypeName = json['resultTypeName'] as String?;
 
-Map<String, dynamic> _$ConceptDefToJson(ConceptDef instance) {
+Map<String, dynamic> _$OperandDefToJson(OperandDef instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -60,14 +60,8 @@ Map<String, dynamic> _$ConceptDefToJson(ConceptDef instance) {
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
   writeNotNull('resultTypeName', instance.resultTypeName);
-  val['code'] = instance.code.map((e) => e.toJson()).toList();
+  writeNotNull('operandTypeSpecifier', instance.operandTypeSpecifier?.toJson());
   val['name'] = instance.name;
-  writeNotNull('display', instance.display);
-  val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
+  writeNotNull('operandType', instance.operandType?.toJson());
   return val;
 }
-
-const _$AccessModifierEnumMap = {
-  AccessModifier.Public: 'Public',
-  AccessModifier.Private: 'Private',
-};

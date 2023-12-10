@@ -8,7 +8,7 @@ part 'library.g.dart';
 @JsonSerializable()
 class Library extends Element {
   /// A Library is an instance of a CQL-ELM library.
-  ///
+
   /// It contains various elements such as identifier, schemaIdentifier, usings, includes, parameters, codeSystems, valueSets, codes, concepts, and statements.
   VersionedIdentifier? identifier;
 
@@ -21,35 +21,50 @@ class Library extends Element {
   /// Set of libraries referenced by this artifact. Components of referenced libraries may be used within this artifact.
   IncludeDefs? includes;
 
-  /// The parameters defined within this library.
-  List<ParameterDef>? parameters;
-
   /// The code systems defined within this library.
   CodeSystemDefs? codeSystems;
+
+  /// The parameters defined within this library.
+  ParameterDefs? parameters;
 
   /// The value sets defined within this library.
   ValueSetDefs? valueSets;
 
-  /// The codes defined within this library.
-  List<CodeDef>? codes;
+  /// The statements section contains the expression and function definitions for the library.
+  ExpressionDefs? defines;
+
+  FunctionDefs? functions;
 
   /// The concepts defined within this library.
-  List<ConceptDef>? concepts;
+  ConceptDefs? concepts;
 
-  /// The statements section contains the expression and function definitions for the library.
-  List<ExpressionDef>? statements;
-
-  Library(
-      {this.identifier,
-      this.schemaIdentifier,
-      this.usings,
-      this.includes,
-      this.parameters,
-      this.codeSystems,
-      this.valueSets,
-      this.codes,
-      this.concepts,
-      this.statements});
+  Library({
+    this.identifier,
+    VersionedIdentifier? schemaIdentifier,
+    UsingDefs? usings,
+    this.includes,
+    this.codeSystems,
+    this.parameters,
+    this.valueSets,
+    this.defines,
+    this.functions,
+    this.concepts,
+  })  : this.schemaIdentifier = schemaIdentifier ??
+            VersionedIdentifier(
+              id: 'urn:hl7-org:elm',
+              version: 'r1',
+            ),
+        this.usings = usings ?? UsingDefs()
+          ..def = [
+            UsingDef(localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
+          ],
+        super(annotation: [
+          {
+            "translatorVersion": "0.0.0-dev1",
+            "translatorOptions": "",
+            "type": "CqlToElmInfo"
+          }
+        ]);
 
   factory Library.fromJson(Map<String, dynamic> json) =>
       _$LibraryFromJson(json);

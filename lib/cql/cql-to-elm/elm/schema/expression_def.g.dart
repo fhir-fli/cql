@@ -6,6 +6,17 @@ part of 'expression_def.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+ExpressionDefs _$ExpressionDefsFromJson(Map<String, dynamic> json) =>
+    ExpressionDefs()
+      ..expressions = (json['expressions'] as List<dynamic>)
+          .map((e) => ExpressionDef.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+Map<String, dynamic> _$ExpressionDefsToJson(ExpressionDefs instance) =>
+    <String, dynamic>{
+      'expressions': instance.expressions.map((e) => e.toJson()).toList(),
+    };
+
 ExpressionDef _$ExpressionDefFromJson(Map<String, dynamic> json) =>
     ExpressionDef(
       expression: json['expression'] == null
@@ -17,10 +28,12 @@ ExpressionDef _$ExpressionDefFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
               AccessModifier.Public,
     )
-      ..annotation = json['annotation'] as List<dynamic>?
+      ..annotation = (json['annotation'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
+          .toList()
       ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
           ? null
-          : ExpTypeSpecifier.fromJson(
+          : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
       ..localId = json['localId'] as String?
       ..locator = json['locator'] as String?

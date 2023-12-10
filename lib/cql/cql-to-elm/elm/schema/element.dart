@@ -9,13 +9,13 @@ class Element {
   // The annotation element provides a mechanism for decorating expressions
   // with application-specific information such as translation hints, visual
   // designer information, or debug symbols.
-  List<dynamic>? annotation;
+  List<Map<String, dynamic>>? annotation;
 
   // The resultTypeSpecifier element describes the type information for this ELM node.
   // ELM documents are not required to contain result type information, but if they do,
   // the result type of each node is specified using the resultTypeName attribute for
   // named types, and this resultTypeSpecifier element for non-named types.
-  ExpTypeSpecifier? resultTypeSpecifier;
+  TypeSpecifier? resultTypeSpecifier;
 
   // The localId for an ELM node identifies the location in the source document
   // that produced the ELM. The format is L:C[-L:C], where L is a line number

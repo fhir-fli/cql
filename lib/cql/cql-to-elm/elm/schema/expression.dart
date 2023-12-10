@@ -16,57 +16,23 @@ class Expression extends Element {
   Map<String, dynamic> toJson() => _$ExpressionToJson(this);
 }
 
-// NamedTypeSpecifier defines a type identified by a name, such as Integer, String,
-// Patient, or Encounter.
-class ExpNamedTypeSpecifier extends ExpTypeSpecifier {
-  // The name of the type identified by a QName.
-  String? name;
-}
-
-// ExpIntervalTypeSpecifier defines an interval type by specifying the point type.
-// Any type can serve as the point type for an interval, so long as it supports
-// comparison operators, minimum and maximum value determination, as well as
-// predecessor and successor functions.
-class ExpIntervalTypeSpecifier extends ExpTypeSpecifier {
-  ExpTypeSpecifier? pointType;
-}
-
-// ExpListTypeSpecifier defines a list type by specifying the type of elements the list may contain.
-class ExpListTypeSpecifier extends ExpTypeSpecifier {
-  ExpTypeSpecifier? elementType;
-}
-
 // TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
 class TupleElementDefinition extends Element {
   // This element is deprecated. New implementations should use the new elementType element.
-  ExpTypeSpecifier? type;
+  TypeSpecifier? type;
 
   // The type of the tuple element.
-  ExpTypeSpecifier? elementType;
+  TypeSpecifier? elementType;
 
   // The name of the tuple element.
   String? name;
-}
-
-// ExpTupleTypeSpecifier defines the possible elements of a tuple.
-class ExpTupleTypeSpecifier extends ExpTypeSpecifier {
-  List<TupleElementDefinition>? element;
-}
-
-// ExpChoiceTypeSpecifier defines the possible types of a choice type.
-class ExpChoiceTypeSpecifier extends ExpTypeSpecifier {
-  // This element is deprecated. New implementations should use the new choice element.
-  List<ExpTypeSpecifier>? type;
-
-  // The possible types of the choice.
-  List<ExpTypeSpecifier>? choice;
 }
 
 /// Abstract base class for all built-in operators used in the ELM expression
 /// language.
 abstract class OperatorExpression extends Expression {
   /// Declared signature of the operator or function being called.
-  List<ExpTypeSpecifier>? signature;
+  List<TypeSpecifier>? signature;
 }
 
 /// Abstract base class for expressions that take a single argument.
@@ -96,18 +62,6 @@ abstract class NaryExpression extends OperatorExpression {
   List<Expression>? operands;
 }
 
-/// Named function definition that can be invoked by any expression in the
-/// artifact.
-class FunctionDef extends ExpressionDef {
-  /// List of operand definitions.
-  List<OperandDef>? operand;
-
-  /// Specifies if the function is external.
-  bool? external;
-
-  FunctionDef({this.operand, this.external}) : super(name: 'FunctionDef');
-}
-
 /// Expression that references a previously defined NamedExpression.
 class ExpressionRef extends Expression {
   /// Name of the referenced expression.
@@ -122,7 +76,7 @@ class ExpressionRef extends Expression {
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {
   /// Declared signature of the function being called.
-  List<ExpTypeSpecifier>? signature;
+  List<TypeSpecifier>? signature;
 
   /// Operands passed to the function.
   List<Expression>? operand;
@@ -139,20 +93,6 @@ class ParameterRef extends Expression {
   String? libraryName;
 
   ParameterRef({required this.name, this.libraryName});
-}
-
-/// Operand definition to a function within the body of a function definition.
-class OperandDef extends Element {
-  /// Type specifier for the operand.
-  ExpTypeSpecifier? operandTypeSpecifier;
-
-  /// Name of the operand.
-  String name;
-
-  /// Qualified name of the operand type, optional.
-  QName? operandType;
-
-  OperandDef({this.operandTypeSpecifier, required this.name, this.operandType});
 }
 
 /// Expression allowing the value of an operand to be referenced within the body of a function definition.
@@ -258,7 +198,7 @@ class ExpInterval extends Expression {
 /// List selector returning a List value.
 class ListExpression extends Expression {
   /// Type specifier for the list, if provided.
-  ExpTypeSpecifier? typeSpecifier;
+  TypeSpecifier? typeSpecifier;
 
   /// Elements of the list evaluated in order.
   List<Expression>? element;
@@ -351,7 +291,7 @@ class Coalesce extends NaryExpression {}
 /// Is operator allowing testing the type of a result.
 class Is extends UnaryExpression {
   /// Type specifier for testing.
-  ExpTypeSpecifier? isTypeSpecifier;
+  TypeSpecifier? isTypeSpecifier;
 
   /// Type to test against.
   QName? isType;
@@ -362,7 +302,7 @@ class Is extends UnaryExpression {
 /// As operator allowing casting the result of an expression to a given target type.
 class As extends UnaryExpression {
   /// Type specifier for casting.
-  ExpTypeSpecifier? asTypeSpecifier;
+  TypeSpecifier? asTypeSpecifier;
 
   /// Target type for casting.
   QName? asType;
@@ -385,7 +325,7 @@ class As extends UnaryExpression {
 /// ISO-8601 standard format: YYYY-MM-DDThh:mm:ss(+|-)hh:mm.
 class Convert extends UnaryExpression {
   /// Type specifier for the target type.
-  ExpTypeSpecifier? toTypeSpecifier;
+  TypeSpecifier? toTypeSpecifier;
 
   /// Target type to convert to.
   QName? toType;
@@ -404,7 +344,7 @@ class Convert extends UnaryExpression {
 /// ISO-8601 standard format: YYYY-MM-DDThh:mm:ss(+|-)hh:mm.
 class CanConvert extends UnaryExpression {
   /// Type specifier for the target type.
-  ExpTypeSpecifier? toTypeSpecifier;
+  TypeSpecifier? toTypeSpecifier;
 
   /// Target type to convert to.
   QName? toType;
@@ -1561,7 +1501,7 @@ abstract class AggregateExpression extends Expression {
     required this.path,
   });
 
-  final List<ExpTypeSpecifier>? signature;
+  final List<TypeSpecifier>? signature;
   final String? path;
 }
 
@@ -1573,7 +1513,7 @@ class Aggregate extends AggregateExpression {
     required this.iteration,
     required Expression source,
     required this.initialValue,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1592,7 +1532,7 @@ class Aggregate extends AggregateExpression {
 class Count extends AggregateExpression {
   Count({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1608,7 +1548,7 @@ class Count extends AggregateExpression {
 class Sum extends AggregateExpression {
   Sum({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1624,7 +1564,7 @@ class Sum extends AggregateExpression {
 class Product extends AggregateExpression {
   Product({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1641,7 +1581,7 @@ class Product extends AggregateExpression {
 class Min extends AggregateExpression {
   Min({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1658,7 +1598,7 @@ class Min extends AggregateExpression {
 class Max extends AggregateExpression {
   Max({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1674,7 +1614,7 @@ class Max extends AggregateExpression {
 class Avg extends AggregateExpression {
   Avg({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1690,7 +1630,7 @@ class Avg extends AggregateExpression {
 class GeometricMean extends AggregateExpression {
   GeometricMean({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1706,7 +1646,7 @@ class GeometricMean extends AggregateExpression {
 class Median extends AggregateExpression {
   Median({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1722,7 +1662,7 @@ class Median extends AggregateExpression {
 class Mode extends AggregateExpression {
   Mode({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1738,7 +1678,7 @@ class Mode extends AggregateExpression {
 class Variance extends AggregateExpression {
   Variance({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1754,7 +1694,7 @@ class Variance extends AggregateExpression {
 class PopulationVariance extends AggregateExpression {
   PopulationVariance({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1770,7 +1710,7 @@ class PopulationVariance extends AggregateExpression {
 class StdDev extends AggregateExpression {
   StdDev({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1786,7 +1726,7 @@ class StdDev extends AggregateExpression {
 class PopulationStdDev extends AggregateExpression {
   PopulationStdDev({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1802,7 +1742,7 @@ class PopulationStdDev extends AggregateExpression {
 class AllTrue extends AggregateExpression {
   AllTrue({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
@@ -1818,7 +1758,7 @@ class AllTrue extends AggregateExpression {
 class AnyTrue extends AggregateExpression {
   AnyTrue({
     required Expression source,
-    List<ExpTypeSpecifier>? signature,
+    List<TypeSpecifier>? signature,
     String? path,
   }) : super(
           signature: signature,
