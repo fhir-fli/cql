@@ -134,10 +134,7 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   void visitParameterDefinition(ParameterDefinitionContext ctx) {
-    if (shouldPrint) {
-      print(
-          '${ctx.runtimeType.toString()}   ${ctx.text}      ${ctx.childCount}');
-    }
+    printIf(ctx);
     if (library.parameters == null) {
       library.parameters = ParameterDefs();
     }
@@ -411,6 +408,7 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
     printIf(ctx);
     String? name;
     for (final child in ctx.children ?? <ParseTree>[]) {
+      print(child.runtimeType);
       if (child is IdentifierContext) {
         name = visitIdentifier(child);
       }
@@ -1164,7 +1162,7 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
 
     visitChildren(ctx);
   }
@@ -1346,7 +1344,7 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitLiteralTerm(LiteralTermContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
 
     visitChildren(ctx);
   }
@@ -1527,7 +1525,8 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitNullLiteral(NullLiteralContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
+    ;
 
     visitChildren(ctx);
   }
