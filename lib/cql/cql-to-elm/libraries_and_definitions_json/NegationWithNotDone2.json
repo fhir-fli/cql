@@ -1,0 +1,153 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 68,
+                "startChar": 7,
+                "endLine": 68,
+                "endChar": 8,
+                "message": "no viable alternative at input 'define codesystem'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 74,
+                "startChar": 13,
+                "endLine": 74,
+                "endChar": 14,
+                "message": "missing ':' at '\"Not Done\"'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 75,
+                "startChar": 12,
+                "endLine": 75,
+                "endChar": 13,
+                "message": "no viable alternative at input 'Code,'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 76,
+                "startChar": 18,
+                "endLine": 76,
+                "endChar": 19,
+                "message": "no viable alternative at input 'Code,'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 78,
+                "startChar": 0,
+                "endLine": 78,
+                "endChar": 1,
+                "message": "no viable alternative at input 'Code\\n}'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 87,
+                "startChar": 7,
+                "endLine": 87,
+                "endChar": 8,
+                "message": "no viable alternative at input 'define codesystem'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 93,
+                "startChar": 13,
+                "endLine": 93,
+                "endChar": 14,
+                "message": "missing ':' at '\"Not Ordered\"'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 94,
+                "startChar": 12,
+                "endLine": 94,
+                "endChar": 13,
+                "message": "no viable alternative at input 'Code,'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 95,
+                "startChar": 18,
+                "endLine": 95,
+                "endChar": 19,
+                "message": "no viable alternative at input 'Code,'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 97,
+                "startChar": 0,
+                "endLine": 97,
+                "endChar": 1,
+                "message": "no viable alternative at input 'Code\\n}'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 105,
+                "startChar": 13,
+                "endLine": 105,
+                "endChar": 14,
+                "message": "missing ':' at '\"Medication, Not Ordered\"'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 106,
+                "startChar": 12,
+                "endLine": 106,
+                "endChar": 13,
+                "message": "no viable alternative at input 'Code,'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 108,
+                "endChar": 1,
+                "message": "no viable alternative at input 'Code\\n}'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

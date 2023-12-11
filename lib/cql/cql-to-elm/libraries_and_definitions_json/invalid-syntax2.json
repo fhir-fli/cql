@@ -1,0 +1,70 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 10,
+                "startChar": 0,
+                "endLine": 10,
+                "endChar": 1,
+                "message": "missing '>' at 'context'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "test",
+            "version": "0.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": ""
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "test param",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Female Administrative Sex",
+                    "id": "2.16.840.1.113883.3.560.100.2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestValueset",
+                    "id": "1.1.111",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

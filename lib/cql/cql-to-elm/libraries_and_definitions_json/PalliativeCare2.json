@@ -1,0 +1,106 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "PalliativeCare",
+            "version": "1.7.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "",
+                    "version": "4.1.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.3.000"
+                },
+                {
+                    "localIdentifier": "QICoreCommon",
+                    "path": "QICoreCommon",
+                    "version": "1.5.000"
+                },
+                {
+                    "localIdentifier": "Status",
+                    "path": "Status",
+                    "version": "1.6.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Palliative Care Encounter",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1090",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Palliative Care Intervention",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1135",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Palliative Care Diagnosis",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.1167",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)",
+                    "id": "71007-9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                }
+            ]
+        }
+    }
+}

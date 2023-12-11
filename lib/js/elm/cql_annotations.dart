@@ -25,18 +25,6 @@ class Annotation extends CqlToElmBase {
 }
 
 @JsonSerializable()
-class Tag extends CqlToElmBase {
-  String? name;
-  String? value;
-
-  Tag({this.name, this.value});
-
-  factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TagToJson(this);
-}
-
-@JsonSerializable()
 class Locator extends CqlToElmBase {
   Locator({this.startLine, this.startChar, this.endLine, this.endChar});
 

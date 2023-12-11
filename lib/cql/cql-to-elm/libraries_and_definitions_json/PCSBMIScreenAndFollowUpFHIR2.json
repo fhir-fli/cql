@@ -1,0 +1,195 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "PCSBMIScreenAndFollowUpFHIR",
+            "version": "0.1.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "",
+                    "version": "4.1.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.3.000"
+                },
+                {
+                    "localIdentifier": "Hospice",
+                    "path": "Hospice",
+                    "version": "6.7.000"
+                },
+                {
+                    "localIdentifier": "PalliativeCare",
+                    "path": "PalliativeCare",
+                    "version": "1.7.000"
+                },
+                {
+                    "localIdentifier": "QICoreCommon",
+                    "path": "QICoreCommon",
+                    "version": "1.5.000"
+                },
+                {
+                    "localIdentifier": "SupplementalDataElements",
+                    "path": "SDE",
+                    "version": "3.4.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ActCode",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ICD10CM",
+                    "id": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ObservationCategoryCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Encounter to Evaluate BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1751",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up for Above Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1525",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up for Below Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1528",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medications for Above Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1561",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medications for Below Normal BMI",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1562",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Overweight or Obese",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.502",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Declined",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1582",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pregnancy or Other Related Diagnoses",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1623",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Referrals Where Weight Assessment May Occur",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1527",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Underweight",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1563",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Body mass index (BMI) [Ratio]",
+                    "id": "39156-5",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Encounter for palliative care",
+                    "id": "Z51.5",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD10CM"
+                    }
+                },
+                {
+                    "name": "Functional Assessment of Chronic Illness Therapy - Palliative Care Questionnaire (FACIT-Pal)",
+                    "id": "71007-9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "virtual",
+                    "id": "VR",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ActCode"
+                    }
+                }
+            ]
+        }
+    }
+}

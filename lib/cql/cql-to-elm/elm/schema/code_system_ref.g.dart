@@ -12,7 +12,7 @@ CodeSystemRef _$CodeSystemRefFromJson(Map<String, dynamic> json) =>
       libraryName: json['libraryName'] as String?,
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
           .toList()
       ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
           ? null
@@ -31,7 +31,8 @@ Map<String, dynamic> _$CodeSystemRefToJson(CodeSystemRef instance) {
     }
   }
 
-  writeNotNull('annotation', instance.annotation);
+  writeNotNull(
+      'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);

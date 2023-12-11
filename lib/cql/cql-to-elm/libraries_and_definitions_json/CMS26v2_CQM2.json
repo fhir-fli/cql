@@ -1,0 +1,58 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CMS26",
+            "version": "2"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": []
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Asthma",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.271",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Asthma Management Plan",
+                    "id": "2.16.840.1.113883.3.117.1.7.1.131",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Home Discharge Disposition",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Doctor",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

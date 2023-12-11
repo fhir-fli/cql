@@ -1,0 +1,33 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "FAKECS",
+                    "id": "1.2.3.4.5.6.7.8.9",
+                    "version": "1",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

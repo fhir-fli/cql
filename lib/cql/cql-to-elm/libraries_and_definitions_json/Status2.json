@@ -1,0 +1,99 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Status",
+            "version": "1.6.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "",
+                    "version": "4.1.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.3.000"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ObservationCategoryCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionClinicalStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "laboratory",
+                    "id": "laboratory",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ObservationCategoryCodes"
+                    }
+                },
+                {
+                    "name": "exam",
+                    "id": "exam",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ObservationCategoryCodes"
+                    }
+                },
+                {
+                    "name": "survey",
+                    "id": "survey",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ObservationCategoryCodes"
+                    }
+                },
+                {
+                    "name": "vital-signs",
+                    "id": "vital-signs",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ObservationCategoryCodes"
+                    }
+                },
+                {
+                    "name": "active",
+                    "id": "active",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                }
+            ]
+        }
+    }
+}

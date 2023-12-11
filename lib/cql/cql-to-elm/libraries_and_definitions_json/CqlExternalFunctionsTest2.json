@@ -2,13 +2,13 @@
     "library": {
         "annotation": [
             {
-                "translatorVersion": "2.11.0",
+                "translatorVersion": "0.0.0-dev1",
                 "translatorOptions": "",
                 "type": "CqlToElmInfo"
             }
         ],
         "identifier": {
-            "id": "CqlExternalFunctionsTest2"
+            "id": "CqlExternalFunctionsTest"
         },
         "schemaIdentifier": {
             "id": "urn:hl7-org:elm",
@@ -19,98 +19,6 @@
                 {
                     "localIdentifier": "System",
                     "uri": "urn:hl7-org:elm-types:r1"
-                }
-            ]
-        },
-        "statements": {
-            "def": [
-                {
-                    "name": "MyTimes",
-                    "context": "Patient",
-                    "accessLevel": "Public",
-                    "external": true,
-                    "type": "FunctionDef",
-                    "operand": [
-                        {
-                            "name": "x",
-                            "operandTypeSpecifier": {
-                                "name": "{urn:hl7-org:elm-types:r1}Integer",
-                                "type": "NamedTypeSpecifier"
-                            }
-                        },
-                        {
-                            "name": "y",
-                            "operandTypeSpecifier": {
-                                "name": "{urn:hl7-org:elm-types:r1}Integer",
-                                "type": "NamedTypeSpecifier"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "CallMyTimes",
-                    "context": "Patient",
-                    "accessLevel": "Public",
-                    "expression": {
-                        "name": "MyTimes",
-                        "type": "FunctionRef",
-                        "operand": [
-                            {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "18",
-                                "type": "Literal"
-                            },
-                            {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "3",
-                                "type": "Literal"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "MyDividedBy",
-                    "context": "Patient",
-                    "accessLevel": "Public",
-                    "external": true,
-                    "type": "FunctionDef",
-                    "operand": [
-                        {
-                            "name": "x",
-                            "operandTypeSpecifier": {
-                                "name": "{urn:hl7-org:elm-types:r1}Integer",
-                                "type": "NamedTypeSpecifier"
-                            }
-                        },
-                        {
-                            "name": "y",
-                            "operandTypeSpecifier": {
-                                "name": "{urn:hl7-org:elm-types:r1}Integer",
-                                "type": "NamedTypeSpecifier"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "CallMyDividedBy",
-                    "context": "Patient",
-                    "accessLevel": "Public",
-                    "expression": {
-                        "name": "MyDividedBy",
-                        "type": "FunctionRef",
-                        "operand": [
-                            {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "18",
-                                "type": "Literal"
-                            },
-                            {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "3",
-                                "type": "Literal"
-                            }
-                        ]
-                    }
                 }
             ]
         }

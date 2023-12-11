@@ -1,0 +1,33 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 38,
+                "startChar": 83,
+                "endLine": 38,
+                "endChar": 84,
+                "message": "mismatched input 'from' expecting {',', '.', '<', '>', ')', '[', 'in', '=', '~', 'is', 'as', 'properly', 'between', 'and', '<=', '>=', '!=', '!~', 'contains', 'or', 'xor', 'implies', '|', 'union', 'intersect', 'except', '+', '-', '^', '*', '/', 'div', 'mod', '&', 'less than', 'more than', 'on or', 'before', 'after', 'starts', 'ends', 'occurs', 'same', 'includes', 'during', 'included in', 'within', 'meets', 'overlaps', NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

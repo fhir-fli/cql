@@ -29,7 +29,7 @@ ExpressionDef _$ExpressionDefFromJson(Map<String, dynamic> json) =>
               AccessModifier.Public,
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
           .toList()
       ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
           ? null
@@ -48,7 +48,8 @@ Map<String, dynamic> _$ExpressionDefToJson(ExpressionDef instance) {
     }
   }
 
-  writeNotNull('annotation', instance.annotation);
+  writeNotNull(
+      'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);

@@ -1,0 +1,94 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "AccessModifierNonReferencing"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Test Parameter",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{urn:hl7-org:elm-types:r1}Integer",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ICD-10:2014",
+                    "id": "ICD-10",
+                    "version": "2014",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMED-CT:2020",
+                    "id": "http://snomed.info/sct",
+                    "version": "2020",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ICD-9CM:2020",
+                    "id": "2.16.840.1.113883.6.103",
+                    "version": "2020",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Female Administrative Sex",
+                    "id": "2.16.840.1.113883.3.560.100.2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chlamydia Screening",
+                    "id": "2.16.840.1.113883.3.464.1003.110.12.1052",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "XYZ Code",
+                    "id": "XYZ",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT:2020"
+                    }
+                },
+                {
+                    "name": "ABC Code",
+                    "id": "ABC",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-9CM:2020"
+                    }
+                }
+            ]
+        }
+    }
+}

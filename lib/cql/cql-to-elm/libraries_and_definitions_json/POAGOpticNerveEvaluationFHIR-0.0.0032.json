@@ -1,0 +1,159 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "POAGOpticNerveEvaluationFHIR",
+            "version": "0.0.003"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "",
+                    "version": "4.1.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.1.000"
+                },
+                {
+                    "localIdentifier": "SupplementalDataElements",
+                    "path": "SDE",
+                    "version": "3.1.000"
+                },
+                {
+                    "localIdentifier": "CQMCommon",
+                    "path": "CQMCommon",
+                    "version": "1.0.000"
+                },
+                {
+                    "localIdentifier": "FHIRCommon",
+                    "path": "FHIRCommon",
+                    "version": "4.1.000"
+                },
+                {
+                    "localIdentifier": "QICoreCommon",
+                    "path": "QICoreCommon",
+                    "version": "1.2.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ActCode",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Care Services in Long-Term Residential Facility",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cup to Disc Ratio",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1333",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Face-to-Face Interaction",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1048",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Nursing Facility Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1012",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Office Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ophthalmological Services",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1285",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Optic Disc Exam for Structural Abnormalities",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1334",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Consultation",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1008",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Primary Open-Angle Glaucoma",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.326",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "virtual",
+                    "id": "VR",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ActCode"
+                    }
+                },
+                {
+                    "name": "AMB",
+                    "id": "AMB",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ActCode"
+                    }
+                }
+            ]
+        }
+    }
+}

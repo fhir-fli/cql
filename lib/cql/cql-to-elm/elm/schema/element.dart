@@ -9,7 +9,7 @@ class Element {
   // The annotation element provides a mechanism for decorating expressions
   // with application-specific information such as translation hints, visual
   // designer information, or debug symbols.
-  List<Map<String, dynamic>>? annotation;
+  List<Annotation>? annotation;
 
   // The resultTypeSpecifier element describes the type information for this ELM node.
   // ELM documents are not required to contain result type information, but if they do,
@@ -37,12 +37,13 @@ class Element {
   // types, or the resultTypeSpecifier element for non-named types.
   String? resultTypeName;
 
-  Element(
-      {this.annotation,
-      this.resultTypeSpecifier,
-      this.localId,
-      this.locator,
-      this.resultTypeName});
+  Element({
+    this.annotation,
+    this.resultTypeSpecifier,
+    this.localId,
+    this.locator,
+    this.resultTypeName,
+  });
 
   factory Element.fromJson(Map<String, dynamic> json) =>
       _$ElementFromJson(json);

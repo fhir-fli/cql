@@ -1,0 +1,163 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 10,
+                "startChar": 0,
+                "endLine": 10,
+                "endChar": 1,
+                "message": "extraneous input 'Coalesce' expecting {<EOF>, 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 37,
+                "startChar": 22,
+                "endLine": 37,
+                "endChar": 23,
+                "message": "extraneous input ':' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', 'code', 'concept', 'List', 'Interval', 'Tuple', 'Choice', 'define', 'context', 'fluent', 'function', 'where', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'date', 'time', 'timezoneoffset', 'start', 'end', 'width', 'successor', 'predecessor', 'div', 'mod', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', 'display', 'Code', 'Concept', QUOTEDIDENTIFIER, IDENTIFIER, DELIMITEDIDENTIFIER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 37,
+                "startChar": 35,
+                "endLine": 37,
+                "endChar": 36,
+                "message": "extraneous input ':' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', 'code', 'concept', 'List', 'Interval', 'Tuple', 'Choice', 'define', 'context', 'fluent', 'function', 'where', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'date', 'time', 'timezoneoffset', 'start', 'end', 'width', 'successor', 'predecessor', 'div', 'mod', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', 'display', 'Code', 'Concept', QUOTEDIDENTIFIER, IDENTIFIER, DELIMITEDIDENTIFIER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 1,
+                "message": "mismatched input 'define' expecting {':', 'returns'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 1,
+                "message": "mismatched input 'define' expecting {':', 'returns'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 50,
+                "startChar": 27,
+                "endLine": 50,
+                "endChar": 28,
+                "message": "no viable alternative at input 'Code('",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 58,
+                "endChar": 1,
+                "message": "extraneous input 'list' expecting {<EOF>, 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 68,
+                "startChar": 30,
+                "endLine": 68,
+                "endChar": 31,
+                "message": "no viable alternative at input '=='",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 68,
+                "startChar": 30,
+                "endLine": 68,
+                "endChar": 31,
+                "message": "mismatched input '=' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', '{', 'code', 'from', 'concept', 'List', 'Interval', 'Tuple', 'define', 'context', 'fluent', 'function', '(', '[', 'where', 'distinct', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'not', 'null', 'true', 'false', 'cast', 'exists', 'duration', 'difference', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'year', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond', 'date', 'time', 'timezoneoffset', 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'milliseconds', 'convert', '+', '-', 'start', 'end', 'width', 'successor', 'predecessor', 'singleton', 'point', 'minimum', 'maximum', 'div', 'mod', 'if', 'case', 'flatten', 'expand', 'collapse', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', '$this', '$index', '$total', 'display', 'Code', 'Concept', '%', QUOTEDIDENTIFIER, DATETIME, LONGNUMBER, DATE, TIME, IDENTIFIER, DELIMITEDIDENTIFIER, STRING, NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 68,
+                "startChar": 31,
+                "endLine": 68,
+                "endChar": 32,
+                "message": "extraneous input '=' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', '{', 'code', 'from', 'concept', 'List', 'Interval', 'Tuple', 'define', 'context', 'fluent', 'function', '(', '[', 'where', 'distinct', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'not', 'null', 'true', 'false', 'cast', 'exists', 'duration', 'difference', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'year', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond', 'date', 'time', 'timezoneoffset', 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'milliseconds', 'convert', '+', '-', 'start', 'end', 'width', 'successor', 'predecessor', 'singleton', 'point', 'minimum', 'maximum', 'div', 'mod', 'if', 'case', 'flatten', 'expand', 'collapse', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', '$this', '$index', '$total', 'display', 'Code', 'Concept', '%', QUOTEDIDENTIFIER, DATETIME, LONGNUMBER, DATE, TIME, IDENTIFIER, DELIMITEDIDENTIFIER, STRING, NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 69,
+                "startChar": 16,
+                "endLine": 69,
+                "endChar": 17,
+                "message": "extraneous input 'all' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', '{', 'code', 'from', 'concept', 'List', 'Interval', 'Tuple', 'define', 'context', 'fluent', 'function', '(', '[', 'where', 'distinct', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'not', 'null', 'true', 'false', 'cast', 'exists', 'duration', 'difference', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'year', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond', 'date', 'time', 'timezoneoffset', 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'milliseconds', 'convert', '+', '-', 'start', 'end', 'width', 'successor', 'predecessor', 'singleton', 'point', 'minimum', 'maximum', 'div', 'mod', 'if', 'case', 'flatten', 'expand', 'collapse', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', '$this', '$index', '$total', 'display', 'Code', 'Concept', '%', QUOTEDIDENTIFIER, DATETIME, LONGNUMBER, DATE, TIME, IDENTIFIER, DELIMITEDIDENTIFIER, STRING, NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 69,
+                "startChar": 30,
+                "endLine": 69,
+                "endChar": 31,
+                "message": "no viable alternative at input '=='",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 69,
+                "startChar": 30,
+                "endLine": 69,
+                "endChar": 31,
+                "message": "mismatched input '=' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', '{', 'code', 'from', 'concept', 'List', 'Interval', 'Tuple', 'define', 'context', 'fluent', 'function', '(', '[', 'where', 'distinct', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'not', 'null', 'true', 'false', 'cast', 'exists', 'duration', 'difference', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'year', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond', 'date', 'time', 'timezoneoffset', 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'milliseconds', 'convert', '+', '-', 'start', 'end', 'width', 'successor', 'predecessor', 'singleton', 'point', 'minimum', 'maximum', 'div', 'mod', 'if', 'case', 'flatten', 'expand', 'collapse', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', '$this', '$index', '$total', 'display', 'Code', 'Concept', '%', QUOTEDIDENTIFIER, DATETIME, LONGNUMBER, DATE, TIME, IDENTIFIER, DELIMITEDIDENTIFIER, STRING, NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 69,
+                "startChar": 31,
+                "endLine": 69,
+                "endChar": 32,
+                "message": "extraneous input '=' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', '{', 'code', 'from', 'concept', 'List', 'Interval', 'Tuple', 'define', 'context', 'fluent', 'function', '(', '[', 'where', 'distinct', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'not', 'null', 'true', 'false', 'cast', 'exists', 'duration', 'difference', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'year', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond', 'date', 'time', 'timezoneoffset', 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'milliseconds', 'convert', '+', '-', 'start', 'end', 'width', 'successor', 'predecessor', 'singleton', 'point', 'minimum', 'maximum', 'div', 'mod', 'if', 'case', 'flatten', 'expand', 'collapse', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', '$this', '$index', '$total', 'display', 'Code', 'Concept', '%', QUOTEDIDENTIFIER, DATETIME, LONGNUMBER, DATE, TIME, IDENTIFIER, DELIMITEDIDENTIFIER, STRING, NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 3,
+                "startChar": 22,
+                "endLine": 3,
+                "endChar": 23,
+                "message": "extraneous input 'from' expecting {<EOF>, 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "TestCompatibilityLevel3"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

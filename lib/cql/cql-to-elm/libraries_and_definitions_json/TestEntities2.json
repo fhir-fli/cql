@@ -1,0 +1,75 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestEntities"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "",
+                    "version": "5.6"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Office Visit",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ambulatory Clinical Practice",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ophthalmology",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Family",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ED",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Blood Pressure",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Eye Exam",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

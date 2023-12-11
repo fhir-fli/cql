@@ -1,0 +1,59 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 13,
+                "startChar": 34,
+                "endLine": 13,
+                "endChar": 35,
+                "message": "extraneous input '[' expecting {'library', 'version', 'using', 'include', 'called', 'public', 'private', 'parameter', 'default', 'codesystem', 'valueset', 'codesystems', '{', 'code', 'concept', 'List', 'Interval', 'Tuple', 'define', 'context', 'fluent', 'function', '(', 'where', 'distinct', 'starting', 'by', 'asc', 'ascending', 'desc', 'descending', 'null', 'true', 'false', 'duration', 'difference', 'contains', 'xor', 'implies', 'union', 'intersect', 'except', 'year', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond', 'date', 'time', 'timezoneoffset', 'convert', '+', '-', 'start', 'end', 'width', 'successor', 'predecessor', 'singleton', 'point', 'minimum', 'maximum', 'div', 'mod', 'if', 'case', 'flatten', 'expand', 'collapse', 'or before', 'or after', 'or more', 'or less', 'starts', 'ends', 'includes', 'meets', 'overlaps', '$this', '$index', '$total', 'display', 'Code', 'Concept', '%', QUOTEDIDENTIFIER, DATETIME, LONGNUMBER, DATE, TIME, IDENTIFIER, DELIMITEDIDENTIFIER, STRING, NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 13,
+                "startChar": 44,
+                "endLine": 13,
+                "endChar": 45,
+                "message": "extraneous input ']' expecting {<EOF>, 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "Issue547"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        }
+    }
+}

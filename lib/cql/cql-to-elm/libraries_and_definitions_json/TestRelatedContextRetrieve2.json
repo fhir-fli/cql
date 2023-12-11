@@ -1,0 +1,42 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "",
+                    "version": "5.5"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Mother Relationship",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Estimated Due Date Exam Codes",
+                    "id": "TBD",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

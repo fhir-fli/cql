@@ -1,0 +1,33 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 2,
+                "startChar": 2,
+                "endLine": 2,
+                "endChar": 3,
+                "message": "mismatched input 'EXAMPLES' expecting {<EOF>, 'library', 'using', 'include', 'public', 'private', 'parameter', 'codesystem', 'valueset', 'code', 'concept', 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

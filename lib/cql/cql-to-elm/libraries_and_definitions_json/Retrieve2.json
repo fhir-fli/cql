@@ -1,0 +1,75 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Retrieve",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "Simple",
+                    "uri": "",
+                    "version": "1.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "Included",
+                    "path": "included"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMED",
+                    "id": "2.16.840.1.113883.6.96",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Ambulatory/ED Visit",
+                    "id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Annual Wellness Visit",
+                    "id": "2.16.840.1.113883.3.526.3.1240",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Viral pharyngitis code",
+                    "id": "1532007",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED"
+                    }
+                }
+            ]
+        }
+    }
+}

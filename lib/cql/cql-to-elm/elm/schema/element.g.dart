@@ -8,7 +8,7 @@ part of 'element.dart';
 
 Element _$ElementFromJson(Map<String, dynamic> json) => Element(
       annotation: (json['annotation'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
           .toList(),
       resultTypeSpecifier: json['resultTypeSpecifier'] == null
           ? null
@@ -28,7 +28,8 @@ Map<String, dynamic> _$ElementToJson(Element instance) {
     }
   }
 
-  writeNotNull('annotation', instance.annotation);
+  writeNotNull(
+      'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);

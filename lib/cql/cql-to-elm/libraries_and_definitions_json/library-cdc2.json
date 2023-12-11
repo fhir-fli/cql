@@ -1,0 +1,100 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CDC",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "HbA1c Tests",
+                    "id": "2.16.840.1.113883.3.464.1004.1116",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HbA1c Level Less than 7.0",
+                    "id": "2.16.840.1.113883.3.464.1004.1115",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HbA1c Level 7.0-9.0",
+                    "id": "2.16.840.1.113883.3.464.1004.1113",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HbA1c Level Greater Than 9.0",
+                    "id": "2.16.840.1.113883.3.464.1004.1114",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening",
+                    "id": "2.16.840.1.113883.3.464.1004.1078",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening Negative",
+                    "id": "2.16.840.1.113883.3.464.1004.1079",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening With Eye Care Professional",
+                    "id": "2.16.840.1.113883.3.464.1004.1080",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Urine Macroalbumin Tests",
+                    "id": "2.16.840.1.113883.3.464.1004.1257",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Positive Urine Macroalbumin Tests",
+                    "id": "2.16.840.1.113883.3.464.1004.1216",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Urine Protein Test",
+                    "id": "Urine Protein Test",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

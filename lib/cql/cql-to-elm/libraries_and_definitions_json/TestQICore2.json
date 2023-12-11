@@ -1,0 +1,211 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestQICore"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "",
+                    "version": "5.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "Marital Status Codes",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CDC Race and Ethnicity Codes",
+                    "id": "urn:oid:2.16.840.1.113883.6.238",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CommunicationCategoryCodeSystem",
+                    "id": "http://terminology.hl7.org/CodeSystem/communication-category",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMED-CT",
+                    "id": "http://snomed.info/sct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CVX",
+                    "id": "http://hl7.org/fhir/sid/cvx",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TaskCodeSystem",
+                    "id": "http://hl7.org/fhir/CodeSystem/task-code",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Marital Status",
+                    "id": "http://hl7.org/fhir/ValueSet/marital-status",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CommunicationCodes",
+                    "id": "http://hl7.org/fhir/ValueSet/communication-category",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DeviceCodes",
+                    "id": "http://example.org/fhir/ValueSet/device-codes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ImmunizationCodes",
+                    "id": "http://example.org/fhir/ValueSet/immunization-codes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MedicationCodes",
+                    "id": "http://example.org/fhir/ValueSet/medication-codes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ObservationCodes",
+                    "id": "http://example.org/fhir/ValueSet/observation-codes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProcedureCodes",
+                    "id": "http://example.org/fhir/ValueSet/procedure-codes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TaskCodes",
+                    "id": "http://hl7.org/fhir/ValueSet/task-code",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NegationReasonCodes",
+                    "id": "http://hl7.org/fhir/us/qicore/ValueSet/qicore-negation-reason",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Marital Status - Married",
+                    "id": "M",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Marital Status Codes"
+                    }
+                },
+                {
+                    "name": "American Indian or Alaska Native",
+                    "id": "1002-5",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CDC Race and Ethnicity Codes"
+                    }
+                },
+                {
+                    "name": "Alaska Native",
+                    "id": "1735-0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CDC Race and Ethnicity Codes"
+                    }
+                },
+                {
+                    "name": "CommunicationCode",
+                    "id": "alert",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CommunicationCategoryCodeSystem"
+                    }
+                },
+                {
+                    "name": "DeviceCode",
+                    "id": "156009",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "ImmunizationCode",
+                    "id": "01",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CVX"
+                    }
+                },
+                {
+                    "name": "MedicationCode",
+                    "id": "26100",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "ObservationCode",
+                    "id": "1-8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "ProcedureCode",
+                    "id": "7138802",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "TaskCode",
+                    "id": "approve",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "TaskCodeSystem"
+                    }
+                }
+            ]
+        }
+    }
+}

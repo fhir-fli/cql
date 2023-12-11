@@ -1,0 +1,111 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestFHIR"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.2.0"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Marital Status Codes",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CDC Race and Ethnicity Codes",
+                    "id": "urn:oid:2.16.840.1.113883.6.238",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Marital Status",
+                    "id": "http://hl7.org/fhir/ValueSet/marital-status",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Marital Status - Married",
+                    "id": "M",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Marital Status Codes"
+                    }
+                },
+                {
+                    "name": "American Indian or Alaska Native",
+                    "id": "1002-5",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CDC Race and Ethnicity Codes"
+                    }
+                },
+                {
+                    "name": "Alaska Native",
+                    "id": "1735-0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CDC Race and Ethnicity Codes"
+                    }
+                },
+                {
+                    "name": "Blood pressure",
+                    "id": "85354-9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Diastolic blood pressure",
+                    "id": "8462-4",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Systolic blood pressure",
+                    "id": "8480-6",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                }
+            ]
+        }
+    }
+}

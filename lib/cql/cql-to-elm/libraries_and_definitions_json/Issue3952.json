@@ -1,0 +1,136 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Cataracts2040BCVAwithin90Days",
+            "version": "9.2.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QDM",
+                    "uri": "",
+                    "version": "5.5"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Acute and Subacute Iridocyclitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1241",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Amblyopia",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1448",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Best Corrected Visual Acuity Exam Using Snellen Chart",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1560",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Burn Confined to Eye and Adnexa",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1409",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract Secondary to Ocular Disorders",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1410",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract Surgery",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1411",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract, Congenital",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1412",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract, Mature or Hypermature",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1413",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cataract, Posterior Polar",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1414",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Central Corneal Ulcer",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1428",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Certain Types of Iridocyclitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1415",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Choroidal Degenerations",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1450",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Choroidal Detachment",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1451",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Choroidal Hemorrhage and Rupture",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1452",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chronic Iridocyclitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1416",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Vascular Disorders of Iris and Ciliary Body",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1445",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Visual Field Defects",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1446",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

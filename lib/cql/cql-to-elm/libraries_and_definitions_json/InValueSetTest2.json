@@ -1,0 +1,32 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Female",
+                    "id": "2.16.840.1.113883.3.560.100.2",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

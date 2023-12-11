@@ -1,0 +1,149 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "EXM9_FHIR4",
+            "version": "8.1.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.0"
+                },
+                {
+                    "localIdentifier": "MATGlobalCommonFunctions_FHIR4",
+                    "path": "Global",
+                    "version": "4.0.000"
+                },
+                {
+                    "localIdentifier": "SupplementalDataElements_FHIR4",
+                    "path": "SDE",
+                    "version": "1.0.0"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMEDCT",
+                    "id": "http://snomed.info/sct/731000124108",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ObservationCategoryCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionClinicalStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Breast Milk",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.30",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dietary Intake Other than Breast Milk",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.27",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Discharge To Acute Care Facility",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter Inpatient",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Galactosemia",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.35",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Neonatal Intensive Care Unit (NICU)",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.205",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Other Health Care Facility",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.67",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Parenteral Nutrition",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.38",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Expired",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.309",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Born Newborn Born in Hospital",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.26",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Gestational age--at birth",
+                    "id": "76516-4",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "exam",
+                    "id": "exam",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ObservationCategoryCodes"
+                    }
+                }
+            ]
+        }
+    }
+}

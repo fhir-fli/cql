@@ -1,0 +1,105 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "HospiceFHIR4",
+            "version": "2.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "MATGlobalCommonFunctionsFHIR4",
+                    "path": "Global",
+                    "version": "5.0.000"
+                },
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.001"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMEDCT:2017-09",
+                    "id": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/version/201709",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Encounter Inpatient",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hospice care ambulatory",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1108.15",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Discharge to healthcare facility for hospice care (procedure)",
+                    "id": "428371000124100",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMEDCT:2017-09"
+                    }
+                },
+                {
+                    "name": "Discharge to home for hospice care (procedure)",
+                    "id": "428361000124107",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMEDCT:2017-09"
+                    }
+                }
+            ]
+        }
+    }
+}

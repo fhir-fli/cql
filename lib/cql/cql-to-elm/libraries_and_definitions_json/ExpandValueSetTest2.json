@@ -1,0 +1,40 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "ExpandValueSetTest"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Acute Pharyngitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.464.1003.102.12.1011",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Acute Tonsillitis",
+                    "id": "urn:oid:2.16.840.1.113883.3.464.1003.102.12.1012",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

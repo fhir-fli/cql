@@ -1,3 +1,5 @@
+import 'package:fhir/dstu2.dart';
+
 import '../../../cql.dart';
 
 /// Represents a named type specifier, extending [TypeSpecifier].
@@ -16,7 +18,10 @@ class NamedTypeSpecifier extends TypeSpecifier {
   NamedTypeSpecifier({
     this.modelName,
     String? namespace,
-  }) : this.namespace = namespace ?? '{urn:hl7-org:elm-types:r1}';
+  }) : this.namespace = namespace ??
+            (resourceTypeFromStringMap.keys.contains(modelName)
+                ? '{http://hl7.org/fhir}'
+                : '{urn:hl7-org:elm-types:r1}');
 
   factory NamedTypeSpecifier.fromJson(Map<String, dynamic> json) {
     String? modelName;

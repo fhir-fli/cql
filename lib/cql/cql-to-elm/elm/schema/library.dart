@@ -21,14 +21,16 @@ class Library extends Element {
   /// Set of libraries referenced by this artifact. Components of referenced libraries may be used within this artifact.
   IncludeDefs? includes;
 
-  /// The code systems defined within this library.
-  CodeSystemDefs? codeSystems;
-
   /// The parameters defined within this library.
   ParameterDefs? parameters;
 
+  /// The code systems defined within this library.
+  CodeSystemDefs? codeSystems;
+
   /// The value sets defined within this library.
   ValueSetDefs? valueSets;
+
+  CodeDefs? codes;
 
   /// The statements section contains the expression and function definitions for the library.
   ExpressionDefs? defines;
@@ -43,9 +45,10 @@ class Library extends Element {
     VersionedIdentifier? schemaIdentifier,
     UsingDefs? usings,
     this.includes,
-    this.codeSystems,
     this.parameters,
+    this.codeSystems,
     this.valueSets,
+    this.codes,
     this.defines,
     this.functions,
     this.concepts,
@@ -58,13 +61,7 @@ class Library extends Element {
           ..def = [
             UsingDef(localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
           ],
-        super(annotation: [
-          {
-            "translatorVersion": "0.0.0-dev1",
-            "translatorOptions": "",
-            "type": "CqlToElmInfo"
-          }
-        ]);
+        super(annotation: [TranslatorAnnotation()]);
 
   factory Library.fromJson(Map<String, dynamic> json) =>
       _$LibraryFromJson(json);

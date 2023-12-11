@@ -1,0 +1,53 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMED-CT",
+                    "id": "urn:oid:2.16.840.1.113883.6.96",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Ultrasound of peripheral arteries",
+                    "id": "urn:oid:1.2.3.4.5",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "% diameter reduction",
+                    "id": "397442008",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                }
+            ]
+        }
+    }
+}

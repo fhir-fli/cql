@@ -21,8 +21,8 @@
                 "startChar": 1,
                 "endLine": 14,
                 "endChar": 3,
-                "message": "Internal translator error.",
-                "errorType": "internal",
+                "message": "class org.hl7.elm.r1.Null cannot be cast to class org.hl7.elm.r1.TypeSpecifier (org.hl7.elm.r1.Null and org.hl7.elm.r1.TypeSpecifier are in unnamed module of loader 'app')",
+                "errorType": "semantic",
                 "errorSeverity": "error",
                 "type": "CqlToElmError"
             },
@@ -41,8 +41,8 @@
                 "startChar": 1,
                 "endLine": 24,
                 "endChar": 3,
-                "message": "Internal translator error.",
-                "errorType": "internal",
+                "message": "class org.hl7.elm.r1.Null cannot be cast to class org.hl7.elm.r1.TypeSpecifier (org.hl7.elm.r1.Null and org.hl7.elm.r1.TypeSpecifier are in unnamed module of loader 'app')",
+                "errorType": "semantic",
                 "errorSeverity": "error",
                 "type": "CqlToElmError"
             },
@@ -61,8 +61,8 @@
                 "startChar": 1,
                 "endLine": 41,
                 "endChar": 3,
-                "message": "Internal translator error.",
-                "errorType": "internal",
+                "message": "class org.hl7.elm.r1.Null cannot be cast to class org.hl7.elm.r1.TypeSpecifier (org.hl7.elm.r1.Null and org.hl7.elm.r1.TypeSpecifier are in unnamed module of loader 'app')",
+                "errorType": "semantic",
                 "errorSeverity": "error",
                 "type": "CqlToElmError"
             }

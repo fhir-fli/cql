@@ -1,0 +1,332 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "MATGlobalCommonFunctions_QICore4",
+            "version": "5.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "",
+                    "version": "4.1.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMEDCT",
+                    "id": "http://snomed.info/sct/731000124108",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RoleCode",
+                    "id": "http://hl7.org/fhir/v3/RoleCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis Role",
+                    "id": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RequestIntent",
+                    "id": "http://terminology.hl7.org/CodeSystem/request-intent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MedicationRequestCategory",
+                    "id": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionClinicalStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionVerificationStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-verification",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AllergyIntoleranceClinicalStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AllergyIntoleranceVerificationStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Encounter Inpatient",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Emergency Department Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Observation Services",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Birthdate",
+                    "id": "21112-8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "Dead",
+                    "id": "419099009",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMEDCT"
+                    }
+                },
+                {
+                    "name": "ER",
+                    "id": "ER",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "RoleCode"
+                    }
+                },
+                {
+                    "name": "ICU",
+                    "id": "ICU",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "RoleCode"
+                    }
+                },
+                {
+                    "name": "Billing",
+                    "id": "billing",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Diagnosis Role"
+                    }
+                },
+                {
+                    "name": "active",
+                    "id": "active",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "recurrence",
+                    "id": "recurrence",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "relapse",
+                    "id": "relapse",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "inactive",
+                    "id": "inactive",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "remission",
+                    "id": "remission",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "resolved",
+                    "id": "resolved",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "unconfirmed",
+                    "id": "unconfirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "provisional",
+                    "id": "provisional",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "differential",
+                    "id": "differential",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "confirmed",
+                    "id": "confirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "refuted",
+                    "id": "refuted",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "entered-in-error",
+                    "id": "entered-in-error",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-active",
+                    "id": "active",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-inactive",
+                    "id": "inactive",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-resolved",
+                    "id": "resolved",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceClinicalStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-unconfirmed",
+                    "id": "unconfirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-confirmed",
+                    "id": "confirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "allergy-refuted",
+                    "id": "refuted",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "AllergyIntoleranceVerificationStatusCodes"
+                    }
+                },
+                {
+                    "name": "Community",
+                    "id": "community",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "MedicationRequestCategory"
+                    }
+                },
+                {
+                    "name": "Discharge",
+                    "id": "discharge",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "MedicationRequestCategory"
+                    }
+                }
+            ]
+        }
+    }
+}

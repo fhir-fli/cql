@@ -2,17 +2,10 @@
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
 import 'package:cql/cql/cql-to-elm/elm/elm.dart';
+import 'package:fhir/dstu2.dart';
 
 import 'cqlParser.dart';
 import 'cqlVisitor.dart';
-
-enum Which {
-  usings,
-  includes,
-  codeSystems,
-  valueSets,
-  parameters,
-}
 
 /// This class provides an empty implementation of [cqlVisitor],
 /// which can be extended to create a visitor which only needs to handle
@@ -22,26 +15,7 @@ enum Which {
 /// operations with no print(ctx.runtimeType); return type.
 class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   Library library = Library();
-  Map<Which, bool> which = {
-    Which.usings: false,
-    Which.includes: false,
-    Which.codeSystems: false,
-    Which.valueSets: false,
-    Which.parameters: false,
-  };
-
-  bool isWhichTrue(Which which) => this.which[which] ?? false;
-
-  void setWhichFalse() {
-    for (var key in which.keys) {
-      which[key] = false;
-    }
-  }
-
-  void setWhichTrue(Which trueWhich) {
-    setWhichFalse();
-    which[trueWhich] = true;
-  }
+  final shouldPrint = false;
 
   Map<String, dynamic> get result => {'library': library.toJson()};
 
@@ -54,7 +28,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDefinition(DefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}  ${ctx.childCount}');
+    }
     visitChildren(ctx);
   }
 
@@ -62,49 +38,101 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitLibraryDefinition(LibraryDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    visitChildren(ctx);
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}  ${ctx.childCount}');
+    }
+
+    String? id;
+    String? version;
+
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifiedIdentifierContext) {
+        id = visitQualifiedIdentifier(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
+      }
+    }
+    library.identifier = VersionedIdentifier(id: id, version: version);
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitUsingDefinition(UsingDefinitionContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text} ${ctx.childCount}');
+    }
+
+    String? localIdentifier;
+    String? version;
+
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ModelIdentifierContext) {
+        localIdentifier = visitModelIdentifier(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
+      }
+    }
     if (library.usings == null) {
       library.usings = UsingDefs();
     }
-
-    setWhichTrue(Which.usings);
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    visitChildren(ctx);
+    library.usings!.def.add(UsingDef(
+      localIdentifier: localIdentifier,
+      version: version,
+      uri: localIdentifier == 'QUICK'
+          ? 'http://hl7.org/fhir'
+          : localIdentifier == 'FHIR'
+              ? 'http://hl7.org/fhir'
+              : '',
+    ));
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitIncludeDefinition(IncludeDefinitionContext ctx) {
-    setWhichTrue(Which.includes);
+  void visitIncludeDefinition(IncludeDefinitionContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
+
+    String? localIdentifier;
+    String? path;
+    String? version;
+
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifiedIdentifierContext) {
+        localIdentifier = visitQualifiedIdentifier(child);
+      } else if (child is LocalIdentifierContext) {
+        path = visitLocalIdentifier(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
+      }
+    }
+
     if (library.includes == null) {
       library.includes = IncludeDefs();
     }
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+    library.includes!.def.add(IncludeDef(
+        localIdentifier: localIdentifier, path: path, version: version));
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitLocalIdentifier(LocalIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    visitChildren(ctx);
+  String visitLocalIdentifier(LocalIdentifierContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text} ${ctx.childCount}');
+    }
+    return _noQuoteString(ctx.text);
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAccessModifier(AccessModifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -113,11 +141,14 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   void visitParameterDefinition(ParameterDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}      ${ctx.childCount}');
+    if (shouldPrint) {
+      print(
+          '${ctx.runtimeType.toString()}   ${ctx.text}      ${ctx.childCount}');
+    }
     if (library.parameters == null) {
       library.parameters = ParameterDefs();
     }
-    setWhichTrue(Which.parameters);
+
     String name = '';
     TypeSpecifier? typeSpecifier;
 
@@ -138,10 +169,27 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCodesystemDefinition(CodesystemDefinitionContext ctx) {
-    library.codeSystems ??= CodeSystemDefs();
-    setWhichTrue(Which.codeSystems);
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    visitChildren(ctx);
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}   ${ctx.childCount}');
+    }
+
+    String? name;
+    String? id;
+    String? version;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is CodesystemIdContext) {
+        id = visitCodesystemId(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
+      }
+    }
+    if (library.codeSystems == null) {
+      library.codeSystems = CodeSystemDefs();
+    }
+    library.codeSystems!.def
+        .add(CodeSystemDef(name: name, id: id, version: version));
   }
 
   /// The default implementation returns the result of calling
@@ -149,11 +197,12 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   void visitValuesetDefinition(ValuesetDefinitionContext ctx) {
     library.valueSets ??= ValueSetDefs();
-    setWhichTrue(Which.valueSets);
 
     String name = '';
     String id = '';
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
     for (var child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
         name = visitIdentifier(child);
@@ -169,7 +218,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCodesystems(CodesystemsContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -177,17 +228,20 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitCodesystemIdentifier(CodesystemIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+  CodeSystemRef visitCodesystemIdentifier(CodesystemIdentifierContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
+    return CodeSystemRef(name: _noQuoteString(ctx.text));
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitLibraryIdentifier(LibraryIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -195,17 +249,44 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitCodeDefinition(CodeDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+  void visitCodeDefinition(CodeDefinitionContext ctx) {
+    // if (shouldPrint) {
+    print('${ctx.runtimeType.toString()}   ${ctx.text}  ${ctx.childCount}');
+    // }
 
-    visitChildren(ctx);
+    String? name;
+    String? id;
+    String? display;
+    CodeSystemRef? codeSystem;
+
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is CodeIdContext) {
+        id = visitCodeId(child);
+      } else if (child is CodesystemIdentifierContext) {
+        codeSystem = visitCodesystemIdentifier(child);
+      }
+    }
+
+    if (library.codes == null) {
+      library.codes = CodeDefs();
+    }
+
+    library.codes!.def.add(CodeDef(
+      name: name ?? '',
+      id: id ?? '',
+      codeSystem: codeSystem,
+    ));
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitConceptDefinition(ConceptDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -214,7 +295,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCodeIdentifier(CodeIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -222,64 +305,45 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitCodesystemId(CodesystemIdContext ctx) {
-    var identifier = _noQuoteString(ctx.text);
-    if (library.codeSystems == null) {
-      library.codeSystems = CodeSystemDefs();
-    }
-    if (library.codeSystems!.def.isEmpty) {
-      library.codeSystems!.def.add(CodeSystemDef(id: identifier));
-    } else {
-      library.codeSystems!.def.last.id = identifier;
-    }
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
-  }
+  String visitCodesystemId(CodesystemIdContext ctx) => _noQuoteString(ctx.text);
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitValuesetId(ValuesetIdContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
     return _noQuoteString(ctx.text);
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  void visitVersionSpecifier(VersionSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    final version = _noQuoteString(ctx.text);
-    if (isWhichTrue(Which.includes)) {
-      if (library.includes == null) {
-        library.includes = IncludeDefs();
-      }
-      if (library.includes!.def.isEmpty) {
-        library.includes!.def.add(IncludeDef(version: version));
-      } else {
-        library.includes!.def.last.version = version;
-      }
-    } else {
-      library.identifier!.version = version;
+  String visitVersionSpecifier(VersionSpecifierContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
     }
-    visitChildren(ctx);
+    return _noQuoteString(ctx.text);
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitCodeId(CodeIdContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+  String visitCodeId(CodeIdContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
+    return _noQuoteString(ctx.text);
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   TypeSpecifier? visitTypeSpecifier(TypeSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}    ${ctx.childCount}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}    ${ctx.childCount}');
+    }
     for (var child in ctx.children ?? <ParseTree>[]) {
       if (child is NamedTypeSpecifierContext) {
         return visitNamedTypeSpecifier(child);
@@ -300,24 +364,33 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   NamedTypeSpecifier? visitNamedTypeSpecifier(NamedTypeSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
     return NamedTypeSpecifier(
-        modelName: ctx.text, namespace: 'urn:hl7-org:elm-types:r1');
+        modelName: ctx.text,
+        namespace: resourceTypeFromStringMap.keys.contains(ctx.text)
+            ? 'http://hl7.org/fhir'
+            : 'urn:hl7-org:elm-types:r1');
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitModelIdentifier(ModelIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    visitChildren(ctx);
+  String visitModelIdentifier(ModelIdentifierContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text} ${ctx.childCount}');
+    }
+    return _noQuoteString(ctx.text);
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitListTypeSpecifier(ListTypeSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -327,7 +400,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   IntervalTypeSpecifier visitIntervalTypeSpecifier(
       IntervalTypeSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
     for (var child in ctx.children ?? <ParseTree>[]) {
       if (child is TypeSpecifierContext) {
         return IntervalTypeSpecifier(pointType: visitTypeSpecifier(child));
@@ -340,7 +415,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTupleTypeSpecifier(TupleTypeSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -349,7 +426,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTupleElementDefinition(TupleElementDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -358,7 +437,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitChoiceTypeSpecifier(ChoiceTypeSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -367,7 +448,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitStatement(StatementContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -376,7 +459,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitExpressionDefinition(ExpressionDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -385,7 +470,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitContextDefinition(ContextDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -394,7 +481,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitFunctionDefinition(FunctionDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -403,7 +492,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitOperandDefinition(OperandDefinitionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -412,7 +503,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitFunctionBody(FunctionBodyContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -421,7 +514,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQuerySource(QuerySourceContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -430,7 +525,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAliasedQuerySource(AliasedQuerySourceContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -439,7 +536,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAlias(AliasContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -448,7 +547,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQueryInclusionClause(QueryInclusionClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -457,7 +558,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitWithClause(WithClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -466,7 +569,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitWithoutClause(WithoutClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -475,7 +580,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitRetrieve(RetrieveContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -484,7 +591,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitContextIdentifier(ContextIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -493,7 +602,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCodePath(CodePathContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -502,7 +613,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCodeComparator(CodeComparatorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -511,7 +624,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTerminology(TerminologyContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -520,7 +635,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQualifier(QualifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -529,7 +646,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQuery(QueryContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -538,7 +657,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSourceClause(SourceClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -547,7 +668,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitLetClause(LetClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -556,7 +679,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitLetClauseItem(LetClauseItemContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -565,7 +690,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitWhereClause(WhereClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -574,7 +701,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitReturnClause(ReturnClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -583,7 +712,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAggregateClause(AggregateClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -592,7 +723,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitStartingClause(StartingClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -601,7 +734,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSortClause(SortClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -610,7 +745,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSortDirection(SortDirectionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -619,7 +756,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSortByItem(SortByItemContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -627,10 +766,16 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  void visitQualifiedIdentifier(QualifiedIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+  String visitQualifiedIdentifier(QualifiedIdentifierContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        return visitIdentifier(child);
+      }
+    }
+    return '';
   }
 
   /// The default implementation returns the result of calling
@@ -638,7 +783,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitQualifiedIdentifierExpression(
       QualifiedIdentifierExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -647,7 +794,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQualifierExpression(QualifierExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -656,7 +805,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSimplePathIndexer(SimplePathIndexerContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -666,7 +817,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitSimplePathQualifiedIdentifier(
       SimplePathQualifiedIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -676,7 +829,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitSimplePathReferentialIdentifier(
       SimplePathReferentialIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -685,7 +840,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSimpleStringLiteral(SimpleStringLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -694,7 +851,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSimpleNumberLiteral(SimpleNumberLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -703,7 +862,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDurationBetweenExpression(DurationBetweenExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -712,7 +873,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitInFixSetExpression(InFixSetExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -721,7 +884,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitRetrieveExpression(RetrieveExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -730,7 +895,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTimingExpression(TimingExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -739,7 +906,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQueryExpression(QueryExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -748,7 +917,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitNotExpression(NotExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -757,7 +928,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitBooleanExpression(BooleanExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -766,7 +939,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitOrExpression(OrExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -775,7 +950,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCastExpression(CastExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -784,7 +961,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAndExpression(AndExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -793,7 +972,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitBetweenExpression(BetweenExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -802,7 +983,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitMembershipExpression(MembershipExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -812,7 +995,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitDifferenceBetweenExpression(
       DifferenceBetweenExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -821,7 +1006,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitInequalityExpression(InequalityExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -830,7 +1017,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitEqualityExpression(EqualityExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -839,7 +1028,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitExistenceExpression(ExistenceExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -848,7 +1039,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitImpliesExpression(ImpliesExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -857,7 +1050,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTermExpression(TermExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -866,7 +1061,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTypeExpression(TypeExpressionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -875,7 +1072,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDateTimePrecision(DateTimePrecisionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -884,7 +1083,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDateTimeComponent(DateTimeComponentContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -893,7 +1094,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitPluralDateTimePrecision(PluralDateTimePrecisionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -902,7 +1105,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAdditionExpressionTerm(AdditionExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -911,7 +1116,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitIndexedExpressionTerm(IndexedExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -920,7 +1127,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitWidthExpressionTerm(WidthExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -930,7 +1139,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitSetAggregateExpressionTerm(
       SetAggregateExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -939,7 +1150,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTimeUnitExpressionTerm(TimeUnitExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -948,7 +1161,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitIfThenElseExpressionTerm(IfThenElseExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -958,7 +1173,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitTimeBoundaryExpressionTerm(
       TimeBoundaryExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -968,7 +1185,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitElementExtractorExpressionTerm(
       ElementExtractorExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -977,7 +1196,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitConversionExpressionTerm(ConversionExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -986,7 +1207,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTypeExtentExpressionTerm(TypeExtentExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -995,7 +1218,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitPredecessorExpressionTerm(PredecessorExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1005,7 +1230,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitPointExtractorExpressionTerm(
       PointExtractorExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1015,7 +1242,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitMultiplicationExpressionTerm(
       MultiplicationExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1024,7 +1253,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAggregateExpressionTerm(AggregateExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1033,7 +1264,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDurationExpressionTerm(DurationExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1042,7 +1275,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDifferenceExpressionTerm(DifferenceExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1051,7 +1286,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCaseExpressionTerm(CaseExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1060,7 +1297,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitPowerExpressionTerm(PowerExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1069,7 +1308,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitSuccessorExpressionTerm(SuccessorExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1078,7 +1319,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitPolarityExpressionTerm(PolarityExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1087,7 +1330,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1096,7 +1341,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitInvocationExpressionTerm(InvocationExpressionTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1105,7 +1352,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCaseExpressionItem(CaseExpressionItemContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1115,7 +1364,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitDateTimePrecisionSpecifier(
       DateTimePrecisionSpecifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1124,7 +1375,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitRelativeQualifier(RelativeQualifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1133,7 +1386,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitOffsetRelativeQualifier(OffsetRelativeQualifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1143,7 +1398,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitExclusiveRelativeQualifier(
       ExclusiveRelativeQualifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1152,7 +1409,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQuantityOffset(QuantityOffsetContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1161,7 +1420,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTemporalRelationship(TemporalRelationshipContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1171,7 +1432,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitConcurrentWithIntervalOperatorPhrase(
       ConcurrentWithIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1181,7 +1444,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitIncludesIntervalOperatorPhrase(
       IncludesIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1191,7 +1456,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitIncludedInIntervalOperatorPhrase(
       IncludedInIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1201,7 +1468,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitBeforeOrAfterIntervalOperatorPhrase(
       BeforeOrAfterIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1211,7 +1480,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitWithinIntervalOperatorPhrase(
       WithinIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1221,7 +1492,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitMeetsIntervalOperatorPhrase(
       MeetsIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1231,7 +1504,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitOverlapsIntervalOperatorPhrase(
       OverlapsIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1241,7 +1516,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitStartsIntervalOperatorPhrase(
       StartsIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1251,7 +1528,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitEndsIntervalOperatorPhrase(
       EndsIntervalOperatorPhraseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1260,7 +1539,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitInvocationTerm(InvocationTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1269,7 +1550,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitLiteralTerm(LiteralTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1278,7 +1561,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitExternalConstantTerm(ExternalConstantTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1287,7 +1572,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitIntervalSelectorTerm(IntervalSelectorTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1296,7 +1583,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTupleSelectorTerm(TupleSelectorTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1305,7 +1594,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitInstanceSelectorTerm(InstanceSelectorTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1314,7 +1605,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitListSelectorTerm(ListSelectorTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1323,7 +1616,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCodeSelectorTerm(CodeSelectorTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1332,7 +1627,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitConceptSelectorTerm(ConceptSelectorTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1341,7 +1638,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitParenthesizedTerm(ParenthesizedTermContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1350,7 +1649,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQualifiedMemberInvocation(QualifiedMemberInvocationContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1360,7 +1661,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitQualifiedFunctionInvocation(
       QualifiedFunctionInvocationContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1369,7 +1672,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQualifiedFunction(QualifiedFunctionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1378,7 +1683,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitMemberInvocation(MemberInvocationContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1387,7 +1694,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitFunctionInvocation(FunctionInvocationContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1396,7 +1705,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitThisInvocation(ThisInvocationContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1405,7 +1716,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitIndexInvocation(IndexInvocationContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1414,7 +1727,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTotalInvocation(TotalInvocationContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1423,7 +1738,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitFunction(FunctionContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1432,7 +1749,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitRatio(RatioContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1441,7 +1760,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitBooleanLiteral(BooleanLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1450,7 +1771,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitNullLiteral(NullLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1459,7 +1782,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitStringLiteral(StringLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1468,7 +1793,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitNumberLiteral(NumberLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1477,7 +1804,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitLongNumberLiteral(LongNumberLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1486,7 +1815,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDateTimeLiteral(DateTimeLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1495,7 +1826,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitDateLiteral(DateLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1504,7 +1837,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTimeLiteral(TimeLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1513,7 +1848,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQuantityLiteral(QuantityLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1522,7 +1859,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitRatioLiteral(RatioLiteralContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1531,7 +1870,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitIntervalSelector(IntervalSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1540,7 +1881,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTupleSelector(TupleSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1549,7 +1892,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTupleElementSelector(TupleElementSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1558,7 +1903,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitInstanceSelector(InstanceSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1567,7 +1914,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitInstanceElementSelector(InstanceElementSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1576,7 +1925,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitListSelector(ListSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1584,17 +1935,19 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitDisplayClause(DisplayClauseContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-
-    visitChildren(ctx);
+  void visitDisplayClause(DisplayClauseContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text} ${ctx.childCount}');
+    }
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitCodeSelector(CodeSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1603,7 +1956,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitConceptSelector(ConceptSelectorContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1612,7 +1967,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitKeyword(KeywordContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1621,7 +1978,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitReservedWord(ReservedWordContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1630,7 +1989,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitKeywordIdentifier(KeywordIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1639,7 +2000,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitObsoleteIdentifier(ObsoleteIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1648,7 +2011,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitFunctionIdentifier(FunctionIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1657,7 +2022,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTypeNameIdentifier(TypeNameIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1666,7 +2033,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitReferentialIdentifier(ReferentialIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1676,7 +2045,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitReferentialOrTypeNameIdentifier(
       ReferentialOrTypeNameIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1686,7 +2057,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitIdentifierOrFunctionIdentifier(
       IdentifierOrFunctionIdentifierContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1694,53 +2067,21 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitIdentifier(IdentifierContext ctx) {
-    var identifier = _noQuoteString(ctx.text);
-    if (library.identifier == null) {
-      library.identifier = VersionedIdentifier();
+  String visitIdentifier(IdentifierContext ctx) {
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
     }
-    if (which[Which.usings]!) {
-      library.usings ??= UsingDefs();
-      library.usings!.def.add(UsingDef(localIdentifier: identifier));
-      if (identifier == 'QUICK') {
-        library.usings!.def.last.uri = 'http://hl7.org/fhir';
-      }
-    } else if (which[Which.includes]!) {
-      library.includes ??= IncludeDefs();
-      if (library.includes!.def.isEmpty) {
-        if (ctx.parent is LocalIdentifierContext) {
-          library.includes!.def.add(IncludeDef(localIdentifier: identifier));
-        } else {
-          library.includes!.def.add(IncludeDef(path: identifier));
-        }
-      } else {
-        if (ctx.parent is LocalIdentifierContext) {
-          library.includes!.def.last.localIdentifier = identifier;
-        } else {
-          library.includes!.def.last.path = identifier;
-        }
-      }
-    } else if (which[Which.codeSystems]!) {
-      library.codeSystems ??= CodeSystemDefs();
-      if (library.codeSystems!.def.isEmpty) {
-        library.codeSystems!.def.add(CodeSystemDef(name: identifier));
-      } else {
-        library.codeSystems!.def.last.name = identifier;
-      }
-    } else if (which[Which.valueSets]! || which[Which.parameters]!) {
-      return identifier;
-    } else {
-      library.identifier!.id = identifier;
-    }
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
-    visitChildren(ctx);
+
+    return _noQuoteString(ctx.text);
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
   dynamic visitExternalConstant(ExternalConstantContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1749,7 +2090,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitParamList(ParamListContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1758,7 +2101,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitQuantity(QuantityContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1767,7 +2112,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitUnit(UnitContext ctx) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    }
 
     visitChildren(ctx);
   }
@@ -1777,8 +2124,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
       if (string[0] == '"' || string[0] == "'") {
         string = string.substring(1, string.length - 1);
       }
-      if (string[string.length - 1] == '"' ||
-          string[string.length - 1] == "'") {
+      if (string.isNotEmpty &&
+          (string[string.length - 1] == '"' ||
+              string[string.length - 1] == "'")) {
         string = string.substring(0, string.length - 2);
       }
     }

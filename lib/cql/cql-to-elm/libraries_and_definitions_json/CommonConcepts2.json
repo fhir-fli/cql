@@ -1,0 +1,187 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CommonConcepts",
+            "version": "1.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ConditionVerificationStatusCodes",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Severe Pain Valueset",
+                    "id": "http://example.com/fhir/ValueSet/rc-severePain",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Functional Disability Valueset",
+                    "id": "http://example.com/fhir/ValueSet/rc_functionalDisabilityDJD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Condition",
+                    "id": "http://fhir.org/guides/cqf/common/ValueSet/active-condition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ro_bodyMassIndex_kg_per_m2",
+                    "id": "http://example.com/fhir/ValueSet/ro_bodyMassIndex_kg_per_m2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ro_weight_kg",
+                    "id": "http://example.com/fhir/ValueSet/ro_weight_kg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ro_weight_lb",
+                    "id": "http://example.com/fhir/ValueSet/ro_weight_lb",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ro_height_in",
+                    "id": "http://example.com/fhir/ValueSet/ro_height_in",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ro_height_cm",
+                    "id": "http://example.com/fhir/ValueSet/ro_height_cm",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_diabetesMellitusChronic",
+                    "id": "http://example.com/fhir/ValueSet/rc_diabetesMellitusChronic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_coronaryArteryDisease",
+                    "id": "http://example.com/fhir/ValueSet/rc_coronaryArteryDisease",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_hypertension_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_hypertension_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_obstructiveSleepApnea",
+                    "id": "http://example.com/fhir/ValueSet/rc_obstructiveSleepApnea",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_perforationOfStomach_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_perforationOfStomach_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_gastricMucosalErosion_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_gastricMucosalErosion_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rp_sleeveGastrectomy_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rp_sleeveGastrectomy_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rp_initialAdjustableGastricBanding_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rp_initialAdjustableGastricBanding_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rp_initialGastricBypassRouxEnYAnastomosis_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rp_initialGastricBypassRouxEnYAnastomosis_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_gastricBandComplication_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_gastricBandComplication_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rp_gastricBandAdjustment_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rp_gastricBandAdjustment_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_gastricFistula_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_gastricFistula_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_gastricSmallBowelObstructionAcquired_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_gastricSmallBowelObstructionAcquired_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_gastricBandInfection_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_gastricBandInfection_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_esophagitis_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_esophagitis_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_barrettEsophagus",
+                    "id": "http://example.com/fhir/ValueSet/rc_barrettEsophagus",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rc_gastrojejunalUlcer_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rc_gastrojejunalUlcer_cambia",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "rp_biliopancreaticDiversionWithDuodenalSwitch_cambia",
+                    "id": "http://example.com/fhir/ValueSet/rp_biliopancreaticDiversionWithDuodenalSwitch_cambia",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "condition-confirmed",
+                    "id": "confirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ConditionVerificationStatusCodes"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Issue641"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "BaseLibrary",
+                    "path": "Base",
+                    "version": "lib2020"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Chlamydia Screening",
+                    "id": "2.16.840.1.113883.3.464.1003.110.12.1052",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

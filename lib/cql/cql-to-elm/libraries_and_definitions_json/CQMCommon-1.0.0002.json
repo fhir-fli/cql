@@ -1,0 +1,95 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "CQMCommon",
+            "version": "1.0.000"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QICore",
+                    "uri": "",
+                    "version": "4.1.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.1.000"
+                },
+                {
+                    "localIdentifier": "QICoreCommon",
+                    "path": "QICoreCommon",
+                    "version": "1.2.000"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Emergency Department Visit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter Inpatient",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intensive Care Unit",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.206",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Observation Services",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Surgery Service",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.38",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Present on Admission or Clinically Undetermined",
+                    "id": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1147.197",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

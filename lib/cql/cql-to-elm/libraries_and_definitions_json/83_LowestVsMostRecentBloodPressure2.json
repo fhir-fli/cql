@@ -1,0 +1,93 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 51,
+                "startChar": 4,
+                "endLine": 51,
+                "endChar": 5,
+                "message": "mismatched input 'order' expecting {',', '<', '>', ')', 'with', 'without', 'in', '=', '~', 'let', 'where', 'return', 'aggregate', 'sort', 'is', 'as', 'properly', 'between', 'and', '<=', '>=', '!=', '!~', 'contains', 'or', 'xor', 'implies', '|', 'union', 'intersect', 'except', 'less than', 'more than', 'on or', 'before', 'after', 'starts', 'ends', 'occurs', 'same', 'includes', 'during', 'included in', 'within', 'meets', 'overlaps', NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 57,
+                "startChar": 10,
+                "endLine": 57,
+                "endChar": 11,
+                "message": "no viable alternative at input 'same day as \"Most Recent Blood Pressure Day\"\\n    order by'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 57,
+                "startChar": 10,
+                "endLine": 57,
+                "endChar": 11,
+                "message": "mismatched input 'by' expecting {',', '<', '>', ')', 'with', 'without', 'in', '=', '~', 'let', 'where', 'return', 'aggregate', 'sort', 'is', 'as', 'properly', 'between', 'and', '<=', '>=', '!=', '!~', 'contains', 'or', 'xor', 'implies', '|', 'union', 'intersect', 'except', 'less than', 'more than', 'on or', 'before', 'after', 'starts', 'ends', 'occurs', 'same', 'includes', 'during', 'included in', 'within', 'meets', 'overlaps', NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 58,
+                "startChar": 2,
+                "endLine": 58,
+                "endChar": 3,
+                "message": "extraneous input ')' expecting {<EOF>, 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 63,
+                "startChar": 10,
+                "endLine": 63,
+                "endChar": 11,
+                "message": "no viable alternative at input 'same day as \"Most Recent Blood Pressure Day\"\\n    order by'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 63,
+                "startChar": 10,
+                "endLine": 63,
+                "endChar": 11,
+                "message": "mismatched input 'by' expecting {',', '<', '>', ')', 'with', 'without', 'in', '=', '~', 'let', 'where', 'return', 'aggregate', 'sort', 'is', 'as', 'properly', 'between', 'and', '<=', '>=', '!=', '!~', 'contains', 'or', 'xor', 'implies', '|', 'union', 'intersect', 'except', 'less than', 'more than', 'on or', 'before', 'after', 'starts', 'ends', 'occurs', 'same', 'includes', 'during', 'included in', 'within', 'meets', 'overlaps', NUMBER}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 64,
+                "startChar": 2,
+                "endLine": 64,
+                "endChar": 3,
+                "message": "extraneous input ')' expecting {<EOF>, 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        }
+    }
+}

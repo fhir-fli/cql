@@ -1,0 +1,90 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "TestUSCore"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "USCore",
+                    "uri": "",
+                    "version": "3.1.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "Marital Status Codes",
+                    "id": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CDC Race and Ethnicity Codes",
+                    "id": "urn:oid:2.16.840.1.113883.6.238",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Marital Status",
+                    "id": "http://hl7.org/fhir/ValueSet/marital-status",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Marital Status - Married",
+                    "id": "M",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Marital Status Codes"
+                    }
+                },
+                {
+                    "name": "American Indian or Alaska Native",
+                    "id": "1002-5",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CDC Race and Ethnicity Codes"
+                    }
+                },
+                {
+                    "name": "Alaska Native",
+                    "id": "1735-0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CDC Race and Ethnicity Codes"
+                    }
+                }
+            ]
+        }
+    }
+}

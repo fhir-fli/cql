@@ -2,13 +2,13 @@
     "library": {
         "annotation": [
             {
-                "translatorVersion": "2.11.0",
+                "translatorVersion": "0.0.0-dev1",
                 "translatorOptions": "",
                 "type": "CqlToElmInfo"
             }
         ],
         "identifier": {
-            "id": "Test2"
+            "id": "Test"
         },
         "schemaIdentifier": {
             "id": "urn:hl7-org:elm",

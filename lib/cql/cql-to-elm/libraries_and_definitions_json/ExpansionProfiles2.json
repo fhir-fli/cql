@@ -1,0 +1,77 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 18,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 1,
+                "message": "extraneous input '[' expecting {<EOF>, 'using', 'include', 'public', 'private', 'parameter', 'codesystem', 'valueset', 'code', 'concept', 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "SNOMED-CT",
+                    "id": "urn:oid:2.16.840.1.113883.96",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMED-CT",
+                    "id": "2.16.840.1.113883.3.96",
+                    "version": "2016A",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Limited Life Expectancy Grouping Value Set",
+                    "id": "2.16.840.1.113883.3.526.3.1259",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Limited Life Expectancy Grouping Value Set",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1259",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Limited Life Expectancy Grouping Value Set",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1259",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Limited Life Expectancy Grouping Value Set",
+                    "id": "urn:oid:2.16.840.1.113883.3.526.3.1259",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Limited Life Expectancy Grouping Value Set",
+                    "id": "2.16.840.1.113883.3.526.3.1259",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

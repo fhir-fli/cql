@@ -1,0 +1,183 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "zika-virus-intervention-logic",
+            "version": "1.0.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Current Encounter",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{http://hl7.org/fhir}Encounter",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "Example Questionnaires",
+                    "id": "http://example.org/questionnaires",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Pregnancy",
+                    "id": "urn:oid:X.Y.Z",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Affected Areas",
+                    "id": "urn:oid:2.16.840.1.114222.4.11.7457",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus Signs and Symptoms",
+                    "id": "2.16.840.1.114222.4.11.7459",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "General Arbovirus Signs and Symptoms",
+                    "id": "2.16.840.1.114222.4.11.7460",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus Tests",
+                    "id": "2.16.840.1.114222.4.11.7480",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Arbovirus Tests",
+                    "id": "2.16.840.1.114222.4.11.4120",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chikungunya Tests",
+                    "id": "2.16.840.1.114222.4.11.7339",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dengue Tests",
+                    "id": "2.16.840.1.114222.4.11.4141",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus IgM ELISA Results",
+                    "id": "2.16.840.1.114222.4.11.7476",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Virus Neutralizing Antibody Results",
+                    "id": "2.16.840.1.114222.4.11.7477",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Arbovirus Test Results",
+                    "id": "2.16.840.1.114222.4.11.4003",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chikungunya Test Results",
+                    "id": "2.16.840.1.114222.4.11.7343",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dengue Test Results",
+                    "id": "2.16.840.1.114222.4.11.4025",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "CDE: Resident of or Frequent Traveler to Zika Area",
+                    "id": "CDE: Resident of or Frequent Traveler to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Recent Travel to Zika Area",
+                    "id": "CDE: Recent Travel to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Time Since Returned From Travel",
+                    "id": "CDE: Time Since Returned From Travel",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Recent Sexual Encounter With Traveler to Zika Area",
+                    "id": "CDE: Recent Sexual Encounter With Traveler to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Time Since Sexual Encounter",
+                    "id": "CDE: Time Since Sexual Encounter",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                },
+                {
+                    "name": "CDE: Planned Travel to Zika Area",
+                    "id": "CDE: Planned Travel to Zika Area",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "Example Questionnaires"
+                    }
+                }
+            ]
+        }
+    }
+}

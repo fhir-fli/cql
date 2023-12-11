@@ -1,0 +1,82 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "HEDIS10594_FHIR",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "1.8"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "1.8"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "CutoffDate",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "VS_Colonoscopy",
+                    "id": "2.16.840.1.113883.3.464.1004.1064",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "VS_Colorectal Cancer",
+                    "id": "2.16.840.1.113883.3.464.1004.1065",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "VS_Flexible Sigmoidoscopy",
+                    "id": "2.16.840.1.113883.3.464.1004.1102",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "VS_FOBT",
+                    "id": "2.16.840.1.113883.3.464.1004.1093",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "VS_Total Colectomy",
+                    "id": "2.16.840.1.113883.3.464.1004.1250",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

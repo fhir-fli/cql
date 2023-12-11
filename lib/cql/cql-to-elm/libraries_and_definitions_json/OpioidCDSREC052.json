@@ -1,0 +1,49 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "OpioidCDSREC05",
+            "version": "2.0.1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "OpioidCDSCommon",
+                    "path": "Common",
+                    "version": "2.0.1"
+                },
+                {
+                    "localIdentifier": "OpioidCDSRoutines",
+                    "path": "Routines",
+                    "version": "2.0.1"
+                }
+            ]
+        },
+        "parameters": {
+            "def": []
+        }
+    }
+}

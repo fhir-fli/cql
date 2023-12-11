@@ -2,12 +2,15 @@
     "library": {
         "annotation": [
             {
-                "translatorVersion": "2.11.0",
+                "translatorVersion": "0.0.0-dev1",
                 "translatorOptions": "",
                 "type": "CqlToElmInfo"
             }
         ],
-        "identifier": {},
+        "identifier": {
+            "id": "expression",
+            "version": "1.0.0"
+        },
         "schemaIdentifier": {
             "id": "urn:hl7-org:elm",
             "version": "r1"
@@ -17,30 +20,6 @@
                 {
                     "localIdentifier": "System",
                     "uri": "urn:hl7-org:elm-types:r1"
-                }
-            ]
-        },
-        "statements": {
-            "def": [
-                {
-                    "name": "Test",
-                    "context": "Patient",
-                    "accessLevel": "Public",
-                    "expression": {
-                        "type": "Add",
-                        "operand": [
-                            {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "1",
-                                "type": "Literal"
-                            },
-                            {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "2",
-                                "type": "Literal"
-                            }
-                        ]
-                    }
                 }
             ]
         }

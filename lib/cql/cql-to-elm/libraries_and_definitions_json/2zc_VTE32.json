@@ -1,0 +1,81 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            },
+            {
+                "startLine": 66,
+                "startChar": 98,
+                "endLine": 66,
+                "endChar": 99,
+                "message": "extraneous input ',' expecting {<EOF>, 'define', 'context'}",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            },
+            {
+                "startLine": 78,
+                "startChar": 38,
+                "endLine": 78,
+                "endChar": 39,
+                "message": "extraneous input 'Period' expecting ')'",
+                "errorType": "SyntaxError",
+                "errorSeverity": "Error",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "Guideline_2zc_VTE3"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{urn:hl7-org:elm-types:r1}Period",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "VTE Diagnosis Valueset",
+                    "id": "XYZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Warfarin Medication Valueset",
+                    "id": "XYZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter Valueset",
+                    "id": "XYZ",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "PatientFinderExample",
+            "version": "1.0.0"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "4.0.1"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "CONDITION-VER-STATUS",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CONDITION-CLINICAL",
+                    "id": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Conditions associated with chronic pain",
+                    "id": "https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.37",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Confirmed code",
+                    "id": "confirmed",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CONDITION-VER-STATUS"
+                    }
+                },
+                {
+                    "name": "Active code",
+                    "id": "active",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CONDITION-CLINICAL"
+                    }
+                },
+                {
+                    "name": "Relapse code",
+                    "id": "relapse",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CONDITION-CLINICAL"
+                    }
+                }
+            ]
+        }
+    }
+}

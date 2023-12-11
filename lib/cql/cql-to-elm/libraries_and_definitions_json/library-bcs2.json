@@ -1,0 +1,108 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "BCS",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                },
+                {
+                    "name": "PlanID",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "name": "{urn:hl7-org:elm-types:r1}String",
+                        "type": "NamedTypeSpecifier"
+                    }
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Bilateral Mastectomy",
+                    "id": "Bilateral Mastectomy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy",
+                    "id": "Unilateral Mastectomy + Bilateral Modifier",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "History of Bilateral Mastectomy",
+                    "id": "History of Bilateral Mastectomy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left Modifier",
+                    "id": "Left Modifier",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Absence of Left Breast",
+                    "id": "Absence of Left Breast",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy Left",
+                    "id": "Unilateral Mastectomy Left",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right Modifier",
+                    "id": "Right Modifier",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Absence of Right Breast",
+                    "id": "Absence of Right Breast",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy Right",
+                    "id": "Unilateral Mastectomy Right",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mammography",
+                    "id": "Mammography",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "PropertyTest"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "QUICK",
+                    "uri": "http://hl7.org/fhir"
+                }
+            ]
+        },
+        "valueSets": {
+            "def": [
+                {
+                    "name": "Female Administrative Sex",
+                    "id": "2.16.840.1.113883.3.560.100.2",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}

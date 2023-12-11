@@ -1,0 +1,45 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorVersion": "0.0.0-dev1",
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "OMTKLogicCQL",
+            "version": "1.2.3"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "OMTKData2019",
+                    "path": "OMTKData",
+                    "version": "1.2.3"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "RxNorm",
+                    "id": "http://www.nlm.nih.gov/research/umls/CodeSystem/rxnorm",
+                    "accessLevel": "Public"
+                }
+            ]
+        }
+    }
+}
