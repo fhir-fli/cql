@@ -94,6 +94,13 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
         }
     }
 }

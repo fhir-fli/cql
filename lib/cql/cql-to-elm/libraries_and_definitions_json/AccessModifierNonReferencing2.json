@@ -89,6 +89,38 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "PrivateExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestOuterPrivate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReferenceExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Test Definition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GenderExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeRef",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptRef",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

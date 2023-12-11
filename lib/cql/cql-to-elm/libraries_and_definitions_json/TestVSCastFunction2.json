@@ -43,6 +43,22 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestConditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestConditionsViaFunction",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestConditionsDirectly",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

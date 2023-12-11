@@ -190,6 +190,109 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BMI during Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Documented Low BMI during Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Documented High BMI during Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Normal BMI",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "High BMI and Follow up Provided",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "High BMI Interventions Ordered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "High BMI Interventions Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason or Patient Reason for Not Performing BMI Exam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Low BMI Interventions Ordered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Low BMI Interventions Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Low BMI and Follow up Provided",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason for Not Documenting a Follow up Plan for Low or High BMI",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pregnancy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounter during Day of Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

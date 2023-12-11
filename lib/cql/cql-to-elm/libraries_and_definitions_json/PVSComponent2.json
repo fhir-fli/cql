@@ -161,6 +161,53 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

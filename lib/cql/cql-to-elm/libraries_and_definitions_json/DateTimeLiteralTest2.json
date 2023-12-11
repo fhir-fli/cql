@@ -18,6 +18,190 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "YearLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeYearLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UTCYearLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "YearMonthLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeYearMonthLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UTCYearMonthLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDateLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UTCDateLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HourLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HourMinuteLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HourMinuteSecondLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateHourLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UTCDateHourLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZoneDateHourLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZonePositiveDateHourLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateHourMinuteLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UTCDateHourMinuteLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZoneDateHourMinuteLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZonePositiveDateHourMinuteLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateHourMinuteSecondLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UTCDateHourMinuteSecondLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZoneDateHourMinuteSecondLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZonePositiveDateHourMinuteSecondLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UTCDateTimeLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZoneDateTimeLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeZonePositiveDateTimeLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "YearExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "YearsExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MonthExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MonthsExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WeekExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WeeksExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DayExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DaysExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HourExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HoursExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MinuteExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MinutesExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SecondExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SecondsExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MillisecondExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MillisecondsExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

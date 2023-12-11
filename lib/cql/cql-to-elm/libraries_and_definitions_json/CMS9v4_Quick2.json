@@ -125,6 +125,85 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "EncounterInpatient",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Gestational Age at Birth <= 37 weeks",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Birth",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Parenteral Nutrition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Galactosemia Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Live Birth Infants without Parenteral Nutrition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InitialPopulation1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DenominatorExclusions1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Breast Milk Feeding",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Other Than Breast Milk Feeding",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InitialPopulation2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Infant Birth Date",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intention Not To Breast Feed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DenominatorExclusions2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator2",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

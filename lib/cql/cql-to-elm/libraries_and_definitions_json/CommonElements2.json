@@ -41,6 +41,21 @@
                     "version": "1.0.000"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "sVitalSigns",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

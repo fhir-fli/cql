@@ -582,6 +582,13 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
         }
     }
 }

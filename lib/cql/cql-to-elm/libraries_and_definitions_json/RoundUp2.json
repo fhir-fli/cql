@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "RoundUp",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_RoundUp",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

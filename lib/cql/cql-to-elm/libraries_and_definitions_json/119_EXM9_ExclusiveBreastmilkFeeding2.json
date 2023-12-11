@@ -18,6 +18,18 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Single Live Birth Encounter Without Galactosemia and Parenteral Nutrition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Birth Encounter With Newborn Fed Breast Milk Only Since Birth",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

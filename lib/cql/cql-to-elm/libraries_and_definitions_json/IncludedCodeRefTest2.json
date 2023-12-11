@@ -29,6 +29,14 @@
                     "path": "Common"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IncludedCode",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

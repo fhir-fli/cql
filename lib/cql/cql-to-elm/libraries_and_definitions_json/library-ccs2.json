@@ -65,6 +65,57 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Interval Five Years",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pap Smear Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pap Smear DiagnosticReport",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pap Smear Observation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HPV Test Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HPV Test DiagnosticReport",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HPV Test Observation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hysterectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hx Hysterectomy Procedure",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

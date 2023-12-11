@@ -70,6 +70,57 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Qualifying Encounters (1)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounters (2)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounters (3)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Family-measured Blood Pressure Exams",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounters (4)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Eye Exam Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Eye Exam Complete",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication Order Prescribers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication Discharge Prescribers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication Dispensed Prescribers",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

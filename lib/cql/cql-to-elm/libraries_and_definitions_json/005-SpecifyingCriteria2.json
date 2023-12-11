@@ -18,6 +18,26 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Asthma Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Valid Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Initial Population",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

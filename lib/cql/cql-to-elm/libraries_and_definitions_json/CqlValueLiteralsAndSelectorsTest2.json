@@ -22,6 +22,309 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BooleanFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BooleanTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPosZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNegZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPosOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNegOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerTwo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPosTwo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNegTwo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Integer10Pow9",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPos10Pow9",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNeg10Pow9",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Integer2Pow31ToZero1IntegerMaxValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPos2Pow31ToZero1IntegerMaxValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNeg2Pow31ToZero1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNeg2Pow31IntegerMinValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalTwo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosTwo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegTwo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Decimal10Pow9",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPos10Pow9",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNeg10Pow9",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Decimal2Pow31ToZero1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPos2Pow31ToZero1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNeg2Pow31ToZero1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Decimal2Pow31",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPos2Pow31",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNeg2Pow31",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Decimal2Pow31ToInf1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPos2Pow31ToInf1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNeg2Pow31ToInf1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalZeroStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosZeroStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegZeroStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalOneStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosOneStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegOneStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalTwoStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosTwoStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegTwoStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalTenStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosTenStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegTenStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalTenthStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosTenthStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalNegTenthStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalMaxValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPosMaxValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalMinValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPosZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNegZero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPosOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNegOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantitySmall",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPosSmall",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNegSmall",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPosStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNegStep",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPosMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityMin",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

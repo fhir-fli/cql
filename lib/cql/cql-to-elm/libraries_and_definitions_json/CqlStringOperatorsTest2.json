@@ -27,6 +27,77 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Combine",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Concatenate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EndsWith",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Indexer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LastPositionOf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Length",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lower",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Matches",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PositionOf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReplaceMatches",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Split",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StartsWith",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Substring",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Upper",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "toString tests",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

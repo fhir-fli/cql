@@ -1,0 +1,1 @@
+enum AccessModifier { Public, Private }

@@ -34,6 +34,29 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "All Medication Requests",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Medication Request",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Medication Request reference",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

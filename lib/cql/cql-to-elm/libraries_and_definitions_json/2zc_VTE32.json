@@ -76,6 +76,65 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Warfarin Therapy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Parenteral Therapy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters with Warfarin and Parenteral Therapies",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters with overlapping Warfarin and Parenteral Therapies",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters with appropriate overlap therapy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "overlapDuration",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient has no allergy or intolerance to Penicillin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "18 or over",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Comfort Measures Only",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "VTE Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

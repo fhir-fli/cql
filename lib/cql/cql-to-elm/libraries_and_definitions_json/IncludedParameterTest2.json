@@ -41,6 +41,18 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Included Parameter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Local Parameter",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -146,6 +146,29 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Advanced Illness Diagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Encounters with Advanced Illness",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Criteria Indicating Frailty",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

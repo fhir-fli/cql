@@ -222,6 +222,113 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Preventive Visit During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator 3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason for Not Screening for Tobacco Use",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason for Not Ordering Tobacco Cessation Pharmacotherapy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason for Not Counseling Tobacco User",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tobacco Cessation Pharmacotherapy Ordered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tobacco Cessation Counseling Given",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Limited Life Expectancy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions 3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Office Based Visit During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Tobacco Use Screening Indicates Tobacco Non User",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Tobacco Use Screening Indicates Tobacco User",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator 3",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

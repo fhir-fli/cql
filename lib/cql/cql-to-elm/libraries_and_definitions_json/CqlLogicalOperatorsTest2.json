@@ -27,6 +27,37 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "And",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Implies",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Not",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Or",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Xor",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

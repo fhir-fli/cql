@@ -65,6 +65,41 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Interval Two Years",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BMI Percent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Body Mass Index (BMI) Value",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Height",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Weight",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

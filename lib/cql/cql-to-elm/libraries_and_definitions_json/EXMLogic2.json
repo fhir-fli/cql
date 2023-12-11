@@ -116,6 +116,61 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measure Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratifier 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratifier 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratifier 3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratifier 4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

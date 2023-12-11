@@ -27,6 +27,230 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IntegerToLongEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerLongMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongIntegerMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongToDecimalEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongToDecimalMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalToLongMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ThisShouldWork",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerDecimalMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIntegerMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerQuantityEquality",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityIntegerEquality",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerQuantityAddition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityIntegerAddition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerQuantityMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityIntegerMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerQuantityDivision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityIntegerDivision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalQuantityEquality",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityDecimalEquality",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalQuantityAddition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityDecimalAddition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalQuantityMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityDecimalMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalQuantityDivision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityDecimalDivision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDateEquality",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerAnyMultiplication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NullCoalesce",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerCoalesce",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalCoalesce",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerIntervalSelector",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIntervalSelector",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EmptyList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIntegerList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExplicitIntegerList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExplicitDecimalList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NullIf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerIf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NullCase",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerCase",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalCase",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIntegerCase",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NullComparandCase",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerComparandCase",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "v",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "std",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "dev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ImplicitIntervalConversion",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NullList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NullIncluded",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeToConcept",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodesToConcept",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

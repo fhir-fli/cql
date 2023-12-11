@@ -35,6 +35,14 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ExpandValueSet",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

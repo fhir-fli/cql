@@ -21,6 +21,22 @@
         },
         "parameters": {
             "def": []
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "StringChoiceReference",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerChoiceReference",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalChoiceReference",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

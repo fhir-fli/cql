@@ -1,11 +1,10 @@
 // Generated from cql.g4 by ANTLR 4.13.1
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
-import 'package:cql/cql/cql-to-elm/elm/elm.dart';
+
 import 'package:fhir/dstu2.dart';
 
-import 'cqlParser.dart';
-import 'cqlVisitor.dart';
+import '../../cql.dart';
 
 /// This class provides an empty implementation of [cqlVisitor],
 /// which can be extended to create a visitor which only needs to handle
@@ -250,9 +249,9 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   void visitCodeDefinition(CodeDefinitionContext ctx) {
-    // if (shouldPrint) {
-    print('${ctx.runtimeType.toString()}   ${ctx.text}  ${ctx.childCount}');
-    // }
+    if (shouldPrint) {
+      print('${ctx.runtimeType.toString()}   ${ctx.text}  ${ctx.childCount}');
+    }
 
     String? name;
     String? id;
@@ -459,9 +458,19 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitExpressionDefinition(ExpressionDefinitionContext ctx) {
-    if (shouldPrint) {
-      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+    // if (shouldPrint) {
+    print('${ctx.runtimeType.toString()}   ${ctx.text} ${ctx.childCount}');
+    // }
+    String? name;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      }
     }
+    if (library.statements == null) {
+      library.statements = ExpressionDefs();
+    }
+    library.statements!.def.add(ExpressionDef(name: name ?? ''));
 
     visitChildren(ctx);
   }
@@ -471,10 +480,36 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   @override
   dynamic visitContextDefinition(ContextDefinitionContext ctx) {
     if (shouldPrint) {
-      print('${ctx.runtimeType.toString()}   ${ctx.text}');
+      print('${ctx.runtimeType.toString()}   ${ctx.text} ${ctx.childCount}');
     }
-
-    visitChildren(ctx);
+    String? name;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      }
+    }
+    // if (library.contexts == null) {
+    //   library.contexts = ContextDefs();
+    // }
+    // if (name != null) {
+    //   library.contexts!.def.add(ContextDef(name: name));
+    //   if(library.statements == null) {
+    //     library.statements = ExpressionDefs();
+    //   }
+    //   library.statements!.def.add(ExpressionDef(name: name, context: name,
+    //       expression: SingletonFrom(operand: Retrieve(dataType: FHIRPatient()))));
+    //                   {
+    //                 "name": "Patient",
+    //                 "context": "Patient",
+    //                 "expression": {
+    //                     "type": "SingletonFrom",
+    //                     "operand": {
+    //                         "dataType": "{http://hl7.org/fhir}Patient",
+    //                         "type": "Retrieve"
+    //                     }
+    //                 }
+    //             },
+    // }
   }
 
   /// The default implementation returns the result of calling

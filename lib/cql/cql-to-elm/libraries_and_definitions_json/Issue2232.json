@@ -22,6 +22,26 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "List of Lists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Flatten List of Lists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Access Flattened List of List Items",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Access Flattened List of List Items in a Single Query",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

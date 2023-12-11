@@ -18,6 +18,32 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                },
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "x",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "y",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "z",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

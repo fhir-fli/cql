@@ -88,6 +88,42 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Diastolic Blood Pressure Exam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Diastolic Blood Pressure Less Than 90",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diastolic Blood Pressure Exam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Systolic Blood Pressure Exam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Blood Pressure Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Blood Pressure Day",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lowest Diastolic on Most Recent Blood Pressure Day",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lowest Systolic on Most Recent Blood Pressure Day",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

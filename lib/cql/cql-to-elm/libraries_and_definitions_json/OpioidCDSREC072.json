@@ -49,6 +49,69 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Risk Assessment Interval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Previous 10 Days Interval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter Interval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chronic Pain Opioid Analgesic with Ambulatory Misuse Potential Prescriptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Is Being Prescribed Opioid Analgesic with Ambulatory Misuse Potential",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Recommendation Applicable?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Risk Assessment in Past 90 Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Prescribed Opioids for 7 of Past 10 Days with an Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Indicator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Summary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Detail",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

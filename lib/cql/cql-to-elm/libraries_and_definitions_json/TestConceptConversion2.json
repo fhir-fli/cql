@@ -65,6 +65,18 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestCodeComparison",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestConceptComparison",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

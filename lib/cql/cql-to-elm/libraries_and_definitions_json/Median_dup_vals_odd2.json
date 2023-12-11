@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Median_dup_vals_odd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_Median_dup_vals_odd",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

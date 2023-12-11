@@ -69,6 +69,34 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CodeRef",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptRef",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeSelector",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeInstanceSelector",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptSelector",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptInstanceSelector",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

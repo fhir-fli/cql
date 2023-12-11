@@ -18,6 +18,30 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Intervention Comfort Measures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intervention Comfort Measures on Day of or Day After Start of Hospitalization",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intervention Comfort Measures on Day of or Day After Start of Hospitalization",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intervention Comfort Measures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intervention Comfort Measures on Day of or Day After Start of Hospitalization",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

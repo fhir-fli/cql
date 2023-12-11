@@ -246,6 +246,77 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Flexible Sigmoidoscopy Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CT Colonography Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Total Colectomy Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Fecal Occult Blood Test Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Fecal Immunochemical Test DNA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Colonoscopy Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Malignant Neoplasm",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusion",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

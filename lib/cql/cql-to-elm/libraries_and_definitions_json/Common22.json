@@ -29,6 +29,41 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TheParameter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AnotherParameter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TwoTimesThree",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Two",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TwoPlusOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SortUsingFunction",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

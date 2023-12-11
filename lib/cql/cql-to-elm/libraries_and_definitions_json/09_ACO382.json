@@ -18,6 +18,38 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "AMI Diagnosis Prior to Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Visits With AMI Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First Inpatient Visit With AMI Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Visits With AMI Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First Of At Least Two Outpatient Visits With AMI Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Diagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has At Least 2 Qualifying Diagnoses",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

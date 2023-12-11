@@ -27,6 +27,129 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Sort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Contains",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Descendents",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Distinct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Except",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Flatten",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Includes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Indexer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intersect",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Last",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Length",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperContains",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperlyIncludes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperlyIncludedIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingletonFrom",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Skip",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Tail",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Take",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

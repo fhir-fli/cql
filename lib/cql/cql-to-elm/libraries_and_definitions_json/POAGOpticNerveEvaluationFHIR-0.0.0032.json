@@ -154,6 +154,73 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounter During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Primary Open Angle Glaucoma Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cup to Disc Ratio Performed with Result",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Optic Disc Exam Performed with Result",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason for Not Performing Cup to Disc Ratio",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medical Reason for Not Performing Optic Disc Exam",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

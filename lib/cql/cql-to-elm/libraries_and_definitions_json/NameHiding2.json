@@ -45,6 +45,26 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Source 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Query 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Query 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Query 3",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

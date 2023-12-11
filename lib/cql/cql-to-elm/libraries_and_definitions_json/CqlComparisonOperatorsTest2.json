@@ -27,6 +27,49 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Between",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Greater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Greater Or Equal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Less",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Less Or Equal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Not Equal",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

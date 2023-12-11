@@ -18,6 +18,30 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Qualifying Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Eye Exam Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Eye Exam Complete",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounters",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

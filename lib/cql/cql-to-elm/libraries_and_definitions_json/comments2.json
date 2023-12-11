@@ -75,6 +75,45 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Office Visit Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Male Patient",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Prostate Cancer Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Medications for Androgen deprivation therapy for Urology Care",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Androgen Deprivation Therapy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Result",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

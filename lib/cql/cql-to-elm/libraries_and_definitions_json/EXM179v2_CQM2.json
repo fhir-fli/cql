@@ -63,6 +63,128 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Population"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "FlutterDiagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WarfarinMedications",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FaceToFaceEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OfficeVisitEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ValvularHeartDiseaseDiagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "INRLabResults",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InpatientEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ActiveFlutterDiagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ActiveValvularHeartDiseaseDiagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LookbackInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ActiveWarfarinDuringLookback",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WarfarinUsageIntervals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WarfarinUsage",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "INROutpatientLabResult",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "INRResultsByDay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "INRResultsPerDay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TherapeuticRange",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "INRIntervals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TherapeuticDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TherapeuticTimeInRange",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NumberOfValidIntervals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasValidIntervals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InitialPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasurePopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasureObservation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasureScore",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

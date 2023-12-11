@@ -21,6 +21,18 @@
         },
         "parameters": {
             "def": []
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "b",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "c",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

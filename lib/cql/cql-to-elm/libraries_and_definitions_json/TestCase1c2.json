@@ -43,6 +43,25 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestMedicationRequirement",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestReferencedDataRequirement",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

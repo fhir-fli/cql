@@ -635,6 +635,97 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IsFemale",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AtRiskByAgeGroup",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DocumentedSexuallyActive",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasHadConditionOfSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasHadPregnancyTestForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasHadOtherLabTestForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasHadProcedureForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReceivedOCP",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReceivedOCP_ForBirthControl",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReceivedOCP_ForMenstrualRegulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReceivedOCP_NotForMenstrualRegulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReceivedOCPwithMensturalCycleCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasEvidenceOfSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasSTIriskFactor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasChlamydiaTest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InAtRiskAgePopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InOtherAtRiskPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InAgeAndOtherAtRiskPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AtRiskByAgeMessage",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ChlamydiaScreeningTestProposal",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

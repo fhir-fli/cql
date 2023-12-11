@@ -38,6 +38,18 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ReferenceExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GenderExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

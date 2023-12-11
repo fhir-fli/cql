@@ -21,6 +21,26 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "X",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Y",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Z",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "X",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

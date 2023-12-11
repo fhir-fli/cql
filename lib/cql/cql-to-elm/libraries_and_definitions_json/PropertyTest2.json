@@ -34,6 +34,77 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListsOfLists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LotsOfDups",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsIncluded",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsProperlyIncludes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsProperlyIncluded",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqIntervals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqTuples",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqLists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Empty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TypedHasNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TypedEmpty",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

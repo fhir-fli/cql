@@ -18,6 +18,378 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "FiveIsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FiveIsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringFiveIsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringFiveIsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListOfIntegersIsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListOfDecimalsIsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOfIntegersIsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOfDecimalsIsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleOfIntegersIsTupleOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleOfDecimalsIsTupleOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerIsChoiceOfIntegersAndDecimals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIsChoiceOfIntegersAndDecimals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringIsChoiceOfIntegersAndDecimals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterIsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterIsRecord",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterIsAny",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterIsCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterIsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FiveAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FiveAsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringFiveAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringFiveAsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastFiveAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastFiveAsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastStringFiveAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastStringFiveAsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastListAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntervalAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastTupleAsInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListOfIntegersAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListOfStringsAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastListOfIntegersAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastListOfStringsAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntegerAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntervalAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastTupleAsListOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOfIntegersAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOfDatesAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntervalOfIntegersAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntervalOfDatesAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntegerAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastListAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastTupleAsIntervalOfIntegers",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleOfAIntegerBStringAsTupleOfAIntegerBString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleOfAStringBIntegerAsTupleOfAIntegerBString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerAsTupleOfInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListAsTupleOfInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalAsTupleOfInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastTupleOfAIntegerBStringAsTupleOfAIntegerBString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastTupleOfAStringBIntegerAsTupleOfAIntegerBString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntegerAsTupleOfInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastListAsTupleOfInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntervalAsTupleOfInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntegerAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastStringAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastDecimalAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastListAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntervalAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastTupleAsChoiceOfIntegersAndStrings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterAsRecord",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterAsAny",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterAsCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterAsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NamedTupleAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastEncounterAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastEncounterAsRecord",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastEncounterAsAny",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastEncounterAsCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastEncounterAsString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastListAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastIntervalAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastTupleAsEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastNamedTupleAsEncounter",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

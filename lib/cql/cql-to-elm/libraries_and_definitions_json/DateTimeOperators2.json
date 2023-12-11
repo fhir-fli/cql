@@ -18,6 +18,294 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "DateTimeAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeYear",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeMonth",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeHour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeMinute",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeSecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeMillisecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeMillisecondOffset",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateExtractor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeExtractor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeTimezoneExtractor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "YearFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MonthFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DayFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HourFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MinuteFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SecondFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MillisecondFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDifferenceBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDurationBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDurationInBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDifferenceExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeDurationExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeSameAsExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeSameOrAfterExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeSameOrBeforeExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeSubtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NowExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateYear",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateMonth",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateDay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "YearFromDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MonthFromDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DayFromDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateDifferenceBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateDurationBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateDurationInBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateDifferenceExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateDurationExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateSameAsExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateSameOrAfterExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateSameOrBeforeExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateSubtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TodayExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeHour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeMinute",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeSecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeMillisecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HourFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MinuteFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SecondFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MillisecondFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeDifferenceBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeDurationBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeDurationInBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeDifferenceExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeDurationExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeSameAsExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeSameOrAfterExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeSameOrBeforeExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeSubtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeOfDayExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -62,6 +62,65 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestToday",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestNow",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestTimeOfDay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestTodayInWhere",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestNowInWhere",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestNowInWhere2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestNow2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestNow3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToday2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestExists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestNotEmpty",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

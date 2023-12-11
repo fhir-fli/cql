@@ -88,6 +88,62 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "$Breastfeeding Intention",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Has Breastfeeding Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Flatten",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Identifier with a ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Identifier with a ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Matches",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Equivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Indexer Expression (1-based)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Indexer Expression (0-based)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Inpatient Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "stayDuration",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$Inpatient Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "$CD4+ Count With Results and Medications",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

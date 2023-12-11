@@ -29,6 +29,56 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Population"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ValidEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncountersDuringMeasurementPeriod",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "URIDiagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ValidDiagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InitialPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasureScore",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

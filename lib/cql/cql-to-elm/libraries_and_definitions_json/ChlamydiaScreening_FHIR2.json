@@ -95,6 +95,33 @@
                     "uri": "http://hl7.org/fhir"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "PATIENT"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "retrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "retrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "retrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "retrieve",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

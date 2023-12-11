@@ -21,6 +21,46 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMultiline",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMultiTagInline",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateMultiTag",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateIntervalParameter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMultilineValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestParameterAtFirstLine",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AnotherTestCase",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestInvalid",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

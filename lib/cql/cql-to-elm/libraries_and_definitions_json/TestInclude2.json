@@ -76,6 +76,41 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestPractitionerSearch1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPractitionerSearch1A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationRequest1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationRequest1A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationRequest1B",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationRequest1C",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

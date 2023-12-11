@@ -28,6 +28,90 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Case1EDArrivalDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case1EDDepartureDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case1AdmissionDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case1ComfortMeasures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case2EDArrivalDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case2EDDepartureDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case2AdmissionDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case2ComfortMeasures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case3EDArrivalDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case3EDDepartureDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case3AdmissionDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case3ComfortMeasures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case4EDArrivalDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case4EDDepartureDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case4AdmissionDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case4ComfortMeasures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Case4",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

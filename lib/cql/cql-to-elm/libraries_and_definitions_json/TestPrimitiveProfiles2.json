@@ -26,6 +26,130 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "UrlUri",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToUrl",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CanonicalUri",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToCanonical",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UuidUri",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToUuid",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OidUri",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToOid",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PositiveInt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToPositiveInt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UnsignedInt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToUnsignedInt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MarkdownString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToMarkdown",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IdString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToId",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToSimpleQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AgeQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToAge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistanceQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToDistance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DurationQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToDuration",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CountQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToCount",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MoneyQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CastToMoney",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

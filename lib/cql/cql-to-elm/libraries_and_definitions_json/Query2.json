@@ -21,6 +21,58 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Singular Source",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Plural Source",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Singular Source Query",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Plural Source Query",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Singular Multiple Source Query",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Plural Multiple Source Query",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mixed Multiple Source Query",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mixed Multiple Source Query 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mixed Multiple Source Query With Return",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Singular Source With Plural Relationship",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Plural Source With Singular Relationship",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Singular Source With Plural Relationship And Return",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

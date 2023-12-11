@@ -36,6 +36,45 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "MedReqs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testChoiceTypes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testDateType",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testFhirObjectEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testFhirObjectEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Ambulatory Opioid Rx",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GetProvenance",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -199,6 +199,93 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Diastolic Blood Pressure Less Than 90",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Systolic Blood Pressure Less Than 140",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lowest Diastolic Reading on Most Recent Blood Pressure Day",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lowest Systolic Reading on Most Recent Blood Pressure Day",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Blood Pressure Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Blood Pressure Day",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Diastolic Blood Pressure Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Systolic Blood Pressure Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pregnancy Or Renal Diagnosis Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "End Stage Renal Disease Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "End Stage Renal Disease Procedures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Essential Hypertension Diagnosis",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

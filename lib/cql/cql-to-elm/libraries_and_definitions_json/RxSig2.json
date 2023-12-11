@@ -22,6 +22,21 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "DoseUnitsOpts",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

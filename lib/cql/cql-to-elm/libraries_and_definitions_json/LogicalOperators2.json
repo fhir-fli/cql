@@ -18,6 +18,26 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "AndExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OrExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "XorExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -18,6 +18,38 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestFunctionKeywords",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "High Blood Pressure at Most Recent Screening Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Last Blood Pressure Within One Year High",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hypertensive Interventions at Most Recent Blood Pressure Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up Within 4 Weeks",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Referral to Alternate Provider",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has First Hypertensive Reading With Interventions",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

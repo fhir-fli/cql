@@ -27,6 +27,33 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Boolean",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Integer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Decimal",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

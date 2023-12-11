@@ -18,6 +18,38 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestSimpleSort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDescendingSort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAscSort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAscendingSort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestColumnSort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestExpressionSort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAliasSort",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

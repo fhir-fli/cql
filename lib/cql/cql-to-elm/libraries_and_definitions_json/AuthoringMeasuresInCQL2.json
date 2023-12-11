@@ -28,6 +28,46 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measurement Period Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pharyngitis Encounters With Antibiotics",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters Without Left",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters Without Right",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters Without Screening",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

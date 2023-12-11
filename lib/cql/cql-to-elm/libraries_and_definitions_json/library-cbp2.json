@@ -105,6 +105,105 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Interval One Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lookback Interval Three Years",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BP: Systolic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BP: Diastolic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BP: Systolic Less Than 140",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BP: Systolic Greater Than/Equal To 140",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BP: Diastolic Less Than 80",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BP: Diastolic 80-89",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BP: Diastolic Greater Than/Equal To 90",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hypertension Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hx HTN",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "End Stage Renal Disease Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Kidney Transplant Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pregnancy Condition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Non-Acute Inpatient Admission",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Non-Acute Inpatient Admission",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MedicationDispense",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Any Setting Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Gestational or Steroid-induced Diabetes Condition",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -188,9 +188,3 @@ class IncludeDef {
             ? Uri.parse(path)
             : Uri.parse('application/elm+xml');
 }
-
-class ContextDef extends ElmElement {
-  final String name;
-
-  ContextDef({required this.name});
-}

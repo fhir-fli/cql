@@ -57,6 +57,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test Tobacco Smoking Status",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

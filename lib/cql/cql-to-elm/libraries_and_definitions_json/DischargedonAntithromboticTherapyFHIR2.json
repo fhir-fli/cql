@@ -140,6 +140,73 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Therapy at Discharge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Given at Discharge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pharmacological Contraindications for Antithrombotic Therapy at Discharge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter With No Antithrombotic At Discharge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter With Pharmacological Contraindications for Antithrombotic Therapy at Discharge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

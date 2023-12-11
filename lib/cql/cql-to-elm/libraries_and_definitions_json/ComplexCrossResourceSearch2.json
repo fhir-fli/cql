@@ -35,6 +35,45 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "XSearchUsingMultipleSources",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "getCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "firstCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "conditionCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "getObservation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "firstObservation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "observationCode",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

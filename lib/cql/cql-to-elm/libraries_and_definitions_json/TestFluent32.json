@@ -31,6 +31,14 @@
                     "localIdentifier": "TestFluent2"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

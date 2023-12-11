@@ -18,6 +18,30 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Unilateral Mastectomies",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy Pairs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unique Unilateral Mastectomy Pairs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unilateral Mastectomy Pairs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unique Unilateral Mastectomy Pairs",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

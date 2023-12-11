@@ -27,6 +27,109 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Abs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Add",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ceiling",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Divide",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Floor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exp",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HighBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Log",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LowBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ln",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MinValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MaxValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Modulo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Multiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Negate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Precision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Predecessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Power",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Round",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Subtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Successor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Truncate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Truncated Divide",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

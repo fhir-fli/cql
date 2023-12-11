@@ -60,6 +60,18 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CodeRef1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeRef2",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

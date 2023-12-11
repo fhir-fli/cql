@@ -46,6 +46,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Measure"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

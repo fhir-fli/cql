@@ -27,6 +27,30 @@
                     "version": "1.0.2"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "testString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testDecimal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testID",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

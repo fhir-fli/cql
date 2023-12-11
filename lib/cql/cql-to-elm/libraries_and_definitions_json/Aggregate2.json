@@ -21,6 +21,30 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Sequence",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Factorial",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProductWithStart",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intervals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RolledOutIntervals",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

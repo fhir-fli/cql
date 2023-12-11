@@ -65,6 +65,14 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "testConceptRef",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

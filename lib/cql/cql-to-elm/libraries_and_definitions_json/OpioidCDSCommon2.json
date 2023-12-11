@@ -229,6 +229,65 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Active Ambulatory Opioid Rx",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Ambulatory Benzodiazepine Rx",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Ambulatory Naloxone Rx",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "End of Life Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "US Core-Categorized Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Conditions Indicating End of Life or With Limited Life Expectancy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Admitted/Referred/Discharged to Hospice Care",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Previous 10 Days Interval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First Month",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Second Month",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Third Month",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Prescribed Opioids for 21 or more of 30 Days for each of the past 3 Months",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

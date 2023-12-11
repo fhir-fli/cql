@@ -22,6 +22,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "list",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First Position of list",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Third Position of list With Same Name of Let As First",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -47,6 +47,14 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

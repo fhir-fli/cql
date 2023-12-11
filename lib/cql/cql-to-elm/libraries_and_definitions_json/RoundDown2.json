@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "RoundDown",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_RoundDown",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

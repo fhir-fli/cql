@@ -101,6 +101,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Has Palliative Care in the Measurement Period",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

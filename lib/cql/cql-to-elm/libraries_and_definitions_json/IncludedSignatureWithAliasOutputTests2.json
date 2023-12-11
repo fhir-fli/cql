@@ -29,6 +29,38 @@
                     "path": "Overloads"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOverloadOneInt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOverloadOneDecimal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOverloadTwoInts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOverloadTwoDecimals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOverloadOneIntOneDecimal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOverloadOneIntTwoDecimal",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -27,6 +27,33 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Coalesce",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsTrue",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

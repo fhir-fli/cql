@@ -140,6 +140,61 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Advanced Illness and Frailty Exclusion Including Over Age 80",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Advanced Illness and Frailty Exclusion Not Including Over Age 80",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Criteria Indicating Frailty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Two Outpatient Visits with Advanced Illness on Different Dates of Service",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Encounters or Discharges with Advanced Illness",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Encounters with Advanced Illness",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Nonacute Inpatient Discharge with Advanced Illness",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Advanced Illness ValueSet",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Acute Inpatient Encounter with Advanced Illness",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Acute Inpatient Discharge with Advanced Illness",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dementia Medications In Year Before or During Measurement Period",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

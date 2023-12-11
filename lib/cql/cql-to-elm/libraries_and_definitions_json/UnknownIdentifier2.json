@@ -27,6 +27,14 @@
                     "version": "3.0.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "X",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

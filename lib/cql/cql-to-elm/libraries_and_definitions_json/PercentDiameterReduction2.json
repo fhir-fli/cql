@@ -48,6 +48,14 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Study Indicating Stenosis",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

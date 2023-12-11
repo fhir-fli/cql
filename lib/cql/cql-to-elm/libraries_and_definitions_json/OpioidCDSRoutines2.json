@@ -46,6 +46,89 @@
                     "version": "1.2.3"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Palliative Care Lookback Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Opioid Review Useful?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Conditions Indicating End Of Life Present",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Conditions Including Cancer To Exclude Opioid Management Indicating End-Stage Disease Present",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Prescription/Dispense Inclusion Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Report Inclusion Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Opioid Naive?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid RX with Ambulatory Abuse Potential In Past 90 Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Opioid RX with Ambulatory Abuse Potential In Past 90 Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Dispense with Ambulatory Abuse Potential In Past 90 Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Opioid Dispense with Ambulatory Abuse Potential In Past 90 Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Active Cancer Treatment?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Cancer Diagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Oncologist Practitioner Roles",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters with Cancer Diagnosis During Encounter Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Number of Enounters with Cancer Diagnosis During Encounter Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Two or More Encounters with Cancer Diagnosis During Encounter Period",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

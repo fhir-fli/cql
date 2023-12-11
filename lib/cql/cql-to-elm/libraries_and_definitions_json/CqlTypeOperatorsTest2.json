@@ -27,6 +27,61 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "As",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Convert",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToBoolean",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToConcept",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToDecimal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToTime",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

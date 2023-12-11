@@ -38,6 +38,49 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "MedicationRequests",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testCoalesce",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasurementPeriod",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "testMonthFrom",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Immunizations between October and December",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Immunizations between January and April",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Immunizations in range",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Resource Id",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

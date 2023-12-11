@@ -18,6 +18,42 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CoalesceList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CoalesceTwoArgument",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CoalesceThreeArgument",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CoalesceFourArgument",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CoalesceFiveArgument",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsNullExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsTrueExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsFalseExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

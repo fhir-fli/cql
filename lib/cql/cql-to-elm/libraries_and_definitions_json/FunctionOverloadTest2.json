@@ -22,6 +22,30 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestAnyFunctionWithInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAnyFunctionWithString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAnyFunctionWithDecimal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAnyFunctionWithNoArgs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAnyFunctionWith2Args",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

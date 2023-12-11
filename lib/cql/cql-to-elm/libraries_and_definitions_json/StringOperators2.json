@@ -18,6 +18,86 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "StringAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringCombine",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringCombineNoSeparator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringConcatenate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringConcatenateWithAmpersand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringEndsWith",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringIndexer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringLength",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringLower",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringMatches",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringPositionOf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringLastPositionOf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringReplaceMatches",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringSplit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringSplitOnMatches",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringStartsWith",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringSubstring",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringSubstringWithLength",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringUpper",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

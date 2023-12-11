@@ -33,6 +33,14 @@
                     "path": "TF2"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

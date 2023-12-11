@@ -36,6 +36,45 @@
                     "version": "1.0.000"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Has Presence of significant radiographic findings, which may include knee joint destruction, angular deformity, or severe narrowing",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Bone Narrowing Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Osteonecrosis Knee Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Angular Deformity Knee Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Failure of Previous Proximal Tibial or Distal Femoral Osteotomy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters from Dependency Library",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Encounters",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

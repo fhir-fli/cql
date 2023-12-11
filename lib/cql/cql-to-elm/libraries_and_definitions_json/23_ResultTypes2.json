@@ -18,6 +18,42 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Simple Expression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Invalid Expression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Adolescent Depression Screening",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Adolescent Depression Screening with Negative Result",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Most Recent Adolescent Depression Screening with Negative Result",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List Selector",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

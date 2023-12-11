@@ -102,6 +102,44 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Population"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SexuallyActive",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InInitialPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDenominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InNumerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasureScore",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

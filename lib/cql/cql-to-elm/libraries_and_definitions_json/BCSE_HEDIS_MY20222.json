@@ -160,6 +160,77 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Enrolled During Participation Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Member Coverage",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Participation Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "October 1 Two Years Prior to the Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mastectomy Exclusion",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right Mastectomy Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left Mastectomy Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Bilateral Mastectomy Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Bilateral Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

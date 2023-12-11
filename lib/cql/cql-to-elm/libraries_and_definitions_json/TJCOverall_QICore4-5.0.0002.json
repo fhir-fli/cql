@@ -155,6 +155,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Intervention Comfort Measures",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

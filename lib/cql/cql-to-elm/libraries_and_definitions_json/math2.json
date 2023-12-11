@@ -25,6 +25,33 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Add",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Subtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Multiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Divide",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

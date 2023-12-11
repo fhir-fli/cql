@@ -22,6 +22,198 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "BoolTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BoolFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntOne",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalTenth",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeX",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeFX",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeX",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_Month",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_Day",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_Hour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_Minute",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_Second",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_Millisecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime_TimezoneOffset",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time_Hour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time_Minute",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time_Second",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time_Millisecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Clinical_quantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Clinical_QuantityA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Clinical_CodeA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Clinical_ConceptA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Structured_tuple",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Structured_TupleA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Interval_Open",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Interval_LeftOpen",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Interval_RightOpen",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Interval_Closed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Code1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Code2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Three",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_BoolList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_IntList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_DecimalList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_StringList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_DateTimeList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_TimeList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_QuantityList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_CodeList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_ConceptList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_TupleList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_ListList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_IntervalList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_MixedList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List_EmptyList",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

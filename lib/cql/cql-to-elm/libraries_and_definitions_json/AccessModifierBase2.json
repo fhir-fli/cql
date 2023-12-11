@@ -84,6 +84,14 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "PrivateExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

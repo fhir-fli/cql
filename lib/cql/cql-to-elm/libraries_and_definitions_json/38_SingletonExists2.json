@@ -18,6 +18,174 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Numerator 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Encounter Treatments",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDemographic1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDemographic2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Recent Lab Test with Result",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Recent Lab Test with No Result",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lab Test Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FirstAlcoholDrugDependenceDx",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diagnosis Related Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pap Test With HPV Within 5 Years",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IPSD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IPSD",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication Dispensed 270 days before or 90 days after Start of Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Communication of Diagnostic Study Results",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Screened and Identified as Tobacco NonUser",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Screened and Identified as Tobacco User",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

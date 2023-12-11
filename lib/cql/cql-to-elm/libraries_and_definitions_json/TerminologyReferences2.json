@@ -67,6 +67,14 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounters",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

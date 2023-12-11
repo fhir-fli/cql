@@ -34,6 +34,394 @@
                     "version": "1.0.2"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestInstant",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestInstantConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestHour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestHourConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMinute",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMinuteConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSecondConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestYear",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestYearConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMonth",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMonthConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestYearDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestYearDateTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMonthDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMonthDateTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDayDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDayDateTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestHourDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestHourDateTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMinuteDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMinuteDateTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSecondDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSecondDateTimeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDecimal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDecimalConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBoolean",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBooleanConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUri",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUriConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUuid",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUuidConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUuidSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOid",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOidConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOidSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestIntegerConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestIntegerSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUnsignedInt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUnsignedIntConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUnsignedIntSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPositiveInt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPositiveIntConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPositiveIntSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestStringConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCodeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCodeSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMarkdown",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMarkdownConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMarkdownSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestId",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestIdConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestIdSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRatio",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRatioConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPeriod",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPeriodConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRange",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRangeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCoding",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCodingConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCodeableConcept",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCodeableConceptConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDistance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDistanceConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDistanceSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDuration",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDurationConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDurationSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCount",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCountConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCountSpecificallyConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithoutComparator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithoutComparatorConverts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator1Converts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator2Converts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator3Converts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestQuantityWithComparator4Converts",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

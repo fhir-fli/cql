@@ -203,6 +203,117 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Second Hypertensive Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with First Hypertensive Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Order for Follow Up Within One Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Order for Follow Up Within 4 Weeks",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Order for Hypertension Medication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Order for Laboratory Test for Hypertension",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Referral to Alternate Provider for High Blood Pressure Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Order for Hypertension Follow Up Declined by Patient",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Medical Reason for Not Obtaining or Patient Declined Blood Pressure Measurement",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Order for Electrocardiogram for Hypertension",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Order for Intervention for Hypertension",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with High Blood Pressure Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with High Blood Pressure Reading Within Year Prior",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Normal Blood Pressure Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Prehypertensive Blood Pressure Reading",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Qualifying Encounter During Measurement Period",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

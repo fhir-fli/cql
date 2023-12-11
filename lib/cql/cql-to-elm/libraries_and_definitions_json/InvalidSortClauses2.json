@@ -21,6 +21,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Invalid Sort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Invalid Column Sort",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Invalid Expression Sort",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

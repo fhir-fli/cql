@@ -26,6 +26,22 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Observations",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication Requests",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

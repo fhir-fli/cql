@@ -18,6 +18,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "even",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "empty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "dup_vals_even",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

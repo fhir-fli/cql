@@ -21,6 +21,18 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CollapseWithNullPer1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CollapseWithNullPer2",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

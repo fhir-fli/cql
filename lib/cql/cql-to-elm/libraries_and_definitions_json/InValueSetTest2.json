@@ -27,6 +27,26 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ListOfCodes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WrongListOfCodes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InListOfCodes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InWrongListOfCodes",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

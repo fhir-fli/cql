@@ -22,6 +22,30 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Null Interval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Date",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Date in Null Interval Test",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime in Null Interval Test",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

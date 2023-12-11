@@ -90,6 +90,73 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Interval One Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lookback Interval Five Years",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lookback Interval Ten Years",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hx Colorectal Cancer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hx Total Colectomy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Colonoscopy Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Colonoscopy Results",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Sigmoidoscopy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Sigmoidoscopy Observation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FOBT Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FOBT Observation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Colonoscopy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Colonoscopy Observation",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

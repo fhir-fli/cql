@@ -57,6 +57,22 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "PrivateExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BaseExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BaseLibSum",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

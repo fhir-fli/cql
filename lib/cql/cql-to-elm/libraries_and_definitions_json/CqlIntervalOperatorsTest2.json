@@ -27,6 +27,149 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "After",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Before",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Collapse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Expand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Contains",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "End",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ends",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Except",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Includes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Included In",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intersect",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Meets",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeetsBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeetsAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OnOrAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OnOrBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Overlaps",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OverlapsBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OverlapsAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointFrom",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperContains",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperlyIncludes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperlyIncludedIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Start",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Starts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Width",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Interval",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

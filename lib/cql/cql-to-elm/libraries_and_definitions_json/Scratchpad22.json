@@ -158,6 +158,62 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "DurationBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DifferenceBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointIntervalExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "OccursExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WithinExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QueryExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AnyCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AllCode",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

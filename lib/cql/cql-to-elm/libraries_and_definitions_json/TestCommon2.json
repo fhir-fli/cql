@@ -26,6 +26,21 @@
                     "version": "5.4"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestPatientBirthdate",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

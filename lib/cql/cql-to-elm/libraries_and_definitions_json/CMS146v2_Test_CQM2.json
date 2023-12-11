@@ -58,6 +58,61 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pharyngitis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antibiotics",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TargetEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TargetDiagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasPriorAntibiotics",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasTargetEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InInitialPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDenominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDenominatorExclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InNumerator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

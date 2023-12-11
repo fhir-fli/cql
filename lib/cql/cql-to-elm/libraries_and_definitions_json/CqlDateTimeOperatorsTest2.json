@@ -27,6 +27,85 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Add",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "After",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Before",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeComponentFrom",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Difference",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "From Github issue #29",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Duration",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Uncertainty tests",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Now",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameAs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameOrAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameOrBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Subtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeOfDay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Today",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

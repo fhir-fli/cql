@@ -22,6 +22,661 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ContainsABNullHasNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ContainsABCHasA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ContainsJan2012True",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ContainsJan2012False",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ContainsTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ContainsTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistinctEmptyList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistinctNullNullNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistinctANullANull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Distinct112233",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Distinct123123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistinctAABBCC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistinctABCABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistinctDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DistinctTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualNullNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualEmptyListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualNullEmptyList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualEmptyListAndEmptyList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equal12And123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equal123And12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equal123And123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualDateTimeNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExceptEmptyListAndEmptyList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Except1234And23",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Except23And1234",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExceptDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExceptTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExistsEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExistsListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exists1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exists12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExistsDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExistsTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FlattenEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FlattenListNullAndNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FlattenList12And34",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FlattenDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FlattenTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FirstEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FirstNull1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First1Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FirstDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FirstTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InNullEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InNullAnd1Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In1Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In1And12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In3And12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludesEmptyAndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludesListNullAndListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Includes123AndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Includes123And2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Includes123And4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludesDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludesDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludesTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludesTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedInEmptyAndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedInListNullAndListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedInEmptyAnd123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedIn2And123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedIn4And123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedInDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedInDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedInTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedInTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexerNull1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Indexer0Of12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Indexer1Of12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Indexer2Of12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexerNeg1Of12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexerDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexerTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOfEmptyNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOfNullEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOfNullIn1Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOf1In12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOf2In12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOf3In12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOfDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IndexOfTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntersectEmptyListAndEmptyList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intersect1234And23",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intersect23And1234",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntersectDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntersectTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LastEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LastNull1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Last1Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Last12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LastDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LastTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LengthEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LengthNull1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Length1Null",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Length12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LengthDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LengthTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentEmptyAndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentABCAndABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentABCAndAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentABCAnd123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equivalent123AndABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Equivalent123AndString123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentDateTimeNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentTimeNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualEmptyAndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualABCAndABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualABCAndAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualABCAnd123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqual123AndABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqual123AndString123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NotEqualTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludesEmptyAndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludesListNullAndListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludes123AndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludes123And2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludes123And4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludesDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludesDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludesTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludesTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedInEmptyAndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedInListNullAndListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedInEmptyAnd123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedIn2And123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedIn4And123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedInDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedInDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedInTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProperIncludedInTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingletonFromEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingletonFromListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingletonFrom1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingletonFrom12",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingletonFromDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingletonFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UnionEmptyAndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UnionListNullAndListNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union123AndEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union123And2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union123And4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UnionDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UnionTime",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

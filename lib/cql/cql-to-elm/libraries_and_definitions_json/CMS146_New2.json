@@ -71,6 +71,65 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pharyngitis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antibiotics",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasurementPeriodEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PharyngitisEncountersWithAntibiotics",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InitialPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PharyngitisWithPriorAntibiotics",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExcludedEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DenominatorExclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StrepTestEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

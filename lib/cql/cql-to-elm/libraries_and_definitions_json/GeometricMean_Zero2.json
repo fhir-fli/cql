@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "GeometricMean_Zero",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_GeometricMean_Zero",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

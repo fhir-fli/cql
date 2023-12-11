@@ -18,6 +18,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "test",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Medications for Androgen deprivation therapy for Urology Care",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Medications for Androgen deprivation therapy for Urology Care",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

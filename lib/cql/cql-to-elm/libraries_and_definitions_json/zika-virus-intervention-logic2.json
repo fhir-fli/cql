@@ -178,6 +178,113 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Pregnancy Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Patient Pregnant",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Exposure Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Exposure Assessment Result",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Zika Exposure Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Symptoms",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Zika Symptoms",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Zika Symptoms",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Yes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Resident of or Frequent Traveler to Zika Area",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Recent Travel to Zika Area",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time Since Returned From Travel",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Recent Sexual Encounter With Traveler to Zika Area",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time Since Sexual Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time Since Possible Exposure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Planned Travel to Zika Area",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Possible Zika Exposure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Zika Symptom Onset",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time Since Symptom Onset",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Administer Zika Exposure Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Order Serum + Urine rRT-PCR Test",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Order Serum Zika Virus IgM + Dengue Virus IgM",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Consider IgM Antibody Testing",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Provide Mosquito Prevention and Contraception Advice",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

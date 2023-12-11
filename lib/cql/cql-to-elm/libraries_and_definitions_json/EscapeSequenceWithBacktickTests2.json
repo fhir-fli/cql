@@ -18,6 +18,70 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "``",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`Hello \\'World\\'`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`Hello \\\"World\\\"`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`Hello \\`World\\``",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`Hello 'World'2`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`Hello \"World\"2`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\n`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\f`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\r`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\t`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\/`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\\\`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\f\\n\\r\\t\\/\\\\`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`\\u0020`",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "`This is an identifier with \\\"multiple\\\" embedded \\t escapes\\u0020\\r\\nno really, \\r\\n\\f\\t\\/\\\\lots of them`",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

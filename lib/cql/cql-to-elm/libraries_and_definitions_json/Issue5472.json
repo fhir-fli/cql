@@ -54,6 +54,21 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Conditions",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

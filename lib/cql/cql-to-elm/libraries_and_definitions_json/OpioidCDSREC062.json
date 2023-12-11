@@ -54,6 +54,53 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Acute Pain Opioid Analgesic with Ambulatory Misuse Potential Prescriptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Is Being Prescribed Opioid Analgesic with Ambulatory Misuse Potential for Acute Pain",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Recommendation Applicable?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Order is for Long-Acting Opioid",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Indicator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Summary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Detail",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

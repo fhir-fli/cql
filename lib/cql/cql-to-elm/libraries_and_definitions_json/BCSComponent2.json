@@ -197,6 +197,73 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SDE Ethnicity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Payer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Race",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SDE Sex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right Mastectomy Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Bilateral Mastectomy Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Bilateral Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exclusion",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left Mastectomy",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

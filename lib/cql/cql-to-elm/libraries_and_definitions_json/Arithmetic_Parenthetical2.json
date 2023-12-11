@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Arithmetic_Parenthetical",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_Arithmetic_Parenthetical",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

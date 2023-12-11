@@ -70,6 +70,46 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Conditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PharyngitisConditions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AmbulatoryEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncountersByServiceType",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WrongValueSet",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WrongCodeProperty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionsByCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionsByConcept",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

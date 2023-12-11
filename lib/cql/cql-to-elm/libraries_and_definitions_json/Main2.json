@@ -28,6 +28,18 @@
                     "localIdentifier": "Main"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ReferenceTest",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

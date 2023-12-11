@@ -1,4 +1,4 @@
-import '../cql-to-elm/cql_to_elm.dart';
+import '../cql.dart';
 
 class CqlCompilerException implements Exception {
   final String message;

@@ -64,6 +64,62 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CodeSystemHidden",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeSystemHidden2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ValueSetHidden",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ValueSetHidden2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeHidden",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeHidden2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FHIRHelpersHidden",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FHIRHelpersHidden2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FHIRHidden",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FHIRHidden2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Definition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AliasHidden",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "VariableHidden",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

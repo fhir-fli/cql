@@ -26,6 +26,18 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Test",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

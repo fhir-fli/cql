@@ -29,6 +29,14 @@
                     "path": "Base"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InvalidReferenceExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

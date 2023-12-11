@@ -206,6 +206,565 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestAdverseEvent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAllergyIntolerance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBodyStructure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCarePlan",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCareTeam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestClaim",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestClaimResponse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCommunication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCommunicationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCommunicationRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestConditionEncounterDiagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestConditionProblemsHealthConcerns",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCoverage",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDevice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDeviceNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDeviceRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDeviceUseStatement",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDiagnosticReportLab",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDiagnosticReportNote",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestFamilyMemberHistory",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestFlag",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGoal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImagingStudy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImmunization",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImmunizationEvaluation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImmunizationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImmunizationRecommendation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestLaboratoryResultObservation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestLocation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationAdministration",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationAdministrationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationDispense",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationDispenseDeclined",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationStatement",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestObservation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestObservationCancelled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestObservationClinicalTestResult",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestObservationImagingResult",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestObservationSurvey",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOrganization",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPatient",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestVitalsPanel",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRespRate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestHeartRate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOxygenSat",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBodyTemp",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBodyHeight",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestHeadCircum",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBodyWeight",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBMI",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBP",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPractitioner",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPractitionerRole",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestProcedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestProcedureNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRelatedPerson",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestServiceNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestServiceRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecimen",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSubstance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestTask",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestTaskRejected",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCoreImplantableDevice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCoreSmokingStatus",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCorePulseOximetry",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCorePediatricBMIForAge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCorePediatricWeightForHeight",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCorePediatricHeadOccipitalFrontalCircumferencePercentileProfile",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCoreObservationSDOHAssessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCoreObservationSocialHistoryProfile",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestUSCoreObservationSexualOrientationProfile",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeAt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPrimitives",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestChoice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSlices",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSimpleExtensions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestComplexExtensions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestEncounterDiagnosisCardinality",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestProcedureNotDoneElements",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificCommunicationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificCommunicationNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralCommunicationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralCommunicationNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificDeviceNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificDeviceNotRequestedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralDeviceNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralDeviceNotRequestedCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralDeviceNotRequestedValueSet",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralDeviceNotRequestedActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralDeviceNotRequestedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralDeviceNotRequestedCodeExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralDeviceNotRequestedValueSetExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificImmunizationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificImmunizationNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralImmunizationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralImmunizationNotDoneActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralImmunizationNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificMedicationAdministrationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificMedicationAdministrationNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationAdministrationNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationAdministrationNotDoneActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationAdministrationNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificMedicationDispenseDeclined",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificMedicationDispenseDeclinedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationDispenseDeclined",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationDispenseDeclinedActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationDispenseDeclinedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificMedicationNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificMedicationNotRequestedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationNotRequestedActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralMedicationNotRequestedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificObservationCancelled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificObservationCancelledExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralObservationCancelled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralObservationCancelledActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralObservationCancelledExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificProcedureNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificProcedureNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralProcedureNotDone",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralProcedureNotDoneActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralProcedureNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificServiceNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificServiceNotRequestedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralServiceNotRequested",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralServiceNotRequestedActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralServiceNotRequestedExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificTaskRejected",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecificTaskNotDoneExplicit",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralTaskRejected",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralTaskRejectedActual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGeneralTaskRejectedExplicit",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

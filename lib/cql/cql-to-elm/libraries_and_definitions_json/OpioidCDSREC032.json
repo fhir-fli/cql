@@ -54,6 +54,61 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Opioid Harms & Risks Counseling Lookback Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chronic Pain Opioid Analgesic with Ambulatory Misuse Potential Prescriptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Is Being Prescribed Opioid Analgesic with Ambulatory Misuse Potential",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Recommendation Applicable?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Documented Discussions of Opioid Harms and Risks",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Documented Discussions of Opioid Harms and Risks in Past 90 Days Excluding Today",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ordered Discussions of Opioid Harms and Risks in Past 90 Days Excluding Today",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Indicator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Summary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Detail",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

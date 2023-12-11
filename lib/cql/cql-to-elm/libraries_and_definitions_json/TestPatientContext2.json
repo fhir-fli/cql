@@ -26,6 +26,28 @@
                     "version": "5.3"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patients",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

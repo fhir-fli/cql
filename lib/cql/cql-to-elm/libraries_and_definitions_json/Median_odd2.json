@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Median_odd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_Median_odd",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

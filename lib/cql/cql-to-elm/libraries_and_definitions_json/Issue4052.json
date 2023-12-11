@@ -45,6 +45,37 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Face to Face Encounter with Ongoing Chemotherapy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivInt1Int2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivStringAStringA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivStringAStringB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivFloat1Float1",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -39,6 +39,218 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CalculateAgeYears",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeMonths",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeHours",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeMinutes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeSeconds",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeUncertain",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeAtYears",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeAtMonths",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeAtDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeAtHours",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeAtMinutes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeAtSeconds",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CalculateAgeAtUncertain",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Code1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Code2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Code3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Code4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Code5",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Concept1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Concept2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Concept3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Concept4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "C1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "C2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DisplayTestCode1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DisplayTestCode2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DisplayTestCode3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DisplayTestConceptWithDisplay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DisplayTestConceptWithoutDisplay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Issue70A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Issue70B",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeEqualTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeEqualFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeEqualNullVersion",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEqualTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEqualFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEqualNullDisplay",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeEqualNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEqualNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeEquivalentTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeEquivalentFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEquivalentTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEquivalentFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEquivalentTrueDisplayMismatch",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEquivalentTrueIntersection1And4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEquivalentTrueIntersection2And4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeEquivalentNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptEquivalentNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeToConceptEquivalentTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodeToConceptEquivalentFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConceptToConceptMismatchedDisplayTrue",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

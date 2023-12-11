@@ -68,6 +68,18 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

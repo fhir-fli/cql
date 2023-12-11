@@ -87,6 +87,40 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Is18OrOlder",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasConditionAssociatedWithChronicPain",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsMatch",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MatchData",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MatchedIDs",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

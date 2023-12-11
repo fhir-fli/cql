@@ -75,6 +75,21 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Hospice Intervention or Encounter",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -135,6 +135,62 @@
                     "uri": "http://hl7.org/fhir"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SimpleQuery",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "WhereClause",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TargetEncounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleRetrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodedRetrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExplicitlyCodedRetrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodedWhere",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RangedRetrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExplicitlyRangedRetrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RangedWhere",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodedRangedRetrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExplicitlyCodedRangedRetrieve",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CodedRangedWhere",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

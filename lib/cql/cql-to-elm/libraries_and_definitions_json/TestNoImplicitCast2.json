@@ -44,6 +44,25 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TooManyCasts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NeedsACast",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -34,6 +34,25 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Address",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Address Line 1",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

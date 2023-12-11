@@ -36,6 +36,21 @@
                     "version": "1.8"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestLiteralDate",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

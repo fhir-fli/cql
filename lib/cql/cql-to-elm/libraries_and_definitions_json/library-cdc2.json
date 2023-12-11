@@ -95,6 +95,77 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Interval One Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lookback Interval Two Years",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Heamoglobin A1C Tests",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Heamoglobin A1C Level Less than 7.0",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Heamoglobin A1C Level 7.0-9.0",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Heamoglobin A1C Level Greater than 9.0",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ARB Medication Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ACE Medication Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening Eye Exam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening Negative Eye Exam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinal Screening With Eye Care Professional Eye Exam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Macroalbumin Results",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Positive Macroalbumin Tests",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Diabetic Retinopathy Detected",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

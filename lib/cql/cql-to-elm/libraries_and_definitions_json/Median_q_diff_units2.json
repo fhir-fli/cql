@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Median_q_diff_units",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_Median_q_diff_units",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

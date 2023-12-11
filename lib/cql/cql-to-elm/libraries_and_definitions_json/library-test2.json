@@ -77,6 +77,61 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Eligible",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Events",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Num Reason1: FOBT in the Measurement Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Num Reason2: Flexible Sigmoidscopy four years prior or during the Measurement Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Num Reason3: Colonoscopy nine years prior or during the measurement year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Compliant",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "History of Colorectal Cancer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "History of Total Colectomy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Optional Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Optional Exclusions Events",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -22,6 +22,765 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "BetweenIntTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqTrueTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqTrueFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqFalseFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqFalseTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqInt1Int1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqInt1Int2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqStringAStringA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqStringAStringB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqFloat1Float1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqFloat1Float2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqFloat1Int1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleEqFloat1Int2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityEqCM1CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityEqCM1M01",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqJohnJohn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqJohnJane",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqJohn1John2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqDateTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqDateTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqDateTimeNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqTimeTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqTimeFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEqEmptyEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEqABCABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEqABCAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEqABC123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEq123ABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEq123String123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalEq1To101To10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalEq1To101To5",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqTodayToday",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqTodayYesterday",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqJanJan",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqJanJuly",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqMissingArg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqNull2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeUTC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeEq10A10A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeEq10A10P",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterDecZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterDecZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterDecZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterCM0CM0",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterCM0CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterCM0NegCM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterM1CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterM1CM10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterBA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterAThanAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterAAThanA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterJackJill",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeGreaterTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeGreaterFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeGreaterTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeGreaterFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualDecZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualDecZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualDecZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualCM0CM0",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualCM0CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualCM0NegCM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualM1CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualM1CM10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualBA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualAThanAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualAAThanA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GreaterOrEqualJackJill",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeGreaterEqTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeGreaterEqTrue2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeGreaterEqFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeGreaterEqTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeGreaterEqTrue2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeGreaterEqFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessDecZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessDecZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessDecZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessCM0CM0",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessCM0CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessCM0NegCM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessM1CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessM1CM10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessBA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessAThanAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessAAThanA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessJackJill",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLessTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLessFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLessTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLessFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualDecZZ",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualDecZ1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualDecZNeg1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualCM0CM0",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualCM0CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualCM0NegCM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualM1CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualM1CM10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualBA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualAThanAA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualAAThanA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LessOrEqualJackJill",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLessEqTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLessEqTrue2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLessEqFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLessEqTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLessEqTrue2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLessEqFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivTrueTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivTrueFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivFalseFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivFalseTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivInt1Int1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivInt1Int2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivStringAStringA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivStringAStringB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivFloat1Float1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivFloat1Float2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivFloat1Int1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivFloat1Int2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivEqCM1CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivEqCM1M01",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivTupleJohnJohn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivTupleJohnJane",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivTupleJohn1John2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivListEmptyEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivListABCABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivListABCAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivListABC123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivList123ABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivList123String123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivInterval1To101To10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivInterval1To101To5",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivDateTimeTodayToday",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivDateTimeTodayYesterday",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivTime10A10A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivTime10A10P",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqTrueTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqTrueFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqFalseFalse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqFalseTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqInt1Int1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqInt1Int2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqStringAStringA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqStringAStringB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqFloat1Float1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqFloat1Float2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqFloat1Int1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SimpleNotEqFloat1Int2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNotEqCM1CM1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNotEqCM1M01",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleNotEqJohnJohn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleNotEqJohnJane",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleNotEqJohn1John2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEqEmptyEmpty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEqABCABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEqABCAB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEqABC123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEq123ABC",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEq123String123",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalNotEq1To101To10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalNotEq1To101To5",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeNotEqTodayToday",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeNotEqTodayYesterday",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeNotEq10A10A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeNotEq10A10P",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

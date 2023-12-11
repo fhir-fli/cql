@@ -22,6 +22,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "x",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "y",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EquivalentIntervals",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

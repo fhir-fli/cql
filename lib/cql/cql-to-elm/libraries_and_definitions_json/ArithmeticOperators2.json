@@ -18,6 +18,314 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IntegerAbs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongAbs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalAbs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityAbs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalCeiling",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerCeiling",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerDivide",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerDivide10",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealDivide",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityRealDivide",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityDivide",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalFloor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerFloor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalDecimalLog",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIntegerLog",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerDecimalLog",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerIntegerLog",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalLn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerLn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalExp",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerExp",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerModulo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongModulo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealModulo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityModulo",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerMultiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongMultiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealMultiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityRealMultiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealQuantityMultiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityMultiply",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNegate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongNegate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealNegate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNegate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPredecessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongPredecessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealPredecessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimePredecessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPredecessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPower",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongPower",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealPower",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalRound",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalRoundWithPrecision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerSubtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongSubtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealSubtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantitySubtract",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerSuccessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongSuccessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealSuccessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeSuccessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantitySuccessor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalTruncate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerTruncate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerDiv",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongDiv",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealDiv",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityDiv",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPrecision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DatePrecision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimePrecision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimePrecision",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalLowBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateLowBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLowBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLowBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalHighBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateHighBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeHighBoundary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeHighBoundary",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -18,6 +18,66 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Antithrombotic Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Weight Target Achieved",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Transfer to Acute Care Hospital",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Warfarin Usage Periods",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cumulative Warfarin Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Allergy to Latex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Reaction to Latex",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication Administrations during Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Medication Administrations during Measurement Period",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

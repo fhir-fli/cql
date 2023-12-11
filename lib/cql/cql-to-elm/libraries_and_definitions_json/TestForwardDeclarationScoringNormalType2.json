@@ -51,6 +51,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ToString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ToString",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

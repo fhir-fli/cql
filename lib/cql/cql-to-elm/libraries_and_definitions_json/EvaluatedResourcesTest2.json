@@ -27,6 +27,29 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Union",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Condition",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

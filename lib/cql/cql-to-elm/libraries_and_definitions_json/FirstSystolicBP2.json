@@ -66,6 +66,25 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Inpatient Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with First Systolic Blood Pressure",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -21,6 +21,70 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "B",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "C",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "D",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "E",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "F",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "G",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "H",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union5",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union6",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Union7",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

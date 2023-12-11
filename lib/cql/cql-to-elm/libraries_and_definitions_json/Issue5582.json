@@ -41,6 +41,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InitPop",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

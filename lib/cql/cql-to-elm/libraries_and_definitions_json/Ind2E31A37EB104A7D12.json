@@ -51,6 +51,49 @@
                     "version": "1.0.000"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "4. Biliopancreatic bypass with duodenal switch in patients ages greater than or equal to 18 years with BMI greater than or equal to 50 kg/(meter squared)",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ageYears",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "bpd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "BMI",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "wt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "wt_lb",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ht",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ht_in",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

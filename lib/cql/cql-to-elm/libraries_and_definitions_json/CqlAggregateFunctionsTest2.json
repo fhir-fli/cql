@@ -27,6 +27,69 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "AllTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AnyTrue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Avg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Count",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Max",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Median",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Min",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PopulationStdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PopulationVariance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Sum",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Variance",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

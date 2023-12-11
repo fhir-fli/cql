@@ -146,6 +146,45 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Intervention Comfort Measures",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "All Stroke Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ischemic Stroke Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ischemic Stroke Encounters with Discharge Disposition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Non Elective Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Principal Diagnosis and Age",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Comfort Measures during Hospitalization",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

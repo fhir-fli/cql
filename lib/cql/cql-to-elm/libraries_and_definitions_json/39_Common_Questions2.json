@@ -28,6 +28,26 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Ex1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ex1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Ex1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First ICU",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

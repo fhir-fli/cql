@@ -39,6 +39,25 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "DateCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ChoiceTypePeriodCondition",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

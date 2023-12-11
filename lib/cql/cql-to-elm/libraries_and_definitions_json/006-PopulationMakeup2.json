@@ -18,6 +18,78 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Asthma Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Valid Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exclusionary Diagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Denominator Exceptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Preferred Asthma Therapy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measure Score",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measure Score",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measure Ratio Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measure Ratio Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measure Ratio Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Measure Ratio Numerator",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

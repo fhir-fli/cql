@@ -183,6 +183,124 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "POPULATION"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InAgeStratum1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InAgeStratum2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InPopulationAgeGroup",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IsFemale",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasEncounterInMeasurementPeriod",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasHadConditionOfSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasHadMedicationForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasMedicationForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasLaboratoryTestForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasPregnancyTestForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasProcedureForSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasEvidenceOfSexualActivity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InStratum1Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InStratum2Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HasNumeratorCriteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InStratum1Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InStratum2Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratum1Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratum1Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratum2Denominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratum2Numerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasureDenominator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasureNumerator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratum1Score",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Stratum2Score",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MeasureScore",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

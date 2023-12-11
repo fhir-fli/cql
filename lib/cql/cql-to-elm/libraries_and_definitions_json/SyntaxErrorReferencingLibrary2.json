@@ -38,6 +38,14 @@
                     "localIdentifier": "SyntaxErrorWithLibrary"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

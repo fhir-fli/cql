@@ -68,6 +68,49 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PCP Screenings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Positive PCP Screenings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Negative PCP Screenings",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Negative PCP Screenings Count Since Last POS",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Positive PCP Dates in Lookback Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Positive Screening for PCP in Last 12 Months",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PCP Summary",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

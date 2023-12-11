@@ -18,6 +18,174 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IntervalAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointIntervalAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalPointAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointIntervalBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalPointBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalCollapse",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalCollapseWithPer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalCollapseNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalContains",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalEnd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalEnds",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalExcept",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalExpand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalIntervalExpand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityIntervalExpand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeIntervalExpand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateIntervalExpand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeIntervalExpand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingleIntervalExpand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SingleIntervalExpandPer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ExpandNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalIncludes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalIncludedIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalIntersect",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalMeets",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalMeetsBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalMeetsAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOverlaps",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOverlapsBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOverlapsAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalProperIncludes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalProperIncludedIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalStart",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalStarts",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalUnion",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalWidth",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalPointFrom",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalSize",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

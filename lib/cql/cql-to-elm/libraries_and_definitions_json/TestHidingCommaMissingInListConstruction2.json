@@ -21,6 +21,46 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "4",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "5",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Four With Five",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Query Four",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Four With Alias",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListTest6",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -27,6 +27,25 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Primary Care Doctor",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "All Patient for GP",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

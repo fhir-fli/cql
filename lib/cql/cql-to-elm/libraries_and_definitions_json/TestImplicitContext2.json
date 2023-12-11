@@ -26,6 +26,28 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Observation"
+                },
+                {
+                    "name": "Questionnaire"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "DiagnosticReports",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuestionnaireResponses",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

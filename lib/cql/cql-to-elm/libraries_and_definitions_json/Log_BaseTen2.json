@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Log_BaseTen",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_Log_BaseTen",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

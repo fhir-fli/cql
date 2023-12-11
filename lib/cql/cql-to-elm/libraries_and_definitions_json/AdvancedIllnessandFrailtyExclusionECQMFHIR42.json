@@ -146,6 +146,49 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Advanced Illness and Frailty Exclusion Including Over Age 80",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Advanced Illness and Frailty Exclusion Not Including Over Age 80",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dementia Medications In Year Before or During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Criteria Indicating Frailty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter with Advanced Illness",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Long Term Care Periods During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Long Term Care Periods Longer Than 90 Consecutive Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Encounters with Advanced Illness",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

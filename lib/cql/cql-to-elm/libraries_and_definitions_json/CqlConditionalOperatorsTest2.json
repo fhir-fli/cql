@@ -27,6 +27,29 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "if-then-else",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "standard case",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "selected case",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

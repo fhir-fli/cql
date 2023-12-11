@@ -73,6 +73,33 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ESRD Observations",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Observations",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HospiceEncounterClaimsA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HospiceEncounterClaimsBUnboundDate",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

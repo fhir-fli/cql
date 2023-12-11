@@ -38,6 +38,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Encounter"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

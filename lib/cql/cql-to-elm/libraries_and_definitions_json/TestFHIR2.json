@@ -106,6 +106,193 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestAdverseEvent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAllergyIntolerance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestBodyStructure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCarePlan",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCareTeam",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestClaim",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCommunication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCommunicationRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCondition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCoverage",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDevice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDeviceRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDeviceUseStatement",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDiagnosticReport",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestEncounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestFamilyMemberHistory",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestFlag",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestGoal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImagingStudy",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImmunization",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImmunizationEvaluation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestImmunizationRecommendation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestLocation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationAdministration",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationDispense",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationStatement",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestObservation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestOrganization",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPatient",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPractitioner",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPractitionerRole",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestProcedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRelatedPerson",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestServiceRequest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSpecimen",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSubstsance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestTask",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestPrimitives",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestChoice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSlices",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestSimpleExtensions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestComplexExtensions",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

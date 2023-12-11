@@ -18,6 +18,38 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "UncertainDurationInMonths",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DurationInDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DurationInDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DifferenceInDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DifferenceInDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DurationInDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DurationInDays",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

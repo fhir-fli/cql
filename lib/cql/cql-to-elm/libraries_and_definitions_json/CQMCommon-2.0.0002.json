@@ -90,6 +90,21 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

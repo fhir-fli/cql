@@ -46,6 +46,45 @@
                     "version": "2.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Is Recommendation Applicable?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Indicator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Summary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Detail",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Concurrent Benzodiazepine Prescription Issue",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

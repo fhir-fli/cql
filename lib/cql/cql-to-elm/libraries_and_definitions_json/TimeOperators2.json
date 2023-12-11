@@ -18,6 +18,82 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TimeAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeAfter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeHour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeMinute",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeSecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeMillisecond",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HourFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MinuteFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SecondFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MillisecondFromTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DifferenceBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DurationBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeOfDayExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameAsExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameOrAfterExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameOrBeforeExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeSubtract",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

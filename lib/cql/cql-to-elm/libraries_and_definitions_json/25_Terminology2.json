@@ -32,6 +32,18 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounter with Principle Diagnosis of Ischemic Stroke",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Current Diagnosis Atrial FibrillationFlutter",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

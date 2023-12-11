@@ -26,6 +26,29 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestChoice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateChoice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestStringChoice",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

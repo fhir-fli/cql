@@ -23,6 +23,14 @@
                     "version": "5.3"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestAssessment",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -21,6 +21,18 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CallMyTimes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CallMyDividedBy",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

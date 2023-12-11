@@ -99,6 +99,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Has Hospice",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

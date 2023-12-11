@@ -145,6 +145,41 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Advanced Illness Diagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Long Term Care Periods During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Dementia Medications In Year Before or During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Criteria Indicating Frailty",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Has Spent More Than 90 Days in Long Term Care",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Days Spent in Long Term Care During Measurement Period",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

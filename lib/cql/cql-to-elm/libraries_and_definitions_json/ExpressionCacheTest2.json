@@ -29,6 +29,18 @@
                     "path": "Common"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Expression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IncludedExpression",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

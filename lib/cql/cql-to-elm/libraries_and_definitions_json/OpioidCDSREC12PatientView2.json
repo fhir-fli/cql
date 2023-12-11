@@ -46,6 +46,61 @@
                     "version": "2.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Opioid Use Disorder Lookback Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Recommendation Applicable?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient 18 or Older?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Not Receiving Evidence-Based Treatment for Opioid Use Disorder",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Presence of Diagnosis of Opioid Use Disorder",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Positive Result from Opioid Use Disorder Evaluation Tool",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Indicator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Summary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Detail",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

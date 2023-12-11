@@ -110,6 +110,29 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InInitialPopulation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "boolIpp",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "singleLineCommentTest",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

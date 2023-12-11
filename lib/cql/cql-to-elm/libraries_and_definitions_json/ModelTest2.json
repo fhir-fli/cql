@@ -25,6 +25,21 @@
                     "uri": ""
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Medications",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

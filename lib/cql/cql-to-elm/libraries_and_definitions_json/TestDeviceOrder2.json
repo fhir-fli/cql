@@ -62,6 +62,21 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Has Criteria Indicating Frailty",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

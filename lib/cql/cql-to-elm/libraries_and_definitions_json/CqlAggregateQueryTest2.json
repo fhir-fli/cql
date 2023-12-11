@@ -21,6 +21,74 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "AggregateSumWithStart",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AggregateSumWithNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AggregateSumAll",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AggregateSumDistinct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Second",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Third",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Multi",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "B",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "C",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MegaMulti",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "MegaMultiDistinct",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

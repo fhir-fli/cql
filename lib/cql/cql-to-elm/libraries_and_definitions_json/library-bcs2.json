@@ -103,6 +103,61 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Interval Twenty-Seven Months",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "In Demographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Bilateral Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hx Mastectomy Bilat",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Left Mastectomy Observation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hx Mastectomy Left",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right Mastectomy Procedure",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Right Mastectomy Observation",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hx Mastectomy Right",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Mammography Procedure",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -18,6 +18,98 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "PointValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalValue",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointBeforeInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointOnOrBeforeInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointSameOrBeforeInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalBeforePoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOnOrBeforePoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalSameOrBeforePoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointAfterInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointOnOrAfterInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointSameOrAfterInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalAfterPoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalOnOrAfterPoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalSameOrAfterPoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointInInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointDuringInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointProperlyDuringInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointIncludedInInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PointProperlyIncludedInInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalContainsPoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalIncludesPoint",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalProperlyIncludesPoint",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

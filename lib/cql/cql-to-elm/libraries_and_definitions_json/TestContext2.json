@@ -34,6 +34,42 @@
                     "version": "4.0.1"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                },
+                {
+                    "name": "Practitioner"
+                },
+                {
+                    "name": "Encounter"
+                },
+                {
+                    "name": "RelatedPerson"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patients",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Observations",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AdverseEvents",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

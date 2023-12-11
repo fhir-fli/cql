@@ -23,6 +23,185 @@
                     "version": "5.3"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestAgeInYears",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInMonths",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInWeeks",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInDays",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInHours",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInMinutes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInSeconds",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInYearsAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInYearsAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInMonthsAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInMonthsAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInWeeksAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInWeeksAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInDaysAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInDaysAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInHoursAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInMinutesAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAgeInSecondsAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInYearsDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInYearsDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInDaysDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInDaysDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInHoursDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInMinutesDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInSecondsDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInYearsAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInYearsAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInMonthsAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInWeeksAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInDaysAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInDaysAtDate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInHoursAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInMinutesAtDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestCalculateAgeInSecondsAtDateTime",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

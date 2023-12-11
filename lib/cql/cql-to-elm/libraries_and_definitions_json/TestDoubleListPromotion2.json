@@ -47,6 +47,14 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Observations",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

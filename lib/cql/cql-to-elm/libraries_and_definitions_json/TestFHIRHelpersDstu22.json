@@ -36,6 +36,58 @@
                     "version": "1.0.2"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestPeriodToInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToQuantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRangeToInterval",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToConcept",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToCode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestRequestStatusToString",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToInteger",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToDecimal",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestToBoolean",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

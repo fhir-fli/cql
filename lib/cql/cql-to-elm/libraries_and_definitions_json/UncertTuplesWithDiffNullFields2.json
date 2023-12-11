@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "NotEqual_UncertTuplesWithDiffNullFields",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_NotEqual_UncertTuplesWithDiffNullFields",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

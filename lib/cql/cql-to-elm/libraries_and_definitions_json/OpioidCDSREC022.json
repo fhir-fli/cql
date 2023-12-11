@@ -54,6 +54,61 @@
         },
         "parameters": {
             "def": []
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Treatment Plan Lookback Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Chronic Pain Opioid Analgesic with Ambulatory Misuse Potential Prescriptions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Is Being Prescribed Opioid Analgesic with Ambulatory Misuse Potential",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Recommendation Applicable?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Opioid Treatment Plan Created, was Edited or Reviewed in Past 90 Days?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Treatment Plan Creation or Update in Past 90 Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Had Opioid Treatment Plan Reviewed in Past 90 Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Indicator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Summary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Get Detail",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

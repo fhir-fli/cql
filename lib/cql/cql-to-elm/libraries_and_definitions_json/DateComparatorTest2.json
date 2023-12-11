@@ -22,6 +22,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Date 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Date 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Date Comparator Test",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

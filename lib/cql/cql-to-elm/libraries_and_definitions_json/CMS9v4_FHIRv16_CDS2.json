@@ -123,6 +123,85 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Needs Breastfeeding Readiness Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Notify Nurse to Perform Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Notify Provider to Sign Assessment Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Create Assessment Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Should Create Lactation Consult",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Breastfeeding Exclusions",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Single Live Birth Condition",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Infant Birth Date",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intention to Breastfeed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Intention not to Breastfeed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Breastfeeding Intention",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Breastfeeding Readiness Assessment Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Unsigned Breastfeeding Readiness Assessment Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Cancelled Breastfeeding Readiness Assessment Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Pending Breastfeeding Readiness Assessment Order",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Completed Breastfeeding Readiness Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Lactation Consult Request",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

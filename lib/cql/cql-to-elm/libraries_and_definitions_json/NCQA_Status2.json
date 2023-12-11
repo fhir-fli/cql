@@ -41,6 +41,13 @@
                     "version": "1.0.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
         }
     }
 }

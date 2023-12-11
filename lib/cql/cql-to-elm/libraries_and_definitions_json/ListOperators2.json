@@ -18,6 +18,134 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ListContains",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListDistinct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListDistinctNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListExcept",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListExists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListExistsNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListFlatten",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Flatten Lists and Elements",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListFlattenNull",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListFirst",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListIncludes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListIncludedIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListIndexer",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListIndexOf",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListIntersect",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListLast",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListLength",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListProperIncludes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListProperIncludedIn",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListSingletonFrom",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListSkip",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListTail",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListTake",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListUnion",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListUnionWithChoice",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringListEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerListEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EqualTupleList",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UnequalTupleList",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

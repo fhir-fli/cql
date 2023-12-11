@@ -18,6 +18,166 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Birthdate",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter During Measurement Period",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Prostate Cancer Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter with Principal Diagnosis of AMI",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Emergency Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Emergency Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Behavioral Visits",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Counseling Visits",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HF Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HF Encounters Without Discharge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Discharge Services",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Heart Failure Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial ADHD Medication",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ADHD Medication Intervals",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ADHD Medication Days",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Office Visit or Face-to-Face Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "First Breast Cancer Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "URI Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "URI Diagnosis During Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "URI Diagnosis Before Or After Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Initial Population",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -18,6 +18,198 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "AllTrueExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AnyTrueExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerAvg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongAvg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalAvg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityAvg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CountExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "GeometricMeanExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringMax",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerMin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongMin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalMin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityMin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeMin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeMin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringMin",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerMedian",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalMedian",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityMedian",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerMode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalMode",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPopulationStdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPopulationStdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPopulationStdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerPopulationVariance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalPopulationVariance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityPopulationVariance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerProduct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongProduct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalProduct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityProduct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerStdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalStdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityStdDev",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerSum",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongSum",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalSum",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantitySum",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerVariance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DecimalVariance",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityVariance",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

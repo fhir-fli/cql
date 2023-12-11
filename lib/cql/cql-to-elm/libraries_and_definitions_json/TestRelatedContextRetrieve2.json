@@ -37,6 +37,29 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Mother",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Estimated Due Date",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Gestational Age in Days at Birth",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

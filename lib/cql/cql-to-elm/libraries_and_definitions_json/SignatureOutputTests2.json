@@ -21,6 +21,54 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateAdd",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestAvg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDivide",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestIntegerOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDecimalOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMultipleOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestIntegerMultipleOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestDecimalMultipleOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestIntegerAndDecimalMultipleOverload",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

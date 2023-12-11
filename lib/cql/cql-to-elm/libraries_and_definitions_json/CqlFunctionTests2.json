@@ -22,6 +22,50 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "FunctionTestStringArg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestNullStringArg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestMultipleArgs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestNullMultipleArgs",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestNullOverload",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestTupleArg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestNullTupleArg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestQuantityArg",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "FunctionTestNullQuantityArg",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

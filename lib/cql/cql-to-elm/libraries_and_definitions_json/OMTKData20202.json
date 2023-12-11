@@ -22,6 +22,34 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Months",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Days28",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Days29",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Days30",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Days31",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DrugIngredients",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -30,6 +30,26 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Hundred",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Four",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DivideVariables",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_DivideVariables",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

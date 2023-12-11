@@ -32,6 +32,18 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Flexible Sigmoidoscopy Performed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Flexible Sigmoidoscopy Performed",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

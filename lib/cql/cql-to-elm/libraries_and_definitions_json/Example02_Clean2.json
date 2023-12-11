@@ -18,6 +18,50 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "In Initial Population",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Depression Followup",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Depression Remission",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Depression Remission",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Depression Remission",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Depression Diagnosis",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Outpatient Encounter During Intake",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Depression Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PHQ-9 Assessment",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Depression Index",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

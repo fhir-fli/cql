@@ -21,6 +21,102 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "list",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RightShift",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LeftShift",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LeftShift2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "dummyA",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "dummyB",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "a",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "b",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Multisource",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "aa",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "bb",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Complex Multisource",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List 1",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List 2",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List of Lists",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Let Test Fails",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "List 3",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Triple Source Query",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "A",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "B",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "C",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Let Expression in Multi Source Query",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Accessing Third Element of Triple Source Query",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

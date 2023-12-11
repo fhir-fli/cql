@@ -43,6 +43,25 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Antithrombotic Therapy at Discharge",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Therapy at Discharge (2)",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

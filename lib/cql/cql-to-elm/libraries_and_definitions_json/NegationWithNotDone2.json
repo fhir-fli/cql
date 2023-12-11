@@ -148,6 +148,78 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Administered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "class",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "class",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Antithrombotic Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "class",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Statin At Discharge Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Statin At Discharge Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Statin At Discharge Not Done",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Device VTE Prophylaxis Medical Reason",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Device VTE Prophylaxis Medical Reason",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Device VTE Prophylaxis Medical Reason",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

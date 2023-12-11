@@ -27,6 +27,21 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Group1",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

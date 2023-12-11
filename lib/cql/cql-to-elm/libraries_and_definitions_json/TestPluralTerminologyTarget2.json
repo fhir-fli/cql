@@ -85,6 +85,41 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ConditionCategoryCodes",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ConditionCategoryCodesLongHand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProblemListItems",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ProblemListItemsLongHand",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterDiagnoses",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HealthConcerns",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

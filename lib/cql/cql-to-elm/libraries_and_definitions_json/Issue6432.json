@@ -43,6 +43,22 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "EncountersWithCoding",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncountersWithType",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncountersWithServiceType",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

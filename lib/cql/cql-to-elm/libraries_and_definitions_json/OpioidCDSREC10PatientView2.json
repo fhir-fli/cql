@@ -58,6 +58,61 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Lookback Year",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient Is Being Prescribed Opioid Analgesic with Ambulatory Misuse Potential",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Is Recommendation Applicable?",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Exclusion Criteria",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Patient had Urine Screening in Last 12 Months",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Urine Screenings during the Last 12 Months",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Screening In Last 12 Months Indicator",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Screening In Last 12 Months Summary",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "No Screening In Last 12 Months Detail",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Urine Drug Screening Request",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -18,6 +18,34 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "ValidQuantityLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "InvalidQuantityLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "UnitQuantityLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "AnnotationQuantityLiteral",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityConversionTest",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityConversionWeekTest",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

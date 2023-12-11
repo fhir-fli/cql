@@ -81,6 +81,33 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "TestAgeInYearsAt",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Inpatient Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Venous Foot Pumps Applied",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TestMedicationOrders",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

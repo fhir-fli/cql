@@ -21,6 +21,26 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "After_SameHour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameAs_SameHour",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameOrAfter_HourBefore",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SameOrBefore_SameHour",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

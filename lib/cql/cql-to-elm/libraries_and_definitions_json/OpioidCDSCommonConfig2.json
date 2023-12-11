@@ -22,6 +22,70 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Chronically on Opioids Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Age Less than 18 Years Is Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "End-Stage Disease Criteria Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Cancer Treatment Encounters Condition Is Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Active Cancer Treatment PractitionerRole Specialty Is Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Naive Prescription Condition Is Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Naive Report Condition Is Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Naive Dispense Condition Is Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Hospice Findings Exclusion Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Treatment Plan Verification Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Opioid Harms & Risks Discussion in Past 90 Days Criteria Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Order is to Treat Acute Pain Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Evidence of Naloxone Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "PDMP Data Not Reviewed in Past 90 Days Criteria Enabled",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Evidence Based Treatment Criteria For Opioid Use Disorder",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

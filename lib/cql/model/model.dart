@@ -1,11 +1,16 @@
+export 'choice_type.dart';
 export 'class_type_element.dart';
 export 'class_type.dart';
+export 'data_type.dart';
 export 'instantiation_context.dart';
 export 'interval_type.dart';
 export 'list_type.dart';
 export 'model_context.dart';
+export 'named_type.dart';
+export 'qname.dart';
 export 'relationship.dart';
 export 'search_type.dart';
+export 'simple_type.dart';
 export 'tuple_type_element.dart';
 export 'tuple_type.dart';
 export 'type_parameter.dart';

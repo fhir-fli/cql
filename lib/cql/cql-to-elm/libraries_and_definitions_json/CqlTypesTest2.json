@@ -27,6 +27,37 @@
                     "version": "3.3.0"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Any",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTime",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Quantity",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "String",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Time",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

@@ -22,6 +22,34 @@
                     "uri": "http://hl7.org/fhir"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "CodeExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ElementExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleToClass",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ClassToTuple",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ImplicitClassToTuple",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EmptyTuple",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

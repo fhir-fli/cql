@@ -30,6 +30,18 @@
                     "version": "1.0"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Arithmetic_Mixed",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "test_Arithmetic_Mixed",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

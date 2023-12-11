@@ -18,6 +18,22 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "SUD Encounters",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "New SUD Encounter",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Follow Up QOL Assessment",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

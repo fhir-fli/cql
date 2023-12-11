@@ -46,6 +46,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Test1",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

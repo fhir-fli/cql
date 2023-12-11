@@ -18,6 +18,314 @@
                     "uri": "urn:hl7-org:elm-types:r1"
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "IntegerBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalBetweenExpression",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerLess",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongLess",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealLess",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringLess",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLess",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLess",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityLess",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerLessOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongLessOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealLessOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringLessOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeLessOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeLessOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityLessOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerGreater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongGreater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealGreater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringGreater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeGreater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeGreater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityGreater",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerGreaterOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongGreaterOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealGreaterOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringGreaterOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeGreaterOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeGreaterOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityGreaterOrEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleNotEqual",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntegerNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LongNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "RealNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "StringNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DateTimeNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TimeNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "QuantityNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IntervalNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "ListNotEquivalent",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "TupleNotEquivalent",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

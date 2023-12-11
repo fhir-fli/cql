@@ -70,6 +70,41 @@
                     "accessLevel": "Public"
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "InDemographic",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "EncounterData",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "IPPCount",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DenominatorCount",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "DenominatorExclusionsCount",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NumeratorCount",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

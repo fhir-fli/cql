@@ -80,6 +80,14 @@
                     }
                 }
             ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Breastfeeding Intention",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }

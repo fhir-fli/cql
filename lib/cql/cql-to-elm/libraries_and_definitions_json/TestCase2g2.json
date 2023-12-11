@@ -49,6 +49,21 @@
                     }
                 }
             ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Patient"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "DateTimeEqualToFunction",
+                    "accessLevel": "Public"
+                }
+            ]
         }
     }
 }
