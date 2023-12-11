@@ -77,112 +77,188 @@
         "statements": {
             "def": [
                 {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "FlutterDiagnoses",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "WarfarinMedications",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "FaceToFaceEncounters",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "OfficeVisitEncounters",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "ValvularHeartDiseaseDiagnoses",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "INRLabResults",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InDemographic",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InpatientEncounters",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "ActiveFlutterDiagnoses",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "ActiveValvularHeartDiseaseDiagnoses",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "LookbackInterval",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "ActiveWarfarinDuringLookback",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "WarfarinUsageIntervals",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "WarfarinUsage",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "INROutpatientLabResult",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "INRResultsByDay",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "INRResultsPerDay",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TherapeuticRange",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "INRIntervals",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TherapeuticDays",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TherapeuticTimeInRange",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "NumberOfValidIntervals",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasValidIntervals",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InitialPopulation",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "MeasurePopulation",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "MeasureObservation",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "Population",
+                    "context": "Population",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "Population",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "MeasureScore",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -40,12 +40,38 @@
         "statements": {
             "def": [
                 {
+                    "name": "Observation",
+                    "context": "Observation",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Observation",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "DiagnosticReports",
-                    "accessLevel": "Public"
+                    "context": "Observation",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "Questionnaire",
+                    "context": "Questionnaire",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Questionnaire",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "QuestionnaireResponses",
-                    "accessLevel": "Public"
+                    "context": "Observation",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

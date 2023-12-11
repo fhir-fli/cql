@@ -197,108 +197,182 @@
         "statements": {
             "def": [
                 {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "InAgeStratum1",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InAgeStratum2",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InPopulationAgeGroup",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "IsFemale",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasEncounterInMeasurementPeriod",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasHadConditionOfSexualActivity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasHadMedicationForSexualActivity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasMedicationForSexualActivity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasLaboratoryTestForSexualActivity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasPregnancyTestForSexualActivity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasProcedureForSexualActivity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasEvidenceOfSexualActivity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InStratum1Denominator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InStratum2Denominator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HasNumeratorCriteria",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InStratum1Numerator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "InStratum2Numerator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "POPULATION",
+                    "context": "POPULATION",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "POPULATION",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "Stratum1Denominator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Stratum1Numerator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Stratum2Denominator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Stratum2Numerator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "MeasureDenominator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "MeasureNumerator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Stratum1Score",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Stratum2Score",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "MeasureScore",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

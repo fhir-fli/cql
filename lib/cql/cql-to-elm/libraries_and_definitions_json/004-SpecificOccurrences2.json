@@ -83,31 +83,38 @@
             "def": [
                 {
                     "name": "Valid Encounters",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HIV Visits During Measurement Period",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "HIV Followup Visits",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Most Recent HIV Followup Visit",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "CD4+ Count With Results and Medications",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "CD4+ Count With Results and Medications",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Dapsone and pyrimethamine Orders with CD4+ Count Laboratory Tests",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "TestToDate",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -26,23 +26,28 @@
             "def": [
                 {
                     "name": "Sequence",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Factorial",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "ProductWithStart",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Intervals",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "RolledOutIntervals",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

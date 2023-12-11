@@ -23,31 +23,38 @@
             "def": [
                 {
                     "name": "TestSimpleSort",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TestDescendingSort",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TestAscSort",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TestAscendingSort",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TestColumnSort",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TestExpressionSort",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TestAliasSort",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

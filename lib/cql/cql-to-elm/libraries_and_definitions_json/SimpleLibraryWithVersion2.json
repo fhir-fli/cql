@@ -27,7 +27,8 @@
             "def": [
                 {
                     "name": "Clause1",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

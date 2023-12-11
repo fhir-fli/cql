@@ -35,19 +35,23 @@
             "def": [
                 {
                     "name": "Hundred",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Four",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "DivideVariables",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "test_DivideVariables",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

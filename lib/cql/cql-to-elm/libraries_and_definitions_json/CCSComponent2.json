@@ -257,64 +257,105 @@
         "statements": {
             "def": [
                 {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "SDE Ethnicity",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "SDE Payer",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "SDE Race",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "SDE Sex",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Initial Population",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Denominator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Flexible Sigmoidoscopy Performed",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "CT Colonography Performed",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Total Colectomy Performed",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Fecal Occult Blood Test Performed",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Fecal Immunochemical Test DNA",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Colonoscopy Performed",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Numerator",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Malignant Neoplasm",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Denominator Exclusion",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

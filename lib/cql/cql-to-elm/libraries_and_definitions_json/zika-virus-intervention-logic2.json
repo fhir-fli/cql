@@ -189,100 +189,159 @@
         "statements": {
             "def": [
                 {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "Pregnancy Conditions",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Is Patient Pregnant",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Zika Exposure Assessment",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Zika Exposure Assessment Result",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Has Zika Exposure Assessment",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Zika Symptoms",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Has Zika Symptoms",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "No Zika Symptoms",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Yes",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Resident of or Frequent Traveler to Zika Area",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Recent Travel to Zika Area",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Time Since Returned From Travel",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Recent Sexual Encounter With Traveler to Zika Area",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Time Since Sexual Encounter",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Time Since Possible Exposure",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Planned Travel to Zika Area",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Has Possible Zika Exposure",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Zika Symptom Onset",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Time Since Symptom Onset",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Should Administer Zika Exposure Assessment",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Should Order Serum + Urine rRT-PCR Test",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Should Order Serum Zika Virus IgM + Dengue Virus IgM",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Should Consider IgM Antibody Testing",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Should Provide Mosquito Prevention and Contraception Advice",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

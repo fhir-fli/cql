@@ -23,15 +23,18 @@
             "def": [
                 {
                     "name": "test",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Active Medications for Androgen deprivation therapy for Urology Care",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Active Medications for Androgen deprivation therapy for Urology Care",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

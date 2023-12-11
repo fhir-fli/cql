@@ -57,8 +57,21 @@
         "statements": {
             "def": [
                 {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "Test1",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

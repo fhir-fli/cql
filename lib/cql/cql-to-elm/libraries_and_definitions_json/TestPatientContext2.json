@@ -41,11 +41,37 @@
             "def": [
                 {
                     "name": "Patient",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "Unfiltered",
+                    "context": "Unfiltered",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "Unfiltered",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "Patients",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

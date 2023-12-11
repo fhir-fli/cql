@@ -70,7 +70,8 @@
             "def": [
                 {
                     "name": "testConceptRef",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

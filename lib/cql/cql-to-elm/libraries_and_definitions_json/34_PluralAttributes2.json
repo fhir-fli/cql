@@ -37,15 +37,18 @@
             "def": [
                 {
                     "name": "Encounter with Principle Diagnosis of Ischemic Stroke",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Current Diagnosis Atrial FibrillationFlutter",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Current Diagnosis Atrial FibrillationFlutter (QDM 5.3)",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

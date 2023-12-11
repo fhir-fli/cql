@@ -32,7 +32,7 @@ ParameterDef _$ParameterDefFromJson(Map<String, dynamic> json) => ParameterDef(
               json['defaultExpression'] as Map<String, dynamic>),
       parameterType: json['parameterType'] == null
           ? null
-          : QName.fromJson(json['parameterType'] as Map<String, dynamic>),
+          : QName.fromJson(json['parameterType'] as String),
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))

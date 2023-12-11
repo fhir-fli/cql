@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "Some Reasonable Name for a Risk Adjustment Factor",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

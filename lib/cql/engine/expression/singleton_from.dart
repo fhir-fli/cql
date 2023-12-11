@@ -9,4 +9,13 @@ class SingletonFrom extends UnaryExpression {
   final String type = 'SingletonFrom';
 
   SingletonFrom({required super.operand});
+
+  factory SingletonFrom.fromJson(Map<String, dynamic> json) =>
+      SingletonFrom(operand: json['operand'] as Expression);
+
+  @override
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': 'SingletonFrom',
+        'operand': operand.toJson(),
+      };
 }

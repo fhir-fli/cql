@@ -106,20 +106,39 @@
         "statements": {
             "def": [
                 {
-                    "name": "retrieve",
-                    "accessLevel": "Public"
+                    "name": "PATIENT",
+                    "context": "PATIENT",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "PATIENT",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "retrieve",
-                    "accessLevel": "Public"
+                    "context": "PATIENT",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "retrieve",
-                    "accessLevel": "Public"
+                    "context": "PATIENT",
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "retrieve",
-                    "accessLevel": "Public"
+                    "context": "PATIENT",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "retrieve",
+                    "context": "PATIENT",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

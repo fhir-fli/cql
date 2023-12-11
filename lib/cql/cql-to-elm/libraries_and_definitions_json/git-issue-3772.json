@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "Issue377",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

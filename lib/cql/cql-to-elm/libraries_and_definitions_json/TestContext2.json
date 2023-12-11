@@ -54,20 +54,72 @@
         "statements": {
             "def": [
                 {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "Encounters",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "Practitioner",
+                    "context": "Practitioner",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Practitioner",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "Patients",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "Encounter",
+                    "context": "Encounter",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Encounter",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "Observations",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
+                },
+                {
+                    "name": "RelatedPerson",
+                    "context": "RelatedPerson",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}RelatedPerson",
+                            "type": "Retrieve"
+                        }
+                    }
                 },
                 {
                     "name": "AdverseEvents",
-                    "accessLevel": "Public"
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

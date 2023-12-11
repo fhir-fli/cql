@@ -72,7 +72,8 @@
             "def": [
                 {
                     "name": "Encounters",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

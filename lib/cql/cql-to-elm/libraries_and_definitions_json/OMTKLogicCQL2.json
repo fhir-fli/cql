@@ -45,7 +45,8 @@
             "def": [
                 {
                     "name": "TestCalculateMMEs",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

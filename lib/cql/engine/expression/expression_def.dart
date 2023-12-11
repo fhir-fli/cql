@@ -27,7 +27,7 @@ class ExpressionDef extends Element {
   String? context;
 
   /// Access level, defaults to Public.
-  AccessModifier accessLevel;
+  AccessModifier? accessLevel;
 
   /// Expression associated with the definition.
   Expression? expression;
@@ -35,9 +35,44 @@ class ExpressionDef extends Element {
   ExpressionDef({
     required this.name,
     this.context,
-    this.accessLevel = AccessModifier.Public,
+    this.accessLevel,
     this.expression,
   });
+
+  factory ExpressionDef.public({
+    required String name,
+    String? context,
+    required Expression expression,
+  }) =>
+      ExpressionDef(
+        name: name,
+        context: context,
+        accessLevel: AccessModifier.Public,
+        expression: expression,
+      );
+
+  factory ExpressionDef.private({
+    required String name,
+    String? context,
+    required Expression expression,
+  }) =>
+      ExpressionDef(
+        name: name,
+        context: context,
+        accessLevel: AccessModifier.Private,
+        expression: expression,
+      );
+
+  factory ExpressionDef.context({
+    required String name,
+    String? context,
+    required Expression expression,
+  }) =>
+      ExpressionDef(
+        name: name,
+        context: context,
+        expression: expression,
+      );
 
   factory ExpressionDef.fromJson(Map<String, dynamic> json) =>
       _$ExpressionDefFromJson(json);

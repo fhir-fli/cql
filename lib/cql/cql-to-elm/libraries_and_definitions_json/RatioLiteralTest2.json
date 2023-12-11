@@ -23,11 +23,13 @@
             "def": [
                 {
                     "name": "SimpleRatio",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "QuantityRatio",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

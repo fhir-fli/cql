@@ -8,6 +8,7 @@ export 'list_type_specifier.dart';
 export 'locator.dart';
 export 'model_info.dart';
 export 'named_type_specifier.dart';
+export 'null_expression.dart';
 export 'operand_def.dart';
 export 'parameter_type_specifier.dart';
 export 'singleton_from.dart';

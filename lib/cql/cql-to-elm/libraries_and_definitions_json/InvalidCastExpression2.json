@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "InvalidCastExpression",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

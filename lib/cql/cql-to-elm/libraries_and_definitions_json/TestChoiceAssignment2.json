@@ -28,7 +28,8 @@
             "def": [
                 {
                     "name": "TestAssessment",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

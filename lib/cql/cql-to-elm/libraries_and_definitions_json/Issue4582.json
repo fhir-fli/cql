@@ -27,7 +27,8 @@
             "def": [
                 {
                     "name": "Closed-Open Interval",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -33,7 +33,7 @@ OperandDef _$OperandDefFromJson(Map<String, dynamic> json) => OperandDef(
       name: json['name'] as String,
       operandType: json['operandType'] == null
           ? null
-          : QName.fromJson(json['operandType'] as Map<String, dynamic>),
+          : QName.fromJson(json['operandType'] as String),
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))

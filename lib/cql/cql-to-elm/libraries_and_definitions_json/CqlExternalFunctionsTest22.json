@@ -26,11 +26,13 @@
             "def": [
                 {
                     "name": "CallMyTimes",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "CallMyDividedBy",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -27,7 +27,8 @@
             "def": [
                 {
                     "name": "FunctionTestStringArg",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

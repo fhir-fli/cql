@@ -26,11 +26,13 @@
             "def": [
                 {
                     "name": "Referencing Expression",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "This is the \\\"referenced\\\" expression",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

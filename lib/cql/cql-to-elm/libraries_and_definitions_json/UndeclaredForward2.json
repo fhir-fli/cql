@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "TestDef",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

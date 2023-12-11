@@ -23,11 +23,13 @@
             "def": [
                 {
                     "name": "Encounter or Observation",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Hospital Arrival",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -103,3 +103,24 @@ class SimpleTimeInterval extends SimpleInterval {
   late SimpleTime? low;
   late SimpleTime? high;
 }
+
+const List<String> elmTypes = <String>[
+  'Boolean',
+  'Code',
+  'Concept',
+  'Date',
+  'DateTime',
+  'Decimal',
+  'Integer',
+  'Quantity',
+  'Ratio',
+  'StringElement',
+  'Time',
+  'Interval',
+  'IntegerInterval',
+  'DecimalInterval',
+  'QuantityInterval',
+  'DateInterval',
+  'DateTimeInterval',
+  'TimeInterval',
+];

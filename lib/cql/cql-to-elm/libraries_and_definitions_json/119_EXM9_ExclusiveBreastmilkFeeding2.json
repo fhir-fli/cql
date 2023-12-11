@@ -23,11 +23,13 @@
             "def": [
                 {
                     "name": "Single Live Birth Encounter Without Galactosemia and Parenteral Nutrition",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Single Live Birth Encounter With Newborn Fed Breast Milk Only Since Birth",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

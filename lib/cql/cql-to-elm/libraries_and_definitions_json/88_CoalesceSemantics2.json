@@ -23,23 +23,28 @@
             "def": [
                 {
                     "name": "Intervention Comfort Measures",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Intervention Comfort Measures on Day of or Day After Start of Hospitalization",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Intervention Comfort Measures on Day of or Day After Start of Hospitalization",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Intervention Comfort Measures",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Intervention Comfort Measures on Day of or Day After Start of Hospitalization",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

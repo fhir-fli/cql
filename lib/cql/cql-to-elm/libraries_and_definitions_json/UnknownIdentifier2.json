@@ -32,7 +32,8 @@
             "def": [
                 {
                     "name": "X",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

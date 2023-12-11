@@ -34,7 +34,8 @@
             "def": [
                 {
                     "name": "InvalidReferenceExpression",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

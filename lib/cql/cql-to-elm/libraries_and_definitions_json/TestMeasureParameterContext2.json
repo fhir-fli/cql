@@ -41,7 +41,7 @@
                     "name": "Measure",
                     "accessLevel": "Public",
                     "parameterTypeSpecifier": {
-                        "name": "{urn:hl7-org:elm-types:r1}Measure",
+                        "name": "{http://hl7.org/fhir}Measure",
                         "type": "NamedTypeSpecifier"
                     }
                 }
@@ -57,8 +57,21 @@
         "statements": {
             "def": [
                 {
+                    "name": "Measure",
+                    "context": "Measure",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Measure",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "TestExpression",
-                    "accessLevel": "Public"
+                    "context": "Measure",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

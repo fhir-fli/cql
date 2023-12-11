@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "Most Recent Adult Depression Screening Negative",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

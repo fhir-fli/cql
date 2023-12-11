@@ -272,14 +272,6 @@ class Case extends Expression {
   Case({this.comparand, required this.caseItem, required this.elseExpr});
 }
 
-/// Null operator returning a null or missing information marker.
-class NullExpression extends Expression {
-  /// Type of the returned value, if specified.
-  QName? valueType;
-
-  NullExpression({this.valueType});
-}
-
 /// IsNull operator determining whether its argument evaluates to null.
 class IsNull extends UnaryExpression {
   IsNull({required super.operand});

@@ -35,7 +35,8 @@
             "def": [
                 {
                     "name": "SDE Ethnicity",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

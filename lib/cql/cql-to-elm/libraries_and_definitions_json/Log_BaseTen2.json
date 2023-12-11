@@ -35,11 +35,13 @@
             "def": [
                 {
                     "name": "Log_BaseTen",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "test_Log_BaseTen",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -26,11 +26,13 @@
             "def": [
                 {
                     "name": "TestAnyFunctionWithInteger",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "TestAnyFunctionWithString",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

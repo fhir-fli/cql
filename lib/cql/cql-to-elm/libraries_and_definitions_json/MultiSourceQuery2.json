@@ -26,11 +26,13 @@
             "def": [
                 {
                     "name": "oddsAndEvens",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "shouldNotBeAllowed",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

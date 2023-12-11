@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "Denominator",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

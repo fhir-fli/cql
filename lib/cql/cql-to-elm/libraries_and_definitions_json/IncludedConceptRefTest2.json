@@ -34,7 +34,8 @@
             "def": [
                 {
                     "name": "testIncludedConceptRef",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

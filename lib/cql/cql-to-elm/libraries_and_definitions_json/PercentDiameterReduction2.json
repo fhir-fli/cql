@@ -53,7 +53,8 @@
             "def": [
                 {
                     "name": "Study Indicating Stenosis",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

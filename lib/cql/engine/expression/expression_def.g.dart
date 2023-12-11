@@ -22,8 +22,7 @@ ExpressionDef _$ExpressionDefFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       context: json['context'] as String?,
       accessLevel:
-          $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
-              AccessModifier.Public,
+          $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']),
       expression: json['expression'] == null
           ? null
           : Expression.fromJson(json['expression'] as Map<String, dynamic>),
@@ -56,7 +55,7 @@ Map<String, dynamic> _$ExpressionDefToJson(ExpressionDef instance) {
   writeNotNull('resultTypeName', instance.resultTypeName);
   val['name'] = instance.name;
   writeNotNull('context', instance.context);
-  val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
+  writeNotNull('accessLevel', _$AccessModifierEnumMap[instance.accessLevel]);
   writeNotNull('expression', instance.expression?.toJson());
   return val;
 }

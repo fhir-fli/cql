@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "Encounter With Principal Procedure of SCIP VTE Selected Surgery",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

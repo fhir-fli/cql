@@ -1,24 +1,38 @@
+import 'package:fhir/r4.dart';
+
+import '../cql.dart';
+
 class QName {
+  final String prefix;
   final String namespaceURI;
   final String localPart;
-  final String prefix;
 
   QName({
+    this.prefix = '',
     required this.namespaceURI,
     required this.localPart,
-    this.prefix = '',
   });
 
-  factory QName.fromLocalPart(String localPart) =>
-      QName(namespaceURI: '', localPart: localPart, prefix: '');
+  factory QName.empty() => QName(namespaceURI: '', localPart: '', prefix: '');
+
+  factory QName.fromLocalPart(String localPart) => QName(
+        prefix: '',
+        namespaceURI: resourceTypeFromStringMap.keys.contains(localPart)
+            ? 'http://hl7.org/fhir'
+            : elmTypes.contains(localPart)
+                ? 'urn:hl7-org:elm-types:r1'
+                : '',
+        localPart: localPart,
+      );
 
   factory QName.fromNamespace(String? namespaceURI, String localPart) =>
       QName(namespaceURI: namespaceURI ?? '', localPart: localPart, prefix: '');
 
   factory QName.fromFull(String? qNameAsString) {
-    if (qNameAsString == null || qNameAsString.isEmpty) {
+    if (qNameAsString?.isEmpty ?? true) {
       throw ArgumentError('Cannot create QName from "null" or empty String');
-    } else if (qNameAsString.startsWith('{')) {
+    } else if (qNameAsString!.contains('{')) {
+      final beginningOfNamespaceURI = qNameAsString.indexOf('{');
       final endOfNamespaceURI = qNameAsString.indexOf('}');
       if (endOfNamespaceURI == -1) {
         throw ArgumentError(
@@ -27,23 +41,15 @@ class QName {
       return QName(
           namespaceURI: qNameAsString.substring(1, endOfNamespaceURI),
           localPart: qNameAsString.substring(endOfNamespaceURI + 1),
-          prefix: '');
+          prefix: qNameAsString.substring(0, beginningOfNamespaceURI));
     } else {
       return QName(namespaceURI: '', localPart: qNameAsString, prefix: '');
     }
   }
 
-  factory QName.fromJson(Map<String, dynamic> json) => QName(
-        namespaceURI: json['namespaceURI'] as String,
-        localPart: json['localPart'] as String,
-        prefix: json['prefix'] as String? ?? "",
-      );
+  factory QName.fromJson(String json) => QName.fromFull(json);
 
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'namespaceURI': namespaceURI,
-        'localPart': localPart,
-        'prefix': prefix,
-      };
+  String toJson() => toString();
 
   bool operator ==(Object? objectToTest) {
     if (objectToTest == this) {
@@ -61,7 +67,7 @@ class QName {
   int get hashCode => namespaceURI.hashCode ^ localPart.hashCode;
 
   String toString() =>
-      namespaceURI == "" ? localPart : "{$namespaceURI}$localPart";
+      namespaceURI == '' ? localPart : "$prefix{$namespaceURI}$localPart";
 
   static QName valueOf(String qNameAsString) {
     if (qNameAsString.isEmpty) {

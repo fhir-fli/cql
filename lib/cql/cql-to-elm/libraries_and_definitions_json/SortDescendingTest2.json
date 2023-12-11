@@ -27,11 +27,13 @@
             "def": [
                 {
                     "name": "list of numbers",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "sorted list of numbers descending",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

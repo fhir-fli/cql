@@ -26,11 +26,13 @@
             "def": [
                 {
                     "name": "CollapseWithNullPer1",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "CollapseWithNullPer2",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

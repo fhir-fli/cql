@@ -24,7 +24,8 @@ FunctionDef _$FunctionDefFromJson(Map<String, dynamic> json) => FunctionDef(
       ..resultTypeName = json['resultTypeName'] as String?
       ..name = json['name'] as String
       ..context = json['context'] as String?
-      ..accessLevel = $enumDecode(_$AccessModifierEnumMap, json['accessLevel'])
+      ..accessLevel =
+          $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel'])
       ..expression = json['expression'] == null
           ? null
           : Expression.fromJson(json['expression'] as Map<String, dynamic>);
@@ -46,7 +47,7 @@ Map<String, dynamic> _$FunctionDefToJson(FunctionDef instance) {
   writeNotNull('resultTypeName', instance.resultTypeName);
   val['name'] = instance.name;
   writeNotNull('context', instance.context);
-  val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
+  writeNotNull('accessLevel', _$AccessModifierEnumMap[instance.accessLevel]);
   writeNotNull('expression', instance.expression?.toJson());
   writeNotNull('operand', instance.operand?.map((e) => e.toJson()).toList());
   writeNotNull('external', instance.external);

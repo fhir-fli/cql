@@ -1,5 +1,3 @@
-import 'package:fhir/dstu2.dart';
-
 import '../../cql.dart';
 
 /// Represents a named type specifier, extending [TypeSpecifier].
@@ -8,38 +6,29 @@ import '../../cql.dart';
 /// defining modelName, namespace, and name attributes.
 class NamedTypeSpecifier extends TypeSpecifier {
   /// Deprecated model name attribute.
+  @deprecated
   String? modelName;
 
   /// Namespace of the type.
-  String namespace;
+  QName namespace;
 
   final String type = 'NamedTypeSpecifier';
 
-  NamedTypeSpecifier({
-    this.modelName,
-    String? namespace,
-  }) : this.namespace = namespace ??
-            (resourceTypeFromStringMap.keys.contains(modelName)
-                ? '{http://hl7.org/fhir}'
-                : '{urn:hl7-org:elm-types:r1}');
+  NamedTypeSpecifier({required this.namespace});
+
+  factory NamedTypeSpecifier.fromFull(String full) => NamedTypeSpecifier(
+        namespace: QName.fromFull(full),
+      );
 
   factory NamedTypeSpecifier.fromJson(Map<String, dynamic> json) {
-    String? modelName;
     String? nameSpace = json['modelName'] as String?;
-
-    if (nameSpace != null) {
-      final List<String> nameList = nameSpace.split('}');
-      modelName = nameList.removeLast();
-      nameSpace = nameList.join('}');
-    }
     return NamedTypeSpecifier(
-      modelName: modelName,
-      namespace: nameSpace,
+      namespace: QName.fromFull(nameSpace),
     );
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': '{$namespace}${modelName != null ? modelName : ''}',
+        'name': namespace.toJson(),
         'type': 'NamedTypeSpecifier',
       };
 }

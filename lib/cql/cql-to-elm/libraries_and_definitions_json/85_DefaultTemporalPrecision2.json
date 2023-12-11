@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "Encounter with Antithrombotic Therapy",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -34,7 +34,8 @@
             "def": [
                 {
                     "name": "IncludedValueSet",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "Invalid",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

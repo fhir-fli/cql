@@ -36,7 +36,8 @@
             "def": [
                 {
                     "name": "Dummy",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

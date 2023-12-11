@@ -40,7 +40,8 @@
             "def": [
                 {
                     "name": "ExpandValueSet",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

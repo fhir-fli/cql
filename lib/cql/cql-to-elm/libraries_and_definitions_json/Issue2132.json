@@ -27,7 +27,8 @@
             "def": [
                 {
                     "name": "Collapsed Treatment Intervals",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

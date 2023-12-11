@@ -23,7 +23,8 @@
             "def": [
                 {
                     "name": "TimeOverload",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

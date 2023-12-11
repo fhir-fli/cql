@@ -34,7 +34,8 @@
             "def": [
                 {
                     "name": "IncludedCode",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

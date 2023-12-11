@@ -49,8 +49,21 @@
         "statements": {
             "def": [
                 {
+                    "name": "Encounter",
+                    "context": "Encounter",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Encounter",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
                     "name": "TestExpression",
-                    "accessLevel": "Public"
+                    "context": "Encounter",
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

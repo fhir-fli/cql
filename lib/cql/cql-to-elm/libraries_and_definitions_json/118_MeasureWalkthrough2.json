@@ -37,11 +37,13 @@
             "def": [
                 {
                     "name": "Flexible Sigmoidoscopy Performed",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 },
                 {
                     "name": "Flexible Sigmoidoscopy Performed",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }

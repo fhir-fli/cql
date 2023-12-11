@@ -89,7 +89,8 @@
             "def": [
                 {
                     "name": "PrivateExpression",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {}
                 }
             ]
         }
