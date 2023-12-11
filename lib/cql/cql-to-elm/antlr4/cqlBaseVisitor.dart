@@ -396,8 +396,11 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitStatement(StatementContext ctx) {
-    printIf(ctx);
-
+    printIf(ctx, true);
+    print(ctx.getChild(0).runtimeType);
+    if (library.statements == null) {
+      library.statements = ExpressionDefs();
+    }
     visitChildren(ctx);
   }
 
@@ -408,14 +411,12 @@ class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
     printIf(ctx);
     String? name;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print(child.runtimeType);
+      // print(child.runtimeType);
       if (child is IdentifierContext) {
         name = visitIdentifier(child);
       }
     }
-    if (library.statements == null) {
-      library.statements = ExpressionDefs();
-    }
+
     final result = visitChildren(ctx);
 
     library.statements!.def.add(ExpressionDef.public(
