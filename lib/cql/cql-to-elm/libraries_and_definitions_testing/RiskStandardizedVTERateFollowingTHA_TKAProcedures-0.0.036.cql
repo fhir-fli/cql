@@ -1,1 +1,0 @@
-library RiskStandardizedVTERateFollowingTHA_TKAProcedures version '0.0.036'

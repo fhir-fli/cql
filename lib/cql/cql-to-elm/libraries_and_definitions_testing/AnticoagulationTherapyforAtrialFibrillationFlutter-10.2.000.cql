@@ -1,1 +1,0 @@
-library AnticoagulationTherapyforAtrialFibrillationFlutter version '10.2.000'

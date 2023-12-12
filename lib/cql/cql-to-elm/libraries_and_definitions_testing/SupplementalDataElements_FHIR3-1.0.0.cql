@@ -1,1 +1,0 @@
-library SupplementalDataElements_FHIR3 version '1.0.0'

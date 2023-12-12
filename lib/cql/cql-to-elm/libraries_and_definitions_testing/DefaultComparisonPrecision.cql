@@ -1,4 +1,0 @@
-/*
-@defaultComparisonPrecision: minutes
-*/
-library DefaultComparisonPrecision

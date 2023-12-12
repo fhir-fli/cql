@@ -1,1 +1,0 @@
-library EXM137_QDM version '5.0.0'

@@ -1,1 +1,0 @@
-library RiskStandardizedMajorBleedingRateFollowingTHA_TKAProcedures version '0.0.023'

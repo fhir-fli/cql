@@ -1,1 +1,0 @@
-library CMS32 version '6.0.0'

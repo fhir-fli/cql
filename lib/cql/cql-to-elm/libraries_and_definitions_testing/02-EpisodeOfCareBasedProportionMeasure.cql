@@ -1,1 +1,0 @@
-library EpisodeOfCareBasedProportionMeasure version '1'
