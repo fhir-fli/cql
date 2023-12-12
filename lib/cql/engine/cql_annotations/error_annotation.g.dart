@@ -10,6 +10,7 @@ ErrorAnnotation _$ErrorAnnotationFromJson(Map<String, dynamic> json) =>
     ErrorAnnotation(
       librarySystem: json['librarySystem'] as String?,
       libraryId: json['libraryId'] as String?,
+      libraryVersion: json['libraryVersion'] as String?,
       startLine: json['startLine'] as int?,
       startChar: json['startChar'] as int?,
       endLine: json['endLine'] as int?,
@@ -31,6 +32,7 @@ Map<String, dynamic> _$ErrorAnnotationToJson(ErrorAnnotation instance) {
 
   writeNotNull('librarySystem', instance.librarySystem);
   writeNotNull('libraryId', instance.libraryId);
+  writeNotNull('libraryVersion', instance.libraryVersion);
   writeNotNull('startLine', instance.startLine);
   writeNotNull('startChar', instance.startChar);
   writeNotNull('endLine', instance.endLine);

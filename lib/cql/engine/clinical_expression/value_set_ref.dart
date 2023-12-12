@@ -5,10 +5,32 @@ import '../../cql.dart';
 /// returns the expansion set for the value set as a list of codes.
 class ValueSetRef extends Expression {
   /// The name of the value set.
-  late String? name;
+  String name;
 
   /// The library name.
-  late String? libraryName;
+  String? libraryName;
 
-  ValueSetRef({this.name, this.libraryName});
+  bool preserve;
+
+  final String type = 'ValueSetRef';
+
+  ValueSetRef({required this.name, this.libraryName, this.preserve = true});
+
+  factory ValueSetRef.fromJson(Map<String, dynamic> json) => ValueSetRef(
+        name: json['name'] as String,
+        libraryName: json['libraryName'] as String?,
+        preserve: json['preserve'] as bool? ?? true,
+      );
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = <String, dynamic>{
+      'name': name,
+      'preserve': preserve,
+      'type': type,
+    };
+    if (libraryName != null) {
+      json['libraryName'] = libraryName;
+    }
+    return json;
+  }
 }

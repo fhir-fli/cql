@@ -8,6 +8,7 @@ part 'error_annotation.g.dart';
 class ErrorAnnotation extends Annotation {
   final String? librarySystem;
   final String? libraryId;
+  final String? libraryVersion;
   final int? startLine;
   final int? startChar;
   final int? endLine;
@@ -20,6 +21,7 @@ class ErrorAnnotation extends Annotation {
   ErrorAnnotation({
     this.librarySystem,
     this.libraryId,
+    this.libraryVersion,
     this.startLine,
     this.startChar,
     this.endLine,
@@ -34,4 +36,32 @@ class ErrorAnnotation extends Annotation {
       _$ErrorAnnotationFromJson(json);
 
   Map<String, dynamic> toJson() => _$ErrorAnnotationToJson(this);
+
+  ErrorAnnotation copyWith({
+    String? librarySystem,
+    String? libraryId,
+    String? libraryVersion,
+    int? startLine,
+    int? startChar,
+    int? endLine,
+    int? endChar,
+    String? message,
+    String? errorType,
+    String? errorSeverity,
+    String? type,
+  }) {
+    return ErrorAnnotation(
+      librarySystem: librarySystem ?? this.librarySystem,
+      libraryId: libraryId ?? this.libraryId,
+      libraryVersion: libraryVersion ?? this.libraryVersion,
+      startLine: startLine ?? this.startLine,
+      startChar: startChar ?? this.startChar,
+      endLine: endLine ?? this.endLine,
+      endChar: endChar ?? this.endChar,
+      message: message ?? this.message,
+      errorType: errorType ?? this.errorType,
+      errorSeverity: errorSeverity ?? this.errorSeverity,
+      type: type ?? this.type,
+    );
+  }
 }

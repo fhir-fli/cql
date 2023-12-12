@@ -2347,29 +2347,6 @@ class TupleElementDefinition extends ElmElement {
 //   final String identifier;
 //   final bool distinct;
 // }
-
-// // Query operator
-
-// class Query extends Expression {
-//   Query({
-//     required this.source,
-//     this.let,
-//     this.relationship,
-//     this.where,
-//     this.returnClause,
-//     this.aggregate,
-//     this.sort,
-//   });
-
-//   List<AliasedQuerySource> source;
-//   List<LetClause>? let;
-//   List<RelationshipClause>? relationship;
-//   Expression? where;
-//   ReturnClause? returnClause;
-//   AggregateClause? aggregate;
-//   SortClause? sort;
-// }
-
 // // AliasRef expression
 
 // class AliasRef extends Expression {

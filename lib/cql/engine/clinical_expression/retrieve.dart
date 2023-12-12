@@ -4,44 +4,8 @@ import '../../cql.dart';
 /// relevant dependencies such as clinical data access, terminology, and value
 /// set considerations.
 class Retrieve extends Expression {
-  /// The retrieve expression defines clinical data that will be used by the
-  /// artifact. This expression allows clinically relevant filtering criteria to
-  /// be provided in a well-defined and computable way. This operation defines
-  /// the integration boundary for artifacts. The result of a retrieve is
-  /// defined to return the same data for subsequent invocations within the same
-  /// evaluation request. This means in particular that patient data updates
-  /// made during the evaluation request are not visible to the artifact. In
-  /// effect, the patient data is a snapshot of the data as of the start of the
-  /// evaluation. This ensures strict deterministic and functional behavior of
-  /// the artifact, and allows the implementation engine freedom to cache
-  /// intermediate results in order to improve performance.
-  Expression? codes;
-
-  /// The codes element optionally specifies an expression that results in a
-  /// List<Code> to match against. Only the clinical statements that match at
-  /// least one of the specified codes will be returned.
-  Expression? dateRange;
-
-  /// The dateRange element optionally specifies an expression that results in
-  /// an Interval<DateTime> to match against. Only those clinical statements
-  /// whose date falls within the specified date range will be returned.
-  Expression? context;
-
   /// The dataType attribute specifies the type of data being requested.
   QName dataType;
-
-  /// The templateId attribute specifies an optional template to be used. If
-  /// specified, the retrieve is defined to return only objects that conform to
-  /// the template.
-  String? templateId;
-
-  /// The idProperty attribute specifies which property of the model contains
-  /// the Id for the clinical statement.
-  ///
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The <simplePath> production rule in the CQL grammar
-  /// provides the formal semantics for this path.
-  String? idProperty;
 
   /// The codeProperty attribute optionally specifies which property of the
   /// model contains the Code or Codes for the clinical statement.
@@ -59,6 +23,42 @@ class Retrieve extends Expression {
   /// constant indexers. The <simplePath> production rule in the CQL grammar
   /// provides the formal semantics for this path.
   String? codeProperty;
+
+  /// The codes element optionally specifies an expression that results in a
+  /// List<Code> to match against. Only the clinical statements that match at
+  /// least one of the specified codes will be returned.
+  Expression? dateRange;
+
+  /// The retrieve expression defines clinical data that will be used by the
+  /// artifact. This expression allows clinically relevant filtering criteria to
+  /// be provided in a well-defined and computable way. This operation defines
+  /// the integration boundary for artifacts. The result of a retrieve is
+  /// defined to return the same data for subsequent invocations within the same
+  /// evaluation request. This means in particular that patient data updates
+  /// made during the evaluation request are not visible to the artifact. In
+  /// effect, the patient data is a snapshot of the data as of the start of the
+  /// evaluation. This ensures strict deterministic and functional behavior of
+  /// the artifact, and allows the implementation engine freedom to cache
+  /// intermediate results in order to improve performance.
+  Expression? codes;
+
+  /// The dateRange element optionally specifies an expression that results in
+  /// an Interval<DateTime> to match against. Only those clinical statements
+  /// whose date falls within the specified date range will be returned.
+  Expression? context;
+
+  /// The templateId attribute specifies an optional template to be used. If
+  /// specified, the retrieve is defined to return only objects that conform to
+  /// the template.
+  String? templateId;
+
+  /// The idProperty attribute specifies which property of the model contains
+  /// the Id for the clinical statement.
+  ///
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The <simplePath> production rule in the CQL grammar
+  /// provides the formal semantics for this path.
+  String? idProperty;
 
   /// The valueSetProperty attribute optionally specifies which property of the
   /// model contains a value set identifier that can be used as an alternative
@@ -143,13 +143,13 @@ class Retrieve extends Expression {
   final String type = 'Retrieve';
 
   Retrieve({
-    this.codes,
-    this.dateRange,
-    this.context,
     required this.dataType,
+    this.codeProperty,
+    this.dateRange,
+    this.codes,
+    this.context,
     this.templateId,
     this.idProperty,
-    this.codeProperty,
     this.valueSetProperty,
     this.dateProperty,
     this.dateLowProperty,
@@ -196,18 +196,18 @@ class Retrieve extends Expression {
       }
     }
 
+    val['dataType'] = dataType.toJson();
+    writeNotNull('codeProperty', codeProperty);
+    writeNotNull('dateRange', dateRange?.toJson());
+    writeNotNull('codes', codes?.toJson());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
     writeNotNull('resultTypeName', resultTypeName);
-    writeNotNull('codes', codes?.toJson());
-    writeNotNull('dateRange', dateRange?.toJson());
     writeNotNull('context', context?.toJson());
-    val['dataType'] = dataType.toJson();
     writeNotNull('templateId', templateId);
     writeNotNull('idProperty', idProperty);
-    writeNotNull('codeProperty', codeProperty);
     writeNotNull('valueSetProperty', valueSetProperty);
     writeNotNull('dateProperty', dateProperty);
     writeNotNull('dateLowProperty', dateLowProperty);
@@ -215,4 +215,7 @@ class Retrieve extends Expression {
     writeNotNull('type', type);
     return val;
   }
+
+  @override
+  String toString() => toJson().toString();
 }
