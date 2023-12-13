@@ -37,12 +37,12 @@ Library _$LibraryFromJson(Map<String, dynamic> json) => Library(
       contexts: json['contexts'] == null
           ? null
           : ContextDefs.fromJson(json['contexts'] as Map<String, dynamic>),
-      statements: json['statements'] == null
-          ? null
-          : ExpressionDefs.fromJson(json['statements'] as Map<String, dynamic>),
       concepts: json['concepts'] == null
           ? null
           : ConceptDefs.fromJson(json['concepts'] as Map<String, dynamic>),
+      statements: json['statements'] == null
+          ? null
+          : ExpressionDefs.fromJson(json['statements'] as Map<String, dynamic>),
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
@@ -79,7 +79,7 @@ Map<String, dynamic> _$LibraryToJson(Library instance) {
   writeNotNull('valueSets', instance.valueSets?.toJson());
   writeNotNull('codes', instance.codes?.toJson());
   writeNotNull('contexts', instance.contexts?.toJson());
-  writeNotNull('statements', instance.statements?.toJson());
   writeNotNull('concepts', instance.concepts?.toJson());
+  writeNotNull('statements', instance.statements?.toJson());
   return val;
 }

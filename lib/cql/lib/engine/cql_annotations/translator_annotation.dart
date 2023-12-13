@@ -6,7 +6,7 @@ class TranslatorAnnotation extends Annotation {
   final String type;
 
   TranslatorAnnotation(
-      {this.translatorVersion = '0.0.0-dev1',
+      {this.translatorVersion = '2.11.0', //'0.0.0-dev1',
       this.translatorOptions = '',
       this.type = 'CqlToElmInfo'});
 
@@ -17,6 +17,7 @@ class TranslatorAnnotation extends Annotation {
         type: json['type'],
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         'translatorVersion': translatorVersion,
         'translatorOptions': translatorOptions,

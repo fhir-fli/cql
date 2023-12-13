@@ -13,6 +13,7 @@ class Expression extends Element {
   factory Expression.fromJson(Map<String, dynamic> json) =>
       _$ExpressionFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ExpressionToJson(this);
 }
 
@@ -64,17 +65,6 @@ abstract class NaryExpression extends OperatorExpression {
   List<Expression>? operands;
 }
 
-/// Expression that references a previously defined NamedExpression.
-class ExpressionRef extends Expression {
-  /// Name of the referenced expression.
-  String name;
-
-  /// Library name, optional.
-  String? libraryName;
-
-  ExpressionRef({required this.name, this.libraryName});
-}
-
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {
   /// Declared signature of the function being called.
@@ -105,28 +95,6 @@ class OperandRef extends Expression {
   OperandRef({required this.name});
 }
 
-/// Expression that references an unresolved or resolved identifier.
-class IdentifierRef extends Expression {
-  /// Name of the referenced identifier.
-  String name;
-
-  /// Library name, optional.
-  String? libraryName;
-
-  IdentifierRef({required this.name, this.libraryName});
-}
-
-/// Literal expression defining a single scalar value.
-class Literal extends Expression {
-  /// Qualified name of the value type.
-  QName valueType;
-
-  /// Value of the literal, optional.
-  dynamic value;
-
-  Literal({required this.valueType, this.value});
-}
-
 /// Element within a Tuple expression providing the value of a specific element within a tuple literal expression.
 class TupleElement {
   /// Value expression of the tuple element.
@@ -144,28 +112,6 @@ class Tuple extends Expression {
   List<TupleElement>? element;
 
   Tuple({this.element});
-}
-
-/// Instance element used within an Instance expression.
-class InstanceElement {
-  /// Value expression of the instance element.
-  Expression value;
-
-  /// Required name of the instance element.
-  String name;
-
-  InstanceElement({required this.value, required this.name});
-}
-
-/// Expression allowing class instances to be built up.
-class Instance extends Expression {
-  /// Type of the class instance being built.
-  QName classType;
-
-  /// List of instance elements specifying values for the elements of the class instance.
-  List<InstanceElement>? element;
-
-  Instance({required this.classType, this.element});
 }
 
 /// Interval selector defining an interval value.

@@ -77,5 +77,6 @@ class ExpressionDef extends Element {
   factory ExpressionDef.fromJson(Map<String, dynamic> json) =>
       _$ExpressionDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ExpressionDefToJson(this);
 }

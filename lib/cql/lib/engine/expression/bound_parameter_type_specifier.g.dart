@@ -15,14 +15,21 @@ BoundParameterTypeSpecifier _$BoundParameterTypeSpecifierFromJson(
           ? null
           : TypeSpecifier.fromJson(
               json['elementTypeSpecifier'] as Map<String, dynamic>),
-    );
+    )
+      ..annotation = (json['annotation'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList()
+      ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+          ? null
+          : TypeSpecifier.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..localId = json['localId'] as String?
+      ..locator = json['locator'] as String?
+      ..resultTypeName = json['resultTypeName'] as String?;
 
 Map<String, dynamic> _$BoundParameterTypeSpecifierToJson(
     BoundParameterTypeSpecifier instance) {
-  final val = <String, dynamic>{
-    'parameterName': instance.parameterName,
-    'boundType': instance.boundType,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -30,6 +37,14 @@ Map<String, dynamic> _$BoundParameterTypeSpecifierToJson(
     }
   }
 
+  writeNotNull(
+      'annotation', instance.annotation?.map((e) => e.toJson()).toList());
+  writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('localId', instance.localId);
+  writeNotNull('locator', instance.locator);
+  writeNotNull('resultTypeName', instance.resultTypeName);
+  val['parameterName'] = instance.parameterName;
+  val['boundType'] = instance.boundType;
   writeNotNull('elementTypeSpecifier', instance.elementTypeSpecifier?.toJson());
   return val;
 }

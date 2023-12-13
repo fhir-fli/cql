@@ -2,12 +2,26 @@ import '../../cql.dart';
 
 /// The ConceptRef expression allows a previously defined concept to be
 /// referenced within an expression.
-class ConceptRef extends Expression {
-  /// The name of the concept.
-  late String? name;
+class ConceptRef extends Ref {
+  ConceptRef({super.name, super.libraryName}) : super(type: 'CodeRef');
 
-  /// The library name.
-  late String? libraryName;
+  factory ConceptRef.fromJson(Map<String, dynamic> json) {
+    return ConceptRef(
+      name: json['name'] as String?,
+      libraryName: json['libraryName'] as String?,
+    );
+  }
 
-  ConceptRef({this.name, this.libraryName});
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {};
+    if (name != null) {
+      json['name'] = name;
+    }
+    if (libraryName != null) {
+      json['libraryName'] = libraryName;
+    }
+    json['type'] = type;
+    return json;
+  }
 }

@@ -1,23 +1,30 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
-
-part 'code_ref.g.dart';
 
 /// The CodeRef expression allows a previously defined code to be referenced
 /// within an expression.
-@JsonSerializable()
-class CodeRef extends Expression {
-  /// The name of the code.
-  late String? name;
+class CodeRef extends Ref {
+  CodeRef({
+    super.name,
+    super.libraryName,
+  }) : super(type: 'CodeRef');
 
-  /// The library name.
-  late String? libraryName;
+  factory CodeRef.fromJson(Map<String, dynamic> json) {
+    return CodeRef(
+      name: json['name'] as String?,
+      libraryName: json['libraryName'] as String?,
+    );
+  }
 
-  CodeRef({this.name, this.libraryName});
-
-  factory CodeRef.fromJson(Map<String, dynamic> json) =>
-      _$CodeRefFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CodeRefToJson(this);
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {};
+    if (name != null) {
+      json['name'] = name;
+    }
+    if (libraryName != null) {
+      json['libraryName'] = libraryName;
+    }
+    json['type'] = type;
+    return json;
+  }
 }

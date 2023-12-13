@@ -13,6 +13,7 @@ export 'in_code_system.dart';
 export 'in_value_set.dart';
 export 'quantity.dart';
 export 'ratio.dart';
+export 'ref.dart';
 export 'retrieve.dart';
 export 'subsumed_by.dart';
 export 'subsumes.dart';

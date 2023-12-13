@@ -6,12 +6,13 @@ import '../../cql.dart';
 /// defining modelName, namespace, and name attributes.
 class NamedTypeSpecifier extends TypeSpecifier {
   /// Deprecated model name attribute.
-  @deprecated
+  @Deprecated('Use namespace instead')
   String? modelName;
 
   /// Namespace of the type.
   QName namespace;
 
+  @override
   final String type = 'NamedTypeSpecifier';
 
   NamedTypeSpecifier({required this.namespace});
@@ -27,6 +28,7 @@ class NamedTypeSpecifier extends TypeSpecifier {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'name': namespace.toJson(),
         'type': 'NamedTypeSpecifier',

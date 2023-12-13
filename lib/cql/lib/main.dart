@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,7 @@ void parseFile(BuildContext context) async {
         .toList();
     visitor.library.annotation ??= [];
     visitor.library.annotation!.addAll(errors);
-    print(jsonEncode(visitor.result));
+    log(jsonEncode(visitor.result));
   }
 }
 

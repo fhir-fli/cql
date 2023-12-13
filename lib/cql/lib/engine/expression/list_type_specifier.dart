@@ -1,27 +1,42 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
-
-part 'list_type_specifier.g.dart';
 
 /// Represents a list type specifier, extending [TypeSpecifier].
 ///
 /// The [ListTypeSpecifier] type represents a list type, inheriting from TypeSpecifier,
 /// including an elementTypeSpecifier element and elementType attribute.
-@JsonSerializable()
+
 class ListTypeSpecifier extends TypeSpecifier {
+  @override
+  final String type = 'List';
+
   /// Element type specifier.
   TypeSpecifier? elementTypeSpecifier;
 
-  /// Element type as a string.
-  String? elementType;
+  List<Element>? element;
 
-  final String type = 'ListType';
-
-  ListTypeSpecifier({this.elementTypeSpecifier, this.elementType});
+  ListTypeSpecifier({this.elementTypeSpecifier, this.element});
 
   factory ListTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$ListTypeSpecifierFromJson(json);
+      ListTypeSpecifier(
+        elementTypeSpecifier: json['elementTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
+            : null,
+        element: json['element'] != null
+            ? (json['element'] as List).map((i) => Element.fromJson(i)).toList()
+            : null,
+      );
 
-  Map<String, dynamic> toJson() => _$ListTypeSpecifierToJson(this);
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'type': type,
+    };
+    if (elementTypeSpecifier != null) {
+      json['elementTypeSpecifier'] = elementTypeSpecifier?.toJson();
+    }
+    if (element != null) {
+      json['element'] = element?.map((i) => i.toJson()).toList();
+    }
+    return json;
+  }
 }

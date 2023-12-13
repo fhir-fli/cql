@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 import '../../cql.dart';
 
 /// Abstract type for TypeSpecifier.
-abstract class TypeSpecifier {
+abstract class TypeSpecifier extends Expression {
   String get type;
 
   TypeSpecifier();
@@ -24,16 +24,17 @@ abstract class TypeSpecifier {
     }
   }
 
+  @override
   Map<String, dynamic> toJson() => {};
 }
 
 enum Types {
   @JsonValue('IntervalTypeSpecifier')
-  IntervalTypeSpecifier,
+  intervalTypeSpecifier,
   @JsonValue('ListTypeSpecifier')
-  ListTypeSpecifier,
+  listTypeSpecifier,
   @JsonValue('TupleTypeSpecifier')
-  TupleTypeSpecifier,
+  tupleTypeSpecifier,
   @JsonValue('ChoiceTypeSpecifier')
-  ChoiceTypeSpecifier,
+  choiceTypeSpecifier,
 }

@@ -1,14 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'code_ref.dart';
+part of 'ref.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CodeRef _$CodeRefFromJson(Map<String, dynamic> json) => CodeRef(
+Ref _$RefFromJson(Map<String, dynamic> json) => Ref(
       name: json['name'] as String?,
       libraryName: json['libraryName'] as String?,
+      type: json['type'] as String?,
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
@@ -21,7 +22,7 @@ CodeRef _$CodeRefFromJson(Map<String, dynamic> json) => CodeRef(
       ..locator = json['locator'] as String?
       ..resultTypeName = json['resultTypeName'] as String?;
 
-Map<String, dynamic> _$CodeRefToJson(CodeRef instance) {
+Map<String, dynamic> _$RefToJson(Ref instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -38,5 +39,6 @@ Map<String, dynamic> _$CodeRefToJson(CodeRef instance) {
   writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('name', instance.name);
   writeNotNull('libraryName', instance.libraryName);
+  writeNotNull('type', instance.type);
   return val;
 }

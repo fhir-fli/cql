@@ -43,13 +43,13 @@ Map<String, dynamic> _$CodeDefsToJson(CodeDefs instance) {
 CodeDef _$CodeDefFromJson(Map<String, dynamic> json) => CodeDef(
       name: json['name'] as String,
       id: json['id'] as String,
+      display: json['display'] as String?,
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
               AccessModifier.Public,
       codeSystem: json['codeSystem'] == null
           ? null
           : CodeSystemRef.fromJson(json['codeSystem'] as Map<String, dynamic>),
-      display: json['display'] as String?,
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
@@ -79,9 +79,9 @@ Map<String, dynamic> _$CodeDefToJson(CodeDef instance) {
   writeNotNull('resultTypeName', instance.resultTypeName);
   val['name'] = instance.name;
   val['id'] = instance.id;
+  writeNotNull('display', instance.display);
   val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
   writeNotNull('codeSystem', instance.codeSystem?.toJson());
-  writeNotNull('display', instance.display);
   return val;
 }
 

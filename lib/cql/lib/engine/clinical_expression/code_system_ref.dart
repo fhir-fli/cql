@@ -22,5 +22,9 @@ class CodeSystemRef extends Expression {
   factory CodeSystemRef.fromJson(Map<String, dynamic> json) =>
       _$CodeSystemRefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$CodeSystemRefToJson(this);
+
+  @override
+  String toString() => toJson().toString();
 }

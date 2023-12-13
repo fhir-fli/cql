@@ -6,9 +6,9 @@ part 'concept_def.g.dart';
 
 @JsonSerializable()
 class ConceptDefs {
-  List<ConceptDef>? concepts;
+  List<ConceptDef> def = <ConceptDef>[];
 
-  ConceptDefs({this.concepts});
+  ConceptDefs();
 
   factory ConceptDefs.fromJson(Map<String, dynamic> json) =>
       _$ConceptDefsFromJson(json);
@@ -20,10 +20,6 @@ class ConceptDefs {
 /// reference single concepts anywhere within an expression.
 @JsonSerializable()
 class ConceptDef extends Element {
-  /// A code that makes up the concept. All codes within a given concept must
-  /// be synonyms.
-  late List<CodeRef> code;
-
   /// The name of the concept used for reference.
   late String name;
 
@@ -33,11 +29,16 @@ class ConceptDef extends Element {
   /// Specifies the access level; default is Public.
   late AccessModifier accessLevel;
 
-  ConceptDef(
-      {required this.code,
-      required this.name,
-      this.display,
-      this.accessLevel = AccessModifier.Public});
+  /// A code that makes up the concept. All codes within a given concept must
+  /// be synonyms.
+  late List<Ref> code;
+
+  ConceptDef({
+    required this.name,
+    this.display,
+    this.accessLevel = AccessModifier.Public,
+    required this.code,
+  });
 
   factory ConceptDef.fromJson(Map<String, dynamic> json) =>
       _$ConceptDefFromJson(json);

@@ -2,14 +2,40 @@ import '../../cql.dart';
 
 /// The Code type represents a literal code selector.
 class Code extends Expression {
-  /// The system of the code.
-  late CodeSystemRef system;
-
   /// The code.
-  late String code;
+  String code;
 
   /// An optional display string for the code.
-  late String? display;
+  String? display;
 
-  Code({required this.system, required this.code, this.display});
+  /// The system of the code.
+  CodeSystemRef system;
+
+  final String type = 'Code';
+
+  Code({
+    required this.code,
+    this.display,
+    required this.system,
+  });
+
+  factory Code.fromJson(Map<String, dynamic> json) {
+    return Code(
+      code: json['code'] as String,
+      display: json['display'] as String?,
+      system: CodeSystemRef.fromJson(json['system'] as Map<String, dynamic>),
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {};
+    json['code'] = code;
+    if (display != null) {
+      json['display'] = display;
+    }
+    json['type'] = type;
+    json['system'] = system.toJson();
+    return json;
+  }
 }

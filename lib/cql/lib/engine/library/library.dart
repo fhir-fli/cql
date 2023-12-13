@@ -34,11 +34,11 @@ class Library extends Element {
 
   ContextDefs? contexts;
 
-  /// The statements section contains the expression and function definitions for the library.
-  ExpressionDefs? statements;
-
   /// The concepts defined within this library.
   ConceptDefs? concepts;
+
+  /// The statements section contains the expression and function definitions for the library.
+  ExpressionDefs? statements;
 
   Library({
     this.identifier,
@@ -50,14 +50,14 @@ class Library extends Element {
     this.valueSets,
     this.codes,
     this.contexts,
-    this.statements,
     this.concepts,
-  })  : this.schemaIdentifier = schemaIdentifier ??
+    this.statements,
+  })  : schemaIdentifier = schemaIdentifier ??
             VersionedIdentifier(
               id: 'urn:hl7-org:elm',
               version: 'r1',
             ),
-        this.usings = usings ?? UsingDefs()
+        usings = usings ?? UsingDefs()
           ..def = [
             UsingDef(localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
           ],
