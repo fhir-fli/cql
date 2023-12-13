@@ -39,5 +39,6 @@ class IncludeDef extends Element {
   factory IncludeDef.fromJson(Map<String, dynamic> json) =>
       _$IncludeDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$IncludeDefToJson(this);
 }

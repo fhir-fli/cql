@@ -71,5 +71,5 @@ Map<String, dynamic> _$ParameterDefToJson(ParameterDef instance) {
 
 const _$AccessModifierEnumMap = {
   AccessModifier.public: 'Public',
-  AccessModifier.Private: 'Private',
+  AccessModifier.private: 'Private',
 };

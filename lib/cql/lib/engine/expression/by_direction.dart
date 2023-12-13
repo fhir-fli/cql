@@ -9,6 +9,7 @@ class ByDirection extends SortByItem {
         direction: SortDirectionExtension.fromJson(json['direction']),
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         'direction': direction.toJson(),
       };

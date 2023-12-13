@@ -64,5 +64,5 @@ Map<String, dynamic> _$ValueSetDefToJson(ValueSetDef instance) {
 
 const _$AccessModifierEnumMap = {
   AccessModifier.public: 'Public',
-  AccessModifier.Private: 'Private',
+  AccessModifier.private: 'Private',
 };

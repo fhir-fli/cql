@@ -56,5 +56,5 @@ Map<String, dynamic> _$FunctionDefToJson(FunctionDef instance) {
 
 const _$AccessModifierEnumMap = {
   AccessModifier.public: 'Public',
-  AccessModifier.Private: 'Private',
+  AccessModifier.private: 'Private',
 };

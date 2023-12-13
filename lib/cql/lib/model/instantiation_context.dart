@@ -1,4 +1,4 @@
-import '../../cql.dart';
+import '../cql.dart';
 
 abstract class InstantiationContext {
   bool isInstantiable(TypeParameter parameter, DataType callType);

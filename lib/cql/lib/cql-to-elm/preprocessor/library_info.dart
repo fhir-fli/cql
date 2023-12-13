@@ -78,6 +78,7 @@ class LibraryInfo extends BaseInfo {
     return super.getDefinition() as LibraryDefinitionContext;
   }
 
+  @override
   void setDefinition(antlr.ParserRuleContext value) {
     super.setDefinition(value);
     addDefinition(this);

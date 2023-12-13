@@ -35,6 +35,7 @@ class ErrorAnnotation extends Annotation {
   factory ErrorAnnotation.fromJson(Map<String, dynamic> json) =>
       _$ErrorAnnotationFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ErrorAnnotationToJson(this);
 
   ErrorAnnotation copyWith({

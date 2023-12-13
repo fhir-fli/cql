@@ -61,5 +61,5 @@ Map<String, dynamic> _$CodeSystemDefToJson(CodeSystemDef instance) {
 
 const _$AccessModifierEnumMap = {
   AccessModifier.public: 'Public',
-  AccessModifier.Private: 'Private',
+  AccessModifier.private: 'Private',
 };

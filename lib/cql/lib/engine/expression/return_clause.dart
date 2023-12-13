@@ -15,6 +15,7 @@ class ReturnClause extends Element {
         distinct: json['distinct'] ?? true,
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         'expression': expression.toJson(),
         'distinct': distinct,

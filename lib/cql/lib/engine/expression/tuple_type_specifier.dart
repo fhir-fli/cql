@@ -12,6 +12,7 @@ class TupleTypeSpecifier extends TypeSpecifier {
   /// Elements within TupleTypeSpecifier.
   List<TupleTypeSpecifierElement>? element;
 
+  @override
   String type = 'TupleType';
 
   TupleTypeSpecifier({
@@ -21,5 +22,6 @@ class TupleTypeSpecifier extends TypeSpecifier {
   factory TupleTypeSpecifier.fromJson(Map<String, dynamic> json) =>
       _$TupleTypeSpecifierFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$TupleTypeSpecifierToJson(this);
 }

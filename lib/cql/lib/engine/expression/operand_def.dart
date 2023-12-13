@@ -33,5 +33,6 @@ class OperandDef extends Element {
   factory OperandDef.fromJson(Map<String, dynamic> json) =>
       _$OperandDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$OperandDefToJson(this);
 }

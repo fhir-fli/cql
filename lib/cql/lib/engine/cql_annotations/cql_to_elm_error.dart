@@ -54,5 +54,6 @@ class CqlToElmError extends Locator {
   factory CqlToElmError.fromJson(Map<String, dynamic> json) =>
       _$CqlToElmErrorFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$CqlToElmErrorToJson(this);
 }

@@ -18,6 +18,7 @@ class Sort extends Expression {
             json['by'].map((x) => SortByItem.fromJson(x))),
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         'source': source.toJson(),
         'by': List<dynamic>.from(by.map((x) => x.toJson())),

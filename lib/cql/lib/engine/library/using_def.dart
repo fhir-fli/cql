@@ -37,5 +37,6 @@ class UsingDef extends Element {
   factory UsingDef.fromJson(Map<String, dynamic> json) =>
       _$UsingDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$UsingDefToJson(this);
 }

@@ -22,6 +22,7 @@ class ValueSetRef extends Expression {
         preserve: json['preserve'] as bool? ?? true,
       );
 
+  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{
       'name': name,

@@ -22,19 +22,19 @@ class CodeDefs extends Element {
 @JsonSerializable()
 class CodeDef extends Element {
   /// The name of the code used for reference.
-  late String name;
+  String name;
 
   /// The unique identifier of the code.
-  late String id;
+  String id;
 
   /// An optional display string used to describe the code.
-  late String? display;
+  String? display;
 
   /// Specifies the access level; default is Public.
-  late AccessModifier accessLevel;
+  AccessModifier accessLevel;
 
   /// The code system that contains the code being referenced.
-  late CodeSystemRef? codeSystem;
+  CodeSystemRef? codeSystem;
 
   CodeDef({
     required this.name,

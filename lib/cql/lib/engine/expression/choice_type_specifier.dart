@@ -13,6 +13,7 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
   /// Choice elements.
   List<TypeSpecifier>? choice;
 
+  @override
   final String type = 'ChoiceType';
 
   ChoiceTypeSpecifier({this.choice});
@@ -20,5 +21,6 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
   factory ChoiceTypeSpecifier.fromJson(Map<String, dynamic> json) =>
       _$ChoiceTypeSpecifierFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ChoiceTypeSpecifierToJson(this);
 }

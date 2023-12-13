@@ -18,6 +18,7 @@ class RelationshipClause extends AliasedQuerySource {
         suchThat: Expression.fromJson(json['suchThat']),
       );
 
+  @override
   Map<String, dynamic> toJson() {
     final map = {
       'alias': alias,

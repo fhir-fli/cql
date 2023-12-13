@@ -15,6 +15,7 @@ class ByExpression extends SortByItem {
         expression: Expression.fromJson(json['expression']),
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         'direction': direction.toJson(),
         'expression': expression.toJson(),

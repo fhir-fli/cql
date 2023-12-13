@@ -17,6 +17,7 @@ class With extends RelationshipClause {
             : Expression.fromJson(json['suchThat']),
       );
 
+  @override
   Map<String, dynamic> toJson() {
     final map = {
       'alias': alias,

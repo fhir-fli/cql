@@ -16,6 +16,7 @@ class LetClause extends Element {
         identifier: json['identifier'],
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         'expression': expression.toJson(),
         'identifier': identifier,

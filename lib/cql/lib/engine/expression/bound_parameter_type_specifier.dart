@@ -19,6 +19,7 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
   /// Element type specifier.
   TypeSpecifier? elementTypeSpecifier;
 
+  @override
   final String type = 'BoundParameterType';
 
   BoundParameterTypeSpecifier({
@@ -30,5 +31,6 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
   factory BoundParameterTypeSpecifier.fromJson(Map<String, dynamic> json) =>
       _$BoundParameterTypeSpecifierFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$BoundParameterTypeSpecifierToJson(this);
 }

@@ -15,6 +15,7 @@ class ByColumn extends SortByItem {
         path: json['path'],
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         'direction': direction.toJson(),
         'path': path,

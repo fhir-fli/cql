@@ -19,5 +19,6 @@ class FunctionDef extends ExpressionDef {
   factory FunctionDef.fromJson(Map<String, dynamic> json) =>
       _$FunctionDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$FunctionDefToJson(this);
 }
