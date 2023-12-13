@@ -19,16 +19,17 @@ FunctionDef _$FunctionDefFromJson(Map<String, dynamic> json) => FunctionDef(
           ? null
           : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..resultTypeName = json['resultTypeName'] as String?
       ..localId = json['localId'] as String?
       ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?
       ..name = json['name'] as String
       ..context = json['context'] as String?
       ..accessLevel =
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel'])
       ..expression = json['expression'] == null
           ? null
-          : Expression.fromJson(json['expression'] as Map<String, dynamic>);
+          : Expression.fromJson(json['expression'] as Map<String, dynamic>)
+      ..fluent = json['fluent'] as bool?;
 
 Map<String, dynamic> _$FunctionDefToJson(FunctionDef instance) {
   final val = <String, dynamic>{};
@@ -42,15 +43,16 @@ Map<String, dynamic> _$FunctionDefToJson(FunctionDef instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   val['name'] = instance.name;
   writeNotNull('context', instance.context);
   writeNotNull('accessLevel', _$AccessModifierEnumMap[instance.accessLevel]);
   writeNotNull('expression', instance.expression?.toJson());
   writeNotNull('operand', instance.operand?.map((e) => e.toJson()).toList());
   writeNotNull('external', instance.external);
+  writeNotNull('fluent', instance.fluent);
   return val;
 }
 

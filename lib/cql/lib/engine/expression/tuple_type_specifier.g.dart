@@ -20,9 +20,9 @@ TupleTypeSpecifier _$TupleTypeSpecifierFromJson(Map<String, dynamic> json) =>
           ? null
           : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..resultTypeName = json['resultTypeName'] as String?
       ..localId = json['localId'] as String?
       ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?
       ..type = json['type'] as String;
 
 Map<String, dynamic> _$TupleTypeSpecifierToJson(TupleTypeSpecifier instance) {
@@ -37,9 +37,9 @@ Map<String, dynamic> _$TupleTypeSpecifierToJson(TupleTypeSpecifier instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('element', instance.element?.map((e) => e.toJson()).toList());
   val['type'] = instance.type;
   return val;

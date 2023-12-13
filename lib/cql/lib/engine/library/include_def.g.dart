@@ -29,9 +29,9 @@ IncludeDef _$IncludeDefFromJson(Map<String, dynamic> json) => IncludeDef(
           ? null
           : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..resultTypeName = json['resultTypeName'] as String?
       ..localId = json['localId'] as String?
-      ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?;
+      ..locator = json['locator'] as String?;
 
 Map<String, dynamic> _$IncludeDefToJson(IncludeDef instance) {
   final val = <String, dynamic>{};
@@ -45,9 +45,9 @@ Map<String, dynamic> _$IncludeDefToJson(IncludeDef instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localIdentifier', instance.localIdentifier);
   writeNotNull('mediaType', instance.mediaType);
   writeNotNull('path', instance.path);

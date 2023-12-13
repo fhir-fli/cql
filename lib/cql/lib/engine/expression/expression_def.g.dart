@@ -9,7 +9,7 @@ part of 'expression_def.dart';
 ExpressionDefs _$ExpressionDefsFromJson(Map<String, dynamic> json) =>
     ExpressionDefs()
       ..def = (json['def'] as List<dynamic>)
-          .map((e) => ExpressionDef.fromJson(e as Map<String, dynamic>))
+          .map((e) => Element.fromJson(e as Map<String, dynamic>))
           .toList();
 
 Map<String, dynamic> _$ExpressionDefsToJson(ExpressionDefs instance) =>
@@ -34,9 +34,9 @@ ExpressionDef _$ExpressionDefFromJson(Map<String, dynamic> json) =>
           ? null
           : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..resultTypeName = json['resultTypeName'] as String?
       ..localId = json['localId'] as String?
-      ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?;
+      ..locator = json['locator'] as String?;
 
 Map<String, dynamic> _$ExpressionDefToJson(ExpressionDef instance) {
   final val = <String, dynamic>{};
@@ -50,9 +50,9 @@ Map<String, dynamic> _$ExpressionDefToJson(ExpressionDef instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   val['name'] = instance.name;
   writeNotNull('context', instance.context);
   writeNotNull('accessLevel', _$AccessModifierEnumMap[instance.accessLevel]);

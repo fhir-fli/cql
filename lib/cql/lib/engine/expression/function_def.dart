@@ -14,6 +14,8 @@ class FunctionDef extends ExpressionDef {
   /// Specifies if the function is external.
   bool? external;
 
+  bool? fluent;
+
   FunctionDef({this.operand, this.external}) : super(name: 'FunctionDef');
 
   factory FunctionDef.fromJson(Map<String, dynamic> json) =>

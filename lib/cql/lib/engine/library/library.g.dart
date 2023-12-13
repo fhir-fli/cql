@@ -51,9 +51,9 @@ Library _$LibraryFromJson(Map<String, dynamic> json) => Library(
           ? null
           : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..resultTypeName = json['resultTypeName'] as String?
       ..localId = json['localId'] as String?
-      ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?;
+      ..locator = json['locator'] as String?;
 
 Map<String, dynamic> _$LibraryToJson(Library instance) {
   final val = <String, dynamic>{};
@@ -67,9 +67,9 @@ Map<String, dynamic> _$LibraryToJson(Library instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('identifier', instance.identifier?.toJson());
   writeNotNull('schemaIdentifier', instance.schemaIdentifier?.toJson());
   writeNotNull('usings', instance.usings?.toJson());

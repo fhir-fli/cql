@@ -6,7 +6,7 @@ part 'expression_def.g.dart';
 
 @JsonSerializable()
 class ExpressionDefs {
-  List<ExpressionDef> def = <ExpressionDef>[];
+  List<Element> def = <Element>[];
 
   ExpressionDefs();
 

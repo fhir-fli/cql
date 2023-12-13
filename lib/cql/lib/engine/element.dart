@@ -17,6 +17,12 @@ class Element {
   // named types, and this resultTypeSpecifier element for non-named types.
   TypeSpecifier? resultTypeSpecifier;
 
+  // The resultTypeName attribute is part of type information for an ELM document.
+  // ELM documents are not required to specify result type information, but if they
+  // do, the result type of each node is specified using this attribute for named
+  // types, or the resultTypeSpecifier element for non-named types.
+  String? resultTypeName;
+
   // The localId for an ELM node identifies the location in the source document
   // that produced the ELM. The format is L:C[-L:C], where L is a line number
   // and C is a column number. For locators that span a range, an optional
@@ -31,18 +37,12 @@ class Element {
   // numbers are 1-based.
   String? locator;
 
-  // The resultTypeName attribute is part of type information for an ELM document.
-  // ELM documents are not required to specify result type information, but if they
-  // do, the result type of each node is specified using this attribute for named
-  // types, or the resultTypeSpecifier element for non-named types.
-  String? resultTypeName;
-
   Element({
     this.annotation,
     this.resultTypeSpecifier,
+    this.resultTypeName,
     this.localId,
     this.locator,
-    this.resultTypeName,
   });
 
   factory Element.fromJson(Map<String, dynamic> json) =>

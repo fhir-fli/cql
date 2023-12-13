@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../cql.dart';
+
 part 'context_def.g.dart';
 
 @JsonSerializable()
@@ -15,7 +17,7 @@ class ContextDefs {
 }
 
 @JsonSerializable()
-class ContextDef {
+class ContextDef extends Element {
   final String name;
 
   ContextDef({required this.name});
@@ -23,5 +25,6 @@ class ContextDef {
   factory ContextDef.fromJson(Map<String, dynamic> json) =>
       _$ContextDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ContextDefToJson(this);
 }

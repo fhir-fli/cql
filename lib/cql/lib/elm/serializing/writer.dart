@@ -20,9 +20,7 @@ abstract class Writer implements Closeable {
 
   void write(int c) {
     synchronized(lock, () {
-      if (writeBuffer == null) {
-        writeBuffer = Uint16List(1024);
-      }
+      writeBuffer ??= Uint16List(1024);
 
       writeBuffer![0] = c;
       writeStringOffset(String.fromCharCode(c), 0, 1);

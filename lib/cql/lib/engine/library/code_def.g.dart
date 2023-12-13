@@ -14,9 +14,9 @@ CodeDefs _$CodeDefsFromJson(Map<String, dynamic> json) => CodeDefs()
       ? null
       : TypeSpecifier.fromJson(
           json['resultTypeSpecifier'] as Map<String, dynamic>)
+  ..resultTypeName = json['resultTypeName'] as String?
   ..localId = json['localId'] as String?
   ..locator = json['locator'] as String?
-  ..resultTypeName = json['resultTypeName'] as String?
   ..def = (json['def'] as List<dynamic>)
       .map((e) => CodeDef.fromJson(e as Map<String, dynamic>))
       .toList();
@@ -33,9 +33,9 @@ Map<String, dynamic> _$CodeDefsToJson(CodeDefs instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   val['def'] = instance.def.map((e) => e.toJson()).toList();
   return val;
 }
@@ -58,9 +58,9 @@ CodeDef _$CodeDefFromJson(Map<String, dynamic> json) => CodeDef(
           ? null
           : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..resultTypeName = json['resultTypeName'] as String?
       ..localId = json['localId'] as String?
-      ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?;
+      ..locator = json['locator'] as String?;
 
 Map<String, dynamic> _$CodeDefToJson(CodeDef instance) {
   final val = <String, dynamic>{};
@@ -74,9 +74,9 @@ Map<String, dynamic> _$CodeDefToJson(CodeDef instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   val['name'] = instance.name;
   val['id'] = instance.id;
   writeNotNull('display', instance.display);

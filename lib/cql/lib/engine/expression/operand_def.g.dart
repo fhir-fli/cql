@@ -42,9 +42,9 @@ OperandDef _$OperandDefFromJson(Map<String, dynamic> json) => OperandDef(
           ? null
           : TypeSpecifier.fromJson(
               json['resultTypeSpecifier'] as Map<String, dynamic>)
+      ..resultTypeName = json['resultTypeName'] as String?
       ..localId = json['localId'] as String?
-      ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?;
+      ..locator = json['locator'] as String?;
 
 Map<String, dynamic> _$OperandDefToJson(OperandDef instance) {
   final val = <String, dynamic>{};
@@ -58,9 +58,9 @@ Map<String, dynamic> _$OperandDefToJson(OperandDef instance) {
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
   writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
-  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('operandTypeSpecifier', instance.operandTypeSpecifier?.toJson());
   val['name'] = instance.name;
   writeNotNull('operandType', instance.operandType?.toJson());

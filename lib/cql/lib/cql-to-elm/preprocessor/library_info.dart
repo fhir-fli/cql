@@ -91,9 +91,7 @@ class LibraryInfo extends BaseInfo {
 
   void addUsingDefinition(UsingDefinitionInfo usingDefinition) {
     // First using definition encountered is "preferred", meaning it will resolve as the default model info
-    if (preferredUsingDefinition == null) {
-      preferredUsingDefinition = usingDefinition;
-    }
+    preferredUsingDefinition ??= usingDefinition;
     if (usingDefinition.getName() == null) {
       throw ArgumentError(
           "A using definition with the name as null cannot be used.");
