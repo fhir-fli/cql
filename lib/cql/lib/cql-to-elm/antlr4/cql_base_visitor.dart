@@ -441,7 +441,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// namedTypeSpecifier: (qualifier '.')* referentialOrTypeNameIdentifier;
   @override
   NamedTypeSpecifier? visitNamedTypeSpecifier(NamedTypeSpecifierContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     String? qualifier;
     String? referentialOrTypeNameIdentifier;
@@ -731,22 +731,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     Expression? expression;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is RetrieveContext) {
-        retrieve = visitRetrieve(child);
+        return visitRetrieve(child);
       } else if (child is QualifiedIdentifierExpressionContext) {
-        qualifiedIdentifierExpression =
-            visitQualifiedIdentifierExpression(child);
+        return visitQualifiedIdentifierExpression(child);
       } else {
         final result = byContext(child);
         if (result is Expression) {
-          expression = result;
+          return result;
         }
       }
-    }
-    print('$retrieve $qualifiedIdentifierExpression $expression');
-    if (retrieve != null &&
-        qualifiedIdentifierExpression != null &&
-        expression != null) {
-      return Query(where: expression, source: []);
     }
 
     throw ArgumentError('Invalid QuerySource');
@@ -894,7 +887,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   String visitQualifier(QualifierContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
@@ -1059,12 +1052,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   IdentifierRef visitQualifiedIdentifierExpression(
       QualifiedIdentifierExpressionContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     String? name;
     String? libraryName;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print(child.runtimeType);
       if (child is QualifierContext) {
         libraryName = visitQualifier(child);
       } else if (child is ReferentialIdentifierContext) {
@@ -1577,7 +1569,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       final result = byContext(child);
@@ -1916,7 +1908,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitConceptSelectorTerm(ConceptSelectorTermContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ConceptSelectorContext) {
@@ -2236,11 +2228,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// check to see if it's a previously defined Expression.
   @override
   dynamic visitListSelector(ListSelectorContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     List<Element> element = <Element>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       final result = byContext(child);
+      print('list ${child.runtimeType} ${result.runtimeType} ${child.text}');
+
       if (result is Element) {
         element.add(result);
       } else if (result is String) {
@@ -2340,11 +2334,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitKeywordIdentifier(KeywordIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    return _noQuoteString(ctx.text);
-  }
+  dynamic visitKeywordIdentifier(KeywordIdentifierContext ctx) =>
+      _noQuoteString(ctx.text);
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
