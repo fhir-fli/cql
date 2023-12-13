@@ -47,7 +47,7 @@ class ExpressionDef extends Element {
       ExpressionDef(
         name: name,
         context: context,
-        accessLevel: AccessModifier.Public,
+        accessLevel: AccessModifier.public,
         expression: expression,
       );
 

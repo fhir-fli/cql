@@ -24,7 +24,7 @@ CodeSystemDef _$CodeSystemDefFromJson(Map<String, dynamic> json) =>
       version: json['version'] as String?,
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
-              AccessModifier.Public,
+              AccessModifier.public,
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
           ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
@@ -60,6 +60,6 @@ Map<String, dynamic> _$CodeSystemDefToJson(CodeSystemDef instance) {
 }
 
 const _$AccessModifierEnumMap = {
-  AccessModifier.Public: 'Public',
+  AccessModifier.public: 'Public',
   AccessModifier.Private: 'Private',
 };

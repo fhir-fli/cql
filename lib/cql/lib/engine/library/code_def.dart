@@ -40,7 +40,7 @@ class CodeDef extends Element {
     required this.name,
     required this.id,
     this.display,
-    this.accessLevel = AccessModifier.Public,
+    this.accessLevel = AccessModifier.public,
     this.codeSystem,
   });
 

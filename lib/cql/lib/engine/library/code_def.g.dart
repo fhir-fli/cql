@@ -46,7 +46,7 @@ CodeDef _$CodeDefFromJson(Map<String, dynamic> json) => CodeDef(
       display: json['display'] as String?,
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
-              AccessModifier.Public,
+              AccessModifier.public,
       codeSystem: json['codeSystem'] == null
           ? null
           : CodeSystemRef.fromJson(json['codeSystem'] as Map<String, dynamic>),
@@ -86,6 +86,6 @@ Map<String, dynamic> _$CodeDefToJson(CodeDef instance) {
 }
 
 const _$AccessModifierEnumMap = {
-  AccessModifier.Public: 'Public',
+  AccessModifier.public: 'Public',
   AccessModifier.Private: 'Private',
 };

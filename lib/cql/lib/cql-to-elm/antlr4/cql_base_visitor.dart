@@ -32,28 +32,29 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   Map<String, dynamic> get result => {'library': library.toJson()};
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// library: libraryDefinition? definition* statement* EOF;
   @override
-  dynamic visitLibrary(LibraryContext ctx) {
+  void visitLibrary(LibraryContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// This can be usingDefinition, includeDefinition, codesystemDefinition,
+  /// valuesetDefinition, codeDefinition, conceptDefinition, parameterDefinition.
   @override
-  dynamic visitDefinition(DefinitionContext ctx) {
+  void visitDefinition(DefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// libraryDefinition:
+  /// 'library' qualifiedIdentifier ('version' versionSpecifier)?;
+  ///  For this we're just pulling out the qualifiedIdentifier and the
+  ///  versionSpecifier if they exist.
   @override
-  dynamic visitLibraryDefinition(LibraryDefinitionContext ctx) {
+  void visitLibraryDefinition(LibraryDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -67,11 +68,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         version = visitVersionSpecifier(child);
       }
     }
-    library.identifier = VersionedIdentifier(id: id, version: version);
+    if (id != null || version != null) {
+      library.identifier = VersionedIdentifier(id: id, version: version);
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// usingDefinition:
+  /// 'using' modelIdentifier ('version' versionSpecifier)?;
+  ///  For this we're just pulling out the modelIdentifier and the
+  ///  versionSpecifier if they exist.
   @override
   dynamic visitUsingDefinition(UsingDefinitionContext ctx) {
     printIf(ctx);
@@ -87,20 +92,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         version = visitVersionSpecifier(child);
       }
     }
-    library.usings ??= UsingDefs();
-    library.usings!.def.add(UsingDef(
-      localIdentifier: localIdentifier,
-      version: version,
-      uri: localIdentifier == 'QUICK'
-          ? 'http://hl7.org/fhir'
-          : localIdentifier == 'FHIR'
-              ? 'http://hl7.org/fhir'
-              : '',
-    ));
+    if (localIdentifier != null || version != null) {
+      library.usings ??= UsingDefs();
+      // TODO(Dokotela): I don't know if this works for other identifiers
+      library.usings!.def.add(UsingDef(
+        localIdentifier: localIdentifier,
+        version: version,
+        uri: localIdentifier == 'QUICK'
+            ? 'http://hl7.org/fhir'
+            : localIdentifier == 'FHIR'
+                ? 'http://hl7.org/fhir'
+                : '',
+      ));
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// includeDefinition:
+  /// 	'include' qualifiedIdentifier ('version' versionSpecifier)? (
+  /// 		'called' localIdentifier
+  /// )?;
+  /// Can have 3 parts to this expression, a qualifiedIdentifier, a
+  /// versionSpecifier, and a localIdentifier.
   @override
   void visitIncludeDefinition(IncludeDefinitionContext ctx) {
     printIf(ctx);
@@ -119,14 +131,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         version = visitVersionSpecifier(child);
       }
     }
-
-    library.includes ??= IncludeDefs();
-    library.includes!.def.add(IncludeDef(
-        localIdentifier: localIdentifier, path: path, version: version));
+    if (localIdentifier != null || path != null || version != null) {
+      library.includes ??= IncludeDefs();
+      library.includes!.def.add(IncludeDef(
+          localIdentifier: localIdentifier, path: path, version: version));
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// This is just an identifier, that is, just a String.
   @override
   String visitLocalIdentifier(LocalIdentifierContext ctx) {
     printIf(ctx);
@@ -134,44 +146,65 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return _noQuoteString(ctx.text);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// accessModifier: 'public' | 'private';
   @override
-  dynamic visitAccessModifier(AccessModifierContext ctx) {
+  AccessModifier visitAccessModifier(AccessModifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    if (ctx.text == 'public') {
+      return AccessModifier.public;
+    } else if (ctx.text == 'private') {
+      return AccessModifier.private;
+    } else {
+      throw ArgumentError('$thisNode Invalid AccessModifier');
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// parameterDefinition:
+  /// 	accessModifier? 'parameter' identifier (typeSpecifier)? (
+  /// 		'default' expression
+  /// 	)?;
   @override
   void visitParameterDefinition(ParameterDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    library.parameters ??= ParameterDefs();
 
     String name = '';
     TypeSpecifier? typeSpecifier;
+    AccessModifier accessLevel = AccessModifier.public;
+    Expression? defaultExpression;
 
     for (var child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
         name = visitIdentifier(child);
       } else if (child is TypeSpecifierContext) {
         typeSpecifier = visitTypeSpecifier(child);
+      } else if (child is AccessModifierContext) {
+        accessLevel = visitAccessModifier(child);
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          defaultExpression = result;
+        }
       }
     }
     if (typeSpecifier != null) {
-      library.parameters!.def
-          .add(ParameterDef(name: name, parameterTypeSpecifier: typeSpecifier));
+      library.parameters ??= ParameterDefs();
+      library.parameters!.def.add(ParameterDef(
+        name: name,
+        parameterTypeSpecifier: typeSpecifier,
+        accessLevel: accessLevel,
+        defaultExpression: defaultExpression,
+      ));
     }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// codesystemDefinition:
+  /// 	accessModifier? 'codesystem' identifier ':' codesystemId (
+  /// 		'version' versionSpecifier
+  /// 	)?;
   @override
-  dynamic visitCodesystemDefinition(CodesystemDefinitionContext ctx) {
+  void visitCodesystemDefinition(CodesystemDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -187,20 +220,24 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         version = visitVersionSpecifier(child);
       }
     }
-    library.codeSystems ??= CodeSystemDefs();
-    library.codeSystems!.def
-        .add(CodeSystemDef(name: name, id: id, version: version));
+    if (name != null || id != null || version != null) {
+      library.codeSystems ??= CodeSystemDefs();
+      library.codeSystems!.def
+          .add(CodeSystemDef(name: name, id: id, version: version));
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// valuesetDefinition:
+  /// 	accessModifier? 'valueset' identifier ':' valuesetId (
+  /// 		'version' versionSpecifier
+  /// 	)? codesystems?;
   @override
   void visitValuesetDefinition(ValuesetDefinitionContext ctx) {
     library.valueSets ??= ValueSetDefs();
 
-    String name = '';
-    String id = '';
-    printIf(ctx);
+    String? name;
+    String? id;
+
     final int thisNode = getNextNode();
     for (var child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
@@ -210,11 +247,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
 
-    library.valueSets!.def.add(ValueSetDef(id: id, name: name));
+    if (name != null || id != null) {
+      library.valueSets!.def.add(ValueSetDef(id: id, name: name));
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// codesystems:
+  /// 	'codesystems' '{' codesystemIdentifier (
+  /// 		',' codesystemIdentifier
+  /// )* '}';
   @override
   dynamic visitCodesystems(CodesystemsContext ctx) {
     printIf(ctx);
@@ -223,39 +264,55 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// codesystemIdentifier: (libraryIdentifier '.')? identifier;
   @override
   CodeSystemRef visitCodesystemIdentifier(CodesystemIdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    return CodeSystemRef(name: _noQuoteString(ctx.text));
+
+    String? name;
+    String? libraryName;
+
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is LibraryIdentifierContext) {
+        libraryName = visitLibraryIdentifier(child);
+      }
+    }
+    if (name != null || libraryName != null) {
+      return CodeSystemRef(name: name, libraryName: libraryName);
+    }
+    throw ArgumentError('$thisNode Invalid CodesystemIdentifier');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// libraryIdentifier: identifier;
+  /// Should just be another String identfier, and should be able to return the
+  /// unquoted text.
   @override
-  dynamic visitLibraryIdentifier(LibraryIdentifierContext ctx) {
+  String visitLibraryIdentifier(LibraryIdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    return _noQuoteString(ctx.text);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// codeDefinition:
+  /// 	accessModifier? 'code' identifier ':' codeId 'from' codesystemIdentifier displayClause?;
   @override
   void visitCodeDefinition(CodeDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
+    AccessModifier accessLevel = AccessModifier.public;
     String? name;
     String? id;
-    String? display;
     CodeSystemRef? codeSystem;
+    String? display;
 
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is IdentifierContext) {
+      if (child is AccessModifierContext) {
+        accessLevel = visitAccessModifier(child);
+      } else if (child is IdentifierContext) {
         name = visitIdentifier(child);
       } else if (child is CodeIdContext) {
         id = visitCodeId(child);
@@ -266,45 +323,58 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
 
-    library.codes ??= CodeDefs();
+    if (name != null && id != null) {
+      library.codes ??= CodeDefs();
 
-    library.codes!.def.add(CodeDef(
-      name: name ?? '',
-      id: id ?? '',
-      display: display,
-      codeSystem: codeSystem,
-    ));
+      library.codes!.def.add(CodeDef(
+        name: name,
+        id: id,
+        display: display,
+        codeSystem: codeSystem,
+        accessLevel: accessLevel,
+      ));
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+// conceptDefinition:
+// 	accessModifier? 'concept' identifier ':' '{' codeIdentifier (
+// 		',' codeIdentifier
+// 	)* '}' displayClause?;
   @override
   dynamic visitConceptDefinition(ConceptDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    library.concepts ??= ConceptDefs();
+
+    AccessModifier accessLevel = AccessModifier.public;
     String? name;
     String? display;
     List<Ref> code = [];
+
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is IdentifierContext) {
+      if (child is AccessModifierContext) {
+        accessLevel = visitAccessModifier(child);
+      } else if (child is IdentifierContext) {
         name = visitIdentifier(child);
-      } else if (child is DisplayClauseContext) {
-        display = visitDisplayClause(child);
       } else if (child is CodeIdentifierContext) {
         code.add(visitCodeIdentifier(child));
+      } else if (child is DisplayClauseContext) {
+        display = visitDisplayClause(child);
       }
     }
     if (name != null) {
-      library.concepts!.def
-          .add(ConceptDef(name: name, display: display, code: code));
+      library.concepts ??= ConceptDefs();
+      library.concepts!.def.add(ConceptDef(
+        name: name,
+        display: display,
+        code: code,
+        accessLevel: accessLevel,
+      ));
     } else {
       throw ArgumentError('$thisNode Invalid ConceptDefinition');
     }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// codeIdentifier: (libraryIdentifier '.')? identifier;
   @override
   IdentifierRef visitCodeIdentifier(CodeIdentifierContext ctx) {
     printIf(ctx);
@@ -2233,7 +2303,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   String visitIdentifier(IdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
     return _noQuoteString(ctx.text);
   }
 

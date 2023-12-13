@@ -21,7 +21,7 @@ ConceptDef _$ConceptDefFromJson(Map<String, dynamic> json) => ConceptDef(
       display: json['display'] as String?,
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
-              AccessModifier.Public,
+              AccessModifier.public,
       code: (json['code'] as List<dynamic>)
           .map((e) => Ref.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -60,6 +60,6 @@ Map<String, dynamic> _$ConceptDefToJson(ConceptDef instance) {
 }
 
 const _$AccessModifierEnumMap = {
-  AccessModifier.Public: 'Public',
+  AccessModifier.public: 'Public',
   AccessModifier.Private: 'Private',
 };

@@ -21,7 +21,7 @@ ParameterDef _$ParameterDefFromJson(Map<String, dynamic> json) => ParameterDef(
       name: json['name'] as String,
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
-              AccessModifier.Public,
+              AccessModifier.public,
       parameterTypeSpecifier: json['parameterTypeSpecifier'] == null
           ? null
           : TypeSpecifier.fromJson(
@@ -70,6 +70,6 @@ Map<String, dynamic> _$ParameterDefToJson(ParameterDef instance) {
 }
 
 const _$AccessModifierEnumMap = {
-  AccessModifier.Public: 'Public',
+  AccessModifier.public: 'Public',
   AccessModifier.Private: 'Private',
 };

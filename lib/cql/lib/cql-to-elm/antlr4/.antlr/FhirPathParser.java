@@ -134,6 +134,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public IndexerExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterIndexerExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitIndexerExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class PolarityExpressionContext extends ExpressionContext {
@@ -141,6 +149,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,0);
 		}
 		public PolarityExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterPolarityExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitPolarityExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AdditiveExpressionContext extends ExpressionContext {
@@ -151,6 +167,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public AdditiveExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterAdditiveExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitAdditiveExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class MultiplicativeExpressionContext extends ExpressionContext {
@@ -161,6 +185,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public MultiplicativeExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterMultiplicativeExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitMultiplicativeExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class UnionExpressionContext extends ExpressionContext {
@@ -171,6 +203,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public UnionExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterUnionExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitUnionExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class OrExpressionContext extends ExpressionContext {
@@ -181,6 +221,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public OrExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterOrExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitOrExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AndExpressionContext extends ExpressionContext {
@@ -191,11 +239,27 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public AndExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterAndExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitAndExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class EndOfFileContext extends ExpressionContext {
 		public TerminalNode EOF() { return getToken(FhirPathParser.EOF, 0); }
 		public EndOfFileContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterEndOfFile(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitEndOfFile(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class MembershipExpressionContext extends ExpressionContext {
@@ -206,6 +270,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public MembershipExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterMembershipExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitMembershipExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class InequalityExpressionContext extends ExpressionContext {
@@ -216,6 +288,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public InequalityExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterInequalityExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitInequalityExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class InvocationExpressionContext extends ExpressionContext {
@@ -226,6 +306,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(InvocationContext.class,0);
 		}
 		public InvocationExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterInvocationExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitInvocationExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class EqualityExpressionContext extends ExpressionContext {
@@ -236,6 +324,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public EqualityExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterEqualityExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitEqualityExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ImpliesExpressionContext extends ExpressionContext {
@@ -246,6 +342,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public ImpliesExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterImpliesExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitImpliesExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class TermExpressionContext extends ExpressionContext {
@@ -253,6 +357,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(TermContext.class,0);
 		}
 		public TermExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterTermExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitTermExpression(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class TypeExpressionContext extends ExpressionContext {
@@ -263,6 +375,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(TypeSpecifierContext.class,0);
 		}
 		public TypeExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterTypeExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitTypeExpression(this);
+		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -598,6 +718,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExternalConstantContext.class,0);
 		}
 		public ExternalConstantTermContext(TermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterExternalConstantTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitExternalConstantTerm(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class LiteralTermContext extends TermContext {
@@ -605,6 +733,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(LiteralContext.class,0);
 		}
 		public LiteralTermContext(TermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterLiteralTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitLiteralTerm(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParenthesizedTermContext extends TermContext {
@@ -612,6 +748,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(ExpressionContext.class,0);
 		}
 		public ParenthesizedTermContext(TermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterParenthesizedTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitParenthesizedTerm(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class InvocationTermContext extends TermContext {
@@ -619,6 +763,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(InvocationContext.class,0);
 		}
 		public InvocationTermContext(TermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterInvocationTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitInvocationTerm(this);
+		}
 	}
 
 	public final TermContext term() throws RecognitionException {
@@ -712,34 +864,90 @@ public class FhirPathParser extends Parser {
 	public static class TimeLiteralContext extends LiteralContext {
 		public TerminalNode TIME() { return getToken(FhirPathParser.TIME, 0); }
 		public TimeLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterTimeLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitTimeLiteral(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class NullLiteralContext extends LiteralContext {
 		public NullLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterNullLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitNullLiteral(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class DateTimeLiteralContext extends LiteralContext {
 		public TerminalNode DATETIME() { return getToken(FhirPathParser.DATETIME, 0); }
 		public DateTimeLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterDateTimeLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitDateTimeLiteral(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class StringLiteralContext extends LiteralContext {
 		public TerminalNode STRING() { return getToken(FhirPathParser.STRING, 0); }
 		public StringLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterStringLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitStringLiteral(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class DateLiteralContext extends LiteralContext {
 		public TerminalNode DATE() { return getToken(FhirPathParser.DATE, 0); }
 		public DateLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterDateLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitDateLiteral(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BooleanLiteralContext extends LiteralContext {
 		public BooleanLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterBooleanLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitBooleanLiteral(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class NumberLiteralContext extends LiteralContext {
 		public TerminalNode NUMBER() { return getToken(FhirPathParser.NUMBER, 0); }
 		public NumberLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterNumberLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitNumberLiteral(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class QuantityLiteralContext extends LiteralContext {
@@ -747,6 +955,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(QuantityContext.class,0);
 		}
 		public QuantityLiteralContext(LiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterQuantityLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitQuantityLiteral(this);
+		}
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
@@ -854,6 +1070,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_externalConstant; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterExternalConstant(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitExternalConstant(this);
+		}
 	}
 
 	public final ExternalConstantContext externalConstant() throws RecognitionException {
@@ -917,14 +1141,38 @@ public class FhirPathParser extends Parser {
 	@SuppressWarnings("CheckReturnValue")
 	public static class TotalInvocationContext extends InvocationContext {
 		public TotalInvocationContext(InvocationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterTotalInvocation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitTotalInvocation(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ThisInvocationContext extends InvocationContext {
 		public ThisInvocationContext(InvocationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterThisInvocation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitThisInvocation(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class IndexInvocationContext extends InvocationContext {
 		public IndexInvocationContext(InvocationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterIndexInvocation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitIndexInvocation(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class FunctionInvocationContext extends InvocationContext {
@@ -932,6 +1180,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(FunctionContext.class,0);
 		}
 		public FunctionInvocationContext(InvocationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterFunctionInvocation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitFunctionInvocation(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class MemberInvocationContext extends InvocationContext {
@@ -939,6 +1195,14 @@ public class FhirPathParser extends Parser {
 			return getRuleContext(IdentifierContext.class,0);
 		}
 		public MemberInvocationContext(InvocationContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterMemberInvocation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitMemberInvocation(this);
+		}
 	}
 
 	public final InvocationContext invocation() throws RecognitionException {
@@ -1013,6 +1277,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_function; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitFunction(this);
+		}
 	}
 
 	public final FunctionContext function() throws RecognitionException {
@@ -1063,6 +1335,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_paramList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterParamList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitParamList(this);
+		}
 	}
 
 	public final ParamListContext paramList() throws RecognitionException {
@@ -1113,6 +1393,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_quantity; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterQuantity(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitQuantity(this);
+		}
 	}
 
 	public final QuantityContext quantity() throws RecognitionException {
@@ -1159,6 +1447,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unit; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterUnit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitUnit(this);
+		}
 	}
 
 	public final UnitContext unit() throws RecognitionException {
@@ -1224,6 +1520,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_dateTimePrecision; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterDateTimePrecision(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitDateTimePrecision(this);
+		}
 	}
 
 	public final DateTimePrecisionContext dateTimePrecision() throws RecognitionException {
@@ -1262,6 +1566,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_pluralDateTimePrecision; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterPluralDateTimePrecision(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitPluralDateTimePrecision(this);
+		}
 	}
 
 	public final PluralDateTimePrecisionContext pluralDateTimePrecision() throws RecognitionException {
@@ -1303,6 +1615,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeSpecifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterTypeSpecifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitTypeSpecifier(this);
+		}
 	}
 
 	public final TypeSpecifierContext typeSpecifier() throws RecognitionException {
@@ -1338,6 +1658,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_qualifiedIdentifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterQualifiedIdentifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitQualifiedIdentifier(this);
+		}
 	}
 
 	public final QualifiedIdentifierContext qualifiedIdentifier() throws RecognitionException {
@@ -1388,6 +1716,14 @@ public class FhirPathParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_identifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).enterIdentifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FhirPathListener ) ((FhirPathListener)listener).exitIdentifier(this);
+		}
 	}
 
 	public final IdentifierContext identifier() throws RecognitionException {

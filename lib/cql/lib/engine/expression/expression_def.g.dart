@@ -61,6 +61,6 @@ Map<String, dynamic> _$ExpressionDefToJson(ExpressionDef instance) {
 }
 
 const _$AccessModifierEnumMap = {
-  AccessModifier.Public: 'Public',
+  AccessModifier.public: 'Public',
   AccessModifier.Private: 'Private',
 };

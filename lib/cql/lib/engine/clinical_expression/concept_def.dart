@@ -36,7 +36,7 @@ class ConceptDef extends Element {
   ConceptDef({
     required this.name,
     this.display,
-    this.accessLevel = AccessModifier.Public,
+    this.accessLevel = AccessModifier.public,
     required this.code,
   });
 

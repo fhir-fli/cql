@@ -36,7 +36,7 @@ class ParameterDef extends Element {
 
   ParameterDef({
     required this.name,
-    this.accessLevel = AccessModifier.Public,
+    this.accessLevel = AccessModifier.public,
     this.parameterTypeSpecifier,
     this.defaultExpression,
     this.parameterType,
@@ -45,5 +45,6 @@ class ParameterDef extends Element {
   factory ParameterDef.fromJson(Map<String, dynamic> json) =>
       _$ParameterDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ParameterDefToJson(this);
 }

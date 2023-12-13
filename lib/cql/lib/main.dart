@@ -44,7 +44,7 @@ void parseFile(BuildContext context) async {
     final parserAndErrors = parse(pathExpression);
     final parser = parserAndErrors.parser;
 
-    final visitor = cqlBaseVisitor();
+    final visitor = CqlBaseVisitor();
     visitor.visit(parser.library_());
     final errors = parserAndErrors.errorListener.errors
         .map((e) => e.copyWith(

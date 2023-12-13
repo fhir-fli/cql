@@ -37,7 +37,7 @@ class CodeSystemDef extends Element {
       {this.name,
       this.id,
       this.version,
-      this.accessLevel = AccessModifier.Public});
+      this.accessLevel = AccessModifier.public});
 
   factory CodeSystemDef.fromJson(Map<String, dynamic> json) =>
       _$CodeSystemDefFromJson(json);

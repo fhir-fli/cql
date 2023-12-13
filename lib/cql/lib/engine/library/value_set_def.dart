@@ -61,10 +61,11 @@ class ValueSetDef extends Element {
       this.name,
       this.id,
       this.version,
-      this.accessLevel = AccessModifier.Public});
+      this.accessLevel = AccessModifier.public});
 
   factory ValueSetDef.fromJson(Map<String, dynamic> json) =>
       _$ValueSetDefFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ValueSetDefToJson(this);
 }
