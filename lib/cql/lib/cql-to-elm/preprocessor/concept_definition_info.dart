@@ -1,6 +1,6 @@
 import 'package:antlr4/antlr4.dart';
 
-import '../antlr4/cqlParser.dart';
+import '../antlr4/cql_parser.dart';
 import 'base_info.dart';
 
 class ConceptDefinitionInfo extends BaseInfo {
@@ -19,6 +19,7 @@ class ConceptDefinitionInfo extends BaseInfo {
     return super.getDefinition() as ConceptDefinitionContext?;
   }
 
+  @override
   void setDefinition(ParserRuleContext value) {
     super.setDefinition(value);
   }

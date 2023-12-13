@@ -4,13 +4,13 @@ import 'package:antlr4/antlr4.dart';
 
 import '../../cql.dart';
 
-/// This class provides an empty implementation of [cqlVisitor],
+/// This class provides an empty implementation of [CqlVisitor],
 /// which can be extended to create a visitor which only needs to handle
 /// a subset of the available methods.
 ///
 /// [T] is the print(ctx.runtimeType); return type of the visit operation. Use `void` for
 /// operations with no print(ctx.runtimeType); return type.
-class cqlBaseVisitor<T> extends ParseTreeVisitor<T> implements cqlVisitor<T> {
+class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   int nodeNumber = 0;
   int getNextNode() {
     final tempNumber = nodeNumber.toInt();

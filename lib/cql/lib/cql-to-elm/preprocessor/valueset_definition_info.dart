@@ -1,11 +1,13 @@
 import 'package:antlr4/antlr4.dart';
 
-import '../antlr4/cqlParser.dart';
+import '../antlr4/cql_parser.dart';
 import 'base_info.dart';
 
 class ValuesetDefinitionInfo extends BaseInfo {
   String? name;
+  @override
   String? header;
+  @override
   Interval? headerInterval;
 
   String? getName() {
@@ -21,6 +23,7 @@ class ValuesetDefinitionInfo extends BaseInfo {
     return super.getDefinition() as ValuesetDefinitionContext?;
   }
 
+  @override
   void setDefinition(ParserRuleContext value) {
     super.setDefinition(value);
   }
