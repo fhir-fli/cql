@@ -58,13 +58,6 @@ abstract class TernaryExpression extends OperatorExpression {
   late List<Expression> operands;
 }
 
-/// Abstract base class for an expression that takes any number of arguments,
-/// including zero.
-abstract class NaryExpression extends OperatorExpression {
-  /// List of expressions as operands, can be zero or more.
-  List<Expression>? operands;
-}
-
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {
   /// Declared signature of the function being called.
@@ -232,9 +225,6 @@ class IsTrue extends UnaryExpression {
 class IsFalse extends UnaryExpression {
   IsFalse({required super.operand});
 }
-
-/// Coalesce operator returning the first non-null result in a list of arguments.
-class Coalesce extends NaryExpression {}
 
 /// Is operator allowing testing the type of a result.
 class Is extends UnaryExpression {
@@ -769,10 +759,6 @@ class LowBoundary extends BinaryExpression {
 class HighBoundary extends BinaryExpression {
   HighBoundary({required super.operands});
 }
-
-/// Operator to perform string concatenation of its arguments.
-/// If any argument is null, the result is null.
-class Concatenate extends NaryExpression {}
 
 /// Operator to combine a list of strings, optionally separating each string with the given separator.
 /// If either argument is null, the result is null. If the source list is empty, the result is an empty string ('').
@@ -1357,27 +1343,6 @@ class Collapse extends BinaryExpression {
 class Expand extends BinaryExpression {
   Expand({required super.operands});
 }
-
-/// Union operator returns the union of its arguments.
-/// This operator has two overloads: List, Interval.
-/// For the list overload, this operator returns a list with all unique elements from both arguments, using equality semantics, with null elements considered equal.
-/// For the interval overload, this operator returns the interval that starts at the earliest starting point in either argument and ends at the latest starting point in either argument. If the arguments do not overlap or meet, returns null.
-/// If either argument is null, the operation is performed as though the argument was an empty list.
-class Union extends NaryExpression {}
-
-/// Intersect operator returns the intersection of its arguments.
-/// This operator has two overloads: List, Interval.
-/// For the list overload, returns a list with the elements that appear in both lists using equality semantics. Null elements are considered equal for intersection purposes. The operator is defined with set semantics.
-/// For the interval overload, returns the interval that defines the overlapping portion of both arguments. If the arguments do not overlap, returns null.
-/// If either argument is null, the result is null.
-class Intersect extends NaryExpression {}
-
-/// Except operator returns the set difference of the two arguments.
-/// This operator has two overloads: List, List and Interval, Interval.
-/// For the list overload, returns a list with elements from the first operand not in the second, using equality semantics, with null elements considered equal. The operator is defined with set semantics.
-/// For the interval overload, returns the portion of the first interval that does not overlap with the second. If the second argument is properly contained within the first and does not start or end it, returns null.
-/// If the first argument is null, the result is null. If the second argument is null, the operation is performed as though the second argument was an empty list.
-class Except extends NaryExpression {}
 
 /// Exists operator returns true if the list contains any elements.
 /// If the argument is null, the result is false.

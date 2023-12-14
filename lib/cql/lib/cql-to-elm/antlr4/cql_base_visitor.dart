@@ -725,7 +725,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// | '(' expression ')';
   @override
   Expression visitQuerySource(QuerySourceContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     dynamic retrieve;
     IdentifierRef? qualifiedIdentifierExpression;
     Expression? expression;
@@ -735,6 +735,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       } else if (child is QualifiedIdentifierExpressionContext) {
         return visitQualifiedIdentifierExpression(child);
       } else {
+        print(child.runtimeType);
         final result = byContext(child);
         if (result is Expression) {
           return result;
@@ -1142,14 +1143,43 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
+  ///  The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitInFixSetExpression(InFixSetExpressionContext ctx) {
+  NaryExpression visitInFixSetExpression(InFixSetExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    Expression? left;
+    Expression? right;
+    String? operator;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        operator = child.text;
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          if (left == null) {
+            left = result;
+          } else {
+            right = result;
+          }
+        }
+      }
+    }
 
-    visitChildren(ctx);
+    if (left != null && right != null && operator != null) {
+      if (operator == '|' || operator == 'union') {
+        return Union(left: left, right: right);
+      } else if (operator == 'intersect') {
+        return Intersect(left: left, right: right);
+      } else if (operator == 'except') {
+        return Except(left: left, right: right);
+      } else {
+        throw ArgumentError('$thisNode Invalid InFixSetExpression');
+      }
+    } else {
+      throw ArgumentError('$thisNode Invalid InFixSetExpression');
+    }
   }
 
   /// The default implementation returns the result of calling

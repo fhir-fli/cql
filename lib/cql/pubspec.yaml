@@ -38,4 +38,3 @@ flutter:
   assets:
     - libraries_and_definitions/
     - libraries_and_definitions_json/
-    - libraries_and_definitions_testing/
