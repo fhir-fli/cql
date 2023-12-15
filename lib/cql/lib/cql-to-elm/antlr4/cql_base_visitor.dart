@@ -454,10 +454,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitReferentialOrTypeNameIdentifier(child);
       }
     }
+    // TODO(Dokotela): unclear what to do with qualifiers
     if (referentialOrTypeNameIdentifier != null) {
       return NamedTypeSpecifier(
-          namespace:
-              QName.fromNamespace(qualifier, referentialOrTypeNameIdentifier));
+          namespace: QName.fromFull(referentialOrTypeNameIdentifier));
     } else {
       throw ArgumentError('$thisNode Invalid NamedTypeSpecifier');
     }
@@ -735,7 +735,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       } else if (child is QualifiedIdentifierExpressionContext) {
         return visitQualifiedIdentifierExpression(child);
       } else {
-        print(child.runtimeType);
         final result = byContext(child);
         if (result is Expression) {
           return result;
@@ -1599,7 +1598,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       final result = byContext(child);
@@ -1825,33 +1824,32 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     final int thisNode = getNextNode();
     const String namespaceURI = 'urn:hl7-org:elm-types:r1';
     for (final child in ctx.children ?? <ParseTree>[]) {
-      final String? localPart = child is BooleanLiteralContext
-          ? 'Boolean'
-          : child is NullLiteralContext
-              ? 'Null'
-              : child is StringLiteralContext
-                  ? 'String'
-                  : child is NumberLiteralContext
-                      ? 'Decimal'
-                      : child is LongNumberLiteralContext
-                          ? 'Integer'
-                          : child is DateTimeLiteralContext
-                              ? 'DateTime'
-                              : child is DateLiteralContext
-                                  ? 'Date'
-                                  : child is TimeLiteralContext
-                                      ? 'Time'
-                                      : child is QuantityLiteralContext
-                                          ? 'Quantity'
-                                          : child is RatioLiteralContext
-                                              ? 'Ratio'
-                                              : null;
-      if (localPart != null) {
-        final result = byContext(child);
-        return Literal(
-            value: result,
-            valueType: QName(namespaceURI: namespaceURI, localPart: localPart));
-      }
+      if (child is BooleanLiteralContext) {
+        return LiteralBoolean(value: visitBooleanLiteral(child));
+      } else if (child is NullLiteralContext) {
+        return NullExpression();
+      } else if (child is StringLiteralContext) {
+        return LiteralString(value: visitStringLiteral(child));
+      } else if (child is NumberLiteralContext) {
+        final number = visitNumberLiteral(child);
+        if (number is int) {
+          return LiteralInteger(value: number);
+        } else if (number is double) {
+          return LiteralDecimal(value: number);
+        } else if (number is BigInt) {
+          return LiteralLongNumber(value: number as BigInt);
+        }
+      } else if (child is LongNumberLiteralContext) {
+        return LiteralLongNumber(value: visitLongNumberLiteral(child));
+      } else if (child is DateTimeLiteralContext) {
+        return LiteralDateTime(value: visitDateTimeLiteral(child));
+      } else if (child is DateLiteralContext) {
+        return LiteralDate(value: visitDateLiteral(child));
+      } else if (child is TimeLiteralContext) {
+        return LiteralTime(value: visitTimeLiteral(child));
+      } else if (child is QuantityLiteralContext) {
+        return LiteralQuantity(value: visitQuantityLiteral(child));
+      } else if (child is RatioLiteralContext) {}
     }
     throw ArgumentError('$thisNode Invalid LiteralTerm');
   }
@@ -1872,8 +1870,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitIntervalSelectorTerm(IntervalSelectorTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    Expression? low;
+    Expression? high;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        print(child.runtimeType);
+        final result = byContext(child);
+        if (result is Expression) {
+          if (low == null) {
+            low = result;
+          } else {
+            high = result;
+          }
+        }
+      }
+    }
 
-    visitChildren(ctx);
+    if (low != null && high != null) {
+      return IntervalExpression(low: low, high: high);
+    } else {
+      throw ArgumentError('$thisNode Invalid IntervalSelectorTerm');
+    }
   }
 
   /// The default implementation returns the result of calling
@@ -2064,7 +2081,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitBooleanLiteral(BooleanLiteralContext ctx) {
+  bool visitBooleanLiteral(BooleanLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
@@ -2086,7 +2103,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitStringLiteral(StringLiteralContext ctx) {
+  String visitStringLiteral(StringLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
@@ -2098,7 +2115,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitNumberLiteral(NumberLiteralContext ctx) {
+  num visitNumberLiteral(NumberLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
@@ -2110,22 +2127,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitLongNumberLiteral(LongNumberLiteralContext ctx) {
+  BigInt visitLongNumberLiteral(LongNumberLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
       return BigInt.parse(ctx.getChild(0)!.text!);
     }
+    throw ArgumentError('$thisNode Invalid LongNumberLiteral');
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitDateTimeLiteral(DateTimeLiteralContext ctx) {
-    printIf(ctx);
+  DateTime visitDateTimeLiteral(DateTimeLiteralContext ctx) {
+    printIf(ctx, true);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        return DateTime.parse(child.text!.replaceFirst('@', ''));
+      }
+    }
+    throw ArgumentError('$thisNode Invalid DateTimeLiteral');
   }
 
   /// The default implementation returns the result of calling
@@ -2263,8 +2285,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     List<Element> element = <Element>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       final result = byContext(child);
-      print('list ${child.runtimeType} ${result.runtimeType} ${child.text}');
-
       if (result is Element) {
         element.add(result);
       } else if (result is String) {
@@ -2387,15 +2407,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// Reserved words that are also type names
+  /// typeNameIdentifier: 'Code' | 'Concept' | 'date' | 'time';
   @override
-  dynamic visitTypeNameIdentifier(TypeNameIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
+  dynamic visitTypeNameIdentifier(TypeNameIdentifierContext ctx) =>
+      _noQuoteString(ctx.text);
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].

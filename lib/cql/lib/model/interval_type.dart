@@ -13,9 +13,9 @@ class IntervalType extends DataType {
   int get hashCode => 53 * pointType.hashCode;
 
   @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-    return o is IntervalType && pointType == o.pointType;
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is IntervalType && pointType == other.pointType;
   }
 
   @override

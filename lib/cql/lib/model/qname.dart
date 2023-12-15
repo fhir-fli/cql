@@ -13,20 +13,24 @@ class QName {
     required this.localPart,
   });
 
+  static String _nameSpace(String localPart, [String? nameSpaceUri]) =>
+      nameSpaceUri ??
+      (resourceTypeFromStringMap.keys.contains(localPart)
+          ? 'http://hl7.org/fhir'
+          : elmTypes.contains(localPart)
+              ? 'urn:hl7-org:elm-types:r1'
+              : '');
+
   factory QName.empty() => QName(namespaceURI: '', localPart: '', prefix: '');
 
   factory QName.fromLocalPart(String localPart) => QName(
         prefix: '',
-        namespaceURI: resourceTypeFromStringMap.keys.contains(localPart)
-            ? 'http://hl7.org/fhir'
-            : elmTypes.contains(localPart)
-                ? 'urn:hl7-org:elm-types:r1'
-                : '',
+        namespaceURI: _nameSpace(localPart),
         localPart: localPart,
       );
 
-  factory QName.fromNamespace(String? namespaceURI, String localPart) =>
-      QName(namespaceURI: namespaceURI ?? '', localPart: localPart, prefix: '');
+  factory QName.fromNamespace(String? namespaceURI, String localPart) => QName(
+      namespaceURI: _nameSpace(localPart), localPart: localPart, prefix: '');
 
   factory QName.fromFull(String? qNameAsString) {
     if (qNameAsString?.isEmpty ?? true) {
@@ -43,7 +47,10 @@ class QName {
           localPart: qNameAsString.substring(endOfNamespaceURI + 1),
           prefix: qNameAsString.substring(0, beginningOfNamespaceURI));
     } else {
-      return QName(namespaceURI: '', localPart: qNameAsString, prefix: '');
+      return QName(
+          namespaceURI: _nameSpace(qNameAsString),
+          localPart: qNameAsString,
+          prefix: '');
     }
   }
 

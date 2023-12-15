@@ -15,6 +15,7 @@ export 'instance_element.dart';
 export 'instance.dart';
 export 'intersect.dart';
 export 'interval_type_specifier.dart';
+export 'interval.dart';
 export 'let_clause.dart';
 export 'list_type_specifier.dart';
 export 'literal.dart';
