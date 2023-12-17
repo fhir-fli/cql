@@ -23,4 +23,7 @@ class Union extends NaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {'type': type, 'left': left, 'right': right};
+
+  @override
+  String toString() => 'Union(${left.toString()}, ${right.toString()})';
 }

@@ -1,0 +1,64 @@
+import '../../cql.dart';
+
+/// The IncludeElement type specifies include information for an include within
+/// a retrieve.
+class IncludeElement extends Expression {
+  /// The localId of another Retrieve that specifies the data to be included in
+  /// this retrieve. The target Retrieve will have an includedIn attribute
+  /// referencing this includeElement.
+  String? includeFrom;
+
+  /// The relatedDataType attribute specifies the type of the related data
+  /// being requested.
+  QName relatedDataType;
+
+  /// The relatedProperty attribute specifies which property of the
+  /// relatedDataType contains the relatedId for the clinical statement.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? relatedProperty;
+
+  /// The relatedSearch attribute specifies the name of the search path to use
+  /// for searching for data of the relatedDataType.
+  String? relatedSearch;
+
+  /// The isReverse attribute indicates that the include is reverse, i.e. that
+  /// the relatedDataType is referencing the data being retrieved, rather than
+  /// the retrieved data referencing the relatedDataType.
+  bool? isReverse;
+
+  IncludeElement({
+    this.includeFrom,
+    required this.relatedDataType,
+    this.relatedProperty,
+    this.relatedSearch,
+    this.isReverse,
+  });
+
+  factory IncludeElement.fromJson(Map<String, dynamic> json) => IncludeElement(
+        includeFrom: json['includeFrom'],
+        relatedDataType: QName.fromFull(json['relatedDataType']),
+        relatedProperty: json['relatedProperty'],
+        relatedSearch: json['relatedSearch'],
+        isReverse: json['isReverse'],
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('includeFrom', includeFrom);
+    val['relatedDataType'] = relatedDataType.toJson();
+    writeNotNull('relatedProperty', relatedProperty);
+    writeNotNull('relatedSearch', relatedSearch);
+    writeNotNull('isReverse', isReverse);
+    return val;
+  }
+}

@@ -1,5 +1,6 @@
 export 'code_def.dart';
 export 'code_system_def.dart';
+export 'concept_def.dart';
 export 'context_def.dart';
 export 'include_def.dart';
 export 'library.dart';
