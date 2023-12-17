@@ -210,6 +210,55 @@ class ModelImporterOptions {
       }
     }
   }
+
+  Map<String, String> exportProperties() {
+    final properties = <String, String>{};
+
+    if (model != null) {
+      properties['model'] = model!;
+    }
+
+    if (normalizePrefix != null) {
+      properties['normalize-prefix'] = normalizePrefix!;
+    }
+
+    if (choiceTypePolicy?.toString() != null) {
+      properties['choicetype-policy'] = choiceTypePolicy!.toString();
+    }
+
+    if (simpleTypeRestrictionPolicy?.toString() != null) {
+      properties['simpletype-restriction-policy'] =
+          simpleTypeRestrictionPolicy!.toString();
+    }
+
+    if (elementRedeclarationPolicy?.toString() != null) {
+      properties['element-redeclaration-policy'] =
+          elementRedeclarationPolicy!.toString();
+    }
+
+    if (versionPolicy?.toString() != null) {
+      properties['version-policy'] = versionPolicy!.toString();
+    }
+
+    if (typeMap.isNotEmpty) {
+      for (final entry in typeMap.entries) {
+        final key = entry.key.toString();
+        final value = entry.value;
+
+        if (value.relationship == ModelRelationship.retype) {
+          properties['retype.$key'] = value.targetSystemClass;
+        } else if (value.relationship == ModelRelationship.extend) {
+          properties['extend.$key'] = value.targetSystemClass;
+          for (final element in value.targetClassElementMap.keys) {
+            final elementValue = value.targetClassElementMap[element]!;
+            properties['extend.$key[$element]'] = elementValue;
+          }
+        }
+      }
+    }
+
+    return properties;
+  }
 }
 
 enum SimpleTypeRestrictionPolicy
