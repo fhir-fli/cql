@@ -7,38 +7,40 @@ Future<void> main(List<String> args) async {
   final Directory dir = Directory('.');
   final List<FileSystemEntity> files = dir.listSync();
   for (final directory in files) {
-    final dirFiles = (directory as Directory).listSync();
-    for (final file in dirFiles) {
-      if (file.path.endsWith('.xsd') && !file.path.endsWith('types.xsd')) {
-        final newPath = file.path.replaceAll('.xsd', '');
-        await generateClasses(file.path);
-        //     String fileNameString = '';
-        //     fileNames.sort((a, b) => a.compareTo(b));
-        //     for (final fileName in fileNames) {
-        //       fileNameString += "export '$fileName.dart';\n";
-        //     }
-        //     await File('../../xsd/$dirName/$dirName.dart')
-        //         .writeAsString(fileNameString);
-        //     final generatedFiles = generationDir.listSync();
-        //     for (final generatedFile in generatedFiles) {
-        //       if (generatedFile.path.endsWith('.dart')) {
-        //         String generatedCode = await File(generatedFile.path).readAsString();
-        //         bool contains = false;
-        //         for (final className in generatedClasses.keys) {
-        //           if (generatedCode.contains(className) &&
-        //               !generatedCode.contains('class $className')) {
-        //             contains = true;
-        //           }
-        //         }
-        //         if (!contains) {
-        //           generatedCode =
-        //               generatedCode.replaceAll("import '$dirName.dart';", '');
-        //         }
-        //         await File(generatedFile.path).writeAsString(generatedCode);
-        //       }
-        //     }
-        //     generatedClasses.clear();
-        //     fileNames.clear();
+    if (directory is Directory) {
+      final dirFiles = (directory).listSync();
+      for (final file in dirFiles) {
+        if (file.path.endsWith('.xsd') && !file.path.endsWith('types.xsd')) {
+          final newPath = file.path.replaceAll('.xsd', '');
+          await generateClasses(file.path);
+          //     String fileNameString = '';
+          //     fileNames.sort((a, b) => a.compareTo(b));
+          //     for (final fileName in fileNames) {
+          //       fileNameString += "export '$fileName.dart';\n";
+          //     }
+          //     await File('../../xsd/$dirName/$dirName.dart')
+          //         .writeAsString(fileNameString);
+          //     final generatedFiles = generationDir.listSync();
+          //     for (final generatedFile in generatedFiles) {
+          //       if (generatedFile.path.endsWith('.dart')) {
+          //         String generatedCode = await File(generatedFile.path).readAsString();
+          //         bool contains = false;
+          //         for (final className in generatedClasses.keys) {
+          //           if (generatedCode.contains(className) &&
+          //               !generatedCode.contains('class $className')) {
+          //             contains = true;
+          //           }
+          //         }
+          //         if (!contains) {
+          //           generatedCode =
+          //               generatedCode.replaceAll("import '$dirName.dart';", '');
+          //         }
+          //         await File(generatedFile.path).writeAsString(generatedCode);
+          //       }
+          //     }
+          //     generatedClasses.clear();
+          //     fileNames.clear();
+        }
       }
     }
   }
