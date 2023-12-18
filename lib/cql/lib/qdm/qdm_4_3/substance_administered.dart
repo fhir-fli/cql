@@ -1,10 +1,8 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-///  Data elements that meet criteria using this datatype should document
-/// 				that the substance indicated by the QDM category and its corresponding value set was
-/// 				actually given to the patient. 
+/// Data elements that meet criteria using this datatype should document
+/// that the substance indicated by the QDM category and its corresponding value set was
+/// actually given to the patient.
 
 class SubstanceAdministered {
   final LiteralDateTime? startDatetime;
@@ -15,11 +13,11 @@ class SubstanceAdministered {
   final LiteralCode? route;
 
   SubstanceAdministered({
- this.startDatetime,
- this.stopDatetime,
- this.negationRationale,
- this.dose,
- this.frequency,
- this.route,
+    this.startDatetime,
+    this.stopDatetime,
+    this.negationRationale,
+    this.dose,
+    this.frequency,
+    this.route,
   });
 }

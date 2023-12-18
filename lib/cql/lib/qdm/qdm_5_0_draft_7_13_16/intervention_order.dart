@@ -1,10 +1,8 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-///  Data elements that meet criteria using this datatype should document
-/// 				a request to perform the intervention indicated by the QDM category and its
-/// 				corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// a request to perform the intervention indicated by the QDM category and its
+/// corresponding value set.
 
 class InterventionOrder {
   final LiteralDateTime? authorDatetime;
@@ -12,8 +10,8 @@ class InterventionOrder {
   final LiteralCode? negationRationale;
 
   InterventionOrder({
- this.authorDatetime,
- this.reason,
- this.negationRationale,
+    this.authorDatetime,
+    this.reason,
+    this.negationRationale,
   });
 }

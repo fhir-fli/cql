@@ -1,8 +1,8 @@
 import 'qdm_5_0_draft_5_23_16.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				a recommendation for the laboratory test indicated by the QDM category and its
-/// 				corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// a recommendation for the laboratory test indicated by the QDM category and its
+/// corresponding value set.
 
 class LaboratoryTestRecommended {
   final Interval? interval;
@@ -10,8 +10,8 @@ class LaboratoryTestRecommended {
   final CodeableConcept? reason;
 
   LaboratoryTestRecommended({
- this.interval,
- this.method,
- this.reason,
+    this.interval,
+    this.method,
+    this.reason,
   });
 }

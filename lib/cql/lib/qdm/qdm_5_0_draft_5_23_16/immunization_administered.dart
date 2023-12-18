@@ -2,9 +2,9 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_0_draft_5_23_16.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				that the vaccine indicated by the QDM category and its corresponding value set was
-/// 				actually administered to the patient. 
+/// Data elements that meet criteria using this datatype should document
+/// that the vaccine indicated by the QDM category and its corresponding value set was
+/// actually administered to the patient.
 
 class ImmunizationAdministered {
   final Interval? interval;
@@ -13,9 +13,9 @@ class ImmunizationAdministered {
   final LiteralQuantity? dose;
 
   ImmunizationAdministered({
- this.interval,
- this.reason,
- this.route,
- this.dose,
+    this.interval,
+    this.reason,
+    this.route,
+    this.dose,
   });
 }

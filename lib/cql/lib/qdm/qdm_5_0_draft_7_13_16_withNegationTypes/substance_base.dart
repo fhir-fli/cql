@@ -1,7 +1,5 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
 class SubstanceBase {
   final LiteralQuantity? dose;
   final LiteralCode? frequency;
@@ -9,9 +7,9 @@ class SubstanceBase {
   final LiteralCode? reason;
 
   SubstanceBase({
- this.dose,
- this.frequency,
- this.route,
- this.reason,
+    this.dose,
+    this.frequency,
+    this.route,
+    this.reason,
   });
 }

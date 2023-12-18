@@ -1,8 +1,8 @@
 import 'qdm_5_0_draft.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				a recommendation for the physical exam indicated by the QDM category and its
-/// 				corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// a recommendation for the physical exam indicated by the QDM category and its
+/// corresponding value set.
 
 class PhysicalExamRecommended {
   final Interval? interval;
@@ -12,10 +12,10 @@ class PhysicalExamRecommended {
   final CodeableConcept? anatomicalLocationSite;
 
   PhysicalExamRecommended({
- this.interval,
- this.negationRationale,
- this.reason,
- this.method,
- this.anatomicalLocationSite,
+    this.interval,
+    this.negationRationale,
+    this.reason,
+    this.method,
+    this.anatomicalLocationSite,
   });
 }

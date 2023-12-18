@@ -1,15 +1,13 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document an
-/// 				unexpected or dangerous reaction to the
-/// 				intervention indicated by
-/// 				the QDM category and its corresponding
-/// 				value set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document an
+/// unexpected or dangerous reaction to the
+/// intervention indicated by
+/// the QDM category and its corresponding
+/// value set.
+///
 
 class InterventionAdverseEvent {
   final LiteralDateTime? startDatetime;
@@ -17,8 +15,8 @@ class InterventionAdverseEvent {
   final LiteralConcept? reaction;
 
   InterventionAdverseEvent({
- this.startDatetime,
- this.stopDatetime,
- this.reaction,
+    this.startDatetime,
+    this.stopDatetime,
+    this.reaction,
   });
 }

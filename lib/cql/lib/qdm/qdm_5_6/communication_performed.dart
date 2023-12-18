@@ -2,9 +2,9 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_6.dart';
 
-///  To meet criteria using this datatype, the communication indicated by
-/// 				the Communication QDM category is a conveyance of information from one entity (e.g.,
-/// 				person, organization, or device) to another. 
+/// To meet criteria using this datatype, the communication indicated by
+/// the Communication QDM category is a conveyance of information from one entity (e.g.,
+/// person, organization, or device) to another.
 
 class CommunicationPerformed {
   final LiteralDateTime? authorDatetime;
@@ -18,14 +18,14 @@ class CommunicationPerformed {
   final LiteralString? relatedTo;
 
   CommunicationPerformed({
- this.authorDatetime,
- this.category,
- this.medium,
- this.sender,
- this.recipient,
- this.sentDatetime,
- this.receivedDatetime,
- this.negationRationale,
- this.relatedTo,
+    this.authorDatetime,
+    this.category,
+    this.medium,
+    this.sender,
+    this.recipient,
+    this.sentDatetime,
+    this.receivedDatetime,
+    this.negationRationale,
+    this.relatedTo,
   });
 }

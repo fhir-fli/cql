@@ -1,11 +1,9 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-///  Data elements that meet criteria using this datatype should document
-/// 				the completion of the procedure indicated by the QDM category and its corresponding
-/// 				value set. Timing: The Relevant Period addresses: startTime - the time the procedure
-/// 				begins; stopTime - the time the procedure is completed 
+/// Data elements that meet criteria using this datatype should document
+/// the completion of the procedure indicated by the QDM category and its corresponding
+/// value set. Timing: The Relevant Period addresses: startTime - the time the procedure
+/// begins; stopTime - the time the procedure is completed
 
 class ProcedurePerformed {
   final LiteralDateTimeInterval? relevantPeriod;
@@ -16,11 +14,11 @@ class ProcedurePerformed {
   final LiteralDateTime? incisionDatetime;
 
   ProcedurePerformed({
- this.relevantPeriod,
- this.result,
- this.status,
- this.radiationDuration,
- this.radiationDosage,
- this.incisionDatetime,
+    this.relevantPeriod,
+    this.result,
+    this.status,
+    this.radiationDuration,
+    this.radiationDosage,
+    this.incisionDatetime,
   });
 }

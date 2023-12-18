@@ -1,14 +1,12 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document a
-/// 				recommendation for the substance indicated
-/// 				by the QDM category and
-/// 				its corresponding value set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document a
+/// recommendation for the substance indicated
+/// by the QDM category and
+/// its corresponding value set.
+///
 
 class SubstanceRecommended {
   final LiteralDateTime? startDatetime;
@@ -22,14 +20,14 @@ class SubstanceRecommended {
   final LiteralConcept? route;
 
   SubstanceRecommended({
- this.startDatetime,
- this.stopDatetime,
- this.negationRationale,
- this.reason,
- this.dose,
- this.frequency,
- this.method,
- this.refills,
- this.route,
+    this.startDatetime,
+    this.stopDatetime,
+    this.negationRationale,
+    this.reason,
+    this.dose,
+    this.frequency,
+    this.method,
+    this.refills,
+    this.route,
   });
 }

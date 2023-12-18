@@ -1,8 +1,8 @@
 import 'qdm_5_0_draft_5_23_16.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				an unexpected or dangerous reaction to the laboratory test indicated by the QDM
-/// 				category and its corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// an unexpected or dangerous reaction to the laboratory test indicated by the QDM
+/// category and its corresponding value set.
 
 class LaboratoryTestAdverseEvent {
   final Interval? interval;
@@ -10,8 +10,8 @@ class LaboratoryTestAdverseEvent {
   final LaboratoryTestPerformed laboratoryTestPerformed;
 
   LaboratoryTestAdverseEvent({
- this.interval,
- this.reaction,
-required this.laboratoryTestPerformed,
+    this.interval,
+    this.reaction,
+    required this.laboratoryTestPerformed,
   });
 }

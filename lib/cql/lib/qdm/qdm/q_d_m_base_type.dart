@@ -11,11 +11,11 @@ class QDMBaseType {
   final CodeableConcept? providerPreference;
 
   QDMBaseType({
-required this.code,
-required this.startDatetime,
- this.stopDatetime,
- this.negationRationale,
- this.patientPreference,
- this.providerPreference,
+    required this.code,
+    required this.startDatetime,
+    this.stopDatetime,
+    this.negationRationale,
+    this.patientPreference,
+    this.providerPreference,
   });
 }

@@ -1,9 +1,7 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
 /// a person with a formal responsibility in the provisioning of
-/// 				healthcare or related services
+/// healthcare or related services
 
 class Practitioner {
   final LiteralCode? role;
@@ -11,8 +9,8 @@ class Practitioner {
   final LiteralCode? qualification;
 
   Practitioner({
- this.role,
- this.specialty,
- this.qualification,
+    this.role,
+    this.specialty,
+    this.qualification,
   });
 }

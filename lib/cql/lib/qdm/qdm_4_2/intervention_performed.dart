@@ -1,14 +1,12 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document the
-/// 				completion of the intervention indicated
-/// 				by the QDM category and its
-/// 				corresponding value set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document the
+/// completion of the intervention indicated
+/// by the QDM category and its
+/// corresponding value set.
+///
 
 class InterventionPerformed {
   final LiteralDateTime? startDatetime;
@@ -19,11 +17,11 @@ class InterventionPerformed {
   final LiteralConcept? status;
 
   InterventionPerformed({
- this.startDatetime,
- this.stopDatetime,
- this.negationRationale,
- this.reason,
- this.result,
- this.status,
+    this.startDatetime,
+    this.stopDatetime,
+    this.negationRationale,
+    this.reason,
+    this.result,
+    this.status,
   });
 }

@@ -11,11 +11,11 @@ class LaboratoryTestPerformed {
   final CodeableConcept? reason;
 
   LaboratoryTestPerformed({
-required this.status,
- this.method,
-required this.result,
- this.resultCode,
- this.resultValue,
- this.reason,
+    required this.status,
+    this.method,
+    required this.result,
+    this.resultCode,
+    this.resultValue,
+    this.reason,
   });
 }

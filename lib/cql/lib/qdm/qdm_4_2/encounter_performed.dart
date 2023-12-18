@@ -1,12 +1,12 @@
 import 'package:cql/engine/types/types.dart';
 
 ///
-/// 				Data elements that meet criteria using this
-/// 				datatype should document that the encounter indicated by the QDM
-/// 				category and its corresponding value set has been completed.
-/// 				NOTE:
-/// 				This datatype uses admissionDatetime and dischargeDatetime rather
-/// 				than startDatetime and stopDatetime, respectively.
+/// Data elements that meet criteria using this
+/// datatype should document that the encounter indicated by the QDM
+/// category and its corresponding value set has been completed.
+/// NOTE:
+/// This datatype uses admissionDatetime and dischargeDatetime rather
+/// than startDatetime and stopDatetime, respectively.
 ///
 
 class EncounterPerformed {

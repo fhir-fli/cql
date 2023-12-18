@@ -2,10 +2,10 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_6.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				that the medications indicated by the QDM category and its corresponding value set
-/// 				should be taken by or given to the patient after being discharged from an inpatient
-/// 				encounter. 
+/// Data elements that meet criteria using this datatype should document
+/// that the medications indicated by the QDM category and its corresponding value set
+/// should be taken by or given to the patient after being discharged from an inpatient
+/// encounter.
 
 class MedicationDischarge {
   final LiteralDateTime? authorDatetime;
@@ -20,15 +20,15 @@ class MedicationDischarge {
   final QDMEntity? recorder;
 
   MedicationDischarge({
- this.authorDatetime,
- this.refills,
- this.dosage,
- this.supply,
- this.frequency,
- this.daysSupplied,
- this.route,
- this.negationRationale,
- this.prescriber,
- this.recorder,
+    this.authorDatetime,
+    this.refills,
+    this.dosage,
+    this.supply,
+    this.frequency,
+    this.daysSupplied,
+    this.route,
+    this.negationRationale,
+    this.prescriber,
+    this.recorder,
   });
 }

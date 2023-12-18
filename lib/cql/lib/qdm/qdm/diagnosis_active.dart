@@ -7,9 +7,9 @@ class DiagnosisActive {
   final CodeableConcept? ordinality;
 
   DiagnosisActive({
- this.anatomicalLocation,
- this.laterality,
- this.severity,
- this.ordinality,
+    this.anatomicalLocation,
+    this.laterality,
+    this.severity,
+    this.ordinality,
   });
 }

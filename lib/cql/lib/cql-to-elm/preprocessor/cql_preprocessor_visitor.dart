@@ -36,7 +36,7 @@
 //     if (libraryInfo.getNamespaceName() != null) {
 //       identifier.system = resolveNamespaceUri(
 //           libraryInfo.getNamespaceName(), true);
-      
+
 //       .setSystem(libraryBuilder.resolveNamespaceUri(
 //           libraryInfo.getNamespaceName(), true));
 //     } else if (libraryBuilder.getNamespaceInfo() != null) {

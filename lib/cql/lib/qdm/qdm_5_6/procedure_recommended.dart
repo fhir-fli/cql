@@ -2,9 +2,9 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_6.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				the recommendation for the procedure indicated by the QDM category and its
-/// 				corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// the recommendation for the procedure indicated by the QDM category and its
+/// corresponding value set.
 
 class ProcedureRecommended {
   final LiteralDateTime? authorDatetime;
@@ -15,11 +15,11 @@ class ProcedureRecommended {
   final QDMEntity? requester;
 
   ProcedureRecommended({
- this.authorDatetime,
- this.reason,
- this.anatomicalLocationSite,
- this.rank,
- this.negationRationale,
- this.requester,
+    this.authorDatetime,
+    this.reason,
+    this.anatomicalLocationSite,
+    this.rank,
+    this.negationRationale,
+    this.requester,
   });
 }

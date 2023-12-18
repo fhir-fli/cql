@@ -1,10 +1,8 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-///  Data elements that meet criteria using this datatype should document
-/// 				a request to a pharmacy to provide the medication indicated by the QDM category and
-/// 				its corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// a request to a pharmacy to provide the medication indicated by the QDM category and
+/// its corresponding value set.
 
 class MedicationOrder {
   final LiteralDateTime activeDatetime;
@@ -14,10 +12,10 @@ class MedicationOrder {
   final LiteralCode? reason;
 
   MedicationOrder({
-required this.activeDatetime,
-required this.authorTime,
- this.refills,
- this.method,
- this.reason,
+    required this.activeDatetime,
+    required this.authorTime,
+    this.refills,
+    this.method,
+    this.reason,
   });
 }

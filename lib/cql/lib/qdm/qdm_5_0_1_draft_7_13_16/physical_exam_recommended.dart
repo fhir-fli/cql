@@ -1,14 +1,12 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document a
-/// 				recommendation for the physical exam
-/// 				indicated by the QDM category
-/// 				and its corresponding value set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document a
+/// recommendation for the physical exam
+/// indicated by the QDM category
+/// and its corresponding value set.
+///
 
 class PhysicalExamRecommended {
   final LiteralDateTime? authorDatetime;
@@ -18,10 +16,10 @@ class PhysicalExamRecommended {
   final LiteralCode? negationRationale;
 
   PhysicalExamRecommended({
- this.authorDatetime,
- this.reason,
- this.method,
- this.anatomicalLocationSite,
- this.negationRationale,
+    this.authorDatetime,
+    this.reason,
+    this.method,
+    this.anatomicalLocationSite,
+    this.negationRationale,
   });
 }

@@ -7,7 +7,7 @@ class QDMEntity {
   final Identifier? identifier;
 
   QDMEntity({
- this.id,
- this.identifier,
+    this.id,
+    this.identifier,
   });
 }

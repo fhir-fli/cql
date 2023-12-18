@@ -2,10 +2,10 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_0_draft.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				that the encounter indicated by the QDM category and its corresponding value set has
-/// 				been completed. NOTE: "length of stay" has been removed, the use of length(interval)
-/// 				is recommended. 
+/// Data elements that meet criteria using this datatype should document
+/// that the encounter indicated by the QDM category and its corresponding value set has
+/// been completed. NOTE: "length of stay" has been removed, the use of length(interval)
+/// is recommended.
 
 class EncounterPerformed {
   final LiteralDateTime admissionDatetime;
@@ -19,14 +19,14 @@ class EncounterPerformed {
   final Diagnosis? principalDiagnosis;
 
   EncounterPerformed({
-required this.admissionDatetime,
-required this.dischargeDatetime,
- this.dischargeStatus,
- this.facilityLocation,
- this.facilityLocationArrivalDatetime,
- this.facilityLocationDepartureDatetime,
- this.reason,
- this.diagnosis,
- this.principalDiagnosis,
+    required this.admissionDatetime,
+    required this.dischargeDatetime,
+    this.dischargeStatus,
+    this.facilityLocation,
+    this.facilityLocationArrivalDatetime,
+    this.facilityLocationDepartureDatetime,
+    this.reason,
+    this.diagnosis,
+    this.principalDiagnosis,
   });
 }

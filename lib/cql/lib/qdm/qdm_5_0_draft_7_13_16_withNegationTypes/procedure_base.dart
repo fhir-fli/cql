@@ -1,7 +1,5 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
 class ProcedureBase {
   final LiteralCode? anatomicalApproachSite;
   final LiteralCode? anatomicalLocationSite;
@@ -10,10 +8,10 @@ class ProcedureBase {
   final LiteralCode? reason;
 
   ProcedureBase({
- this.anatomicalApproachSite,
- this.anatomicalLocationSite,
- this.method,
- this.ordinality,
- this.reason,
+    this.anatomicalApproachSite,
+    this.anatomicalLocationSite,
+    this.method,
+    this.ordinality,
+    this.reason,
   });
 }

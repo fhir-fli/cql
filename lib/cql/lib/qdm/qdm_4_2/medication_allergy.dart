@@ -1,17 +1,15 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document an
-/// 				immunologically mediated reaction that
-/// 				exhibits specificity and
-/// 				recurrence on re-exposure to the offending
-/// 				medication indicated by
-/// 				the QDM category and its corresponding value
-/// 				set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document an
+/// immunologically mediated reaction that
+/// exhibits specificity and
+/// recurrence on re-exposure to the offending
+/// medication indicated by
+/// the QDM category and its corresponding value
+/// set.
+///
 
 class MedicationAllergy {
   final LiteralDateTime? startDatetime;
@@ -19,8 +17,8 @@ class MedicationAllergy {
   final LiteralConcept? reaction;
 
   MedicationAllergy({
- this.startDatetime,
- this.stopDatetime,
- this.reaction,
+    this.startDatetime,
+    this.stopDatetime,
+    this.reaction,
   });
 }

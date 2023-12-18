@@ -13,13 +13,13 @@ class EncounterPerformed {
   final CodeableConcept? reason;
 
   EncounterPerformed({
-required this.admissionDatetime,
-required this.dischargeDatetime,
- this.dischargeStatus,
- this.facilityLocation,
- this.facilityLocationArrivalDatetime,
- this.facilityLocationDepartureDatetime,
- this.lengthOfStay,
- this.reason,
+    required this.admissionDatetime,
+    required this.dischargeDatetime,
+    this.dischargeStatus,
+    this.facilityLocation,
+    this.facilityLocationArrivalDatetime,
+    this.facilityLocationDepartureDatetime,
+    this.lengthOfStay,
+    this.reason,
   });
 }

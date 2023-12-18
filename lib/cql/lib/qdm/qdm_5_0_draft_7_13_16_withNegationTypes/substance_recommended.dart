@@ -1,10 +1,8 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-///  Data elements that meet criteria using this datatype should document
-/// 				a recommendation for the substance indicated by the QDM category and its
-/// 				corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// a recommendation for the substance indicated by the QDM category and its
+/// corresponding value set.
 
 class SubstanceRecommended {
   final LiteralDateTime? authorTime;
@@ -12,8 +10,8 @@ class SubstanceRecommended {
   final LiteralCode? refills;
 
   SubstanceRecommended({
- this.authorTime,
- this.method,
- this.refills,
+    this.authorTime,
+    this.method,
+    this.refills,
   });
 }

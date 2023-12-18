@@ -2,16 +2,16 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_0_2_draft_11_11_16.dart';
 
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document the
-/// 				completion of the diagnostic study
-/// 				indicated by the QDM category and
-/// 				its corresponding value set.
-/// 				Timing: The Relevant Period addresses:
-/// 					startTime – When the diagnostic study is initiated
-/// 					stopTime – when the diagnostic study is completed
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document the
+/// completion of the diagnostic study
+/// indicated by the QDM category and
+/// its corresponding value set.
+/// Timing: The Relevant Period addresses:
+/// startTime – When the diagnostic study is initiated
+/// stopTime – when the diagnostic study is completed
+///
 
 class DiagnosticStudyPerformed {
   final LiteralDateTime? authorDatetime;
@@ -28,17 +28,17 @@ class DiagnosticStudyPerformed {
   final Component? component;
 
   DiagnosticStudyPerformed({
- this.authorDatetime,
- this.relevantPeriod,
- this.reason,
- this.result,
- this.resultDatetime,
- this.status,
- this.radiationDosage,
- this.radiationDuration,
- this.method,
- this.facilityLocation,
- this.negationRationale,
- this.component,
+    this.authorDatetime,
+    this.relevantPeriod,
+    this.reason,
+    this.result,
+    this.resultDatetime,
+    this.status,
+    this.radiationDosage,
+    this.radiationDuration,
+    this.method,
+    this.facilityLocation,
+    this.negationRationale,
+    this.component,
   });
 }

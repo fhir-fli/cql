@@ -1,7 +1,7 @@
 import 'package:cql/engine/types/types.dart';
 
-///  This attribute type is new to QDM 5.0. It represents a facility
-/// 				location and is used to capture location information for an encounter
+/// This attribute type is new to QDM 5.0. It represents a facility
+/// location and is used to capture location information for an encounter
 
 class FacilityLocation {
   final LiteralCode code;

@@ -2,9 +2,9 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_6.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				a request to a pharmacy to provide the medication indicated by the QDM category and
-/// 				its corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// a request to a pharmacy to provide the medication indicated by the QDM category and
+/// its corresponding value set.
 
 class MedicationOrder {
   final LiteralDateTime authorDatetime;
@@ -22,18 +22,18 @@ class MedicationOrder {
   final LiteralString? relatedTo;
 
   MedicationOrder({
-required this.authorDatetime,
- this.relevantPeriod,
- this.refills,
- this.dosage,
- this.supply,
- this.frequency,
- this.daysSupplied,
- this.route,
- this.setting,
- this.reason,
- this.prescriber,
- this.negationRationale,
- this.relatedTo,
+    required this.authorDatetime,
+    this.relevantPeriod,
+    this.refills,
+    this.dosage,
+    this.supply,
+    this.frequency,
+    this.daysSupplied,
+    this.route,
+    this.setting,
+    this.reason,
+    this.prescriber,
+    this.negationRationale,
+    this.relatedTo,
   });
 }

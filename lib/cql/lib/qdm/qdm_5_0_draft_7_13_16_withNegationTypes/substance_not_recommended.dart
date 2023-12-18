@@ -1,17 +1,15 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-///  Data elements that meet criteria using this datatype should document
-/// 				that the substance indicated by the QDM category and its corresponding value set was
-/// 				ot recommended. 
+/// Data elements that meet criteria using this datatype should document
+/// that the substance indicated by the QDM category and its corresponding value set was
+/// ot recommended.
 
 class SubstanceNotRecommended {
   final LiteralDateTime? authorTime;
   final LiteralCode? negationRationale;
 
   SubstanceNotRecommended({
- this.authorTime,
- this.negationRationale,
+    this.authorTime,
+    this.negationRationale,
   });
 }

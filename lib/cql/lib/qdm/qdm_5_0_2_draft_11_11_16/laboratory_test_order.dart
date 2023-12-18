@@ -1,14 +1,12 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document a
-/// 				request for the laboratory test indicated
-/// 				by the QDM category and
-/// 				its corresponding value set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document a
+/// request for the laboratory test indicated
+/// by the QDM category and
+/// its corresponding value set.
+///
 
 class LaboratoryTestOrder {
   final LiteralDateTime? authorDatetime;
@@ -17,9 +15,9 @@ class LaboratoryTestOrder {
   final LiteralCode? negationRationale;
 
   LaboratoryTestOrder({
- this.authorDatetime,
- this.reason,
- this.method,
- this.negationRationale,
+    this.authorDatetime,
+    this.reason,
+    this.method,
+    this.negationRationale,
   });
 }

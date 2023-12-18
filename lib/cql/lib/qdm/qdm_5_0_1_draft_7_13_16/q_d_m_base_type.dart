@@ -1,7 +1,5 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
 class QDMBaseType {
   final LiteralCode id;
   final LiteralCode code;
@@ -10,10 +8,10 @@ class QDMBaseType {
   final LiteralCode? recorder;
 
   QDMBaseType({
-required this.id,
-required this.code,
-required this.patientId,
- this.reporter,
- this.recorder,
+    required this.id,
+    required this.code,
+    required this.patientId,
+    this.reporter,
+    this.recorder,
   });
 }

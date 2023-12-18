@@ -1,7 +1,5 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
 class MedicationBase {
   final LiteralQuantity? dosage;
   final LiteralQuantity? supply;
@@ -9,9 +7,9 @@ class MedicationBase {
   final LiteralCode? route;
 
   MedicationBase({
- this.dosage,
- this.supply,
- this.frequency,
- this.route,
+    this.dosage,
+    this.supply,
+    this.frequency,
+    this.route,
   });
 }

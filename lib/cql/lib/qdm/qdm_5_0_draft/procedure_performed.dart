@@ -2,9 +2,9 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_0_draft.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				the completion of the procedure indicated by the QDM category and its corresponding
-/// 				value set. 
+/// Data elements that meet criteria using this datatype should document
+/// the completion of the procedure indicated by the QDM category and its corresponding
+/// value set.
 
 class ProcedurePerformed {
   final Interval? interval;
@@ -21,17 +21,17 @@ class ProcedurePerformed {
   final LiteralDateTime? incisionDatetime;
 
   ProcedurePerformed({
- this.interval,
- this.negationRationale,
- this.reason,
- this.method,
- this.result,
- this.status,
- this.anatomicalApproachSite,
- this.anatomicalLocationSite,
- this.ordinality,
- this.radiationDuration,
- this.radiationDosage,
- this.incisionDatetime,
+    this.interval,
+    this.negationRationale,
+    this.reason,
+    this.method,
+    this.result,
+    this.status,
+    this.anatomicalApproachSite,
+    this.anatomicalLocationSite,
+    this.ordinality,
+    this.radiationDuration,
+    this.radiationDosage,
+    this.incisionDatetime,
   });
 }

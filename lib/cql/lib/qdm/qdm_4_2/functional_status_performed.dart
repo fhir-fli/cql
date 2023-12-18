@@ -1,15 +1,13 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document the
-/// 				completion of the functional status
-/// 				assessment indicated by the QDM
-/// 				category and its corresponding value
-/// 				set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document the
+/// completion of the functional status
+/// assessment indicated by the QDM
+/// category and its corresponding value
+/// set.
+///
 
 class FunctionalStatusPerformed {
   final LiteralDateTime? startDatetime;
@@ -20,11 +18,11 @@ class FunctionalStatusPerformed {
   final dynamic result;
 
   FunctionalStatusPerformed({
- this.startDatetime,
- this.stopDatetime,
- this.negationRationale,
- this.reason,
- this.method,
- this.result,
+    this.startDatetime,
+    this.stopDatetime,
+    this.negationRationale,
+    this.reason,
+    this.method,
+    this.result,
   });
 }

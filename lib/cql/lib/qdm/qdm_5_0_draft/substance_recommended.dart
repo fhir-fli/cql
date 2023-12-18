@@ -2,9 +2,9 @@ import 'package:cql/engine/types/types.dart';
 
 import 'qdm_5_0_draft.dart';
 
-///  Data elements that meet criteria using this datatype should document
-/// 				a recommendation for the substance indicated by the QDM category and its
-/// 				corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// a recommendation for the substance indicated by the QDM category and its
+/// corresponding value set.
 
 class SubstanceRecommended {
   final Interval? interval;
@@ -17,13 +17,13 @@ class SubstanceRecommended {
   final CodeableConcept? route;
 
   SubstanceRecommended({
- this.interval,
- this.negationRationale,
- this.reason,
- this.dose,
- this.frequency,
- this.method,
- this.refills,
- this.route,
+    this.interval,
+    this.negationRationale,
+    this.reason,
+    this.dose,
+    this.frequency,
+    this.method,
+    this.refills,
+    this.route,
   });
 }

@@ -14,14 +14,14 @@ class MedicationOrder {
   final LiteralQuantity? cumulativeMedicationDuration;
 
   MedicationOrder({
-required this.activeDatetime,
-required this.signedDatetime,
- this.refills,
- this.dose,
- this.frequency,
- this.route,
- this.method,
- this.reason,
- this.cumulativeMedicationDuration,
+    required this.activeDatetime,
+    required this.signedDatetime,
+    this.refills,
+    this.dose,
+    this.frequency,
+    this.route,
+    this.method,
+    this.reason,
+    this.cumulativeMedicationDuration,
   });
 }

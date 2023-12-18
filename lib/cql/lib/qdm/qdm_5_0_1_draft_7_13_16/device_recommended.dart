@@ -1,14 +1,12 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document a
-/// 				recommendation to use the device indicated
-/// 				by the QDM category and
-/// 				its corresponding value set.
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document a
+/// recommendation to use the device indicated
+/// by the QDM category and
+/// its corresponding value set.
+///
 
 class DeviceRecommended {
   final LiteralDateTime? authorDatetime;
@@ -16,8 +14,8 @@ class DeviceRecommended {
   final LiteralCode? reason;
 
   DeviceRecommended({
- this.authorDatetime,
- this.negationRationale,
- this.reason,
+    this.authorDatetime,
+    this.negationRationale,
+    this.reason,
   });
 }

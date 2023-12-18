@@ -1,10 +1,8 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-///  Data elements that meet criteria using this datatype should document
-/// 				the completion of the physical exam indicated by the QDM category and its
-/// 				corresponding value set. 
+/// Data elements that meet criteria using this datatype should document
+/// the completion of the physical exam indicated by the QDM category and its
+/// corresponding value set.
 
 class PhysicalExamPerformed {
   final LiteralDateTime? startDatetime;
@@ -16,12 +14,12 @@ class PhysicalExamPerformed {
   final LiteralCode? anatomicalLocationSite;
 
   PhysicalExamPerformed({
- this.startDatetime,
- this.stopDatetime,
- this.negationRationale,
- this.reason,
- this.method,
- this.result,
- this.anatomicalLocationSite,
+    this.startDatetime,
+    this.stopDatetime,
+    this.negationRationale,
+    this.reason,
+    this.method,
+    this.result,
+    this.anatomicalLocationSite,
   });
 }

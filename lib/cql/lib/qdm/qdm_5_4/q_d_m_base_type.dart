@@ -10,10 +10,10 @@ class QDMBaseType {
   final Id? recorder;
 
   QDMBaseType({
-required this.id,
-required this.code,
-required this.patientId,
- this.reporter,
- this.recorder,
+    required this.id,
+    required this.code,
+    required this.patientId,
+    this.reporter,
+    this.recorder,
   });
 }

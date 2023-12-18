@@ -1,4 +1,3 @@
-
 // cqlParser parse(String pathExpression) {
 //   final input = InputStream.fromString(pathExpression);
 //   final lexer = cqlLexer(input);
@@ -42,7 +41,6 @@
 //     }
 //   }
 // }
-
 
 // String prettyPrintJson(Map<String, dynamic> map) => jsonPrettyPrint(map);
 

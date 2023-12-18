@@ -1,17 +1,15 @@
 import 'package:cql/engine/types/types.dart';
 
-
-
-/// 
-/// 				Data elements that meet criteria using this
-/// 				datatype should document the
-/// 				completion of the intervention indicated
-/// 				by the QDM category and its
-/// 				corresponding value set.
-/// 				Timing: The Relevant Period addresses:
-/// 					startTime – The time the intervention begins
-/// 					stopTime – The time the intervention ends
-/// 			
+///
+/// Data elements that meet criteria using this
+/// datatype should document the
+/// completion of the intervention indicated
+/// by the QDM category and its
+/// corresponding value set.
+/// Timing: The Relevant Period addresses:
+/// startTime – The time the intervention begins
+/// stopTime – The time the intervention ends
+///
 
 class InterventionPerformed {
   final LiteralDateTime? authorDatetime;
@@ -22,11 +20,11 @@ class InterventionPerformed {
   final LiteralCode? negationRationale;
 
   InterventionPerformed({
- this.authorDatetime,
- this.relevantPeriod,
- this.reason,
- this.result,
- this.status,
- this.negationRationale,
+    this.authorDatetime,
+    this.relevantPeriod,
+    this.reason,
+    this.result,
+    this.status,
+    this.negationRationale,
   });
 }
