@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'dart:io';
+
 import '../cql.dart';
 import 'dart_properties.dart';
 import 'model_importer_mapper_value.dart';
@@ -258,6 +260,26 @@ class ModelImporterOptions {
     }
 
     return properties;
+  }
+
+  static ModelImporterOptions loadFromProperties(Stream propertiesStream) {
+    final properties = DartProperties();
+    try {
+      properties.load(propertiesStream);
+    } finally {}
+
+    final options = ModelImporterOptions();
+    options.applyProperties(properties);
+    return options;
+  }
+
+  static ModelImporterOptions loadFromPropertiesFile(File propertiesFile) {
+    try {
+      final inputStream = propertiesFile.openRead();
+      return ModelImporterOptions.loadFromProperties(inputStream);
+    } catch (e) {
+      rethrow;
+    }
   }
 }
 

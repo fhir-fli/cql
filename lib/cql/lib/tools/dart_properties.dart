@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
-
-import 'package:petitparser/petitparser.dart';
 
 // import 'package:antlr4/antlr4.dart';
 
@@ -288,64 +285,3 @@ class DartProperties {
     return entries;
   }
 }
-  // Future<void> loadFromInputStream(InputStream? inStream) async {
-  //   if (inStream == null) {
-  //     throw ArgumentError("inStream parameter cannot be null");
-  //   }
-  //   return _load0(LineReader(inStream));
-  // }
-
-  // Future<void> _load0(LineReader lr) async {
-  //   final outBuffer = StringBuffer();
-
-  //   int limit;
-  //   while ((limit = lr.readLine()) >= 0) {
-  //     int keyLen = 0;
-  //     int valueStart = limit;
-  //     bool hasSeparator = false;
-
-  //     char c;
-  //     bool precedingBackslash = false;
-  //     for (; keyLen < limit; ++keyLen) {
-  //       c = lr.lineBuffer[keyLen];
-  //       if ((c == '=' || c == ':') && !precedingBackslash) {
-  //         valueStart = keyLen + 1;
-  //         hasSeparator = true;
-  //         break;
-  //       } else if ((c == ' ' || c == '\t' || c == '\f') &&
-  //           !precedingBackslash) {
-  //         valueStart = keyLen + 1;
-  //         break;
-  //       } else if (c == '\\') {
-  //         precedingBackslash = !precedingBackslash;
-  //       } else {
-  //         precedingBackslash = false;
-  //       }
-  //     }
-
-  //     for (; valueStart < limit; ++valueStart) {
-  //       c = lr.lineBuffer[valueStart];
-  //       if (c != ' ' && c != '\t' && c != '\f') {
-  //         if (hasSeparator || c != '=' && c != ':') {
-  //           break;
-  //         }
-  //         hasSeparator = true;
-  //       }
-  //     }
-
-  //     final key = _loadConvert(lr.lineBuffer, 0, keyLen, outBuffer);
-  //     final value = _loadConvert(
-  //         lr.lineBuffer, valueStart, limit - valueStart, outBuffer);
-  //     put(key, value);
-  //   }
-  // }
-
-  // String _loadConvert(
-  //     List<int> buffer, int offset, int length, StringBuffer out) {
-  //   // Implement your conversion logic here, possibly considering potential escapes
-  //   // and encoding of the input reader/stream.
-  //   // This example assumes UTF-8 encoding for simplicity.
-  //   return String.fromCharCodes(buffer.sublist(offset, offset + length), utf8);
-  // }
-// }
-// }

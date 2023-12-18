@@ -1,0 +1,6 @@
+
+
+class QDMBaseType {
+
+  QDMBaseType();
+}
