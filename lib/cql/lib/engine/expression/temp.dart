@@ -25,8 +25,9 @@ Future<void> main() async {
     final split = file.split('class ').last;
     final spaceIndex = split.indexOf(' ');
     final className = split.substring(0, spaceIndex);
+    final fileString = "import '../../cql.dart';\n\n$file";
     await File('${className.snakeCase.replaceFirst("_", "")}.dart')
-        .writeAsString(file);
+        .writeAsString(fileString);
   }
 }
 
