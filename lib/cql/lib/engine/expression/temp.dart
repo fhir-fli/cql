@@ -10,14 +10,17 @@ Future<void> main() async {
     }
   }
   final List<String> classes = [];
-  for (var i = 0; i < lineNumbers.length; i++) {
-    classes.add(fileStrings.sublist(i - 1, lineNumbers[i + 1] - 1).join('\n'));
+  for (var i = 0; i < lineNumbers.length - 1; i++) {
+    classes.add(fileStrings
+        .sublist(lineNumbers[i] - 1, lineNumbers[i + 1] - 1)
+        .join('\n'));
   }
   for (final file in classes) {
     final split = file.split('class ').last;
     final spaceIndex = split.indexOf(' ');
     final className = split.substring(0, spaceIndex);
-    await File('${className.snakeCase}.dart').writeAsString(file);
+    await File('${className.snakeCase.replaceFirst("_", "")}.dart')
+        .writeAsString(file);
   }
 }
 
