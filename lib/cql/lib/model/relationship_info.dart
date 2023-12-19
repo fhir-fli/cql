@@ -13,4 +13,20 @@ class RelationshipInfo {
     required this.context,
     this.relatedKeyElement,
   });
+
+  factory RelationshipInfo.fromJson(Map<String, dynamic> json) {
+    return RelationshipInfo(
+      context: json['context'],
+      relatedKeyElement: json['relatedKeyElement'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['context'] = context;
+    if (relatedKeyElement != null) {
+      data['relatedKeyElement'] = relatedKeyElement;
+    }
+    return data;
+  }
 }

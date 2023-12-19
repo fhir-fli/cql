@@ -1,6 +1,5 @@
 import '../../cql.dart';
 
-
 /// The Property operator returns the value of the property on source specified by the path attribute.
 /// If the result of evaluating source is null, the result is null.
 /// The path attribute may include qualifiers (.) and indexers ([x]). Indexers must be literal integer values.
@@ -18,4 +17,18 @@ class Property extends Expression {
   final String path;
   final Expression? source;
   final String? scope;
+
+  factory Property.fromJson(Map<String, dynamic> json) => Property(
+        path: json['path'],
+        source:
+            json['source'] != null ? Expression.fromJson(json['source']) : null,
+        scope: json['scope'],
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'path': path,
+        'source': source?.toJson(),
+        'scope': scope,
+      };
 }

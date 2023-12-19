@@ -16,6 +16,29 @@ class Annotation extends CqlToElmBase {
     this.locator,
   }) : t = t ?? [];
 
+  factory Annotation.fromJson(Map<String, dynamic> json) => Annotation(
+        t: json['t'] != null
+            ? (json['t'] as List).map((i) => Tag.fromJson(i)).toList()
+            : <Tag>[],
+        s: json['s'] != null ? Narrative.fromJson(json['s']) : null,
+        locator:
+            json['locator'] != null ? Locator.fromJson(json['locator']) : null,
+      );
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    if (t.isNotEmpty) {
+      data['t'] = t.map((v) => v.toJson()).toList();
+    }
+    if (s != null) {
+      data['s'] = s!.toJson();
+    }
+    if (locator != null) {
+      data['locator'] = locator!.toJson();
+    }
+    return data;
+  }
+
   void addTag(Tag tag) {
     t.add(tag);
   }
