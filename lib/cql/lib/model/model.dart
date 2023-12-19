@@ -13,4 +13,5 @@ export 'search_type.dart';
 export 'simple_type.dart';
 export 'tuple_type_element.dart';
 export 'tuple_type.dart';
+export 'type_info.dart';
 export 'type_parameter.dart';

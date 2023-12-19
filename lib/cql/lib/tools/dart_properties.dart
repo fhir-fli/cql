@@ -9,7 +9,7 @@ class DartProperties {
   // static final Unsafe unsafe =
   //     Unsafe.getUnsafe(); // Replace with your platform-specific implementation
 
-  late DartProperties? defaults; // Use late to ensure initialization later
+  DartProperties? defaults; // Use final to ensure initialization later
 
   final Map<String, String> data = {};
 

@@ -1,10 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../cql.dart';
 
-part 'element.g.dart';
-
-@JsonSerializable()
 class Element {
   // The annotation element provides a mechanism for decorating expressions
   // with application-specific information such as translation hints, visual
@@ -45,8 +40,32 @@ class Element {
     this.locator,
   });
 
-  factory Element.fromJson(Map<String, dynamic> json) =>
-      _$ElementFromJson(json);
+  factory Element.fromJson(Map<String, dynamic> json) => Element(
+        annotation: (json['annotation'] as List<dynamic>?)
+            ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        resultTypeSpecifier: json['resultTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>),
+        resultTypeName: json['resultTypeName'] as String?,
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+      );
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
 
-  Map<String, dynamic> toJson() => _$ElementToJson(this);
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    return val;
+  }
 }

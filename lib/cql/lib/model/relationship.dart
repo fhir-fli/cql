@@ -1,13 +1,12 @@
 import '../cql.dart';
 
 class Relationship {
-  late ModelContext context;
+  final ModelContext context;
   List<String> relatedKeys = [];
 
-  Relationship(ModelContext context, Iterable<String> relatedKeys) {
-    this.context = context;
-    this.relatedKeys.addAll(relatedKeys);
-  }
+  Relationship({required this.context, Iterable<String>? relatedKeys})
+      : relatedKeys =
+            relatedKeys != null ? List<String>.from(relatedKeys) : <String>[];
 
   ModelContext getContext() {
     return context;

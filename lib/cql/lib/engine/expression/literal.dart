@@ -18,8 +18,8 @@ abstract class Literal extends Expression {
         return LiteralInteger.fromJson(json);
       case '{urn:hl7-org:elm-types:r1}Decimal':
         return LiteralDecimal.fromJson(json);
-      // case '{urn:hl7-org:elm-types:r1}String':
-      //   return LiteralString.fromJson(json);
+      case '{urn:hl7-org:elm-types:r1}String':
+        return LiteralString.fromJson(json);
       case '{urn:hl7-org:elm-types:r1}DateTime':
         return LiteralDateTime.fromJson(json);
       case '{urn:hl7-org:elm-types:r1}Time':

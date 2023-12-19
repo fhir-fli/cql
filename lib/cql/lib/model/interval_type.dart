@@ -1,7 +1,7 @@
 import '../cql.dart';
 
 class IntervalType extends DataType {
-  late DataType pointType;
+  final DataType pointType;
 
   IntervalType(this.pointType) : super(null);
 

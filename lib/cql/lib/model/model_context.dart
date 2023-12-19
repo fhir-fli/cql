@@ -1,20 +1,17 @@
 import '../cql.dart';
 
 class ModelContext {
-  late String name;
-  late ClassType type;
-  late String birthDateElement;
-  List<String> keys = [];
+  final String name;
+  final ClassType type;
+  final String birthDateElement;
+  List<String> keys;
 
-  ModelContext(String name, ClassType type, Iterable<String>? keys,
-      String birthDateElement) {
-    this.name = name;
-    this.type = type;
-    this.birthDateElement = birthDateElement;
-    if (keys != null) {
-      this.keys.addAll(keys);
-    }
-  }
+  ModelContext(
+      {required this.name,
+      required this.type,
+      Iterable<String>? keys,
+      required this.birthDateElement})
+      : keys = keys != null ? List<String>.from(keys) : <String>[];
 
   String getName() {
     return name;

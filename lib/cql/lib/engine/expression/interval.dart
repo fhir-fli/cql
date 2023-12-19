@@ -30,4 +30,28 @@ class IntervalExpression extends Expression {
     this.lowClosed = true,
     this.highClosed = true,
   });
+
+  factory IntervalExpression.fromJson(Map<String, dynamic> json) =>
+      IntervalExpression(
+        low: json['low'] != null ? Expression.fromJson(json['low']) : null,
+        lowClosedExpression: json['lowClosedExpression'] != null
+            ? Expression.fromJson(json['lowClosedExpression'])
+            : null,
+        high: json['high'] != null ? Expression.fromJson(json['high']) : null,
+        highClosedExpression: json['highClosedExpression'] != null
+            ? Expression.fromJson(json['highClosedExpression'])
+            : null,
+        lowClosed: json['lowClosed'] ?? true,
+        highClosed: json['highClosed'] ?? true,
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'low': low?.toJson(),
+        'lowClosedExpression': lowClosedExpression?.toJson(),
+        'high': high?.toJson(),
+        'highClosedExpression': highClosedExpression?.toJson(),
+        'lowClosed': lowClosed,
+        'highClosed': highClosed,
+      };
 }

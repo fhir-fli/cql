@@ -1,7 +1,7 @@
 import '../cql.dart';
 
 class ListType extends DataType {
-  late DataType elementType;
+  final DataType elementType;
 
   ListType(this.elementType) : super(null);
 

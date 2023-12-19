@@ -17,4 +17,16 @@ class ContextInfo {
     this.keyElement,
     this.birthDateElement,
   });
+
+  factory ContextInfo.fromJson(Map<String, dynamic> json) => ContextInfo(
+        name: json['name']!,
+        keyElement: json['keyElement'],
+        birthDateElement: json['birthDateElement'],
+      );
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'keyElement': keyElement,
+        'birthDateElement': birthDateElement,
+      };
 }
