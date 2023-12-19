@@ -2,23 +2,29 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../cql.dart';
 
-part 'expression_def.g.dart';
-
-@JsonSerializable()
 class ExpressionDefs {
   List<Element> def = <Element>[];
 
   ExpressionDefs();
 
-  factory ExpressionDefs.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionDefsFromJson(json);
+  factory ExpressionDefs.fromJson(Map<String, dynamic> json) {
+    return ExpressionDefs()
+      ..def = json['def'] != null
+          ? (json['def'] as List).map((i) => Element.fromJson(i)).toList()
+          : <Element>[];
+  }
 
-  Map<String, dynamic> toJson() => _$ExpressionDefsToJson(this);
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    if (def.isNotEmpty) {
+      data['def'] = def.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
 /// Expression definition with an associated name that can be referenced by any
 /// expression in the artifact.
-@JsonSerializable()
 class ExpressionDef extends Element {
   /// Name of the expression.
   String name;
@@ -74,9 +80,35 @@ class ExpressionDef extends Element {
         expression: expression,
       );
 
-  factory ExpressionDef.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionDefFromJson(json);
-
+  factory ExpressionDef.fromJson(Map<String, dynamic> json) {
+    return ExpressionDef(
+      name: json['name'] as String,
+      context: json['context'] as String?,
+      accessLevel:
+          $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']),
+      expression: json['expression'] != null
+          ? Expression.fromJson(json['expression'])
+          : null,
+    );
+  }
   @override
-  Map<String, dynamic> toJson() => _$ExpressionDefToJson(this);
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['name'] = name;
+    if (context != null) {
+      data['context'] = context;
+    }
+    if (accessLevel != null) {
+      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
+    }
+    if (expression != null) {
+      data['expression'] = expression!.toJson();
+    }
+    return data;
+  }
 }
+
+const _$AccessModifierEnumMap = {
+  AccessModifier.public: 'Public',
+  AccessModifier.private: 'Private',
+};

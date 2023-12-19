@@ -1,9 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'locator.g.dart';
-
 /// Represents the Locator type
-@JsonSerializable()
 class Locator {
   /// startLine attribute
   int? startLine;
@@ -19,8 +14,29 @@ class Locator {
 
   Locator({this.startLine, this.startChar, this.endLine, this.endChar});
 
-  factory Locator.fromJson(Map<String, dynamic> json) =>
-      _$LocatorFromJson(json);
+  factory Locator.fromJson(Map<String, dynamic> json) {
+    return Locator(
+      startLine: json['startLine'] as int?,
+      startChar: json['startChar'] as int?,
+      endLine: json['endLine'] as int?,
+      endChar: json['endChar'] as int?,
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$LocatorToJson(this);
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    if (startLine != null) {
+      data['startLine'] = startLine;
+    }
+    if (startChar != null) {
+      data['startChar'] = startChar;
+    }
+    if (endLine != null) {
+      data['endLine'] = endLine;
+    }
+    if (endChar != null) {
+      data['endChar'] = endChar;
+    }
+    return data;
+  }
 }

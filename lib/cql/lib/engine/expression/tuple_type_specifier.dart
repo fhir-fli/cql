@@ -1,13 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
-
-part 'tuple_type_specifier.g.dart';
 
 /// Represents a tuple type specifier.
 ///
 /// The [TupleTypeSpecifier] type defines the possible elements of a tuple.
-@JsonSerializable()
 class TupleTypeSpecifier extends TypeSpecifier {
   /// Elements within TupleTypeSpecifier.
   List<TupleTypeSpecifierElement>? element;
@@ -19,9 +14,19 @@ class TupleTypeSpecifier extends TypeSpecifier {
     this.element,
   });
 
-  factory TupleTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$TupleTypeSpecifierFromJson(json);
+  factory TupleTypeSpecifier.fromJson(Map<String, dynamic> json) {
+    return TupleTypeSpecifier(
+      element: json['element'] != null
+          ? (json['element'] as List)
+              .map((i) => TupleTypeSpecifierElement.fromJson(i))
+              .toList()
+          : null,
+    );
+  }
 
   @override
-  Map<String, dynamic> toJson() => _$TupleTypeSpecifierToJson(this);
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'element': element?.map((v) => v.toJson()).toList(),
+      };
 }

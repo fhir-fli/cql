@@ -1,14 +1,9 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
-
-part 'choice_type_specifier.g.dart';
 
 /// Represents a choice type specifier, extending [TypeSpecifier].
 ///
 /// The [ChoiceTypeSpecifier] type represents a choice type,
 /// extending TypeInfo and including choice elements.
-@JsonSerializable()
 class ChoiceTypeSpecifier extends TypeSpecifier {
   /// Choice elements.
   List<TypeSpecifier>? choice;
@@ -18,9 +13,19 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
 
   ChoiceTypeSpecifier({this.choice});
 
-  factory ChoiceTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      _$ChoiceTypeSpecifierFromJson(json);
+  factory ChoiceTypeSpecifier.fromJson(Map<String, dynamic> json) {
+    return ChoiceTypeSpecifier(
+      choice: json['choice'] != null
+          ? (json['choice'] as List)
+              .map((i) => TypeSpecifier.fromJson(i))
+              .toList()
+          : null,
+    );
+  }
 
   @override
-  Map<String, dynamic> toJson() => _$ChoiceTypeSpecifierToJson(this);
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'choice': choice?.map((v) => v.toJson()).toList(),
+      };
 }

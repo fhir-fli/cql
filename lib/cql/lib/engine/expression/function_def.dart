@@ -1,12 +1,7 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
-
-part 'function_def.g.dart';
 
 /// Named function definition that can be invoked by any expression in the
 /// artifact.
-@JsonSerializable()
 class FunctionDef extends ExpressionDef {
   /// List of operand definitions.
   List<OperandDef>? operand;
@@ -18,9 +13,25 @@ class FunctionDef extends ExpressionDef {
 
   FunctionDef({this.operand, this.external}) : super(name: 'FunctionDef');
 
-  factory FunctionDef.fromJson(Map<String, dynamic> json) =>
-      _$FunctionDefFromJson(json);
-
+  factory FunctionDef.fromJson(Map<String, dynamic> json) {
+    return FunctionDef(
+      operand: json['operand'] != null
+          ? (json['operand'] as List)
+              .map((i) => OperandDef.fromJson(i))
+              .toList()
+          : null,
+      external: json['external'] as bool?,
+    );
+  }
   @override
-  Map<String, dynamic> toJson() => _$FunctionDefToJson(this);
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    if (operand != null) {
+      data['operand'] = operand!.map((v) => v.toJson()).toList();
+    }
+    if (external != null) {
+      data['external'] = external;
+    }
+    return data;
+  }
 }

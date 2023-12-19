@@ -1,20 +1,86 @@
-// The Element type defines the abstract base type for all library elements in ELM.
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'expression.g.dart';
-
 // The Expression type defines the abstract base type for all expressions used in the ELM expression language.
-@JsonSerializable()
 class Expression extends Element {
   Expression();
 
-  factory Expression.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionFromJson(json);
+  factory Expression.fromJson(Map<String, dynamic> json) {
+    switch (json['type']) {
+      case 'AggregateExpression':
+        return AggregateExpression.fromJson(json);
+      case 'AliasedQuerySource':
+        return AliasedQuerySource.fromJson(json);
+      case 'And':
+        return And.fromJson(json);
+      case 'AnyInValueSet':
+        return AnyInValueSet.fromJson(json);
+      case 'As':
+        return As.fromJson(json);
+      case 'Avg':
+        return Avg.fromJson(json);
+      case 'BinaryExpression':
+        return BinaryExpression.fromJson(json);
+      case 'Case':
+        return Case.fromJson(json);
+      case 'CaseItem':
+        return CaseItem.fromJson(json);
+      case 'Cast':
+        return Cast.fromJson(json);
+      case 'ChoiceTypeSpecifier':
+        return ChoiceTypeSpecifier.fromJson(json);
+      case 'Code':
+        return Code.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+      case 'CodeSystemRef':
+        return CodeSystemRef.fromJson(json);
+      case 'CodeSystemDef':
+        return CodeSystemDef.fromJson(json);
+    }
+  }
 
   @override
-  Map<String, dynamic> toJson() => _$ExpressionToJson(this);
+  Map<String, dynamic> toJson();
 }
 
 // TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
@@ -31,13 +97,13 @@ class TupleElementDefinition extends Element {
 
 /// Abstract base class for all built-in operators used in the ELM expression
 /// language.
-abstract class OperatorExpression extends Expression {
+class OperatorExpression extends Expression {
   /// Declared signature of the operator or function being called.
   List<TypeSpecifier>? signature;
 }
 
 /// Abstract base class for expressions that take a single argument.
-abstract class UnaryExpression extends OperatorExpression {
+class UnaryExpression extends OperatorExpression {
   /// Expression as the operand.
   Expression operand;
 
@@ -45,7 +111,7 @@ abstract class UnaryExpression extends OperatorExpression {
 }
 
 /// Abstract base class for expressions that take two arguments.
-abstract class BinaryExpression extends OperatorExpression {
+class BinaryExpression extends OperatorExpression {
   /// List of expressions as operands.
   List<Expression> operands;
 
@@ -53,7 +119,7 @@ abstract class BinaryExpression extends OperatorExpression {
 }
 
 /// Abstract base class for expressions that take three arguments.
-abstract class TernaryExpression extends OperatorExpression {
+class TernaryExpression extends OperatorExpression {
   /// List of expressions as operands.
   late List<Expression> operands;
 }
@@ -1453,7 +1519,7 @@ class Total extends Expression {
 }
 
 /// Abstract base class for Aggregate expressions performing operations on lists of data.
-abstract class AggregateExpression extends Expression {
+class AggregateExpression extends Expression {
   AggregateExpression({
     required this.signature,
     required Expression source,
