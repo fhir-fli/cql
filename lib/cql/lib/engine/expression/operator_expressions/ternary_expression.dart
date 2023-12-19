@@ -7,11 +7,16 @@ abstract class TernaryExpression extends OperatorExpression {
 
   TernaryExpression({required this.operands});
 
-  factory TernaryExpression.fromJson(Map<String, dynamic> json) =>
-      TernaryExpression(operands: json['operands']!);
+  factory TernaryExpression.fromJson(Map<String, dynamic> json) {
+    final type = json['type'];
+    switch (type) {
+      case 'ReplaceMatches':
+        return ReplaceMatches.fromJson(json);
+      default:
+        throw ArgumentError('Invalid type: $type');
+    }
+  }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'operands': operands,
-      };
+  Map<String, dynamic> toJson();
 }

@@ -9,4 +9,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class ToTime extends UnaryExpression {
   ToTime({required super.operand});
+
+  factory ToTime.fromJson(Map<String, dynamic> json) => ToTime(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

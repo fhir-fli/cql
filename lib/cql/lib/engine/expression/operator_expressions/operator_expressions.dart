@@ -1,6 +1,6 @@
-export 'binary_expressions/binary_expression.dart';
-export 'nary_expressions/nary_expression.dart';
-export 'unary_expressions/unary_expression.dart';
+export 'binary_expressions/binary_expressions.dart';
+export 'nary_expressions/nary_expressions.dart';
+export 'unary_expressions/unary_expressions.dart';
 export 'children.dart';
 export 'combine.dart';
 export 'descendents.dart';
@@ -19,6 +19,7 @@ export 'round.dart';
 export 'slice.dart';
 export 'split_on_matches.dart';
 export 'split.dart';
+export 'substring.dart';
 export 'ternary_expression.dart';
 export 'time_of_day.dart';
 export 'today.dart';

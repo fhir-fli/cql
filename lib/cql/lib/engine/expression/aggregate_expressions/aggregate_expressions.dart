@@ -1,8 +1,8 @@
 export 'aggregate_expression.dart';
 export 'aggregate.dart';
 export 'all_true.dart';
-export 'and.dart';
 export 'any_true.dart';
+export 'avg.dart';
 export 'count.dart';
 export 'geometric_mean.dart';
 export 'max.dart';

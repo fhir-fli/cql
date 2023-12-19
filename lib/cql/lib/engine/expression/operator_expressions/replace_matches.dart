@@ -8,12 +8,15 @@ class ReplaceMatches extends TernaryExpression {
   ReplaceMatches({required super.operands});
 
   factory ReplaceMatches.fromJson(Map<String, dynamic> json) => ReplaceMatches(
-        operands: ternaryExpressionListFromJson(json),
+        operands: json['operands'] != null
+            ? (json['operands'] as List)
+                .map((e) => Expression.fromJson(e))
+                .toList()
+            : [],
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': type,
         'operands': operands.map((e) => e.toJson()).toList(),
       };
 }

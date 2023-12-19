@@ -6,4 +6,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class ToDecimal extends UnaryExpression {
   ToDecimal({required super.operand});
+
+  factory ToDecimal.fromJson(Map<String, dynamic> json) => ToDecimal(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

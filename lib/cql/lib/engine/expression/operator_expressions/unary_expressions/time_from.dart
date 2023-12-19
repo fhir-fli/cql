@@ -5,4 +5,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class TimeFrom extends UnaryExpression {
   TimeFrom({required super.operand});
+
+  factory TimeFrom.fromJson(Map<String, dynamic> json) => TimeFrom(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

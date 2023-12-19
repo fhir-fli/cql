@@ -8,4 +8,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class ToRatio extends UnaryExpression {
   ToRatio({required super.operand});
+
+  factory ToRatio.fromJson(Map<String, dynamic> json) => ToRatio(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

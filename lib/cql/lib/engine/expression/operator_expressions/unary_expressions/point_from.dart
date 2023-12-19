@@ -5,4 +5,13 @@ import '../../../../cql.dart';
 /// If the source interval is null, the result is null.
 class PointFrom extends UnaryExpression {
   PointFrom({required super.operand});
+
+  factory PointFrom.fromJson(Map<String, dynamic> json) => PointFrom(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

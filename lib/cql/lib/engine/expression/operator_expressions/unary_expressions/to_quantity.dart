@@ -12,4 +12,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class ToQuantity extends UnaryExpression {
   ToQuantity({required super.operand});
+
+  factory ToQuantity.fromJson(Map<String, dynamic> json) => ToQuantity(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

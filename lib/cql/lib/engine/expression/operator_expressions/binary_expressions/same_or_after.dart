@@ -9,4 +9,19 @@ class SameOrAfter extends BinaryExpression {
   final DateTimePrecision? precision;
 
   SameOrAfter({this.precision, required super.operands});
+
+  factory SameOrAfter.fromJson(Map<String, dynamic> json) => SameOrAfter(
+        precision: json['precision'] != null
+            ? DateTimePrecisionJson.fromJson(json['precision'])
+            : null,
+        operands: (json['operands'] as List)
+            .map((e) => Expression.fromJson(e))
+            .toList(),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'precision': precision?.toJson(),
+        'operands': operands.map((e) => e.toJson()).toList(),
+      };
 }

@@ -1,4 +1,4 @@
-import '../../../cql.dart';
+import '../../../../cql.dart';
 
 /// And operator returning the logical conjunction of its arguments.
 class And extends BinaryExpression {

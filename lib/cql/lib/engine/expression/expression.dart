@@ -4,8 +4,15 @@ import '../../cql.dart';
 class Expression extends Element {
   Expression();
 
-  factory Expression.fromJson(Map<String, dynamic> json);
-
-  @override
-  Map<String, dynamic> toJson();
+  //TODO(Dokotela): add all constructors
+  factory Expression.fromJson(Map<String, dynamic> json) {
+    final type = json['type'];
+    switch (type) {
+      /// Expression Refs
+      case 'ExpressionRef':
+        return ExpressionRef.fromJson(json);
+      default:
+        throw ArgumentError('Invalid type: $type');
+    }
+  }
 }

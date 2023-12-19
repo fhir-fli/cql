@@ -8,4 +8,15 @@ import '../../../../cql.dart';
 /// If the result of the operation cannot be represented, the result is null.
 class Subtract extends BinaryExpression {
   Subtract({required super.operands});
+
+  factory Subtract.fromJson(Map<String, dynamic> json) => Subtract(
+        operands: (json['operands'] as List)
+            .map((e) => Expression.fromJson(e))
+            .toList(),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operands': operands.map((e) => e.toJson()).toList(),
+      };
 }

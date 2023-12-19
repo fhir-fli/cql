@@ -8,4 +8,19 @@ class ProperIn extends BinaryExpression {
   final DateTimePrecision? precision;
 
   ProperIn({this.precision, required super.operands});
+
+  factory ProperIn.fromJson(Map<String, dynamic> json) => ProperIn(
+        precision: json['precision'] != null
+            ? DateTimePrecisionJson.fromJson(json['precision'])
+            : null,
+        operands: (json['operands'] as List)
+            .map((e) => Expression.fromJson(e))
+            .toList(),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'precision': precision?.toJson(),
+        'operands': operands.map((e) => e.toJson()).toList(),
+      };
 }

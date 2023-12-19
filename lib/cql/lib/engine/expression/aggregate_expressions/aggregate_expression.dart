@@ -12,17 +12,46 @@ abstract class AggregateExpression extends Expression {
   final Expression source;
   final String? path;
 
-  factory AggregateExpression.fromJson(Map<String, dynamic> json) =>
-      AggregateExpression(
-        signature: json['signature'],
-        source: json['source']!,
-        path: json['path'],
-      );
+  factory AggregateExpression.fromJson(Map<String, dynamic> json) {
+    final type = json['type'];
+    switch (type) {
+      case 'Aggregate':
+        return Aggregate.fromJson(json);
+      case 'AllTrue':
+        return AllTrue.fromJson(json);
+      case 'AnyTrue':
+        return AnyTrue.fromJson(json);
+      case 'Avg':
+        return Avg.fromJson(json);
+      case 'Count':
+        return Count.fromJson(json);
+      case 'GeometricMean':
+        return GeometricMean.fromJson(json);
+      case 'Max':
+        return Max.fromJson(json);
+      case 'Median':
+        return Median.fromJson(json);
+      case 'Min':
+        return Min.fromJson(json);
+      case 'Mode':
+        return Mode.fromJson(json);
+      case 'PopulationStdDev':
+        return PopulationStdDev.fromJson(json);
+      case 'PopulationVariance':
+        return PopulationVariance.fromJson(json);
+      case 'Product':
+        return Product.fromJson(json);
+      case 'StdDev':
+        return StdDev.fromJson(json);
+      case 'Sum':
+        return Sum.fromJson(json);
+      case 'Variance':
+        return Variance.fromJson(json);
+      default:
+        throw ArgumentError('Unknown AggregateExpression type: $type');
+    }
+  }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'signature': signature,
-        'source': source,
-        'path': path,
-      };
+  Map<String, dynamic> toJson() => {};
 }

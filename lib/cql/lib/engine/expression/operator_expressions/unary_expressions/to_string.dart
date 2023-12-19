@@ -13,4 +13,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class ToString extends UnaryExpression {
   ToString({required super.operand});
+
+  factory ToString.fromJson(Map<String, dynamic> json) => ToString(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

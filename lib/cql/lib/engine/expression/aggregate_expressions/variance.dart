@@ -14,4 +14,28 @@ class Variance extends AggregateExpression {
           source: source,
           path: path,
         );
+
+  factory Variance.fromJson(Map<String, dynamic> json) => Variance(
+        source: Expression.fromJson(json['source']),
+        signature: json['signature'] != null
+            ? (json['signature'] as List)
+                .map((e) => TypeSpecifier.fromJson(e))
+                .toList()
+            : null,
+        path: json['path'],
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'source': source.toJson(),
+    };
+    if (signature != null) {
+      json['signature'] = signature!.map((e) => e.toJson()).toList();
+    }
+    if (path != null) {
+      json['path'] = path;
+    }
+    return json;
+  }
 }

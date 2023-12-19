@@ -10,5 +10,16 @@ class Round extends OperatorExpression {
 
   Round(this.operand, {this.precision});
 
-  /// Add any required constructor or methods here.
+  factory Round.fromJson(Map<String, dynamic> json) => Round(
+        Expression.fromJson(json['operand']),
+        precision: json['precision'] != null
+            ? Expression.fromJson(json['precision'])
+            : null,
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+        'precision': precision?.toJson(),
+      };
 }

@@ -5,4 +5,15 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 class StartsWith extends BinaryExpression {
   StartsWith({required super.operands});
+
+  factory StartsWith.fromJson(Map<String, dynamic> json) => StartsWith(
+        operands: (json['operands'] as List)
+            .map((e) => Expression.fromJson(e))
+            .toList(),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operands': operands.map((e) => e.toJson()).toList(),
+      };
 }

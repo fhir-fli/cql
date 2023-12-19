@@ -10,5 +10,16 @@ class Split extends OperatorExpression {
 
   Split(this.stringToSplit, [this.separator]);
 
-  /// Add any required constructor or methods here.
+  factory Split.fromJson(Map<String, dynamic> json) => Split(
+        Expression.fromJson(json['stringToSplit']),
+        json['separator'] != null
+            ? Expression.fromJson(json['separator'])
+            : null,
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'stringToSplit': stringToSplit.toJson(),
+        'separator': separator?.toJson(),
+      };
 }

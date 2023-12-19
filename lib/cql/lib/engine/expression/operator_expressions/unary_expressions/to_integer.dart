@@ -7,4 +7,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class ToInteger extends UnaryExpression {
   ToInteger({required super.operand});
+
+  factory ToInteger.fromJson(Map<String, dynamic> json) => ToInteger(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

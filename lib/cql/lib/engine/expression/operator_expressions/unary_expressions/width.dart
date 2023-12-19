@@ -5,4 +5,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class Width extends UnaryExpression {
   Width({required super.operand});
+
+  factory Width.fromJson(Map<String, dynamic> json) => Width(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

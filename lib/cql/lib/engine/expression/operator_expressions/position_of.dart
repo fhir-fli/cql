@@ -9,5 +9,14 @@ class PositionOf extends OperatorExpression {
 
   PositionOf(this.pattern, this.string);
 
-  /// Add any required constructor or methods here.
+  factory PositionOf.fromJson(Map<String, dynamic> json) => PositionOf(
+        Expression.fromJson(json['pattern']),
+        Expression.fromJson(json['string']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'pattern': pattern.toJson(),
+        'string': string.toJson(),
+      };
 }

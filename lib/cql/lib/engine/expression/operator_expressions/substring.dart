@@ -10,5 +10,16 @@ class Substring extends OperatorExpression {
 
   Substring(this.stringToSub, this.startIndex, [this.length]);
 
-  /// Add any required constructor or methods here.
+  factory Substring.fromJson(Map<String, dynamic> json) => Substring(
+        Expression.fromJson(json['stringToSub']),
+        Expression.fromJson(json['startIndex']),
+        json['length'] != null ? Expression.fromJson(json['length']) : null,
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'stringToSub': stringToSub.toJson(),
+        'startIndex': startIndex.toJson(),
+        'length': length?.toJson(),
+      };
 }

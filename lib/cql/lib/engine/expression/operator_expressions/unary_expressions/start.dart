@@ -6,4 +6,13 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class Start extends UnaryExpression {
   Start({required super.operand});
+
+  factory Start.fromJson(Map<String, dynamic> json) => Start(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }

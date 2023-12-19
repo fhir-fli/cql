@@ -6,4 +6,16 @@ import '../../../../cql.dart';
 /// The TruncatedDivide operator is defined for the Integer and Decimal types.
 class TruncatedDivide extends BinaryExpression {
   TruncatedDivide({required super.operands});
+
+  factory TruncatedDivide.fromJson(Map<String, dynamic> json) =>
+      TruncatedDivide(
+        operands: (json['operands'] as List)
+            .map((e) => Expression.fromJson(e))
+            .toList(),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operands': operands.map((e) => e.toJson()).toList(),
+      };
 }

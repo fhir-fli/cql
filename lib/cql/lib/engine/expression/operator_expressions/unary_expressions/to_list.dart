@@ -7,4 +7,13 @@ import '../../../../cql.dart';
 /// The operator is used to implement list promotion efficiently.
 class ToList extends UnaryExpression {
   ToList({required super.operand});
+
+  factory ToList.fromJson(Map<String, dynamic> json) => ToList(
+        operand: Expression.fromJson(json['operand']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'operand': operand.toJson(),
+      };
 }
