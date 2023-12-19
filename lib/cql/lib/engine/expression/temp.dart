@@ -26,10 +26,14 @@ Future<void> main() async {
     final spaceIndex = split.indexOf(' ');
     final className = split.substring(0, spaceIndex);
     final fileString = "import '../../cql.dart';\n\n$file";
-    await File('${className.snakeCase.replaceFirst("_", "")}.dart')
-        .writeAsString(fileString);
+    final fileName = '${className.snakeCase.replaceFirst("_", "")}.dart';
+    fileNames.add(fileName);
+    await File(fileName).writeAsString(fileString);
   }
+  print(fileNames);
 }
+
+List<String> fileNames = [];
 
 extension SnakeCase on String {
   String get snakeCase => replaceAllMapped(
