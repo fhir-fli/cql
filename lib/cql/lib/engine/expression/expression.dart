@@ -1,6 +1,6 @@
 import '../../cql.dart';
 
-// The Expression type defines the abstract base type for all expressions used in the ELM expression language.
+/// The Expression type defines the abstract base type for all expressions used in the ELM expression language.
 class Expression extends Element {
   Expression();
 
@@ -83,15 +83,15 @@ class Expression extends Element {
   Map<String, dynamic> toJson();
 }
 
-// TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
+/// TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
 class TupleElementDefinition extends Element {
-  // This element is deprecated. New implementations should use the new elementType element.
+  /// This element is deprecated. New implementations should use the new elementType element.
   TypeSpecifier? type;
 
-  // The type of the tuple element.
+  /// The type of the tuple element.
   TypeSpecifier? elementType;
 
-  // The name of the tuple element.
+  /// The name of the tuple element.
   String? name;
 }
 
@@ -705,7 +705,7 @@ class Round extends OperatorExpression {
 
   Round(this.operand, {this.precision});
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to compute the natural logarithm of its argument.
@@ -761,7 +761,7 @@ class MinValue extends Expression {
 
   MinValue(this.valueType);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return the maximum representable value for the given type.
@@ -773,7 +773,7 @@ class MaxValue extends Expression {
 
   MaxValue(this.valueType);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return the number of digits of precision in the input value.
@@ -806,7 +806,7 @@ class Combine extends OperatorExpression {
 
   Combine(this.source, [this.separator]);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to split a string into a list of strings using a separator.
@@ -819,7 +819,7 @@ class Split extends OperatorExpression {
 
   Split(this.stringToSplit, [this.separator]);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to split a string into a list of strings using matches of a regex pattern.
@@ -832,7 +832,7 @@ class SplitOnMatches extends OperatorExpression {
 
   SplitOnMatches(this.stringToSplit, this.separatorPattern);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return the length of its argument.
@@ -872,7 +872,7 @@ class PositionOf extends OperatorExpression {
 
   PositionOf(this.pattern, this.string);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return the 0-based index of the beginning of the last appearance of the given pattern in the given string.
@@ -884,7 +884,7 @@ class LastPositionOf extends OperatorExpression {
 
   LastPositionOf(this.pattern, this.string);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return the string within stringToSub, starting at the 0-based index startIndex, and consisting of length characters.
@@ -897,7 +897,7 @@ class Substring extends OperatorExpression {
 
   Substring(this.stringToSub, this.startIndex, [this.length]);
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return true if the given string starts with the given prefix.
@@ -950,7 +950,7 @@ class DurationBetween extends BinaryExpression {
 
   DurationBetween({required this.precision, required super.operands});
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return the number of boundaries crossed for the specified precision between the first and second arguments.
@@ -962,7 +962,7 @@ class DifferenceBetween extends BinaryExpression {
 
   DifferenceBetween({required this.precision, required super.operands});
 
-  // Add any required constructor or methods here.
+  /// Add any required constructor or methods here.
 }
 
 /// Operator to return the date (with no time components specified) of the argument.
