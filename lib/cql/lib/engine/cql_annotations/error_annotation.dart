@@ -1,10 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'error_annotation.g.dart';
-
-@JsonSerializable()
 class ErrorAnnotation extends Annotation {
   final String? librarySystem;
   final String? libraryId;
@@ -33,10 +28,42 @@ class ErrorAnnotation extends Annotation {
   });
 
   factory ErrorAnnotation.fromJson(Map<String, dynamic> json) =>
-      _$ErrorAnnotationFromJson(json);
+      ErrorAnnotation(
+        librarySystem: json['librarySystem'] as String?,
+        libraryId: json['libraryId'] as String?,
+        libraryVersion: json['libraryVersion'] as String?,
+        startLine: json['startLine'] as int?,
+        startChar: json['startChar'] as int?,
+        endLine: json['endLine'] as int?,
+        endChar: json['endChar'] as int?,
+        message: json['message'] as String?,
+        errorType: json['errorType'] as String?,
+        errorSeverity: json['errorSeverity'] as String?,
+        type: json['type'] as String? ?? 'CqlToElmError',
+      );
 
-  @override
-  Map<String, dynamic> toJson() => _$ErrorAnnotationToJson(this);
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('librarySystem', librarySystem);
+    writeNotNull('libraryId', libraryId);
+    writeNotNull('libraryVersion', libraryVersion);
+    writeNotNull('startLine', startLine);
+    writeNotNull('startChar', startChar);
+    writeNotNull('endLine', endLine);
+    writeNotNull('endChar', endChar);
+    writeNotNull('message', message);
+    writeNotNull('errorType', errorType);
+    writeNotNull('errorSeverity', errorSeverity);
+    writeNotNull('type', type);
+    return val;
+  }
 
   ErrorAnnotation copyWith({
     String? librarySystem,

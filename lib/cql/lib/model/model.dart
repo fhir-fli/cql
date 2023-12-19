@@ -1,7 +1,13 @@
+export 'binding_info.dart';
 export 'choice_type.dart';
+export 'class_info_element.dart';
 export 'class_type_element.dart';
 export 'class_type.dart';
+export 'constraint_info.dart';
+export 'context_info.dart';
+export 'conversion_info.dart';
 export 'data_type.dart';
+export 'expression_info.dart';
 export 'instantiation_context.dart';
 export 'interval_type.dart';
 export 'list_type.dart';

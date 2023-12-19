@@ -1,13 +1,25 @@
 import '../../cql.dart';
 
-/// Represents the Annotation type
-abstract class Annotation {
-  Annotation();
+class Annotation extends CqlToElmBase {
+  // List of tags associated with the annotation
+  final List<Tag> t;
 
-  factory Annotation.fromJson(Map<String, dynamic> json) =>
-      json.containsKey('translatorVersion')
-          ? TranslatorAnnotation.fromJson(json)
-          : ErrorAnnotation.fromJson(json);
+  // Optional narrative text for the annotation
+  final Narrative? s;
 
-  Map<String, dynamic> toJson() => {};
+  // Optional locator information for the annotation
+  final Locator? locator;
+
+  Annotation({
+    List<Tag>? t,
+    this.s,
+    this.locator,
+  }) : t = t ?? [];
+
+  void addTag(Tag tag) {
+    t.add(tag);
+  }
+
+  @override
+  String toString() => 'Annotation{t: $t, s: $s, locator: $locator}';
 }

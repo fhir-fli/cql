@@ -1,9 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'cql_to_elm_info.g.dart';
-
 /// Represents the CqlToElmInfo type
-@JsonSerializable()
 class CqlToElmInfo {
   /// translatorVersion attribute
   String? translatorVersion;
@@ -13,8 +8,20 @@ class CqlToElmInfo {
 
   CqlToElmInfo({this.translatorVersion, this.translatorOptions});
 
-  factory CqlToElmInfo.fromJson(Map<String, dynamic> json) =>
-      _$CqlToElmInfoFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CqlToElmInfoToJson(this);
+  factory CqlToElmInfo.fromJson(Map<String, dynamic> json) {
+    return CqlToElmInfo(
+      translatorVersion: json['translatorVersion'],
+      translatorOptions: json['translatorOptions'],
+    );
+  }
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    if (translatorVersion != null) {
+      data['translatorVersion'] = translatorVersion;
+    }
+    if (translatorOptions != null) {
+      data['translatorOptions'] = translatorOptions;
+    }
+    return data;
+  }
 }

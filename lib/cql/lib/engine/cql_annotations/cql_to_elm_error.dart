@@ -1,23 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'cql_to_elm_error.g.dart';
-
-/// Enum representing the severity of an error
-enum ErrorSeverity { info, warning, error }
-
-/// Enum representing different types of errors
-enum ErrorType {
-  environment,
-  syntax,
-  include,
-  semantic,
-  internal,
-}
-
 /// Represents the CqlToElmError type
-@JsonSerializable()
 class CqlToElmError extends Locator {
   /// message attribute
   String message;
@@ -27,6 +10,9 @@ class CqlToElmError extends Locator {
 
   /// errorSeverity attribute
   ErrorSeverity? errorSeverity;
+
+  ///The namespace uri of the included library
+  String? targetIncludeLibrarySystem;
 
   /// targetIncludeLibraryId attribute
   String? targetIncludeLibraryId;
@@ -38,6 +24,7 @@ class CqlToElmError extends Locator {
     required this.message,
     required this.errorType,
     this.errorSeverity,
+    this.targetIncludeLibrarySystem,
     this.targetIncludeLibraryId,
     this.targetIncludeLibraryVersionId,
     int? startLine,
@@ -51,9 +38,60 @@ class CqlToElmError extends Locator {
           endChar: endChar,
         );
 
-  factory CqlToElmError.fromJson(Map<String, dynamic> json) =>
-      _$CqlToElmErrorFromJson(json);
+  factory CqlToElmError.fromJson(Map<String, dynamic> json) {
+    return CqlToElmError(
+      message: json['message'],
+      errorType: ErrorType.values.firstWhere(
+        (type) => type.toString() == json['errorType'],
+        orElse: () =>
+            throw FormatException('Invalid error type: ${json['errorType']}'),
+      ),
+      errorSeverity: json['errorSeverity'] != null
+          ? ErrorSeverity.values.firstWhere(
+              (severity) => severity.toString() == json['errorSeverity'],
+              orElse: () => throw FormatException(
+                  'Invalid error severity: ${json['errorSeverity']}'),
+            )
+          : null,
+      targetIncludeLibrarySystem: json['targetIncludeLibrarySystem'],
+      targetIncludeLibraryId: json['targetIncludeLibraryId'],
+      targetIncludeLibraryVersionId: json['targetIncludeLibraryVersionId'],
+      startLine: json['startLine'],
+      startChar: json['startChar'],
+      endLine: json['endLine'],
+      endChar: json['endChar'],
+    );
+  }
 
-  @override
-  Map<String, dynamic> toJson() => _$CqlToElmErrorToJson(this);
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'message': message,
+      'errorType': errorType.toJson(),
+    };
+    if (errorSeverity != null) {
+      data['errorSeverity'] = errorSeverity!.toJson();
+    }
+    if (targetIncludeLibrarySystem != null) {
+      data['targetIncludeLibrarySystem'] = targetIncludeLibrarySystem;
+    }
+    if (targetIncludeLibraryId != null) {
+      data['targetIncludeLibraryId'] = targetIncludeLibraryId;
+    }
+    if (targetIncludeLibraryVersionId != null) {
+      data['targetIncludeLibraryVersionId'] = targetIncludeLibraryVersionId;
+    }
+    if (startLine != null) {
+      data['startLine'] = startLine;
+    }
+    if (startChar != null) {
+      data['startChar'] = startChar;
+    }
+    if (endLine != null) {
+      data['endLine'] = endLine;
+    }
+    if (endChar != null) {
+      data['endChar'] = endChar;
+    }
+    return data;
+  }
 }

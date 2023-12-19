@@ -1,10 +1,7 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'narrative.g.dart';
+import '../../cql.dart';
 
 /// Represents the Narrative type with mixed content
-@JsonSerializable()
-class Narrative {
+class Narrative extends CqlToElmBase {
   /// r attribute
   String? r;
 
@@ -13,8 +10,23 @@ class Narrative {
 
   Narrative({this.r, this.s});
 
-  factory Narrative.fromJson(Map<String, dynamic> json) =>
-      _$NarrativeFromJson(json);
+  factory Narrative.fromJson(Map<String, dynamic> json) {
+    return Narrative(
+      r: json['r'],
+      s: json['s'] != null
+          ? (json['s'] as List).map((i) => Narrative.fromJson(i)).toList()
+          : null,
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$NarrativeToJson(this);
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    if (r != null) {
+      data['r'] = r;
+    }
+    if (s != null) {
+      data['s'] = s!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }

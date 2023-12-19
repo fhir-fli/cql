@@ -1,15 +1,20 @@
-import 'package:json_annotation/json_annotation.dart';
+import '../../cql.dart';
 
-part 'tag.g.dart';
-
-@JsonSerializable()
-class Tag {
+class Tag extends CqlToElmBase {
   String? name;
   String? value;
 
   Tag({this.name, this.value});
 
-  factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);
+  factory Tag.fromJson(Map<String, dynamic> json) {
+    return Tag(
+      name: json['name'] as String?,
+      value: json['value'] as String?,
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$TagToJson(this);
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'value': value,
+      };
 }

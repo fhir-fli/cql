@@ -1,4 +1,4 @@
-import '../../cql.dart';
+import '../../../cql.dart';
 
 /// Named function definition that can be invoked by any expression in the
 /// artifact.

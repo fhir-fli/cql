@@ -1,4 +1,4 @@
-import '../../cql.dart';
+import '../../../cql.dart';
 
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {

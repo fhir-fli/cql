@@ -17,7 +17,6 @@ class TranslatorAnnotation extends Annotation {
         type: json['type'],
       );
 
-  @override
   Map<String, dynamic> toJson() => {
         'translatorVersion': translatorVersion,
         'translatorOptions': translatorOptions,

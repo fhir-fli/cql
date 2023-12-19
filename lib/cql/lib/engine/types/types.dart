@@ -455,6 +455,7 @@ class LiteralTimeInterval extends LiteralInterval {
 }
 
 const List<String> elmTypes = <String>[
+  'String',
   'Boolean',
   'Code',
   'Concept',
@@ -462,6 +463,7 @@ const List<String> elmTypes = <String>[
   'DateTime',
   'Decimal',
   'Integer',
+  'LongNumber',
   'Quantity',
   'Ratio',
   'StringElement',
