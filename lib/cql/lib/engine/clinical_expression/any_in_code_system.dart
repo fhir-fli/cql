@@ -11,8 +11,20 @@ import '../../cql.dart';
 /// by the target environment as a service call to a terminology server, if
 /// desired.
 class AnyInCodeSystem extends OperatorExpression {
-  late Expression codes;
-  late CodeSystemRef codesystem;
+  final Expression codes;
+  final CodeSystemRef codesystem;
 
   AnyInCodeSystem({required this.codes, required this.codesystem});
+
+  factory AnyInCodeSystem.fromJson(Map<String, dynamic> json) =>
+      AnyInCodeSystem(
+        codes: json['codes']!,
+        codesystem: json['codesystem']!,
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'codes': codes.toJson(),
+        'codesystem': codesystem.toJson(),
+      };
 }

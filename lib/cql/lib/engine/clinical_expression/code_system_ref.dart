@@ -5,14 +5,8 @@ import '../../cql.dart';
 /// returns the set of codes in the code system. Note that this operation should
 /// almost never be performed in practice. Code system references are allowed in
 /// order to allow for testing of code membership in a particular code system.
-class CodeSystemRef extends Expression {
-  /// The name of the code system.
-  late String? name;
-
-  /// The library name.
-  late String? libraryName;
-
-  CodeSystemRef({this.name, this.libraryName});
+class CodeSystemRef extends Ref {
+  CodeSystemRef({super.name, super.libraryName});
 
   factory CodeSystemRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];

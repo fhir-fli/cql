@@ -5,7 +5,7 @@ import '../../cql.dart';
 /// date-value [lowProperty] and [highProperty] or a [search], and an expression
 /// that evaluates to a date or time type, an interval of a date or time type,
 /// or a time-valued Quantity.
-class DateFilterElement extends Expression {
+class DateFilterElement extends Element {
   /// An expression that provides the comparison value for the filter. The
   /// expression is expected to result in a date or time type, an interval of
   /// a date or time type, or a time-valued quantity. Only the clinical

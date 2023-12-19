@@ -3,7 +3,7 @@ import '../../cql.dart';
 /// The OtherFilterElement type specifies an arbitrarily-typed filter criteria
 /// for use within a retrieve, specified as either
 /// [property] [comparator] [value] or [search] [comparator] [value].
-class OtherFilterElement extends Expression {
+class OtherFilterElement extends Element {
   /// An expression that provides the comparison value for the filter.
   Expression value;
 

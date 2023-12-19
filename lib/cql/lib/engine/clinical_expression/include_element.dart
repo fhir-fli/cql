@@ -2,7 +2,7 @@ import '../../cql.dart';
 
 /// The IncludeElement type specifies include information for an include within
 /// a retrieve.
-class IncludeElement extends Expression {
+class IncludeElement extends Element {
   /// The localId of another Retrieve that specifies the data to be included in
   /// this retrieve. The target Retrieve will have an includedIn attribute
   /// referencing this includeElement.

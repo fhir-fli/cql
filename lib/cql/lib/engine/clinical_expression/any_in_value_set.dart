@@ -10,8 +10,19 @@ import '../../cql.dart';
 /// within an artifact, as well as the implementation of value set membership by
 /// the target environment as a service call to a terminology server, if desired.
 class AnyInValueSet extends OperatorExpression {
-  late Expression codes;
-  late ValueSetRef valueset;
+  final Expression codes;
+  final ValueSetRef valueset;
 
   AnyInValueSet({required this.codes, required this.valueset});
+
+  factory AnyInValueSet.fromJson(Map<String, dynamic> json) => AnyInValueSet(
+        codes: json['codes']!,
+        valueset: json['valueset']!,
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'codes': codes.toJson(),
+        'valueset': valueset.toJson(),
+      };
 }

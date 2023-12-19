@@ -3,7 +3,7 @@ import '../../cql.dart';
 /// The CodeFilterElement type specifies a terminology filter criteria for use
 /// within a retrieve, specified as either [property] [comparator] [value] or
 /// [search] [comparator] [value].
-class CodeFilterElement extends Expression {
+class CodeFilterElement extends Element {
   /// An expression that provides the comparison value for the filter. The
   /// expression is expected to result in a List&lt;Code&gt; to match against.
   /// Only the clinical statements that match at least one of the specified
