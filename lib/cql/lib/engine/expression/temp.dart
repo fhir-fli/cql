@@ -11,9 +11,15 @@ Future<void> main() async {
   }
   final List<String> classes = [];
   for (var i = 0; i < lineNumbers.length - 1; i++) {
-    classes.add(fileStrings
-        .sublist(lineNumbers[i] - 1, lineNumbers[i + 1] - 1)
-        .join('\n'));
+    var start = lineNumbers[i] - 1;
+    var end = lineNumbers[i + 1] - 1;
+    while (fileStrings[start].startsWith('//')) {
+      start--;
+    }
+    while (fileStrings[end].startsWith('//')) {
+      end--;
+    }
+    classes.add(fileStrings.sublist(start, end).join('\n'));
   }
   for (final file in classes) {
     final split = file.split('class ').last;
