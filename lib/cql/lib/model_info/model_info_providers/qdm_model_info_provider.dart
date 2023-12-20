@@ -11,19 +11,19 @@ class QdmModelInfoProvider implements ModelInfoProvider, NamespaceAware {
   }
 
   bool isQDMModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces()) {
-      return modelIdentifier.getId() == "QDM" &&
-          (modelIdentifier.getSystem() == null ||
-              modelIdentifier.getSystem() == "urn:healthit-gov");
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "QDM" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "urn:healthit-gov");
     }
 
-    return modelIdentifier.getId() == "QDM";
+    return modelIdentifier.id == "QDM";
   }
 
   @override
-  ModelInfo load(ModelIdentifier modelIdentifier) {
+  ModelInfo? load(ModelIdentifier modelIdentifier) {
     if (isQDMModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.getVersion() ?? "";
+      final localVersion = modelIdentifier.version ?? "";
       try {
         switch (localVersion) {
           case "4.1.2":
