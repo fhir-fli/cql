@@ -1,28 +1,76 @@
-import 'dart:io';
-
 import '../cql.dart';
 
-abstract class SystemModelInfoProvider implements ModelInfoProvider {
-  /// Sets the namespace manager for this provider.
-  void setNamespaceManager(NamespaceManager namespaceManager);
+class SystemModelInfoProvider implements ModelInfoProvider {
+  NamespaceManager? namespaceManager;
 
-  /// Checks if the given model identifier belongs to the system model.
-  bool isSystemModelIdentifier(ModelIdentifier modelIdentifier);
+  void setNamespaceManager(NamespaceManager namespaceManager) {
+    this.namespaceManager = namespaceManager;
+  }
 
-  /// Loads the model information for the system model, or null if not found.
+  bool isSystemModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == 'System' &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == 'urn:hl7-org:elm-types:r1');
+    }
+
+    return modelIdentifier.id == 'System';
+  }
+
   @override
   ModelInfo load(ModelIdentifier modelIdentifier) {
     if (isSystemModelIdentifier(modelIdentifier)) {
       try {
-        final data = ResourceProvider.getResourceAsBytes(
-            '/org/hl7/elm/r1/system-modelinfo.xml');
+        const fileContent = systemModelInfoXml;
         final reader = ModelInfoReaderFactory.getReader('application/xml');
-        return reader.read(data);
-      } on IOException catch (e, s) {
-        // Don't throw, allow other providers to resolve.
+        return reader.read(fileContent);
+      } catch (e, s) {
+        // Do not throw, allow other providers to resolve
         print(s);
       }
     }
-    throw ArgumentError('Model identifier is not supported');
+    throw ArgumentError('Unknown model identifier: $modelIdentifier');
   }
 }
+
+const systemModelInfoXml =
+    '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:modelInfo name="System" version="1.0.0" url="urn:hl7-org:elm-types:r1" targetQualifier="system"
+               xmlns:ns4="urn:hl7-org:elm-modelinfo:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.Boolean" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.Integer" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.Long" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.Decimal" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.String" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.DateTime" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.Date" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:SimpleTypeInfo" name="System.Time" baseType="System.Any"/>
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="System.Quantity" baseType="System.Any">
+        <ns4:element name="value" type="System.Decimal"/>
+        <ns4:element name="unit" type="System.String"/>
+    </ns4:typeInfo>
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="System.Ratio" baseType="System.Any">
+        <ns4:element name="numerator" type="System.Quantity"/>
+        <ns4:element name="denominator" type="System.Quantity"/>
+    </ns4:typeInfo>
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="System.Code" baseType="System.Any">
+        <ns4:element name="code" type="System.String"/>
+        <ns4:element name="system" type="System.String"/>
+        <ns4:element name="version" type="System.String"/>
+        <ns4:element name="display" type="System.String"/>
+        <!--ns4:element name="primary" type="System.Boolean"/-->
+    </ns4:typeInfo>
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="System.Concept" baseType="System.Any">
+        <ns4:element name="codes">
+            <ns4:typeSpecifier xsi:type="ns4:ListTypeSpecifier" elementType="System.Code"/>
+        </ns4:element>
+        <ns4:element name="display" type="System.String"/>
+    </ns4:typeInfo>
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="System.Vocabulary" baseType="System.Any">
+        <ns4:element name="id" type="System.String"/>
+        <ns4:element name="version" type="System.String"/>
+    </ns4:typeInfo>
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="System.ValueSet" baseType="System.Vocabulary"/>
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="System.CodeSystem" baseType="System.Vocabulary"/>
+</ns4:modelInfo>''';

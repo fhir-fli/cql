@@ -1,12 +1,7 @@
 import '../../cql.dart';
 
 abstract class ModelInfoReaderProvider {
+  bool isSupported();
+
   ModelInfoReader create(String contentType);
-}
-
-class ModelInfoReaderProviders {
-  final Iterable<ModelInfoReaderProvider> providers;
-  final bool refresh;
-
-  ModelInfoReaderProviders(this.providers, this.refresh);
 }

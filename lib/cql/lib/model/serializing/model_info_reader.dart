@@ -3,6 +3,9 @@ import 'dart:io';
 import '../../cql.dart';
 
 abstract class ModelInfoReader {
+  // Replace this method with your actual XML parsing logic.
+  ModelInfo read(String xmlContent);
+
   /// Reads model information from a file. throws IOException
   ModelInfo readFromFile(File file);
 

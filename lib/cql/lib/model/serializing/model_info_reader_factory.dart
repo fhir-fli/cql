@@ -1,37 +1,28 @@
+// Create a registry of providers
 import '../../cql.dart';
 
+final List<ModelInfoReaderProvider> modelInfoReaderProviders = [];
+
 class ModelInfoReaderFactory {
-  static ModelInfoReaderProviderLoader providers(bool refresh) {
-    final loader = ServiceLoader.load(ModelInfoReaderProvider);
-    if (refresh) {
-      loader.reload();
-    }
+  static ModelInfoReaderProvider? _provider;
 
-    final providersList = <ModelInfoReaderProvider>[];
-    while (loader.moveNext()) {
-      providersList.add(loader.current);
+  static ModelInfoReaderProvider? _loadProvider() {
+    for (final provider in modelInfoReaderProviders) {
+      if (provider.isSupported()) {
+        return provider;
+      }
     }
-
-    return ModelInfoReaderProviderLoader(providersList);
+    return null;
   }
 
   static ModelInfoReader getReader(String contentType) {
-    final provider = providers(false).current;
+    _provider ??= _loadProvider();
 
-    // Ensure only one provider exists before calling create.
-    if (providers(false).moveNext()) {
-      throw Exception(
-          'Multiple ModelInfoReaderProviders found on the classpath. '
-          'Remove a reference to either the "model-jackson" or the "model-jaxb" package.');
+    if (_provider != null) {
+      return _provider!.create(contentType);
     }
 
-    // Directly call create on the retrieved provider.
-    return provider.create(contentType);
+    throw Exception(
+        'No ModelInfoReaderProviders found. Add references to the desired providers.');
   }
-}
-
-class ModelInfoReaderProviderLoader {
-  final Iterable<ModelInfoReaderProvider> providers;
-
-  ModelInfoReaderProviderLoader(this.providers);
 }

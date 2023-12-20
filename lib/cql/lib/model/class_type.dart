@@ -185,12 +185,8 @@ class ClassType extends DataType implements NamedType {
                     (existingElement.type as IntervalType).pointType)) ||
             (existingElement.type is ChoiceType &&
                 element.type.isCompatibleWith(existingElement.type)))) {
-      throw InvalidRedeclarationException.fromElements(
-        name,
-        existingElement.name,
-        baseType.toString(),
-        existingElement.type.toString(),
-      );
+      throw InvalidRedeclarationException.ofRedeclaration(
+          this, existingElement, element);
     }
     elements.add(element);
   }
