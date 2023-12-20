@@ -9,6 +9,8 @@ class ClassType extends DataType implements NamedType {
   String? primaryCodePath;
   String? primaryValueSetPath;
   List<ClassTypeElement> elements = [];
+
+  /// Generic class parameters such 'S', 'T extends MyType'.
   List<TypeParameter> genericParameters = [];
   List<Relationship> relationships = [];
   List<Relationship> targetRelationships = [];
@@ -43,6 +45,9 @@ class ClassType extends DataType implements NamedType {
   }
 
   @override
+  String getName() => name;
+
+  @override
   String getNamespace() {
     int qualifierIndex = name.indexOf('.');
     if (qualifierIndex > 0) {
@@ -60,9 +65,31 @@ class ClassType extends DataType implements NamedType {
     return name;
   }
 
+  String? getIdentifier() => identifier;
+
+  String? getLabel() => label;
+
   @override
-  String getName() {
-    return name;
+  String? getTarget() => target;
+
+  bool? isRetrievable() => retrievable;
+
+  String? getPrimaryCodePath() => primaryCodePath;
+
+  String? getPrimaryValueSetPath() => primaryValueSetPath;
+
+  List<Relationship> getRelationships() => relationships;
+
+  void addRelationship(Relationship relationship) {
+    relationships.add(relationship);
+  }
+
+  List<Relationship> getTargetRelationships() => targetRelationships;
+
+  List<SearchType> getSearches() => searches;
+
+  void addSearch(SearchType search) {
+    searches.add(search);
   }
 
   SearchType? findSearch(String searchPath) {
@@ -74,13 +101,13 @@ class ClassType extends DataType implements NamedType {
     }
   }
 
-  List<TypeParameter> getGenericParameters() {
-    return genericParameters;
-  }
-
-  void setGenericParameters(List<TypeParameter> genericParameters) {
-    this.genericParameters = genericParameters;
-  }
+  /// Returns the generic parameters for the generic type. For instance,
+  /// for the generic type Map&lt;K,V extends Person&gt;, two generic parameters
+  /// will be returned: K and V extends Person. The latter parameter has a constraint
+  /// restricting the type of the bound type to be a valid subtype of Person.
+  ///
+  /// @return Class' generic parameters
+  List<TypeParameter> getGenericParameters() => genericParameters;
 
   void addGenericParameter(TypeParameter genericParameter) {
     genericParameters.add(genericParameter);
@@ -111,9 +138,7 @@ class ClassType extends DataType implements NamedType {
     return param;
   }
 
-  List<ClassTypeElement> getElements() {
-    return elements;
-  }
+  List<ClassTypeElement> getElements() => elements;
 
   Map<String, ClassTypeElement>? getBaseElementMap() {
     if (baseElementMap == null) {
@@ -201,12 +226,26 @@ class ClassType extends DataType implements NamedType {
   int get hashCode => name.hashCode;
 
   @override
-  bool operator ==(Object o) {
-    return o is ClassType && name == o.name;
+  bool operator ==(Object other) {
+    return other is ClassType && name == other.name;
   }
 
   @override
-  String toString() => name;
+  String toString() {
+    var buffer = StringBuffer();
+    buffer.write(name);
+    if (genericParameters.isNotEmpty) {
+      buffer.write('<');
+      for (var i = 0; i < genericParameters.length; i++) {
+        if (i > 0) {
+          buffer.write(',');
+        }
+        buffer.write(genericParameters[i]);
+      }
+      buffer.write('>');
+    }
+    return buffer.toString();
+  }
 
   @override
   String toLabel() => label ?? name;
@@ -282,7 +321,4 @@ class ClassType extends DataType implements NamedType {
     }
     return result;
   }
-
-  @override
-  String? getTarget() => target;
 }

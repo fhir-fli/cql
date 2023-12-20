@@ -22,7 +22,7 @@ class SimpleType extends DataType implements NamedType {
   int get hashCode => name.hashCode;
 
   @override
-  bool operator ==(Object o) => o is SimpleType && name == o.name;
+  bool operator ==(Object other) => other is SimpleType && name == other.name;
 
   @override
   String toString() => name;
@@ -62,14 +62,8 @@ class SimpleType extends DataType implements NamedType {
   DataType instantiate(InstantiationContext context) => this;
 
   @override
-  String getName() {
-    // TODO: implement getName
-    throw UnimplementedError();
-  }
+  String getName() => name;
 
   @override
-  String getTarget() {
-    // TODO: implement getTarget
-    throw UnimplementedError();
-  }
+  String? getTarget() => target;
 }

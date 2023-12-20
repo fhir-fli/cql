@@ -13,9 +13,9 @@ class ListType extends DataType {
   int get hashCode => 67 * elementType.hashCode;
 
   @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-    return o is ListType && elementType == o.elementType;
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is ListType && elementType == other.elementType;
   }
 
   @override

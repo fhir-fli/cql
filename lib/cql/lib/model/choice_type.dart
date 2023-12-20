@@ -1,41 +1,40 @@
 import '../cql.dart';
 
 class ChoiceType extends DataType {
-  final List<DataType> _types = [];
+  final List<DataType> _types;
 
-  ChoiceType(Iterable<DataType> types) : super(null) {
-    for (var type in types) {
-      _addType(type);
+  ChoiceType(Iterable<DataType> types)
+      : _types = List<DataType>.from(types),
+        super(null) {
+    // Expand choice types in the constructor, similar to the Java implementation
+    for (final type in _types) {
+      if (type is ChoiceType) {
+        for (final choice in type.types) {
+          addType(choice);
+        }
+      } else {
+        addType(type);
+      }
     }
   }
 
-  Iterable<DataType> get types => _types;
-
-  void _addType(DataType type) {
+  void addType(DataType type) {
     if (type is ChoiceType) {
       final choiceType = type;
       for (var choice in choiceType.types) {
-        _addType(choice);
+        addType(choice);
       }
     } else {
       _types.add(type);
     }
   }
 
-  @override
-  int get hashCode {
-    var result = 13;
-    for (var type in _types) {
-      result += (37 * type.hashCode);
-    }
-    return result;
-  }
+  Iterable<DataType> get types => _types;
 
   @override
   bool operator ==(Object other) {
     if (other is ChoiceType) {
       final that = other;
-
       if (_types.length == that.types.length) {
         for (var i = 0; i < _types.length; i++) {
           if (_types[i] != that.types.elementAt(i)) {
@@ -48,33 +47,39 @@ class ChoiceType extends DataType {
     return false;
   }
 
+  @override
+  int get hashCode {
+    int result = 13;
+    for (final type in _types) {
+      result = (37 * result) + type.hashCode;
+    }
+    return result;
+  }
+
   bool isSubSetOf(ChoiceType other) {
-    for (var type in _types) {
-      var currentIsSubType = false;
-      for (var otherType in other.types) {
-        currentIsSubType = type.isSubTypeOf(otherType);
-        if (currentIsSubType) {
+    for (final type in _types) {
+      var isSubType = false;
+      for (final otherType in other.types) {
+        isSubType = type.isSubTypeOf(otherType);
+        if (isSubType) {
           break;
         }
       }
-      if (!currentIsSubType) {
+      if (!isSubType) {
         return false;
       }
     }
     return true;
   }
 
-  bool isSuperSetOf(ChoiceType other) {
-    return other.isSubSetOf(this);
-  }
+  bool isSuperSetOf(ChoiceType other) => other.isSubSetOf(this);
 
   @override
   bool isCompatibleWith(DataType other) {
     if (other is ChoiceType) {
       return isSubSetOf(other) || isSuperSetOf(other);
     }
-
-    for (var type in _types) {
+    for (final type in _types) {
       if (other.isCompatibleWith(type)) {
         return true;
       }
@@ -87,13 +92,13 @@ class ChoiceType extends DataType {
     final sb = StringBuffer();
     sb.write('choice<');
     var first = true;
-    for (var type in _types) {
-      if (!first) {
-        sb.write(',');
-      } else {
+    for (final type in _types) {
+      if (first) {
         first = false;
+      } else {
+        sb.write(',');
       }
-      sb.write(type.toString());
+      sb.write(type);
     }
     sb.write('>');
     return sb.toString();
@@ -110,12 +115,9 @@ class ChoiceType extends DataType {
   }
 
   @override
-  bool isInstantiable(DataType callType, InstantiationContext context) {
-    return isSuperTypeOf(callType);
-  }
+  bool isInstantiable(DataType callType, InstantiationContext context) =>
+      isSuperTypeOf(callType);
 
   @override
-  DataType instantiate(InstantiationContext context) {
-    return this;
-  }
+  DataType instantiate(InstantiationContext context) => this;
 }
