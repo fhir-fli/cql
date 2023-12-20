@@ -96,7 +96,7 @@ class ModelInfo {
   Map<String, dynamic> toJson() => {
         'name': name,
         'version': version,
-        'url': url,
+        'url': url.toString(),
         'targetUrl': targetUrl,
         'targetVersion': targetVersion,
         'schemaLocation': schemaLocation,

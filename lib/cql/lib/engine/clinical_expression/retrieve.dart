@@ -14,7 +14,7 @@ import '../../cql.dart';
 /// ensures strict deterministic and functional behavior of the artifact,
 /// and allows the implementation engine freedom to cache intermediate
 /// results in order to improve performance.
-class Retrieve extends Element {
+class Retrieve extends Expression {
   /// The id element optionally specifies an expression that results in a
   /// value that can be used to filter the retrieve to a specific id.
   Expression? id;
