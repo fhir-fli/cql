@@ -1,4 +1,4 @@
-import '../../../cql.dart';
+import '../../cql.dart';
 
 /// Represents an interval type, extending [TypeInfo].
 ///
@@ -25,6 +25,7 @@ class IntervalTypeInfo extends TypeInfo {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (pointTypeSpecifier != null) {

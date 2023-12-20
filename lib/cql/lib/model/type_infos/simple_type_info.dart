@@ -1,4 +1,4 @@
-import '../../../cql.dart';
+import '../../cql.dart';
 
 /// Represents a simple type, extending [TypeInfo].
 ///
@@ -23,6 +23,7 @@ class SimpleTypeInfo extends TypeInfo {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['name'] = name;

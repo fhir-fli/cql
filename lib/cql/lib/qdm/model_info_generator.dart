@@ -36,13 +36,30 @@ class XsdToModelInfoConverter {
               .firstWhere((p0) => p0.name.toString() == 'base');
         }
 
-        modelInfo.contextInfo.add(ContextInfo(
+        final contextInfo = ContextInfo(
             name: name.value,
             contextType: NamedTypeSpecifier(
                 namespace: QName.fromNamespace(
               baseName?.value,
               name.value,
-            ))));
+            )));
+
+        if (name.value == 'CodeableConcept' || name.value == 'Quantity') {
+          // Add these complex types even if their internal structure isn't extracted yet
+          modelInfo.contextInfo.add(contextInfo);
+          continue; // Skip further processing for these basic types
+        }
+
+        for (final element in complexType.findElements('*')) {
+          for (final attribute in element.attributes) {
+            if (attribute.name.toString() == 'type' &&
+                attribute.value == 'xs:choice') {
+              final choiceElements = element.findElements('*');
+            }
+          }
+
+          modelInfo.contextInfo.add(contextInfo);
+        }
       }
 
       return modelInfo;

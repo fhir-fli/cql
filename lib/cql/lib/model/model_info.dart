@@ -93,25 +93,57 @@ class ModelInfo {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'version': version,
-        'url': url.toString(),
-        'targetUrl': targetUrl,
-        'targetVersion': targetVersion,
-        'schemaLocation': schemaLocation,
-        'targetQualifier': targetQualifier,
-        'patientClassName': patientClassName,
-        'patientClassIdentifier': patientClassIdentifier,
-        'patientBirthDatePropertyName': patientBirthDatePropertyName,
-        'caseSensitive': caseSensitive,
-        'strictRetrieveTyping': strictRetrieveTyping,
-        'defaultContext': defaultContext,
-        'requiredModelInfo': requiredModelInfo,
-        'typeInfo': typeInfo,
-        'conversionInfo': conversionInfo,
-        'contextInfo': contextInfo,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{'name': name};
+    if (version != null) {
+      json['version'] = version!;
+    }
+    json['url'] = url.toString();
+    if (targetUrl != null) {
+      json['targetUrl'] = targetUrl.toString();
+    }
+    if (targetVersion != null) {
+      json['targetVersion'] = targetVersion!;
+    }
+    if (schemaLocation != null) {
+      json['schemaLocation'] = schemaLocation!;
+    }
+    if (targetQualifier != null) {
+      json['targetQualifier'] = targetQualifier!;
+    }
+    if (patientClassName != null) {
+      json['patientClassName'] = patientClassName!;
+    }
+    if (patientClassIdentifier != null) {
+      json['patientClassIdentifier'] = patientClassIdentifier!;
+    }
+    if (patientBirthDatePropertyName != null) {
+      json['patientBirthDatePropertyName'] = patientBirthDatePropertyName!;
+    }
+    if (caseSensitive != null) {
+      json['caseSensitive'] = caseSensitive!;
+    }
+    if (strictRetrieveTyping != null) {
+      json['strictRetrieveTyping'] = strictRetrieveTyping!;
+    }
+    if (defaultContext != null) {
+      json['defaultContext'] = defaultContext!;
+    }
+    if (requiredModelInfo.isNotEmpty) {
+      json['requiredModelInfo'] =
+          requiredModelInfo.map((e) => e.toJson()).toList();
+    }
+    if (typeInfo.isNotEmpty) {
+      json['typeInfo'] = typeInfo.map((e) => e.toJson()).toList();
+    }
+    if (conversionInfo.isNotEmpty) {
+      json['conversionInfo'] = conversionInfo.map((e) => e.toJson()).toList();
+    }
+    if (contextInfo.isNotEmpty) {
+      json['contextInfo'] = contextInfo.map((e) => e.toJson()).toList();
+    }
+    return json;
+  }
 
   @override
   String toString() {

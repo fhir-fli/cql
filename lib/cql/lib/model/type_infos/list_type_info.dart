@@ -1,4 +1,4 @@
-import '../../../cql.dart';
+import '../../cql.dart';
 
 /// Represents a list type, extending [TypeInfo].
 ///
@@ -25,6 +25,7 @@ class ListTypeInfo extends TypeInfo {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (elementTypeSpecifier != null) {

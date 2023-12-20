@@ -1,4 +1,4 @@
-import '../../../cql.dart';
+import '../../cql.dart';
 
 /// Models information associated with a single class in the data model.
 ///
@@ -48,6 +48,7 @@ class ClassInfo extends TypeInfo {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (namespace != null) {

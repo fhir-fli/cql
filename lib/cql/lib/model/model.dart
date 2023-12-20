@@ -1,3 +1,4 @@
+export 'type_infos/type_infos.dart';
 export 'binding_info.dart';
 export 'choice_type.dart';
 export 'class_info_element.dart';
@@ -24,6 +25,5 @@ export 'tuple_type_element.dart';
 export 'tuple_type_info_element.dart';
 export 'tuple_type_specifier_element.dart';
 export 'tuple_type.dart';
-export 'type_info.dart';
 export 'type_parameter_info.dart';
 export 'type_parameter.dart';

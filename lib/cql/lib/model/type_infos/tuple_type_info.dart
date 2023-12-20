@@ -1,4 +1,4 @@
-import '../../../cql.dart';
+import '../../cql.dart';
 
 /// Represents a tuple type information, extending [TypeInfo].
 ///
@@ -22,6 +22,7 @@ class TupleTypeInfo extends TypeInfo {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (element != null) {

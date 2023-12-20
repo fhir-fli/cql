@@ -1,4 +1,4 @@
-import '../../../cql.dart';
+import '../../cql.dart';
 
 /// Represents a choice type information, extending [TypeInfo].
 ///
@@ -31,6 +31,7 @@ class ChoiceTypeInfo extends TypeInfo {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (type != null) {
