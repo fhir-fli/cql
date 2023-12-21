@@ -2,7 +2,7 @@
 import '../../cql.dart';
 
 final List<ModelInfoReaderProvider> modelInfoReaderProviders = [
-  QdmModelInfoReaderProvider(),
+  StandardModelInfoReaderProvider(),
 ];
 
 class ModelInfoReaderFactory {

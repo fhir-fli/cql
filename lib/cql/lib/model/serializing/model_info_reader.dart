@@ -24,34 +24,10 @@ abstract class ModelInfoReader {
   /// Reads model information from a string. throws IOException
   ModelInfo readFromString(String string);
 
-  static const tags = [
-    "@baseType",
-    "@birthDateElement",
-    "@context",
-    "@identifier",
-    "@keyElement",
-    "@label",
-    "@modelName",
-    "@name",
-    "@patientBirthDatePropertyName",
-    "@patientClassIdentifier",
-    "@patientClassName",
-    "@primaryCodePath",
-    "@relatedKeyElement",
-    "@retrievable",
-    "@strictRetrieveTyping",
-    "@targetQualifier",
-    "@type",
-    "@url",
-    "@version",
-    "@xmlns",
-    "@xsi:type",
-  ];
-
   static dynamic removeAts(dynamic value) {
     if (value is String) {
       var newValue = value;
-      if (tags.contains(newValue)) {
+      if (newValue.startsWith('@')) {
         newValue = newValue.replaceFirst('@', '');
       }
       if (newValue.startsWith('xsi:')) {

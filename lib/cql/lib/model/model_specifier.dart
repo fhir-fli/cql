@@ -17,7 +17,6 @@ class ModelSpecifier {
   });
 
   factory ModelSpecifier.fromJson(Map<String, dynamic> json) {
-    print('model specifier from json');
     return ModelSpecifier(
       name: json['name'] as String,
       version: json['version'] as String?,

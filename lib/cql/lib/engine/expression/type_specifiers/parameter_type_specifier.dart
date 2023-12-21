@@ -6,20 +6,21 @@ import '../../../cql.dart';
 /// including its parameter name.
 class ParameterTypeSpecifier extends TypeSpecifier {
   /// Name of the parameter.
-  QName name;
+  QName parameterName;
 
   @override
   final String type = 'ParameterTypeSpecifier';
 
-  ParameterTypeSpecifier({required String name}) : name = QName.fromFull(name);
+  ParameterTypeSpecifier({required String parameterName})
+      : parameterName = QName.fromFull(parameterName);
 
   factory ParameterTypeSpecifier.fromJson(Map<String, dynamic> json) {
-    final name = json['name'] as String;
-    return ParameterTypeSpecifier(name: name);
+    final parameterName = json['parameterName'] as String? ?? '';
+    return ParameterTypeSpecifier(parameterName: parameterName);
   }
   @override
   Map<String, dynamic> toJson() => {
-        'name': name.toString(),
+        'parameterName': parameterName.toString(),
         'type': type,
       };
 }

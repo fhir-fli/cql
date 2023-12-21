@@ -25,16 +25,17 @@ class BindingInfo {
     return BindingInfo(
       name: json['name'],
       description: json['description'],
-      strength: json['strength'],
-      valueSet: json['valueSet'],
+      strength:
+          bindingStrengthFromJson(json['strength']) ?? BindingStrength.example,
+      valueSet: json['valueSet'] == null ? Uri() : Uri.parse(json['valueSet']),
     );
   }
 
   Map<String, dynamic> toJson() => {
         'name': name,
         'description': description,
-        'strength': strength,
-        'valueSet': valueSet,
+        'strength': strength.toJson(),
+        'valueSet': valueSet.toString(),
       };
 
   @override
@@ -54,4 +55,35 @@ enum BindingStrength {
   preferred,
   @JsonValue('Example')
   example,
+}
+
+extension BindingStrengthJson on BindingStrength {
+  String toJson() {
+    switch (this) {
+      case BindingStrength.required:
+        return 'Required';
+      case BindingStrength.extensible:
+        return 'Extensible';
+      case BindingStrength.preferred:
+        return 'Preferred';
+      case BindingStrength.example:
+        return 'Example';
+    }
+  }
+}
+
+BindingStrength? bindingStrengthFromJson(String? json) {
+  if (json == null) return null;
+
+  switch (json) {
+    case 'Required':
+      return BindingStrength.required;
+    case 'Extensible':
+      return BindingStrength.extensible;
+    case 'Preferred':
+      return BindingStrength.preferred;
+    case 'Example':
+      return BindingStrength.example;
+  }
+  throw ArgumentError('Invalid BindingStrength value: $json');
 }

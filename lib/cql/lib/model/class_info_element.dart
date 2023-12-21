@@ -79,31 +79,61 @@ class ClassInfoElement {
   });
 
   factory ClassInfoElement.fromJson(Map<String, dynamic> json) {
+    final name = json['name'] as String;
+    final typeSpecifier = json['typeSpecifier'] != null
+        ? TypeSpecifier.fromJson(json['typeSpecifier'])
+        : null;
+    final elementTypeSpecifier = json['elementTypeSpecifier'] != null
+        ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
+        : null;
+    final binding =
+        json['binding'] != null ? BindingInfo.fromJson(json['binding']) : null;
+    final type = json['type'] as String?;
+    final elementType = json['elementType'] as String?;
+    final prohibited = json['prohibited'] is bool
+        ? json['prohibited'] as bool
+        : json['prohibited'] is String
+            ? json['prohibited'] == 'true'
+                ? true
+                : json['prohibited'] == 'false'
+                    ? false
+                    : null
+            : null;
+    final oneBased = json['oneBased'] as bool?;
+    final target = json['target'] as String?;
+    final label = json['label'] as String?;
+    final description = json['description'] as String?;
+    final definition = json['definition'] as String?;
+    final comment = json['comment'] as String?;
+    final min = json['min'] as int?;
+    final max = json['max'] as String?;
+    final mustSupport = json['mustSupport'] is bool
+        ? json['mustSupport'] as bool
+        : json['mustSupport'] is String
+            ? json['mustSupport'] == 'true'
+                ? true
+                : json['mustSupport'] == 'false'
+                    ? false
+                    : null
+            : null;
+
     return ClassInfoElement(
-      name: json['name'],
-      typeSpecifier:
-          json['typeSpecifier'] == null || json['typeSpecifier'] == ''
-              ? null
-              : TypeSpecifier.fromJson(json['typeSpecifier']),
-      elementTypeSpecifier: json['elementTypeSpecifier'] == null ||
-              json['elementTypeSpecifier'] == ''
-          ? null
-          : TypeSpecifier.fromJson(json['elementTypeSpecifier']),
-      binding: json['binding'] == null || json['binding'] == ''
-          ? null
-          : BindingInfo.fromJson(json['binding']),
-      type: json['type'],
-      elementType: json['elementType'],
-      prohibited: json['prohibited'],
-      oneBased: json['oneBased'],
-      target: json['target'],
-      label: json['label'],
-      description: json['description'],
-      definition: json['definition'],
-      comment: json['comment'],
-      min: json['min'],
-      max: json['max'],
-      mustSupport: json['mustSupport'],
+      name: name,
+      typeSpecifier: typeSpecifier,
+      elementTypeSpecifier: elementTypeSpecifier,
+      binding: binding,
+      type: type,
+      elementType: elementType,
+      prohibited: prohibited,
+      oneBased: oneBased,
+      target: target,
+      label: label,
+      description: description,
+      definition: definition,
+      comment: comment,
+      min: min,
+      max: max,
+      mustSupport: mustSupport,
     );
   }
 

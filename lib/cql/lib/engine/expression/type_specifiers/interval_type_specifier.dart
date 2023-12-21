@@ -1,5 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../../cql.dart';
 
 /// Represents an interval type specifier, extending [TypeSpecifier].
@@ -8,19 +6,21 @@ import '../../../cql.dart';
 /// including a pointTypeSpecifier element and pointType attribute.
 class IntervalTypeSpecifier extends TypeSpecifier {
   @override
-  @JsonKey(name: 'type')
   final String type = 'IntervalTypeSpecifier';
 
   TypeSpecifier? pointType;
 
   IntervalTypeSpecifier({this.pointType});
 
-  factory IntervalTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      IntervalTypeSpecifier(
-        pointType: json['pointType'] == null
-            ? null
-            : TypeSpecifier.fromJson(json['pointType'] as Map<String, dynamic>),
-      );
+  factory IntervalTypeSpecifier.fromJson(Map<String, dynamic> json) {
+    return IntervalTypeSpecifier(
+      pointType: json['pointType'] == null
+          ? null
+          : json['pointType'] is Map<String, dynamic>
+              ? TypeSpecifier.fromJson(json['pointType'])
+              : null,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

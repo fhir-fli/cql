@@ -29,11 +29,14 @@ class ConversionInfo {
   });
 
   factory ConversionInfo.fromJson(Map<String, dynamic> json) {
-    print('conversion info from json');
     return ConversionInfo(
       functionName: json['functionName'],
-      fromTypeSpecifier: json['fromTypeSpecifier'],
-      toTypeSpecifier: json['toTypeSpecifier'],
+      fromTypeSpecifier: json['fromTypeSpecifier'] == null
+          ? null
+          : TypeSpecifier.fromJson(json['fromTypeSpecifier']),
+      toTypeSpecifier: json['toTypeSpecifier'] == null
+          ? null
+          : TypeSpecifier.fromJson(json['toTypeSpecifier']),
       fromType: json['fromType'],
       toType: json['toType'],
     );
@@ -41,12 +44,13 @@ class ConversionInfo {
 
   Map<String, dynamic> toJson() => {
         'functionName': functionName,
-        'fromTypeSpecifier': fromTypeSpecifier,
-        'toTypeSpecifier': toTypeSpecifier,
-        'fromType': fromType,
-        'toType': toType,
+        if (fromTypeSpecifier != null)
+          'fromTypeSpecifier': fromTypeSpecifier!.toJson(),
+        if (toTypeSpecifier != null)
+          'toTypeSpecifier': toTypeSpecifier!.toJson(),
+        if (fromType != null) 'fromType': fromType,
+        if (toType != null) 'toType': toType,
       };
-
   @override
   String toString() {
     return 'ConversionInfo{functionName: $functionName, fromTypeSpecifier: $fromTypeSpecifier, toTypeSpecifier: $toTypeSpecifier, fromType: $fromType, toType: $toType}';
