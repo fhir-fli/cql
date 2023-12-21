@@ -4,6 +4,7 @@ import 'dart:io';
 import '../../cql.dart';
 
 Future<void> main() async {
+  final List<String> fileNames = <String>[];
   final dir = Directory('model_info_xml');
   final files = dir.listSync();
   final StandardModelInfoReader reader = StandardModelInfoReader();
@@ -12,10 +13,21 @@ Future<void> main() async {
     final modelInfo = reader.read(fileString);
     final json = modelInfo.toJson();
     final jsonPretty = jsonPrettyPrint(json);
+    final fileName = file.path
+        .split('/')
+        .last
+        .replaceAll('.xml', '')
+        .replaceAll('-', '')
+        .replaceAll('.', '')
+        .replaceAll('(', '')
+        .replaceAll(')', '');
+    fileNames.add(file.path.split('/').last.replaceAll('.xml', '.dart'));
+    final newFileString = "import '../../../cql.dart';\n\n"
+        'final $fileName = ModelInfo.fromJson($jsonPretty);';
     await File(file.path
-            .replaceAll('.xml', '.json')
-            .replaceAll('model_info_xml', 'model_info_json'))
-        .writeAsString(jsonPretty);
+            .replaceAll('.xml', '.dart')
+            .replaceAll('model_info_xml', 'model_info'))
+        .writeAsString(newFileString);
   }
 }
 
