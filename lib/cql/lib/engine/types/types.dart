@@ -1,3 +1,5 @@
+import 'package:fhir/primitive_types/time.dart' as time;
+
 import '../../cql.dart';
 
 /// Represents a String type
@@ -132,7 +134,7 @@ class LiteralDecimal extends Literal {
   @override
   Map<String, dynamic> toJson() => {
         'valueType': valueType.toJson(),
-        'value': value,
+        'value': value.toString(),
         'type': type,
       };
 }
@@ -149,7 +151,7 @@ class LiteralInteger extends Literal {
   @override
   Map<String, dynamic> toJson() => {
         'valueType': valueType.toJson(),
-        'value': value,
+        'value': value.toString(),
         'type': type,
       };
 }
@@ -253,49 +255,21 @@ class LiteralTime extends Literal {
       };
 }
 
-/// Common base class for all interval types
-abstract class LiteralInterval extends Literal {
-  LiteralInterval({QName? valueType})
-      : super(
-            valueType: valueType ??
-                QName.fromFull('{urn:hl7-org:elm-types:r1}Interval'));
-
-  factory LiteralInterval.fromJson(Map<String, dynamic> json) {
-    final String valueType = json['valueType'];
-    switch (valueType) {
-      case '{urn:hl7-org:elm-types:r1}IntegerInterval':
-        return LiteralIntegerInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}DecimalInterval':
-        return LiteralDecimalInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}QuantityInterval':
-        return LiteralQuantityInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}DateInterval':
-        return LiteralDateInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}DateTimeInterval':
-        return LiteralDateTimeInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}TimeInterval':
-        return LiteralTimeInterval.fromJson(json);
-      default:
-        throw ArgumentError('Unknown interval type: $valueType');
-    }
-  }
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'type': type,
-      };
-}
-
 /// Represents an interval of integers
-class LiteralIntegerInterval extends LiteralInterval {
-  LiteralInteger? low;
-  LiteralInteger? high;
-
-  LiteralIntegerInterval({this.low, this.high})
-      : super(
-            valueType:
-                QName.fromFull('{urn:hl7-org:elm-types:r1}IntegerInterval'));
+class LiteralIntegerInterval extends IntervalExpression {
+  LiteralIntegerInterval({
+    LiteralInteger? low,
+    LiteralInteger? high,
+    super.lowClosed,
+    super.highClosed,
+    LiteralInteger? lowClosedExpression,
+    LiteralInteger? highClosedExpression,
+  }) : super(
+          low: low,
+          high: high,
+          lowClosedExpression: lowClosedExpression,
+          highClosedExpression: highClosedExpression,
+        );
 
   factory LiteralIntegerInterval.fromJson(Map<String, dynamic> json) =>
       LiteralIntegerInterval(
@@ -305,25 +279,51 @@ class LiteralIntegerInterval extends LiteralInterval {
         high: json['high'] == null
             ? null
             : LiteralInteger.fromJson(json['high'] as Map<String, dynamic>),
+        lowClosed: json['lowClosed'] ?? true,
+        highClosed: json['highClosed'] ?? true,
+        lowClosedExpression: json['lowClosed'] != true
+            ? null
+            : LiteralInteger.fromJson(json['lowClosedExpression']),
+        highClosedExpression: json['highClosed'] != true
+            ? null
+            : LiteralInteger.fromJson(json['high'] as Map<String, dynamic>),
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'low': low?.toJson(),
-        'high': high?.toJson(),
-        'type': type,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{
+      'lowClosed': lowClosed,
+      'highClosed': highClosed
+    };
+    if (low != null) {
+      json['low'] = low!.toJson();
+    } else if (lowClosedExpression != null) {
+      json['low'] = lowClosedExpression!.toJson();
+    }
+    if (high != null) {
+      json['high'] = high!.toJson();
+    } else if (highClosedExpression != null) {
+      json['high'] = highClosedExpression!.toJson();
+    }
+    return json;
+  }
 }
 
-/// Represents an interval of decimals
-class LiteralDecimalInterval extends LiteralInterval {
-  LiteralDecimal? low;
-  LiteralDecimal? high;
-  LiteralDecimalInterval({this.low, this.high})
-      : super(
-            valueType:
-                QName.fromFull('{urn:hl7-org:elm-types:r1}DecimalInterval'));
+// /// Represents an interval of decimals
+class LiteralDecimalInterval extends IntervalExpression {
+  LiteralDecimalInterval({
+    LiteralDecimal? low,
+    LiteralDecimal? high,
+    super.lowClosed,
+    super.highClosed,
+    LiteralDecimal? lowClosedExpression,
+    LiteralDecimal? highClosedExpression,
+  }) : super(
+          low: low,
+          high: high,
+          lowClosedExpression: lowClosedExpression,
+          highClosedExpression: highClosedExpression,
+        );
 
   factory LiteralDecimalInterval.fromJson(Map<String, dynamic> json) =>
       LiteralDecimalInterval(
@@ -333,25 +333,51 @@ class LiteralDecimalInterval extends LiteralInterval {
         high: json['high'] == null
             ? null
             : LiteralDecimal.fromJson(json['high'] as Map<String, dynamic>),
+        lowClosed: json['lowClosed'] ?? true,
+        highClosed: json['highClosed'] ?? true,
+        lowClosedExpression: json['lowClosed'] != true
+            ? null
+            : LiteralDecimal.fromJson(json['lowClosedExpression']),
+        highClosedExpression: json['highClosed'] != true
+            ? null
+            : LiteralDecimal.fromJson(json['high'] as Map<String, dynamic>),
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'low': low?.toJson(),
-        'high': high?.toJson(),
-        'type': type,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{
+      'lowClosed': lowClosed,
+      'highClosed': highClosed
+    };
+    if (low != null) {
+      json['low'] = low!.toJson();
+    } else if (lowClosedExpression != null) {
+      json['low'] = lowClosedExpression!.toJson();
+    }
+    if (high != null) {
+      json['high'] = high!.toJson();
+    } else if (highClosedExpression != null) {
+      json['high'] = highClosedExpression!.toJson();
+    }
+    return json;
+  }
 }
 
-/// Represents an interval of quantities
-class LiteralQuantityInterval extends LiteralInterval {
-  LiteralQuantity? low;
-  LiteralQuantity? high;
-  LiteralQuantityInterval({this.low, this.high})
-      : super(
-            valueType:
-                QName.fromFull('{urn:hl7-org:elm-types:r1}QuantityInterval'));
+// /// Represents an interval of quantities
+class LiteralQuantityInterval extends IntervalExpression {
+  LiteralQuantityInterval({
+    LiteralQuantity? low,
+    LiteralQuantity? high,
+    super.lowClosed,
+    super.highClosed,
+    LiteralQuantity? lowClosedExpression,
+    LiteralQuantity? highClosedExpression,
+  }) : super(
+          low: low,
+          high: high,
+          lowClosedExpression: lowClosedExpression,
+          highClosedExpression: highClosedExpression,
+        );
 
   factory LiteralQuantityInterval.fromJson(Map<String, dynamic> json) =>
       LiteralQuantityInterval(
@@ -361,25 +387,51 @@ class LiteralQuantityInterval extends LiteralInterval {
         high: json['high'] == null
             ? null
             : LiteralQuantity.fromJson(json['high'] as Map<String, dynamic>),
+        lowClosed: json['lowClosed'] ?? true,
+        highClosed: json['highClosed'] ?? true,
+        lowClosedExpression: json['lowClosed'] != true
+            ? null
+            : LiteralQuantity.fromJson(json['lowClosedExpression']),
+        highClosedExpression: json['highClosed'] != true
+            ? null
+            : LiteralQuantity.fromJson(json['high'] as Map<String, dynamic>),
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'low': low?.toJson(),
-        'high': high?.toJson(),
-        'type': type,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{
+      'lowClosed': lowClosed,
+      'highClosed': highClosed
+    };
+    if (low != null) {
+      json['low'] = low!.toJson();
+    } else if (lowClosedExpression != null) {
+      json['low'] = lowClosedExpression!.toJson();
+    }
+    if (high != null) {
+      json['high'] = high!.toJson();
+    } else if (highClosedExpression != null) {
+      json['high'] = highClosedExpression!.toJson();
+    }
+    return json;
+  }
 }
 
-/// Represents an interval of dates
-class LiteralDateInterval extends LiteralInterval {
-  LiteralDate? low;
-  LiteralDate? high;
-  LiteralDateInterval({this.low, this.high})
-      : super(
-            valueType:
-                QName.fromFull('{urn:hl7-org:elm-types:r1}DateInterval'));
+// /// Represents an interval of dates
+class LiteralDateInterval extends IntervalExpression {
+  LiteralDateInterval({
+    LiteralDate? low,
+    LiteralDate? high,
+    super.lowClosed,
+    super.highClosed,
+    LiteralDate? lowClosedExpression,
+    LiteralDate? highClosedExpression,
+  }) : super(
+          low: low,
+          high: high,
+          lowClosedExpression: lowClosedExpression,
+          highClosedExpression: highClosedExpression,
+        );
 
   factory LiteralDateInterval.fromJson(Map<String, dynamic> json) =>
       LiteralDateInterval(
@@ -389,51 +441,138 @@ class LiteralDateInterval extends LiteralInterval {
         high: json['high'] == null
             ? null
             : LiteralDate.fromJson(json['high'] as Map<String, dynamic>),
+        lowClosed: json['lowClosed'] ?? true,
+        highClosed: json['highClosed'] ?? true,
+        lowClosedExpression: json['lowClosed'] != true
+            ? null
+            : LiteralDate.fromJson(json['lowClosedExpression']),
+        highClosedExpression: json['highClosed'] != true
+            ? null
+            : LiteralDate.fromJson(json['high'] as Map<String, dynamic>),
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'low': low?.toJson(),
-        'high': high?.toJson(),
-        'type': type,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{
+      'lowClosed': lowClosed,
+      'highClosed': highClosed,
+      'type': 'Interval',
+    };
+    final LiteralDate? newLow = (low ?? lowClosedExpression) as LiteralDate?;
+    if (newLow?.value != null) {
+      final lowValue = DateTime.tryParse(newLow!.value);
+      if (lowValue != null) {
+        json['low'] = <String, dynamic>{'type': 'Date'};
+        json['low']!['year'] = LiteralInteger(value: lowValue.year).toJson();
+        json['low']!['month'] = LiteralInteger(value: lowValue.month).toJson();
+        json['low']!['day'] = LiteralInteger(value: lowValue.day).toJson();
+      }
+    }
+    final LiteralDate? newHigh = (high ?? highClosedExpression) as LiteralDate?;
+    if (newHigh?.value != null) {
+      final highValue = DateTime.tryParse(newHigh!.value);
+      if (highValue != null) {
+        json['high'] = <String, dynamic>{'type': 'Date'};
+        json['high']!['year'] = LiteralInteger(value: highValue.year).toJson();
+        json['high']!['month'] =
+            LiteralInteger(value: highValue.month).toJson();
+        json['high']!['day'] = LiteralInteger(value: highValue.day).toJson();
+      }
+    }
+    return json;
+  }
 }
 
-/// Represents an interval of date-times
-class LiteralDateTimeInterval extends LiteralInterval {
-  DateTime? low;
-  DateTime? high;
-  LiteralDateTimeInterval({this.low, this.high})
-      : super(
-            valueType:
-                QName.fromFull('{urn:hl7-org:elm-types:r1}DateTimeInterval'));
+// /// Represents an interval of date-times
+class LiteralDateTimeInterval extends IntervalExpression {
+  LiteralDateTimeInterval({
+    LiteralDateTime? low,
+    LiteralDateTime? high,
+    super.lowClosed,
+    super.highClosed,
+    LiteralDateTime? lowClosedExpression,
+    LiteralDateTime? highClosedExpression,
+  }) : super(
+          low: low,
+          high: high,
+          lowClosedExpression: lowClosedExpression,
+          highClosedExpression: highClosedExpression,
+        );
 
   factory LiteralDateTimeInterval.fromJson(Map<String, dynamic> json) =>
       LiteralDateTimeInterval(
-        low: json['low'] == null ? null : DateTime.parse(json['low'] as String),
+        low: json['low'] == null
+            ? null
+            : LiteralDateTime.fromJson(json['low'] as Map<String, dynamic>),
         high: json['high'] == null
             ? null
-            : DateTime.parse(json['high'] as String),
+            : LiteralDateTime.fromJson(json['high'] as Map<String, dynamic>),
+        lowClosed: json['lowClosed'] ?? true,
+        highClosed: json['highClosed'] ?? true,
+        lowClosedExpression: json['lowClosed'] != true
+            ? null
+            : LiteralDateTime.fromJson(json['lowClosedExpression']),
+        highClosedExpression: json['highClosed'] != true
+            ? null
+            : LiteralDateTime.fromJson(json['high'] as Map<String, dynamic>),
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'low': low?.toIso8601String(),
-        'high': high?.toIso8601String(),
-        'type': type,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{
+      'lowClosed': lowClosed,
+      'highClosed': highClosed,
+      'type': 'Interval',
+    };
+    final LiteralDateTime? newLow =
+        (low ?? lowClosedExpression) as LiteralDateTime?;
+    if (newLow?.value != null) {
+      final lowValue = newLow!.value;
+      json['low'] = <String, dynamic>{'type': 'DateTime'};
+      json['low']!['year'] = LiteralInteger(value: lowValue.year).toJson();
+      json['low']!['month'] = LiteralInteger(value: lowValue.month).toJson();
+      json['low']!['day'] = LiteralInteger(value: lowValue.day).toJson();
+      json['low']!['hour'] = LiteralInteger(value: lowValue.hour).toJson();
+      json['low']!['minute'] = LiteralInteger(value: lowValue.minute).toJson();
+      json['low']!['second'] = LiteralInteger(value: lowValue.second).toJson();
+      json['low']!['millisecond'] =
+          LiteralInteger(value: lowValue.millisecond).toJson();
+    }
+    final LiteralDateTime? newHigh =
+        (high ?? highClosedExpression) as LiteralDateTime?;
+    if (newHigh?.value != null) {
+      final highValue = newHigh!.value;
+      json['high'] = <String, dynamic>{'type': 'DateTime'};
+      json['high']!['year'] = LiteralInteger(value: highValue.year).toJson();
+      json['high']!['month'] = LiteralInteger(value: highValue.month).toJson();
+      json['high']!['day'] = LiteralInteger(value: highValue.day).toJson();
+      json['high']!['hour'] = LiteralInteger(value: highValue.hour).toJson();
+      json['high']!['minute'] =
+          LiteralInteger(value: highValue.minute).toJson();
+      json['high']!['second'] =
+          LiteralInteger(value: highValue.second).toJson();
+      json['high']!['millisecond'] =
+          LiteralInteger(value: highValue.millisecond).toJson();
+    }
+    return json;
+  }
 }
 
-/// Represents an interval of times
-class LiteralTimeInterval extends LiteralInterval {
-  LiteralTime? low;
-  LiteralTime? high;
-  LiteralTimeInterval({this.low, this.high})
-      : super(
-            valueType:
-                QName.fromFull('{urn:hl7-org:elm-types:r1}TimeInterval'));
+// /// Represents an interval of times
+class LiteralTimeInterval extends IntervalExpression {
+  LiteralTimeInterval({
+    LiteralTime? low,
+    LiteralTime? high,
+    super.lowClosed,
+    super.highClosed,
+    LiteralTime? lowClosedExpression,
+    LiteralTime? highClosedExpression,
+  }) : super(
+          low: low,
+          high: high,
+          lowClosedExpression: lowClosedExpression,
+          highClosedExpression: highClosedExpression,
+        );
 
   factory LiteralTimeInterval.fromJson(Map<String, dynamic> json) =>
       LiteralTimeInterval(
@@ -443,15 +582,66 @@ class LiteralTimeInterval extends LiteralInterval {
         high: json['high'] == null
             ? null
             : LiteralTime.fromJson(json['high'] as Map<String, dynamic>),
+        lowClosed: json['lowClosed'] ?? true,
+        highClosed: json['highClosed'] ?? true,
+        lowClosedExpression: json['lowClosed'] != true
+            ? null
+            : LiteralTime.fromJson(json['lowClosedExpression']),
+        highClosedExpression: json['highClosed'] != true
+            ? null
+            : LiteralTime.fromJson(json['high'] as Map<String, dynamic>),
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'low': low?.toJson(),
-        'high': high?.toJson(),
-        'type': type,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{
+      'lowClosed': lowClosed,
+      'highClosed': highClosed,
+      'type': 'Time',
+    };
+    final LiteralTime? newLow = (low ?? lowClosedExpression) as LiteralTime?;
+    if (newLow?.value != null) {
+      final lowValue = time.FhirTime(newLow!.value);
+      json['low'] = <String, dynamic>{'type': 'Time'};
+      if (lowValue.hour != null) {
+        json['low']!['hour'] = LiteralInteger(value: lowValue.hour!).toJson();
+      }
+      if (lowValue.minute != null) {
+        json['low']!['minute'] =
+            LiteralInteger(value: lowValue.minute!).toJson();
+      }
+      if (lowValue.second != null) {
+        json['low']!['second'] =
+            LiteralInteger(value: lowValue.second!).toJson();
+      }
+      if (lowValue.millisecond != null) {
+        json['low']!['millisecond'] =
+            LiteralInteger(value: lowValue.millisecond!).toJson();
+      }
+    }
+    final LiteralTime? newHigh = (high ?? highClosedExpression) as LiteralTime?;
+    if (newHigh?.value != null) {
+      final highValue = time.FhirTime(newHigh!.value);
+      json['high'] = <String, dynamic>{'type': 'Time'};
+
+      if (highValue.hour != null) {
+        json['high']!['hour'] = LiteralInteger(value: highValue.hour!).toJson();
+      }
+      if (highValue.minute != null) {
+        json['high']!['minute'] =
+            LiteralInteger(value: highValue.minute!).toJson();
+      }
+      if (highValue.second != null) {
+        json['high']!['second'] =
+            LiteralInteger(value: highValue.second!).toJson();
+      }
+      if (highValue.millisecond != null) {
+        json['high']!['millisecond'] =
+            LiteralInteger(value: highValue.millisecond!).toJson();
+      }
+    }
+    return json;
+  }
 }
 
 const List<String> elmTypes = <String>[

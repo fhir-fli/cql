@@ -22,14 +22,13 @@ ParameterDef _$ParameterDefFromJson(Map<String, dynamic> json) => ParameterDef(
       accessLevel:
           $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']) ??
               AccessModifier.public,
+      defaultExpression: json['default'] == null
+          ? null
+          : Expression.fromJson(json['default'] as Map<String, dynamic>),
       parameterTypeSpecifier: json['parameterTypeSpecifier'] == null
           ? null
           : TypeSpecifier.fromJson(
               json['parameterTypeSpecifier'] as Map<String, dynamic>),
-      defaultExpression: json['defaultExpression'] == null
-          ? null
-          : Expression.fromJson(
-              json['defaultExpression'] as Map<String, dynamic>),
       parameterType: json['parameterType'] == null
           ? null
           : QName.fromJson(json['parameterType'] as String),
@@ -62,9 +61,9 @@ Map<String, dynamic> _$ParameterDefToJson(ParameterDef instance) {
   writeNotNull('locator', instance.locator);
   val['name'] = instance.name;
   val['accessLevel'] = _$AccessModifierEnumMap[instance.accessLevel]!;
+  writeNotNull('default', instance.defaultExpression?.toJson());
   writeNotNull(
       'parameterTypeSpecifier', instance.parameterTypeSpecifier?.toJson());
-  writeNotNull('defaultExpression', instance.defaultExpression?.toJson());
   writeNotNull('parameterType', instance.parameterType?.toJson());
   return val;
 }

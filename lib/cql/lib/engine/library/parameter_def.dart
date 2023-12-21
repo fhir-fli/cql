@@ -25,11 +25,12 @@ class ParameterDef extends Element {
   /// Access level, defaults to Public.
   AccessModifier accessLevel;
 
+  /// Default value expression for the parameter.
+  @JsonKey(name: 'default')
+  Expression? defaultExpression;
+
   /// Type specifier for the parameter.
   TypeSpecifier? parameterTypeSpecifier;
-
-  /// Default value expression for the parameter.
-  Expression? defaultExpression;
 
   /// Qualified name of the parameter type, optional.
   QName? parameterType;
@@ -37,8 +38,8 @@ class ParameterDef extends Element {
   ParameterDef({
     required this.name,
     this.accessLevel = AccessModifier.public,
-    this.parameterTypeSpecifier,
     this.defaultExpression,
+    this.parameterTypeSpecifier,
     this.parameterType,
   });
 

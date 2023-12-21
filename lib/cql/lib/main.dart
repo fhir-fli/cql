@@ -44,16 +44,21 @@ void parseFile(BuildContext context) async {
     final parserAndErrors = parse(pathExpression);
     final parser = parserAndErrors.parser;
 
-    final visitor = CqlBaseVisitor();
-    visitor.visit(parser.library_());
-    final errors = parserAndErrors.errorListener.errors
-        .map((e) => e.copyWith(
-            libraryId: visitor.library.identifier?.id,
-            libraryVersion: visitor.library.identifier?.version))
-        .toList();
-    visitor.library.annotation ??= [];
-    visitor.library.annotation!.addAll(errors);
-    log(jsonEncode(visitor.result));
+    try {
+      final visitor = CqlBaseVisitor();
+      visitor.visit(parser.library_());
+      final errors = parserAndErrors.errorListener.errors
+          .map((e) => e.copyWith(
+              libraryId: visitor.library.identifier?.id,
+              libraryVersion: visitor.library.identifier?.version))
+          .toList();
+      visitor.library.annotation ??= [];
+      visitor.library.annotation!.addAll(errors);
+      log(jsonEncode(visitor.result));
+    } catch (e, s) {
+      log(e.toString());
+      log(s.toString());
+    }
   }
 }
 

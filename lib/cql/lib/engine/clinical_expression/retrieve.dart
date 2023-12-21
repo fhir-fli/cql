@@ -19,11 +19,6 @@ class Retrieve extends Expression {
   /// value that can be used to filter the retrieve to a specific id.
   Expression? id;
 
-  /// The codes element optionally specifies an expression that results in a
-  /// List<Code> to match against. Only the clinical statements that match at
-  /// least one of the specified codes will be returned.
-  Expression? codes;
-
   /// The dateRange element optionally specifies an expression that results
   /// in an Interval&lt;DateTime&gt; to match against. Only those clinical
   /// statements whose date falls within the specified date range will be
@@ -216,7 +211,12 @@ class Retrieve extends Expression {
   /// this retrieve.
   String? includedIn;
 
-  final String type = 'Retrieve';
+  String get type => 'Retrieve';
+
+  /// The codes element optionally specifies an expression that results in a
+  /// List<Code> to match against. Only the clinical statements that match at
+  /// least one of the specified codes will be returned.
+  Expression? codes;
 
   Retrieve({
     this.id,
@@ -244,52 +244,52 @@ class Retrieve extends Expression {
     this.includedIn,
   });
 
-  factory Retrieve.fromJson(Map<String, dynamic> json) => Retrieve(
-        id: json['id'] != null ? Expression.fromJson(json['id']) : null,
-        codes:
-            json['codes'] != null ? Expression.fromJson(json['codes']) : null,
-        dateRange: json['dateRange'] != null
-            ? Expression.fromJson(json['dateRange'])
-            : null,
-        context: json['context'] != null
-            ? Expression.fromJson(json['context'])
-            : null,
-        include: json['include'] != null
-            ? (json['include'] as List)
-                .map((e) => IncludeElement.fromJson(e))
-                .toList()
-            : null,
-        codeFilter: json['codeFilter'] != null
-            ? (json['codeFilter'] as List)
-                .map((e) => CodeFilterElement.fromJson(e))
-                .toList()
-            : null,
-        dateFilter: json['dateFilter'] != null
-            ? (json['dateFilter'] as List)
-                .map((e) => DateFilterElement.fromJson(e))
-                .toList()
-            : null,
-        otherFilter: json['otherFilter'] != null
-            ? (json['otherFilter'] as List)
-                .map((e) => OtherFilterElement.fromJson(e))
-                .toList()
-            : null,
-        dataType: QName.fromJson(json['dataType']),
-        templateId: json['templateId'],
-        idProperty: json['idProperty'],
-        idSearch: json['idSearch'],
-        contextProperty: json['contextProperty'],
-        contextSearch: json['contextSearch'],
-        codeProperty: json['codeProperty'],
-        codeSearch: json['codeSearch'],
-        codeComparator: json['codeComparator'],
-        valueSetProperty: json['valueSetProperty'],
-        dateProperty: json['dateProperty'],
-        dateLowProperty: json['dateLowProperty'],
-        dateHighProperty: json['dateHighProperty'],
-        dateSearch: json['dateSearch'],
-        includedIn: json['includedIn'],
-      );
+  factory Retrieve.fromJson(Map<String, dynamic> json) {
+    return Retrieve(
+      id: json['id'] != null ? Expression.fromJson(json['id']) : null,
+      codes: json['codes'] != null ? Expression.fromJson(json['codes']) : null,
+      dateRange: json['dateRange'] != null
+          ? Expression.fromJson(json['dateRange'])
+          : null,
+      context:
+          json['context'] != null ? Expression.fromJson(json['context']) : null,
+      include: json['include'] != null
+          ? (json['include'] as List)
+              .map((e) => IncludeElement.fromJson(e))
+              .toList()
+          : null,
+      codeFilter: json['codeFilter'] != null
+          ? (json['codeFilter'] as List)
+              .map((e) => CodeFilterElement.fromJson(e))
+              .toList()
+          : null,
+      dateFilter: json['dateFilter'] != null
+          ? (json['dateFilter'] as List)
+              .map((e) => DateFilterElement.fromJson(e))
+              .toList()
+          : null,
+      otherFilter: json['otherFilter'] != null
+          ? (json['otherFilter'] as List)
+              .map((e) => OtherFilterElement.fromJson(e))
+              .toList()
+          : null,
+      dataType: QName.fromJson(json['dataType']),
+      templateId: json['templateId'],
+      idProperty: json['idProperty'],
+      idSearch: json['idSearch'],
+      contextProperty: json['contextProperty'],
+      contextSearch: json['contextSearch'],
+      codeProperty: json['codeProperty'],
+      codeSearch: json['codeSearch'],
+      codeComparator: json['codeComparator'],
+      valueSetProperty: json['valueSetProperty'],
+      dateProperty: json['dateProperty'],
+      dateLowProperty: json['dateLowProperty'],
+      dateHighProperty: json['dateHighProperty'],
+      dateSearch: json['dateSearch'],
+      includedIn: json['includedIn'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -302,6 +302,11 @@ class Retrieve extends Expression {
     }
 
     writeNotNull('id', id?.toJson());
+    val['dataType'] = dataType.toJson();
+    writeNotNull('templateId', templateId);
+    writeNotNull('codeProperty', codeProperty);
+    writeNotNull('codeComparator', codeComparator);
+    val['type'] = type;
     writeNotNull('codes', codes?.toJson());
     writeNotNull('dateRange', dateRange?.toJson());
     writeNotNull('context', context?.toJson());
@@ -309,15 +314,11 @@ class Retrieve extends Expression {
     writeNotNull('codeFilter', codeFilter?.map((e) => e.toJson()).toList());
     writeNotNull('dateFilter', dateFilter?.map((e) => e.toJson()).toList());
     writeNotNull('otherFilter', otherFilter?.map((e) => e.toJson()).toList());
-    val['dataType'] = dataType.toJson();
-    writeNotNull('templateId', templateId);
     writeNotNull('idProperty', idProperty);
     writeNotNull('idSearch', idSearch);
     writeNotNull('contextProperty', contextProperty);
     writeNotNull('contextSearch', contextSearch);
-    writeNotNull('codeProperty', codeProperty);
     writeNotNull('codeSearch', codeSearch);
-    writeNotNull('codeComparator', codeComparator);
     writeNotNull('valueSetProperty', valueSetProperty);
     writeNotNull('dateProperty', dateProperty);
     writeNotNull('dateLowProperty', dateLowProperty);

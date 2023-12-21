@@ -16,4 +16,7 @@ class IdentifierRef extends Ref {
     }
     return json;
   }
+
+  @override
+  String toString() => 'IdentifierRef: name: $name libraryName: $libraryName';
 }

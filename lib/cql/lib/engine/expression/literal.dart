@@ -38,20 +38,6 @@ abstract class Literal extends Expression {
         return LiteralStringElement.fromJson(json);
       case '{urn:hl7-org:elm-types:r1}Time':
         return LiteralTime.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}Interval':
-        return LiteralInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}IntegerInterval':
-        return LiteralIntegerInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}DecimalInterval':
-        return LiteralDecimalInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}QuantityInterval':
-        return LiteralQuantityInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}DateInterval':
-        return LiteralDateInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}DateTimeInterval':
-        return LiteralDateTimeInterval.fromJson(json);
-      case '{urn:hl7-org:elm-types:r1}TimeInterval':
-        return LiteralTimeInterval.fromJson(json);
 
       default:
         throw ArgumentError('Unknown literal type: $valueType');
