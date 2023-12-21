@@ -12,8 +12,8 @@ class StandardModelInfoReader implements ModelInfoReader {
     final String json = myTransformer.toBadgerfish();
     final Map<String, dynamic> map = jsonDecode(json) as Map<String, dynamic>;
     var newMap = ModelInfoReader.removeAts(map);
-    // newMap =
-    //     ModelInfoReader.removeModelName(newMap, newMap['modelInfo']['name']);
+    newMap =
+        ModelInfoReader.removeModelName(newMap, newMap['modelInfo']['name']);
 
     if (newMap['modelInfo'] is Map) {
       final properMap = jsonDecode(jsonEncode((newMap['modelInfo'] as Map)));

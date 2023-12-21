@@ -4,14 +4,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
     "name": "FHIR",
     "url": "http://hl7.org/fhir",
     "targetQualifier": "fhir",
-    "patientClassName": "FHIR.Patient",
+    "patientClassName": "Patient",
     "patientBirthDatePropertyName": "birthDate.value",
     "version": "1.0.2",
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "FHIR.uuid",
-            "baseType": "FHIR.Element",
+            "name": "uuid",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -20,8 +20,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Count",
-            "baseType": "FHIR.Quantity",
+            "name": "Count",
+            "baseType": "Quantity",
             "retrievable": false,
             "element": [
                 {
@@ -36,32 +36,32 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NamingSystem.UniqueId",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NamingSystem.UniqueId",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.NamingSystemIdentifierType"
+                    "type": "NamingSystemIdentifierType"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "preferred",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.date",
-            "baseType": "FHIR.Element",
+            "name": "date",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -70,120 +70,120 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DetectedIssue.Mitigation",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DetectedIssue.Mitigation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "action",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImplementationGuide.Resource",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImplementationGuide.Resource",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "purpose",
-                    "type": "FHIR.GuideResourcePurpose"
+                    "type": "GuideResourcePurpose"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "acronym",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "sourceUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "sourceReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "exampleFor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationAdministration.Dosage",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MedicationAdministration.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "siteCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "siteReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "route",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "method",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "rateRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "rateRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClinicalImpression.Finding",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClinicalImpression.Finding",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "cause",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingObjectSelection.Frames",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImagingObjectSelection.Frames",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -192,43 +192,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript",
-            "baseType": "FHIR.DomainResource",
+            "name": "TestScript",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -236,11 +236,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "useContext",
@@ -248,19 +248,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "copyright",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "metadata",
-                    "type": "FHIR.TestScript.Metadata"
+                    "type": "TestScript.Metadata"
                 },
                 {
                     "name": "multiserver",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "fixture",
@@ -276,7 +276,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "setup",
-                    "type": "FHIR.TestScript.Setup"
+                    "type": "TestScript.Setup"
                 },
                 {
                     "name": "test",
@@ -284,19 +284,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "teardown",
-                    "type": "FHIR.TestScript.Teardown"
+                    "type": "TestScript.Teardown"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -306,48 +306,48 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Attachment",
-            "baseType": "FHIR.Element",
+            "name": "Attachment",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentType",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "language",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "data",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "size",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "hash",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "title",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "creation",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProvenanceEntityRole",
-            "baseType": "FHIR.Element",
+            "name": "ProvenanceEntityRole",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -356,8 +356,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.UnitsOfTime",
-            "baseType": "FHIR.Element",
+            "name": "UnitsOfTime",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -366,21 +366,21 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingObjectSelection.Study",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImagingObjectSelection.Study",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "uid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "imagingStudy",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
@@ -390,8 +390,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AddressType",
-            "baseType": "FHIR.Element",
+            "name": "AddressType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -400,24 +400,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Bundle.Link",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Bundle.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "relation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse",
-            "baseType": "FHIR.DomainResource",
+            "name": "ClaimResponse",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -426,43 +426,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "disposition",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "payeeType",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "item",
@@ -478,43 +478,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "totalCost",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "unallocDeductable",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "totalBenefit",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentAdjustment",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentAdjustmentReason",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "paymentDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "paymentAmount",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentRef",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reserved",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "form",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "note",
@@ -528,13 +528,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.SubDetail",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.SubDetail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequenceLinkId",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "adjudication",
@@ -544,17 +544,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Practitioner.PractitionerRole",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Practitioner.PractitionerRole",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "managingOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "specialty",
@@ -562,7 +562,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "location",
@@ -576,13 +576,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.StructureDefinition",
-            "baseType": "FHIR.DomainResource",
+            "name": "StructureDefinition",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "identifier",
@@ -590,27 +590,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "display",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -618,11 +618,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "useContext",
@@ -630,11 +630,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "copyright",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "code",
@@ -642,7 +642,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "fhirVersion",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "mapping",
@@ -650,19 +650,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "kind",
-                    "type": "FHIR.StructureDefinitionKind"
+                    "type": "StructureDefinitionKind"
                 },
                 {
                     "name": "constrainedType",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "abstract",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "contextType",
-                    "type": "FHIR.ExtensionContext"
+                    "type": "ExtensionContext"
                 },
                 {
                     "name": "context",
@@ -670,22 +670,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "snapshot",
-                    "type": "FHIR.StructureDefinition.Snapshot"
+                    "type": "StructureDefinition.Snapshot"
                 },
                 {
                     "name": "differential",
-                    "type": "FHIR.StructureDefinition.Differential"
+                    "type": "StructureDefinition.Differential"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntoleranceCategory",
-            "baseType": "FHIR.Element",
+            "name": "AllergyIntoleranceCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -694,65 +694,65 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Filter",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Filter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "property",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "op",
-                    "type": "FHIR.FilterOperator"
+                    "type": "FilterOperator"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.HealthcareService.NotAvailable",
-            "baseType": "FHIR.BackboneElement",
+            "name": "HealthcareService.NotAvailable",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "during",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Immunization.VaccinationProtocol",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Immunization.VaccinationProtocol",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "doseSequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "authority",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "seriesDoses",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "targetDisease",
@@ -760,59 +760,59 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "doseStatus",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "doseStatusReason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Event",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.MessageSignificanceCategory"
+                    "type": "MessageSignificanceCategory"
                 },
                 {
                     "name": "mode",
-                    "type": "FHIR.ConformanceEventMode"
+                    "type": "ConformanceEventMode"
                 },
                 {
                     "name": "focus",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Medication.Package",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Medication.Package",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "container",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "content",
@@ -822,8 +822,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SpecimenStatus",
-            "baseType": "FHIR.Element",
+            "name": "SpecimenStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -832,25 +832,25 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceUseStatement",
-            "baseType": "FHIR.DomainResource",
+            "name": "DeviceUseStatement",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "bodySiteCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "bodySiteReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenUsed",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "device",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -866,30 +866,30 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recordedOn",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "timingTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "timingPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "timingDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Procedure",
-            "baseType": "FHIR.DomainResource",
+            "name": "Procedure",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
@@ -899,23 +899,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.ProcedureStatus"
+                    "type": "ProcedureStatus"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "notPerformed",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "reasonNotPerformed",
@@ -927,11 +927,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reasonCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
@@ -939,23 +939,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performedDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "performedPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "report",
@@ -971,7 +971,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "notes",
@@ -989,8 +989,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DetectedIssueSeverity",
-            "baseType": "FHIR.Element",
+            "name": "DetectedIssueSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -999,8 +999,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EligibilityResponse",
-            "baseType": "FHIR.DomainResource",
+            "name": "EligibilityResponse",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -1009,59 +1009,59 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "disposition",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.CodeSystem",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.CodeSystem",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "system",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "caseSensitive",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "concept",
@@ -1071,73 +1071,73 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.SubDetail",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.SubDetail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "service",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "unitPrice",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "points",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "net",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SearchParameter",
-            "baseType": "FHIR.DomainResource",
+            "name": "SearchParameter",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -1145,35 +1145,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "base",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "xpath",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "xpathUsage",
-                    "type": "FHIR.XPathUsageType"
+                    "type": "XPathUsageType"
                 },
                 {
                     "name": "target",
@@ -1183,8 +1183,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.IssueSeverity",
-            "baseType": "FHIR.Element",
+            "name": "IssueSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -1193,8 +1193,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DataElementStringency",
-            "baseType": "FHIR.Element",
+            "name": "DataElementStringency",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -1203,8 +1203,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Appointment",
-            "baseType": "FHIR.DomainResource",
+            "name": "Appointment",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -1213,35 +1213,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.AppointmentStatus"
+                    "type": "AppointmentStatus"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "start",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "end",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "minutesDuration",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "slot",
@@ -1249,7 +1249,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "comment",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "participant",
@@ -1259,148 +1259,148 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Assert",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Assert",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "label",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "direction",
-                    "type": "FHIR.AssertionDirectionType"
+                    "type": "AssertionDirectionType"
                 },
                 {
                     "name": "compareToSourceId",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "compareToSourcePath",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contentType",
-                    "type": "FHIR.ContentType"
+                    "type": "ContentType"
                 },
                 {
                     "name": "headerField",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "minimumId",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "navigationLinks",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "operator",
-                    "type": "FHIR.AssertionOperatorType"
+                    "type": "AssertionOperatorType"
                 },
                 {
                     "name": "path",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "resource",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "response",
-                    "type": "FHIR.AssertionResponseTypes"
+                    "type": "AssertionResponseTypes"
                 },
                 {
                     "name": "responseCode",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "sourceId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "validateProfileId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "warningOnly",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Certificate",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Certificate",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "blob",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.ValuedItem",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.ValuedItem",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "entityCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "entityReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "effectiveTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "unitPrice",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "points",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "net",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.VisionEyes",
-            "baseType": "FHIR.Element",
+            "name": "VisionEyes",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -1409,37 +1409,37 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ElementDefinition.Binding",
-            "baseType": "FHIR.Element",
+            "name": "ElementDefinition.Binding",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "strength",
-                    "type": "FHIR.BindingStrength"
+                    "type": "BindingStrength"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueSetUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "valueSetReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationDefinition.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "OperationDefinition.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -1449,8 +1449,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.StructureDefinitionKind",
-            "baseType": "FHIR.Element",
+            "name": "StructureDefinitionKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -1459,13 +1459,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.Actor1",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.Actor1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "entity",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -1475,13 +1475,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ElementDefinition",
-            "baseType": "FHIR.Element",
+            "name": "ElementDefinition",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "path",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "representation",
@@ -1489,11 +1489,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "label",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "code",
@@ -1501,23 +1501,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "slicing",
-                    "type": "FHIR.ElementDefinition.Slicing"
+                    "type": "ElementDefinition.Slicing"
                 },
                 {
                     "name": "short",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "definition",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "comments",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "alias",
@@ -1525,15 +1525,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "min",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "max",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "base",
-                    "type": "FHIR.ElementDefinition.Base"
+                    "type": "ElementDefinition.Base"
                 },
                 {
                     "name": "type",
@@ -1541,831 +1541,831 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "nameReference",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "defaultValueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "defaultValueInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "defaultValueDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "defaultValueBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "defaultValueInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "defaultValueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "defaultValueUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "defaultValueDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "defaultValueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "defaultValueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "defaultValueCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "defaultValueOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "defaultValueUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "defaultValueId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "defaultValueUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "defaultValuePositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "defaultValueMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "defaultValueAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "defaultValueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "defaultValueIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "defaultValueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "defaultValueCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "defaultValueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "defaultValueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "defaultValuePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "defaultValueRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "defaultValueReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "defaultValueSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "defaultValueSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "defaultValueHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "defaultValueAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "defaultValueContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "defaultValueTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "defaultValueMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "meaningWhenMissing",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "fixedBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "fixedInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "fixedDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "fixedBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "fixedInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "fixedString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "fixedUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "fixedDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "fixedDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "fixedTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "fixedCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "fixedOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "fixedUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "fixedId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "fixedUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "fixedPositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "fixedMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "fixedAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "fixedAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "fixedIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "fixedCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "fixedCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "fixedQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "fixedRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "fixedPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "fixedRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "fixedReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "fixedSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "fixedSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "fixedHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "fixedAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "fixedContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "fixedTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "fixedMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "patternBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "patternInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "patternDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "patternBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "patternInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "patternString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "patternUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "patternDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "patternDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "patternTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "patternCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "patternOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "patternUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "patternId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "patternUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "patternPositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "patternMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "patternAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "patternAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "patternIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "patternCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "patternCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "patternQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "patternRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "patternPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "patternRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "patternReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patternSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "patternSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "patternHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "patternAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "patternContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "patternTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "patternMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "exampleBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "exampleInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "exampleDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "exampleBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "exampleInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "exampleString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "exampleUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "exampleDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "exampleDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "exampleTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "exampleCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "exampleOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "exampleUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "exampleId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "exampleUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "examplePositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "exampleMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "exampleAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "exampleAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "exampleIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "exampleCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "exampleCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "exampleQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "exampleRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "examplePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "exampleRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "exampleReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "exampleSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "exampleSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "exampleHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "exampleAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "exampleContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "exampleTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "exampleMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "minValueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "minValueInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "minValueDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "minValueBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "minValueInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "minValueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "minValueUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "minValueDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "minValueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "minValueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "minValueCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "minValueOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "minValueUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "minValueId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "minValueUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "minValuePositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "minValueMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "minValueAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "minValueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "minValueIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "minValueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "minValueCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "minValueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "minValueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "minValuePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "minValueRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "minValueReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "minValueSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "minValueSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "minValueHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "minValueAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "minValueContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "minValueTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "minValueMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "maxValueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "maxValueInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "maxValueDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "maxValueBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "maxValueInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "maxValueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "maxValueUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "maxValueDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "maxValueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "maxValueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "maxValueCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "maxValueOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "maxValueUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "maxValueId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "maxValueUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "maxValuePositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "maxValueMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "maxValueAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "maxValueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "maxValueIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "maxValueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "maxValueCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "maxValueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "maxValueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "maxValuePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "maxValueRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxValueReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "maxValueSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "maxValueSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "maxValueHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "maxValueAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "maxValueContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "maxValueTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "maxValueMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "maxLength",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "condition",
@@ -2377,19 +2377,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "mustSupport",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "isModifier",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "isSummary",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "binding",
-                    "type": "FHIR.ElementDefinition.Binding"
+                    "type": "ElementDefinition.Binding"
                 },
                 {
                     "name": "mapping",
@@ -2399,8 +2399,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Composition.Attester",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Composition.Attester",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2409,18 +2409,18 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "time",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "party",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Device",
-            "baseType": "FHIR.DomainResource",
+            "name": "Device",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
@@ -2430,7 +2430,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "note",
@@ -2438,47 +2438,47 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.DeviceStatus"
+                    "type": "DeviceStatus"
                 },
                 {
                     "name": "manufacturer",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "model",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "manufactureDate",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "expiry",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "udi",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "lotNumber",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "owner",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -2486,14 +2486,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcedureRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "ProcedureRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
@@ -2503,11 +2503,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "bodySite",
@@ -2515,35 +2515,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reasonCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "scheduledDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "scheduledPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "scheduledTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.ProcedureRequestStatus"
+                    "type": "ProcedureRequestStatus"
                 },
                 {
                     "name": "notes",
@@ -2551,47 +2551,47 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "asNeededBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "asNeededCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "orderedOn",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "orderer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.ProcedureRequestPriority"
+                    "type": "ProcedureRequestPriority"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Capability",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Capability",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "required",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "validated",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "destination",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "link",
@@ -2599,31 +2599,31 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "conformance",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationOutcome.Issue",
-            "baseType": "FHIR.BackboneElement",
+            "name": "OperationOutcome.Issue",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "severity",
-                    "type": "FHIR.IssueSeverity"
+                    "type": "IssueSeverity"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.IssueType"
+                    "type": "IssueType"
                 },
                 {
                     "name": "details",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "diagnostics",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "location",
@@ -2633,8 +2633,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.QuestionnaireResponseStatus",
-            "baseType": "FHIR.Element",
+            "name": "QuestionnaireResponseStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -2643,45 +2643,45 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceMetric",
-            "baseType": "FHIR.DomainResource",
+            "name": "DeviceMetric",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "unit",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operationalStatus",
-                    "type": "FHIR.DeviceMetricOperationalStatus"
+                    "type": "DeviceMetricOperationalStatus"
                 },
                 {
                     "name": "color",
-                    "type": "FHIR.DeviceMetricColor"
+                    "type": "DeviceMetricColor"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.DeviceMetricCategory"
+                    "type": "DeviceMetricCategory"
                 },
                 {
                     "name": "measurementPeriod",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "calibration",
@@ -2691,17 +2691,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Resource",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Resource",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "interaction",
@@ -2709,27 +2709,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "versioning",
-                    "type": "FHIR.ResourceVersionPolicy"
+                    "type": "ResourceVersionPolicy"
                 },
                 {
                     "name": "readHistory",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "updateCreate",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "conditionalCreate",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "conditionalUpdate",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "conditionalDelete",
-                    "type": "FHIR.ConditionalDeleteStatus"
+                    "type": "ConditionalDeleteStatus"
                 },
                 {
                     "name": "searchInclude",
@@ -2747,8 +2747,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Flag",
-            "baseType": "FHIR.DomainResource",
+            "name": "Flag",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "category",
             "element": [
@@ -2758,38 +2758,38 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.FlagStatus"
+                    "type": "FlagStatus"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Messaging",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Messaging",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2798,11 +2798,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reliableCache",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "event",
@@ -2812,8 +2812,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EnrollmentRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "EnrollmentRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -2822,51 +2822,51 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "coverage",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DataElement",
-            "baseType": "FHIR.DomainResource",
+            "name": "DataElement",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "identifier",
@@ -2874,23 +2874,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -2898,7 +2898,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "useContext",
@@ -2906,11 +2906,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "copyright",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "stringency",
-                    "type": "FHIR.DataElementStringency"
+                    "type": "DataElementStringency"
                 },
                 {
                     "name": "mapping",
@@ -2924,57 +2924,57 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Substance.Ingredient",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Substance.Ingredient",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "quantity",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "substance",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Action",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Action",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "operation",
-                    "type": "FHIR.TestScript.Operation"
+                    "type": "TestScript.Operation"
                 },
                 {
                     "name": "assert",
-                    "type": "FHIR.TestScript.Assert"
+                    "type": "TestScript.Assert"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.SearchParam",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.SearchParam",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "definition",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "target",
@@ -2992,13 +2992,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SearchParameter.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "SearchParameter.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -3008,24 +3008,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationOrder.Substitution",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MedicationOrder.Substitution",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntoleranceType",
-            "baseType": "FHIR.Element",
+            "name": "AllergyIntoleranceType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3034,41 +3034,41 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ElementDefinition.Constraint",
-            "baseType": "FHIR.Element",
+            "name": "ElementDefinition.Constraint",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "key",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "severity",
-                    "type": "FHIR.ConstraintSeverity"
+                    "type": "ConstraintSeverity"
                 },
                 {
                     "name": "human",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "xpath",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -3078,8 +3078,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentRelationshipType",
-            "baseType": "FHIR.Element",
+            "name": "DocumentRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3088,8 +3088,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConformanceResourceStatus",
-            "baseType": "FHIR.Element",
+            "name": "ConformanceResourceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3098,21 +3098,21 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingObjectSelection.Instance",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImagingObjectSelection.Instance",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sopClass",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "uid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "frames",
@@ -3122,13 +3122,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Detail",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequenceLinkId",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "adjudication",
@@ -3142,13 +3142,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcessRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "ProcessRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "action",
-                    "type": "FHIR.ActionList"
+                    "type": "ActionList"
                 },
                 {
                     "name": "identifier",
@@ -3156,43 +3156,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "nullify",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "reference",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "item",
@@ -3208,14 +3208,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlanActivityStatus",
-            "baseType": "FHIR.Element",
+            "name": "CarePlanActivityStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3224,24 +3224,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEvent.Detail",
-            "baseType": "FHIR.BackboneElement",
+            "name": "AuditEvent.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ActionList",
-            "baseType": "FHIR.Element",
+            "name": "ActionList",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3250,21 +3250,21 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Test",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Test",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "metadata",
-                    "type": "FHIR.TestScript.Metadata"
+                    "type": "TestScript.Metadata"
                 },
                 {
                     "name": "action",
@@ -3274,24 +3274,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrder.Nutrient",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NutritionOrder.Nutrient",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "modifier",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Age",
-            "baseType": "FHIR.Quantity",
+            "name": "Age",
+            "baseType": "Quantity",
             "retrievable": false,
             "element": [
                 {
@@ -3306,49 +3306,49 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingStudy.Series",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImagingStudy.Series",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "number",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "modality",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "uid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "numberOfInstances",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "availability",
-                    "type": "FHIR.InstanceAvailability"
+                    "type": "InstanceAvailability"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "bodySite",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "laterality",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "started",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "instance",
@@ -3358,8 +3358,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ParticipationStatus",
-            "baseType": "FHIR.Element",
+            "name": "ParticipationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3368,42 +3368,42 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Composition",
-            "baseType": "FHIR.DomainResource",
+            "name": "Composition",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "class",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "title",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.CompositionStatus"
+                    "type": "CompositionStatus"
                 },
                 {
                     "name": "confidentiality",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
@@ -3415,7 +3415,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "custodian",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "event",
@@ -3423,7 +3423,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "section",
@@ -3433,8 +3433,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.StructureDefinition.Snapshot",
-            "baseType": "FHIR.BackboneElement",
+            "name": "StructureDefinition.Snapshot",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "element",
@@ -3443,40 +3443,40 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlan.RelatedPlan",
-            "baseType": "FHIR.BackboneElement",
+            "name": "CarePlan.RelatedPlan",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CarePlanRelationship"
+                    "type": "CarePlanRelationship"
                 },
                 {
                     "name": "plan",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImmunizationRecommendation.DateCriterion",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImmunizationRecommendation.DateCriterion",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationOrder",
-            "baseType": "FHIR.DomainResource",
+            "name": "MedicationOrder",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "medicationCodeableConcept",
             "element": [
@@ -3486,51 +3486,51 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dateWritten",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.MedicationOrderStatus"
+                    "type": "MedicationOrderStatus"
                 },
                 {
                     "name": "dateEnded",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "reasonEnded",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescriber",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "medicationCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "medicationReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dosageInstruction",
@@ -3538,22 +3538,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispenseRequest",
-                    "type": "FHIR.MedicationOrder.DispenseRequest"
+                    "type": "MedicationOrder.DispenseRequest"
                 },
                 {
                     "name": "substitution",
-                    "type": "FHIR.MedicationOrder.Substitution"
+                    "type": "MedicationOrder.Substitution"
                 },
                 {
                     "name": "priorPrescription",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.instant",
-            "baseType": "FHIR.Element",
+            "name": "instant",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3562,28 +3562,28 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Communication.Payload",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Communication.Payload",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contentAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "contentReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentMode",
-            "baseType": "FHIR.Element",
+            "name": "DocumentMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3592,8 +3592,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AssertionOperatorType",
-            "baseType": "FHIR.Element",
+            "name": "AssertionOperatorType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3602,76 +3602,76 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.VisionPrescription.Dispense",
-            "baseType": "FHIR.BackboneElement",
+            "name": "VisionPrescription.Dispense",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "product",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "eye",
-                    "type": "FHIR.VisionEyes"
+                    "type": "VisionEyes"
                 },
                 {
                     "name": "sphere",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "cylinder",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "axis",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "prism",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "base",
-                    "type": "FHIR.VisionBase"
+                    "type": "VisionBase"
                 },
                 {
                     "name": "add",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "power",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "backCurve",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "diameter",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "duration",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "color",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "brand",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "notes",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DaysOfWeek",
-            "baseType": "FHIR.Element",
+            "name": "DaysOfWeek",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3680,8 +3680,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConformanceEventMode",
-            "baseType": "FHIR.Element",
+            "name": "ConformanceEventMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3690,8 +3690,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.IssueType",
-            "baseType": "FHIR.Element",
+            "name": "IssueType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3700,8 +3700,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TransactionMode",
-            "baseType": "FHIR.Element",
+            "name": "TransactionMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3710,8 +3710,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ContentType",
-            "baseType": "FHIR.Element",
+            "name": "ContentType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3720,25 +3720,25 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.QuestionnaireResponse.Group",
-            "baseType": "FHIR.BackboneElement",
+            "name": "QuestionnaireResponse.Group",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "linkId",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "title",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
@@ -3752,29 +3752,29 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingStudy.Instance",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImagingStudy.Instance",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "number",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "uid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "sopClass",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "title",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "content",
@@ -3784,44 +3784,44 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Parameter",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Parameter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "valueInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "valueDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "valueUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "valueCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.FamilyHistoryStatus",
-            "baseType": "FHIR.Element",
+            "name": "FamilyHistoryStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3830,40 +3830,40 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationOrder.DispenseRequest",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MedicationOrder.DispenseRequest",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "medicationCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "medicationReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "validityPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "numberOfRepeatsAllowed",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "expectedSupplyDuration",
-                    "type": "FHIR.Duration"
+                    "type": "Duration"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.positiveInt",
-            "baseType": "FHIR.Element",
+            "name": "positiveInt",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3872,37 +3872,37 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet",
-            "baseType": "FHIR.DomainResource",
+            "name": "ValueSet",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -3910,15 +3910,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "lockedDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "useContext",
@@ -3926,38 +3926,38 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "immutable",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "copyright",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "extensible",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "codeSystem",
-                    "type": "FHIR.ValueSet.CodeSystem"
+                    "type": "ValueSet.CodeSystem"
                 },
                 {
                     "name": "compose",
-                    "type": "FHIR.ValueSet.Compose"
+                    "type": "ValueSet.Compose"
                 },
                 {
                     "name": "expansion",
-                    "type": "FHIR.ValueSet.Expansion"
+                    "type": "ValueSet.Expansion"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Signature",
-            "baseType": "FHIR.Element",
+            "name": "Signature",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -3966,30 +3966,30 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "when",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "whoUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "whoReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contentType",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "blob",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEventParticipantNetworkType",
-            "baseType": "FHIR.Element",
+            "name": "AuditEventParticipantNetworkType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -3998,8 +3998,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CommunicationStatus",
-            "baseType": "FHIR.Element",
+            "name": "CommunicationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4008,8 +4008,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClinicalImpressionStatus",
-            "baseType": "FHIR.Element",
+            "name": "ClinicalImpressionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4018,8 +4018,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AssertionResponseTypes",
-            "baseType": "FHIR.Element",
+            "name": "AssertionResponseTypes",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4028,13 +4028,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentReference.Context",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DocumentReference.Context",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "event",
@@ -4042,19 +4042,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "facilityType",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "practiceSetting",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "sourcePatientInfo",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "related",
@@ -4064,13 +4064,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -4080,8 +4080,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationOutcome",
-            "baseType": "FHIR.DomainResource",
+            "name": "OperationOutcome",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": {
                 "name": "issue",
@@ -4090,8 +4090,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Practitioner.Qualification",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Practitioner.Qualification",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4100,31 +4100,31 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "issuer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingObjectSelection.Series",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImagingObjectSelection.Series",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "uid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "instance",
@@ -4134,28 +4134,28 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.Signer",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.Signer",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "party",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "signature",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceUseRequestPriority",
-            "baseType": "FHIR.Element",
+            "name": "DeviceUseRequestPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4164,8 +4164,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcessResponse",
-            "baseType": "FHIR.DomainResource",
+            "name": "ProcessResponse",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -4174,43 +4174,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "disposition",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "form",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "notes",
@@ -4224,8 +4224,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Immunization.Explanation",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Immunization.Explanation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4240,18 +4240,18 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Narrative",
-            "baseType": "FHIR.Element",
+            "name": "Narrative",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "status",
-                "type": "FHIR.NarrativeStatus"
+                "type": "NarrativeStatus"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OrderStatus",
-            "baseType": "FHIR.Element",
+            "name": "OrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4260,8 +4260,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NarrativeStatus",
-            "baseType": "FHIR.Element",
+            "name": "NarrativeStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4270,44 +4270,44 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.Friendly",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.Friendly",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "contentReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Adjudication",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Adjudication",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Specimen.Container",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Specimen.Container",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4316,34 +4316,34 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "capacity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "specimenQuantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "additiveCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "additiveReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.string",
-            "baseType": "FHIR.Element",
+            "name": "string",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4352,8 +4352,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.GuidePageKind",
-            "baseType": "FHIR.Element",
+            "name": "GuidePageKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4362,8 +4362,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.GuideDependencyType",
-            "baseType": "FHIR.Element",
+            "name": "GuideDependencyType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4372,23 +4372,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Provenance.RelatedAgent",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Provenance.RelatedAgent",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Element",
+            "name": "Element",
             "baseType": "System.Any",
             "retrievable": false,
             "element": [
@@ -4404,8 +4404,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ExplanationOfBenefit",
-            "baseType": "FHIR.DomainResource",
+            "name": "ExplanationOfBenefit",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -4414,46 +4414,46 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "disposition",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ResourceVersionPolicy",
-            "baseType": "FHIR.Element",
+            "name": "ResourceVersionPolicy",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4462,8 +4462,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.dateTime",
-            "baseType": "FHIR.Element",
+            "name": "dateTime",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4472,8 +4472,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationAdministrationStatus",
-            "baseType": "FHIR.Element",
+            "name": "MedicationAdministrationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4482,41 +4482,41 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Encounter.Location",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Encounter.Location",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.EncounterLocationStatus"
+                    "type": "EncounterLocationStatus"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.Item",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "provider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "diagnosisLinkId",
@@ -4524,39 +4524,39 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "service",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "serviceDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "unitPrice",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "points",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "net",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "bodySite",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "subSite",
@@ -4572,38 +4572,38 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prosthesis",
-                    "type": "FHIR.Claim.Prosthesis"
+                    "type": "Claim.Prosthesis"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.List.Entry",
-            "baseType": "FHIR.BackboneElement",
+            "name": "List.Entry",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "flag",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "deleted",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "item",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Patient.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Patient.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4612,7 +4612,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -4620,26 +4620,26 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "gender",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.RestfulConformanceMode",
-            "baseType": "FHIR.Element",
+            "name": "RestfulConformanceMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4648,8 +4648,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlan",
-            "baseType": "FHIR.DomainResource",
+            "name": "CarePlan",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "category",
             "element": [
@@ -4659,19 +4659,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.CarePlanStatus"
+                    "type": "CarePlanStatus"
                 },
                 {
                     "name": "context",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "author",
@@ -4679,7 +4679,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "modified",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "category",
@@ -4687,7 +4687,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "addresses",
@@ -4715,19 +4715,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Subscription",
-            "baseType": "FHIR.DomainResource",
+            "name": "Subscription",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "criteria",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -4735,23 +4735,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reason",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.SubscriptionStatus"
+                    "type": "SubscriptionStatus"
                 },
                 {
                     "name": "error",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "channel",
-                    "type": "FHIR.Subscription.Channel"
+                    "type": "Subscription.Channel"
                 },
                 {
                     "name": "end",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "tag",
@@ -4761,8 +4761,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Person",
-            "baseType": "FHIR.DomainResource",
+            "name": "Person",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -4779,11 +4779,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "birthDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "address",
@@ -4791,15 +4791,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "photo",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "active",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "link",
@@ -4809,8 +4809,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Duration",
-            "baseType": "FHIR.Quantity",
+            "name": "Duration",
+            "baseType": "Quantity",
             "retrievable": false,
             "element": [
                 {
@@ -4825,8 +4825,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Questionnaire",
-            "baseType": "FHIR.DomainResource",
+            "name": "Questionnaire",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -4835,19 +4835,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.QuestionnaireStatus"
+                    "type": "QuestionnaireStatus"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -4859,14 +4859,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "group",
-                    "type": "FHIR.Questionnaire.Group"
+                    "type": "Questionnaire.Group"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Bundle.Entry",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Bundle.Entry",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4875,30 +4875,30 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "fullUrl",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "resource",
-                    "type": "FHIR.ResourceContainer"
+                    "type": "ResourceContainer"
                 },
                 {
                     "name": "search",
-                    "type": "FHIR.Bundle.Search"
+                    "type": "Bundle.Search"
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Bundle.Request"
+                    "type": "Bundle.Request"
                 },
                 {
                     "name": "response",
-                    "type": "FHIR.Bundle.Response"
+                    "type": "Bundle.Response"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Patient",
-            "baseType": "FHIR.DomainResource",
+            "name": "Patient",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -4907,7 +4907,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "active",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "name",
@@ -4919,19 +4919,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "birthDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "deceasedBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "deceasedDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "address",
@@ -4939,15 +4939,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "maritalStatus",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "multipleBirthBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "multipleBirthInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "photo",
@@ -4959,7 +4959,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "animal",
-                    "type": "FHIR.Patient.Animal"
+                    "type": "Patient.Animal"
                 },
                 {
                     "name": "communication",
@@ -4971,7 +4971,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "link",
@@ -4981,8 +4981,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NamingSystemIdentifierType",
-            "baseType": "FHIR.Element",
+            "name": "NamingSystemIdentifierType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -4991,17 +4991,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.QuestionnaireResponse.Question",
-            "baseType": "FHIR.BackboneElement",
+            "name": "QuestionnaireResponse.Question",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "linkId",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "answer",
@@ -5011,8 +5011,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.List",
-            "baseType": "FHIR.DomainResource",
+            "name": "List",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -5021,43 +5021,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "title",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.ListStatus"
+                    "type": "ListStatus"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "orderedBy",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "mode",
-                    "type": "FHIR.ListMode"
+                    "type": "ListMode"
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "entry",
@@ -5065,14 +5065,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "emptyReason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.RelatedPerson",
-            "baseType": "FHIR.DomainResource",
+            "name": "RelatedPerson",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -5081,15 +5081,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -5097,11 +5097,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "birthDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "address",
@@ -5113,14 +5113,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AccountStatus",
-            "baseType": "FHIR.Element",
+            "name": "AccountStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5129,24 +5129,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Link",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcedureRequestPriority",
-            "baseType": "FHIR.Element",
+            "name": "ProcedureRequestPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5155,8 +5155,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationDispenseStatus",
-            "baseType": "FHIR.Element",
+            "name": "MedicationDispenseStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5165,61 +5165,61 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.FamilyMemberHistory.Condition",
-            "baseType": "FHIR.BackboneElement",
+            "name": "FamilyMemberHistory.Condition",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "onsetQuantity",
-                    "type": "FHIR.Age"
+                    "type": "Age"
                 },
                 {
                     "name": "onsetRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "onsetPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "onsetString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NamingSystem",
-            "baseType": "FHIR.DomainResource",
+            "name": "NamingSystem",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "kind",
-                    "type": "FHIR.NamingSystemType"
+                    "type": "NamingSystemType"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -5227,19 +5227,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "responsible",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "useContext",
@@ -5247,7 +5247,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "usage",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "uniqueId",
@@ -5255,23 +5255,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "replacedBy",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntolerance.Reaction",
-            "baseType": "FHIR.BackboneElement",
+            "name": "AllergyIntolerance.Reaction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "substance",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "certainty",
-                    "type": "FHIR.AllergyIntoleranceCertainty"
+                    "type": "AllergyIntoleranceCertainty"
                 },
                 {
                     "name": "manifestation",
@@ -5279,46 +5279,46 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "onset",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "severity",
-                    "type": "FHIR.AllergyIntoleranceSeverity"
+                    "type": "AllergyIntoleranceSeverity"
                 },
                 {
                     "name": "exposureRoute",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrder.Texture",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NutritionOrder.Texture",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "modifier",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "foodType",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.IdentifierUse",
-            "baseType": "FHIR.Element",
+            "name": "IdentifierUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5327,8 +5327,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DigitalMediaType",
-            "baseType": "FHIR.Element",
+            "name": "DigitalMediaType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5337,17 +5337,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Specimen.Treatment",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Specimen.Treatment",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "procedure",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "additive",
@@ -5357,13 +5357,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.HealthcareService.ServiceType",
-            "baseType": "FHIR.BackboneElement",
+            "name": "HealthcareService.ServiceType",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "specialty",
@@ -5373,45 +5373,45 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Provenance.Entity",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Provenance.Entity",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "role",
-                    "type": "FHIR.ProvenanceEntityRole"
+                    "type": "ProvenanceEntityRole"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "reference",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "display",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "agent",
-                    "type": "FHIR.Provenance.Agent"
+                    "type": "Provenance.Agent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Detail1",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Detail1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "service",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "fee",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "adjudication",
@@ -5421,14 +5421,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentReference",
-            "baseType": "FHIR.DomainResource",
+            "name": "DocumentReference",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "masterIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -5436,15 +5436,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "class",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "author",
@@ -5452,27 +5452,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "custodian",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authenticator",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "indexed",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "docStatus",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "relatesTo",
@@ -5480,7 +5480,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "securityLabel",
@@ -5492,27 +5492,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "context",
-                    "type": "FHIR.DocumentReference.Context"
+                    "type": "DocumentReference.Context"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Address",
-            "baseType": "FHIR.Element",
+            "name": "Address",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "FHIR.AddressUse"
+                    "type": "AddressUse"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.AddressType"
+                    "type": "AddressType"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "line",
@@ -5520,34 +5520,34 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "city",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "district",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "state",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "postalCode",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "country",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CodeableConcept",
-            "baseType": "FHIR.Element",
+            "name": "CodeableConcept",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -5556,14 +5556,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.BindingStrength",
-            "baseType": "FHIR.Element",
+            "name": "BindingStrength",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5572,13 +5572,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Medication.Product",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Medication.Product",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "form",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "ingredient",
@@ -5592,8 +5592,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Money",
-            "baseType": "FHIR.Quantity",
+            "name": "Money",
+            "baseType": "Quantity",
             "retrievable": false,
             "element": [
                 {
@@ -5608,14 +5608,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.BodySite",
-            "baseType": "FHIR.DomainResource",
+            "name": "BodySite",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -5623,7 +5623,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "modifier",
@@ -5631,7 +5631,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "image",
@@ -5641,29 +5641,29 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.Coverage",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.Coverage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "focal",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "coverage",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "relationship",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "preAuthRef",
@@ -5671,43 +5671,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingObjectSelection",
-            "baseType": "FHIR.DomainResource",
+            "name": "ImagingObjectSelection",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "uid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "title",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authoringTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "study",
@@ -5717,8 +5717,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Appointment.Participant",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Appointment.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5727,39 +5727,39 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "required",
-                    "type": "FHIR.ParticipantRequired"
+                    "type": "ParticipantRequired"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.ParticipationStatus"
+                    "type": "ParticipationStatus"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Expansion",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Expansion",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "timestamp",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "total",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "offset",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "parameter",
@@ -5773,37 +5773,37 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConceptMap",
-            "baseType": "FHIR.DomainResource",
+            "name": "ConceptMap",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -5811,11 +5811,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "useContext",
@@ -5823,27 +5823,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "copyright",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "sourceUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "sourceReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "targetUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "targetReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "element",
@@ -5853,13 +5853,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DataElement.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DataElement.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -5869,8 +5869,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Practitioner",
-            "baseType": "FHIR.DomainResource",
+            "name": "Practitioner",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -5879,11 +5879,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "active",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -5895,11 +5895,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "birthDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "photo",
@@ -5921,8 +5921,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ParticipantRequired",
-            "baseType": "FHIR.Element",
+            "name": "ParticipantRequired",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5931,24 +5931,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Reference",
-            "baseType": "FHIR.Element",
+            "name": "Reference",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "reference",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "display",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.XPathUsageType",
-            "baseType": "FHIR.Element",
+            "name": "XPathUsageType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -5957,8 +5957,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.VisionPrescription",
-            "baseType": "FHIR.DomainResource",
+            "name": "VisionPrescription",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -5967,27 +5967,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dateWritten",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescriber",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dispense",
@@ -5997,8 +5997,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.InstanceAvailability",
-            "baseType": "FHIR.Element",
+            "name": "InstanceAvailability",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6007,8 +6007,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.id",
-            "baseType": "FHIR.Element",
+            "name": "id",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6017,8 +6017,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Encounter.Participant",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Encounter.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6027,35 +6027,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "individual",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MessageHeader",
-            "baseType": "FHIR.DomainResource",
+            "name": "MessageHeader",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "timestamp",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "event",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "response",
-                    "type": "FHIR.MessageHeader.Response"
+                    "type": "MessageHeader.Response"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.MessageHeader.Source"
+                    "type": "MessageHeader.Source"
                 },
                 {
                     "name": "destination",
@@ -6063,23 +6063,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responsible",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "data",
@@ -6089,69 +6089,69 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Observation.Related",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Observation.Related",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.ObservationRelationshipType"
+                    "type": "ObservationRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrder.Administration",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NutritionOrder.Administration",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "schedule",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "rateQuantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "rateRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Contains",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Contains",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "system",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "abstract",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "display",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contains",
@@ -6161,8 +6161,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.FilterOperator",
-            "baseType": "FHIR.Element",
+            "name": "FilterOperator",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6171,8 +6171,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NamingSystemType",
-            "baseType": "FHIR.Element",
+            "name": "NamingSystemType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6181,8 +6181,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.PaymentNotice",
-            "baseType": "FHIR.DomainResource",
+            "name": "PaymentNotice",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -6191,46 +6191,46 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "paymentStatus",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.AddItem",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.AddItem",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6239,11 +6239,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "service",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "fee",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "noteNumberLinkId",
@@ -6261,24 +6261,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Range",
-            "baseType": "FHIR.Element",
+            "name": "Range",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "low",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "high",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ExtensionContext",
-            "baseType": "FHIR.Element",
+            "name": "ExtensionContext",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6287,21 +6287,21 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImplementationGuide.Page",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImplementationGuide.Page",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "source",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "kind",
-                    "type": "FHIR.GuidePageKind"
+                    "type": "GuidePageKind"
                 },
                 {
                     "name": "type",
@@ -6313,7 +6313,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "format",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "page",
@@ -6323,8 +6323,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimType",
-            "baseType": "FHIR.Element",
+            "name": "ClaimType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6333,8 +6333,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEventOutcome",
-            "baseType": "FHIR.Element",
+            "name": "AuditEventOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6343,8 +6343,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SimpleQuantity",
-            "baseType": "FHIR.Quantity",
+            "name": "SimpleQuantity",
+            "baseType": "Quantity",
             "retrievable": false,
             "element": [
                 {
@@ -6357,15 +6357,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "comparator",
-                    "type": "FHIR.QuantityComparator",
+                    "type": "QuantityComparator",
                     "prohibited": true
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Compose",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Compose",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6384,40 +6384,40 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.Rule",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.Rule",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "contentReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.PaymentReconciliation.Note",
-            "baseType": "FHIR.BackboneElement",
+            "name": "PaymentReconciliation.Note",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConstraintSeverity",
-            "baseType": "FHIR.Element",
+            "name": "ConstraintSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6426,13 +6426,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DomainResource",
-            "baseType": "FHIR.Resource",
+            "name": "DomainResource",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "text",
-                    "type": "FHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -6450,8 +6450,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntolerance",
-            "baseType": "FHIR.DomainResource",
+            "name": "AllergyIntolerance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "substance",
             "element": [
@@ -6461,51 +6461,51 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "onset",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "recordedDate",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "recorder",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reporter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "substance",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.AllergyIntoleranceStatus"
+                    "type": "AllergyIntoleranceStatus"
                 },
                 {
                     "name": "criticality",
-                    "type": "FHIR.AllergyIntoleranceCriticality"
+                    "type": "AllergyIntoleranceCriticality"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.AllergyIntoleranceType"
+                    "type": "AllergyIntoleranceType"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.AllergyIntoleranceCategory"
+                    "type": "AllergyIntoleranceCategory"
                 },
                 {
                     "name": "lastOccurence",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "reaction",
@@ -6515,8 +6515,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Encounter",
-            "baseType": "FHIR.DomainResource",
+            "name": "Encounter",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
@@ -6526,7 +6526,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.EncounterState"
+                    "type": "EncounterState"
                 },
                 {
                     "name": "statusHistory",
@@ -6534,7 +6534,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "class",
-                    "type": "FHIR.EncounterClass"
+                    "type": "EncounterClass"
                 },
                 {
                     "name": "type",
@@ -6542,11 +6542,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "episodeOfCare",
@@ -6562,15 +6562,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "appointment",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "length",
-                    "type": "FHIR.Duration"
+                    "type": "Duration"
                 },
                 {
                     "name": "reason",
@@ -6582,7 +6582,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hospitalization",
-                    "type": "FHIR.Encounter.Hospitalization"
+                    "type": "Encounter.Hospitalization"
                 },
                 {
                     "name": "location",
@@ -6590,18 +6590,18 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "serviceProvider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.GuideResourcePurpose",
-            "baseType": "FHIR.Element",
+            "name": "GuideResourcePurpose",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6610,84 +6610,84 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Procedure.FocalDevice",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Procedure.FocalDevice",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "action",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "manipulated",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentReference.Related",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DocumentReference.Related",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "ref",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.ValuedItem1",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.ValuedItem1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "entityCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "entityReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "effectiveTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "unitPrice",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "points",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "net",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcedureStatus",
-            "baseType": "FHIR.Element",
+            "name": "ProcedureStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -6696,24 +6696,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.Diagnosis",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.Diagnosis",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "diagnosis",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Timing",
-            "baseType": "FHIR.Element",
+            "name": "Timing",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -6722,79 +6722,79 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "repeat",
-                    "type": "FHIR.Timing.Repeat"
+                    "type": "Timing.Repeat"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.QuestionnaireResponse",
-            "baseType": "FHIR.DomainResource",
+            "name": "QuestionnaireResponse",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "questionnaire",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.QuestionnaireResponseStatus"
+                    "type": "QuestionnaireResponseStatus"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authored",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
-                    "type": "FHIR.QuestionnaireResponse.Group"
+                    "type": "QuestionnaireResponse.Group"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImagingStudy",
-            "baseType": "FHIR.DomainResource",
+            "name": "ImagingStudy",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "started",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "uid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "accession",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -6810,23 +6810,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "referrer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "availability",
-                    "type": "FHIR.InstanceAvailability"
+                    "type": "InstanceAvailability"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "numberOfSeries",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "numberOfInstances",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "procedure",
@@ -6834,11 +6834,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "interpreter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "series",
@@ -6848,8 +6848,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Account",
-            "baseType": "FHIR.DomainResource",
+            "name": "Account",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -6858,123 +6858,123 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.AccountStatus"
+                    "type": "AccountStatus"
                 },
                 {
                     "name": "activePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "currency",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "balance",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "coveragePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "owner",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEvent.Network",
-            "baseType": "FHIR.BackboneElement",
+            "name": "AuditEvent.Network",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "address",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.AuditEventParticipantNetworkType"
+                    "type": "AuditEventParticipantNetworkType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.StructureDefinition.Mapping",
-            "baseType": "FHIR.BackboneElement",
+            "name": "StructureDefinition.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "uri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "comments",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ContactPoint",
-            "baseType": "FHIR.Element",
+            "name": "ContactPoint",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "system",
-                    "type": "FHIR.ContactPointSystem"
+                    "type": "ContactPointSystem"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "use",
-                    "type": "FHIR.ContactPointUse"
+                    "type": "ContactPointUse"
                 },
                 {
                     "name": "rank",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationDispense.Substitution",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MedicationDispense.Substitution",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reason",
@@ -6988,201 +6988,201 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Extension",
-            "baseType": "FHIR.Element",
+            "name": "Extension",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "valueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "valueInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "valueDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "valueBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "valueInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "valueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "valueDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "valueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "valueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "valueCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "valueOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "valueUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "valueId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "valueUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "valuePositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "valueMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "valueAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "valueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "valueIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "valueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "valueCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "valueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "valueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "valuePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "valueRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "valueReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "valueSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "valueSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "valueHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "valueAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "valueContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "valueTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "valueMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Group.Characteristic",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Group.Characteristic",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "valueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "valueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "valueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "valueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "exclude",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Concept1",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Concept1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "display",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "designation",
@@ -7192,17 +7192,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrder.Supplement",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NutritionOrder.Supplement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "productName",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "schedule",
@@ -7210,43 +7210,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "instruction",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrder.EnteralFormula",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NutritionOrder.EnteralFormula",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "baseFormulaType",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "baseFormulaProductName",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "additiveType",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "additiveProductName",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "caloricDensity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "routeofAdministration",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "administration",
@@ -7254,39 +7254,39 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "maxVolumeToDeliver",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "administrationInstruction",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Composition.Section",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Composition.Section",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "title",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "mode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "orderedBy",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "entry",
@@ -7294,7 +7294,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "emptyReason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "section",
@@ -7304,8 +7304,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceMetricCategory",
-            "baseType": "FHIR.Element",
+            "name": "DeviceMetricCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7314,8 +7314,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Immunization",
-            "baseType": "FHIR.DomainResource",
+            "name": "Immunization",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "vaccineCode",
             "element": [
@@ -7325,67 +7325,67 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "vaccineCode",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "wasNotGiven",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "reported",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "performer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requester",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lotNumber",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "expirationDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "site",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "route",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "doseQuantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "note",
@@ -7393,7 +7393,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "explanation",
-                    "type": "FHIR.Immunization.Explanation"
+                    "type": "Immunization.Explanation"
                 },
                 {
                     "name": "reaction",
@@ -7407,8 +7407,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.QuestionnaireStatus",
-            "baseType": "FHIR.Element",
+            "name": "QuestionnaireStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7417,13 +7417,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Specimen.Collection",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Specimen.Collection",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "collector",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "comment",
@@ -7431,30 +7431,30 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "collectedDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "collectedPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "method",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "bodySite",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ResponseType",
-            "baseType": "FHIR.Element",
+            "name": "ResponseType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7463,8 +7463,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.decimal",
-            "baseType": "FHIR.Element",
+            "name": "decimal",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7473,40 +7473,40 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Bundle.Request",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Bundle.Request",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "method",
-                    "type": "FHIR.HTTPVerb"
+                    "type": "HTTPVerb"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "ifNoneMatch",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ifModifiedSince",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "ifMatch",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ifNoneExist",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AggregationMode",
-            "baseType": "FHIR.Element",
+            "name": "AggregationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7515,29 +7515,29 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Person.Link",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Person.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "assurance",
-                    "type": "FHIR.IdentityAssuranceLevel"
+                    "type": "IdentityAssuranceLevel"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Item",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequenceLinkId",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "noteNumber",
@@ -7555,50 +7555,50 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.PaymentReconciliation.Detail",
-            "baseType": "FHIR.BackboneElement",
+            "name": "PaymentReconciliation.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responce",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "submitter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payee",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ReferralRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "ReferralRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "status",
-                    "type": "FHIR.ReferralStatus"
+                    "type": "ReferralStatus"
                 },
                 {
                     "name": "identifier",
@@ -7606,27 +7606,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "specialty",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requester",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -7634,19 +7634,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateSent",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "reason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "serviceRequested",
@@ -7658,23 +7658,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "fulfillmentTime",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlan.Detail",
-            "baseType": "FHIR.BackboneElement",
+            "name": "CarePlan.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonCode",
@@ -7690,31 +7690,31 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.CarePlanActivityStatus"
+                    "type": "CarePlanActivityStatus"
                 },
                 {
                     "name": "statusReason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "prohibited",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "scheduledTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "scheduledPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "scheduledString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
@@ -7722,59 +7722,59 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "productCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "productReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dailyAmount",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImmunizationRecommendation.Protocol",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImmunizationRecommendation.Protocol",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "doseSequence",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "authority",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEvent.Event",
-            "baseType": "FHIR.BackboneElement",
+            "name": "AuditEvent.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "subtype",
@@ -7782,19 +7782,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "action",
-                    "type": "FHIR.AuditEventAction"
+                    "type": "AuditEventAction"
                 },
                 {
                     "name": "dateTime",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.AuditEventOutcome"
+                    "type": "AuditEventOutcome"
                 },
                 {
                     "name": "outcomeDesc",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "purposeOfEvent",
@@ -7804,8 +7804,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EventTiming",
-            "baseType": "FHIR.Element",
+            "name": "EventTiming",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7814,13 +7814,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Condition.Stage",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Condition.Stage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "summary",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "assessment",
@@ -7830,13 +7830,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEvent",
-            "baseType": "FHIR.DomainResource",
+            "name": "AuditEvent",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "event",
-                    "type": "FHIR.AuditEvent.Event"
+                    "type": "AuditEvent.Event"
                 },
                 {
                     "name": "participant",
@@ -7844,7 +7844,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.AuditEvent.Source"
+                    "type": "AuditEvent.Source"
                 },
                 {
                     "name": "object",
@@ -7854,8 +7854,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.GoalStatus",
-            "baseType": "FHIR.Element",
+            "name": "GoalStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7864,8 +7864,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OrderResponse",
-            "baseType": "FHIR.DomainResource",
+            "name": "OrderResponse",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -7874,23 +7874,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "who",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderStatus",
-                    "type": "FHIR.OrderStatus"
+                    "type": "OrderStatus"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "fulfillment",
@@ -7900,8 +7900,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SearchParamType",
-            "baseType": "FHIR.Element",
+            "name": "SearchParamType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7910,8 +7910,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SystemRestfulInteraction",
-            "baseType": "FHIR.Element",
+            "name": "SystemRestfulInteraction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7920,37 +7920,37 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationDefinition",
-            "baseType": "FHIR.DomainResource",
+            "name": "OperationDefinition",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "kind",
-                    "type": "FHIR.OperationKind"
+                    "type": "OperationKind"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -7958,35 +7958,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "idempotent",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "notes",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "base",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "system",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "type",
@@ -7994,7 +7994,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "instance",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "parameter",
@@ -8004,50 +8004,50 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SupplyDelivery",
-            "baseType": "FHIR.DomainResource",
+            "name": "SupplyDelivery",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.SupplyDeliveryStatus"
+                    "type": "SupplyDeliveryStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "suppliedItem",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "supplier",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenPrepared",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "time",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "destination",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -8057,45 +8057,45 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticOrder.Event",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DiagnosticOrder.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "FHIR.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "dateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "actor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Rest",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Rest",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "mode",
-                    "type": "FHIR.RestfulConformanceMode"
+                    "type": "RestfulConformanceMode"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "security",
-                    "type": "FHIR.Conformance.Security"
+                    "type": "Conformance.Security"
                 },
                 {
                     "name": "resource",
@@ -8107,7 +8107,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "transactionMode",
-                    "type": "FHIR.TransactionMode"
+                    "type": "TransactionMode"
                 },
                 {
                     "name": "searchParam",
@@ -8125,8 +8125,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.HealthcareService.AvailableTime",
-            "baseType": "FHIR.BackboneElement",
+            "name": "HealthcareService.AvailableTime",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8135,22 +8135,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "allDay",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "availableStartTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "availableEndTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SubscriptionChannelType",
-            "baseType": "FHIR.Element",
+            "name": "SubscriptionChannelType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -8159,8 +8159,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EligibilityRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "EligibilityRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -8169,183 +8169,183 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Parameters.Parameter",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Parameters.Parameter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "valueInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "valueDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "valueBase64Binary",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "valueInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "valueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "valueDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "valueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "valueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "valueCode",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "valueOid",
-                    "type": "FHIR.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "valueUuid",
-                    "type": "FHIR.uuid"
+                    "type": "uuid"
                 },
                 {
                     "name": "valueId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "valueUnsignedInt",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "valuePositiveInt",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "valueMarkdown",
-                    "type": "FHIR.markdown"
+                    "type": "markdown"
                 },
                 {
                     "name": "valueAnnotation",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "valueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "valueIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "valueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "valueCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "valueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "valueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "valuePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "valueRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "valueReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "valueSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "valueSignature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 },
                 {
                     "name": "valueHumanName",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "valueAddress",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "valueContactPoint",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "valueTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "valueMeta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "valueElementDefinition",
-                    "type": "FHIR.ElementDefinition"
+                    "type": "ElementDefinition"
                 },
                 {
                     "name": "resource",
-                    "type": "FHIR.ResourceContainer"
+                    "type": "ResourceContainer"
                 },
                 {
                     "name": "part",
@@ -8355,50 +8355,50 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.Payee",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.Payee",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "provider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "person",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationDispense",
-            "baseType": "FHIR.DomainResource",
+            "name": "MedicationDispense",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "medicationCodeableConcept",
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.MedicationDispenseStatus"
+                    "type": "MedicationDispenseStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dispenser",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authorizingPrescription",
@@ -8406,35 +8406,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "daysSupply",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "medicationCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "medicationReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenPrepared",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "whenHandedOver",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "destination",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -8442,7 +8442,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "dosageInstruction",
@@ -8450,14 +8450,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substitution",
-                    "type": "FHIR.MedicationDispense.Substitution"
+                    "type": "MedicationDispense.Substitution"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcedureRequestStatus",
-            "baseType": "FHIR.Element",
+            "name": "ProcedureRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -8466,8 +8466,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Substance",
-            "baseType": "FHIR.DomainResource",
+            "name": "Substance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
@@ -8481,11 +8481,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "instance",
@@ -8499,13 +8499,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NamingSystem.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NamingSystem.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -8515,29 +8515,29 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.Legal",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.Legal",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "contentReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentReference.Content",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DocumentReference.Content",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "attachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "format",
@@ -8547,25 +8547,25 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConceptMap.Target",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ConceptMap.Target",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "codeSystem",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "equivalence",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "comments",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "dependsOn",
@@ -8579,8 +8579,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ReferralStatus",
-            "baseType": "FHIR.Element",
+            "name": "ReferralStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -8589,8 +8589,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Teardown",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Teardown",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "action",
@@ -8599,28 +8599,28 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Designation",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Designation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "language",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "use",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AssertionDirectionType",
-            "baseType": "FHIR.Element",
+            "name": "AssertionDirectionType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -8629,25 +8629,25 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImmunizationRecommendation.Recommendation",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImmunizationRecommendation.Recommendation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "vaccineCode",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "doseNumber",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "forecastStatus",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "dateCriterion",
@@ -8655,7 +8655,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "protocol",
-                    "type": "FHIR.ImmunizationRecommendation.Protocol"
+                    "type": "ImmunizationRecommendation.Protocol"
                 },
                 {
                     "name": "supportingImmunization",
@@ -8669,8 +8669,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AppointmentResponse",
-            "baseType": "FHIR.DomainResource",
+            "name": "AppointmentResponse",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -8679,15 +8679,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "appointment",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "start",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "end",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "participantType",
@@ -8695,22 +8695,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participantStatus",
-                    "type": "FHIR.ParticipantStatus"
+                    "type": "ParticipantStatus"
                 },
                 {
                     "name": "comment",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SlicingRules",
-            "baseType": "FHIR.Element",
+            "name": "SlicingRules",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -8719,8 +8719,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Communication",
-            "baseType": "FHIR.DomainResource",
+            "name": "Communication",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "category",
             "element": [
@@ -8730,11 +8730,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "sender",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -8750,19 +8750,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.CommunicationStatus"
+                    "type": "CommunicationStatus"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "sent",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "received",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "reason",
@@ -8770,43 +8770,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestDetail",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.Term",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.Term",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "issued",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "applies",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "subType",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "action",
@@ -8822,7 +8822,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valuedItem",
@@ -8836,85 +8836,85 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Operation",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Operation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "definition",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Patient.Animal",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Patient.Animal",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "species",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "breed",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "genderStatus",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Substance.Instance",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Substance.Instance",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "expiry",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Encounter.StatusHistory",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Encounter.StatusHistory",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "FHIR.EncounterState"
+                    "type": "EncounterState"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticOrder.Item",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DiagnosticOrder.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "specimen",
@@ -8922,11 +8922,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "bodySite",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "event",
@@ -8936,8 +8936,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.LinkType",
-            "baseType": "FHIR.Element",
+            "name": "LinkType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -8946,17 +8946,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImplementationGuide.Package",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImplementationGuide.Package",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "resource",
@@ -8966,8 +8966,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntoleranceCriticality",
-            "baseType": "FHIR.Element",
+            "name": "AllergyIntoleranceCriticality",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -8976,24 +8976,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlan.Participant",
-            "baseType": "FHIR.BackboneElement",
+            "name": "CarePlan.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "role",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "member",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConceptMapEquivalence",
-            "baseType": "FHIR.Element",
+            "name": "ConceptMapEquivalence",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9002,8 +9002,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImmunizationRecommendation",
-            "baseType": "FHIR.DomainResource",
+            "name": "ImmunizationRecommendation",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -9012,7 +9012,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recommendation",
@@ -9022,8 +9022,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.PropertyRepresentation",
-            "baseType": "FHIR.Element",
+            "name": "PropertyRepresentation",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9032,8 +9032,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEventAction",
-            "baseType": "FHIR.Element",
+            "name": "AuditEventAction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9042,33 +9042,33 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceMetric.Calibration",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DeviceMetric.Calibration",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.DeviceMetricCalibrationType"
+                    "type": "DeviceMetricCalibrationType"
                 },
                 {
                     "name": "state",
-                    "type": "FHIR.DeviceMetricCalibrationState"
+                    "type": "DeviceMetricCalibrationState"
                 },
                 {
                     "name": "time",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Questionnaire.Question",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Questionnaire.Question",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "linkId",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "concept",
@@ -9076,23 +9076,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.AnswerFormat"
+                    "type": "AnswerFormat"
                 },
                 {
                     "name": "required",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "repeats",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "options",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "option",
@@ -9106,49 +9106,49 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Goal.Outcome",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Goal.Outcome",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "resultCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "resultReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance",
-            "baseType": "FHIR.DomainResource",
+            "name": "Conformance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -9156,39 +9156,39 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "requirements",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "copyright",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "kind",
-                    "type": "FHIR.ConformanceStatementKind"
+                    "type": "ConformanceStatementKind"
                 },
                 {
                     "name": "software",
-                    "type": "FHIR.Conformance.Software"
+                    "type": "Conformance.Software"
                 },
                 {
                     "name": "implementation",
-                    "type": "FHIR.Conformance.Implementation"
+                    "type": "Conformance.Implementation"
                 },
                 {
                     "name": "fhirVersion",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "acceptUnknown",
-                    "type": "FHIR.UnknownContentCode"
+                    "type": "UnknownContentCode"
                 },
                 {
                     "name": "format",
@@ -9214,14 +9214,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentManifest",
-            "baseType": "FHIR.DomainResource",
+            "name": "DocumentManifest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "masterIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -9229,7 +9229,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -9237,7 +9237,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "author",
@@ -9245,19 +9245,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "content",
@@ -9271,8 +9271,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SearchModifierCode",
-            "baseType": "FHIR.Element",
+            "name": "SearchModifierCode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9281,8 +9281,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Observation",
-            "baseType": "FHIR.DomainResource",
+            "name": "Observation",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
@@ -9292,35 +9292,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.ObservationStatus"
+                    "type": "ObservationStatus"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "effectiveDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "effectivePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "issued",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "performer",
@@ -9328,71 +9328,71 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "valueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "valueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "valueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "valueRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "valueSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "valueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "valueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "valueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "valuePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "dataAbsentReason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "interpretation",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "comments",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "bodySite",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "method",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "specimen",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -9410,13 +9410,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Security",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Security",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "cors",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "service",
@@ -9424,7 +9424,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "certificate",
@@ -9434,8 +9434,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceUseRequestStatus",
-            "baseType": "FHIR.Element",
+            "name": "DeviceUseRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9444,8 +9444,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CompositionStatus",
-            "baseType": "FHIR.Element",
+            "name": "CompositionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9454,32 +9454,32 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Annotation",
-            "baseType": "FHIR.Element",
+            "name": "Annotation",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "authorReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authorString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "time",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AppointmentStatus",
-            "baseType": "FHIR.Element",
+            "name": "AppointmentStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9488,8 +9488,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MessageSignificanceCategory",
-            "baseType": "FHIR.Element",
+            "name": "MessageSignificanceCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9498,8 +9498,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationParameterUse",
-            "baseType": "FHIR.Element",
+            "name": "OperationParameterUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9508,17 +9508,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Include",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Include",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "system",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "concept",
@@ -9532,8 +9532,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ListMode",
-            "baseType": "FHIR.Element",
+            "name": "ListMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9542,30 +9542,30 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceComponent",
-            "baseType": "FHIR.DomainResource",
+            "name": "DeviceComponent",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "lastSystemChange",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operationalStatus",
@@ -9573,11 +9573,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "parameterGroup",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "measurementPrinciple",
-                    "type": "FHIR.Measmnt_Principle"
+                    "type": "Measmnt_Principle"
                 },
                 {
                     "name": "productionSpecification",
@@ -9585,14 +9585,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "languageCode",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ObservationStatus",
-            "baseType": "FHIR.Element",
+            "name": "ObservationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9601,17 +9601,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Meta",
-            "baseType": "FHIR.Element",
+            "name": "Meta",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "versionId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "lastUpdated",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "profile",
@@ -9629,64 +9629,64 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Software",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Software",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "releaseDate",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Implementation",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Implementation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MessageHeader.Destination",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MessageHeader.Destination",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "endpoint",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ParticipantStatus",
-            "baseType": "FHIR.Element",
+            "name": "ParticipantStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9695,8 +9695,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AdministrativeGender",
-            "baseType": "FHIR.Element",
+            "name": "AdministrativeGender",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9705,24 +9705,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticReport.Image",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DiagnosticReport.Image",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "comment",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "link",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Slot",
-            "baseType": "FHIR.DomainResource",
+            "name": "Slot",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
@@ -9732,55 +9732,55 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "schedule",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "freeBusyType",
-                    "type": "FHIR.SlotStatus"
+                    "type": "SlotStatus"
                 },
                 {
                     "name": "start",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "end",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "overbooked",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "comment",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ValueSet.Concept",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ValueSet.Concept",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "abstract",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "display",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "definition",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "designation",
@@ -9794,8 +9794,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConformanceStatementKind",
-            "baseType": "FHIR.Element",
+            "name": "ConformanceStatementKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -9804,8 +9804,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EnrollmentResponse",
-            "baseType": "FHIR.DomainResource",
+            "name": "EnrollmentResponse",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -9814,112 +9814,112 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "disposition",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EpisodeOfCare.StatusHistory",
-            "baseType": "FHIR.BackboneElement",
+            "name": "EpisodeOfCare.StatusHistory",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "FHIR.EpisodeOfCareStatus"
+                    "type": "EpisodeOfCareStatus"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Observation.ReferenceRange",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Observation.ReferenceRange",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "low",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "high",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "meaning",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "age",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Coverage",
-            "baseType": "FHIR.DomainResource",
+            "name": "Coverage",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "issuer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "bin",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "subscriberId",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -9927,31 +9927,31 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "group",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "plan",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "subPlan",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "dependent",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "sequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "subscriber",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "network",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "contract",
@@ -9961,428 +9961,428 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Order.When",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Order.When",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "schedule",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ResourceContainer",
+            "name": "ResourceContainer",
             "baseType": "System.Any",
             "retrievable": false,
             "element": [
                 {
                     "name": "Account",
-                    "type": "FHIR.Account"
+                    "type": "Account"
                 },
                 {
                     "name": "AllergyIntolerance",
-                    "type": "FHIR.AllergyIntolerance"
+                    "type": "AllergyIntolerance"
                 },
                 {
                     "name": "Appointment",
-                    "type": "FHIR.Appointment"
+                    "type": "Appointment"
                 },
                 {
                     "name": "AppointmentResponse",
-                    "type": "FHIR.AppointmentResponse"
+                    "type": "AppointmentResponse"
                 },
                 {
                     "name": "AuditEvent",
-                    "type": "FHIR.AuditEvent"
+                    "type": "AuditEvent"
                 },
                 {
                     "name": "Basic",
-                    "type": "FHIR.Basic"
+                    "type": "Basic"
                 },
                 {
                     "name": "Binary",
-                    "type": "FHIR.Binary"
+                    "type": "Binary"
                 },
                 {
                     "name": "BodySite",
-                    "type": "FHIR.BodySite"
+                    "type": "BodySite"
                 },
                 {
                     "name": "Bundle",
-                    "type": "FHIR.Bundle"
+                    "type": "Bundle"
                 },
                 {
                     "name": "CarePlan",
-                    "type": "FHIR.CarePlan"
+                    "type": "CarePlan"
                 },
                 {
                     "name": "Claim",
-                    "type": "FHIR.Claim"
+                    "type": "Claim"
                 },
                 {
                     "name": "ClaimResponse",
-                    "type": "FHIR.ClaimResponse"
+                    "type": "ClaimResponse"
                 },
                 {
                     "name": "ClinicalImpression",
-                    "type": "FHIR.ClinicalImpression"
+                    "type": "ClinicalImpression"
                 },
                 {
                     "name": "Communication",
-                    "type": "FHIR.Communication"
+                    "type": "Communication"
                 },
                 {
                     "name": "CommunicationRequest",
-                    "type": "FHIR.CommunicationRequest"
+                    "type": "CommunicationRequest"
                 },
                 {
                     "name": "Composition",
-                    "type": "FHIR.Composition"
+                    "type": "Composition"
                 },
                 {
                     "name": "ConceptMap",
-                    "type": "FHIR.ConceptMap"
+                    "type": "ConceptMap"
                 },
                 {
                     "name": "Condition",
-                    "type": "FHIR.Condition"
+                    "type": "Condition"
                 },
                 {
                     "name": "Conformance",
-                    "type": "FHIR.Conformance"
+                    "type": "Conformance"
                 },
                 {
                     "name": "Contract",
-                    "type": "FHIR.Contract"
+                    "type": "Contract"
                 },
                 {
                     "name": "Coverage",
-                    "type": "FHIR.Coverage"
+                    "type": "Coverage"
                 },
                 {
                     "name": "DataElement",
-                    "type": "FHIR.DataElement"
+                    "type": "DataElement"
                 },
                 {
                     "name": "DetectedIssue",
-                    "type": "FHIR.DetectedIssue"
+                    "type": "DetectedIssue"
                 },
                 {
                     "name": "Device",
-                    "type": "FHIR.Device"
+                    "type": "Device"
                 },
                 {
                     "name": "DeviceComponent",
-                    "type": "FHIR.DeviceComponent"
+                    "type": "DeviceComponent"
                 },
                 {
                     "name": "DeviceMetric",
-                    "type": "FHIR.DeviceMetric"
+                    "type": "DeviceMetric"
                 },
                 {
                     "name": "DeviceUseRequest",
-                    "type": "FHIR.DeviceUseRequest"
+                    "type": "DeviceUseRequest"
                 },
                 {
                     "name": "DeviceUseStatement",
-                    "type": "FHIR.DeviceUseStatement"
+                    "type": "DeviceUseStatement"
                 },
                 {
                     "name": "DiagnosticOrder",
-                    "type": "FHIR.DiagnosticOrder"
+                    "type": "DiagnosticOrder"
                 },
                 {
                     "name": "DiagnosticReport",
-                    "type": "FHIR.DiagnosticReport"
+                    "type": "DiagnosticReport"
                 },
                 {
                     "name": "DocumentManifest",
-                    "type": "FHIR.DocumentManifest"
+                    "type": "DocumentManifest"
                 },
                 {
                     "name": "DocumentReference",
-                    "type": "FHIR.DocumentReference"
+                    "type": "DocumentReference"
                 },
                 {
                     "name": "EligibilityRequest",
-                    "type": "FHIR.EligibilityRequest"
+                    "type": "EligibilityRequest"
                 },
                 {
                     "name": "EligibilityResponse",
-                    "type": "FHIR.EligibilityResponse"
+                    "type": "EligibilityResponse"
                 },
                 {
                     "name": "Encounter",
-                    "type": "FHIR.Encounter"
+                    "type": "Encounter"
                 },
                 {
                     "name": "EnrollmentRequest",
-                    "type": "FHIR.EnrollmentRequest"
+                    "type": "EnrollmentRequest"
                 },
                 {
                     "name": "EnrollmentResponse",
-                    "type": "FHIR.EnrollmentResponse"
+                    "type": "EnrollmentResponse"
                 },
                 {
                     "name": "EpisodeOfCare",
-                    "type": "FHIR.EpisodeOfCare"
+                    "type": "EpisodeOfCare"
                 },
                 {
                     "name": "ExplanationOfBenefit",
-                    "type": "FHIR.ExplanationOfBenefit"
+                    "type": "ExplanationOfBenefit"
                 },
                 {
                     "name": "FamilyMemberHistory",
-                    "type": "FHIR.FamilyMemberHistory"
+                    "type": "FamilyMemberHistory"
                 },
                 {
                     "name": "Flag",
-                    "type": "FHIR.Flag"
+                    "type": "Flag"
                 },
                 {
                     "name": "Goal",
-                    "type": "FHIR.Goal"
+                    "type": "Goal"
                 },
                 {
                     "name": "Group",
-                    "type": "FHIR.Group"
+                    "type": "Group"
                 },
                 {
                     "name": "HealthcareService",
-                    "type": "FHIR.HealthcareService"
+                    "type": "HealthcareService"
                 },
                 {
                     "name": "ImagingObjectSelection",
-                    "type": "FHIR.ImagingObjectSelection"
+                    "type": "ImagingObjectSelection"
                 },
                 {
                     "name": "ImagingStudy",
-                    "type": "FHIR.ImagingStudy"
+                    "type": "ImagingStudy"
                 },
                 {
                     "name": "Immunization",
-                    "type": "FHIR.Immunization"
+                    "type": "Immunization"
                 },
                 {
                     "name": "ImmunizationRecommendation",
-                    "type": "FHIR.ImmunizationRecommendation"
+                    "type": "ImmunizationRecommendation"
                 },
                 {
                     "name": "ImplementationGuide",
-                    "type": "FHIR.ImplementationGuide"
+                    "type": "ImplementationGuide"
                 },
                 {
                     "name": "List",
-                    "type": "FHIR.List"
+                    "type": "List"
                 },
                 {
                     "name": "Location",
-                    "type": "FHIR.Location"
+                    "type": "Location"
                 },
                 {
                     "name": "Media",
-                    "type": "FHIR.Media"
+                    "type": "Media"
                 },
                 {
                     "name": "Medication",
-                    "type": "FHIR.Medication"
+                    "type": "Medication"
                 },
                 {
                     "name": "MedicationAdministration",
-                    "type": "FHIR.MedicationAdministration"
+                    "type": "MedicationAdministration"
                 },
                 {
                     "name": "MedicationDispense",
-                    "type": "FHIR.MedicationDispense"
+                    "type": "MedicationDispense"
                 },
                 {
                     "name": "MedicationOrder",
-                    "type": "FHIR.MedicationOrder"
+                    "type": "MedicationOrder"
                 },
                 {
                     "name": "MedicationStatement",
-                    "type": "FHIR.MedicationStatement"
+                    "type": "MedicationStatement"
                 },
                 {
                     "name": "MessageHeader",
-                    "type": "FHIR.MessageHeader"
+                    "type": "MessageHeader"
                 },
                 {
                     "name": "NamingSystem",
-                    "type": "FHIR.NamingSystem"
+                    "type": "NamingSystem"
                 },
                 {
                     "name": "NutritionOrder",
-                    "type": "FHIR.NutritionOrder"
+                    "type": "NutritionOrder"
                 },
                 {
                     "name": "Observation",
-                    "type": "FHIR.Observation"
+                    "type": "Observation"
                 },
                 {
                     "name": "OperationDefinition",
-                    "type": "FHIR.OperationDefinition"
+                    "type": "OperationDefinition"
                 },
                 {
                     "name": "OperationOutcome",
-                    "type": "FHIR.OperationOutcome"
+                    "type": "OperationOutcome"
                 },
                 {
                     "name": "Order",
-                    "type": "FHIR.Order"
+                    "type": "Order"
                 },
                 {
                     "name": "OrderResponse",
-                    "type": "FHIR.OrderResponse"
+                    "type": "OrderResponse"
                 },
                 {
                     "name": "Organization",
-                    "type": "FHIR.Organization"
+                    "type": "Organization"
                 },
                 {
                     "name": "Patient",
-                    "type": "FHIR.Patient"
+                    "type": "Patient"
                 },
                 {
                     "name": "PaymentNotice",
-                    "type": "FHIR.PaymentNotice"
+                    "type": "PaymentNotice"
                 },
                 {
                     "name": "PaymentReconciliation",
-                    "type": "FHIR.PaymentReconciliation"
+                    "type": "PaymentReconciliation"
                 },
                 {
                     "name": "Person",
-                    "type": "FHIR.Person"
+                    "type": "Person"
                 },
                 {
                     "name": "Practitioner",
-                    "type": "FHIR.Practitioner"
+                    "type": "Practitioner"
                 },
                 {
                     "name": "Procedure",
-                    "type": "FHIR.Procedure"
+                    "type": "Procedure"
                 },
                 {
                     "name": "ProcedureRequest",
-                    "type": "FHIR.ProcedureRequest"
+                    "type": "ProcedureRequest"
                 },
                 {
                     "name": "ProcessRequest",
-                    "type": "FHIR.ProcessRequest"
+                    "type": "ProcessRequest"
                 },
                 {
                     "name": "ProcessResponse",
-                    "type": "FHIR.ProcessResponse"
+                    "type": "ProcessResponse"
                 },
                 {
                     "name": "Provenance",
-                    "type": "FHIR.Provenance"
+                    "type": "Provenance"
                 },
                 {
                     "name": "Questionnaire",
-                    "type": "FHIR.Questionnaire"
+                    "type": "Questionnaire"
                 },
                 {
                     "name": "QuestionnaireResponse",
-                    "type": "FHIR.QuestionnaireResponse"
+                    "type": "QuestionnaireResponse"
                 },
                 {
                     "name": "ReferralRequest",
-                    "type": "FHIR.ReferralRequest"
+                    "type": "ReferralRequest"
                 },
                 {
                     "name": "RelatedPerson",
-                    "type": "FHIR.RelatedPerson"
+                    "type": "RelatedPerson"
                 },
                 {
                     "name": "RiskAssessment",
-                    "type": "FHIR.RiskAssessment"
+                    "type": "RiskAssessment"
                 },
                 {
                     "name": "Schedule",
-                    "type": "FHIR.Schedule"
+                    "type": "Schedule"
                 },
                 {
                     "name": "SearchParameter",
-                    "type": "FHIR.SearchParameter"
+                    "type": "SearchParameter"
                 },
                 {
                     "name": "Slot",
-                    "type": "FHIR.Slot"
+                    "type": "Slot"
                 },
                 {
                     "name": "Specimen",
-                    "type": "FHIR.Specimen"
+                    "type": "Specimen"
                 },
                 {
                     "name": "StructureDefinition",
-                    "type": "FHIR.StructureDefinition"
+                    "type": "StructureDefinition"
                 },
                 {
                     "name": "Subscription",
-                    "type": "FHIR.Subscription"
+                    "type": "Subscription"
                 },
                 {
                     "name": "Substance",
-                    "type": "FHIR.Substance"
+                    "type": "Substance"
                 },
                 {
                     "name": "SupplyDelivery",
-                    "type": "FHIR.SupplyDelivery"
+                    "type": "SupplyDelivery"
                 },
                 {
                     "name": "SupplyRequest",
-                    "type": "FHIR.SupplyRequest"
+                    "type": "SupplyRequest"
                 },
                 {
                     "name": "TestScript",
-                    "type": "FHIR.TestScript"
+                    "type": "TestScript"
                 },
                 {
                     "name": "ValueSet",
-                    "type": "FHIR.ValueSet"
+                    "type": "ValueSet"
                 },
                 {
                     "name": "VisionPrescription",
-                    "type": "FHIR.VisionPrescription"
+                    "type": "VisionPrescription"
                 },
                 {
                     "name": "Parameters",
-                    "type": "FHIR.Parameters"
+                    "type": "Parameters"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceComponent.ProductionSpecification",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DeviceComponent.ProductionSpecification",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "specType",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "componentId",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "productionSpec",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticOrderStatus",
-            "baseType": "FHIR.Element",
+            "name": "DiagnosticOrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10391,13 +10391,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClinicalImpression.Investigations",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClinicalImpression.Investigations",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "item",
@@ -10407,94 +10407,94 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Timing.Repeat",
-            "baseType": "FHIR.Element",
+            "name": "Timing.Repeat",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "boundsQuantity",
-                    "type": "FHIR.Duration"
+                    "type": "Duration"
                 },
                 {
                     "name": "boundsRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "boundsPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "count",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "duration",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "durationMax",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "durationUnits",
-                    "type": "FHIR.UnitsOfTime"
+                    "type": "UnitsOfTime"
                 },
                 {
                     "name": "frequency",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "frequencyMax",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "periodMax",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "periodUnits",
-                    "type": "FHIR.UnitsOfTime"
+                    "type": "UnitsOfTime"
                 },
                 {
                     "name": "when",
-                    "type": "FHIR.EventTiming"
+                    "type": "EventTiming"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Medication.Ingredient",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Medication.Ingredient",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Media",
-            "baseType": "FHIR.DomainResource",
+            "name": "Media",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.DigitalMediaType"
+                    "type": "DigitalMediaType"
                 },
                 {
                     "name": "subtype",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "identifier",
@@ -10502,46 +10502,46 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operator",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "view",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "deviceName",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "height",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "width",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "frames",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "duration",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "content",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.boolean",
-            "baseType": "FHIR.Element",
+            "name": "boolean",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10550,22 +10550,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract",
-            "baseType": "FHIR.DomainResource",
+            "name": "Contract",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "issued",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "applies",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "subject",
@@ -10581,7 +10581,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "subType",
@@ -10613,11 +10613,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "bindingAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "bindingReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "friendly",
@@ -10635,28 +10635,28 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Location.Position",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Location.Position",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "longitude",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "latitude",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "altitude",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceMetricCalibrationType",
-            "baseType": "FHIR.Element",
+            "name": "DeviceMetricCalibrationType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10665,8 +10665,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticReport",
-            "baseType": "FHIR.DomainResource",
+            "name": "DiagnosticReport",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "category",
             "element": [
@@ -10676,39 +10676,39 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.DiagnosticReportStatus"
+                    "type": "DiagnosticReportStatus"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "effectiveDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "effectivePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "issued",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "performer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
@@ -10732,7 +10732,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "conclusion",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "codedDiagnosis",
@@ -10746,37 +10746,37 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Immunization.Reaction",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Immunization.Reaction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "detail",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reported",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEvent.Source",
-            "baseType": "FHIR.BackboneElement",
+            "name": "AuditEvent.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "site",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
@@ -10786,48 +10786,48 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConceptMap.DependsOn",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ConceptMap.DependsOn",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "element",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "codeSystem",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.Prosthesis",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.Prosthesis",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "initial",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "priorDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "priorMaterial",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.code",
-            "baseType": "FHIR.Element",
+            "name": "code",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10836,8 +10836,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Metadata",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Metadata",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10852,24 +10852,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Binary",
-            "baseType": "FHIR.Resource",
+            "name": "Binary",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentType",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "content",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SupplyRequestStatus",
-            "baseType": "FHIR.Element",
+            "name": "SupplyRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10878,8 +10878,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EncounterLocationStatus",
-            "baseType": "FHIR.Element",
+            "name": "EncounterLocationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10888,8 +10888,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SupplyDeliveryStatus",
-            "baseType": "FHIR.Element",
+            "name": "SupplyDeliveryStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10898,8 +10898,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Schedule",
-            "baseType": "FHIR.DomainResource",
+            "name": "Schedule",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
@@ -10913,22 +10913,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "planningHorizon",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "comment",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationAdministration",
-            "baseType": "FHIR.DomainResource",
+            "name": "MedicationAdministration",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "medicationCodeableConcept",
             "element": [
@@ -10938,27 +10938,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.MedicationAdministrationStatus"
+                    "type": "MedicationAdministrationStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "practitioner",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescription",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "wasNotGiven",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "reasonNotGiven",
@@ -10970,19 +10970,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "effectiveTimeDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "effectiveTimePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "medicationCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "medicationReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
@@ -10990,34 +10990,34 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "dosage",
-                    "type": "FHIR.MedicationAdministration.Dosage"
+                    "type": "MedicationAdministration.Dosage"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Ratio",
-            "baseType": "FHIR.Element",
+            "name": "Ratio",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "numerator",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "denominator",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticReportStatus",
-            "baseType": "FHIR.Element",
+            "name": "DiagnosticReportStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11026,117 +11026,117 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Note",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Note",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "number",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.RequestHeader",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.RequestHeader",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "field",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcessResponse.Notes",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ProcessResponse.Notes",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SampledData",
-            "baseType": "FHIR.Element",
+            "name": "SampledData",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "origin",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "factor",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "lowerLimit",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "upperLimit",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "dimensions",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "data",
-                    "type": "FHIR.SampledDataDataType"
+                    "type": "SampledDataDataType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Coverage",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Coverage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "focal",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "coverage",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "relationship",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "preAuthRef",
@@ -11144,27 +11144,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticOrder",
-            "baseType": "FHIR.DomainResource",
+            "name": "DiagnosticOrder",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -11172,7 +11172,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -11188,11 +11188,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.DiagnosticOrderPriority"
+                    "type": "DiagnosticOrderPriority"
                 },
                 {
                     "name": "event",
@@ -11210,8 +11210,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.FlagStatus",
-            "baseType": "FHIR.Element",
+            "name": "FlagStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11220,8 +11220,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Provenance",
-            "baseType": "FHIR.DomainResource",
+            "name": "Provenance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -11230,11 +11230,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "recorded",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "reason",
@@ -11242,11 +11242,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "activity",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "policy",
@@ -11268,32 +11268,32 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Variable",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Variable",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "headerField",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "path",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "sourceId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntoleranceCertainty",
-            "baseType": "FHIR.Element",
+            "name": "AllergyIntoleranceCertainty",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11302,37 +11302,37 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Medication",
-            "baseType": "FHIR.DomainResource",
+            "name": "Medication",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "isBrand",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "manufacturer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "product",
-                    "type": "FHIR.Medication.Product"
+                    "type": "Medication.Product"
                 },
                 {
                     "name": "package",
-                    "type": "FHIR.Medication.Package"
+                    "type": "Medication.Package"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlan.Activity",
-            "baseType": "FHIR.BackboneElement",
+            "name": "CarePlan.Activity",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11345,18 +11345,18 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "detail",
-                    "type": "FHIR.CarePlan.Detail"
+                    "type": "CarePlan.Detail"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Distance",
-            "baseType": "FHIR.Quantity",
+            "name": "Distance",
+            "baseType": "Quantity",
             "retrievable": false,
             "element": [
                 {
@@ -11371,33 +11371,33 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ElementDefinition.Mapping",
-            "baseType": "FHIR.Element",
+            "name": "ElementDefinition.Mapping",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "language",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "map",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Setup",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Setup",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "metadata",
-                    "type": "FHIR.TestScript.Metadata"
+                    "type": "TestScript.Metadata"
                 },
                 {
                     "name": "action",
@@ -11407,8 +11407,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlanStatus",
-            "baseType": "FHIR.Element",
+            "name": "CarePlanStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11417,8 +11417,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ListStatus",
-            "baseType": "FHIR.Element",
+            "name": "ListStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11427,8 +11427,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.base64Binary",
-            "baseType": "FHIR.Element",
+            "name": "base64Binary",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11437,17 +11437,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.HumanName",
-            "baseType": "FHIR.Element",
+            "name": "HumanName",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "FHIR.NameUse"
+                    "type": "NameUse"
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "family",
@@ -11467,51 +11467,51 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Operation",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Operation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "resource",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "label",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "accept",
-                    "type": "FHIR.ContentType"
+                    "type": "ContentType"
                 },
                 {
                     "name": "contentType",
-                    "type": "FHIR.ContentType"
+                    "type": "ContentType"
                 },
                 {
                     "name": "destination",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "encodeRequestUrl",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "params",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "requestHeader",
@@ -11519,26 +11519,26 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "responseId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "sourceId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "targetId",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "url",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Group",
-            "baseType": "FHIR.DomainResource",
+            "name": "Group",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
@@ -11548,23 +11548,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.GroupType"
+                    "type": "GroupType"
                 },
                 {
                     "name": "actual",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "characteristic",
@@ -11578,8 +11578,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CommunicationRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "CommunicationRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "category",
             "element": [
@@ -11589,11 +11589,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "sender",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -11609,23 +11609,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.CommunicationRequestStatus"
+                    "type": "CommunicationRequestStatus"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "scheduledDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "scheduledPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "reason",
@@ -11633,76 +11633,76 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requestedOn",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.RiskAssessment.Prediction",
-            "baseType": "FHIR.BackboneElement",
+            "name": "RiskAssessment.Prediction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "outcome",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "probabilityDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "probabilityRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "probabilityCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "relativeRisk",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "whenPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "whenRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "rationale",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DetectedIssue",
-            "baseType": "FHIR.DomainResource",
+            "name": "DetectedIssue",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "category",
             "element": [
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "severity",
-                    "type": "FHIR.DetectedIssueSeverity"
+                    "type": "DetectedIssueSeverity"
                 },
                 {
                     "name": "implicated",
@@ -11710,23 +11710,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reference",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "mitigation",
@@ -11736,8 +11736,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Location",
-            "baseType": "FHIR.DomainResource",
+            "name": "Location",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
@@ -11747,23 +11747,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.LocationStatus"
+                    "type": "LocationStatus"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "mode",
-                    "type": "FHIR.LocationMode"
+                    "type": "LocationMode"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "telecom",
@@ -11771,50 +11771,50 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "physicalType",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "position",
-                    "type": "FHIR.Location.Position"
+                    "type": "Location.Position"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CommunicationRequest.Payload",
-            "baseType": "FHIR.BackboneElement",
+            "name": "CommunicationRequest.Payload",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contentAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "contentReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.BackboneElement",
-            "baseType": "FHIR.Element",
+            "name": "BackboneElement",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "modifierExtension",
@@ -11823,32 +11823,32 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Resource",
+            "name": "Resource",
             "baseType": "System.Any",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "meta",
-                    "type": "FHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "language",
-                    "type": "FHIR.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AddressUse",
-            "baseType": "FHIR.Element",
+            "name": "AddressUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11857,40 +11857,40 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentReference.RelatesTo",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DocumentReference.RelatesTo",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.DocumentRelationshipType"
+                    "type": "DocumentRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImplementationGuide.Dependency",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImplementationGuide.Dependency",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.GuideDependencyType"
+                    "type": "GuideDependencyType"
                 },
                 {
                     "name": "uri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConditionalDeleteStatus",
-            "baseType": "FHIR.Element",
+            "name": "ConditionalDeleteStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -11899,81 +11899,81 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationOrder.DosageInstruction",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MedicationOrder.DosageInstruction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "additionalInstructions",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "timing",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "asNeededBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "asNeededCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "siteCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "siteReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "route",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "method",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "doseRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "doseQuantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "rateRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "rateRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrder",
-            "baseType": "FHIR.DomainResource",
+            "name": "NutritionOrder",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -11981,15 +11981,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.NutritionOrderStatus"
+                    "type": "NutritionOrderStatus"
                 },
                 {
                     "name": "allergyIntolerance",
@@ -12005,7 +12005,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "oralDiet",
-                    "type": "FHIR.NutritionOrder.OralDiet"
+                    "type": "NutritionOrder.OralDiet"
                 },
                 {
                     "name": "supplement",
@@ -12013,24 +12013,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enteralFormula",
-                    "type": "FHIR.NutritionOrder.EnteralFormula"
+                    "type": "NutritionOrder.EnteralFormula"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Action2",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Action2",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "operation",
-                "type": "FHIR.TestScript.Operation"
+                "type": "TestScript.Operation"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ContactPointUse",
-            "baseType": "FHIR.Element",
+            "name": "ContactPointUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12039,8 +12039,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceMetricOperationalStatus",
-            "baseType": "FHIR.Element",
+            "name": "DeviceMetricOperationalStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12049,33 +12049,33 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Action1",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Action1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "operation",
-                    "type": "FHIR.TestScript.Operation"
+                    "type": "TestScript.Operation"
                 },
                 {
                     "name": "assert",
-                    "type": "FHIR.TestScript.Assert"
+                    "type": "TestScript.Assert"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Questionnaire.Group",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Questionnaire.Group",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "linkId",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "title",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "concept",
@@ -12083,15 +12083,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "required",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "repeats",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "group",
@@ -12105,8 +12105,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrderStatus",
-            "baseType": "FHIR.Element",
+            "name": "NutritionOrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12115,8 +12115,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DiagnosticOrderPriority",
-            "baseType": "FHIR.Element",
+            "name": "DiagnosticOrderPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12125,8 +12125,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.uri",
-            "baseType": "FHIR.Element",
+            "name": "uri",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12135,8 +12135,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Use",
-            "baseType": "FHIR.Element",
+            "name": "Use",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12145,8 +12145,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.IdentityAssuranceLevel",
-            "baseType": "FHIR.Element",
+            "name": "IdentityAssuranceLevel",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12155,29 +12155,29 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEvent.Object",
-            "baseType": "FHIR.BackboneElement",
+            "name": "AuditEvent.Object",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "role",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "lifecycle",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "securityLabel",
@@ -12185,15 +12185,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "query",
-                    "type": "FHIR.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "detail",
@@ -12203,28 +12203,28 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MessageHeader.Response",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MessageHeader.Response",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.ResponseType"
+                    "type": "ResponseType"
                 },
                 {
                     "name": "details",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ElementDefinition.Slicing",
-            "baseType": "FHIR.Element",
+            "name": "ElementDefinition.Slicing",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -12233,22 +12233,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ordered",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "rules",
-                    "type": "FHIR.SlicingRules"
+                    "type": "SlicingRules"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceMetricColor",
-            "baseType": "FHIR.Element",
+            "name": "DeviceMetricColor",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12257,8 +12257,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SearchEntryMode",
-            "baseType": "FHIR.Element",
+            "name": "SearchEntryMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12267,58 +12267,58 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Group.Member",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Group.Member",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "entity",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "inactive",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SupplyRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "SupplyRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "kind",
             "element": [
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.SupplyRequestStatus"
+                    "type": "SupplyRequestStatus"
                 },
                 {
                     "name": "kind",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "orderedItem",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "supplier",
@@ -12326,22 +12326,22 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reasonCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "when",
-                    "type": "FHIR.SupplyRequest.When"
+                    "type": "SupplyRequest.When"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.time",
-            "baseType": "FHIR.Element",
+            "name": "time",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12350,8 +12350,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.StructureDefinition.Differential",
-            "baseType": "FHIR.BackboneElement",
+            "name": "StructureDefinition.Differential",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "element",
@@ -12360,13 +12360,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Condition.Evidence",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Condition.Evidence",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "detail",
@@ -12376,24 +12376,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Interaction",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Interaction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.TypeRestfulInteraction"
+                    "type": "TypeRestfulInteraction"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConditionVerificationStatus",
-            "baseType": "FHIR.Element",
+            "name": "ConditionVerificationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12402,8 +12402,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.PaymentReconciliation",
-            "baseType": "FHIR.DomainResource",
+            "name": "PaymentReconciliation",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -12412,43 +12412,43 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "disposition",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "detail",
@@ -12456,11 +12456,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "form",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "total",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "note",
@@ -12470,8 +12470,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntoleranceSeverity",
-            "baseType": "FHIR.Element",
+            "name": "AllergyIntoleranceSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12480,60 +12480,60 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Document",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Document",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "mode",
-                    "type": "FHIR.DocumentMode"
+                    "type": "DocumentMode"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "profile",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Identifier",
-            "baseType": "FHIR.Element",
+            "name": "Identifier",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "FHIR.IdentifierUse"
+                    "type": "IdentifierUse"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "system",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "assigner",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EpisodeOfCare",
-            "baseType": "FHIR.DomainResource",
+            "name": "EpisodeOfCare",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
@@ -12543,7 +12543,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.EpisodeOfCareStatus"
+                    "type": "EpisodeOfCareStatus"
                 },
                 {
                     "name": "statusHistory",
@@ -12559,15 +12559,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "referralRequest",
@@ -12575,7 +12575,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "careManager",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "careTeam",
@@ -12585,24 +12585,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Patient.Communication",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Patient.Communication",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "language",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "preferred",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationKind",
-            "baseType": "FHIR.Element",
+            "name": "OperationKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12611,32 +12611,32 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DataElement.Mapping",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DataElement.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "uri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "comments",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Organization",
-            "baseType": "FHIR.DomainResource",
+            "name": "Organization",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "type",
             "element": [
@@ -12646,15 +12646,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "active",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -12666,7 +12666,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "partOf",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -12676,17 +12676,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConceptMap.Element",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ConceptMap.Element",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "codeSystem",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "target",
@@ -12696,8 +12696,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ObservationRelationshipType",
-            "baseType": "FHIR.Element",
+            "name": "ObservationRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12706,8 +12706,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NutritionOrder.OralDiet",
-            "baseType": "FHIR.BackboneElement",
+            "name": "NutritionOrder.OralDiet",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12732,14 +12732,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "instruction",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.unsignedInt",
-            "baseType": "FHIR.Element",
+            "name": "unsignedInt",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12748,8 +12748,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NameUse",
-            "baseType": "FHIR.Element",
+            "name": "NameUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12758,8 +12758,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SubscriptionStatus",
-            "baseType": "FHIR.Element",
+            "name": "SubscriptionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12768,72 +12768,72 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationDispense.DosageInstruction",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MedicationDispense.DosageInstruction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "additionalInstructions",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "timing",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "asNeededBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "asNeededCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "siteCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "siteReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "route",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "method",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "doseRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "doseQuantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "rateRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "rateRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CommunicationRequestStatus",
-            "baseType": "FHIR.Element",
+            "name": "CommunicationRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12842,8 +12842,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentReferenceStatus",
-            "baseType": "FHIR.Element",
+            "name": "DocumentReferenceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12852,8 +12852,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.LocationMode",
-            "baseType": "FHIR.Element",
+            "name": "LocationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12862,8 +12862,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.integer",
-            "baseType": "FHIR.Element",
+            "name": "integer",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12872,8 +12872,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CarePlanRelationship",
-            "baseType": "FHIR.Element",
+            "name": "CarePlanRelationship",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12882,8 +12882,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.LocationStatus",
-            "baseType": "FHIR.Element",
+            "name": "LocationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12892,8 +12892,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Basic",
-            "baseType": "FHIR.DomainResource",
+            "name": "Basic",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
@@ -12903,26 +12903,26 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.date"
+                    "type": "date"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.UnknownContentCode",
-            "baseType": "FHIR.Element",
+            "name": "UnknownContentCode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -12931,33 +12931,33 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClinicalImpression",
-            "baseType": "FHIR.DomainResource",
+            "name": "ClinicalImpression",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "assessor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.ClinicalImpressionStatus"
+                    "type": "ClinicalImpressionStatus"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "previous",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "problem",
@@ -12965,11 +12965,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "triggerCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "triggerReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "investigations",
@@ -12977,11 +12977,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "protocol",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "summary",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "finding",
@@ -12997,7 +12997,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prognosis",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "plan",
@@ -13011,13 +13011,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImplementationGuide.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImplementationGuide.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -13027,24 +13027,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SupplyRequest.When",
-            "baseType": "FHIR.BackboneElement",
+            "name": "SupplyRequest.When",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "schedule",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.NoteType",
-            "baseType": "FHIR.Element",
+            "name": "NoteType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13053,77 +13053,77 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TestScript.Fixture",
-            "baseType": "FHIR.BackboneElement",
+            "name": "TestScript.Fixture",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "autocreate",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "autodelete",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "resource",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Observation.Component",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Observation.Component",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "valueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "valueCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "valueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "valueRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "valueSampledData",
-                    "type": "FHIR.SampledData"
+                    "type": "SampledData"
                 },
                 {
                     "name": "valueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "valueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "valueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "valuePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "dataAbsentReason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "referenceRange",
@@ -13133,68 +13133,68 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationStatement.Dosage",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MedicationStatement.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "text",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "timing",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "asNeededBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "asNeededCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "siteCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "siteReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "route",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "method",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "quantityQuantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "quantityRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "rateRatio",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "rateRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "FHIR.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EncounterState",
-            "baseType": "FHIR.Element",
+            "name": "EncounterState",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13203,8 +13203,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EncounterClass",
-            "baseType": "FHIR.Element",
+            "name": "EncounterClass",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13213,8 +13213,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.HTTPVerb",
-            "baseType": "FHIR.Element",
+            "name": "HTTPVerb",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13223,82 +13223,82 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MessageHeader.Source",
-            "baseType": "FHIR.BackboneElement",
+            "name": "MessageHeader.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "software",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
-                    "type": "FHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "endpoint",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClinicalImpression.RuledOut",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClinicalImpression.RuledOut",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reason",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.RiskAssessment",
-            "baseType": "FHIR.DomainResource",
+            "name": "RiskAssessment",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "method",
             "element": [
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "condition",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "method",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "basis",
@@ -13310,19 +13310,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "mitigation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim",
-            "baseType": "FHIR.DomainResource",
+            "name": "Claim",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.ClaimType"
+                    "type": "ClaimType"
                 },
                 {
                     "name": "identifier",
@@ -13330,63 +13330,63 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "ruleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "originalRuleset",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "created",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "use",
-                    "type": "FHIR.Use"
+                    "type": "Use"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "fundsReserve",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "enterer",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "facility",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescription",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "originalPrescription",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payee",
-                    "type": "FHIR.Claim.Payee"
+                    "type": "Claim.Payee"
                 },
                 {
                     "name": "referral",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "diagnosis",
@@ -13398,7 +13398,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "coverage",
@@ -13410,15 +13410,15 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "school",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "accident",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "accidentType",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "interventionException",
@@ -13440,28 +13440,28 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationDefinition.Binding",
-            "baseType": "FHIR.BackboneElement",
+            "name": "OperationDefinition.Binding",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "strength",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "valueSetUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "valueSetReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EpisodeOfCareStatus",
-            "baseType": "FHIR.Element",
+            "name": "EpisodeOfCareStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13470,8 +13470,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.RemittanceOutcome",
-            "baseType": "FHIR.Element",
+            "name": "RemittanceOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13480,8 +13480,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ContactPointSystem",
-            "baseType": "FHIR.Element",
+            "name": "ContactPointSystem",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13490,24 +13490,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImplementationGuide.Global",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ImplementationGuide.Global",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationOrderStatus",
-            "baseType": "FHIR.Element",
+            "name": "MedicationOrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13516,8 +13516,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SlotStatus",
-            "baseType": "FHIR.Element",
+            "name": "SlotStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13526,23 +13526,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ProcessRequest.Item",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ProcessRequest.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "sequenceLinkId",
-                "type": "FHIR.integer"
+                "type": "integer"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ConceptMap.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ConceptMap.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -13552,8 +13552,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Parameters",
-            "baseType": "FHIR.Resource",
+            "name": "Parameters",
+            "baseType": "Resource",
             "retrievable": false,
             "element": {
                 "name": "parameter",
@@ -13562,8 +13562,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.HealthcareService",
-            "baseType": "FHIR.DomainResource",
+            "name": "HealthcareService",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -13572,11 +13572,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "providedBy",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "serviceCategory",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "serviceType",
@@ -13584,23 +13584,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "serviceName",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "comment",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "extraDetails",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "photo",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "telecom",
@@ -13616,11 +13616,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "eligibility",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "eligibilityNote",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "programName",
@@ -13636,11 +13636,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "publicKey",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "appointmentRequired",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "availableTime",
@@ -13652,14 +13652,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "availabilityExceptions",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Condition",
-            "baseType": "FHIR.DomainResource",
+            "name": "Condition",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "code",
             "element": [
@@ -13669,87 +13669,87 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateRecorded",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "category",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "clinicalStatus",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "verificationStatus",
-                    "type": "FHIR.ConditionVerificationStatus"
+                    "type": "ConditionVerificationStatus"
                 },
                 {
                     "name": "severity",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "onsetDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "onsetQuantity",
-                    "type": "FHIR.Age"
+                    "type": "Age"
                 },
                 {
                     "name": "onsetPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "onsetRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "onsetString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "abatementDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "abatementQuantity",
-                    "type": "FHIR.Age"
+                    "type": "Age"
                 },
                 {
                     "name": "abatementBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "abatementPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "abatementRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "abatementString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "stage",
-                    "type": "FHIR.Condition.Stage"
+                    "type": "Condition.Stage"
                 },
                 {
                     "name": "evidence",
@@ -13761,35 +13761,35 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "notes",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Bundle.Search",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Bundle.Search",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "mode",
-                    "type": "FHIR.SearchEntryMode"
+                    "type": "SearchEntryMode"
                 },
                 {
                     "name": "score",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ElementDefinition.Type",
-            "baseType": "FHIR.Element",
+            "name": "ElementDefinition.Type",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
@@ -13803,8 +13803,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.markdown",
-            "baseType": "FHIR.Element",
+            "name": "markdown",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13813,56 +13813,56 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Subscription.Channel",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Subscription.Channel",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.SubscriptionChannelType"
+                    "type": "SubscriptionChannelType"
                 },
                 {
                     "name": "endpoint",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "payload",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "header",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Error",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Error",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequenceLinkId",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "detailSequenceLinkId",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "subdetailSequenceLinkId",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationStatementStatus",
-            "baseType": "FHIR.Element",
+            "name": "MedicationStatementStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -13871,8 +13871,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Goal",
-            "baseType": "FHIR.DomainResource",
+            "name": "Goal",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "category",
             "element": [
@@ -13882,23 +13882,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "startDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "startCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "targetDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "targetQuantity",
-                    "type": "FHIR.Duration"
+                    "type": "Duration"
                 },
                 {
                     "name": "category",
@@ -13906,27 +13906,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.GoalStatus"
+                    "type": "GoalStatus"
                 },
                 {
                     "name": "statusDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "statusReason",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "author",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "addresses",
@@ -13944,61 +13944,61 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.QuestionnaireResponse.Answer",
-            "baseType": "FHIR.BackboneElement",
+            "name": "QuestionnaireResponse.Answer",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "valueBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "valueDecimal",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "valueInteger",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "valueDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "valueDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "valueInstant",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 },
                 {
                     "name": "valueTime",
-                    "type": "FHIR.time"
+                    "type": "time"
                 },
                 {
                     "name": "valueString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "valueUri",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "valueAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "valueCoding",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "valueQuantity",
-                    "type": "FHIR.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "valueReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
@@ -14008,45 +14008,45 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Patient.Link",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Patient.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "other",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.LinkType"
+                    "type": "LinkType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceUseRequest",
-            "baseType": "FHIR.DomainResource",
+            "name": "DeviceUseRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "bodySiteCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "bodySiteReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.DeviceUseRequestStatus"
+                    "type": "DeviceUseRequestStatus"
                 },
                 {
                     "name": "device",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -14066,38 +14066,38 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "orderedOn",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "recordedOn",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "timingTiming",
-                    "type": "FHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "timingPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "timingDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "priority",
-                    "type": "FHIR.DeviceUseRequestPriority"
+                    "type": "DeviceUseRequestPriority"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.QuantityComparator",
-            "baseType": "FHIR.Element",
+            "name": "QuantityComparator",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14106,57 +14106,57 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Procedure.Performer",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Procedure.Performer",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "actor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.OperationDefinition.Parameter",
-            "baseType": "FHIR.BackboneElement",
+            "name": "OperationDefinition.Parameter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "use",
-                    "type": "FHIR.OperationParameterUse"
+                    "type": "OperationParameterUse"
                 },
                 {
                     "name": "min",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "max",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "binding",
-                    "type": "FHIR.OperationDefinition.Binding"
+                    "type": "OperationDefinition.Binding"
                 },
                 {
                     "name": "part",
@@ -14166,45 +14166,45 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.Detail",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "sequence",
-                    "type": "FHIR.positiveInt"
+                    "type": "positiveInt"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "service",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "quantity",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 },
                 {
                     "name": "unitPrice",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "points",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "net",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "subDetail",
@@ -14214,13 +14214,13 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Contract.Actor",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Contract.Actor",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "entity",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -14230,8 +14230,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.MedicationStatement",
-            "baseType": "FHIR.DomainResource",
+            "name": "MedicationStatement",
+            "baseType": "DomainResource",
             "retrievable": true,
             "primaryCodePath": "medicationCodeableConcept",
             "element": [
@@ -14241,23 +14241,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "informationSource",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateAsserted",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.MedicationStatementStatus"
+                    "type": "MedicationStatementStatus"
                 },
                 {
                     "name": "wasNotTaken",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "reasonNotTaken",
@@ -14265,23 +14265,23 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reasonForUseCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonForUseReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "effectiveDateTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "effectivePeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "supportingInformation",
@@ -14289,11 +14289,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "medicationCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "medicationReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dosage",
@@ -14303,8 +14303,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.oid",
-            "baseType": "FHIR.Element",
+            "name": "oid",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14313,8 +14313,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceStatus",
-            "baseType": "FHIR.Element",
+            "name": "DeviceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14323,8 +14323,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Order",
-            "baseType": "FHIR.DomainResource",
+            "name": "Order",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -14333,31 +14333,31 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "target",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCodeableConcept",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "reasonReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "when",
-                    "type": "FHIR.Order.When"
+                    "type": "Order.When"
                 },
                 {
                     "name": "detail",
@@ -14367,52 +14367,52 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Coding",
-            "baseType": "FHIR.Element",
+            "name": "Coding",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "system",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "display",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "userSelected",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Period",
-            "baseType": "FHIR.Element",
+            "name": "Period",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "start",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "end",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Measmnt_Principle",
-            "baseType": "FHIR.Element",
+            "name": "Measmnt_Principle",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14421,24 +14421,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Medication.Content",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Medication.Content",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.SimpleQuantity"
+                    "type": "SimpleQuantity"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Specimen",
-            "baseType": "FHIR.DomainResource",
+            "name": "Specimen",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -14447,11 +14447,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.SpecimenStatus"
+                    "type": "SpecimenStatus"
                 },
                 {
                     "name": "type",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "parent",
@@ -14459,19 +14459,19 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "accessionIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "receivedTime",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "collection",
-                    "type": "FHIR.Specimen.Collection"
+                    "type": "Specimen.Collection"
                 },
                 {
                     "name": "treatment",
@@ -14485,8 +14485,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.FamilyMemberHistory",
-            "baseType": "FHIR.DomainResource",
+            "name": "FamilyMemberHistory",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
@@ -14495,75 +14495,75 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.FamilyHistoryStatus"
+                    "type": "FamilyHistoryStatus"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "relationship",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "gender",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "bornPeriod",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "bornDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "bornString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "ageQuantity",
-                    "type": "FHIR.Age"
+                    "type": "Age"
                 },
                 {
                     "name": "ageRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "ageString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "deceasedBoolean",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "deceasedQuantity",
-                    "type": "FHIR.Age"
+                    "type": "Age"
                 },
                 {
                     "name": "deceasedRange",
-                    "type": "FHIR.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "deceasedDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 },
                 {
                     "name": "deceasedString",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "note",
-                    "type": "FHIR.Annotation"
+                    "type": "Annotation"
                 },
                 {
                     "name": "condition",
@@ -14573,29 +14573,29 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentManifest.Content",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DocumentManifest.Content",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "pAttachment",
-                    "type": "FHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "pReference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.StructureDefinition.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "StructureDefinition.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "telecom",
@@ -14605,8 +14605,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.SampledDataDataType",
-            "baseType": "FHIR.Element",
+            "name": "SampledDataDataType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14615,8 +14615,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AllergyIntoleranceStatus",
-            "baseType": "FHIR.Element",
+            "name": "AllergyIntoleranceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14625,21 +14625,21 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Provenance.Agent",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Provenance.Agent",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "role",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "actor",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "userId",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "relatedAgent",
@@ -14649,40 +14649,40 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Interaction1",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Interaction1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.SystemRestfulInteraction"
+                    "type": "SystemRestfulInteraction"
                 },
                 {
                     "name": "documentation",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DocumentManifest.Related",
-            "baseType": "FHIR.BackboneElement",
+            "name": "DocumentManifest.Related",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "ref",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Composition.Event",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Composition.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14691,7 +14691,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "detail",
@@ -14701,36 +14701,36 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Quantity",
-            "baseType": "FHIR.Element",
+            "name": "Quantity",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "value",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 },
                 {
                     "name": "comparator",
-                    "type": "FHIR.QuantityComparator"
+                    "type": "QuantityComparator"
                 },
                 {
                     "name": "unit",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "system",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "code",
-                    "type": "FHIR.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.CompositionAttestationMode",
-            "baseType": "FHIR.Element",
+            "name": "CompositionAttestationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14739,24 +14739,24 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Conformance.Endpoint",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Conformance.Endpoint",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "protocol",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "address",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.DeviceMetricCalibrationState",
-            "baseType": "FHIR.Element",
+            "name": "DeviceMetricCalibrationState",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14765,68 +14765,68 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Adjudication2",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Adjudication2",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Adjudication1",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Adjudication1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Adjudication4",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Adjudication4",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.GroupType",
-            "baseType": "FHIR.Element",
+            "name": "GroupType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14835,28 +14835,28 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ClaimResponse.Adjudication3",
-            "baseType": "FHIR.BackboneElement",
+            "name": "ClaimResponse.Adjudication3",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "amount",
-                    "type": "FHIR.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
-                    "type": "FHIR.decimal"
+                    "type": "decimal"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.TypeRestfulInteraction",
-            "baseType": "FHIR.Element",
+            "name": "TypeRestfulInteraction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -14865,33 +14865,33 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ImplementationGuide",
-            "baseType": "FHIR.DomainResource",
+            "name": "ImplementationGuide",
+            "baseType": "DomainResource",
             "retrievable": true,
             "element": [
                 {
                     "name": "url",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "version",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "status",
-                    "type": "FHIR.code"
+                    "type": "code"
                 },
                 {
                     "name": "experimental",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "publisher",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "contact",
@@ -14899,11 +14899,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "date",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 },
                 {
                     "name": "description",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "useContext",
@@ -14911,11 +14911,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "copyright",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "fhirVersion",
-                    "type": "FHIR.id"
+                    "type": "id"
                 },
                 {
                     "name": "dependency",
@@ -14935,14 +14935,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "page",
-                    "type": "FHIR.ImplementationGuide.Page"
+                    "type": "ImplementationGuide.Page"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.EpisodeOfCare.CareTeam",
-            "baseType": "FHIR.BackboneElement",
+            "name": "EpisodeOfCare.CareTeam",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14951,83 +14951,83 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "period",
-                    "type": "FHIR.Period"
+                    "type": "Period"
                 },
                 {
                     "name": "member",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Medication.Batch",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Medication.Batch",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "lotNumber",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "expirationDate",
-                    "type": "FHIR.dateTime"
+                    "type": "dateTime"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Claim.MissingTeeth",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Claim.MissingTeeth",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "tooth",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "reason",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "extractionDate",
-                    "type": "FHIR.date"
+                    "type": "date"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.ElementDefinition.Base",
-            "baseType": "FHIR.Element",
+            "name": "ElementDefinition.Base",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "path",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "min",
-                    "type": "FHIR.integer"
+                    "type": "integer"
                 },
                 {
                     "name": "max",
-                    "type": "FHIR.string"
+                    "type": "string"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Bundle",
-            "baseType": "FHIR.Resource",
+            "name": "Bundle",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "FHIR.BundleType"
+                    "type": "BundleType"
                 },
                 {
                     "name": "total",
-                    "type": "FHIR.unsignedInt"
+                    "type": "unsignedInt"
                 },
                 {
                     "name": "link",
@@ -15039,27 +15039,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "signature",
-                    "type": "FHIR.Signature"
+                    "type": "Signature"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Encounter.Hospitalization",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Encounter.Hospitalization",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "preAdmissionIdentifier",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "origin",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "admitSource",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "admittingDiagnosis",
@@ -15067,7 +15067,7 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reAdmission",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "dietPreference",
@@ -15083,11 +15083,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dischargeDisposition",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "dischargeDiagnosis",
@@ -15097,8 +15097,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AnswerFormat",
-            "baseType": "FHIR.Element",
+            "name": "AnswerFormat",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -15107,8 +15107,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.AuditEvent.Participant",
-            "baseType": "FHIR.BackboneElement",
+            "name": "AuditEvent.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15117,27 +15117,27 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "userId",
-                    "type": "FHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "altId",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "requestor",
-                    "type": "FHIR.boolean"
+                    "type": "boolean"
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "policy",
@@ -15145,11 +15145,11 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "media",
-                    "type": "FHIR.Coding"
+                    "type": "Coding"
                 },
                 {
                     "name": "network",
-                    "type": "FHIR.AuditEvent.Network"
+                    "type": "AuditEvent.Network"
                 },
                 {
                     "name": "purposeOfUse",
@@ -15159,17 +15159,17 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Organization.Contact",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Organization.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "purpose",
-                    "type": "FHIR.CodeableConcept"
+                    "type": "CodeableConcept"
                 },
                 {
                     "name": "name",
-                    "type": "FHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -15177,14 +15177,14 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "FHIR.Address"
+                    "type": "Address"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.VisionBase",
-            "baseType": "FHIR.Element",
+            "name": "VisionBase",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -15193,8 +15193,8 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.BundleType",
-            "baseType": "FHIR.Element",
+            "name": "BundleType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -15203,25 +15203,25 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "FHIR.Bundle.Response",
-            "baseType": "FHIR.BackboneElement",
+            "name": "Bundle.Response",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "location",
-                    "type": "FHIR.uri"
+                    "type": "uri"
                 },
                 {
                     "name": "etag",
-                    "type": "FHIR.string"
+                    "type": "string"
                 },
                 {
                     "name": "lastModified",
-                    "type": "FHIR.instant"
+                    "type": "instant"
                 }
             ]
         }
@@ -15229,807 +15229,807 @@ final fhirmodelinfo102 = ModelInfo.fromJson({
     "conversionInfo": [
         {
             "functionName": "FHIRHelpers.ToCode",
-            "fromType": "FHIR.Coding",
+            "fromType": "Coding",
             "toType": "System.Code"
         },
         {
             "functionName": "FHIRHelpers.ToConcept",
-            "fromType": "FHIR.CodeableConcept",
+            "fromType": "CodeableConcept",
             "toType": "System.Concept"
         },
         {
             "functionName": "FHIRHelpers.ToQuantity",
-            "fromType": "FHIR.Quantity",
+            "fromType": "Quantity",
             "toType": "System.Quantity"
         },
         {
             "functionName": "FHIRHelpers.ToInterval",
-            "fromType": "FHIR.Period",
+            "fromType": "Period",
             "toType": "Interval<System.DateTime>"
         },
         {
             "functionName": "FHIRHelpers.ToInterval",
-            "fromType": "FHIR.Range",
+            "fromType": "Range",
             "toType": "Interval<System.Quantity>"
         },
         {
             "functionName": "FHIRHelpers.ToRatio",
-            "fromType": "FHIR.Ratio",
+            "fromType": "Ratio",
             "toType": "System.Ratio"
         },
         {
             "functionName": "FHIRHelpers.ToDateTime",
-            "fromType": "FHIR.dateTime",
+            "fromType": "dateTime",
             "toType": "System.DateTime"
         },
         {
             "functionName": "FHIRHelpers.ToDate",
-            "fromType": "FHIR.date",
+            "fromType": "date",
             "toType": "System.Date"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.uuid",
+            "fromType": "uuid",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ProvenanceEntityRole",
+            "fromType": "ProvenanceEntityRole",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.UnitsOfTime",
+            "fromType": "UnitsOfTime",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AddressType",
+            "fromType": "AddressType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AllergyIntoleranceCategory",
+            "fromType": "AllergyIntoleranceCategory",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SpecimenStatus",
+            "fromType": "SpecimenStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DetectedIssueSeverity",
+            "fromType": "DetectedIssueSeverity",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.IssueSeverity",
+            "fromType": "IssueSeverity",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DataElementStringency",
+            "fromType": "DataElementStringency",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.VisionEyes",
+            "fromType": "VisionEyes",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.StructureDefinitionKind",
+            "fromType": "StructureDefinitionKind",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.QuestionnaireResponseStatus",
+            "fromType": "QuestionnaireResponseStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AllergyIntoleranceType",
+            "fromType": "AllergyIntoleranceType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DocumentRelationshipType",
+            "fromType": "DocumentRelationshipType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ConformanceResourceStatus",
+            "fromType": "ConformanceResourceStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.CarePlanActivityStatus",
+            "fromType": "CarePlanActivityStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ActionList",
+            "fromType": "ActionList",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ParticipationStatus",
+            "fromType": "ParticipationStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToDateTime",
-            "fromType": "FHIR.instant",
+            "fromType": "instant",
             "toType": "System.DateTime"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DocumentMode",
+            "fromType": "DocumentMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AssertionOperatorType",
+            "fromType": "AssertionOperatorType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DaysOfWeek",
+            "fromType": "DaysOfWeek",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ConformanceEventMode",
+            "fromType": "ConformanceEventMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.IssueType",
+            "fromType": "IssueType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.TransactionMode",
+            "fromType": "TransactionMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ContentType",
+            "fromType": "ContentType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.FamilyHistoryStatus",
+            "fromType": "FamilyHistoryStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToInteger",
-            "fromType": "FHIR.positiveInt",
+            "fromType": "positiveInt",
             "toType": "System.Integer"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AuditEventParticipantNetworkType",
+            "fromType": "AuditEventParticipantNetworkType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.CommunicationStatus",
+            "fromType": "CommunicationStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ClinicalImpressionStatus",
+            "fromType": "ClinicalImpressionStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AssertionResponseTypes",
+            "fromType": "AssertionResponseTypes",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceUseRequestPriority",
+            "fromType": "DeviceUseRequestPriority",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.OrderStatus",
+            "fromType": "OrderStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.NarrativeStatus",
+            "fromType": "NarrativeStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.string",
+            "fromType": "string",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.GuidePageKind",
+            "fromType": "GuidePageKind",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.GuideDependencyType",
+            "fromType": "GuideDependencyType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ResourceVersionPolicy",
+            "fromType": "ResourceVersionPolicy",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.MedicationAdministrationStatus",
+            "fromType": "MedicationAdministrationStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.RestfulConformanceMode",
+            "fromType": "RestfulConformanceMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.NamingSystemIdentifierType",
+            "fromType": "NamingSystemIdentifierType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AccountStatus",
+            "fromType": "AccountStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ProcedureRequestPriority",
+            "fromType": "ProcedureRequestPriority",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.MedicationDispenseStatus",
+            "fromType": "MedicationDispenseStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.IdentifierUse",
+            "fromType": "IdentifierUse",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DigitalMediaType",
+            "fromType": "DigitalMediaType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.BindingStrength",
+            "fromType": "BindingStrength",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ParticipantRequired",
+            "fromType": "ParticipantRequired",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.XPathUsageType",
+            "fromType": "XPathUsageType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.InstanceAvailability",
+            "fromType": "InstanceAvailability",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.id",
+            "fromType": "id",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.FilterOperator",
+            "fromType": "FilterOperator",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.NamingSystemType",
+            "fromType": "NamingSystemType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ExtensionContext",
+            "fromType": "ExtensionContext",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ClaimType",
+            "fromType": "ClaimType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AuditEventOutcome",
+            "fromType": "AuditEventOutcome",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ConstraintSeverity",
+            "fromType": "ConstraintSeverity",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.GuideResourcePurpose",
+            "fromType": "GuideResourcePurpose",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ProcedureStatus",
+            "fromType": "ProcedureStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceMetricCategory",
+            "fromType": "DeviceMetricCategory",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.QuestionnaireStatus",
+            "fromType": "QuestionnaireStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ResponseType",
+            "fromType": "ResponseType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToDecimal",
-            "fromType": "FHIR.decimal",
+            "fromType": "decimal",
             "toType": "System.Decimal"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AggregationMode",
+            "fromType": "AggregationMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.EventTiming",
+            "fromType": "EventTiming",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.GoalStatus",
+            "fromType": "GoalStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SearchParamType",
+            "fromType": "SearchParamType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SystemRestfulInteraction",
+            "fromType": "SystemRestfulInteraction",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SubscriptionChannelType",
+            "fromType": "SubscriptionChannelType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ProcedureRequestStatus",
+            "fromType": "ProcedureRequestStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ReferralStatus",
+            "fromType": "ReferralStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AssertionDirectionType",
+            "fromType": "AssertionDirectionType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SlicingRules",
+            "fromType": "SlicingRules",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.LinkType",
+            "fromType": "LinkType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AllergyIntoleranceCriticality",
+            "fromType": "AllergyIntoleranceCriticality",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ConceptMapEquivalence",
+            "fromType": "ConceptMapEquivalence",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.PropertyRepresentation",
+            "fromType": "PropertyRepresentation",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AuditEventAction",
+            "fromType": "AuditEventAction",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SearchModifierCode",
+            "fromType": "SearchModifierCode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceUseRequestStatus",
+            "fromType": "DeviceUseRequestStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.CompositionStatus",
+            "fromType": "CompositionStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AppointmentStatus",
+            "fromType": "AppointmentStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.MessageSignificanceCategory",
+            "fromType": "MessageSignificanceCategory",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.OperationParameterUse",
+            "fromType": "OperationParameterUse",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ListMode",
+            "fromType": "ListMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ObservationStatus",
+            "fromType": "ObservationStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ParticipantStatus",
+            "fromType": "ParticipantStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AdministrativeGender",
+            "fromType": "AdministrativeGender",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ConformanceStatementKind",
+            "fromType": "ConformanceStatementKind",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DiagnosticOrderStatus",
+            "fromType": "DiagnosticOrderStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToBoolean",
-            "fromType": "FHIR.boolean",
+            "fromType": "boolean",
             "toType": "System.Boolean"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceMetricCalibrationType",
+            "fromType": "DeviceMetricCalibrationType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.code",
+            "fromType": "code",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SupplyRequestStatus",
+            "fromType": "SupplyRequestStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.EncounterLocationStatus",
+            "fromType": "EncounterLocationStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SupplyDeliveryStatus",
+            "fromType": "SupplyDeliveryStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DiagnosticReportStatus",
+            "fromType": "DiagnosticReportStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.FlagStatus",
+            "fromType": "FlagStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AllergyIntoleranceCertainty",
+            "fromType": "AllergyIntoleranceCertainty",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.CarePlanStatus",
+            "fromType": "CarePlanStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ListStatus",
+            "fromType": "ListStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.base64Binary",
+            "fromType": "base64Binary",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AddressUse",
+            "fromType": "AddressUse",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ConditionalDeleteStatus",
+            "fromType": "ConditionalDeleteStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ContactPointUse",
+            "fromType": "ContactPointUse",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceMetricOperationalStatus",
+            "fromType": "DeviceMetricOperationalStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.NutritionOrderStatus",
+            "fromType": "NutritionOrderStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DiagnosticOrderPriority",
+            "fromType": "DiagnosticOrderPriority",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.uri",
+            "fromType": "uri",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.Use",
+            "fromType": "Use",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.IdentityAssuranceLevel",
+            "fromType": "IdentityAssuranceLevel",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceMetricColor",
+            "fromType": "DeviceMetricColor",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SearchEntryMode",
+            "fromType": "SearchEntryMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToTime",
-            "fromType": "FHIR.time",
+            "fromType": "time",
             "toType": "System.Time"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ConditionVerificationStatus",
+            "fromType": "ConditionVerificationStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AllergyIntoleranceSeverity",
+            "fromType": "AllergyIntoleranceSeverity",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.OperationKind",
+            "fromType": "OperationKind",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ObservationRelationshipType",
-            "toType": "System.String"
-        },
-        {
-            "functionName": "FHIRHelpers.ToInteger",
-            "fromType": "FHIR.unsignedInt",
-            "toType": "System.Integer"
-        },
-        {
-            "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.NameUse",
-            "toType": "System.String"
-        },
-        {
-            "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SubscriptionStatus",
-            "toType": "System.String"
-        },
-        {
-            "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.CommunicationRequestStatus",
-            "toType": "System.String"
-        },
-        {
-            "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DocumentReferenceStatus",
-            "toType": "System.String"
-        },
-        {
-            "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.LocationMode",
+            "fromType": "ObservationRelationshipType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToInteger",
-            "fromType": "FHIR.integer",
+            "fromType": "unsignedInt",
             "toType": "System.Integer"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.CarePlanRelationship",
+            "fromType": "NameUse",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.LocationStatus",
+            "fromType": "SubscriptionStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.UnknownContentCode",
+            "fromType": "CommunicationRequestStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.NoteType",
+            "fromType": "DocumentReferenceStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.EncounterState",
+            "fromType": "LocationMode",
+            "toType": "System.String"
+        },
+        {
+            "functionName": "FHIRHelpers.ToInteger",
+            "fromType": "integer",
+            "toType": "System.Integer"
+        },
+        {
+            "functionName": "FHIRHelpers.ToString",
+            "fromType": "CarePlanRelationship",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.EncounterClass",
+            "fromType": "LocationStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.HTTPVerb",
+            "fromType": "UnknownContentCode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.EpisodeOfCareStatus",
+            "fromType": "NoteType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.RemittanceOutcome",
+            "fromType": "EncounterState",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.ContactPointSystem",
+            "fromType": "EncounterClass",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.MedicationOrderStatus",
+            "fromType": "HTTPVerb",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SlotStatus",
+            "fromType": "EpisodeOfCareStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.markdown",
+            "fromType": "RemittanceOutcome",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.MedicationStatementStatus",
+            "fromType": "ContactPointSystem",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.QuantityComparator",
+            "fromType": "MedicationOrderStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.oid",
+            "fromType": "SlotStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceStatus",
+            "fromType": "markdown",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.Measmnt_Principle",
+            "fromType": "MedicationStatementStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.SampledDataDataType",
+            "fromType": "QuantityComparator",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AllergyIntoleranceStatus",
+            "fromType": "oid",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.CompositionAttestationMode",
+            "fromType": "DeviceStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.DeviceMetricCalibrationState",
+            "fromType": "Measmnt_Principle",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.GroupType",
+            "fromType": "SampledDataDataType",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.TypeRestfulInteraction",
+            "fromType": "AllergyIntoleranceStatus",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.AnswerFormat",
+            "fromType": "CompositionAttestationMode",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.VisionBase",
+            "fromType": "DeviceMetricCalibrationState",
             "toType": "System.String"
         },
         {
             "functionName": "FHIRHelpers.ToString",
-            "fromType": "FHIR.BundleType",
+            "fromType": "GroupType",
+            "toType": "System.String"
+        },
+        {
+            "functionName": "FHIRHelpers.ToString",
+            "fromType": "TypeRestfulInteraction",
+            "toType": "System.String"
+        },
+        {
+            "functionName": "FHIRHelpers.ToString",
+            "fromType": "AnswerFormat",
+            "toType": "System.String"
+        },
+        {
+            "functionName": "FHIRHelpers.ToString",
+            "fromType": "VisionBase",
+            "toType": "System.String"
+        },
+        {
+            "functionName": "FHIRHelpers.ToString",
+            "fromType": "BundleType",
             "toType": "System.String"
         }
     ]

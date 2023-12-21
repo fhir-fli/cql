@@ -5,14 +5,14 @@ final qdmmodelinfo = ModelInfo.fromJson({
     "url": "urn:healthit-gov:qdm:v4_1_2",
     "schemaLocation": "http://gov.healthit.qdm qdm.xsd",
     "targetQualifier": "qdm",
-    "patientClassName": "QDM.Patient",
+    "patientClassName": "Patient",
     "patientClassIdentifier": "Patient",
     "patientBirthDatePropertyName": "birth datetime",
     "version": "4.1.2",
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "QDM.Patient",
+            "name": "Patient",
             "baseType": "System.Any",
             "retrievable": false,
             "identifier": "Patient",
@@ -23,8 +23,8 @@ final qdmmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosisActive",
-            "baseType": "QDM.QDMBaseType",
+            "name": "DiagnosisActive",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DiagnosisActive",
             "label": "Diagnosis, Active",
@@ -50,8 +50,8 @@ final qdmmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.LaboratoryTestPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "name": "LaboratoryTestPerformed",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "LaboratoryTestPerformed",
             "label": "Laboratory Test, Performed",
@@ -85,8 +85,8 @@ final qdmmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "name": "EncounterPerformed",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "EncounterPerformed",
             "label": "Encounter, Performed",
@@ -128,7 +128,7 @@ final qdmmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.QDMBaseType",
+            "name": "QDMBaseType",
             "baseType": "System.Any",
             "retrievable": false,
             "element": [
@@ -160,8 +160,8 @@ final qdmmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationOrder",
-            "baseType": "QDM.QDMBaseType",
+            "name": "MedicationOrder",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationOrder",
             "label": "Medication, Order",

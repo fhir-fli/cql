@@ -3,7 +3,7 @@ import '../../../cql.dart';
 final quickfhirmodelinfo301 = ModelInfo.fromJson({
     "name": "QUICKFHIR",
     "url": "http://hl7.org/fhir",
-    "patientClassName": "QUICKFHIR.Patient",
+    "patientClassName": "Patient",
     "patientBirthDatePropertyName": "birthDate",
     "version": "3.0.1",
     "requiredModelInfo": {
@@ -14,7 +14,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Account",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Account",
             "element": [
@@ -24,7 +24,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -36,7 +36,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -76,7 +76,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -102,7 +102,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "owner",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
@@ -119,7 +119,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Account.CoverageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -140,7 +140,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
@@ -151,7 +151,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Account.GuarantorComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -172,7 +172,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onHold",
@@ -189,7 +189,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ActivityDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ActivityDefinition",
             "primaryCodePath": "topic",
@@ -200,7 +200,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -212,7 +212,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -376,7 +376,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participant",
@@ -420,7 +420,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "transform",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dynamicValue",
@@ -433,7 +433,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ActivityDefinition.DynamicValueComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -473,7 +473,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ActivityDefinition.ParticipantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -505,7 +505,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Address",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Address",
             "element": [
@@ -568,7 +568,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AdverseEvent",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "AdverseEvent",
             "primaryCodePath": "type",
@@ -579,7 +579,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -591,7 +591,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -613,7 +613,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "category",
@@ -625,7 +625,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -639,7 +639,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "seriousness",
@@ -651,11 +651,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "eventParticipant",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
@@ -690,7 +690,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AdverseEvent.SuspectEntityComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -711,7 +711,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "instance",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "causality",
@@ -722,7 +722,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AllergyIntolerance",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "AllergyIntolerance",
             "primaryCodePath": "code",
@@ -733,7 +733,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -745,7 +745,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -799,7 +799,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onset",
@@ -836,11 +836,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lastOccurrence",
@@ -863,7 +863,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AllergyIntolerance.ReactionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -919,7 +919,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Annotation",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Annotation",
             "element": [
@@ -964,7 +964,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Appointment",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Appointment",
             "primaryCodePath": "serviceType",
@@ -975,7 +975,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -987,7 +987,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -1115,7 +1115,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Appointment.ParticipantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1142,7 +1142,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "required",
@@ -1157,7 +1157,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AppointmentResponse",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "AppointmentResponse",
             "element": [
@@ -1167,7 +1167,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1179,7 +1179,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -1207,7 +1207,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "appointment",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "start",
@@ -1225,7 +1225,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participantStatus",
@@ -1240,7 +1240,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Attachment",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Attachment",
             "element": [
@@ -1291,7 +1291,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AuditEvent",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "AuditEvent",
             "element": [
@@ -1301,7 +1301,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1313,7 +1313,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -1369,7 +1369,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICKFHIR.AuditEvent.SourceComponent"
+                    "type": "AuditEvent.SourceComponent"
                 },
                 {
                     "name": "entity",
@@ -1382,7 +1382,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AuditEvent.Agent.NetworkComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1414,7 +1414,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AuditEvent.AgentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1441,11 +1441,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "userId",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "altId",
@@ -1461,7 +1461,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "policy",
@@ -1475,7 +1475,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "network",
-                    "type": "QUICKFHIR.AuditEvent.Agent.NetworkComponent"
+                    "type": "AuditEvent.Agent.NetworkComponent"
                 },
                 {
                     "name": "purposeOfUse",
@@ -1488,7 +1488,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AuditEvent.Entity.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1520,7 +1520,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AuditEvent.EntityComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1541,11 +1541,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -1588,7 +1588,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AuditEvent.SourceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1613,7 +1613,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
@@ -1626,7 +1626,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "BackboneElement",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "BackboneElement",
             "element": [
@@ -1651,7 +1651,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Basic",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Basic",
             "primaryCodePath": "code",
@@ -1662,7 +1662,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1674,7 +1674,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -1706,7 +1706,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -1714,14 +1714,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Binary",
-            "baseType": "QUICKFHIR.Resource",
+            "baseType": "Resource",
             "retrievable": true,
             "label": "Binary",
             "element": [
@@ -1731,7 +1731,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1747,7 +1747,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "securityContext",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "content",
@@ -1758,7 +1758,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "BodySite",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "BodySite",
             "primaryCodePath": "code",
@@ -1769,7 +1769,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1781,7 +1781,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -1833,14 +1833,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Bundle",
-            "baseType": "QUICKFHIR.Resource",
+            "baseType": "Resource",
             "retrievable": true,
             "label": "Bundle",
             "element": [
@@ -1850,7 +1850,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1862,7 +1862,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
@@ -1886,14 +1886,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "signature",
-                    "type": "QUICKFHIR.Signature"
+                    "type": "Signature"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Bundle.Entry.RequestComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1941,7 +1941,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Bundle.Entry.ResponseComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1978,14 +1978,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "QUICKFHIR.Resource"
+                    "type": "Resource"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Bundle.Entry.SearchComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2017,7 +2017,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Bundle.EntryComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2053,26 +2053,26 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Resource"
+                    "type": "Resource"
                 },
                 {
                     "name": "search",
-                    "type": "QUICKFHIR.Bundle.Entry.SearchComponent"
+                    "type": "Bundle.Entry.SearchComponent"
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Bundle.Entry.RequestComponent"
+                    "type": "Bundle.Entry.RequestComponent"
                 },
                 {
                     "name": "response",
-                    "type": "QUICKFHIR.Bundle.Entry.ResponseComponent"
+                    "type": "Bundle.Entry.ResponseComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Bundle.LinkComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2104,7 +2104,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "CapabilityStatement",
             "element": [
@@ -2114,7 +2114,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -2126,7 +2126,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -2220,11 +2220,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "software",
-                    "type": "QUICKFHIR.CapabilityStatement.SoftwareComponent"
+                    "type": "CapabilityStatement.SoftwareComponent"
                 },
                 {
                     "name": "implementation",
-                    "type": "QUICKFHIR.CapabilityStatement.ImplementationComponent"
+                    "type": "CapabilityStatement.ImplementationComponent"
                 },
                 {
                     "name": "fhirVersion",
@@ -2281,7 +2281,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.DocumentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2310,14 +2310,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.ImplementationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2349,7 +2349,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Messaging.EndpointComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2381,7 +2381,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Messaging.EventComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2418,11 +2418,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "documentation",
@@ -2433,7 +2433,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Messaging.SupportedMessageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2458,14 +2458,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.MessagingComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2515,7 +2515,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Rest.InteractionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2547,7 +2547,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Rest.OperationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2572,14 +2572,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Rest.Resource.InteractionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2611,7 +2611,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Rest.Resource.SearchParamComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2651,7 +2651,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Rest.ResourceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2676,7 +2676,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "documentation",
@@ -2745,7 +2745,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Rest.Security.CertificateComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2777,7 +2777,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.Rest.SecurityComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2821,7 +2821,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.RestComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2850,7 +2850,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "security",
-                    "type": "QUICKFHIR.CapabilityStatement.Rest.SecurityComponent"
+                    "type": "CapabilityStatement.Rest.SecurityComponent"
                 },
                 {
                     "name": "resource",
@@ -2892,7 +2892,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CapabilityStatement.SoftwareComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2928,7 +2928,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CarePlan",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "CarePlan",
             "primaryCodePath": "category",
@@ -2939,7 +2939,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -2951,7 +2951,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -3025,11 +3025,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -3084,7 +3084,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CarePlan.Activity.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3109,7 +3109,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "code",
@@ -3164,7 +3164,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
@@ -3207,7 +3207,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CarePlan.ActivityComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3246,18 +3246,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "detail",
-                    "type": "QUICKFHIR.CarePlan.Activity.DetailComponent"
+                    "type": "CarePlan.Activity.DetailComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "CareTeam",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "CareTeam",
             "element": [
@@ -3267,7 +3267,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -3279,7 +3279,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -3321,11 +3321,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -3368,7 +3368,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CareTeam.ParticipantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3393,11 +3393,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "member",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -3410,7 +3410,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ChargeItem",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ChargeItem",
             "primaryCodePath": "code",
@@ -3421,7 +3421,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -3433,7 +3433,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -3455,7 +3455,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "definition",
@@ -3479,11 +3479,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -3514,11 +3514,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "quantity",
@@ -3544,7 +3544,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "enteredDate",
@@ -3585,7 +3585,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ChargeItem.ParticipantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3610,14 +3610,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Claim",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Claim",
             "primaryCodePath": "type",
@@ -3628,7 +3628,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -3640,7 +3640,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -3686,7 +3686,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "billablePeriod",
@@ -3700,19 +3700,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "insurer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
@@ -3730,23 +3730,23 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prescription",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "originalPrescription",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payee",
-                    "type": "QUICKFHIR.Claim.PayeeComponent"
+                    "type": "Claim.PayeeComponent"
                 },
                 {
                     "name": "referral",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "facility",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "careTeam",
@@ -3780,7 +3780,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "accident",
-                    "type": "QUICKFHIR.Claim.AccidentComponent"
+                    "type": "Claim.AccidentComponent"
                 },
                 {
                     "name": "employmentImpacted",
@@ -3809,7 +3809,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.AccidentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3859,7 +3859,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.CareTeamComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3884,7 +3884,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responsible",
@@ -3903,7 +3903,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.DiagnosisComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3959,7 +3959,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.InformationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4043,7 +4043,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.InsuranceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4072,7 +4072,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -4086,14 +4086,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Claim.Item.Detail.SubDetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4167,7 +4167,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.Item.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4247,7 +4247,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.ItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4406,7 +4406,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.PayeeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4435,14 +4435,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Claim.ProcedureComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4492,7 +4492,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Claim.RelatedComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4513,7 +4513,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claim",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -4521,14 +4521,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ClaimResponse",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ClaimResponse",
             "element": [
@@ -4538,7 +4538,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -4550,7 +4550,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -4582,7 +4582,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -4590,19 +4590,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "insurer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -4648,7 +4648,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "payment",
-                    "type": "QUICKFHIR.ClaimResponse.PaymentComponent"
+                    "type": "ClaimResponse.PaymentComponent"
                 },
                 {
                     "name": "reserved",
@@ -4681,7 +4681,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.AddItem.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4744,7 +4744,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.AddItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4819,7 +4819,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.ErrorComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4859,7 +4859,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.InsuranceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4888,7 +4888,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -4902,14 +4902,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.Item.AdjudicationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4949,7 +4949,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.Item.Detail.SubDetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4994,7 +4994,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.Item.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5045,7 +5045,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.ItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5091,7 +5091,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.PaymentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5128,14 +5128,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ClaimResponse.ProcessNoteComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5175,7 +5175,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClinicalImpression",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ClinicalImpression",
             "primaryCodePath": "code",
@@ -5186,7 +5186,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -5198,7 +5198,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -5238,11 +5238,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "effective",
@@ -5266,11 +5266,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "assessor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "previous",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "problem",
@@ -5329,7 +5329,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClinicalImpression.FindingComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5375,7 +5375,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ClinicalImpression.InvestigationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5409,7 +5409,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CodeSystem",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "CodeSystem",
             "element": [
@@ -5419,7 +5419,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -5431,7 +5431,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -5457,7 +5457,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
@@ -5568,7 +5568,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CodeSystem.Concept.DesignationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5604,7 +5604,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CodeSystem.Concept.PropertyComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5665,7 +5665,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CodeSystem.ConceptComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5724,7 +5724,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CodeSystem.FilterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5766,7 +5766,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CodeSystem.PropertyComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5806,7 +5806,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Communication",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Communication",
             "primaryCodePath": "reasonCode",
@@ -5817,7 +5817,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -5829,7 +5829,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -5895,7 +5895,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -5911,7 +5911,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "sent",
@@ -5923,7 +5923,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -5954,7 +5954,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Communication.PayloadComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6001,7 +6001,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CommunicationRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "CommunicationRequest",
             "primaryCodePath": "category",
@@ -6012,7 +6012,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -6024,7 +6024,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -6064,7 +6064,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -6088,7 +6088,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -6104,7 +6104,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payload",
@@ -6134,11 +6134,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requester",
-                    "type": "QUICKFHIR.CommunicationRequest.RequesterComponent"
+                    "type": "CommunicationRequest.RequesterComponent"
                 },
                 {
                     "name": "reasonCode",
@@ -6163,7 +6163,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CommunicationRequest.PayloadComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6210,7 +6210,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CommunicationRequest.RequesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6231,18 +6231,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "CompartmentDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "CompartmentDefinition",
             "primaryCodePath": "code",
@@ -6253,7 +6253,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -6265,7 +6265,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -6358,7 +6358,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CompartmentDefinition.ResourceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6396,7 +6396,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Composition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Composition",
             "primaryCodePath": "type",
@@ -6407,7 +6407,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -6419,7 +6419,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -6441,7 +6441,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -6457,11 +6457,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -6489,7 +6489,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "custodian",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relatesTo",
@@ -6514,7 +6514,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Composition.AttesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6545,14 +6545,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Composition.EventComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6594,7 +6594,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Composition.RelatesToComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6640,7 +6640,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Composition.SectionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6669,7 +6669,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "mode",
@@ -6705,7 +6705,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ConceptMap",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ConceptMap",
             "element": [
@@ -6715,7 +6715,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -6727,7 +6727,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -6753,7 +6753,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
@@ -6860,7 +6860,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ConceptMap.Group.Element.Target.DependsOnComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6900,7 +6900,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ConceptMap.Group.Element.TargetComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6957,7 +6957,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ConceptMap.Group.ElementComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6995,7 +6995,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ConceptMap.Group.UnmappedComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7035,7 +7035,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ConceptMap.GroupComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7070,14 +7070,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "unmapped",
-                    "type": "QUICKFHIR.ConceptMap.Group.UnmappedComponent"
+                    "type": "ConceptMap.Group.UnmappedComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Condition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Condition",
             "primaryCodePath": "code",
@@ -7088,7 +7088,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -7100,7 +7100,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -7156,11 +7156,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onset",
@@ -7231,11 +7231,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "asserter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "stage",
-                    "type": "QUICKFHIR.Condition.StageComponent"
+                    "type": "Condition.StageComponent"
                 },
                 {
                     "name": "evidence",
@@ -7254,7 +7254,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Condition.EvidenceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7290,7 +7290,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Condition.StageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7324,7 +7324,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Consent",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Consent",
             "primaryCodePath": "category",
@@ -7335,7 +7335,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -7347,7 +7347,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -7369,7 +7369,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -7383,7 +7383,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -7483,7 +7483,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Consent.ActorComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7508,14 +7508,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Consent.DataComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7540,14 +7540,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Consent.Except.ActorComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7572,14 +7572,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Consent.Except.DataComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7604,14 +7604,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Consent.ExceptComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7693,7 +7693,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Consent.PolicyComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7729,7 +7729,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ContactDetail",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "ContactDetail",
             "element": [
@@ -7758,7 +7758,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ContactPoint",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "ContactPoint",
             "element": [
@@ -7799,7 +7799,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Contract",
             "element": [
@@ -7809,7 +7809,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -7821,7 +7821,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -7843,7 +7843,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -7978,7 +7978,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.AgentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7999,7 +7999,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -8012,7 +8012,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.FriendlyComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8054,7 +8054,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.LegalComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8096,7 +8096,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.RuleComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8138,7 +8138,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.SignerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8163,7 +8163,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "signature",
@@ -8176,7 +8176,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.Term.AgentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8197,7 +8197,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -8210,7 +8210,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.Term.ValuedItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8249,7 +8249,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "effectiveTime",
@@ -8280,7 +8280,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.TermComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8301,7 +8301,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "issued",
@@ -8371,7 +8371,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contract.ValuedItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8410,7 +8410,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "effectiveTime",
@@ -8441,7 +8441,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Contributor",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Contributor",
             "element": [
@@ -8474,7 +8474,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Coverage",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Coverage",
             "primaryCodePath": "type",
@@ -8485,7 +8485,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -8497,7 +8497,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -8533,15 +8533,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "policyHolder",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subscriber",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "beneficiary",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -8561,7 +8561,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "grouping",
-                    "type": "QUICKFHIR.Coverage.GroupingComponent"
+                    "type": "Coverage.GroupingComponent"
                 },
                 {
                     "name": "dependent",
@@ -8590,7 +8590,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Coverage.GroupingComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8638,7 +8638,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DataElement",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DataElement",
             "element": [
@@ -8648,7 +8648,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -8660,7 +8660,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -8761,7 +8761,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DataElement.MappingComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8801,7 +8801,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DataRequirement",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "DataRequirement",
             "element": [
@@ -8848,7 +8848,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DetectedIssue",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DetectedIssue",
             "primaryCodePath": "category",
@@ -8859,7 +8859,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -8871,7 +8871,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -8893,7 +8893,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -8909,7 +8909,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -8917,7 +8917,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "implicated",
@@ -8944,7 +8944,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DetectedIssue.MitigationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8973,14 +8973,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Device",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Device",
             "primaryCodePath": "type",
@@ -8991,7 +8991,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -9003,7 +9003,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -9031,7 +9031,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "udi",
-                    "type": "QUICKFHIR.Device.UdiComponent"
+                    "type": "Device.UdiComponent"
                 },
                 {
                     "name": "status",
@@ -9067,11 +9067,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "owner",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -9081,7 +9081,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "url",
@@ -9104,7 +9104,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Device.UdiComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9156,7 +9156,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceComponent",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DeviceComponent",
             "element": [
@@ -9166,7 +9166,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -9178,7 +9178,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -9200,7 +9200,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
@@ -9212,11 +9212,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operationalStatus",
@@ -9247,7 +9247,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceComponent.ProductionSpecificationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9272,7 +9272,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "componentId",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "productionSpec",
@@ -9283,7 +9283,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceMetric",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DeviceMetric",
             "primaryCodePath": "type",
@@ -9294,7 +9294,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -9306,7 +9306,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -9328,7 +9328,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
@@ -9340,11 +9340,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operationalStatus",
@@ -9360,7 +9360,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "measurementPeriod",
-                    "type": "QUICKFHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "calibration",
@@ -9373,7 +9373,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceMetric.CalibrationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9409,7 +9409,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DeviceRequest",
             "primaryCodePath": "code",
@@ -9420,7 +9420,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -9432,7 +9432,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -9478,7 +9478,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -9512,11 +9512,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -9545,7 +9545,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "QUICKFHIR.DeviceRequest.RequesterComponent"
+                    "type": "DeviceRequest.RequesterComponent"
                 },
                 {
                     "name": "performerType",
@@ -9553,7 +9553,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -9590,7 +9590,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceRequest.RequesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9611,18 +9611,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "DeviceUseStatement",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DeviceUseStatement",
             "element": [
@@ -9632,7 +9632,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -9644,7 +9644,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -9676,7 +9676,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenUsed",
@@ -9711,11 +9711,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "indication",
@@ -9738,7 +9738,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DiagnosticReport",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DiagnosticReport",
             "primaryCodePath": "code",
@@ -9749,7 +9749,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -9761,7 +9761,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -9807,11 +9807,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "effective",
@@ -9884,7 +9884,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DiagnosticReport.ImageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9909,14 +9909,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "link",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "DiagnosticReport.PerformerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9941,14 +9941,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "DocumentManifest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DocumentManifest",
             "element": [
@@ -9958,7 +9958,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -9970,7 +9970,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -9992,7 +9992,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "masterIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -10010,7 +10010,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -10053,7 +10053,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DocumentManifest.ContentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10095,7 +10095,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DocumentManifest.RelatedComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10116,18 +10116,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "ref",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "DocumentReference",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "DocumentReference",
             "element": [
@@ -10137,7 +10137,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -10149,7 +10149,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -10171,7 +10171,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "masterIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -10197,7 +10197,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -10215,11 +10215,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authenticator",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "custodian",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relatesTo",
@@ -10245,14 +10245,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.DocumentReference.ContextComponent"
+                    "type": "DocumentReference.ContextComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "DocumentReference.ContentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10273,7 +10273,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "attachment",
-                    "type": "QUICKFHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "format",
@@ -10284,7 +10284,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DocumentReference.Context.RelatedComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10305,18 +10305,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "ref",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "DocumentReference.ContextComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10337,7 +10337,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "event",
@@ -10361,7 +10361,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sourcePatientInfo",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "related",
@@ -10374,7 +10374,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DocumentReference.RelatesToComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10399,14 +10399,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "DomainResource",
-            "baseType": "QUICKFHIR.Resource",
+            "baseType": "Resource",
             "retrievable": true,
             "label": "DomainResource",
             "element": [
@@ -10416,7 +10416,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -10428,7 +10428,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -10453,7 +10453,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Dosage",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Dosage",
             "element": [
@@ -10487,7 +10487,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "timing",
-                    "type": "QUICKFHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "asNeeded",
@@ -10591,7 +10591,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ElementDefinition",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "ElementDefinition",
             "element": [
@@ -10631,7 +10631,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "slicing",
-                    "type": "QUICKFHIR.Element"
+                    "type": "Element"
                 },
                 {
                     "name": "short",
@@ -10665,7 +10665,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "QUICKFHIR.Element"
+                    "type": "Element"
                 },
                 {
                     "name": "contentReference",
@@ -11144,7 +11144,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "binding",
-                    "type": "QUICKFHIR.Element"
+                    "type": "Element"
                 },
                 {
                     "name": "mapping",
@@ -11157,7 +11157,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EligibilityRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "EligibilityRequest",
             "element": [
@@ -11167,7 +11167,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -11179,7 +11179,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -11215,7 +11215,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "serviced",
@@ -11239,27 +11239,27 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "insurer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "facility",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -11278,7 +11278,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EligibilityResponse",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "EligibilityResponse",
             "element": [
@@ -11288,7 +11288,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -11300,7 +11300,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -11336,15 +11336,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -11356,7 +11356,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "insurer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "inforce",
@@ -11383,7 +11383,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EligibilityResponse.ErrorComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11411,7 +11411,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EligibilityResponse.Insurance.BenefitBalance.FinancialComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11480,7 +11480,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EligibilityResponse.Insurance.BenefitBalanceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11542,7 +11542,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EligibilityResponse.InsuranceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11563,11 +11563,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contract",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "benefitBalance",
@@ -11580,7 +11580,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Encounter",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Encounter",
             "primaryCodePath": "type",
@@ -11591,7 +11591,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -11603,7 +11603,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -11649,7 +11649,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "episodeOfCare",
@@ -11671,7 +11671,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "appointment",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -11703,7 +11703,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hospitalization",
-                    "type": "QUICKFHIR.Encounter.HospitalizationComponent"
+                    "type": "Encounter.HospitalizationComponent"
                 },
                 {
                     "name": "location",
@@ -11713,18 +11713,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "serviceProvider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Encounter.ClassHistoryComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11758,7 +11758,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Encounter.DiagnosisComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11779,7 +11779,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -11794,7 +11794,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Encounter.HospitalizationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11815,11 +11815,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "preAdmissionIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "origin",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "admitSource",
@@ -11849,7 +11849,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dischargeDisposition",
@@ -11860,7 +11860,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Encounter.LocationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11881,7 +11881,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
@@ -11898,7 +11898,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Encounter.ParticipantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11931,14 +11931,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "individual",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Encounter.StatusHistoryComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11972,7 +11972,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Endpoint",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Endpoint",
             "element": [
@@ -11982,7 +11982,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -11994,7 +11994,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -12034,7 +12034,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -12075,7 +12075,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EnrollmentRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "EnrollmentRequest",
             "element": [
@@ -12085,7 +12085,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -12097,7 +12097,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -12133,30 +12133,30 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "insurer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "EnrollmentResponse",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "EnrollmentResponse",
             "element": [
@@ -12166,7 +12166,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -12178,7 +12178,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -12210,7 +12210,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -12226,22 +12226,22 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "EpisodeOfCare",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "EpisodeOfCare",
             "primaryCodePath": "type",
@@ -12252,7 +12252,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -12264,7 +12264,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -12308,11 +12308,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -12328,7 +12328,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "careManager",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "team",
@@ -12347,7 +12347,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EpisodeOfCare.DiagnosisComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12368,7 +12368,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -12383,7 +12383,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EpisodeOfCare.StatusHistoryComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12417,7 +12417,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ExpansionProfile",
             "element": [
@@ -12427,7 +12427,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -12439,7 +12439,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -12465,7 +12465,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
@@ -12521,7 +12521,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "excludedSystem",
-                    "type": "QUICKFHIR.ExpansionProfile.ExcludedSystemComponent"
+                    "type": "ExpansionProfile.ExcludedSystemComponent"
                 },
                 {
                     "name": "includeDesignations",
@@ -12529,7 +12529,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "designation",
-                    "type": "QUICKFHIR.ExpansionProfile.DesignationComponent"
+                    "type": "ExpansionProfile.DesignationComponent"
                 },
                 {
                     "name": "includeDefinition",
@@ -12564,7 +12564,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile.Designation.Exclude.DesignationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12596,7 +12596,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile.Designation.ExcludeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12626,7 +12626,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile.Designation.Include.DesignationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12658,7 +12658,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile.Designation.IncludeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12688,7 +12688,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile.DesignationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12709,18 +12709,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "include",
-                    "type": "QUICKFHIR.ExpansionProfile.Designation.IncludeComponent"
+                    "type": "ExpansionProfile.Designation.IncludeComponent"
                 },
                 {
                     "name": "exclude",
-                    "type": "QUICKFHIR.ExpansionProfile.Designation.ExcludeComponent"
+                    "type": "ExpansionProfile.Designation.ExcludeComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile.ExcludedSystemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12752,7 +12752,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExpansionProfile.FixedVersionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12788,7 +12788,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ExplanationOfBenefit",
             "element": [
@@ -12798,7 +12798,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -12810,7 +12810,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -12852,7 +12852,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "billablePeriod",
@@ -12866,31 +12866,31 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "insurer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "referral",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "facility",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "claim",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -12908,15 +12908,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prescription",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "originalPrescription",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payee",
-                    "type": "QUICKFHIR.ExplanationOfBenefit.PayeeComponent"
+                    "type": "ExplanationOfBenefit.PayeeComponent"
                 },
                 {
                     "name": "information",
@@ -12948,11 +12948,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "insurance",
-                    "type": "QUICKFHIR.ExplanationOfBenefit.InsuranceComponent"
+                    "type": "ExplanationOfBenefit.InsuranceComponent"
                 },
                 {
                     "name": "accident",
-                    "type": "QUICKFHIR.ExplanationOfBenefit.AccidentComponent"
+                    "type": "ExplanationOfBenefit.AccidentComponent"
                 },
                 {
                     "name": "employmentImpacted",
@@ -12992,7 +12992,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "payment",
-                    "type": "QUICKFHIR.ExplanationOfBenefit.PaymentComponent"
+                    "type": "ExplanationOfBenefit.PaymentComponent"
                 },
                 {
                     "name": "form",
@@ -13015,7 +13015,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.AccidentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13065,7 +13065,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.AddItem.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13128,7 +13128,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.AddItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13203,7 +13203,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.BenefitBalance.FinancialComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13272,7 +13272,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.BenefitBalanceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13334,7 +13334,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.CareTeamComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13359,7 +13359,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responsible",
@@ -13378,7 +13378,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.DiagnosisComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13434,7 +13434,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.InformationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13518,7 +13518,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.InsuranceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13539,7 +13539,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "preAuthRef",
@@ -13552,7 +13552,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.Item.AdjudicationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13592,7 +13592,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.Item.Detail.SubDetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13687,7 +13687,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.Item.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13788,7 +13788,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.ItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13959,7 +13959,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.PayeeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13988,14 +13988,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.PaymentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14032,14 +14032,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.ProcedureComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14089,7 +14089,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.ProcessNoteComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14129,7 +14129,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ExplanationOfBenefit.RelatedComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14150,7 +14150,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claim",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -14158,14 +14158,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Extension",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Extension",
             "element": [
@@ -14307,7 +14307,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "FamilyMemberHistory",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "FamilyMemberHistory",
             "element": [
@@ -14317,7 +14317,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -14329,7 +14329,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -14371,7 +14371,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -14495,7 +14495,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "FamilyMemberHistory.ConditionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14557,7 +14557,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Flag",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Flag",
             "primaryCodePath": "code",
@@ -14568,7 +14568,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -14580,7 +14580,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -14620,7 +14620,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -14630,18 +14630,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Goal",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Goal",
             "primaryCodePath": "category",
@@ -14652,7 +14652,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -14664,7 +14664,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -14710,7 +14710,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "start",
@@ -14732,7 +14732,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICKFHIR.Goal.TargetComponent"
+                    "type": "Goal.TargetComponent"
                 },
                 {
                     "name": "statusDate",
@@ -14744,7 +14744,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "expressedBy",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "addresses",
@@ -14775,7 +14775,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Goal.TargetComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14842,7 +14842,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "GraphDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "GraphDefinition",
             "element": [
@@ -14852,7 +14852,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -14864,7 +14864,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -14957,7 +14957,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "GraphDefinition.Link.Target.CompartmentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -14997,7 +14997,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "GraphDefinition.Link.TargetComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15046,7 +15046,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "GraphDefinition.LinkComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15096,7 +15096,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Group",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Group",
             "primaryCodePath": "code",
@@ -15107,7 +15107,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -15119,7 +15119,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -15186,7 +15186,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Group.CharacteristicComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15250,7 +15250,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Group.MemberComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15271,7 +15271,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "entity",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -15288,7 +15288,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "GuidanceResponse",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "GuidanceResponse",
             "element": [
@@ -15298,7 +15298,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -15310,7 +15310,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -15336,11 +15336,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "module",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
@@ -15348,11 +15348,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "occurrenceDateTime",
@@ -15360,7 +15360,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -15394,11 +15394,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "outputParameters",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "result",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dataRequirement",
@@ -15411,7 +15411,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "HealthcareService",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "HealthcareService",
             "primaryCodePath": "type",
@@ -15422,7 +15422,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -15434,7 +15434,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -15466,7 +15466,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "providedBy",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "category",
@@ -15504,7 +15504,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "photo",
-                    "type": "QUICKFHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "telecom",
@@ -15577,7 +15577,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "HealthcareService.AvailableTimeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15619,7 +15619,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "HealthcareService.NotAvailableComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15653,7 +15653,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "HumanName",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "HumanName",
             "element": [
@@ -15708,7 +15708,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Identifier",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Identifier",
             "element": [
@@ -15746,14 +15746,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "assigner",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ImagingManifest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ImagingManifest",
             "element": [
@@ -15763,7 +15763,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -15775,7 +15775,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -15797,11 +15797,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authoringTime",
@@ -15809,7 +15809,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
@@ -15826,7 +15826,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImagingManifest.Study.Series.InstanceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15858,7 +15858,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImagingManifest.Study.SeriesComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15898,7 +15898,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImagingManifest.StudyComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -15923,7 +15923,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "imagingStudy",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "endpoint",
@@ -15942,7 +15942,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImagingStudy",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ImagingStudy",
             "element": [
@@ -15952,7 +15952,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -15964,7 +15964,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -15990,7 +15990,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "accession",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -16010,11 +16010,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "started",
@@ -16028,7 +16028,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "referrer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "interpreter",
@@ -16081,7 +16081,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImagingStudy.Series.InstanceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16121,7 +16121,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImagingStudy.SeriesComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16199,7 +16199,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Immunization",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Immunization",
             "primaryCodePath": "vaccineCode",
@@ -16210,7 +16210,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -16222,7 +16222,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -16262,11 +16262,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -16282,11 +16282,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lotNumber",
@@ -16322,7 +16322,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "explanation",
-                    "type": "QUICKFHIR.Immunization.ExplanationComponent"
+                    "type": "Immunization.ExplanationComponent"
                 },
                 {
                     "name": "reaction",
@@ -16341,7 +16341,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Immunization.ExplanationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16371,7 +16371,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Immunization.PractitionerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16396,14 +16396,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Immunization.ReactionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16428,7 +16428,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reported",
@@ -16439,7 +16439,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Immunization.VaccinationProtocolComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16468,7 +16468,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
@@ -16489,7 +16489,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationRecommendation",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ImmunizationRecommendation",
             "element": [
@@ -16499,7 +16499,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -16511,7 +16511,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -16539,7 +16539,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recommendation",
@@ -16552,7 +16552,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationRecommendation.Recommendation.DateCriterionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16584,7 +16584,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationRecommendation.Recommendation.ProtocolComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16613,7 +16613,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
@@ -16624,7 +16624,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationRecommendation.RecommendationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16671,7 +16671,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "protocol",
-                    "type": "QUICKFHIR.ImmunizationRecommendation.Recommendation.ProtocolComponent"
+                    "type": "ImmunizationRecommendation.Recommendation.ProtocolComponent"
                 },
                 {
                     "name": "supportingImmunization",
@@ -16690,7 +16690,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImplementationGuide",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ImplementationGuide",
             "element": [
@@ -16700,7 +16700,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -16712,7 +16712,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -16816,14 +16816,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "page",
-                    "type": "QUICKFHIR.ImplementationGuide.PageComponent"
+                    "type": "ImplementationGuide.PageComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ImplementationGuide.DependencyComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16855,7 +16855,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImplementationGuide.GlobalComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16880,14 +16880,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ImplementationGuide.Package.ResourceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16942,14 +16942,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "exampleFor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ImplementationGuide.PackageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -16987,7 +16987,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImplementationGuide.PageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17050,7 +17050,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Library",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Library",
             "primaryCodePath": "topic",
@@ -17061,7 +17061,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -17073,7 +17073,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -17224,7 +17224,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Linkage",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Linkage",
             "element": [
@@ -17234,7 +17234,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -17246,7 +17246,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -17272,7 +17272,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "item",
@@ -17285,7 +17285,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Linkage.ItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17310,14 +17310,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "List",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "List",
             "primaryCodePath": "code",
@@ -17328,7 +17328,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -17340,7 +17340,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -17384,11 +17384,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -17396,7 +17396,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderedBy",
@@ -17423,7 +17423,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "List.EntryComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17456,14 +17456,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "item",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Location",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Location",
             "element": [
@@ -17473,7 +17473,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -17485,7 +17485,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -17549,7 +17549,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "QUICKFHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "physicalType",
@@ -17557,15 +17557,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "position",
-                    "type": "QUICKFHIR.Location.PositionComponent"
+                    "type": "Location.PositionComponent"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "endpoint",
@@ -17578,7 +17578,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Location.PositionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17614,7 +17614,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Measure",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Measure",
             "primaryCodePath": "topic",
@@ -17625,7 +17625,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -17637,7 +17637,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -17836,7 +17836,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Measure.Group.PopulationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17857,7 +17857,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "code",
@@ -17880,7 +17880,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Measure.Group.StratifierComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17901,7 +17901,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "criteria",
@@ -17916,7 +17916,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Measure.GroupComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17937,7 +17937,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "name",
@@ -17964,7 +17964,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Measure.SupplementalDataComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -17985,7 +17985,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "usage",
@@ -18006,7 +18006,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MeasureReport",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "MeasureReport",
             "element": [
@@ -18016,7 +18016,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -18028,7 +18028,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -18050,7 +18050,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -18062,11 +18062,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "measure",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -18074,7 +18074,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reportingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -18090,14 +18090,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "evaluatedResources",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MeasureReport.Group.PopulationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18118,7 +18118,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "code",
@@ -18130,14 +18130,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patients",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MeasureReport.Group.Stratifier.Stratum.PopulationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18158,7 +18158,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "code",
@@ -18170,14 +18170,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patients",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MeasureReport.Group.Stratifier.StratumComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18215,7 +18215,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MeasureReport.Group.StratifierComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18236,7 +18236,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "stratum",
@@ -18249,7 +18249,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MeasureReport.GroupComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18270,7 +18270,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "population",
@@ -18293,7 +18293,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Media",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Media",
             "element": [
@@ -18303,7 +18303,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -18315,7 +18315,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -18361,11 +18361,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -18385,7 +18385,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operator",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -18399,7 +18399,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "device",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "height",
@@ -18419,7 +18419,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "content",
-                    "type": "QUICKFHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "note",
@@ -18432,7 +18432,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Medication",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Medication",
             "primaryCodePath": "code",
@@ -18443,7 +18443,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -18455,7 +18455,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -18493,7 +18493,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "manufacturer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "form",
@@ -18507,7 +18507,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "package",
-                    "type": "QUICKFHIR.Medication.PackageComponent"
+                    "type": "Medication.PackageComponent"
                 },
                 {
                     "name": "image",
@@ -18520,7 +18520,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Medication.IngredientComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18570,7 +18570,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Medication.Package.BatchComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18602,7 +18602,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Medication.Package.ContentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18648,7 +18648,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Medication.PackageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18688,7 +18688,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationAdministration",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "MedicationAdministration",
             "primaryCodePath": "medication",
@@ -18699,7 +18699,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -18711,7 +18711,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -18777,11 +18777,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -18835,7 +18835,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prescription",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
@@ -18851,7 +18851,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dosage",
-                    "type": "QUICKFHIR.MedicationAdministration.DosageComponent"
+                    "type": "MedicationAdministration.DosageComponent"
                 },
                 {
                     "name": "eventHistory",
@@ -18864,7 +18864,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationAdministration.DosageComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18926,7 +18926,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationAdministration.PerformerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -18947,18 +18947,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MedicationDispense",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "MedicationDispense",
             "primaryCodePath": "medication",
@@ -18969,7 +18969,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -18981,7 +18981,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -19041,11 +19041,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -19087,7 +19087,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -19109,7 +19109,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substitution",
-                    "type": "QUICKFHIR.MedicationDispense.SubstitutionComponent"
+                    "type": "MedicationDispense.SubstitutionComponent"
                 },
                 {
                     "name": "detectedIssue",
@@ -19132,7 +19132,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationDispense.PerformerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -19153,18 +19153,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MedicationDispense.SubstitutionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -19208,7 +19208,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "MedicationRequest",
             "primaryCodePath": "medication",
@@ -19219,7 +19219,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -19231,7 +19231,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -19271,7 +19271,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -19309,11 +19309,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -19327,11 +19327,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "QUICKFHIR.MedicationRequest.RequesterComponent"
+                    "type": "MedicationRequest.RequesterComponent"
                 },
                 {
                     "name": "recorder",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -19359,15 +19359,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispenseRequest",
-                    "type": "QUICKFHIR.MedicationRequest.DispenseRequestComponent"
+                    "type": "MedicationRequest.DispenseRequestComponent"
                 },
                 {
                     "name": "substitution",
-                    "type": "QUICKFHIR.MedicationRequest.SubstitutionComponent"
+                    "type": "MedicationRequest.SubstitutionComponent"
                 },
                 {
                     "name": "priorPrescription",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "detectedIssue",
@@ -19386,7 +19386,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationRequest.DispenseRequestComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -19425,14 +19425,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MedicationRequest.RequesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -19453,18 +19453,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MedicationRequest.SubstitutionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -19496,7 +19496,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationStatement",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "MedicationStatement",
             "primaryCodePath": "medication",
@@ -19507,7 +19507,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -19519,7 +19519,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -19559,7 +19559,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
@@ -19609,11 +19609,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "informationSource",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "derivedFrom",
@@ -19660,7 +19660,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MessageDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "MessageDefinition",
             "element": [
@@ -19670,7 +19670,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -19682,7 +19682,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -19708,7 +19708,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
@@ -19770,7 +19770,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
@@ -19813,7 +19813,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MessageDefinition.AllowedResponseComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -19834,7 +19834,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "message",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "situation",
@@ -19845,7 +19845,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MessageDefinition.FocusComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -19870,7 +19870,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "min",
@@ -19885,7 +19885,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MessageHeader",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "MessageHeader",
             "element": [
@@ -19895,7 +19895,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -19907,7 +19907,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -19939,11 +19939,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "receiver",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "sender",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "timestamp",
@@ -19951,19 +19951,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "QUICKFHIR.MessageHeader.SourceComponent"
+                    "type": "MessageHeader.SourceComponent"
                 },
                 {
                     "name": "responsible",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -19971,7 +19971,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "response",
-                    "type": "QUICKFHIR.MessageHeader.ResponseComponent"
+                    "type": "MessageHeader.ResponseComponent"
                 },
                 {
                     "name": "focus",
@@ -19984,7 +19984,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MessageHeader.DestinationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20009,7 +20009,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "endpoint",
@@ -20020,7 +20020,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MessageHeader.ResponseComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20049,14 +20049,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "details",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "MessageHeader.SourceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20089,7 +20089,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "contact",
-                    "type": "QUICKFHIR.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "endpoint",
@@ -20100,7 +20100,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Meta",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Meta",
             "element": [
@@ -20145,7 +20145,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "NamingSystem",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "NamingSystem",
             "element": [
@@ -20155,7 +20155,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -20167,7 +20167,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -20249,14 +20249,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "replacedBy",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "NamingSystem.UniqueIdComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20302,7 +20302,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Narrative",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Narrative",
             "element": [
@@ -20329,7 +20329,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "NutritionOrder",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "NutritionOrder",
             "element": [
@@ -20339,7 +20339,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -20351,7 +20351,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -20383,11 +20383,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateTime",
@@ -20395,7 +20395,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "orderer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "allergyIntolerance",
@@ -20417,7 +20417,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "oralDiet",
-                    "type": "QUICKFHIR.NutritionOrder.OralDietComponent"
+                    "type": "NutritionOrder.OralDietComponent"
                 },
                 {
                     "name": "supplement",
@@ -20427,14 +20427,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enteralFormula",
-                    "type": "QUICKFHIR.NutritionOrder.EnteralFormulaComponent"
+                    "type": "NutritionOrder.EnteralFormulaComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "NutritionOrder.EnteralFormula.AdministrationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20455,7 +20455,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "schedule",
-                    "type": "QUICKFHIR.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "quantity",
@@ -20484,7 +20484,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "NutritionOrder.EnteralFormulaComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20546,7 +20546,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "NutritionOrder.OralDiet.NutrientComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20578,7 +20578,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "NutritionOrder.OralDiet.TextureComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20610,7 +20610,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "NutritionOrder.OralDietComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20668,7 +20668,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "NutritionOrder.SupplementComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -20714,7 +20714,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Observation",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Observation",
             "primaryCodePath": "code",
@@ -20725,7 +20725,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -20737,7 +20737,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -20785,11 +20785,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "effective",
@@ -20898,11 +20898,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -20927,7 +20927,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Observation.ComponentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21028,7 +21028,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Observation.ReferenceRangeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21080,7 +21080,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Observation.RelatedComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21105,14 +21105,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "OperationDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "OperationDefinition",
             "primaryCodePath": "code",
@@ -21123,7 +21123,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -21135,7 +21135,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -21227,7 +21227,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "resource",
@@ -21264,7 +21264,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "OperationDefinition.OverloadComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21298,7 +21298,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "OperationDefinition.Parameter.BindingComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21344,7 +21344,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "OperationDefinition.ParameterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21393,11 +21393,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "binding",
-                    "type": "QUICKFHIR.OperationDefinition.Parameter.BindingComponent"
+                    "type": "OperationDefinition.Parameter.BindingComponent"
                 },
                 {
                     "name": "part",
@@ -21415,7 +21415,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "OperationOutcome",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "OperationOutcome",
             "element": [
@@ -21425,7 +21425,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -21437,7 +21437,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -21468,7 +21468,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "OperationOutcome.IssueComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21520,7 +21520,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Organization",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Organization",
             "element": [
@@ -21530,7 +21530,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -21542,7 +21542,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -21602,7 +21602,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "partOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -21621,7 +21621,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Organization.ContactComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21646,7 +21646,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "QUICKFHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -21656,14 +21656,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "QUICKFHIR.Address"
+                    "type": "Address"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ParameterDefinition",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "ParameterDefinition",
             "element": [
@@ -21703,14 +21703,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Parameters",
-            "baseType": "QUICKFHIR.Resource",
+            "baseType": "Resource",
             "retrievable": true,
             "label": "Parameters",
             "element": [
@@ -21720,7 +21720,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -21741,7 +21741,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Parameters.ParameterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -21885,7 +21885,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Resource"
+                    "type": "Resource"
                 },
                 {
                     "name": "part",
@@ -21903,7 +21903,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Patient",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Patient",
             "element": [
@@ -21913,7 +21913,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -21925,7 +21925,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -22035,7 +22035,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "animal",
-                    "type": "QUICKFHIR.Patient.AnimalComponent"
+                    "type": "Patient.AnimalComponent"
                 },
                 {
                     "name": "communication",
@@ -22051,7 +22051,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "link",
@@ -22064,7 +22064,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Patient.AnimalComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22100,7 +22100,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Patient.CommunicationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22132,7 +22132,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Patient.ContactComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22159,7 +22159,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "QUICKFHIR.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -22169,7 +22169,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "QUICKFHIR.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "gender",
@@ -22177,7 +22177,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -22190,7 +22190,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Patient.LinkComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22211,7 +22211,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "other",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -22222,7 +22222,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PaymentNotice",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "PaymentNotice",
             "element": [
@@ -22232,7 +22232,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -22244,7 +22244,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -22276,11 +22276,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "statusDate",
@@ -22292,15 +22292,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "paymentStatus",
@@ -22311,7 +22311,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PaymentReconciliation",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "PaymentReconciliation",
             "element": [
@@ -22321,7 +22321,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -22333,7 +22333,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -22375,11 +22375,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -22391,11 +22391,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "detail",
@@ -22422,7 +22422,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PaymentReconciliation.DetailComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22447,19 +22447,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "submitter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payee",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -22474,7 +22474,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PaymentReconciliation.ProcessNoteComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22506,7 +22506,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Person",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Person",
             "element": [
@@ -22516,7 +22516,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -22528,7 +22528,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -22582,11 +22582,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "photo",
-                    "type": "QUICKFHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "active",
@@ -22603,7 +22603,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Person.LinkComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22624,7 +22624,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "assurance",
@@ -22635,7 +22635,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "PlanDefinition",
             "element": [
@@ -22645,7 +22645,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -22657,7 +22657,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -22808,7 +22808,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition.Action.ConditionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22848,7 +22848,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition.Action.DynamicValueComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22888,7 +22888,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition.Action.ParticipantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22920,7 +22920,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition.Action.RelatedActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -22968,7 +22968,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23118,11 +23118,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "transform",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dynamicValue",
@@ -23146,7 +23146,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition.Goal.TargetComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23199,7 +23199,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PlanDefinition.GoalComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23257,7 +23257,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Practitioner",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Practitioner",
             "element": [
@@ -23267,7 +23267,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -23279,7 +23279,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -23358,7 +23358,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Practitioner.QualificationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23395,14 +23395,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "issuer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "PractitionerRole",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "PractitionerRole",
             "element": [
@@ -23412,7 +23412,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -23424,7 +23424,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -23462,11 +23462,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "practitioner",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "code",
@@ -23525,7 +23525,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PractitionerRole.AvailableTimeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23567,7 +23567,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PractitionerRole.NotAvailableComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23601,7 +23601,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Procedure",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Procedure",
             "primaryCodePath": "code",
@@ -23612,7 +23612,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -23624,7 +23624,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -23686,11 +23686,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performed",
@@ -23716,7 +23716,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -23787,7 +23787,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Procedure.FocalDeviceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23812,14 +23812,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "manipulated",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Procedure.PerformerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -23844,18 +23844,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ProcedureRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ProcedureRequest",
             "primaryCodePath": "code",
@@ -23866,7 +23866,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -23878,7 +23878,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -23924,7 +23924,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requisition",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -23954,11 +23954,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -24005,7 +24005,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "QUICKFHIR.ProcedureRequest.RequesterComponent"
+                    "type": "ProcedureRequest.RequesterComponent"
                 },
                 {
                     "name": "performerType",
@@ -24013,7 +24013,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -24062,7 +24062,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcedureRequest.RequesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -24083,18 +24083,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ProcessRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ProcessRequest",
             "element": [
@@ -24104,7 +24104,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -24116,7 +24116,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -24152,7 +24152,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -24160,19 +24160,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "nullify",
@@ -24211,7 +24211,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcessRequest.ItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -24239,7 +24239,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcessResponse",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ProcessResponse",
             "element": [
@@ -24249,7 +24249,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -24261,7 +24261,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -24297,11 +24297,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -24313,11 +24313,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "form",
@@ -24346,7 +24346,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcessResponse.ProcessNoteComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -24378,7 +24378,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Provenance",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Provenance",
             "element": [
@@ -24388,7 +24388,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -24400,7 +24400,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -24444,7 +24444,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -24479,7 +24479,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Provenance.AgentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -24549,7 +24549,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Provenance.EntityComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -24611,7 +24611,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Quantity",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Quantity",
             "primaryCodePath": "code",
@@ -24651,7 +24651,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Questionnaire",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Questionnaire",
             "element": [
@@ -24661,7 +24661,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -24673,7 +24673,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -24798,7 +24798,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Questionnaire.Item.EnableWhenComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -24888,7 +24888,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Questionnaire.Item.OptionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -24945,7 +24945,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Questionnaire.ItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -25014,7 +25014,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "options",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "option",
@@ -25096,7 +25096,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "QuestionnaireResponse",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "QuestionnaireResponse",
             "element": [
@@ -25106,7 +25106,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -25118,7 +25118,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -25140,7 +25140,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "basedOn",
@@ -25156,7 +25156,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "questionnaire",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
@@ -25164,11 +25164,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authored",
@@ -25176,11 +25176,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "item",
@@ -25193,7 +25193,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "QuestionnaireResponse.Item.AnswerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -25286,7 +25286,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "QuestionnaireResponse.ItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -25319,7 +25319,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "answer",
@@ -25343,7 +25343,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Reference",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Reference",
             "element": [
@@ -25363,7 +25363,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "display",
@@ -25374,7 +25374,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ReferralRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ReferralRequest",
             "primaryCodePath": "type",
@@ -25385,7 +25385,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -25397,7 +25397,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -25443,7 +25443,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -25469,11 +25469,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -25497,7 +25497,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "QUICKFHIR.ReferralRequest.RequesterComponent"
+                    "type": "ReferralRequest.RequesterComponent"
                 },
                 {
                     "name": "specialty",
@@ -25548,7 +25548,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ReferralRequest.RequesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -25569,18 +25569,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "RelatedArtifact",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "RelatedArtifact",
             "element": [
@@ -25612,18 +25612,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "document",
-                    "type": "QUICKFHIR.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "RelatedPerson",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "RelatedPerson",
             "element": [
@@ -25633,7 +25633,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -25645,7 +25645,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -25677,7 +25677,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -25726,7 +25726,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "RequestGroup",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "RequestGroup",
             "element": [
@@ -25736,7 +25736,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -25748,7 +25748,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -25794,7 +25794,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -25810,11 +25810,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authoredOn",
@@ -25822,7 +25822,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -25859,7 +25859,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "RequestGroup.Action.ConditionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -25899,7 +25899,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "RequestGroup.Action.RelatedActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -25947,7 +25947,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "RequestGroup.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -26067,7 +26067,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "action",
@@ -26085,7 +26085,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ResearchStudy",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ResearchStudy",
             "element": [
@@ -26095,7 +26095,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -26107,7 +26107,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -26207,11 +26207,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sponsor",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "principalInvestigator",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "site",
@@ -26240,7 +26240,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ResearchStudy.ArmComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -26276,7 +26276,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ResearchSubject",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ResearchSubject",
             "element": [
@@ -26286,7 +26286,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -26298,7 +26298,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -26320,7 +26320,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -26334,11 +26334,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "study",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "individual",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "assignedArm",
@@ -26350,7 +26350,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "consent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
@@ -26366,7 +26366,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -26381,7 +26381,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "RiskAssessment",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "RiskAssessment",
             "primaryCodePath": "code",
@@ -26392,7 +26392,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -26404,7 +26404,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -26426,15 +26426,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "basedOn",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
@@ -26450,11 +26450,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -26474,11 +26474,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -26523,7 +26523,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "RiskAssessment.PredictionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -26593,7 +26593,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SampledData",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "SampledData",
             "element": [
@@ -26640,7 +26640,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Schedule",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Schedule",
             "element": [
@@ -26650,7 +26650,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -26662,7 +26662,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -26729,7 +26729,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SearchParameter",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "SearchParameter",
             "primaryCodePath": "code",
@@ -26740,7 +26740,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -26752,7 +26752,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -26887,7 +26887,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SearchParameter.ComponentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -26908,7 +26908,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "expression",
@@ -26919,7 +26919,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Sequence",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Sequence",
             "primaryCodePath": "type",
@@ -26930,7 +26930,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -26942,7 +26942,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -26978,19 +26978,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "specimen",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "quantity",
@@ -26998,7 +26998,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "referenceSeq",
-                    "type": "QUICKFHIR.Sequence.ReferenceSeqComponent"
+                    "type": "Sequence.ReferenceSeqComponent"
                 },
                 {
                     "name": "variant",
@@ -27037,7 +27037,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Sequence.QualityComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -27117,7 +27117,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Sequence.ReferenceSeqComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -27150,7 +27150,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "referenceSeqPointer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "referenceSeqString",
@@ -27173,7 +27173,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Sequence.RepositoryComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -27221,7 +27221,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Sequence.VariantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -27262,14 +27262,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "variantPointer",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ServiceDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ServiceDefinition",
             "element": [
@@ -27279,7 +27279,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -27291,7 +27291,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -27429,14 +27429,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operationDefinition",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Signature",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Signature",
             "element": [
@@ -27509,7 +27509,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Slot",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Slot",
             "element": [
@@ -27519,7 +27519,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -27531,7 +27531,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -27579,7 +27579,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "schedule",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
@@ -27606,7 +27606,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Specimen",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Specimen",
             "primaryCodePath": "type",
@@ -27617,7 +27617,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -27629,7 +27629,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -27657,7 +27657,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "accessionIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -27669,7 +27669,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receivedTime",
@@ -27689,7 +27689,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "collection",
-                    "type": "QUICKFHIR.Specimen.CollectionComponent"
+                    "type": "Specimen.CollectionComponent"
                 },
                 {
                     "name": "processing",
@@ -27714,7 +27714,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Specimen.CollectionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -27735,7 +27735,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "collector",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "collected",
@@ -27770,7 +27770,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Specimen.ContainerComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -27834,7 +27834,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Specimen.ProcessingComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -27888,7 +27888,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureDefinition",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "StructureDefinition",
             "element": [
@@ -27898,7 +27898,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -27910,7 +27910,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -28046,18 +28046,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "snapshot",
-                    "type": "QUICKFHIR.StructureDefinition.SnapshotComponent"
+                    "type": "StructureDefinition.SnapshotComponent"
                 },
                 {
                     "name": "differential",
-                    "type": "QUICKFHIR.StructureDefinition.DifferentialComponent"
+                    "type": "StructureDefinition.DifferentialComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "StructureDefinition.DifferentialComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28087,7 +28087,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureDefinition.MappingComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28127,7 +28127,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureDefinition.SnapshotComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28157,7 +28157,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "StructureMap",
             "element": [
@@ -28167,7 +28167,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -28179,7 +28179,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -28290,7 +28290,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.Group.InputComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28330,7 +28330,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.Group.Rule.DependentComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28364,7 +28364,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.Group.Rule.SourceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28543,7 +28543,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.Group.Rule.Target.ParameterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28595,7 +28595,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.Group.Rule.TargetComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28651,7 +28651,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.Group.RuleComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28712,7 +28712,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.GroupComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28764,7 +28764,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "StructureMap.StructureComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28804,7 +28804,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Subscription",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Subscription",
             "element": [
@@ -28814,7 +28814,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -28826,7 +28826,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -28874,7 +28874,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "channel",
-                    "type": "QUICKFHIR.Subscription.ChannelComponent"
+                    "type": "Subscription.ChannelComponent"
                 },
                 {
                     "name": "tag",
@@ -28887,7 +28887,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Subscription.ChannelComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -28929,7 +28929,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Substance",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Substance",
             "primaryCodePath": "code",
@@ -28940,7 +28940,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -28952,7 +28952,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -29013,7 +29013,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Substance.IngredientComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29059,7 +29059,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Substance.InstanceComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29080,7 +29080,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "expiry",
@@ -29095,7 +29095,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SupplyDelivery",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "SupplyDelivery",
             "primaryCodePath": "type",
@@ -29106,7 +29106,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -29118,7 +29118,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -29140,7 +29140,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "basedOn",
@@ -29160,7 +29160,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -29168,7 +29168,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "suppliedItem",
-                    "type": "QUICKFHIR.SupplyDelivery.SuppliedItemComponent"
+                    "type": "SupplyDelivery.SuppliedItemComponent"
                 },
                 {
                     "name": "occurrence",
@@ -29193,11 +29193,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "supplier",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "destination",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -29210,7 +29210,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SupplyDelivery.SuppliedItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29256,7 +29256,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SupplyRequest",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "SupplyRequest",
             "primaryCodePath": "category",
@@ -29267,7 +29267,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -29279,7 +29279,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -29301,7 +29301,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
@@ -29317,7 +29317,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "orderedItem",
-                    "type": "QUICKFHIR.SupplyRequest.OrderedItemComponent"
+                    "type": "SupplyRequest.OrderedItemComponent"
                 },
                 {
                     "name": "occurrence",
@@ -29346,7 +29346,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "QUICKFHIR.SupplyRequest.RequesterComponent"
+                    "type": "SupplyRequest.RequesterComponent"
                 },
                 {
                     "name": "supplier",
@@ -29374,18 +29374,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "deliverFrom",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "deliverTo",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "SupplyRequest.OrderedItemComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29431,7 +29431,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SupplyRequest.RequesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29452,18 +29452,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Task",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "Task",
             "primaryCodePath": "code",
@@ -29474,7 +29474,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -29486,7 +29486,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -29538,7 +29538,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "partOf",
@@ -29572,15 +29572,15 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "focus",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "for",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "context",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "executionPeriod",
@@ -29598,7 +29598,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "QUICKFHIR.Task.RequesterComponent"
+                    "type": "Task.RequesterComponent"
                 },
                 {
                     "name": "performerType",
@@ -29608,7 +29608,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "owner",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -29628,7 +29628,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "restriction",
-                    "type": "QUICKFHIR.Task.RestrictionComponent"
+                    "type": "Task.RestrictionComponent"
                 },
                 {
                     "name": "input",
@@ -29647,7 +29647,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Task.InputComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29794,7 +29794,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Task.OutputComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29941,7 +29941,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Task.RequesterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -29962,18 +29962,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "Task.RestrictionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30013,7 +30013,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestReport",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "TestReport",
             "element": [
@@ -30023,7 +30023,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -30035,7 +30035,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -30057,7 +30057,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "name",
@@ -30069,7 +30069,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "testScript",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "result",
@@ -30095,7 +30095,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "setup",
-                    "type": "QUICKFHIR.TestReport.SetupComponent"
+                    "type": "TestReport.SetupComponent"
                 },
                 {
                     "name": "test",
@@ -30105,14 +30105,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "teardown",
-                    "type": "QUICKFHIR.TestReport.TeardownComponent"
+                    "type": "TestReport.TeardownComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestReport.ParticipantComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30148,7 +30148,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestReport.Setup.Action.AssertComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30184,7 +30184,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestReport.Setup.Action.OperationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30220,7 +30220,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestReport.Setup.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30241,18 +30241,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operation",
-                    "type": "QUICKFHIR.TestReport.Setup.Action.OperationComponent"
+                    "type": "TestReport.Setup.Action.OperationComponent"
                 },
                 {
                     "name": "assert",
-                    "type": "QUICKFHIR.TestReport.Setup.Action.AssertComponent"
+                    "type": "TestReport.Setup.Action.AssertComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestReport.SetupComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30282,7 +30282,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestReport.Teardown.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30303,14 +30303,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operation",
-                    "type": "QUICKFHIR.TestReport.Setup.Action.OperationComponent"
+                    "type": "TestReport.Setup.Action.OperationComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestReport.TeardownComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30340,7 +30340,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestReport.Test.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30361,18 +30361,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operation",
-                    "type": "QUICKFHIR.TestReport.Setup.Action.OperationComponent"
+                    "type": "TestReport.Setup.Action.OperationComponent"
                 },
                 {
                     "name": "assert",
-                    "type": "QUICKFHIR.TestReport.Setup.Action.AssertComponent"
+                    "type": "TestReport.Setup.Action.AssertComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestReport.TestComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30410,7 +30410,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "TestScript",
             "element": [
@@ -30420,7 +30420,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -30432,7 +30432,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -30458,7 +30458,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICKFHIR.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
@@ -30532,7 +30532,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "metadata",
-                    "type": "QUICKFHIR.TestScript.MetadataComponent"
+                    "type": "TestScript.MetadataComponent"
                 },
                 {
                     "name": "fixture",
@@ -30560,7 +30560,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "setup",
-                    "type": "QUICKFHIR.TestScript.SetupComponent"
+                    "type": "TestScript.SetupComponent"
                 },
                 {
                     "name": "test",
@@ -30570,14 +30570,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "teardown",
-                    "type": "QUICKFHIR.TestScript.TeardownComponent"
+                    "type": "TestScript.TeardownComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestScript.DestinationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30609,7 +30609,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.FixtureComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30638,14 +30638,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestScript.Metadata.CapabilityComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30694,14 +30694,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "capabilities",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestScript.Metadata.LinkComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30733,7 +30733,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.MetadataComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30769,7 +30769,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.OriginComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30801,7 +30801,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Rule.ParamComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30833,7 +30833,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.RuleComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30854,7 +30854,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "param",
@@ -30873,7 +30873,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Ruleset.Rule.ParamComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30905,7 +30905,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Ruleset.RuleComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30939,7 +30939,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.RulesetComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -30960,7 +30960,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "rule",
@@ -30973,7 +30973,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.Assert.Rule.ParamComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31005,7 +31005,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.Assert.RuleComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31036,14 +31036,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "set",
-                    "type": "QUICKFHIR.TestScript.Setup.Action.Assert.RulesetComponent"
+                    "type": "TestScript.Setup.Action.Assert.RulesetComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.Assert.Ruleset.Rule.ParamComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31075,7 +31075,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.Assert.Ruleset.RuleComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31109,7 +31109,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.Assert.RulesetComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31143,7 +31143,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.AssertComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31232,7 +31232,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "rule",
-                    "type": "QUICKFHIR.TestScript.Setup.Action.Assert.RuleComponent"
+                    "type": "TestScript.Setup.Action.Assert.RuleComponent"
                 },
                 {
                     "name": "sourceId",
@@ -31255,7 +31255,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.Operation.RequestHeaderComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31287,7 +31287,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.Action.OperationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31377,7 +31377,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Setup.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31398,18 +31398,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operation",
-                    "type": "QUICKFHIR.TestScript.Setup.Action.OperationComponent"
+                    "type": "TestScript.Setup.Action.OperationComponent"
                 },
                 {
                     "name": "assert",
-                    "type": "QUICKFHIR.TestScript.Setup.Action.AssertComponent"
+                    "type": "TestScript.Setup.Action.AssertComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestScript.SetupComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31439,7 +31439,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Teardown.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31460,14 +31460,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operation",
-                    "type": "QUICKFHIR.TestScript.Setup.Action.OperationComponent"
+                    "type": "TestScript.Setup.Action.OperationComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestScript.TeardownComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31497,7 +31497,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.Test.ActionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31518,18 +31518,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operation",
-                    "type": "QUICKFHIR.TestScript.Setup.Action.OperationComponent"
+                    "type": "TestScript.Setup.Action.OperationComponent"
                 },
                 {
                     "name": "assert",
-                    "type": "QUICKFHIR.TestScript.Setup.Action.AssertComponent"
+                    "type": "TestScript.Setup.Action.AssertComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "TestScript.TestComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31567,7 +31567,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TestScript.VariableComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31623,7 +31623,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Timing",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "Timing",
             "primaryCodePath": "code",
@@ -31646,7 +31646,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "repeat",
-                    "type": "QUICKFHIR.Element"
+                    "type": "Element"
                 },
                 {
                     "name": "code",
@@ -31657,7 +31657,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TriggerDefinition",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "TriggerDefinition",
             "element": [
@@ -31704,14 +31704,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "eventData",
-                    "type": "QUICKFHIR.DataRequirement"
+                    "type": "DataRequirement"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "UsageContext",
-            "baseType": "QUICKFHIR.Element",
+            "baseType": "Element",
             "retrievable": false,
             "label": "UsageContext",
             "primaryCodePath": "code",
@@ -31756,7 +31756,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "ValueSet",
             "element": [
@@ -31766,7 +31766,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -31778,7 +31778,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -31876,18 +31876,18 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "compose",
-                    "type": "QUICKFHIR.ValueSet.ComposeComponent"
+                    "type": "ValueSet.ComposeComponent"
                 },
                 {
                     "name": "expansion",
-                    "type": "QUICKFHIR.ValueSet.ExpansionComponent"
+                    "type": "ValueSet.ExpansionComponent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "ValueSet.Compose.Include.Concept.DesignationComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31923,7 +31923,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet.Compose.Include.ConceptComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31961,7 +31961,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet.Compose.Include.FilterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31997,7 +31997,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet.Compose.IncludeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -32047,7 +32047,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet.ComposeComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -32096,7 +32096,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet.Expansion.ContainsComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -32166,7 +32166,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet.Expansion.ParameterComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -32222,7 +32222,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ValueSet.ExpansionComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -32274,7 +32274,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "VisionPrescription",
-            "baseType": "QUICKFHIR.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "label": "VisionPrescription",
             "element": [
@@ -32284,7 +32284,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "type": "QUICKFHIR.Meta"
+                    "type": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -32296,7 +32296,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "type": "QUICKFHIR.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -32328,11 +32328,11 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateWritten",
@@ -32340,7 +32340,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prescriber",
-                    "type": "QUICKFHIR.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -32371,7 +32371,7 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "VisionPrescription.DispenseComponent",
-            "baseType": "QUICKFHIR.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {

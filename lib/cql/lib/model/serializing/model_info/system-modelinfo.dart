@@ -8,108 +8,108 @@ final systemmodelinfo = ModelInfo.fromJson({
     "typeInfo": [
         {
             "type": "SimpleTypeInfo",
-            "name": "System.Any"
+            "name": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.Boolean",
-            "baseType": "System.Any"
+            "name": "Boolean",
+            "baseType": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.Integer",
-            "baseType": "System.Any"
+            "name": "Integer",
+            "baseType": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.Long",
-            "baseType": "System.Any"
+            "name": "Long",
+            "baseType": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.Decimal",
-            "baseType": "System.Any"
+            "name": "Decimal",
+            "baseType": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.String",
-            "baseType": "System.Any"
+            "name": "String",
+            "baseType": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.DateTime",
-            "baseType": "System.Any"
+            "name": "DateTime",
+            "baseType": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.Date",
-            "baseType": "System.Any"
+            "name": "Date",
+            "baseType": "Any"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "System.Time",
-            "baseType": "System.Any"
+            "name": "Time",
+            "baseType": "Any"
         },
         {
             "type": "ClassInfo",
-            "name": "System.Quantity",
-            "baseType": "System.Any",
+            "name": "Quantity",
+            "baseType": "Any",
             "retrievable": false,
             "element": [
                 {
                     "name": "value",
-                    "type": "System.Decimal"
+                    "type": "Decimal"
                 },
                 {
                     "name": "unit",
-                    "type": "System.String"
+                    "type": "String"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "System.Ratio",
-            "baseType": "System.Any",
+            "name": "Ratio",
+            "baseType": "Any",
             "retrievable": false,
             "element": [
                 {
                     "name": "numerator",
-                    "type": "System.Quantity"
+                    "type": "Quantity"
                 },
                 {
                     "name": "denominator",
-                    "type": "System.Quantity"
+                    "type": "Quantity"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "System.Code",
-            "baseType": "System.Any",
+            "name": "Code",
+            "baseType": "Any",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "System.String"
+                    "type": "String"
                 },
                 {
                     "name": "system",
-                    "type": "System.String"
+                    "type": "String"
                 },
                 {
                     "name": "version",
-                    "type": "System.String"
+                    "type": "String"
                 },
                 {
                     "name": "display",
-                    "type": "System.String"
+                    "type": "String"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "System.Concept",
-            "baseType": "System.Any",
+            "name": "Concept",
+            "baseType": "Any",
             "retrievable": false,
             "element": [
                 {
@@ -120,36 +120,36 @@ final systemmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "display",
-                    "type": "System.String"
+                    "type": "String"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "System.Vocabulary",
-            "baseType": "System.Any",
+            "name": "Vocabulary",
+            "baseType": "Any",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "System.String"
+                    "type": "String"
                 },
                 {
                     "name": "version",
-                    "type": "System.String"
+                    "type": "String"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "System.ValueSet",
-            "baseType": "System.Vocabulary",
+            "name": "ValueSet",
+            "baseType": "Vocabulary",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "System.CodeSystem",
-            "baseType": "System.Vocabulary",
+            "name": "CodeSystem",
+            "baseType": "Vocabulary",
             "retrievable": false
         }
     ]

@@ -8,7 +8,7 @@ final testmodelinfowithgenericshappy = ModelInfo.fromJson({
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyGeneric",
+            "name": "MyGeneric",
             "baseType": "System.Any",
             "retrievable": false,
             "parameter": {
@@ -26,8 +26,8 @@ final testmodelinfowithgenericshappy = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyQuantity",
-            "baseType": "GENTEST.MyGeneric",
+            "name": "MyQuantity",
+            "baseType": "MyGeneric",
             "retrievable": false,
             "element": {
                 "name": "field1",
@@ -40,19 +40,19 @@ final testmodelinfowithgenericshappy = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.Map<S,T extends System.Integer>",
+            "name": "Map<S,T extends System.Integer>",
             "baseType": "System.Any",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyInteger",
-            "baseType": "GENTEST.MyGeneric<System.Integer>",
+            "name": "MyInteger",
+            "baseType": "MyGeneric<System.Integer>",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyOtherGeneric",
+            "name": "MyOtherGeneric",
             "baseType": "System.Any",
             "retrievable": false,
             "parameter": [
@@ -86,8 +86,8 @@ final testmodelinfowithgenericshappy = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyOtherQuantity1",
-            "baseType": "GENTEST.MyOtherGeneric",
+            "name": "MyOtherQuantity1",
+            "baseType": "MyOtherGeneric",
             "retrievable": false,
             "parameter": {
                 "name": "T",
@@ -105,8 +105,8 @@ final testmodelinfowithgenericshappy = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyOtherQuantity2",
-            "baseType": "GENTEST.MyOtherGeneric",
+            "name": "MyOtherQuantity2",
+            "baseType": "MyOtherGeneric",
             "retrievable": false,
             "parameter": {
                 "name": "S",
@@ -124,8 +124,8 @@ final testmodelinfowithgenericshappy = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyOtherQuantity3",
-            "baseType": "GENTEST.MyOtherGeneric",
+            "name": "MyOtherQuantity3",
+            "baseType": "MyOtherGeneric",
             "retrievable": false,
             "element": [
                 {

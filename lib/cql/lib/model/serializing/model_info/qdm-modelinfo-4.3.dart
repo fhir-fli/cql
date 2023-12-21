@@ -4,7 +4,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
     "name": "QDM",
     "url": "urn:healthit-gov:qdm:v4_3",
     "targetQualifier": "qdm",
-    "patientClassName": "QDM.Patient",
+    "patientClassName": "Patient",
     "patientClassIdentifier": "Patient",
     "patientBirthDatePropertyName": "birthDatetime",
     "version": "4.3",
@@ -12,7 +12,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "QDM.Patient",
+            "name": "Patient",
             "baseType": "System.Any",
             "retrievable": false,
             "identifier": "Patient",
@@ -24,7 +24,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PhysicalExamOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "PhysicalExamOrder",
             "label": "Physical Exam, Order",
@@ -59,7 +59,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcedureIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ProcedureIntolerance",
             "label": "Procedure, Intolerance",
@@ -104,7 +104,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EncounterActive",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "EncounterActive",
             "label": "Encounter, Active",
@@ -143,7 +143,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CareGoal",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "CareGoal",
             "label": "Care Goal",
@@ -204,7 +204,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationAllergy",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationAllergy",
             "label": "Medication Allergy",
@@ -227,7 +227,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "LaboratoryTestPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "LaboratoryTestPerformed",
             "label": "Laboratory Test, Performed",
@@ -284,7 +284,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Symptom",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Symptom",
             "label": "Symptom",
@@ -307,7 +307,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationAdministered",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationAdministered",
             "label": "Medication, Administered",
@@ -350,7 +350,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcedureRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ProcedureRecommended",
             "label": "Procedure, Recommended",
@@ -393,7 +393,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EncounterPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "EncounterPerformed",
             "label": "Encounter, Performed",
@@ -448,7 +448,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DiagnosticStudyIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DiagnosticStudyIntolerance",
             "label": "Diagnostic Study, Intolerance",
@@ -489,7 +489,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CommunicationFromProviderToPatient",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "CommunicationFromProviderToPatient",
             "label": "Communication: From Provider to Patient",
@@ -512,7 +512,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "Diagnosis",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Diagnosis",
             "label": "Diagnosis",
@@ -539,7 +539,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TransferFrom",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "TransferFrom",
             "label": "Transfer From",
@@ -562,7 +562,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AssessmentPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -594,7 +594,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "InterventionIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "InterventionIntolerance",
             "label": "Intervention, Intolerance",
@@ -639,7 +639,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DeviceOrder",
             "label": "Device, Order",
@@ -666,7 +666,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DiagnosticStudyPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DiagnosticStudyPerformed",
             "label": "Diagnostic Study, Performed",
@@ -717,7 +717,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "InterventionOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "InterventionOrder",
             "label": "Intervention, Order",
@@ -744,7 +744,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceAllergy",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DeviceAllergy",
             "label": "Device, Allergy",
@@ -767,7 +767,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcedureAdverseEvent",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ProcedureAdverseEvent",
             "label": "Procedure, Adverse Event",
@@ -790,7 +790,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "FamilyHistory",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "FamilyHistory",
             "label": "Family History",
@@ -813,7 +813,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationAllergy",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ImmunizationAllergy",
             "label": "Immunization, Allergy",
@@ -836,7 +836,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationAdverseEffects",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationAdverseEffects",
             "label": "Medication, Adverse Effects",
@@ -859,7 +859,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CommunicationFromProviderToProvider",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "CommunicationFromProviderToProvider",
             "label": "Communication: From Provider to Provider",
@@ -906,7 +906,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationActive",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationActive",
             "label": "Medication, Active",
@@ -941,7 +941,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "LaboratoryTestOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "LaboratoryTestOrder",
             "label": "Laboratory Test, Order",
@@ -972,7 +972,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SubstanceAdverseEvent",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "SubstanceAdverseEvent",
             "label": "Substance, Adverse Event",
@@ -995,7 +995,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DiagnosticStudyOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DiagnosticStudyOrder",
             "label": "Diagnostic Study, Order",
@@ -1034,7 +1034,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ImmunizationIntolerance",
             "label": "Immunization, Intolerance",
@@ -1057,7 +1057,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SubstanceOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "SubstanceOrder",
             "label": "Substance, Order",
@@ -1144,7 +1144,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "AssessmentRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1172,7 +1172,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "LaboratoryTestAdverseEvent",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "LaboratoryTestAdverseEvent",
             "label": "Laboratory Test, Adverse Event",
@@ -1195,7 +1195,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationAdministered",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ImmunizationAdministered",
             "label": "Immunization, Administered",
@@ -1230,7 +1230,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SubstanceAdministered",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "SubstanceAdministered",
             "label": "Substance, Administered",
@@ -1265,7 +1265,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EncounterOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "EncounterOrder",
             "label": "Encounter, Order",
@@ -1296,7 +1296,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "LaboratoryTestIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "LaboratoryTestIntolerance",
             "label": "Laboratory Test, Intolerance",
@@ -1319,7 +1319,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceAdverseEvent",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DeviceAdverseEvent",
             "label": "Device, Adverse Event",
@@ -1342,7 +1342,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "EncounterRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "EncounterRecommended",
             "label": "Encounter, Recommended",
@@ -1373,7 +1373,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcedurePerformed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ProcedurePerformed",
             "label": "Procedure, Performed",
@@ -1452,7 +1452,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PhysicalExamRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "PhysicalExamRecommended",
             "label": "Physical Exam, Recommended",
@@ -1505,7 +1505,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "InterventionAdverseEvent",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "InterventionAdverseEvent",
             "label": "Intervention, Adverse Event",
@@ -1544,7 +1544,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "CommunicationFromPatientToProvider",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "CommunicationFromPatientToProvider",
             "label": "Communication: From Patient to Provider",
@@ -1567,7 +1567,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DeviceRecommended",
             "label": "Device, Recommended",
@@ -1594,7 +1594,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceApplied",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DeviceApplied",
             "label": "Device, Applied",
@@ -1629,7 +1629,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationDischarge",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationDischarge",
             "label": "Medication, Discharge",
@@ -1672,7 +1672,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "InterventionPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "InterventionPerformed",
             "label": "Intervention, Performed",
@@ -1707,7 +1707,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "LaboratoryTestRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "LaboratoryTestRecommended",
             "label": "Laboratory Test, Recommended",
@@ -1738,7 +1738,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationDispensed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationDispensed",
             "label": "Medication, Dispensed",
@@ -1785,7 +1785,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DiagnosticStudyAdverseEvent",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DiagnosticStudyAdverseEvent",
             "label": "Diagnostic Study, Adverse Event",
@@ -1816,7 +1816,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DiagnosticStudyRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DiagnosticStudyRecommended",
             "label": "Diagnostic Study, Recommended",
@@ -1851,7 +1851,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ImmunizationOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ImmunizationOrder",
             "label": "Immunization, Order",
@@ -1894,7 +1894,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "DeviceIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "DeviceIntolerance",
             "label": "Device, Intolerance",
@@ -1917,7 +1917,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PatientCareExperience",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "PatientCareExperience",
             "label": "Patient Care Experience",
@@ -1936,7 +1936,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "TransferTo",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Transfer To",
             "label": "Transfer To",
@@ -1959,7 +1959,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProviderCareExperience",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ProviderCareExperience",
             "label": "Provider Care Experience",
@@ -1994,7 +1994,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SubstanceIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "SubstanceIntolerance",
             "label": "Substance, Intolerance",
@@ -2017,7 +2017,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "ProcedureOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "ProcedureOrder",
             "label": "Procedure, Order",
@@ -2064,7 +2064,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationOrder",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationOrder",
             "label": "Medication, Order",
@@ -2123,7 +2123,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SubstanceRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "SubstanceRecommended",
             "label": "Substance, Recommended",
@@ -2170,7 +2170,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "InterventionRecommended",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "InterventionRecommended",
             "label": "Intervention, Recommended",
@@ -2197,7 +2197,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "PhysicalExamPerformed",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "PhysicalExamPerformed",
             "label": "Physical Exam, Performed",
@@ -2236,7 +2236,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "SubstanceAllergy",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "SubstanceAllergy",
             "label": "Substance, Allergy",
@@ -2259,7 +2259,7 @@ final qdmmodelinfo43 = ModelInfo.fromJson({
         {
             "type": "ClassInfo",
             "name": "MedicationIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "MedicationIntolerance",
             "label": "Medication, Intolerance",

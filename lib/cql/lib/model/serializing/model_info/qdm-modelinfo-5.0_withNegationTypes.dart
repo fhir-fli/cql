@@ -4,13 +4,13 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
     "name": "QDM",
     "url": "urn:healthit-gov:qdm:v5_0_draft",
     "targetQualifier": "qdm",
-    "patientClassName": "QDM.Patient",
+    "patientClassName": "Patient",
     "patientClassIdentifier": "Patient",
     "patientBirthDatePropertyName": "birthDateTime",
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "QDM.Patient",
+            "name": "Patient",
             "baseType": "System.Any",
             "retrievable": false,
             "identifier": "Patient",
@@ -21,8 +21,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PhysicalExamNotRecommended",
-            "baseType": "QDM.PhysicalExamBase",
+            "name": "PhysicalExamNotRecommended",
+            "baseType": "PhysicalExamBase",
             "retrievable": true,
             "identifier": "Physical Exam, Not Recommended",
             "element": [
@@ -38,15 +38,15 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristicSex",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristicSex",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Patient Characteristic: Sex"
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CareGoal",
-            "baseType": "QDM.QDMBaseType",
+            "name": "CareGoal",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Care Goal",
             "element": [
@@ -66,8 +66,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DeviceNotRecommended",
-            "baseType": "QDM.DeviceBase",
+            "name": "DeviceNotRecommended",
+            "baseType": "DeviceBase",
             "retrievable": true,
             "identifier": "Device, Not Recommended",
             "element": {
@@ -87,8 +87,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationAdministered",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationAdministered",
+            "baseType": "MedicationBase",
             "retrievable": true,
             "identifier": "Medication, Administered",
             "element": [
@@ -104,8 +104,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationNotAdministered",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationNotAdministered",
+            "baseType": "MedicationBase",
             "retrievable": true,
             "identifier": "Medication, Not Administered",
             "element": {
@@ -115,8 +115,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DeviceNotApplied",
-            "baseType": "QDM.DeviceBase",
+            "name": "DeviceNotApplied",
+            "baseType": "DeviceBase",
             "retrievable": true,
             "identifier": "Device, Not Applied",
             "element": {
@@ -146,8 +146,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationNotDispensed",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationNotDispensed",
+            "baseType": "MedicationBase",
             "retrievable": true,
             "identifier": "Medication, Not Dispensed",
             "element": [
@@ -163,8 +163,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.Diagnosis",
-            "baseType": "QDM.QDMBaseType",
+            "name": "Diagnosis",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Diagnosis",
             "element": [
@@ -184,8 +184,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProcedureNotPerformed",
-            "baseType": "QDM.ProcedureBase",
+            "name": "ProcedureNotPerformed",
+            "baseType": "ProcedureBase",
             "retrievable": true,
             "identifier": "Procedure, Not Performed",
             "element": {
@@ -195,8 +195,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.AssessmentPerformed",
-            "baseType": "QDM.AssessmentBase",
+            "name": "AssessmentPerformed",
+            "baseType": "AssessmentBase",
             "retrievable": true,
             "identifier": "Assessment, Performed",
             "element": [
@@ -206,14 +206,14 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
                 },
                 {
                     "name": "component",
-                    "type": "QDM.Component"
+                    "type": "Component"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.InterventionNotOrdered",
-            "baseType": "QDM.InterventionBase",
+            "name": "InterventionNotOrdered",
+            "baseType": "InterventionBase",
             "retrievable": true,
             "identifier": "Intervention, Not Ordered",
             "element": {
@@ -233,8 +233,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristicClinicalTrialParticipant",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristicClinicalTrialParticipant",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Patient Characteristic: Clinical Trial Participant",
             "element": [
@@ -250,21 +250,21 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.InterventionOrder",
-            "baseType": "QDM.InterventionBase",
+            "name": "InterventionOrder",
+            "baseType": "InterventionBase",
             "retrievable": true,
             "identifier": "Intervention, Order"
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DeviceOrder",
-            "baseType": "QDM.DeviceBase",
+            "name": "DeviceOrder",
+            "baseType": "DeviceBase",
             "retrievable": true,
             "identifier": "Device, Order"
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.Component",
+            "name": "Component",
             "baseType": "System.Any",
             "retrievable": false,
             "element": [
@@ -304,8 +304,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterNotOrdered",
-            "baseType": "QDM.EncounterBase",
+            "name": "EncounterNotOrdered",
+            "baseType": "EncounterBase",
             "retrievable": true,
             "identifier": "Encounter, Not Ordered",
             "element": {
@@ -315,8 +315,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationActive",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationActive",
+            "baseType": "MedicationBase",
             "retrievable": true,
             "identifier": "Medication, Active",
             "element": {
@@ -326,8 +326,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.LaboratoryTestBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "LaboratoryTestBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -346,8 +346,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristicExpired",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristicExpired",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Patient Characteristic, Expired",
             "element": [
@@ -363,8 +363,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosticStudyNotPerformed",
-            "baseType": "QDM.DiagnosticStudyBase",
+            "name": "DiagnosticStudyNotPerformed",
+            "baseType": "DiagnosticStudyBase",
             "retrievable": true,
             "identifier": "Diagnostic Study, Not Performed",
             "element": {
@@ -374,15 +374,15 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.AssessmentRecommended",
-            "baseType": "QDM.AssessmentBase",
+            "name": "AssessmentRecommended",
+            "baseType": "AssessmentBase",
             "retrievable": true,
             "identifier": "Assessment, Recommended"
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterNotRecommended",
-            "baseType": "QDM.EncounterBase",
+            "name": "EncounterNotRecommended",
+            "baseType": "EncounterBase",
             "retrievable": true,
             "identifier": "Encounter, Not Recommended",
             "element": {
@@ -392,8 +392,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.SubstanceAdministered",
-            "baseType": "QDM.SubstanceBase",
+            "name": "SubstanceAdministered",
+            "baseType": "SubstanceBase",
             "retrievable": true,
             "identifier": "Substance, Administered",
             "element": {
@@ -419,8 +419,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProcedurePerformed",
-            "baseType": "QDM.ProcedureBase",
+            "name": "ProcedurePerformed",
+            "baseType": "ProcedureBase",
             "retrievable": true,
             "identifier": "Procedure, Performed",
             "element": [
@@ -452,8 +452,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProcedureNotRecommended",
-            "baseType": "QDM.ProcedureBase",
+            "name": "ProcedureNotRecommended",
+            "baseType": "ProcedureBase",
             "retrievable": true,
             "identifier": "Procedure, Not Recommended",
             "element": [
@@ -469,8 +469,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristicBirthdate",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristicBirthdate",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Patient Characteristic: Birthdate",
             "element": {
@@ -480,7 +480,7 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.QDMBaseType",
+            "name": "QDMBaseType",
             "baseType": "System.Any",
             "retrievable": false,
             "element": {
@@ -490,8 +490,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "EncounterBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -510,8 +510,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.InterventionPerformed",
-            "baseType": "QDM.InterventionBase",
+            "name": "InterventionPerformed",
+            "baseType": "InterventionBase",
             "retrievable": true,
             "identifier": "Intervention, Performed",
             "element": [
@@ -531,15 +531,15 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.LaboratoryTestRecommended",
-            "baseType": "QDM.LaboratoryTestBase",
+            "name": "LaboratoryTestRecommended",
+            "baseType": "LaboratoryTestBase",
             "retrievable": true,
             "identifier": "Laboratory Test, Recommended"
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.InterventionNotPerformed",
-            "baseType": "QDM.InterventionBase",
+            "name": "InterventionNotPerformed",
+            "baseType": "InterventionBase",
             "retrievable": true,
             "identifier": "Intervention, Not Performed",
             "element": {
@@ -549,8 +549,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ImmunizationNotOrdered",
-            "baseType": "QDM.ImmunizationBase",
+            "name": "ImmunizationNotOrdered",
+            "baseType": "ImmunizationBase",
             "retrievable": true,
             "identifier": "Immunization, Not Ordered",
             "element": [
@@ -566,8 +566,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterNotPerformed",
-            "baseType": "QDM.EncounterBase",
+            "name": "EncounterNotPerformed",
+            "baseType": "EncounterBase",
             "retrievable": true,
             "identifier": "Encounter, Not Performed",
             "element": {
@@ -577,8 +577,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationNotOrdered",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationNotOrdered",
+            "baseType": "MedicationBase",
             "retrievable": true,
             "identifier": "Medication, Not Ordered",
             "element": [
@@ -594,8 +594,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosticStudyRecommended",
-            "baseType": "QDM.DiagnosticStudyBase",
+            "name": "DiagnosticStudyRecommended",
+            "baseType": "DiagnosticStudyBase",
             "retrievable": true,
             "identifier": "Diagnostic Study, Recommended",
             "element": {
@@ -605,8 +605,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ImmunizationOrder",
-            "baseType": "QDM.ImmunizationBase",
+            "name": "ImmunizationOrder",
+            "baseType": "ImmunizationBase",
             "retrievable": true,
             "identifier": "Immunization, Order",
             "element": [
@@ -622,8 +622,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProviderCareExperience",
-            "baseType": "QDM.QDMBaseType",
+            "name": "ProviderCareExperience",
+            "baseType": "QDMBaseType",
             "retrievable": true,
             "identifier": "Provider Care Experience",
             "element": {
@@ -633,8 +633,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DeviceNotOrdered",
-            "baseType": "QDM.DeviceBase",
+            "name": "DeviceNotOrdered",
+            "baseType": "DeviceBase",
             "retrievable": true,
             "identifier": "Device, Not Ordered",
             "element": {
@@ -644,8 +644,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.AssessmentNotPerformed",
-            "baseType": "QDM.AssessmentBase",
+            "name": "AssessmentNotPerformed",
+            "baseType": "AssessmentBase",
             "retrievable": true,
             "identifier": "Assessment, Not Performed",
             "element": {
@@ -655,8 +655,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationOrder",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationOrder",
+            "baseType": "MedicationBase",
             "retrievable": true,
             "identifier": "Medication, Order",
             "element": [
@@ -684,8 +684,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.SubstanceBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "SubstanceBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -708,8 +708,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProcedureNotOrdered",
-            "baseType": "QDM.ProcedureBase",
+            "name": "ProcedureNotOrdered",
+            "baseType": "ProcedureBase",
             "retrievable": true,
             "identifier": "Procedure, Not Ordered",
             "element": [
@@ -725,8 +725,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PhysicalExamOrder",
-            "baseType": "QDM.PhysicalExamBase",
+            "name": "PhysicalExamOrder",
+            "baseType": "PhysicalExamBase",
             "retrievable": false,
             "element": {
                 "name": "authorTime",
@@ -735,8 +735,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.InterventionNotRecommended",
-            "baseType": "QDM.InterventionBase",
+            "name": "InterventionNotRecommended",
+            "baseType": "InterventionBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -745,8 +745,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterActive",
-            "baseType": "QDM.EncounterBase",
+            "name": "EncounterActive",
+            "baseType": "EncounterBase",
             "retrievable": false,
             "element": [
                 {
@@ -765,8 +765,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristic",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristic",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": {
                 "name": "authorTime",
@@ -775,8 +775,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CommunicationFromProviderToProviderNotPerformed",
-            "baseType": "QDM.CommunicationBase",
+            "name": "CommunicationFromProviderToProviderNotPerformed",
+            "baseType": "CommunicationBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -785,20 +785,20 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristicEthnicity",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristicEthnicity",
+            "baseType": "QDMBaseType",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristicRace",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristicRace",
+            "baseType": "QDMBaseType",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProcedureBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "ProcedureBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -825,8 +825,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.LaboratoryTestPerformed",
-            "baseType": "QDM.LaboratoryTestBase",
+            "name": "LaboratoryTestPerformed",
+            "baseType": "LaboratoryTestBase",
             "retrievable": false,
             "element": [
                 {
@@ -851,14 +851,14 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
                 },
                 {
                     "name": "component",
-                    "type": "QDM.Component"
+                    "type": "Component"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.Symptom",
-            "baseType": "QDM.QDMBaseType",
+            "name": "Symptom",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -873,8 +873,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosticStudyBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "DiagnosticStudyBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -901,8 +901,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProcedureRecommended",
-            "baseType": "QDM.ProcedureBase",
+            "name": "ProcedureRecommended",
+            "baseType": "ProcedureBase",
             "retrievable": false,
             "element": {
                 "name": "authorTime",
@@ -911,8 +911,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterPerformed",
-            "baseType": "QDM.EncounterBase",
+            "name": "EncounterPerformed",
+            "baseType": "EncounterBase",
             "retrievable": false,
             "element": [
                 {
@@ -937,11 +937,11 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
                 },
                 {
                     "name": "diagnosis",
-                    "type": "QDM.Diagnosis"
+                    "type": "Diagnosis"
                 },
                 {
                     "name": "principalDiagnosis",
-                    "type": "QDM.Diagnosis"
+                    "type": "Diagnosis"
                 },
                 {
                     "name": "lengthOfStay",
@@ -951,8 +951,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosticStudyNotRecommended",
-            "baseType": "QDM.DiagnosticStudyBase",
+            "name": "DiagnosticStudyNotRecommended",
+            "baseType": "DiagnosticStudyBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -961,14 +961,14 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CommunicationFromProviderToPatient",
-            "baseType": "QDM.CommunicationBase",
+            "name": "CommunicationFromProviderToPatient",
+            "baseType": "CommunicationBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.AssessmentNotRecommended",
-            "baseType": "QDM.AssessmentBase",
+            "name": "AssessmentNotRecommended",
+            "baseType": "AssessmentBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -977,8 +977,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CommunicationBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "CommunicationBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": {
                 "name": "authorTime",
@@ -987,8 +987,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosticStudyPerformed",
-            "baseType": "QDM.DiagnosticStudyBase",
+            "name": "DiagnosticStudyPerformed",
+            "baseType": "DiagnosticStudyBase",
             "retrievable": false,
             "element": [
                 {
@@ -1009,14 +1009,14 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
                 },
                 {
                     "name": "component",
-                    "type": "QDM.Component"
+                    "type": "Component"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CommunicationFromProviderToPatientNotPerformed",
-            "baseType": "QDM.CommunicationBase",
+            "name": "CommunicationFromProviderToPatientNotPerformed",
+            "baseType": "CommunicationBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1025,8 +1025,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.FamilyHistory",
-            "baseType": "QDM.QDMBaseType",
+            "name": "FamilyHistory",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1045,8 +1045,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "MedicationBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1069,14 +1069,14 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CommunicationFromProviderToProvider",
-            "baseType": "QDM.CommunicationBase",
+            "name": "CommunicationFromProviderToProvider",
+            "baseType": "CommunicationBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.LaboratoryTestOrder",
-            "baseType": "QDM.LaboratoryTestBase",
+            "name": "LaboratoryTestOrder",
+            "baseType": "LaboratoryTestBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1085,14 +1085,14 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosticStudyOrder",
-            "baseType": "QDM.DiagnosticStudyBase",
+            "name": "DiagnosticStudyOrder",
+            "baseType": "DiagnosticStudyBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.SubstanceOrder",
-            "baseType": "QDM.SubstanceBase",
+            "name": "SubstanceOrder",
+            "baseType": "SubstanceBase",
             "retrievable": false,
             "element": [
                 {
@@ -1111,8 +1111,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCharacteristicPayer",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCharacteristicPayer",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1127,8 +1127,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.SubstanceNotRecommended",
-            "baseType": "QDM.SubstanceBase",
+            "name": "SubstanceNotRecommended",
+            "baseType": "SubstanceBase",
             "retrievable": false,
             "element": [
                 {
@@ -1143,8 +1143,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ImmunizationBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "ImmunizationBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1167,26 +1167,26 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ImmunizationAdministered",
-            "baseType": "QDM.ImmunizationBase",
+            "name": "ImmunizationAdministered",
+            "baseType": "ImmunizationBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterOrder",
-            "baseType": "QDM.EncounterBase",
+            "name": "EncounterOrder",
+            "baseType": "EncounterBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.EncounterRecommended",
-            "baseType": "QDM.EncounterBase",
+            "name": "EncounterRecommended",
+            "baseType": "EncounterBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.Allergy",
-            "baseType": "QDM.QDMBaseType",
+            "name": "Allergy",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1205,8 +1205,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProviderCharacteristic",
-            "baseType": "QDM.QDMBaseType",
+            "name": "ProviderCharacteristic",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": {
                 "name": "authorTime",
@@ -1215,8 +1215,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PhysicalExamRecommended",
-            "baseType": "QDM.PhysicalExamBase",
+            "name": "PhysicalExamRecommended",
+            "baseType": "PhysicalExamBase",
             "retrievable": false,
             "element": {
                 "name": "authorTime",
@@ -1225,8 +1225,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.AdverseEventIntolerance",
-            "baseType": "QDM.QDMBaseType",
+            "name": "AdverseEventIntolerance",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1245,8 +1245,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CommunicationFromPatientToProviderNotPerformed",
-            "baseType": "QDM.CommunicationBase",
+            "name": "CommunicationFromPatientToProviderNotPerformed",
+            "baseType": "CommunicationBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1255,8 +1255,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PhysicalExamNotOrdered",
-            "baseType": "QDM.PhysicalExamBase",
+            "name": "PhysicalExamNotOrdered",
+            "baseType": "PhysicalExamBase",
             "retrievable": false,
             "element": [
                 {
@@ -1277,20 +1277,20 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.CommunicationFromPatientToProvider",
-            "baseType": "QDM.CommunicationBase",
+            "name": "CommunicationFromPatientToProvider",
+            "baseType": "CommunicationBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DeviceRecommended",
-            "baseType": "QDM.DeviceBase",
+            "name": "DeviceRecommended",
+            "baseType": "DeviceBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DeviceApplied",
-            "baseType": "QDM.DeviceBase",
+            "name": "DeviceApplied",
+            "baseType": "DeviceBase",
             "retrievable": false,
             "element": [
                 {
@@ -1309,8 +1309,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationDischarge",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationDischarge",
+            "baseType": "MedicationBase",
             "retrievable": false,
             "element": [
                 {
@@ -1329,8 +1329,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationNotDischarged",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationNotDischarged",
+            "baseType": "MedicationBase",
             "retrievable": false,
             "element": [
                 {
@@ -1345,8 +1345,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.AssessmentBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "AssessmentBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1365,8 +1365,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.InterventionBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "InterventionBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1381,8 +1381,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.MedicationDispensed",
-            "baseType": "QDM.MedicationBase",
+            "name": "MedicationDispensed",
+            "baseType": "MedicationBase",
             "retrievable": false,
             "element": [
                 {
@@ -1401,8 +1401,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DiagnosticStudyNotOrdered",
-            "baseType": "QDM.DiagnosticStudyBase",
+            "name": "DiagnosticStudyNotOrdered",
+            "baseType": "DiagnosticStudyBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1411,8 +1411,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.DeviceBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "DeviceBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1427,8 +1427,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.LaboratoryTestNotRecommended",
-            "baseType": "QDM.LaboratoryTestBase",
+            "name": "LaboratoryTestNotRecommended",
+            "baseType": "LaboratoryTestBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1437,8 +1437,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PatientCareExperience",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PatientCareExperience",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": {
                 "name": "authorTime",
@@ -1447,8 +1447,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.LaboratoryTestNotPerformed",
-            "baseType": "QDM.LaboratoryTestBase",
+            "name": "LaboratoryTestNotPerformed",
+            "baseType": "LaboratoryTestBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1489,8 +1489,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ProcedureOrder",
-            "baseType": "QDM.ProcedureBase",
+            "name": "ProcedureOrder",
+            "baseType": "ProcedureBase",
             "retrievable": false,
             "element": [
                 {
@@ -1505,8 +1505,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PhysicalExamBase",
-            "baseType": "QDM.QDMBaseType",
+            "name": "PhysicalExamBase",
+            "baseType": "QDMBaseType",
             "retrievable": false,
             "element": [
                 {
@@ -1525,8 +1525,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.ImmunizationNotAdministered",
-            "baseType": "QDM.ImmunizationBase",
+            "name": "ImmunizationNotAdministered",
+            "baseType": "ImmunizationBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1535,8 +1535,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.SubstanceNotAdministered",
-            "baseType": "QDM.SubstanceBase",
+            "name": "SubstanceNotAdministered",
+            "baseType": "SubstanceBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",
@@ -1545,8 +1545,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.SubstanceRecommended",
-            "baseType": "QDM.SubstanceBase",
+            "name": "SubstanceRecommended",
+            "baseType": "SubstanceBase",
             "retrievable": false,
             "element": [
                 {
@@ -1565,8 +1565,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.SubstanceNotOrdered",
-            "baseType": "QDM.SubstanceBase",
+            "name": "SubstanceNotOrdered",
+            "baseType": "SubstanceBase",
             "retrievable": false,
             "element": [
                 {
@@ -1581,14 +1581,14 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.InterventionRecommended",
-            "baseType": "QDM.InterventionBase",
+            "name": "InterventionRecommended",
+            "baseType": "InterventionBase",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PhysicalExamPerformed",
-            "baseType": "QDM.PhysicalExamBase",
+            "name": "PhysicalExamPerformed",
+            "baseType": "PhysicalExamBase",
             "retrievable": false,
             "element": [
                 {
@@ -1603,8 +1603,8 @@ final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QDM.PhysicalExamNotPerformed",
-            "baseType": "QDM.PhysicalExamBase",
+            "name": "PhysicalExamNotPerformed",
+            "baseType": "PhysicalExamBase",
             "retrievable": false,
             "element": {
                 "name": "negationRationale",

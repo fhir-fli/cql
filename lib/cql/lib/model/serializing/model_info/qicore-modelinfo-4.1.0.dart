@@ -17,19 +17,19 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Address",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Address",
             "label": "Address",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "QICore.AddressUse",
+                    "elementType": "AddressUse",
                     "target": "%value.value"
                 },
                 {
                     "name": "type",
-                    "elementType": "QICore.AddressType",
+                    "elementType": "AddressType",
                     "target": "%value.value"
                 },
                 {
@@ -103,7 +103,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "AdverseEvent",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-adverseevent",
             "label": "AdverseEvent",
@@ -111,11 +111,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "identifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "actuality",
-                    "elementType": "QICore.AdverseEventActuality",
+                    "elementType": "AdverseEventActuality",
                     "target": "%value.value"
                 },
                 {
@@ -132,11 +132,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -161,7 +161,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "seriousness",
@@ -180,7 +180,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contributor",
@@ -232,16 +232,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "AdverseEvent.SuspectEntity",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "instance",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "causality",
-                    "elementType": "QICore.AdverseEvent.SuspectEntity.Causality"
+                    "elementType": "AdverseEvent.SuspectEntity.Causality"
                 }
             ]
         },
@@ -249,7 +249,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "AdverseEvent.SuspectEntity.Causality",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -264,7 +264,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "method",
@@ -284,7 +284,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "AllergyIntolerance",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance",
             "label": "AllergyIntolerance",
@@ -292,12 +292,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "resolutionAge",
-                    "elementType": "QICore.resolutionAge",
+                    "elementType": "resolutionAge",
                     "target": "FHIRHelpers.ToQuantity(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/allergyintolerance-resolutionAge'].value)"
                 },
                 {
                     "name": "reasonRefuted",
-                    "elementType": "QICore.reasonRefuted",
+                    "elementType": "reasonRefuted",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/allergyintolerance-reasonRefuted'].value)"
                 },
                 {
@@ -318,7 +318,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QICore.AllergyIntoleranceType",
+                    "elementType": "AllergyIntoleranceType",
                     "target": "%value.value"
                 },
                 {
@@ -330,7 +330,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "criticality",
-                    "elementType": "QICore.AllergyIntoleranceCriticality",
+                    "elementType": "AllergyIntoleranceCriticality",
                     "target": "%value.value"
                 },
                 {
@@ -340,11 +340,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onset",
@@ -376,11 +376,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "lastOccurrence",
@@ -431,7 +431,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "AllergyIntolerance.Reaction",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -458,7 +458,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "severity",
-                    "elementType": "QICore.AllergyIntoleranceSeverity",
+                    "elementType": "AllergyIntoleranceSeverity",
                     "target": "%value.value"
                 },
                 {
@@ -474,7 +474,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reaction-duration",
-                    "elementType": "QICore.duration",
+                    "elementType": "duration",
                     "target": "FHIRHelpers.ToQuantity(%parent.reaction.extension[url='http://hl7.org/fhir/StructureDefinition/allergyintolerance-duration'].value)"
                 }
             ]
@@ -511,7 +511,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Annotation",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Annotation",
             "label": "Annotation",
@@ -549,14 +549,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Attachment",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Attachment",
             "label": "Attachment",
             "element": [
                 {
                     "name": "contentType",
-                    "elementType": "QICore.MimeType",
+                    "elementType": "MimeType",
                     "target": "%value.value"
                 },
                 {
@@ -600,7 +600,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "BackboneElement",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/BackboneElement",
             "label": "BackboneElement",
@@ -622,7 +622,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "BodyStructure",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-bodystructure",
             "label": "BodyStructure",
@@ -669,7 +669,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ],
             "contextRelationship": {
@@ -695,7 +695,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CarePlan",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careplan",
             "label": "CarePlan",
@@ -773,11 +773,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -793,7 +793,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contributor",
@@ -865,7 +865,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CarePlan.Activity",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -889,11 +889,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "detail",
-                    "elementType": "QICore.CarePlan.Activity.Detail"
+                    "elementType": "CarePlan.Activity.Detail"
                 }
             ]
         },
@@ -901,12 +901,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CarePlan.Activity.Detail",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "kind",
-                    "elementType": "QICore.CarePlanActivityKind",
+                    "elementType": "CarePlanActivityKind",
                     "target": "%value.value"
                 },
                 {
@@ -949,7 +949,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.CarePlanActivityStatus",
+                    "elementType": "CarePlanActivityStatus",
                     "target": "%value.value"
                 },
                 {
@@ -984,7 +984,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
@@ -1044,7 +1044,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CareTeam",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careteam",
             "label": "CareTeam",
@@ -1075,11 +1075,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -1153,7 +1153,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CareTeam.Participant",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1163,11 +1163,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "member",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -1182,7 +1182,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claim",
             "label": "Claim",
@@ -1196,7 +1196,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.ClaimStatus",
+                    "elementType": "ClaimStatus",
                     "target": "%value.value"
                 },
                 {
@@ -1211,12 +1211,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "QICore.Use",
+                    "elementType": "Use",
                     "target": "%value.value"
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "billablePeriod",
@@ -1232,15 +1232,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "insurer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "provider",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "priority",
@@ -1260,23 +1260,23 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prescription",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "originalPrescription",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "payee",
-                    "elementType": "QICore.Claim.Payee"
+                    "elementType": "Claim.Payee"
                 },
                 {
                     "name": "referral",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "facility",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "careTeam",
@@ -1310,7 +1310,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "accident",
-                    "elementType": "QICore.Claim.Accident"
+                    "elementType": "Claim.Accident"
                 },
                 {
                     "name": "item",
@@ -1379,7 +1379,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Accident",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1415,7 +1415,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.CareTeam",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1425,7 +1425,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "responsible",
@@ -1448,7 +1448,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Diagnosis",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1496,7 +1496,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Insurance",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1511,11 +1511,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "coverage",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -1531,7 +1531,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -1539,7 +1539,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Item",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1697,7 +1697,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Item.Detail",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1772,7 +1772,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Item.Detail.SubDetail",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1841,7 +1841,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Payee",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1851,7 +1851,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -1859,7 +1859,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Procedure",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1908,12 +1908,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.Related",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "claim",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -1922,7 +1922,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 }
             ]
         },
@@ -1930,7 +1930,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Claim.SupportingInfo",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2011,7 +2011,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Communication",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communication",
             "label": "Communication",
@@ -2057,7 +2057,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.CommunicationStatus",
+                    "elementType": "CommunicationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -2074,7 +2074,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.CommunicationPriority",
+                    "elementType": "CommunicationPriority",
                     "target": "%value.value"
                 },
                 {
@@ -2086,7 +2086,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "topic",
@@ -2101,7 +2101,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "sent",
@@ -2121,7 +2121,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -2196,7 +2196,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Communication.Payload",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "content",
@@ -2224,7 +2224,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CommunicationNotDone",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationnotdone",
             "label": "CommunicationNotDone",
@@ -2233,7 +2233,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "recorded",
-                    "elementType": "QICore.NotDoneRecorded",
+                    "elementType": "NotDoneRecorded",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'].value.value"
                 },
                 {
@@ -2276,7 +2276,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.CommunicationStatus",
+                    "elementType": "CommunicationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -2293,7 +2293,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.CommunicationPriority",
+                    "elementType": "CommunicationPriority",
                     "target": "%value.value"
                 },
                 {
@@ -2305,7 +2305,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "topic",
@@ -2320,7 +2320,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "sent",
@@ -2340,7 +2340,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -2390,7 +2390,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CommunicationRequest",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationrequest",
             "label": "CommunicationRequest",
@@ -2416,11 +2416,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.CommunicationRequestStatus",
+                    "elementType": "CommunicationRequestStatus",
                     "target": "%value.value"
                 },
                 {
@@ -2437,7 +2437,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.CommunicationPriority",
+                    "elementType": "CommunicationPriority",
                     "target": "%value.value"
                 },
                 {
@@ -2454,7 +2454,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "about",
@@ -2464,7 +2464,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "payload",
@@ -2495,7 +2495,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -2505,7 +2505,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -2586,7 +2586,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "CommunicationRequest.Payload",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "content",
@@ -2628,7 +2628,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Condition",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition",
             "label": "Condition",
@@ -2690,11 +2690,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onset",
@@ -2749,11 +2749,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "stage",
@@ -2801,7 +2801,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Condition.Evidence",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2823,7 +2823,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Condition.Stage",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2848,7 +2848,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ContactDetail",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ContactDetail",
             "label": "ContactDetail",
@@ -2870,14 +2870,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ContactPoint",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ContactPoint",
             "label": "ContactPoint",
             "element": [
                 {
                     "name": "system",
-                    "elementType": "QICore.ContactPointSystem",
+                    "elementType": "ContactPointSystem",
                     "target": "%value.value"
                 },
                 {
@@ -2887,7 +2887,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "QICore.ContactPointUse",
+                    "elementType": "ContactPointUse",
                     "target": "%value.value"
                 },
                 {
@@ -2922,14 +2922,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Contributor",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Contributor",
             "label": "Contributor",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QICore.ContributorType",
+                    "elementType": "ContributorType",
                     "target": "%value.value"
                 },
                 {
@@ -2956,7 +2956,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Coverage",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage",
             "label": "Coverage",
@@ -2970,7 +2970,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.CoverageStatus",
+                    "elementType": "CoverageStatus",
                     "target": "%value.value"
                 },
                 {
@@ -2980,11 +2980,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "policyHolder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "subscriber",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "subscriberId",
@@ -2993,7 +2993,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "beneficiary",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "dependent",
@@ -3087,7 +3087,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Coverage.Class",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3111,7 +3111,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Coverage.CostToBeneficiary",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3148,7 +3148,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Coverage.CostToBeneficiary.Exception",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3176,7 +3176,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Data Absent Reason",
-            "baseType": "QICore.DataAbsentReason",
+            "baseType": "DataAbsentReason",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
             "label": "Why value is missing"
@@ -3192,14 +3192,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DataRequirement",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/DataRequirement",
             "label": "DataRequirement",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QICore.FHIRAllTypes",
+                    "elementType": "FHIRAllTypes",
                     "target": "%value.value"
                 },
                 {
@@ -3262,7 +3262,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DataRequirement.CodeFilter",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -3293,7 +3293,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DataRequirement.DateFilter",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -3332,7 +3332,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DataRequirement.Sort",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -3342,7 +3342,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "direction",
-                    "elementType": "QICore.SortDirection",
+                    "elementType": "SortDirection",
                     "target": "%value.value"
                 }
             ]
@@ -3365,7 +3365,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Device",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-device",
             "label": "Device",
@@ -3379,7 +3379,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "udiCarrier",
@@ -3389,7 +3389,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.FHIRDeviceStatus",
+                    "elementType": "FHIRDeviceStatus",
                     "target": "%value.value"
                 },
                 {
@@ -3470,11 +3470,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "owner",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contact",
@@ -3484,7 +3484,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "url",
@@ -3506,7 +3506,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "parent",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -3514,7 +3514,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Device.DeviceName",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3524,7 +3524,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QICore.DeviceNameType",
+                    "elementType": "DeviceNameType",
                     "target": "%value.value"
                 }
             ]
@@ -3533,7 +3533,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Device.Property",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3561,7 +3561,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Device.Specialization",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3580,7 +3580,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Device.UdiCarrier",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3610,7 +3610,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "entryType",
-                    "elementType": "QICore.UDIEntryType",
+                    "elementType": "UDIEntryType",
                     "target": "%value.value"
                 }
             ]
@@ -3619,7 +3619,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Device.Version",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3629,7 +3629,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "component",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "value",
@@ -3658,7 +3658,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DeviceRequest",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicerequest",
             "label": "DeviceRequest",
@@ -3698,21 +3698,21 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.DeviceRequestStatus",
+                    "elementType": "DeviceRequestStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "intent",
-                    "elementType": "QICore.RequestIntent",
+                    "elementType": "RequestIntent",
                     "target": "%value.value"
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.RequestPriority",
+                    "elementType": "RequestPriority",
                     "target": "%value.value"
                 },
                 {
@@ -3740,11 +3740,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -3773,7 +3773,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -3782,7 +3782,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -3865,7 +3865,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DeviceRequest.Parameter",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3910,7 +3910,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DeviceUseStatement",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-deviceusestatement",
             "label": "DeviceUseStatement",
@@ -3930,12 +3930,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.DeviceUseStatementStatus",
+                    "elementType": "DeviceUseStatementStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "derivedFrom",
@@ -3970,11 +3970,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -4032,7 +4032,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DiagnosticReport.Media",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4042,7 +4042,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "link",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -4050,7 +4050,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DiagnosticReportLab",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-lab",
             "label": "DiagnosticReportLab",
@@ -4059,12 +4059,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "valueReference",
-                    "elementType": "QICore.Reference",
+                    "elementType": "Reference",
                     "target": "%parent.extension[url='null']"
                 },
                 {
                     "name": "locationPerformed",
-                    "elementType": "QICore.locationPerformed",
+                    "elementType": "locationPerformed",
                     "target": "%parent.extension[url='null']"
                 },
                 {
@@ -4103,11 +4103,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -4190,7 +4190,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DiagnosticReportNote",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-note",
             "label": "DiagnosticReportNote",
@@ -4199,12 +4199,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "valueReference",
-                    "elementType": "QICore.Reference",
+                    "elementType": "Reference",
                     "target": "%parent.extension[url='null']"
                 },
                 {
                     "name": "locationPerformed",
-                    "elementType": "QICore.locationPerformed",
+                    "elementType": "locationPerformed",
                     "target": "%parent.extension[url='null']"
                 },
                 {
@@ -4238,11 +4238,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -4334,14 +4334,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "DomainResource",
-            "baseType": "QICore.Resource",
+            "baseType": "Resource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/DomainResource",
             "label": "DomainResource",
             "element": [
                 {
                     "name": "text",
-                    "elementType": "QICore.Narrative"
+                    "elementType": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -4367,7 +4367,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Dosage",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Dosage",
             "label": "Dosage",
@@ -4396,7 +4396,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "timing",
-                    "elementType": "QICore.Timing"
+                    "elementType": "Timing"
                 },
                 {
                     "name": "asNeeded",
@@ -4457,7 +4457,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Dosage.DoseAndRate",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -4536,7 +4536,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Encounter",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
             "label": "Encounter",
@@ -4544,7 +4544,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "statusReason",
-                    "elementType": "QICore.statusReason",
+                    "elementType": "statusReason",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/request-statusReason'].value)"
                 },
                 {
@@ -4562,7 +4562,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.EncounterStatus",
+                    "elementType": "EncounterStatus",
                     "target": "%value.value"
                 },
                 {
@@ -4601,7 +4601,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "episodeOfCare",
@@ -4666,7 +4666,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hospitalization",
-                    "elementType": "QICore.Encounter.Hospitalization"
+                    "elementType": "Encounter.Hospitalization"
                 },
                 {
                     "name": "location",
@@ -4676,11 +4676,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "serviceProvider",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ],
             "contextRelationship": [
@@ -4706,7 +4706,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Encounter.ClassHistory",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4727,12 +4727,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Encounter.Diagnosis",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "condition",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "use",
@@ -4746,7 +4746,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "diagnosisPresentOnAdmission",
-                    "elementType": "QICore.DiagnosisPresentOnAdmissionExtension",
+                    "elementType": "DiagnosisPresentOnAdmissionExtension",
                     "target": "FHIRHelpers.ToConcept(%parent.diagnosis.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter-diagnosisPresentOnAdmission'].value)"
                 }
             ]
@@ -4755,16 +4755,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Encounter.Hospitalization",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "preAdmissionIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "origin",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "admitSource",
@@ -4799,7 +4799,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "dischargeDisposition",
@@ -4812,16 +4812,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Encounter.Location",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.EncounterLocationStatus",
+                    "elementType": "EncounterLocationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -4842,7 +4842,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Encounter.Participant",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4861,7 +4861,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "individual",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -4869,12 +4869,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Encounter.StatusHistory",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "elementType": "QICore.EncounterStatus",
+                    "elementType": "EncounterStatus",
                     "target": "%value.value"
                 },
                 {
@@ -4897,7 +4897,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "EncounterProcedureExtension",
-            "baseType": "QICore.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter-procedure",
             "label": "EncounterProcedureExtension",
@@ -4914,7 +4914,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "procedure",
-                    "elementType": "QICore.Reference",
+                    "elementType": "Reference",
                     "target": "%parent.extension[url='procedure']"
                 },
                 {
@@ -4942,7 +4942,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Expression",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Expression",
             "label": "Expression",
@@ -4978,7 +4978,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Extension",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Extension",
             "label": "Extension",
@@ -5229,7 +5229,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "FamilyMemberHistory",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-familymemberhistory",
             "label": "FamilyMemberHistory",
@@ -5257,7 +5257,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.FamilyHistoryStatus",
+                    "elementType": "FamilyHistoryStatus",
                     "target": "%value.value"
                 },
                 {
@@ -5267,7 +5267,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -5397,7 +5397,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "FamilyMemberHistory.Condition",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5446,12 +5446,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition-abatement",
-                    "elementType": "QICore.abatement",
+                    "elementType": "abatement",
                     "target": "FHIRHelpers.ToValue(%parent.condition.extension[url='http://hl7.org/fhir/StructureDefinition/familymemberhistory-abatement'].value)"
                 },
                 {
                     "name": "condition-severity",
-                    "elementType": "QICore.severity",
+                    "elementType": "severity",
                     "target": "FHIRHelpers.ToConcept(%parent.condition.extension[url='http://hl7.org/fhir/StructureDefinition/familymemberhistory-severity'].value)"
                 }
             ]
@@ -5460,7 +5460,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Flag",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-flag",
             "label": "Flag",
@@ -5474,7 +5474,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.FlagStatus",
+                    "elementType": "FlagStatus",
                     "target": "%value.value"
                 },
                 {
@@ -5491,7 +5491,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -5502,11 +5502,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "author",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ],
             "contextRelationship": [
@@ -5535,7 +5535,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Goal",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-goal",
             "label": "Goal",
@@ -5543,7 +5543,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "reasonRejected",
-                    "elementType": "QICore.reasonRejected",
+                    "elementType": "reasonRejected",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/goal-reasonRejected'].value)"
                 },
                 {
@@ -5581,7 +5581,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "start",
@@ -5606,7 +5606,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "expressedBy",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "addresses",
@@ -5643,7 +5643,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Goal.Target",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5698,14 +5698,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "HumanName",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/HumanName",
             "label": "HumanName",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "QICore.NameUse",
+                    "elementType": "NameUse",
                     "target": "%value.value"
                 },
                 {
@@ -5752,14 +5752,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Identifier",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Identifier",
             "label": "Identifier",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "QICore.IdentifierUse",
+                    "elementType": "IdentifierUse",
                     "target": "%value.value"
                 },
                 {
@@ -5786,7 +5786,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "assigner",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5801,7 +5801,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImagingStudy",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-imagingstudy",
             "label": "ImagingStudy",
@@ -5815,7 +5815,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.ImagingStudyStatus",
+                    "elementType": "ImagingStudyStatus",
                     "target": "%value.value"
                 },
                 {
@@ -5827,11 +5827,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "started",
@@ -5846,7 +5846,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "referrer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "interpreter",
@@ -5872,7 +5872,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "procedureReference",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "procedureCode",
@@ -5883,7 +5883,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -5925,7 +5925,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImagingStudy.Series",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5998,7 +5998,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImagingStudy.Series.Instance",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6027,7 +6027,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImagingStudy.Series.Performer",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6037,7 +6037,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -6052,7 +6052,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Immunization",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunization",
             "label": "Immunization",
@@ -6081,11 +6081,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -6109,11 +6109,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "lotNumber",
@@ -6223,7 +6223,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Immunization.Education",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6252,7 +6252,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Immunization.Performer",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6262,7 +6262,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -6270,7 +6270,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Immunization.ProtocolApplied",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6280,7 +6280,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "targetDisease",
@@ -6329,7 +6329,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Immunization.Reaction",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6339,7 +6339,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reported",
@@ -6352,7 +6352,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImmunizationEvaluation",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationevaluation",
             "label": "ImmunizationEvaluation",
@@ -6366,12 +6366,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.ImmunizationEvaluationStatus",
+                    "elementType": "ImmunizationEvaluationStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -6380,7 +6380,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "targetDisease",
@@ -6389,7 +6389,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "immunizationEvent",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "doseStatus",
@@ -6464,7 +6464,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImmunizationNotDone",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationnotdone",
             "label": "ImmunizationNotDone",
@@ -6506,11 +6506,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -6546,11 +6546,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "lotNumber",
@@ -6650,7 +6650,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImmunizationRecommendation",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationrec",
             "label": "ImmunizationRecommendation",
@@ -6664,7 +6664,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -6673,7 +6673,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "recommendation",
@@ -6691,7 +6691,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImmunizationRecommendation.Recommendation",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6793,7 +6793,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ImmunizationRecommendation.Recommendation.DateCriterion",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6828,7 +6828,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Location",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-location",
             "label": "Location",
@@ -6842,7 +6842,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.LocationStatus",
+                    "elementType": "LocationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -6869,7 +6869,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "mode",
-                    "elementType": "QICore.LocationMode",
+                    "elementType": "LocationMode",
                     "target": "%value.value"
                 },
                 {
@@ -6887,7 +6887,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "QICore.Address"
+                    "elementType": "Address"
                 },
                 {
                     "name": "physicalType",
@@ -6896,15 +6896,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "position",
-                    "elementType": "QICore.Location.Position"
+                    "elementType": "Location.Position"
                 },
                 {
                     "name": "managingOrganization",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "hoursOfOperation",
@@ -6929,7 +6929,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Location.HoursOfOperation",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6960,7 +6960,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Location.Position",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6998,7 +6998,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Medication",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medication",
             "label": "Medication",
@@ -7017,12 +7017,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.MedicationStatus",
+                    "elementType": "MedicationStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "manufacturer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "form",
@@ -7042,7 +7042,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "batch",
-                    "elementType": "QICore.Medication.Batch"
+                    "elementType": "Medication.Batch"
                 }
             ]
         },
@@ -7050,7 +7050,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Medication.Batch",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7069,7 +7069,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Medication.Ingredient",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7105,7 +7105,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationAdministration",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration",
             "label": "MedicationAdministration",
@@ -7132,7 +7132,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.MedicationAdministrationStatus",
+                    "elementType": "MedicationAdministrationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -7166,11 +7166,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -7215,7 +7215,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
@@ -7231,7 +7231,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dosage",
-                    "elementType": "QICore.MedicationAdministration.Dosage"
+                    "elementType": "MedicationAdministration.Dosage"
                 },
                 {
                     "name": "eventHistory",
@@ -7275,7 +7275,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationAdministration.Dosage",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7326,7 +7326,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationAdministration.Performer",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7336,7 +7336,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -7344,7 +7344,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationAdministrationNotDone",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotadministered",
             "label": "MedicationAdministrationNotDone",
@@ -7353,7 +7353,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "recorded",
-                    "elementType": "QICore.NotDoneRecorded",
+                    "elementType": "NotDoneRecorded",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'].value.value"
                 },
                 {
@@ -7377,7 +7377,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.MedicationAdministrationStatus",
+                    "elementType": "MedicationAdministrationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -7411,11 +7411,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -7460,7 +7460,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
@@ -7476,7 +7476,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dosage",
-                    "elementType": "QICore.MedicationAdministration.Dosage"
+                    "elementType": "MedicationAdministration.Dosage"
                 },
                 {
                     "name": "eventHistory",
@@ -7497,7 +7497,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationDispense",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispense",
             "label": "MedicationDispense",
@@ -7517,7 +7517,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.MedicationDispenseStatus",
+                    "elementType": "MedicationDispenseStatus",
                     "target": "%value.value"
                 },
                 {
@@ -7561,11 +7561,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -7581,7 +7581,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "authorizingPrescription",
@@ -7616,7 +7616,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -7638,7 +7638,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substitution",
-                    "elementType": "QICore.MedicationDispense.Substitution"
+                    "elementType": "MedicationDispense.Substitution"
                 },
                 {
                     "name": "detectedIssue",
@@ -7680,7 +7680,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationDispense.Performer",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7690,7 +7690,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -7698,7 +7698,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationDispense.Substitution",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7730,7 +7730,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationDispenseNotDone",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotdispensed",
             "label": "MedicationDispenseNotDone",
@@ -7739,7 +7739,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "recorded",
-                    "elementType": "QICore.NotDoneRecorded",
+                    "elementType": "NotDoneRecorded",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'].value.value"
                 },
                 {
@@ -7756,7 +7756,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.MedicationDispenseStatus",
+                    "elementType": "MedicationDispenseStatus",
                     "target": "%value.value"
                 },
                 {
@@ -7788,11 +7788,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -7808,7 +7808,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "authorizingPrescription",
@@ -7843,7 +7843,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -7865,7 +7865,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substitution",
-                    "elementType": "QICore.MedicationDispense.Substitution"
+                    "elementType": "MedicationDispense.Substitution"
                 },
                 {
                     "name": "detectedIssue",
@@ -7892,7 +7892,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationNotRequested",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotrequested",
             "label": "MedicationNotRequested",
@@ -7929,7 +7929,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.MedicationRequestPriority",
+                    "elementType": "MedicationRequestPriority",
                     "target": "%value.value"
                 },
                 {
@@ -7973,11 +7973,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -7992,11 +7992,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -8005,7 +8005,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -8040,7 +8040,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "courseOfTherapyType",
@@ -8067,15 +8067,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispenseRequest",
-                    "elementType": "QICore.MedicationRequest.DispenseRequest"
+                    "elementType": "MedicationRequest.DispenseRequest"
                 },
                 {
                     "name": "substitution",
-                    "elementType": "QICore.MedicationRequest.Substitution"
+                    "elementType": "MedicationRequest.Substitution"
                 },
                 {
                     "name": "priorPrescription",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "detectedIssue",
@@ -8095,7 +8095,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationRequest",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest",
             "label": "MedicationRequest",
@@ -8131,7 +8131,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.MedicationRequestPriority",
+                    "elementType": "MedicationRequestPriority",
                     "target": "%value.value"
                 },
                 {
@@ -8175,11 +8175,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -8194,11 +8194,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -8207,7 +8207,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -8244,7 +8244,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "courseOfTherapyType",
@@ -8271,15 +8271,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispenseRequest",
-                    "elementType": "QICore.MedicationRequest.DispenseRequest"
+                    "elementType": "MedicationRequest.DispenseRequest"
                 },
                 {
                     "name": "substitution",
-                    "elementType": "QICore.MedicationRequest.Substitution"
+                    "elementType": "MedicationRequest.Substitution"
                 },
                 {
                     "name": "priorPrescription",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "detectedIssue",
@@ -8313,7 +8313,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationRequest.DispenseRequest",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8345,7 +8345,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -8353,7 +8353,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationRequest.DispenseRequest.InitialFill",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8372,7 +8372,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationRequest.Substitution",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8410,7 +8410,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "MedicationStatement",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationstatement",
             "label": "MedicationStatement",
@@ -8436,7 +8436,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.MedicationStatementStatus",
+                    "elementType": "MedicationStatementStatus",
                     "target": "%value.value"
                 },
                 {
@@ -8470,11 +8470,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -8499,7 +8499,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "informationSource",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "derivedFrom",
@@ -8566,7 +8566,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Meta",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Meta",
             "label": "Meta",
@@ -8627,14 +8627,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Narrative",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Narrative",
             "label": "Narrative",
             "element": [
                 {
                     "name": "status",
-                    "elementType": "QICore.NarrativeStatus",
+                    "elementType": "NarrativeStatus",
                     "target": "%value.value"
                 },
                 {
@@ -8682,7 +8682,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Observation",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation",
             "label": "Observation",
@@ -8690,12 +8690,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "bodyPosition",
-                    "elementType": "QICore.bodyPosition",
+                    "elementType": "bodyPosition",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/observation-bodyPosition'].value)"
                 },
                 {
                     "name": "delta",
-                    "elementType": "QICore.delta",
+                    "elementType": "delta",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/observation-delta'].value)"
                 },
                 {
@@ -8718,7 +8718,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.ObservationStatus",
+                    "elementType": "ObservationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -8735,7 +8735,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -8745,7 +8745,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -8863,11 +8863,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -8929,7 +8929,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Observation.Component",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9016,35 +9016,35 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Observation.Component.Concentration",
-            "baseType": "QICore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Observation.Component.DiastolicBP",
-            "baseType": "QICore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Observation.Component.FlowRate",
-            "baseType": "QICore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Observation.Component.SystolicBP",
-            "baseType": "QICore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Observation.ReferenceRange",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9087,7 +9087,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ObservationNotDone",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observationnotdone",
             "label": "ObservationNotDone",
@@ -9096,7 +9096,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "notDoneReason",
-                    "elementType": "QICore.NotDoneReason",
+                    "elementType": "NotDoneReason",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDoneReason'].value)"
                 },
                 {
@@ -9119,7 +9119,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.ObservationStatus",
+                    "elementType": "ObservationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -9148,7 +9148,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -9158,7 +9158,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -9276,11 +9276,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -9319,7 +9319,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Organization",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization",
             "label": "Organization",
@@ -9333,19 +9333,19 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "NPI",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "CLIA",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "ccn",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "ein",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "active",
@@ -9385,7 +9385,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "partOf",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contact",
@@ -9405,7 +9405,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Organization.Contact",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9415,7 +9415,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "elementType": "QICore.HumanName"
+                    "elementType": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -9425,7 +9425,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "QICore.Address"
+                    "elementType": "Address"
                 }
             ]
         },
@@ -9433,7 +9433,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ParameterDefinition",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ParameterDefinition",
             "label": "ParameterDefinition",
@@ -9445,7 +9445,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "QICore.ParameterUse",
+                    "elementType": "ParameterUse",
                     "target": "%value.value"
                 },
                 {
@@ -9465,7 +9465,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QICore.FHIRAllTypes",
+                    "elementType": "FHIRAllTypes",
                     "target": "%value.value"
                 },
                 {
@@ -9486,34 +9486,34 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Patient",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
             "label": "Patient",
             "element": [
                 {
                     "name": "race",
-                    "elementType": "QICore.USCoreRaceExtension",
+                    "elementType": "USCoreRaceExtension",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-race']"
                 },
                 {
                     "name": "ethnicity",
-                    "elementType": "QICore.USCoreEthnicityExtension",
+                    "elementType": "USCoreEthnicityExtension",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity']"
                 },
                 {
                     "name": "birthsex",
-                    "elementType": "QICore.USCoreBirthSexExtension",
+                    "elementType": "USCoreBirthSexExtension",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'].value.value"
                 },
                 {
                     "name": "religion",
-                    "elementType": "QICore.religion",
+                    "elementType": "religion",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/patient-religion'].value)"
                 },
                 {
                     "name": "birthPlace",
-                    "elementType": "QICore.birthPlace",
+                    "elementType": "birthPlace",
                     "target": "%parent.extension[url='http://hl7.org/fhir/StructureDefinition/patient-birthPlace']"
                 },
                 {
@@ -9532,12 +9532,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "cadavericDonor",
-                    "elementType": "QICore.cadavericDonor",
+                    "elementType": "cadavericDonor",
                     "target": "%parent.extension[url='http://hl7.org/fhir/StructureDefinition/patient-cadavericDonor'].value.value"
                 },
                 {
                     "name": "birthTime",
-                    "elementType": "QICore.birthTime",
+                    "elementType": "birthTime",
                     "target": "%parent.extension[url='http://hl7.org/fhir/StructureDefinition/patient-birthTime'].value.value"
                 },
                 {
@@ -9644,7 +9644,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "link",
@@ -9675,7 +9675,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "retrievable": false,
             "element": {
                 "name": "address-preferred",
-                "elementType": "QICore.preferred",
+                "elementType": "preferred",
                 "target": "%parent.address.extension[url='http://hl7.org/fhir/StructureDefinition/iso21090-preferred'].value.value"
             }
         },
@@ -9683,7 +9683,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Patient.Communication",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9702,7 +9702,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Patient.Contact",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9714,7 +9714,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "elementType": "QICore.HumanName"
+                    "elementType": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -9724,16 +9724,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "QICore.Address"
+                    "elementType": "Address"
                 },
                 {
                     "name": "gender",
-                    "elementType": "QICore.AdministrativeGender",
+                    "elementType": "AdministrativeGender",
                     "target": "%value.value"
                 },
                 {
                     "name": "organization",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -9748,16 +9748,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Patient.Link",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "other",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "type",
-                    "elementType": "QICore.LinkType",
+                    "elementType": "LinkType",
                     "target": "%value.value"
                 }
             ]
@@ -9769,7 +9769,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "retrievable": false,
             "element": {
                 "name": "telecom-preferred",
-                "elementType": "QICore.preferred",
+                "elementType": "preferred",
                 "target": "%parent.telecom.extension[url='http://hl7.org/fhir/StructureDefinition/iso21090-preferred'].value.value"
             }
         },
@@ -9777,7 +9777,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Practitioner",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitioner",
             "label": "Practitioner",
@@ -9790,15 +9790,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "NPI",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "ccn",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "ein",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "active",
@@ -9825,7 +9825,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "elementType": "QICore.AdministrativeGender",
+                    "elementType": "AdministrativeGender",
                     "target": "%value.value"
                 },
                 {
@@ -9858,7 +9858,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Practitioner.Qualification",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9881,7 +9881,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "issuer",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -9889,7 +9889,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "PractitionerRole",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitionerrole",
             "label": "PractitionerRole",
@@ -9915,11 +9915,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "practitioner",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "organization",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "code",
@@ -9986,7 +9986,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "PractitionerRole.AvailableTime",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10017,7 +10017,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "PractitionerRole.NotAvailable",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10038,7 +10038,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Procedure",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure",
             "label": "Procedure",
@@ -10053,12 +10053,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "incisionDateTime",
-                    "elementType": "QICore.incisionDateTime",
+                    "elementType": "incisionDateTime",
                     "target": "%parent.extension[url='http://hl7.org/fhir/StructureDefinition/procedure-incisionDateTime'].value.value"
                 },
                 {
                     "name": "recorded",
-                    "elementType": "QICore.NotDoneRecorded",
+                    "elementType": "NotDoneRecorded",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'].value.value"
                 },
                 {
@@ -10115,11 +10115,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performed",
@@ -10139,11 +10139,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
@@ -10153,7 +10153,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -10259,7 +10259,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Procedure.FocalDevice",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10269,7 +10269,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "manipulated",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -10277,7 +10277,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Procedure.Performer",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10287,11 +10287,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -10299,7 +10299,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ProcedureNotDone",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedurenotdone",
             "label": "ProcedureNotDone",
@@ -10308,7 +10308,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "recorded",
-                    "elementType": "QICore.NotDoneRecorded",
+                    "elementType": "NotDoneRecorded",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'].value.value"
                 },
                 {
@@ -10377,11 +10377,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performed",
@@ -10401,11 +10401,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
@@ -10415,7 +10415,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -10513,7 +10513,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Questionnaire",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Questionnaire",
             "label": "Questionnaire",
@@ -10554,7 +10554,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.PublicationStatus",
+                    "elementType": "PublicationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -10649,7 +10649,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Questionnaire.Item",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10681,7 +10681,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QICore.QuestionnaireItemType",
+                    "elementType": "QuestionnaireItemType",
                     "target": "%value.value"
                 },
                 {
@@ -10692,7 +10692,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enableBehavior",
-                    "elementType": "QICore.EnableWhenBehavior",
+                    "elementType": "EnableWhenBehavior",
                     "target": "%value.value"
                 },
                 {
@@ -10748,7 +10748,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Questionnaire.Item.AnswerOption",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10795,7 +10795,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Questionnaire.Item.EnableWhen",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10805,7 +10805,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operator",
-                    "elementType": "QICore.QuestionnaireItemOperator",
+                    "elementType": "QuestionnaireItemOperator",
                     "target": "%value.value"
                 },
                 {
@@ -10863,7 +10863,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Questionnaire.Item.Initial",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -10941,14 +10941,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "QuestionnaireResponse",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
             "label": "QuestionnaireResponse",
             "element": [
                 {
                     "name": "identifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "basedOn",
@@ -10969,16 +10969,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.QuestionnaireResponseStatus",
+                    "elementType": "QuestionnaireResponseStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "authored",
@@ -10987,11 +10987,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "source",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "item",
@@ -11039,7 +11039,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "QuestionnaireResponse.Item",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11079,7 +11079,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "QuestionnaireResponse.Item.Answer",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11162,7 +11162,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Reference",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Reference",
             "label": "Reference",
@@ -11179,7 +11179,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "display",
@@ -11192,14 +11192,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "RelatedArtifact",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/RelatedArtifact",
             "label": "RelatedArtifact",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QICore.RelatedArtifactType",
+                    "elementType": "RelatedArtifactType",
                     "target": "%value.value"
                 },
                 {
@@ -11224,7 +11224,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "document",
-                    "elementType": "QICore.Attachment"
+                    "elementType": "Attachment"
                 },
                 {
                     "name": "resource",
@@ -11244,7 +11244,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "RelatedPerson",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-relatedperson",
             "label": "RelatedPerson",
@@ -11263,7 +11263,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -11286,7 +11286,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "elementType": "QICore.AdministrativeGender",
+                    "elementType": "AdministrativeGender",
                     "target": "%value.value"
                 },
                 {
@@ -11329,7 +11329,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "RelatedPerson.Communication",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11374,7 +11374,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "elementType": "QICore.Meta"
+                    "elementType": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -11399,7 +11399,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "SampledData",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/SampledData",
             "label": "SampledData",
@@ -11445,7 +11445,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ServiceNotRequested",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested",
             "label": "ServiceNotRequested",
@@ -11461,17 +11461,17 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "appropriatenessScore",
-                    "elementType": "QICore.ServiceRequestAppropriatenessScore",
+                    "elementType": "ServiceRequestAppropriatenessScore",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest-appropriatenessScore']"
                 },
                 {
                     "name": "reasonRefused",
-                    "elementType": "QICore.DoNotPerformReason",
+                    "elementType": "DoNotPerformReason",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerformReason'].value)"
                 },
                 {
                     "name": "isElective",
-                    "elementType": "QICore.IsElective",
+                    "elementType": "IsElective",
                     "target": "%value.value"
                 },
                 {
@@ -11508,16 +11508,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requisition",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.ServiceRequestStatus",
+                    "elementType": "ServiceRequestStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "intent",
-                    "elementType": "QICore.ServiceRequestIntent",
+                    "elementType": "ServiceRequestIntent",
                     "target": "%value.value"
                 },
                 {
@@ -11529,7 +11529,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.ServiceRequestPriority",
+                    "elementType": "ServiceRequestPriority",
                     "target": "%value.value"
                 },
                 {
@@ -11583,11 +11583,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -11633,7 +11633,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -11720,7 +11720,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "ServiceRequest",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest",
             "label": "ServiceRequest",
@@ -11728,7 +11728,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "statusReason",
-                    "elementType": "QICore.statusReason",
+                    "elementType": "statusReason",
                     "target": "FHIRHelpers.ToConcept(%parent.extension[url='http://hl7.org/fhir/StructureDefinition/request-statusReason'].value)"
                 },
                 {
@@ -11744,7 +11744,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "isElective",
-                    "elementType": "QICore.IsElective",
+                    "elementType": "IsElective",
                     "target": "%value.value"
                 },
                 {
@@ -11781,16 +11781,16 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requisition",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.ServiceRequestStatus",
+                    "elementType": "ServiceRequestStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "intent",
-                    "elementType": "QICore.ServiceRequestIntent",
+                    "elementType": "ServiceRequestIntent",
                     "target": "%value.value"
                 },
                 {
@@ -11802,7 +11802,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.ServiceRequestPriority",
+                    "elementType": "ServiceRequestPriority",
                     "target": "%value.value"
                 },
                 {
@@ -11844,11 +11844,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -11894,7 +11894,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -12044,7 +12044,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Signature",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Signature",
             "label": "Signature",
@@ -12063,20 +12063,20 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "who",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "targetFormat",
-                    "elementType": "QICore.MimeType",
+                    "elementType": "MimeType",
                     "target": "%value.value"
                 },
                 {
                     "name": "sigFormat",
-                    "elementType": "QICore.MimeType",
+                    "elementType": "MimeType",
                     "target": "%value.value"
                 },
                 {
@@ -12097,7 +12097,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Specimen",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-specimen",
             "label": "Specimen",
@@ -12111,11 +12111,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "accessionIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.SpecimenStatus",
+                    "elementType": "SpecimenStatus",
                     "target": "%value.value"
                 },
                 {
@@ -12125,7 +12125,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "receivedTime",
@@ -12146,7 +12146,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "collection",
-                    "elementType": "QICore.Specimen.Collection"
+                    "elementType": "Specimen.Collection"
                 },
                 {
                     "name": "processing",
@@ -12193,12 +12193,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Specimen.Collection",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "collector",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "collected",
@@ -12259,7 +12259,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Specimen.Container",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12307,7 +12307,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "container-sequenceNumber",
-                    "elementType": "QICore.sequenceNumber",
+                    "elementType": "sequenceNumber",
                     "target": "%parent.container.extension[url='http://hl7.org/fhir/StructureDefinition/specimen-sequenceNumber'].value.value"
                 }
             ]
@@ -12316,7 +12316,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Specimen.Processing",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12371,7 +12371,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Substance",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-substance",
             "label": "Substance",
@@ -12385,7 +12385,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.FHIRSubstanceStatus",
+                    "elementType": "FHIRSubstanceStatus",
                     "target": "%value.value"
                 },
                 {
@@ -12423,7 +12423,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Substance.Ingredient",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12433,7 +12433,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substance",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -12441,12 +12441,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Substance.Instance",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "expiry",
@@ -12464,7 +12464,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Task",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task",
             "label": "Task",
@@ -12494,7 +12494,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "partOf",
@@ -12504,7 +12504,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.TaskStatus",
+                    "elementType": "TaskStatus",
                     "target": "%value.value"
                 },
                 {
@@ -12519,12 +12519,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "intent",
-                    "elementType": "QICore.TaskIntent",
+                    "elementType": "TaskIntent",
                     "target": "%value.value"
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.TaskPriority",
+                    "elementType": "TaskPriority",
                     "target": "%value.value"
                 },
                 {
@@ -12539,15 +12539,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "focus",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "for",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "executionPeriod",
@@ -12568,7 +12568,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -12579,11 +12579,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "owner",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -12592,7 +12592,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reasonReference",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "insurance",
@@ -12614,7 +12614,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "restriction",
-                    "elementType": "QICore.Task.Restriction"
+                    "elementType": "Task.Restriction"
                 },
                 {
                     "name": "input",
@@ -12634,7 +12634,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Task.Input",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -12855,7 +12855,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Task.Output",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13076,7 +13076,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Task.Restriction",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -13110,7 +13110,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "TaskNotDone",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-tasknotdone",
             "label": "TaskNotDone",
@@ -13141,7 +13141,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QICore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "partOf",
@@ -13151,7 +13151,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.TaskStatus",
+                    "elementType": "TaskStatus",
                     "target": "%value.value"
                 },
                 {
@@ -13166,12 +13166,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "intent",
-                    "elementType": "QICore.TaskIntent",
+                    "elementType": "TaskIntent",
                     "target": "%value.value"
                 },
                 {
                     "name": "priority",
-                    "elementType": "QICore.TaskPriority",
+                    "elementType": "TaskPriority",
                     "target": "%value.value"
                 },
                 {
@@ -13198,15 +13198,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "focus",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "for",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "executionPeriod",
@@ -13227,7 +13227,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -13238,11 +13238,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "owner",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -13251,7 +13251,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reasonReference",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "insurance",
@@ -13273,7 +13273,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "restriction",
-                    "elementType": "QICore.Task.Restriction"
+                    "elementType": "Task.Restriction"
                 },
                 {
                     "name": "input",
@@ -13307,7 +13307,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Timing",
-            "baseType": "QICore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Timing",
             "label": "Timing",
@@ -13322,7 +13322,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "repeat",
-                    "elementType": "QICore.Timing.Repeat"
+                    "elementType": "Timing.Repeat"
                 },
                 {
                     "name": "code",
@@ -13335,7 +13335,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "Timing.Repeat",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -13379,7 +13379,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "durationUnit",
-                    "elementType": "QICore.UnitsOfTime",
+                    "elementType": "UnitsOfTime",
                     "target": "%value.value"
                 },
                 {
@@ -13404,7 +13404,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "periodUnit",
-                    "elementType": "QICore.UnitsOfTime",
+                    "elementType": "UnitsOfTime",
                     "target": "%value.value"
                 },
                 {
@@ -13439,14 +13439,14 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "TriggerDefinition",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/TriggerDefinition",
             "label": "TriggerDefinition",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QICore.TriggerType",
+                    "elementType": "TriggerType",
                     "target": "%value.value"
                 },
                 {
@@ -13487,7 +13487,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "elementType": "QICore.Expression"
+                    "elementType": "Expression"
                 }
             ]
         },
@@ -13518,7 +13518,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCoreEthnicityExtension",
-            "baseType": "QICore.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
             "label": "US Core Ethnicity Extension",
@@ -13551,7 +13551,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCoreImplantableDeviceProfile",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device",
             "label": "US Core Implantable Device Profile",
@@ -13566,15 +13566,15 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "udiCarrier",
-                    "elementType": "QICore.Device.UdiCarrier"
+                    "elementType": "Device.UdiCarrier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.FHIRDeviceStatus",
+                    "elementType": "FHIRDeviceStatus",
                     "target": "%value.value"
                 },
                 {
@@ -13655,11 +13655,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "owner",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contact",
@@ -13669,7 +13669,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "url",
@@ -13691,7 +13691,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "parent",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -13699,7 +13699,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCoreLaboratoryResultObservationProfile",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab",
             "label": "US Core Laboratory Result Observation Profile",
@@ -13748,7 +13748,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -13758,7 +13758,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -13868,11 +13868,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -13904,7 +13904,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCorePediatricBMIforAgeObservationProfile",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age",
             "label": "US Core Pediatric BMI for Age Observation Profile",
@@ -13931,7 +13931,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -13953,7 +13953,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -13963,7 +13963,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -14027,11 +14027,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -14063,7 +14063,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCorePediatricWeightForHeightObservationProfile",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height",
             "label": "US Core Pediatric Weight for Height Observation Profile",
@@ -14090,7 +14090,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -14112,7 +14112,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -14122,7 +14122,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -14186,11 +14186,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -14222,7 +14222,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCorePulseOximetryProfile",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-pulse-oximetry",
             "label": "US Core Pulse Oximetry Profile",
@@ -14249,7 +14249,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -14281,7 +14281,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -14291,7 +14291,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -14355,11 +14355,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -14387,11 +14387,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "FlowRate",
-                    "elementType": "QICore.Observation.Component"
+                    "elementType": "Observation.Component"
                 },
                 {
                     "name": "Concentration",
-                    "elementType": "QICore.Observation.Component"
+                    "elementType": "Observation.Component"
                 }
             ]
         },
@@ -14399,7 +14399,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCoreRaceExtension",
-            "baseType": "QICore.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
             "label": "US Core Race Extension",
@@ -14434,7 +14434,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "USCoreSmokingStatusProfile",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus",
             "label": "US Core Smoking Status Observation Profile",
@@ -14478,7 +14478,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -14488,7 +14488,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -14560,11 +14560,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -14603,7 +14603,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "UsageContext",
-            "baseType": "QICore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/UsageContext",
             "label": "UsageContext",
@@ -14659,7 +14659,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "approachBodyStructure",
-            "baseType": "QICore.Reference",
+            "baseType": "Reference",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/procedure-approachBodyStructure",
             "label": "approachBodyStructure"
@@ -14668,7 +14668,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "birthPlace",
-            "baseType": "QICore.Address",
+            "baseType": "Address",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
             "label": "Birth Place"
@@ -14748,7 +14748,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "locationPerformed",
-            "baseType": "QICore.Reference",
+            "baseType": "Reference",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/diagnosticReport-locationPerformed",
             "label": "locationPerformed"
@@ -14757,7 +14757,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "nationality",
-            "baseType": "QICore.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/patient-nationality",
             "label": "nationality",
@@ -14786,7 +14786,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-bmi",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bmi",
             "label": "Observation Body Mass Index Profile",
@@ -14813,7 +14813,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -14840,7 +14840,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -14850,7 +14850,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -14914,11 +14914,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -14950,7 +14950,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-bodyheight",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodyheight",
             "label": "Observation Body Height Profile",
@@ -14977,7 +14977,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -15004,7 +15004,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -15014,7 +15014,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -15078,11 +15078,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -15114,7 +15114,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-bodytemp",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodytemp",
             "label": "Observation Body Temperature Profile",
@@ -15141,7 +15141,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -15168,7 +15168,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -15178,7 +15178,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -15242,11 +15242,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -15278,7 +15278,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-bodyweight",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodyweight",
             "label": "Observation Body Weight Profile",
@@ -15305,7 +15305,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -15332,7 +15332,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -15342,7 +15342,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -15406,11 +15406,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -15442,7 +15442,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-bp",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bp",
             "label": "Observation Blood Pressure Profile",
@@ -15469,7 +15469,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -15496,7 +15496,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -15506,7 +15506,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -15570,11 +15570,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -15602,12 +15602,12 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "SystolicBP",
-                    "elementType": "QICore.Observation.Component",
+                    "elementType": "Observation.Component",
                     "target": "%parent.component[code.coding.system='http://loinc.org',code.coding.code='8480-6']"
                 },
                 {
                     "name": "DiastolicBP",
-                    "elementType": "QICore.Observation.Component",
+                    "elementType": "Observation.Component",
                     "target": "%parent.component[code.coding.system='http://loinc.org',code.coding.code='8462-4']"
                 }
             ]
@@ -15616,7 +15616,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-headcircum",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/headcircum",
             "label": "Observation Head Circumference Profile",
@@ -15643,7 +15643,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -15670,7 +15670,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -15680,7 +15680,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -15744,11 +15744,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -15780,7 +15780,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-heartrate",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/heartrate",
             "label": "Observation Heart Rate Profile",
@@ -15807,7 +15807,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -15834,7 +15834,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -15844,7 +15844,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -15908,11 +15908,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -15944,7 +15944,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-oxygensat",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/oxygensat",
             "label": "Observation Oxygen Saturation Profile",
@@ -15971,7 +15971,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -15998,7 +15998,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -16008,7 +16008,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -16072,11 +16072,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -16108,7 +16108,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-resprate",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/resprate",
             "label": "Observation Respiratory Rate Profile",
@@ -16135,7 +16135,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -16162,7 +16162,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -16172,7 +16172,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -16236,11 +16236,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -16272,7 +16272,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QICore",
             "name": "observation-vitalspanel",
-            "baseType": "QICore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/vitalspanel",
             "label": "Observation Vital Signs Panel Profile",
@@ -16299,7 +16299,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QICore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -16328,7 +16328,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -16338,7 +16338,7 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -16397,11 +16397,11 @@ final qicoremodelinfo410 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QICore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",

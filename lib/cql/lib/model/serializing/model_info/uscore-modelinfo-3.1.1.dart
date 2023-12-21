@@ -17,19 +17,19 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Address",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Address",
             "label": "Address",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "USCore.AddressUse",
+                    "elementType": "AddressUse",
                     "target": "%value.value"
                 },
                 {
                     "name": "type",
-                    "elementType": "USCore.AddressType",
+                    "elementType": "AddressType",
                     "target": "%value.value"
                 },
                 {
@@ -103,7 +103,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "AllergyIntolerance",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance",
             "label": "US  Core AllergyIntolerance Profile",
@@ -127,7 +127,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "USCore.AllergyIntoleranceType",
+                    "elementType": "AllergyIntoleranceType",
                     "target": "%value.value"
                 },
                 {
@@ -139,7 +139,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "criticality",
-                    "elementType": "USCore.AllergyIntoleranceCriticality",
+                    "elementType": "AllergyIntoleranceCriticality",
                     "target": "%value.value"
                 },
                 {
@@ -149,11 +149,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onset",
@@ -189,11 +189,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "lastOccurrence",
@@ -232,7 +232,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "AllergyIntolerance.Reaction",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -259,7 +259,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "severity",
-                    "elementType": "USCore.AllergyIntoleranceSeverity",
+                    "elementType": "AllergyIntoleranceSeverity",
                     "target": "%value.value"
                 },
                 {
@@ -307,7 +307,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Annotation",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Annotation",
             "label": "Annotation",
@@ -345,14 +345,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Attachment",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Attachment",
             "label": "Attachment",
             "element": [
                 {
                     "name": "contentType",
-                    "elementType": "USCore.MimeType",
+                    "elementType": "MimeType",
                     "target": "%value.value"
                 },
                 {
@@ -396,7 +396,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "BackboneElement",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/BackboneElement",
             "label": "BackboneElement",
@@ -441,7 +441,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "CarePlan.Activity",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -465,11 +465,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "detail",
-                    "elementType": "USCore.CarePlan.Activity.Detail"
+                    "elementType": "CarePlan.Activity.Detail"
                 }
             ]
         },
@@ -477,12 +477,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "CarePlan.Activity.Detail",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "kind",
-                    "elementType": "USCore.CarePlanActivityKind",
+                    "elementType": "CarePlanActivityKind",
                     "target": "%value.value"
                 },
                 {
@@ -525,7 +525,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.CarePlanActivityStatus",
+                    "elementType": "CarePlanActivityStatus",
                     "target": "%value.value"
                 },
                 {
@@ -560,7 +560,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
@@ -620,7 +620,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "CarePlanProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan",
             "label": "US Core CarePlan Profile",
@@ -698,11 +698,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -718,7 +718,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contributor",
@@ -768,7 +768,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "CareTeam",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam",
             "label": "US Core CareTeam Profile",
@@ -799,11 +799,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -865,7 +865,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "CareTeam.Participant",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -875,11 +875,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "member",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -894,7 +894,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Condition",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition",
             "label": "US Core Condition Profile",
@@ -942,11 +942,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onset",
@@ -1009,11 +1009,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "stage",
@@ -1049,7 +1049,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Condition.Evidence",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1071,7 +1071,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Condition.Stage",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1096,7 +1096,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "ContactDetail",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ContactDetail",
             "label": "ContactDetail",
@@ -1118,14 +1118,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "ContactPoint",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ContactPoint",
             "label": "ContactPoint",
             "element": [
                 {
                     "name": "system",
-                    "elementType": "USCore.ContactPointSystem",
+                    "elementType": "ContactPointSystem",
                     "target": "%value.value"
                 },
                 {
@@ -1135,7 +1135,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "USCore.ContactPointUse",
+                    "elementType": "ContactPointUse",
                     "target": "%value.value"
                 },
                 {
@@ -1170,14 +1170,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Contributor",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Contributor",
             "label": "Contributor",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "USCore.ContributorType",
+                    "elementType": "ContributorType",
                     "target": "%value.value"
                 },
                 {
@@ -1204,14 +1204,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DataRequirement",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/DataRequirement",
             "label": "DataRequirement",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "USCore.FHIRAllTypes",
+                    "elementType": "FHIRAllTypes",
                     "target": "%value.value"
                 },
                 {
@@ -1274,7 +1274,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DataRequirement.CodeFilter",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -1305,7 +1305,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DataRequirement.DateFilter",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -1344,7 +1344,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DataRequirement.Sort",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -1354,7 +1354,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "direction",
-                    "elementType": "USCore.SortDirection",
+                    "elementType": "SortDirection",
                     "target": "%value.value"
                 }
             ]
@@ -1377,7 +1377,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Device.DeviceName",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1387,7 +1387,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "USCore.DeviceNameType",
+                    "elementType": "DeviceNameType",
                     "target": "%value.value"
                 }
             ]
@@ -1396,7 +1396,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Device.Property",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1424,7 +1424,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Device.Specialization",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1443,7 +1443,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Device.UdiCarrier",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1473,7 +1473,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "entryType",
-                    "elementType": "USCore.UDIEntryType",
+                    "elementType": "UDIEntryType",
                     "target": "%value.value"
                 }
             ]
@@ -1482,7 +1482,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Device.Version",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1492,7 +1492,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "component",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "value",
@@ -1512,7 +1512,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DiagnosticReport.Media",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1522,7 +1522,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "link",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -1530,7 +1530,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DiagnosticReportProfileLaboratoryReporting",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab",
             "label": "US Core DiagnosticReport Profile for Laboratory Results Reporting",
@@ -1573,11 +1573,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -1660,7 +1660,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DiagnosticReportProfileNoteExchange",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note",
             "label": "US Core DiagnosticReport Profile for Report and Note exchange",
@@ -1698,11 +1698,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -1785,12 +1785,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DocumentReference.Content",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "attachment",
-                    "elementType": "USCore.Attachment"
+                    "elementType": "Attachment"
                 },
                 {
                     "name": "format",
@@ -1803,12 +1803,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DocumentReference.Context",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "event",
@@ -1836,7 +1836,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sourcePatientInfo",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "related",
@@ -1850,17 +1850,17 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DocumentReference.RelatesTo",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "elementType": "USCore.DocumentRelationshipType",
+                    "elementType": "DocumentRelationshipType",
                     "target": "%value.value"
                 },
                 {
                     "name": "target",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -1868,7 +1868,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DocumentReferenceProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference",
             "label": "US Core DocumentReference Profile",
@@ -1876,7 +1876,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "masterIdentifier",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -1891,7 +1891,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "docStatus",
-                    "elementType": "USCore.ReferredDocumentStatus",
+                    "elementType": "ReferredDocumentStatus",
                     "target": "%value.value"
                 },
                 {
@@ -1908,7 +1908,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -1923,11 +1923,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authenticator",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "custodian",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "relatesTo",
@@ -1955,7 +1955,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "context",
-                    "elementType": "USCore.DocumentReference.Context"
+                    "elementType": "DocumentReference.Context"
                 }
             ]
         },
@@ -1970,14 +1970,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "DomainResource",
-            "baseType": "USCore.Resource",
+            "baseType": "Resource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/DomainResource",
             "label": "DomainResource",
             "element": [
                 {
                     "name": "text",
-                    "elementType": "USCore.Narrative"
+                    "elementType": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -2003,7 +2003,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Dosage",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Dosage",
             "label": "Dosage",
@@ -2032,7 +2032,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "timing",
-                    "elementType": "USCore.Timing"
+                    "elementType": "Timing"
                 },
                 {
                     "name": "asNeeded",
@@ -2093,7 +2093,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Dosage.DoseAndRate",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -2165,7 +2165,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Encounter.ClassHistory",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2186,12 +2186,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Encounter.Diagnosis",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "condition",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "use",
@@ -2209,16 +2209,16 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Encounter.Hospitalization",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "preAdmissionIdentifier",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "origin",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "admitSource",
@@ -2253,7 +2253,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "dischargeDisposition",
@@ -2266,16 +2266,16 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Encounter.Location",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "location",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.EncounterLocationStatus",
+                    "elementType": "EncounterLocationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -2296,7 +2296,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Encounter.Participant",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2315,7 +2315,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "individual",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -2323,12 +2323,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Encounter.StatusHistory",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "elementType": "USCore.EncounterStatus",
+                    "elementType": "EncounterStatus",
                     "target": "%value.value"
                 },
                 {
@@ -2351,7 +2351,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "EncounterProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter",
             "label": "US Core Encounter Profile",
@@ -2365,7 +2365,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.EncounterStatus",
+                    "elementType": "EncounterStatus",
                     "target": "%value.value"
                 },
                 {
@@ -2404,7 +2404,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "episodeOfCare",
@@ -2469,7 +2469,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hospitalization",
-                    "elementType": "USCore.Encounter.Hospitalization"
+                    "elementType": "Encounter.Hospitalization"
                 },
                 {
                     "name": "location",
@@ -2479,11 +2479,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "serviceProvider",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -2498,7 +2498,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "EthnicityExtension",
-            "baseType": "USCore.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
             "label": "US Core Ethnicity Extension",
@@ -2538,7 +2538,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Expression",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Expression",
             "label": "Expression",
@@ -2574,7 +2574,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Extension",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Extension",
             "label": "Extension",
@@ -2811,7 +2811,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Goal.Target",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2866,7 +2866,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "GoalProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal",
             "label": "US Core Goal Profile",
@@ -2907,7 +2907,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "start",
@@ -2944,7 +2944,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "expressedBy",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "addresses",
@@ -2977,14 +2977,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "HumanName",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/HumanName",
             "label": "HumanName",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "USCore.NameUse",
+                    "elementType": "NameUse",
                     "target": "%value.value"
                 },
                 {
@@ -3031,14 +3031,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Identifier",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Identifier",
             "label": "Identifier",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "USCore.IdentifierUse",
+                    "elementType": "IdentifierUse",
                     "target": "%value.value"
                 },
                 {
@@ -3065,7 +3065,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "assigner",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -3080,7 +3080,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Immunization.Education",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3109,7 +3109,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Immunization.Performer",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3119,7 +3119,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -3127,7 +3127,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Immunization.ProtocolApplied",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3137,7 +3137,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "targetDisease",
@@ -3186,7 +3186,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Immunization.Reaction",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3196,7 +3196,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reported",
@@ -3209,7 +3209,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "ImmunizationProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization",
             "label": "US Core Immunization Profile",
@@ -3238,11 +3238,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -3278,11 +3278,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "lotNumber",
@@ -3382,7 +3382,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "ImplantableDeviceProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device",
             "label": "US Core Implantable Device Profile",
@@ -3396,15 +3396,15 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "udiCarrier",
-                    "elementType": "USCore.Device.UdiCarrier"
+                    "elementType": "Device.UdiCarrier"
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.FHIRDeviceStatus",
+                    "elementType": "FHIRDeviceStatus",
                     "target": "%value.value"
                 },
                 {
@@ -3485,11 +3485,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "owner",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contact",
@@ -3499,7 +3499,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "url",
@@ -3521,7 +3521,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "parent",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -3529,7 +3529,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "LaboratoryResultObservationProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab",
             "label": "US Core Laboratory Result Observation Profile",
@@ -3578,7 +3578,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -3588,7 +3588,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -3698,11 +3698,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -3741,7 +3741,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Location",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location",
             "label": "US Core Location Profile",
@@ -3754,7 +3754,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.LocationStatus",
+                    "elementType": "LocationStatus",
                     "target": "%value.value"
                 },
                 {
@@ -3781,7 +3781,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "mode",
-                    "elementType": "USCore.LocationMode",
+                    "elementType": "LocationMode",
                     "target": "%value.value"
                 },
                 {
@@ -3799,7 +3799,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "USCore.Address"
+                    "elementType": "Address"
                 },
                 {
                     "name": "physicalType",
@@ -3808,15 +3808,15 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "position",
-                    "elementType": "USCore.Location.Position"
+                    "elementType": "Location.Position"
                 },
                 {
                     "name": "managingOrganization",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "hoursOfOperation",
@@ -3841,7 +3841,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Location.HoursOfOperation",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3872,7 +3872,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Location.Position",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3910,7 +3910,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Medication.Batch",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3929,7 +3929,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Medication.Ingredient",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3965,7 +3965,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "MedicationProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication",
             "label": "US Core Medication Profile",
@@ -3985,12 +3985,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.MedicationStatus",
+                    "elementType": "MedicationStatus",
                     "target": "%value.value"
                 },
                 {
                     "name": "manufacturer",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "form",
@@ -4010,7 +4010,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "batch",
-                    "elementType": "USCore.Medication.Batch"
+                    "elementType": "Medication.Batch"
                 }
             ]
         },
@@ -4018,12 +4018,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "MedicationRequest.DispenseRequest",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "initialFill",
-                    "elementType": "USCore.MedicationRequest.DispenseRequest.InitialFill"
+                    "elementType": "MedicationRequest.DispenseRequest.InitialFill"
                 },
                 {
                     "name": "dispenseInterval",
@@ -4054,7 +4054,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -4062,7 +4062,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "MedicationRequest.DispenseRequest.InitialFill",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4081,7 +4081,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "MedicationRequest.Substitution",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4119,7 +4119,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "MedicationRequestProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest",
             "label": "US Core MedicationRequest Profile",
@@ -4155,7 +4155,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "USCore.MedicationRequestPriority",
+                    "elementType": "MedicationRequestPriority",
                     "target": "%value.value"
                 },
                 {
@@ -4199,11 +4199,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -4218,11 +4218,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -4231,7 +4231,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -4268,7 +4268,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "courseOfTherapyType",
@@ -4295,15 +4295,15 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispenseRequest",
-                    "elementType": "USCore.MedicationRequest.DispenseRequest"
+                    "elementType": "MedicationRequest.DispenseRequest"
                 },
                 {
                     "name": "substitution",
-                    "elementType": "USCore.MedicationRequest.Substitution"
+                    "elementType": "MedicationRequest.Substitution"
                 },
                 {
                     "name": "priorPrescription",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "detectedIssue",
@@ -4330,7 +4330,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Meta",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Meta",
             "label": "Meta",
@@ -4391,14 +4391,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Narrative",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Narrative",
             "label": "Narrative",
             "element": [
                 {
                     "name": "status",
-                    "elementType": "USCore.NarrativeStatus",
+                    "elementType": "NarrativeStatus",
                     "target": "%value.value"
                 },
                 {
@@ -4419,7 +4419,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Observation.Component",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4506,35 +4506,35 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Observation.Component.Concentration",
-            "baseType": "USCore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Observation.Component.DiastolicBP",
-            "baseType": "USCore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Observation.Component.FlowRate",
-            "baseType": "USCore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Observation.Component.SystolicBP",
-            "baseType": "USCore.Observation.Component",
+            "baseType": "Observation.Component",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Observation.ReferenceRange",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4577,7 +4577,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Organization.Contact",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4587,7 +4587,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "elementType": "USCore.HumanName"
+                    "elementType": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -4597,7 +4597,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "USCore.Address"
+                    "elementType": "Address"
                 }
             ]
         },
@@ -4605,7 +4605,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "OrganizationProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization",
             "label": "US Core Organization Profile",
@@ -4619,11 +4619,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "NPI",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "CLIA",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "active",
@@ -4663,7 +4663,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "partOf",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contact",
@@ -4683,7 +4683,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "ParameterDefinition",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ParameterDefinition",
             "label": "ParameterDefinition",
@@ -4695,7 +4695,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "USCore.ParameterUse",
+                    "elementType": "ParameterUse",
                     "target": "%value.value"
                 },
                 {
@@ -4715,7 +4715,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "USCore.FHIRAllTypes",
+                    "elementType": "FHIRAllTypes",
                     "target": "%value.value"
                 },
                 {
@@ -4736,7 +4736,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Patient.Communication",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4755,7 +4755,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Patient.Contact",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4767,7 +4767,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "elementType": "USCore.HumanName"
+                    "elementType": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -4777,16 +4777,16 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "USCore.Address"
+                    "elementType": "Address"
                 },
                 {
                     "name": "gender",
-                    "elementType": "USCore.AdministrativeGender",
+                    "elementType": "AdministrativeGender",
                     "target": "%value.value"
                 },
                 {
                     "name": "organization",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -4801,16 +4801,16 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Patient.Link",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "other",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "type",
-                    "elementType": "USCore.LinkType",
+                    "elementType": "LinkType",
                     "target": "%value.value"
                 }
             ]
@@ -4819,7 +4819,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PatientProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
             "label": "US Core Patient Profile",
@@ -4827,17 +4827,17 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "race",
-                    "elementType": "USCore.RaceExtension",
+                    "elementType": "RaceExtension",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-race']"
                 },
                 {
                     "name": "ethnicity",
-                    "elementType": "USCore.EthnicityExtension",
+                    "elementType": "EthnicityExtension",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity']"
                 },
                 {
                     "name": "birthsex",
-                    "elementType": "USCore.BirthSexExtension",
+                    "elementType": "BirthSexExtension",
                     "target": "%parent.extension[url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'].value.value"
                 },
                 {
@@ -4944,7 +4944,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "link",
@@ -4958,7 +4958,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PediatricBMIforAgeObservationProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age",
             "label": "US Core Pediatric BMI for Age Observation Profile",
@@ -4985,7 +4985,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -5007,7 +5007,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -5017,7 +5017,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -5081,11 +5081,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -5117,7 +5117,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PediatricWeightForHeightObservationProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height",
             "label": "US Core Pediatric Weight for Height Observation Profile",
@@ -5144,7 +5144,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -5166,7 +5166,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -5176,7 +5176,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -5240,11 +5240,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -5276,7 +5276,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Practitioner.Qualification",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5299,7 +5299,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "issuer",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5307,7 +5307,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PractitionerProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner",
             "label": "US Core Practitioner Profile",
@@ -5321,7 +5321,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "NPI",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "active",
@@ -5348,7 +5348,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "elementType": "USCore.AdministrativeGender",
+                    "elementType": "AdministrativeGender",
                     "target": "%value.value"
                 },
                 {
@@ -5381,7 +5381,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PractitionerRole.AvailableTime",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5412,7 +5412,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PractitionerRole.NotAvailable",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5433,7 +5433,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PractitionerRoleProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole",
             "label": "US Core PractitionerRole Profile",
@@ -5459,11 +5459,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "practitioner",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "organization",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "code",
@@ -5526,7 +5526,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Procedure.FocalDevice",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5536,7 +5536,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "manipulated",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5544,7 +5544,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Procedure.Performer",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5554,11 +5554,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5566,7 +5566,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "ProcedureProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure",
             "label": "US Core Procedure Profile",
@@ -5627,11 +5627,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performed",
@@ -5651,11 +5651,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
@@ -5665,7 +5665,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -5749,7 +5749,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Provenance",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-provenance",
             "label": "US Core Provenance Profile",
@@ -5790,7 +5790,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reason",
@@ -5818,7 +5818,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "ProvenanceTransmitter",
-                    "elementType": "USCore.Provenance.Agent.ProvenanceTransmitter"
+                    "elementType": "Provenance.Agent.ProvenanceTransmitter"
                 },
                 {
                     "name": "entity",
@@ -5842,7 +5842,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Provenance.Agent",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5859,11 +5859,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "who",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5871,31 +5871,31 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Provenance.Agent.ProvenanceAuthor",
-            "baseType": "USCore.Provenance.Agent",
+            "baseType": "Provenance.Agent",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Provenance.Agent.ProvenanceTransmitter",
-            "baseType": "USCore.Provenance.Agent",
+            "baseType": "Provenance.Agent",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Provenance.Entity",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "role",
-                    "elementType": "USCore.ProvenanceEntityRole",
+                    "elementType": "ProvenanceEntityRole",
                     "target": "%value.value"
                 },
                 {
                     "name": "what",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "agent",
@@ -5920,7 +5920,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "PulseOximetryProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-pulse-oximetry",
             "label": "US Core Pulse Oximetry Profile",
@@ -5947,7 +5947,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -5979,7 +5979,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -5989,7 +5989,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -6053,11 +6053,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -6085,11 +6085,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "FlowRate",
-                    "elementType": "USCore.Observation.Component"
+                    "elementType": "Observation.Component"
                 },
                 {
                     "name": "Concentration",
-                    "elementType": "USCore.Observation.Component"
+                    "elementType": "Observation.Component"
                 }
             ]
         },
@@ -6104,7 +6104,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "RaceExtension",
-            "baseType": "USCore.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
             "label": "US Core Race Extension",
@@ -6139,7 +6139,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Reference",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Reference",
             "label": "Reference",
@@ -6156,7 +6156,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "elementType": "USCore.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "display",
@@ -6176,14 +6176,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "RelatedArtifact",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/RelatedArtifact",
             "label": "RelatedArtifact",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "USCore.RelatedArtifactType",
+                    "elementType": "RelatedArtifactType",
                     "target": "%value.value"
                 },
                 {
@@ -6208,7 +6208,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "document",
-                    "elementType": "USCore.Attachment"
+                    "elementType": "Attachment"
                 },
                 {
                     "name": "resource",
@@ -6240,7 +6240,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "elementType": "USCore.Meta"
+                    "elementType": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -6258,7 +6258,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "SampledData",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/SampledData",
             "label": "SampledData",
@@ -6304,7 +6304,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Signature",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Signature",
             "label": "Signature",
@@ -6323,20 +6323,20 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "who",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "targetFormat",
-                    "elementType": "USCore.MimeType",
+                    "elementType": "MimeType",
                     "target": "%value.value"
                 },
                 {
                     "name": "sigFormat",
-                    "elementType": "USCore.MimeType",
+                    "elementType": "MimeType",
                     "target": "%value.value"
                 },
                 {
@@ -6350,7 +6350,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "SmokingStatusProfile",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus",
             "label": "US Core Smoking Status Observation Profile",
@@ -6394,7 +6394,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -6404,7 +6404,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -6476,11 +6476,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -6526,7 +6526,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Timing",
-            "baseType": "USCore.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Timing",
             "label": "Timing",
@@ -6541,7 +6541,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "repeat",
-                    "elementType": "USCore.Timing.Repeat"
+                    "elementType": "Timing.Repeat"
                 },
                 {
                     "name": "code",
@@ -6554,7 +6554,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "Timing.Repeat",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -6598,7 +6598,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "durationUnit",
-                    "elementType": "USCore.UnitsOfTime",
+                    "elementType": "UnitsOfTime",
                     "target": "%value.value"
                 },
                 {
@@ -6623,7 +6623,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "periodUnit",
-                    "elementType": "USCore.UnitsOfTime",
+                    "elementType": "UnitsOfTime",
                     "target": "%value.value"
                 },
                 {
@@ -6658,14 +6658,14 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "TriggerDefinition",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/TriggerDefinition",
             "label": "TriggerDefinition",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "USCore.TriggerType",
+                    "elementType": "TriggerType",
                     "target": "%value.value"
                 },
                 {
@@ -6706,7 +6706,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "elementType": "USCore.Expression"
+                    "elementType": "Expression"
                 }
             ]
         },
@@ -6735,7 +6735,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "UsageContext",
-            "baseType": "USCore.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/UsageContext",
             "label": "UsageContext",
@@ -6776,7 +6776,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-bmi",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bmi",
             "label": "Observation Body Mass Index Profile",
@@ -6803,7 +6803,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -6830,7 +6830,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -6840,7 +6840,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -6904,11 +6904,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -6940,7 +6940,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-bodyheight",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodyheight",
             "label": "Observation Body Height Profile",
@@ -6967,7 +6967,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -6994,7 +6994,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -7004,7 +7004,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -7068,11 +7068,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -7104,7 +7104,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-bodytemp",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodytemp",
             "label": "Observation Body Temperature Profile",
@@ -7131,7 +7131,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -7158,7 +7158,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -7168,7 +7168,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -7232,11 +7232,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -7268,7 +7268,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-bodyweight",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodyweight",
             "label": "Observation Body Weight Profile",
@@ -7295,7 +7295,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -7322,7 +7322,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -7332,7 +7332,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -7396,11 +7396,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -7432,7 +7432,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-bp",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bp",
             "label": "Observation Blood Pressure Profile",
@@ -7459,7 +7459,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -7486,7 +7486,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -7496,7 +7496,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -7560,11 +7560,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -7592,12 +7592,12 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "SystolicBP",
-                    "elementType": "USCore.Observation.Component",
+                    "elementType": "Observation.Component",
                     "target": "%parent.component[code.coding.system='http://loinc.org',code.coding.code='8480-6']"
                 },
                 {
                     "name": "DiastolicBP",
-                    "elementType": "USCore.Observation.Component",
+                    "elementType": "Observation.Component",
                     "target": "%parent.component[code.coding.system='http://loinc.org',code.coding.code='8462-4']"
                 }
             ]
@@ -7606,7 +7606,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-headcircum",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/headcircum",
             "label": "Observation Head Circumference Profile",
@@ -7633,7 +7633,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -7660,7 +7660,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -7670,7 +7670,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -7734,11 +7734,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -7770,7 +7770,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-heartrate",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/heartrate",
             "label": "Observation Heart Rate Profile",
@@ -7797,7 +7797,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -7824,7 +7824,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -7834,7 +7834,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -7898,11 +7898,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -7934,7 +7934,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-oxygensat",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/oxygensat",
             "label": "Observation Oxygen Saturation Profile",
@@ -7961,7 +7961,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -7988,7 +7988,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -7998,7 +7998,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -8062,11 +8062,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -8098,7 +8098,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-resprate",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/resprate",
             "label": "Observation Respiratory Rate Profile",
@@ -8125,7 +8125,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -8152,7 +8152,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -8162,7 +8162,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -8226,11 +8226,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -8262,7 +8262,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "USCore",
             "name": "observation-vitalspanel",
-            "baseType": "USCore.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/vitalspanel",
             "label": "Observation Vital Signs Panel Profile",
@@ -8289,7 +8289,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "USCore.Status",
+                    "elementType": "Status",
                     "target": "%value.value"
                 },
                 {
@@ -8318,7 +8318,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -8328,7 +8328,7 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -8387,11 +8387,11 @@ final uscoremodelinfo311 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "USCore.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",

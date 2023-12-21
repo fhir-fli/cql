@@ -5,14 +5,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
     "url": "http://hl7.org/fhir",
     "schemaLocation": "http://org.hl7.fhir quick.xsd",
     "targetQualifier": "quick",
-    "patientClassName": "QUICK.Patient",
+    "patientClassName": "Patient",
     "patientClassIdentifier": "cqf-patient",
     "patientBirthDatePropertyName": "birthDate",
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "QUICK.Composition.Event",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Composition.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31,54 +31,54 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Patient.Link",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Patient.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "other",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.LinkType"
+                    "type": "LinkType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SpecialValues",
-            "baseType": "QUICK.Element",
+            "name": "SpecialValues",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SpecialValues_list"
+                "type": "SpecialValues_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AggregationMode",
-            "baseType": "QUICK.Element",
+            "name": "AggregationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AggregationMode_list"
+                "type": "AggregationMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrderStatus",
-            "baseType": "QUICK.Element",
+            "name": "NutritionOrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.NutritionOrderStatus_list"
+                "type": "NutritionOrderStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntolerance",
-            "baseType": "QUICK.DomainResource",
+            "name": "AllergyIntolerance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-allergyintolerance",
             "label": "AllergyIntolerance",
@@ -94,11 +94,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "substance",
@@ -106,19 +106,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.AllergyIntoleranceStatus"
+                    "type": "AllergyIntoleranceStatus"
                 },
                 {
                     "name": "criticality",
-                    "type": "QUICK.AllergyIntoleranceCriticality"
+                    "type": "AllergyIntoleranceCriticality"
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.AllergyIntoleranceType"
+                    "type": "AllergyIntoleranceType"
                 },
                 {
                     "name": "category",
-                    "type": "QUICK.AllergyIntoleranceCategory"
+                    "type": "AllergyIntoleranceCategory"
                 },
                 {
                     "name": "lastOccurence",
@@ -136,12 +136,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.RestfulConformanceMode_list"
+            "name": "RestfulConformanceMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Timing",
-            "baseType": "QUICK.Element",
+            "name": "Timing",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -150,14 +150,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "repeat",
-                    "type": "QUICK.Timing.Repeat"
+                    "type": "Timing.Repeat"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEvent.Network",
-            "baseType": "QUICK.BackboneElement",
+            "name": "SecurityEvent.Network",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -166,14 +166,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.SecurityEventParticipantNetworkType"
+                    "type": "SecurityEventParticipantNetworkType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Order.When",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Order.When",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -182,18 +182,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "schedule",
-                    "type": "QUICK.Timing"
+                    "type": "Timing"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.RemittanceOutcome_list"
+            "name": "RemittanceOutcome_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Medication",
-            "baseType": "QUICK.DomainResource",
+            "name": "Medication",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medication",
             "label": "Medication",
@@ -213,31 +213,31 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "manufacturer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "kind",
-                    "type": "QUICK.MedicationKind"
+                    "type": "MedicationKind"
                 },
                 {
                     "name": "product",
-                    "type": "QUICK.Medication.Product"
+                    "type": "Medication.Product"
                 },
                 {
                     "name": "package",
-                    "type": "QUICK.Medication.Package"
+                    "type": "Medication.Package"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Profile.Mapping",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Profile.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "uri",
@@ -255,8 +255,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MessageHeader.Source",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MessageHeader.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -273,7 +273,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "contact",
-                    "type": "QUICK.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "endpoint",
@@ -283,12 +283,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ResourceProfileStatus_list"
+            "name": "ResourceProfileStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Reference",
-            "baseType": "QUICK.Element",
+            "name": "Reference",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -303,26 +303,26 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntoleranceStatus",
-            "baseType": "QUICK.Element",
+            "name": "AllergyIntoleranceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AllergyIntoleranceStatus_list"
+                "type": "AllergyIntoleranceStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ObservationRelationshipType_list"
+            "name": "ObservationRelationshipType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SupplyStatus_list"
+            "name": "SupplyStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.List",
-            "baseType": "QUICK.DomainResource",
+            "name": "List",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -335,11 +335,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -351,7 +351,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "mode",
-                    "type": "QUICK.ListMode"
+                    "type": "ListMode"
                 },
                 {
                     "name": "entry",
@@ -365,8 +365,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.RiskAssessment.Prediction",
-            "baseType": "QUICK.BackboneElement",
+            "name": "RiskAssessment.Prediction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -385,26 +385,26 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.base64Binary",
-            "baseType": "QUICK.Element",
+            "name": "base64Binary",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.base64Binary_primitive"
+                "type": "base64Binary_primitive"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CarePlanActivityCategory_list"
+            "name": "CarePlanActivityCategory_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DeviceUseRequestPriority_list"
+            "name": "DeviceUseRequestPriority_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImmunizationRecommendation.Protocol",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ImmunizationRecommendation.Protocol",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -417,7 +417,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
@@ -427,8 +427,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Alert",
-            "baseType": "QUICK.DomainResource",
+            "name": "Alert",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -441,15 +441,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.AlertStatus"
+                    "type": "AlertStatus"
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "note",
@@ -459,18 +459,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OperationKind",
-            "baseType": "QUICK.Element",
+            "name": "OperationKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.OperationKind_list"
+                "type": "OperationKind_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.HealthcareService.ServiceType",
-            "baseType": "QUICK.BackboneElement",
+            "name": "HealthcareService.ServiceType",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -485,42 +485,42 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.EventTiming",
-            "baseType": "QUICK.Element",
+            "name": "EventTiming",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.EventTiming_list"
+                "type": "EventTiming_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.BundleEntryStatus_list"
+            "name": "BundleEntryStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Filter",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Filter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "property",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "op",
-                    "type": "QUICK.FilterOperator"
+                    "type": "FilterOperator"
                 },
                 {
                     "name": "value",
-                    "type": "QUICK.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Appointment.Participant",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Appointment.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -529,27 +529,27 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "required",
-                    "type": "QUICK.ParticipantRequired"
+                    "type": "ParticipantRequired"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ParticipationStatus"
+                    "type": "ParticipationStatus"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DomainResource",
-            "baseType": "QUICK.Resource",
+            "name": "DomainResource",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "text",
-                    "type": "QUICK.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -567,23 +567,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.QuestionnaireStatus",
-            "baseType": "QUICK.Element",
+            "name": "QuestionnaireStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.QuestionnaireStatus_list"
+                "type": "QuestionnaireStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Specimen.Collection",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Specimen.Collection",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "collector",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "comment",
@@ -605,29 +605,29 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEvent.Object",
-            "baseType": "QUICK.BackboneElement",
+            "name": "SecurityEvent.Object",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reference",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.SecurityEventObjectType"
+                    "type": "SecurityEventObjectType"
                 },
                 {
                     "name": "role",
-                    "type": "QUICK.SecurityEventObjectRole"
+                    "type": "SecurityEventObjectRole"
                 },
                 {
                     "name": "lifecycle",
-                    "type": "QUICK.SecurityEventObjectLifecycle"
+                    "type": "SecurityEventObjectLifecycle"
                 },
                 {
                     "name": "sensitivity",
@@ -643,7 +643,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "query",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "detail",
@@ -653,13 +653,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Procedure.Performer",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Procedure.Performer",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "person",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -669,21 +669,21 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.IssueSeverity_list"
+            "name": "IssueSeverity_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.NarrativeStatus_list"
+            "name": "NarrativeStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NamingSystem.UniqueId",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NamingSystem.UniqueId",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.NamingSystemIdentifierType"
+                    "type": "NamingSystemIdentifierType"
                 },
                 {
                     "name": "value",
@@ -701,8 +701,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.RelatedPerson",
-            "baseType": "QUICK.DomainResource",
+            "name": "RelatedPerson",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -711,7 +711,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -719,7 +719,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "QUICK.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -731,7 +731,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "QUICK.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "photo",
@@ -741,14 +741,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CommunicationRequest.MessagePart",
-            "baseType": "QUICK.BackboneElement",
+            "name": "CommunicationRequest.MessagePart",
+            "baseType": "BackboneElement",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Encounter",
-            "baseType": "QUICK.DomainResource",
+            "name": "Encounter",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-encounter",
             "label": "Encounter",
@@ -760,11 +760,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.EncounterState"
+                    "type": "EncounterState"
                 },
                 {
                     "name": "class",
-                    "type": "QUICK.EncounterClass"
+                    "type": "EncounterClass"
                 },
                 {
                     "name": "type",
@@ -772,7 +772,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participant",
@@ -780,7 +780,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "fulfills",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -788,7 +788,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "length",
-                    "type": "QUICK.Duration"
+                    "type": "Duration"
                 },
                 {
                     "name": "reason",
@@ -796,7 +796,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "indication",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
@@ -804,7 +804,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hospitalization",
-                    "type": "QUICK.Encounter.Hospitalization"
+                    "type": "Encounter.Hospitalization"
                 },
                 {
                     "name": "location",
@@ -812,27 +812,27 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "serviceProvider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.BindingConformance_list"
+            "name": "BindingConformance_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NamingSystem",
-            "baseType": "QUICK.DomainResource",
+            "name": "NamingSystem",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.NamingSystemType"
+                    "type": "NamingSystemType"
                 },
                 {
                     "name": "name",
@@ -840,11 +840,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.NamingSystemStatus"
+                    "type": "NamingSystemStatus"
                 },
                 {
                     "name": "country",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "category",
@@ -868,18 +868,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "contact",
-                    "type": "QUICK.NamingSystem.Contact"
+                    "type": "NamingSystem.Contact"
                 },
                 {
                     "name": "replacedBy",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ExplanationOfBenefit",
-            "baseType": "QUICK.DomainResource",
+            "name": "ExplanationOfBenefit",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -888,7 +888,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
@@ -896,7 +896,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "QUICK.RemittanceOutcome"
+                    "type": "RemittanceOutcome"
                 },
                 {
                     "name": "disposition",
@@ -916,22 +916,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlan.Activity",
-            "baseType": "QUICK.BackboneElement",
+            "name": "CarePlan.Activity",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -940,7 +940,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.CarePlanActivityStatus"
+                    "type": "CarePlanActivityStatus"
                 },
                 {
                     "name": "prohibited",
@@ -956,18 +956,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "simple",
-                    "type": "QUICK.CarePlan.Simple"
+                    "type": "CarePlan.Simple"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "System.QuantityComparator",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -976,18 +976,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ObservationReliability",
-            "baseType": "QUICK.Element",
+            "name": "ObservationReliability",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ObservationReliability_list"
+                "type": "ObservationReliability_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.QuestionnaireAnswers.Group",
-            "baseType": "QUICK.BackboneElement",
+            "name": "QuestionnaireAnswers.Group",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1004,7 +1004,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
@@ -1018,8 +1018,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrder.Texture",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NutritionOrder.Texture",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1034,18 +1034,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.GroupType",
-            "baseType": "QUICK.Element",
+            "name": "GroupType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.GroupType_list"
+                "type": "GroupType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.FamilyHistory.Condition",
-            "baseType": "QUICK.BackboneElement",
+            "name": "FamilyHistory.Condition",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1064,12 +1064,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AllergyIntoleranceSeverity_list"
+            "name": "AllergyIntoleranceSeverity_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Messaging",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Messaging",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1092,8 +1092,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Reversal",
-            "baseType": "QUICK.DomainResource",
+            "name": "Reversal",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1114,39 +1114,39 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "response",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responseIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "payee",
-                    "type": "QUICK.Reversal.Payee"
+                    "type": "Reversal.Payee"
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICK.Reversal.Coverage"
+                    "type": "Reversal.Coverage"
                 },
                 {
                     "name": "nullify",
@@ -1156,20 +1156,20 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AdministrativeGender_list"
+            "name": "AdministrativeGender_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ParticipantStatus_list"
+            "name": "ParticipantStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DiagnosticOrderStatus_list"
+            "name": "DiagnosticOrderStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Observation.ReferenceRange",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Observation.ReferenceRange",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1186,7 +1186,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "age",
-                    "type": "QUICK.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "text",
@@ -1196,28 +1196,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DeviceUseRequestStatus",
-            "baseType": "QUICK.Element",
+            "name": "DeviceUseRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DeviceUseRequestStatus_list"
+                "type": "DeviceUseRequestStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SlicingRules",
-            "baseType": "QUICK.Element",
+            "name": "SlicingRules",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SlicingRules_list"
+                "type": "SlicingRules_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Subscription",
-            "baseType": "QUICK.DomainResource",
+            "name": "Subscription",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1234,7 +1234,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.SubscriptionStatus"
+                    "type": "SubscriptionStatus"
                 },
                 {
                     "name": "error",
@@ -1242,7 +1242,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "channel",
-                    "type": "QUICK.Subscription.Channel"
+                    "type": "Subscription.Channel"
                 },
                 {
                     "name": "end",
@@ -1256,22 +1256,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlanStatus",
-            "baseType": "QUICK.Element",
+            "name": "CarePlanStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CarePlanStatus_list"
+                "type": "CarePlanStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ValueSetStatus_list"
+            "name": "ValueSetStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImagingStudy.Instance",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ImagingStudy.Instance",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1280,11 +1280,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "uid",
-                    "type": "QUICK.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "sopclass",
-                    "type": "QUICK.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "type",
@@ -1300,38 +1300,38 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "attachment",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Measmnt_Principle",
-            "baseType": "QUICK.Element",
+            "name": "Measmnt_Principle",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.Measmnt_Principle_list"
+                "type": "Measmnt_Principle_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ContactPointSystem_list"
+            "name": "ContactPointSystem_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NamingSystemType",
-            "baseType": "QUICK.Element",
+            "name": "NamingSystemType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.NamingSystemType_list"
+                "type": "NamingSystemType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Condition.Evidence",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Condition.Evidence",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1346,12 +1346,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SupplyDispenseStatus_list"
+            "name": "SupplyDispenseStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Condition.OccurredFollowing",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Condition.OccurredFollowing",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1360,40 +1360,40 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ExtensionContext",
-            "baseType": "QUICK.Element",
+            "name": "ExtensionContext",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ExtensionContext_list"
+                "type": "ExtensionContext_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ProcedureRequestPriority_list"
+            "name": "ProcedureRequestPriority_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CarePlanStatus_list"
+            "name": "CarePlanStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ConditionStatus_list"
+            "name": "ConditionStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.OrderOutcomeStatus_list"
+            "name": "OrderOutcomeStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Practitioner",
-            "baseType": "QUICK.DomainResource",
+            "name": "Practitioner",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-practitioner",
             "label": "Practitioner",
@@ -1405,7 +1405,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "QUICK.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -1429,7 +1429,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -1459,12 +1459,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.QuestionnaireStatus_list"
+            "name": "QuestionnaireStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEvent.Detail",
-            "baseType": "QUICK.BackboneElement",
+            "name": "SecurityEvent.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1473,22 +1473,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "value",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Resource",
+            "name": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "meta",
-                    "type": "QUICK.Resource.Meta"
+                    "type": "Resource.Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1496,14 +1496,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "language",
-                    "type": "QUICK.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Medication.Product",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Medication.Product",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1518,30 +1518,30 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.InstanceAvailability",
-            "baseType": "QUICK.Element",
+            "name": "InstanceAvailability",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.InstanceAvailability_list"
+                "type": "InstanceAvailability_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AllergyIntoleranceType_list"
+            "name": "AllergyIntoleranceType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SearchParamType_list"
+            "name": "SearchParamType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ResourceDataElementStatus_list"
+            "name": "ResourceDataElementStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Patient.Animal",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Patient.Animal",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1560,37 +1560,37 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.BundleType_list"
+            "name": "BundleType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Procedure.RelatedItem",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Procedure.RelatedItem",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.ProcedureRelationshipType"
+                    "type": "ProcedureRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Group",
-            "baseType": "QUICK.DomainResource",
+            "name": "Group",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.GroupType"
+                    "type": "GroupType"
                 },
                 {
                     "name": "actual",
@@ -1620,43 +1620,43 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Modality",
-            "baseType": "QUICK.Element",
+            "name": "Modality",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.Modality_list"
+                "type": "Modality_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ContactPointSystem",
-            "baseType": "QUICK.Element",
+            "name": "ContactPointSystem",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ContactPointSystem_list"
+                "type": "ContactPointSystem_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ParticipationStatus",
-            "baseType": "QUICK.Element",
+            "name": "ParticipationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ParticipationStatus_list"
+                "type": "ParticipationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Substance.Instance",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Substance.Instance",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "expiry",
@@ -1670,8 +1670,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse",
-            "baseType": "QUICK.DomainResource",
+            "name": "ClaimResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1680,7 +1680,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
@@ -1700,19 +1700,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "QUICK.RemittanceOutcome"
+                    "type": "RemittanceOutcome"
                 },
                 {
                     "name": "disposition",
@@ -1736,19 +1736,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "totalCost",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "unallocDeductable",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "totalBenefit",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentAdjustment",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentAdjustmentReason",
@@ -1760,11 +1760,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "paymentAmount",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentRef",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reserved",
@@ -1782,8 +1782,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Contains",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Contains",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1800,7 +1800,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "display",
@@ -1814,8 +1814,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationDispense.Dosage",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationDispense.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1840,23 +1840,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Resource.Meta",
-            "baseType": "QUICK.Element",
+            "name": "Resource.Meta",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "versionId",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "lastUpdated",
@@ -1878,22 +1878,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.QuestionnaireAnswersStatus_list"
+            "name": "QuestionnaireAnswersStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CompositionStatus",
-            "baseType": "QUICK.Element",
+            "name": "CompositionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CompositionStatus_list"
+                "type": "CompositionStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SearchParameter",
-            "baseType": "QUICK.DomainResource",
+            "name": "SearchParameter",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1918,11 +1918,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.SearchParamType"
+                    "type": "SearchParamType"
                 },
                 {
                     "name": "description",
@@ -1940,22 +1940,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.base64Binary_primitive"
+            "name": "base64Binary_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.RemittanceOutcome",
-            "baseType": "QUICK.Element",
+            "name": "RemittanceOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.RemittanceOutcome_list"
+                "type": "RemittanceOutcome_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImmunizationRecommendation.DateCriterion",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ImmunizationRecommendation.DateCriterion",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1970,8 +1970,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Condition.Location",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Condition.Location",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1986,13 +1986,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Provenance.Entity",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Provenance.Entity",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "role",
-                    "type": "QUICK.ProvenanceEntityRole"
+                    "type": "ProvenanceEntityRole"
                 },
                 {
                     "name": "type",
@@ -2008,39 +2008,39 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "QUICK.Provenance.Agent"
+                    "type": "Provenance.Agent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ProcedureRequestMode",
-            "baseType": "QUICK.Element",
+            "name": "ProcedureRequestMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ProcedureRequestMode_list"
+                "type": "ProcedureRequestMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentMode",
-            "baseType": "QUICK.Element",
+            "name": "DocumentMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DocumentMode_list"
+                "type": "DocumentMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentReference",
-            "baseType": "QUICK.DomainResource",
+            "name": "DocumentReference",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "masterIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -2048,7 +2048,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -2064,7 +2064,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "custodian",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "policyManager",
@@ -2072,7 +2072,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authenticator",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -2084,7 +2084,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.DocumentReferenceStatus"
+                    "type": "DocumentReferenceStatus"
                 },
                 {
                     "name": "docStatus",
@@ -2104,11 +2104,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "primaryLanguage",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "mimeType",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "format",
@@ -2120,7 +2120,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hash",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "location",
@@ -2128,18 +2128,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "service",
-                    "type": "QUICK.DocumentReference.Service"
+                    "type": "DocumentReference.Service"
                 },
                 {
                     "name": "context",
-                    "type": "QUICK.DocumentReference.Context"
+                    "type": "DocumentReference.Context"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Adjudication2",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Adjudication2",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2148,7 +2148,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2158,8 +2158,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Questionnaire.Group",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Questionnaire.Group",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2198,18 +2198,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ResourceType",
-            "baseType": "QUICK.Element",
+            "name": "ResourceType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ResourceType_list"
+                "type": "ResourceType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Adjudication1",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Adjudication1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2218,7 +2218,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2228,8 +2228,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Adjudication4",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Adjudication4",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2238,7 +2238,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2248,8 +2248,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Adjudication3",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Adjudication3",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2258,7 +2258,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2268,8 +2268,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Specimen.Treatment",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Specimen.Treatment",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2288,8 +2288,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Composition.Attester",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Composition.Attester",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2302,14 +2302,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticReport.Image",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DiagnosticReport.Image",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2318,14 +2318,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "link",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationDispense",
-            "baseType": "QUICK.DomainResource",
+            "name": "MedicationDispense",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationdispense",
             "label": "MedicationDispense",
@@ -2333,19 +2333,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.MedicationDispenseStatus"
+                    "type": "MedicationDispenseStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dispenser",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authorizingPrescription",
@@ -2357,29 +2357,29 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substitution",
-                    "type": "QUICK.MedicationDispense.Substitution"
+                    "type": "MedicationDispense.Substitution"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConformanceStatementStatus",
-            "baseType": "QUICK.Element",
+            "name": "ConformanceStatementStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ConformanceStatementStatus_list"
+                "type": "ConformanceStatementStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ReferralRequest",
-            "baseType": "QUICK.DomainResource",
+            "name": "ReferralRequest",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "QUICK.ReferralStatus"
+                    "type": "ReferralStatus"
                 },
                 {
                     "name": "identifier",
@@ -2399,11 +2399,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requester",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -2411,7 +2411,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateSent",
@@ -2441,16 +2441,16 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AggregationMode_list"
+            "name": "AggregationMode_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CommunicationRequestMode_list"
+            "name": "CommunicationRequestMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.Detail",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2471,7 +2471,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -2483,7 +2483,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
@@ -2497,13 +2497,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Contract.Term",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Contract.Term",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
@@ -2515,7 +2515,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "text",
@@ -2525,12 +2525,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SystemRestfulInteraction_list"
+            "name": "SystemRestfulInteraction_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.EligibilityResponse",
-            "baseType": "QUICK.DomainResource",
+            "name": "EligibilityResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -2539,7 +2539,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
@@ -2547,7 +2547,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "QUICK.RemittanceOutcome"
+                    "type": "RemittanceOutcome"
                 },
                 {
                     "name": "disposition",
@@ -2567,36 +2567,36 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SecurityEventParticipantNetworkType_list"
+            "name": "SecurityEventParticipantNetworkType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ResponseType",
-            "baseType": "QUICK.Element",
+            "name": "ResponseType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ResponseType_list"
+                "type": "ResponseType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEvent.Event",
-            "baseType": "QUICK.BackboneElement",
+            "name": "SecurityEvent.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2609,7 +2609,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "action",
-                    "type": "QUICK.SecurityEventAction"
+                    "type": "SecurityEventAction"
                 },
                 {
                     "name": "dateTime",
@@ -2617,7 +2617,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "QUICK.SecurityEventOutcome"
+                    "type": "SecurityEventOutcome"
                 },
                 {
                     "name": "outcomeDesc",
@@ -2627,18 +2627,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MediaType",
-            "baseType": "QUICK.Element",
+            "name": "MediaType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MediaType_list"
+                "type": "MediaType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConceptMap.Map",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ConceptMap.Map",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2647,11 +2647,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "equivalence",
-                    "type": "QUICK.ConceptMapEquivalence"
+                    "type": "ConceptMapEquivalence"
                 },
                 {
                     "name": "comments",
@@ -2665,8 +2665,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEvent.Source",
-            "baseType": "QUICK.BackboneElement",
+            "name": "SecurityEvent.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2685,8 +2685,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Parameters",
-            "baseType": "QUICK.Resource",
+            "name": "Parameters",
+            "baseType": "Resource",
             "retrievable": false,
             "element": {
                 "name": "parameter",
@@ -2695,13 +2695,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Rest",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Rest",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "mode",
-                    "type": "QUICK.RestfulConformanceMode"
+                    "type": "RestfulConformanceMode"
                 },
                 {
                     "name": "documentation",
@@ -2709,7 +2709,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "security",
-                    "type": "QUICK.Conformance.Security"
+                    "type": "Conformance.Security"
                 },
                 {
                     "name": "resource",
@@ -2731,21 +2731,21 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.LinkType_list"
+            "name": "LinkType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Resource",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Resource",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "interaction",
@@ -2753,7 +2753,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "versioning",
-                    "type": "QUICK.ResourceVersionPolicy"
+                    "type": "ResourceVersionPolicy"
                 },
                 {
                     "name": "readHistory",
@@ -2775,21 +2775,21 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Bundle.Deleted",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Bundle.Deleted",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "id",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "versionId",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "instant",
@@ -2799,32 +2799,32 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticOrderStatus",
-            "baseType": "QUICK.Element",
+            "name": "DiagnosticOrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DiagnosticOrderStatus_list"
+                "type": "DiagnosticOrderStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MessageSignificanceCategory_list"
+            "name": "MessageSignificanceCategory_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.BundleType",
-            "baseType": "QUICK.Element",
+            "name": "BundleType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.BundleType_list"
+                "type": "BundleType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationDispense.Substitution",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationDispense.Substitution",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2843,335 +2843,335 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ResourceContainer",
+            "name": "ResourceContainer",
             "retrievable": false,
             "element": [
                 {
                     "name": "Alert",
-                    "type": "QUICK.Alert"
+                    "type": "Alert"
                 },
                 {
                     "name": "AllergyIntolerance",
-                    "type": "QUICK.AllergyIntolerance"
+                    "type": "AllergyIntolerance"
                 },
                 {
                     "name": "Appointment",
-                    "type": "QUICK.Appointment"
+                    "type": "Appointment"
                 },
                 {
                     "name": "AppointmentResponse",
-                    "type": "QUICK.AppointmentResponse"
+                    "type": "AppointmentResponse"
                 },
                 {
                     "name": "Availability",
-                    "type": "QUICK.Availability"
+                    "type": "Availability"
                 },
                 {
                     "name": "Basic",
-                    "type": "QUICK.Basic"
+                    "type": "Basic"
                 },
                 {
                     "name": "Binary",
-                    "type": "QUICK.Binary"
+                    "type": "Binary"
                 },
                 {
                     "name": "Bundle",
-                    "type": "QUICK.Bundle"
+                    "type": "Bundle"
                 },
                 {
                     "name": "CarePlan",
-                    "type": "QUICK.CarePlan"
+                    "type": "CarePlan"
                 },
                 {
                     "name": "ClaimResponse",
-                    "type": "QUICK.ClaimResponse"
+                    "type": "ClaimResponse"
                 },
                 {
                     "name": "CommunicationRequest",
-                    "type": "QUICK.CommunicationRequest"
+                    "type": "CommunicationRequest"
                 },
                 {
                     "name": "Composition",
-                    "type": "QUICK.Composition"
+                    "type": "Composition"
                 },
                 {
                     "name": "ConceptMap",
-                    "type": "QUICK.ConceptMap"
+                    "type": "ConceptMap"
                 },
                 {
                     "name": "Condition",
-                    "type": "QUICK.Condition"
+                    "type": "Condition"
                 },
                 {
                     "name": "Conformance",
-                    "type": "QUICK.Conformance"
+                    "type": "Conformance"
                 },
                 {
                     "name": "Contract",
-                    "type": "QUICK.Contract"
+                    "type": "Contract"
                 },
                 {
                     "name": "Contraindication",
-                    "type": "QUICK.Contraindication"
+                    "type": "Contraindication"
                 },
                 {
                     "name": "Coverage",
-                    "type": "QUICK.Coverage"
+                    "type": "Coverage"
                 },
                 {
                     "name": "DataElement",
-                    "type": "QUICK.DataElement"
+                    "type": "DataElement"
                 },
                 {
                     "name": "Device",
-                    "type": "QUICK.Device"
+                    "type": "Device"
                 },
                 {
                     "name": "DeviceComponent",
-                    "type": "QUICK.DeviceComponent"
+                    "type": "DeviceComponent"
                 },
                 {
                     "name": "DeviceUseRequest",
-                    "type": "QUICK.DeviceUseRequest"
+                    "type": "DeviceUseRequest"
                 },
                 {
                     "name": "DeviceUseStatement",
-                    "type": "QUICK.DeviceUseStatement"
+                    "type": "DeviceUseStatement"
                 },
                 {
                     "name": "DiagnosticOrder",
-                    "type": "QUICK.DiagnosticOrder"
+                    "type": "DiagnosticOrder"
                 },
                 {
                     "name": "DiagnosticReport",
-                    "type": "QUICK.DiagnosticReport"
+                    "type": "DiagnosticReport"
                 },
                 {
                     "name": "DocumentManifest",
-                    "type": "QUICK.DocumentManifest"
+                    "type": "DocumentManifest"
                 },
                 {
                     "name": "DocumentReference",
-                    "type": "QUICK.DocumentReference"
+                    "type": "DocumentReference"
                 },
                 {
                     "name": "Eligibility",
-                    "type": "QUICK.Eligibility"
+                    "type": "Eligibility"
                 },
                 {
                     "name": "EligibilityResponse",
-                    "type": "QUICK.EligibilityResponse"
+                    "type": "EligibilityResponse"
                 },
                 {
                     "name": "Encounter",
-                    "type": "QUICK.Encounter"
+                    "type": "Encounter"
                 },
                 {
                     "name": "ExplanationOfBenefit",
-                    "type": "QUICK.ExplanationOfBenefit"
+                    "type": "ExplanationOfBenefit"
                 },
                 {
                     "name": "ExtensionDefinition",
-                    "type": "QUICK.ExtensionDefinition"
+                    "type": "ExtensionDefinition"
                 },
                 {
                     "name": "FamilyHistory",
-                    "type": "QUICK.FamilyHistory"
+                    "type": "FamilyHistory"
                 },
                 {
                     "name": "Group",
-                    "type": "QUICK.Group"
+                    "type": "Group"
                 },
                 {
                     "name": "HealthcareService",
-                    "type": "QUICK.HealthcareService"
+                    "type": "HealthcareService"
                 },
                 {
                     "name": "ImagingStudy",
-                    "type": "QUICK.ImagingStudy"
+                    "type": "ImagingStudy"
                 },
                 {
                     "name": "Immunization",
-                    "type": "QUICK.Immunization"
+                    "type": "Immunization"
                 },
                 {
                     "name": "ImmunizationRecommendation",
-                    "type": "QUICK.ImmunizationRecommendation"
+                    "type": "ImmunizationRecommendation"
                 },
                 {
                     "name": "List",
-                    "type": "QUICK.List"
+                    "type": "List"
                 },
                 {
                     "name": "Location",
-                    "type": "QUICK.Location"
+                    "type": "Location"
                 },
                 {
                     "name": "Media",
-                    "type": "QUICK.Media"
+                    "type": "Media"
                 },
                 {
                     "name": "Medication",
-                    "type": "QUICK.Medication"
+                    "type": "Medication"
                 },
                 {
                     "name": "MedicationAdministration",
-                    "type": "QUICK.MedicationAdministration"
+                    "type": "MedicationAdministration"
                 },
                 {
                     "name": "MedicationDispense",
-                    "type": "QUICK.MedicationDispense"
+                    "type": "MedicationDispense"
                 },
                 {
                     "name": "MedicationPrescription",
-                    "type": "QUICK.MedicationPrescription"
+                    "type": "MedicationPrescription"
                 },
                 {
                     "name": "MedicationStatement",
-                    "type": "QUICK.MedicationStatement"
+                    "type": "MedicationStatement"
                 },
                 {
                     "name": "MessageHeader",
-                    "type": "QUICK.MessageHeader"
+                    "type": "MessageHeader"
                 },
                 {
                     "name": "NamingSystem",
-                    "type": "QUICK.NamingSystem"
+                    "type": "NamingSystem"
                 },
                 {
                     "name": "NutritionOrder",
-                    "type": "QUICK.NutritionOrder"
+                    "type": "NutritionOrder"
                 },
                 {
                     "name": "Observation",
-                    "type": "QUICK.Observation"
+                    "type": "Observation"
                 },
                 {
                     "name": "OperationDefinition",
-                    "type": "QUICK.OperationDefinition"
+                    "type": "OperationDefinition"
                 },
                 {
                     "name": "OperationOutcome",
-                    "type": "QUICK.OperationOutcome"
+                    "type": "OperationOutcome"
                 },
                 {
                     "name": "OralHealthClaim",
-                    "type": "QUICK.OralHealthClaim"
+                    "type": "OralHealthClaim"
                 },
                 {
                     "name": "Order",
-                    "type": "QUICK.Order"
+                    "type": "Order"
                 },
                 {
                     "name": "OrderResponse",
-                    "type": "QUICK.OrderResponse"
+                    "type": "OrderResponse"
                 },
                 {
                     "name": "Organization",
-                    "type": "QUICK.Organization"
+                    "type": "Organization"
                 },
                 {
                     "name": "Other",
-                    "type": "QUICK.Other"
+                    "type": "Other"
                 },
                 {
                     "name": "Patient",
-                    "type": "QUICK.Patient"
+                    "type": "Patient"
                 },
                 {
                     "name": "Practitioner",
-                    "type": "QUICK.Practitioner"
+                    "type": "Practitioner"
                 },
                 {
                     "name": "Procedure",
-                    "type": "QUICK.Procedure"
+                    "type": "Procedure"
                 },
                 {
                     "name": "ProcedureRequest",
-                    "type": "QUICK.ProcedureRequest"
+                    "type": "ProcedureRequest"
                 },
                 {
                     "name": "Profile",
-                    "type": "QUICK.Profile"
+                    "type": "Profile"
                 },
                 {
                     "name": "Provenance",
-                    "type": "QUICK.Provenance"
+                    "type": "Provenance"
                 },
                 {
                     "name": "Query",
-                    "type": "QUICK.Query"
+                    "type": "Query"
                 },
                 {
                     "name": "Questionnaire",
-                    "type": "QUICK.Questionnaire"
+                    "type": "Questionnaire"
                 },
                 {
                     "name": "QuestionnaireAnswers",
-                    "type": "QUICK.QuestionnaireAnswers"
+                    "type": "QuestionnaireAnswers"
                 },
                 {
                     "name": "ReferralRequest",
-                    "type": "QUICK.ReferralRequest"
+                    "type": "ReferralRequest"
                 },
                 {
                     "name": "RelatedPerson",
-                    "type": "QUICK.RelatedPerson"
+                    "type": "RelatedPerson"
                 },
                 {
                     "name": "Reversal",
-                    "type": "QUICK.Reversal"
+                    "type": "Reversal"
                 },
                 {
                     "name": "RiskAssessment",
-                    "type": "QUICK.RiskAssessment"
+                    "type": "RiskAssessment"
                 },
                 {
                     "name": "SearchParameter",
-                    "type": "QUICK.SearchParameter"
+                    "type": "SearchParameter"
                 },
                 {
                     "name": "SecurityEvent",
-                    "type": "QUICK.SecurityEvent"
+                    "type": "SecurityEvent"
                 },
                 {
                     "name": "Slot",
-                    "type": "QUICK.Slot"
+                    "type": "Slot"
                 },
                 {
                     "name": "Specimen",
-                    "type": "QUICK.Specimen"
+                    "type": "Specimen"
                 },
                 {
                     "name": "Subscription",
-                    "type": "QUICK.Subscription"
+                    "type": "Subscription"
                 },
                 {
                     "name": "Substance",
-                    "type": "QUICK.Substance"
+                    "type": "Substance"
                 },
                 {
                     "name": "Supply",
-                    "type": "QUICK.Supply"
+                    "type": "Supply"
                 },
                 {
                     "name": "SupportingDocumentation",
-                    "type": "QUICK.SupportingDocumentation"
+                    "type": "SupportingDocumentation"
                 },
                 {
                     "name": "ValueSet",
-                    "type": "QUICK.ValueSet"
+                    "type": "ValueSet"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ConformanceEventMode_list"
+            "name": "ConformanceEventMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Immunization.Reaction",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Immunization.Reaction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3180,7 +3180,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reported",
@@ -3190,8 +3190,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Patient.Contact",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Patient.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3200,7 +3200,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "QUICK.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -3208,7 +3208,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "QUICK.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "gender",
@@ -3216,7 +3216,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -3226,8 +3226,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.BackboneElement",
-            "baseType": "QUICK.Element",
+            "name": "BackboneElement",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "modifierExtension",
@@ -3236,8 +3236,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Reversal.Payee",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Reversal.Payee",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3246,26 +3246,26 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "person",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DiagnosticOrderPriority_list"
+            "name": "DiagnosticOrderPriority_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Immunization",
-            "baseType": "QUICK.DomainResource",
+            "name": "Immunization",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-immunization",
             "label": "Immunization",
@@ -3285,7 +3285,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "refusedIndicator",
@@ -3297,19 +3297,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requester",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "location",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lotNumber",
@@ -3333,7 +3333,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "explanation",
-                    "type": "QUICK.Immunization.Explanation"
+                    "type": "Immunization.Explanation"
                 },
                 {
                     "name": "reaction",
@@ -3347,22 +3347,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlanActivityCategory",
-            "baseType": "QUICK.Element",
+            "name": "CarePlanActivityCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CarePlanActivityCategory_list"
+                "type": "CarePlanActivityCategory_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.EventTiming_list"
+            "name": "EventTiming_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Other",
-            "baseType": "QUICK.DomainResource",
+            "name": "Other",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3375,11 +3375,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -3389,13 +3389,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentManifest",
-            "baseType": "QUICK.DomainResource",
+            "name": "DocumentManifest",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "masterIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -3427,11 +3427,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.DocumentReferenceStatus"
+                    "type": "DocumentReferenceStatus"
                 },
                 {
                     "name": "supercedes",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
@@ -3449,12 +3449,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.code_primitive"
+            "name": "code_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Provenance.Agent",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Provenance.Agent",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3477,12 +3477,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SecurityEventObjectRole_list"
+            "name": "SecurityEventObjectRole_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Subscription.Tag",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Subscription.Tag",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3501,8 +3501,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Appointment",
-            "baseType": "QUICK.DomainResource",
+            "name": "Appointment",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3515,7 +3515,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "type",
@@ -3543,7 +3543,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "comment",
@@ -3551,7 +3551,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "order",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participant",
@@ -3559,7 +3559,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "lastModifiedBy",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lastModified",
@@ -3569,8 +3569,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Substance",
-            "baseType": "QUICK.DomainResource",
+            "name": "Substance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-substance",
             "label": "Substance",
@@ -3586,7 +3586,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "instance",
-                    "type": "QUICK.Substance.Instance"
+                    "type": "Substance.Instance"
                 },
                 {
                     "name": "ingredient",
@@ -3596,8 +3596,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationPrescription.Substitution",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationPrescription.Substitution",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3612,26 +3612,26 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.NamingSystemIdentifierType_list"
+            "name": "NamingSystemIdentifierType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CarePlanGoalStatus_list"
+            "name": "CarePlanGoalStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DataAbsentReason",
-            "baseType": "QUICK.Element",
+            "name": "DataAbsentReason",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DataAbsentReason_list"
+                "type": "DataAbsentReason_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Immunization.VaccinationProtocol",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Immunization.VaccinationProtocol",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3644,7 +3644,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
@@ -3670,8 +3670,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SupportingDocumentation.Detail",
-            "baseType": "QUICK.BackboneElement",
+            "name": "SupportingDocumentation.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3686,8 +3686,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CommunicationRequest",
-            "baseType": "QUICK.DomainResource",
+            "name": "CommunicationRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-communicationrequest",
             "label": "CommunicationRequest",
@@ -3703,7 +3703,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -3719,19 +3719,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.CommunicationRequestStatus"
+                    "type": "CommunicationRequestStatus"
                 },
                 {
                     "name": "mode",
-                    "type": "QUICK.CommunicationRequestMode"
+                    "type": "CommunicationRequestMode"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "scheduledTime",
@@ -3747,7 +3747,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
@@ -3757,13 +3757,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.HumanName",
-            "baseType": "QUICK.Element",
+            "name": "HumanName",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "QUICK.NameUse"
+                    "type": "NameUse"
                 },
                 {
                     "name": "text",
@@ -3793,8 +3793,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.HealthcareService",
-            "baseType": "QUICK.DomainResource",
+            "name": "HealthcareService",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3803,7 +3803,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "serviceCategory",
@@ -3901,8 +3901,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConceptMap.Element",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ConceptMap.Element",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3911,7 +3911,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "dependsOn",
@@ -3925,26 +3925,26 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AddressUse_list"
+            "name": "AddressUse_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MedicationPrescriptionStatus_list"
+            "name": "MedicationPrescriptionStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntoleranceSeverity",
-            "baseType": "QUICK.Element",
+            "name": "AllergyIntoleranceSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AllergyIntoleranceSeverity_list"
+                "type": "AllergyIntoleranceSeverity_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Basic",
-            "baseType": "QUICK.DomainResource",
+            "name": "Basic",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3957,11 +3957,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -3971,8 +3971,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Organization.Contact",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Organization.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3981,7 +3981,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "QUICK.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -3989,7 +3989,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "QUICK.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "gender",
@@ -3999,33 +3999,33 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AlertStatus",
-            "baseType": "QUICK.Element",
+            "name": "AlertStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AlertStatus_list"
+                "type": "AlertStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.UnitsOfTime",
-            "baseType": "QUICK.Element",
+            "name": "UnitsOfTime",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.UnitsOfTime_list"
+                "type": "UnitsOfTime_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OperationOutcome.Issue",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OperationOutcome.Issue",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "severity",
-                    "type": "QUICK.IssueSeverity"
+                    "type": "IssueSeverity"
                 },
                 {
                     "name": "type",
@@ -4043,8 +4043,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OperationDefinition",
-            "baseType": "QUICK.DomainResource",
+            "name": "OperationDefinition",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4077,7 +4077,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ResourceProfileStatus"
+                    "type": "ResourceProfileStatus"
                 },
                 {
                     "name": "experimental",
@@ -4089,11 +4089,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "kind",
-                    "type": "QUICK.OperationKind"
+                    "type": "OperationKind"
                 },
                 {
                     "name": "name",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "notes",
@@ -4101,7 +4101,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "system",
@@ -4123,8 +4123,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Questionnaire.Question",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Questionnaire.Question",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4141,7 +4141,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.AnswerFormat"
+                    "type": "AnswerFormat"
                 },
                 {
                     "name": "required",
@@ -4153,7 +4153,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "options",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
@@ -4163,13 +4163,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Composition",
-            "baseType": "QUICK.DomainResource",
+            "name": "Composition",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "date",
@@ -4189,7 +4189,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.CompositionStatus"
+                    "type": "CompositionStatus"
                 },
                 {
                     "name": "confidentiality",
@@ -4197,7 +4197,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
@@ -4209,7 +4209,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "custodian",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "event",
@@ -4217,7 +4217,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "section",
@@ -4227,13 +4227,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ExtensionDefinition.Mapping",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ExtensionDefinition.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "uri",
@@ -4251,18 +4251,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SampledDataDataType",
-            "baseType": "QUICK.Element",
+            "name": "SampledDataDataType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SampledDataDataType_primitive"
+                "type": "SampledDataDataType_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Provenance",
-            "baseType": "QUICK.DomainResource",
+            "name": "Provenance",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4283,7 +4283,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "policy",
@@ -4305,31 +4305,31 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.code",
-            "baseType": "QUICK.Element",
+            "name": "code",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.code_primitive"
+                "type": "code_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Attachment",
-            "baseType": "QUICK.Element",
+            "name": "Attachment",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentType",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "language",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "data",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "url",
@@ -4341,7 +4341,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hash",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "title",
@@ -4351,33 +4351,33 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.id_primitive"
+            "name": "id_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.QuestionnaireAnswers",
-            "baseType": "QUICK.DomainResource",
+            "name": "QuestionnaireAnswers",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "questionnaire",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.QuestionnaireAnswersStatus"
+                    "type": "QuestionnaireAnswersStatus"
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authored",
@@ -4385,22 +4385,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
-                    "type": "QUICK.QuestionnaireAnswers.Group"
+                    "type": "QuestionnaireAnswers.Group"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Medication.Package",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Medication.Package",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4415,8 +4415,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MessageHeader.Destination",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MessageHeader.Destination",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4425,7 +4425,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "endpoint",
@@ -4435,8 +4435,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Order",
-            "baseType": "QUICK.DomainResource",
+            "name": "Order",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4449,23 +4449,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authority",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "when",
-                    "type": "QUICK.Order.When"
+                    "type": "Order.When"
                 },
                 {
                     "name": "detail",
@@ -4475,13 +4475,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Encounter.Location",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Encounter.Location",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "location",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -4491,13 +4491,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Identifier",
-            "baseType": "QUICK.Element",
+            "name": "Identifier",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "QUICK.IdentifierUse"
+                    "type": "IdentifierUse"
                 },
                 {
                     "name": "label",
@@ -4517,28 +4517,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "assigner",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.UnitsOfTime_list"
+            "name": "UnitsOfTime_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NameUse",
-            "baseType": "QUICK.Element",
+            "name": "NameUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.NameUse_list"
+                "type": "NameUse_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Detail",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4557,26 +4557,26 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SlotStatus_list"
+            "name": "SlotStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImagingModality",
-            "baseType": "QUICK.Element",
+            "name": "ImagingModality",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ImagingModality_list"
+                "type": "ImagingModality_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.OperationKind_list"
+            "name": "OperationKind_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Slot",
-            "baseType": "QUICK.DomainResource",
+            "name": "Slot",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4589,11 +4589,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "availability",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "freeBusyType",
-                    "type": "QUICK.SlotStatus"
+                    "type": "SlotStatus"
                 },
                 {
                     "name": "start",
@@ -4619,34 +4619,34 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MedicationKind_list"
+            "name": "MedicationKind_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AnswerFormat_list"
+            "name": "AnswerFormat_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ObservationReliability_list"
+            "name": "ObservationReliability_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.PropertyRepresentation",
-            "baseType": "QUICK.Element",
+            "name": "PropertyRepresentation",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.PropertyRepresentation_list"
+                "type": "PropertyRepresentation_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.Use_list"
+            "name": "Use_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Device",
-            "baseType": "QUICK.DomainResource",
+            "name": "Device",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4683,15 +4683,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "owner",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "location",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -4705,28 +4705,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEventParticipantNetworkType",
-            "baseType": "QUICK.Element",
+            "name": "SecurityEventParticipantNetworkType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SecurityEventParticipantNetworkType_list"
+                "type": "SecurityEventParticipantNetworkType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AdministrativeGender",
-            "baseType": "QUICK.Element",
+            "name": "AdministrativeGender",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AdministrativeGender_list"
+                "type": "AdministrativeGender_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntolerance.Event",
-            "baseType": "QUICK.BackboneElement",
+            "name": "AllergyIntolerance.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4735,7 +4735,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "certainty",
-                    "type": "QUICK.AllergyIntoleranceCertainty"
+                    "type": "AllergyIntoleranceCertainty"
                 },
                 {
                     "name": "manifestation",
@@ -4751,11 +4751,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "duration",
-                    "type": "QUICK.Duration"
+                    "type": "Duration"
                 },
                 {
                     "name": "severity",
-                    "type": "QUICK.AllergyIntoleranceSeverity"
+                    "type": "AllergyIntoleranceSeverity"
                 },
                 {
                     "name": "exposureRoute",
@@ -4769,24 +4769,24 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Substance.Ingredient",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Substance.Ingredient",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "quantity",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "substance",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Procedure",
-            "baseType": "QUICK.DomainResource",
+            "name": "Procedure",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-procedure",
             "label": "Procedure",
@@ -4798,7 +4798,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -4822,7 +4822,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -4852,18 +4852,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ProcedureRequestPriority",
-            "baseType": "QUICK.Element",
+            "name": "ProcedureRequestPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ProcedureRequestPriority_list"
+                "type": "ProcedureRequestPriority_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImagingStudy",
-            "baseType": "QUICK.DomainResource",
+            "name": "ImagingStudy",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4872,15 +4872,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "uid",
-                    "type": "QUICK.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "accession",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -4896,11 +4896,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "referrer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "availability",
-                    "type": "QUICK.InstanceAvailability"
+                    "type": "InstanceAvailability"
                 },
                 {
                     "name": "url",
@@ -4924,7 +4924,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "interpreter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
@@ -4938,18 +4938,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationDispenseStatus",
-            "baseType": "QUICK.Element",
+            "name": "MedicationDispenseStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MedicationDispenseStatus_list"
+                "type": "MedicationDispenseStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Observation",
-            "baseType": "QUICK.DomainResource",
+            "name": "Observation",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-observation",
             "label": "Observation",
@@ -4965,7 +4965,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dataAbsentReason",
-                    "type": "QUICK.DataAbsentReason"
+                    "type": "DataAbsentReason"
                 },
                 {
                     "name": "interpretation",
@@ -4981,11 +4981,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ObservationStatus"
+                    "type": "ObservationStatus"
                 },
                 {
                     "name": "reliability",
-                    "type": "QUICK.ObservationReliability"
+                    "type": "ObservationReliability"
                 },
                 {
                     "name": "bodySite",
@@ -4997,15 +4997,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "specimen",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
@@ -5013,7 +5013,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -5027,22 +5027,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEventOutcome",
-            "baseType": "QUICK.Element",
+            "name": "SecurityEventOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SecurityEventOutcome_list"
+                "type": "SecurityEventOutcome_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ReferralStatus_list"
+            "name": "ReferralStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticOrder",
-            "baseType": "QUICK.DomainResource",
+            "name": "DiagnosticOrder",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-diagnosticorder",
             "label": "DiagnosticOrder",
@@ -5050,11 +5050,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -5062,7 +5062,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "clinicalNotes",
@@ -5078,11 +5078,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "priority",
-                    "type": "QUICK.DiagnosticOrderPriority"
+                    "type": "DiagnosticOrderPriority"
                 },
                 {
                     "name": "event",
@@ -5096,13 +5096,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Duration",
+            "name": "Duration",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "QUICK.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -5122,32 +5122,32 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CompositionAttestationMode_list"
+            "name": "CompositionAttestationMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ObservationRelationshipType",
-            "baseType": "QUICK.Element",
+            "name": "ObservationRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ObservationRelationshipType_list"
+                "type": "ObservationRelationshipType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.oid_primitive"
+            "name": "oid_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Software",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Software",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5166,33 +5166,33 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.QuestionnaireAnswersStatus",
-            "baseType": "QUICK.Element",
+            "name": "QuestionnaireAnswersStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.QuestionnaireAnswersStatus_list"
+                "type": "QuestionnaireAnswersStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SupplyDispenseStatus",
-            "baseType": "QUICK.Element",
+            "name": "SupplyDispenseStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SupplyDispenseStatus_list"
+                "type": "SupplyDispenseStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ElementDefinition.Constraint",
-            "baseType": "QUICK.Element",
+            "name": "ElementDefinition.Constraint",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "key",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "name",
@@ -5200,7 +5200,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "severity",
-                    "type": "QUICK.ConstraintSeverity"
+                    "type": "ConstraintSeverity"
                 },
                 {
                     "name": "human",
@@ -5214,52 +5214,52 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.oid",
-            "baseType": "QUICK.Element",
+            "name": "oid",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.oid_primitive"
+                "type": "oid_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CompositionAttestationMode",
-            "baseType": "QUICK.Element",
+            "name": "CompositionAttestationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CompositionAttestationMode_list"
+                "type": "CompositionAttestationMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AddressUse",
-            "baseType": "QUICK.Element",
+            "name": "AddressUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AddressUse_list"
+                "type": "AddressUse_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ConformanceStatementStatus_list"
+            "name": "ConformanceStatementStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentReferenceStatus",
-            "baseType": "QUICK.Element",
+            "name": "DocumentReferenceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DocumentReferenceStatus_list"
+                "type": "DocumentReferenceStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImmunizationRecommendation",
-            "baseType": "QUICK.DomainResource",
+            "name": "ImmunizationRecommendation",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-immunization-recommendation",
             "label": "ImmunizationRecommendation",
@@ -5271,7 +5271,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recommendation",
@@ -5281,18 +5281,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MessageEvent",
-            "baseType": "QUICK.Element",
+            "name": "MessageEvent",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MessageEvent_list"
+                "type": "MessageEvent_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Period",
-            "baseType": "QUICK.Element",
+            "name": "Period",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -5307,17 +5307,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ResponseType_list"
+            "name": "ResponseType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Expansion",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Expansion",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "timestamp",
@@ -5331,13 +5331,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlan.Simple",
-            "baseType": "QUICK.BackboneElement",
+            "name": "CarePlan.Simple",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "category",
-                    "type": "QUICK.CarePlanActivityCategory"
+                    "type": "CarePlanActivityCategory"
                 },
                 {
                     "name": "code",
@@ -5345,7 +5345,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
@@ -5353,7 +5353,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "product",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dailyAmount",
@@ -5371,8 +5371,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlan.Goal",
-            "baseType": "QUICK.BackboneElement",
+            "name": "CarePlan.Goal",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5381,7 +5381,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.CarePlanGoalStatus"
+                    "type": "CarePlanGoalStatus"
                 },
                 {
                     "name": "notes",
@@ -5395,8 +5395,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ExtensionDefinition",
-            "baseType": "QUICK.DomainResource",
+            "name": "ExtensionDefinition",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -5433,7 +5433,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ResourceProfileStatus"
+                    "type": "ResourceProfileStatus"
                 },
                 {
                     "name": "experimental",
@@ -5453,7 +5453,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "contextType",
-                    "type": "QUICK.ExtensionContext"
+                    "type": "ExtensionContext"
                 },
                 {
                     "name": "context",
@@ -5467,22 +5467,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NarrativeStatus",
-            "baseType": "QUICK.Element",
+            "name": "NarrativeStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.NarrativeStatus_list"
+                "type": "NarrativeStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AllergyIntoleranceStatus_list"
+            "name": "AllergyIntoleranceStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Condition.DueTo",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Condition.DueTo",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5491,23 +5491,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.GroupType_list"
+            "name": "GroupType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ContactPoint",
-            "baseType": "QUICK.Element",
+            "name": "ContactPoint",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "system",
-                    "type": "QUICK.ContactPointSystem"
+                    "type": "ContactPointSystem"
                 },
                 {
                     "name": "value",
@@ -5515,7 +5515,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "type": "QUICK.ContactPointUse"
+                    "type": "ContactPointUse"
                 },
                 {
                     "name": "period",
@@ -5525,17 +5525,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.NamingSystemStatus_list"
+            "name": "NamingSystemStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NamingSystem.Contact",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NamingSystem.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "QUICK.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -5545,12 +5545,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ProvenanceEntityRole_list"
+            "name": "ProvenanceEntityRole_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.Diagnosis",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.Diagnosis",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5565,8 +5565,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Note",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Note",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5585,17 +5585,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.Measmnt_Principle_list"
+            "name": "Measmnt_Principle_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Document",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Document",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "mode",
-                    "type": "QUICK.DocumentMode"
+                    "type": "DocumentMode"
                 },
                 {
                     "name": "documentation",
@@ -5603,14 +5603,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Timing.Repeat",
-            "baseType": "QUICK.Element",
+            "name": "Timing.Repeat",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -5619,7 +5619,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "when",
-                    "type": "QUICK.EventTiming"
+                    "type": "EventTiming"
                 },
                 {
                     "name": "duration",
@@ -5627,7 +5627,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "units",
-                    "type": "QUICK.UnitsOfTime"
+                    "type": "UnitsOfTime"
                 },
                 {
                     "name": "count",
@@ -5641,8 +5641,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Subdetail",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Subdetail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5657,8 +5657,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ElementDefinition",
-            "baseType": "QUICK.Element",
+            "name": "ElementDefinition",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -5675,7 +5675,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "slicing",
-                    "type": "QUICK.ElementDefinition.Slicing"
+                    "type": "ElementDefinition.Slicing"
                 },
                 {
                     "name": "short",
@@ -5743,7 +5743,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "binding",
-                    "type": "QUICK.ElementDefinition.Binding"
+                    "type": "ElementDefinition.Binding"
                 },
                 {
                     "name": "mapping",
@@ -5753,8 +5753,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SupportingDocumentation",
-            "baseType": "QUICK.DomainResource",
+            "name": "SupportingDocumentation",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -5775,39 +5775,39 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "request",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responseIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "response",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "detail",
@@ -5817,13 +5817,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Concept",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Concept",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "abstract",
@@ -5849,52 +5849,52 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AllergyIntoleranceCertainty_list"
+            "name": "AllergyIntoleranceCertainty_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.FilterOperator",
-            "baseType": "QUICK.Element",
+            "name": "FilterOperator",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.FilterOperator_list"
+                "type": "FilterOperator_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.IssueSeverity",
-            "baseType": "QUICK.Element",
+            "name": "IssueSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.IssueSeverity_list"
+                "type": "IssueSeverity_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SlotStatus",
-            "baseType": "QUICK.Element",
+            "name": "SlotStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SlotStatus_list"
+                "type": "SlotStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MaritalStatus",
-            "baseType": "QUICK.Element",
+            "name": "MaritalStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MaritalStatus_list"
+                "type": "MaritalStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DataElement.Mapping",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DataElement.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5917,21 +5917,21 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DocumentMode_list"
+            "name": "DocumentMode_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.OperationParameterUse_list"
+            "name": "OperationParameterUse_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.RiskAssessment",
-            "baseType": "QUICK.DomainResource",
+            "name": "RiskAssessment",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -5939,15 +5939,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "method",
@@ -5969,8 +5969,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DataElement.Binding",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DataElement.Binding",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5979,7 +5979,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "conformance",
-                    "type": "QUICK.BindingConformance"
+                    "type": "BindingConformance"
                 },
                 {
                     "name": "description",
@@ -5987,23 +5987,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "valueSet",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DiagnosticReportStatus_list"
+            "name": "DiagnosticReportStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim",
-            "baseType": "QUICK.DomainResource",
+            "name": "OralHealthClaim",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "ruleset",
@@ -6019,19 +6019,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "use",
-                    "type": "QUICK.Use"
+                    "type": "Use"
                 },
                 {
                     "name": "priority",
@@ -6043,19 +6043,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "facility",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payee",
-                    "type": "QUICK.OralHealthClaim.Payee"
+                    "type": "OralHealthClaim.Payee"
                 },
                 {
                     "name": "referral",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "diagnosis",
@@ -6067,7 +6067,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "coverage",
@@ -6099,7 +6099,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "orthoPlan",
-                    "type": "QUICK.OralHealthClaim.OrthoPlan"
+                    "type": "OralHealthClaim.OrthoPlan"
                 },
                 {
                     "name": "item",
@@ -6113,8 +6113,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Availability",
-            "baseType": "QUICK.DomainResource",
+            "name": "Availability",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -6127,7 +6127,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "planningHorizon",
@@ -6145,22 +6145,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.NutritionOrderStatus_list"
+            "name": "NutritionOrderStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationPrescriptionStatus",
-            "baseType": "QUICK.Element",
+            "name": "MedicationPrescriptionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MedicationPrescriptionStatus_list"
+                "type": "MedicationPrescriptionStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImmunizationRecommendation.Recommendation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ImmunizationRecommendation.Recommendation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6185,7 +6185,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "protocol",
-                    "type": "QUICK.ImmunizationRecommendation.Protocol"
+                    "type": "ImmunizationRecommendation.Protocol"
                 },
                 {
                     "name": "supportingImmunization",
@@ -6199,35 +6199,35 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ProcedureRequestMode_list"
+            "name": "ProcedureRequestMode_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SecurityEventObjectLifecycle_list"
+            "name": "SecurityEventObjectLifecycle_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.EncounterClass_list"
+            "name": "EncounterClass_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConceptMapEquivalence",
-            "baseType": "QUICK.Element",
+            "name": "ConceptMapEquivalence",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ConceptMapEquivalence_list"
+                "type": "ConceptMapEquivalence_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Distance",
+            "name": "Distance",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "QUICK.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -6247,30 +6247,30 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SubscriptionChannelType_list"
+            "name": "SubscriptionChannelType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DeviceUseRequestStatus_list"
+            "name": "DeviceUseRequestStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SampledDataDataType_primitive"
+            "name": "SampledDataDataType_primitive"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CompositionStatus_list"
+            "name": "CompositionStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Condition",
-            "baseType": "QUICK.DomainResource",
+            "name": "Condition",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-condition",
             "label": "Condition",
@@ -6282,15 +6282,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateAsserted",
@@ -6314,7 +6314,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ConditionStatus"
+                    "type": "ConditionStatus"
                 },
                 {
                     "name": "certainty",
@@ -6326,7 +6326,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "stage",
-                    "type": "QUICK.Condition.Stage"
+                    "type": "Condition.Stage"
                 },
                 {
                     "name": "evidence",
@@ -6352,13 +6352,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Contract",
-            "baseType": "QUICK.DomainResource",
+            "name": "Contract",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "subject",
@@ -6386,7 +6386,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -6398,7 +6398,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "author",
@@ -6434,54 +6434,54 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "friendly",
-                    "type": "QUICK.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "legal",
-                    "type": "QUICK.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "rule",
-                    "type": "QUICK.Attachment"
+                    "type": "Attachment"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ConstraintSeverity_list"
+            "name": "ConstraintSeverity_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.RestfulConformanceMode",
-            "baseType": "QUICK.Element",
+            "name": "RestfulConformanceMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.RestfulConformanceMode_list"
+                "type": "RestfulConformanceMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SearchParamType",
-            "baseType": "QUICK.Element",
+            "name": "SearchParamType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SearchParamType_list"
+                "type": "SearchParamType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.IdentifierUse_list"
+            "name": "IdentifierUse_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ParticipantRequired_list"
+            "name": "ParticipantRequired_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Condition.Stage",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Condition.Stage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6496,28 +6496,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SupplyStatus",
-            "baseType": "QUICK.Element",
+            "name": "SupplyStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SupplyStatus_list"
+                "type": "SupplyStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.IdentifierUse",
-            "baseType": "QUICK.Element",
+            "name": "IdentifierUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.IdentifierUse_list"
+                "type": "IdentifierUse_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Extension",
-            "baseType": "QUICK.Element",
+            "name": "Extension",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "url",
@@ -6526,17 +6526,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.QueryOutcome_list"
+            "name": "QueryOutcome_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Specimen.Source",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Specimen.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "relationship",
-                    "type": "QUICK.HierarchicalRelationshipType"
+                    "type": "HierarchicalRelationshipType"
                 },
                 {
                     "name": "target",
@@ -6546,8 +6546,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Questionnaire",
-            "baseType": "QUICK.DomainResource",
+            "name": "Questionnaire",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -6560,7 +6560,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.QuestionnaireStatus"
+                    "type": "QuestionnaireStatus"
                 },
                 {
                     "name": "date",
@@ -6572,14 +6572,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "group",
-                    "type": "QUICK.Questionnaire.Group"
+                    "type": "Questionnaire.Group"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Composition.Section",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Composition.Section",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6596,14 +6596,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "content",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ImagingStudy.Series",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ImagingStudy.Series",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6612,11 +6612,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "modality",
-                    "type": "QUICK.Modality"
+                    "type": "Modality"
                 },
                 {
                     "name": "uid",
-                    "type": "QUICK.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "description",
@@ -6628,7 +6628,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "availability",
-                    "type": "QUICK.InstanceAvailability"
+                    "type": "InstanceAvailability"
                 },
                 {
                     "name": "url",
@@ -6650,8 +6650,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Practitioner.Qualification",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Practitioner.Qualification",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6668,34 +6668,34 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "issuer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OperationParameterUse",
-            "baseType": "QUICK.Element",
+            "name": "OperationParameterUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.OperationParameterUse_list"
+                "type": "OperationParameterUse_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntoleranceCategory",
-            "baseType": "QUICK.Element",
+            "name": "AllergyIntoleranceCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AllergyIntoleranceCategory_list"
+                "type": "AllergyIntoleranceCategory_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Encounter.Participant",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Encounter.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6704,14 +6704,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "individual",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationStatement",
-            "baseType": "QUICK.DomainResource",
+            "name": "MedicationStatement",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationstatement",
             "label": "MedicationStatement",
@@ -6723,7 +6723,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "wasNotGiven",
@@ -6739,7 +6739,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "medication",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
@@ -6753,8 +6753,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ElementDefinition.Slicing",
-            "baseType": "QUICK.Element",
+            "name": "ElementDefinition.Slicing",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -6771,14 +6771,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "rules",
-                    "type": "QUICK.SlicingRules"
+                    "type": "SlicingRules"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DeviceComponent",
-            "baseType": "QUICK.DomainResource",
+            "name": "DeviceComponent",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -6787,7 +6787,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "lastSystemChange",
@@ -6795,11 +6795,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operationalStatus",
@@ -6811,7 +6811,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "measurementPrinciple",
-                    "type": "QUICK.Measmnt_Principle"
+                    "type": "Measmnt_Principle"
                 },
                 {
                     "name": "productionSpecification",
@@ -6825,28 +6825,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NamingSystemStatus",
-            "baseType": "QUICK.Element",
+            "name": "NamingSystemStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.NamingSystemStatus_list"
+                "type": "NamingSystemStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlanGoalStatus",
-            "baseType": "QUICK.Element",
+            "name": "CarePlanGoalStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CarePlanGoalStatus_list"
+                "type": "CarePlanGoalStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentReference.Service",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DocumentReference.Service",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6865,28 +6865,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Use",
-            "baseType": "QUICK.Element",
+            "name": "Use",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.Use_list"
+                "type": "Use_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.BindingConformance",
-            "baseType": "QUICK.Element",
+            "name": "BindingConformance",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.BindingConformance_list"
+                "type": "BindingConformance_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Adjudication",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Adjudication",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6895,7 +6895,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -6905,13 +6905,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticOrder.Event",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DiagnosticOrder.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "QUICK.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "description",
@@ -6923,19 +6923,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Contraindication",
-            "baseType": "QUICK.DomainResource",
+            "name": "Contraindication",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "category",
@@ -6943,7 +6943,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "severity",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "implicated",
@@ -6959,11 +6959,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reference",
@@ -6977,8 +6977,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Ratio",
-            "baseType": "QUICK.Element",
+            "name": "Ratio",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -6993,8 +6993,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.QuestionnaireAnswers.Question",
-            "baseType": "QUICK.BackboneElement",
+            "name": "QuestionnaireAnswers.Question",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7017,18 +7017,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConstraintSeverity",
-            "baseType": "QUICK.Element",
+            "name": "ConstraintSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ConstraintSeverity_list"
+                "type": "ConstraintSeverity_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Reversal.Coverage",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Reversal.Coverage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7041,7 +7041,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -7055,57 +7055,57 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Observation.Related",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Observation.Related",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.ObservationRelationshipType"
+                    "type": "ObservationRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SecurityEventAction_list"
+            "name": "SecurityEventAction_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.time",
-            "baseType": "QUICK.Element",
+            "name": "time",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.time_primitive"
+                "type": "time_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEventAction",
-            "baseType": "QUICK.Element",
+            "name": "SecurityEventAction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SecurityEventAction_list"
+                "type": "SecurityEventAction_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AllergyIntoleranceCriticality_list"
+            "name": "AllergyIntoleranceCriticality_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Interaction",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Interaction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "QUICK.TypeRestfulInteraction"
+                    "type": "TypeRestfulInteraction"
                 },
                 {
                     "name": "documentation",
@@ -7115,8 +7115,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrder.OralDiet",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NutritionOrder.OralDiet",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7143,8 +7143,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.Payee",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.Payee",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7153,26 +7153,26 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "person",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DataType_list"
+            "name": "DataType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.Prosthesis",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.Prosthesis",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7191,13 +7191,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Bundle",
-            "baseType": "QUICK.Resource",
+            "name": "Bundle",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.BundleType"
+                    "type": "BundleType"
                 },
                 {
                     "name": "base",
@@ -7217,14 +7217,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "signature",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConceptMap.DependsOn",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ConceptMap.DependsOn",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7243,18 +7243,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConformanceEventMode",
-            "baseType": "QUICK.Element",
+            "name": "ConformanceEventMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ConformanceEventMode_list"
+                "type": "ConformanceEventMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Error",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Error",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7277,18 +7277,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.LinkType",
-            "baseType": "QUICK.Element",
+            "name": "LinkType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.LinkType_list"
+                "type": "LinkType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Contraindication.Mitigation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Contraindication.Mitigation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7301,24 +7301,24 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NamingSystemIdentifierType",
-            "baseType": "QUICK.Element",
+            "name": "NamingSystemIdentifierType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.NamingSystemIdentifierType_list"
+                "type": "NamingSystemIdentifierType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEvent.Participant",
-            "baseType": "QUICK.BackboneElement",
+            "name": "SecurityEvent.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7327,7 +7327,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "userId",
@@ -7351,14 +7351,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "network",
-                    "type": "QUICK.SecurityEvent.Network"
+                    "type": "SecurityEvent.Network"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Include",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Include",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7381,8 +7381,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Bundle.Entry",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Bundle.Entry",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7391,7 +7391,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.BundleEntryStatus"
+                    "type": "BundleEntryStatus"
                 },
                 {
                     "name": "search",
@@ -7403,18 +7403,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "deleted",
-                    "type": "QUICK.Bundle.Deleted"
+                    "type": "Bundle.Deleted"
                 },
                 {
                     "name": "resource",
-                    "type": "QUICK.ResourceContainer"
+                    "type": "ResourceContainer"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.FamilyHistory",
-            "baseType": "QUICK.DomainResource",
+            "name": "FamilyHistory",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-familyhistory",
             "label": "FamilyHistory",
@@ -7425,7 +7425,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -7443,18 +7443,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ListMode",
-            "baseType": "QUICK.Element",
+            "name": "ListMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ListMode_list"
+                "type": "ListMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Specimen",
-            "baseType": "QUICK.DomainResource",
+            "name": "Specimen",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7471,11 +7471,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "accessionIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "receivedTime",
@@ -7483,7 +7483,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "collection",
-                    "type": "QUICK.Specimen.Collection"
+                    "type": "Specimen.Collection"
                 },
                 {
                     "name": "treatment",
@@ -7497,38 +7497,38 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Narrative",
-            "baseType": "QUICK.Element",
+            "name": "Narrative",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "status",
-                "type": "QUICK.NarrativeStatus"
+                "type": "NarrativeStatus"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationKind",
-            "baseType": "QUICK.Element",
+            "name": "MedicationKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MedicationKind_list"
+                "type": "MedicationKind_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.FHIRDefinedType",
-            "baseType": "QUICK.Element",
+            "name": "FHIRDefinedType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.FHIRDefinedType_list"
+                "type": "FHIRDefinedType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Profile.Snapshot",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Profile.Snapshot",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "element",
@@ -7537,17 +7537,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.HierarchicalRelationshipType_list"
+            "name": "HierarchicalRelationshipType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Subscription.Channel",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Subscription.Channel",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.SubscriptionChannelType"
+                    "type": "SubscriptionChannelType"
                 },
                 {
                     "name": "url",
@@ -7565,13 +7565,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Age",
+            "name": "Age",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "QUICK.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -7591,18 +7591,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AlertStatus_list"
+            "name": "AlertStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Query.Response",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Query.Response",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7611,7 +7611,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "QUICK.QueryOutcome"
+                    "type": "QueryOutcome"
                 },
                 {
                     "name": "total",
@@ -7645,27 +7645,27 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ResourceVersionPolicy_list"
+            "name": "ResourceVersionPolicy_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEventObjectType",
-            "baseType": "QUICK.Element",
+            "name": "SecurityEventObjectType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SecurityEventObjectType_list"
+                "type": "SecurityEventObjectType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Concept1",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Concept1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "display",
@@ -7679,20 +7679,20 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MediaType_list"
+            "name": "MediaType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MaritalStatus_list"
+            "name": "MaritalStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MedicationAdministrationStatus_list"
+            "name": "MedicationAdministrationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Item",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7715,23 +7715,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ResourceProfileStatus",
-            "baseType": "QUICK.Element",
+            "name": "ResourceProfileStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ResourceProfileStatus_list"
+                "type": "ResourceProfileStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationStatement.Dosage",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationStatement.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "schedule",
-                    "type": "QUICK.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "site",
@@ -7751,22 +7751,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ResourceType_list"
+            "name": "ResourceType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrder.Supplement",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NutritionOrder.Supplement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7785,16 +7785,16 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.TypeRestfulInteraction_list"
+            "name": "TypeRestfulInteraction_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ProcedureRelationshipType_list"
+            "name": "ProcedureRelationshipType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Security",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Security",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7817,18 +7817,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSetStatus",
-            "baseType": "QUICK.Element",
+            "name": "ValueSetStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ValueSetStatus_list"
+                "type": "ValueSetStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationAdministration",
-            "baseType": "QUICK.DomainResource",
+            "name": "MedicationAdministration",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationadministration",
             "label": "MedicationAdministration",
@@ -7840,23 +7840,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.MedicationAdministrationStatus"
+                    "type": "MedicationAdministrationStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "practitioner",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescription",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "wasNotGiven",
@@ -7868,7 +7868,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "medication",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
@@ -7882,8 +7882,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.OrthoPlan",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.OrthoPlan",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7892,15 +7892,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "examFee",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "diagnosticFee",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "initialPayment",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "durationMonths",
@@ -7912,14 +7912,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "periodicPayment",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Eligibility",
-            "baseType": "QUICK.DomainResource",
+            "name": "Eligibility",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7940,22 +7940,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Supply",
-            "baseType": "QUICK.DomainResource",
+            "name": "Supply",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7964,19 +7964,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.SupplyStatus"
+                    "type": "SupplyStatus"
                 },
                 {
                     "name": "orderedItem",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dispense",
@@ -7986,8 +7986,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DeviceUseRequest",
-            "baseType": "QUICK.DomainResource",
+            "name": "DeviceUseRequest",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7996,19 +7996,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.DeviceUseRequestStatus"
+                    "type": "DeviceUseRequestStatus"
                 },
                 {
                     "name": "mode",
-                    "type": "QUICK.DeviceUseRequestMode"
+                    "type": "DeviceUseRequestMode"
                 },
                 {
                     "name": "device",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -8036,18 +8036,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
-                    "type": "QUICK.DeviceUseRequestPriority"
+                    "type": "DeviceUseRequestPriority"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.SubDetail",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.SubDetail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8068,7 +8068,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -8080,7 +8080,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
@@ -8090,8 +8090,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OrderResponse",
-            "baseType": "QUICK.DomainResource",
+            "name": "OrderResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -8100,7 +8100,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -8108,11 +8108,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "who",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.OrderOutcomeStatus"
+                    "type": "OrderOutcomeStatus"
                 },
                 {
                     "name": "description",
@@ -8126,18 +8126,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DeviceUseRequestPriority",
-            "baseType": "QUICK.Element",
+            "name": "DeviceUseRequestPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DeviceUseRequestPriority_list"
+                "type": "DeviceUseRequestPriority_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SampledData",
-            "baseType": "QUICK.Element",
+            "name": "SampledData",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -8166,14 +8166,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "data",
-                    "type": "QUICK.SampledDataDataType"
+                    "type": "SampledDataDataType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ElementDefinition.Binding",
-            "baseType": "QUICK.Element",
+            "name": "ElementDefinition.Binding",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -8186,7 +8186,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "conformance",
-                    "type": "QUICK.BindingConformance"
+                    "type": "BindingConformance"
                 },
                 {
                     "name": "description",
@@ -8196,17 +8196,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Encounter.Hospitalization",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Encounter.Hospitalization",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "preAdmissionIdentifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "origin",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "admitSource",
@@ -8234,7 +8234,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dischargeDisposition",
@@ -8242,7 +8242,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dischargeDiagnosis",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reAdmission",
@@ -8252,27 +8252,27 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SlicingRules_list"
+            "name": "SlicingRules_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticOrderPriority",
-            "baseType": "QUICK.Element",
+            "name": "DiagnosticOrderPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DiagnosticOrderPriority_list"
+                "type": "DiagnosticOrderPriority_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEvent",
-            "baseType": "QUICK.DomainResource",
+            "name": "SecurityEvent",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "event",
-                    "type": "QUICK.SecurityEvent.Event"
+                    "type": "SecurityEvent.Event"
                 },
                 {
                     "name": "participant",
@@ -8280,7 +8280,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "QUICK.SecurityEvent.Source"
+                    "type": "SecurityEvent.Source"
                 },
                 {
                     "name": "object",
@@ -8290,18 +8290,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlanActivityStatus",
-            "baseType": "QUICK.Element",
+            "name": "CarePlanActivityStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CarePlanActivityStatus_list"
+                "type": "CarePlanActivityStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Compose",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Compose",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8320,17 +8320,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationDispense.Dispense",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationDispense.Dispense",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.MedicationDispenseStatus"
+                    "type": "MedicationDispenseStatus"
                 },
                 {
                     "name": "type",
@@ -8342,7 +8342,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "medication",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenPrepared",
@@ -8354,7 +8354,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -8368,27 +8368,27 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.LocationMode",
-            "baseType": "QUICK.Element",
+            "name": "LocationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.LocationMode_list"
+                "type": "LocationMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OperationDefinition.Parameter",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OperationDefinition.Parameter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "use",
-                    "type": "QUICK.OperationParameterUse"
+                    "type": "OperationParameterUse"
                 },
                 {
                     "name": "min",
@@ -8408,39 +8408,39 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.QueryOutcome",
-            "baseType": "QUICK.Element",
+            "name": "QueryOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.QueryOutcome_list"
+                "type": "QueryOutcome_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntoleranceCriticality",
-            "baseType": "QUICK.Element",
+            "name": "AllergyIntoleranceCriticality",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AllergyIntoleranceCriticality_list"
+                "type": "AllergyIntoleranceCriticality_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Media",
-            "baseType": "QUICK.DomainResource",
+            "name": "Media",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.MediaType"
+                    "type": "MediaType"
                 },
                 {
                     "name": "subtype",
@@ -8456,11 +8456,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operator",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "view",
@@ -8488,28 +8488,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "content",
-                    "type": "QUICK.Attachment"
+                    "type": "Attachment"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DocumentReferenceStatus_list"
+            "name": "DocumentReferenceStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CommunicationRequestStatus",
-            "baseType": "QUICK.Element",
+            "name": "CommunicationRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CommunicationRequestStatus_list"
+                "type": "CommunicationRequestStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.FamilyHistory.Relation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "FamilyHistory.Relation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8532,18 +8532,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ResourceDataElementStatus",
-            "baseType": "QUICK.Element",
+            "name": "ResourceDataElementStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ResourceDataElementStatus_list"
+                "type": "ResourceDataElementStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Organization",
-            "baseType": "QUICK.DomainResource",
+            "name": "Organization",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -8568,7 +8568,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "partOf",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -8586,22 +8586,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntoleranceType",
-            "baseType": "QUICK.Element",
+            "name": "AllergyIntoleranceType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AllergyIntoleranceType_list"
+                "type": "AllergyIntoleranceType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ImagingModality_list"
+            "name": "ImagingModality_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Contract.Signer",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Contract.Signer",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8616,29 +8616,29 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Medication.Ingredient",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Medication.Ingredient",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "amount",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Designation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Designation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "language",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "use",
@@ -8652,38 +8652,38 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentRelationshipType",
-            "baseType": "QUICK.Element",
+            "name": "DocumentRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DocumentRelationshipType_list"
+                "type": "DocumentRelationshipType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SubscriptionChannelType",
-            "baseType": "QUICK.Element",
+            "name": "SubscriptionChannelType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SubscriptionChannelType_list"
+                "type": "SubscriptionChannelType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.TypeRestfulInteraction",
-            "baseType": "QUICK.Element",
+            "name": "TypeRestfulInteraction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.TypeRestfulInteraction_list"
+                "type": "TypeRestfulInteraction_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Location.Position",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Location.Position",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8702,12 +8702,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ParticipationStatus_list"
+            "name": "ParticipationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Parameters.Parameter",
-            "baseType": "QUICK.Element",
+            "name": "Parameters.Parameter",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -8716,18 +8716,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "QUICK.ResourceContainer"
+                    "type": "ResourceContainer"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.PropertyRepresentation_list"
+            "name": "PropertyRepresentation_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AppointmentResponse",
-            "baseType": "QUICK.DomainResource",
+            "name": "AppointmentResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -8736,7 +8736,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "appointment",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participantType",
@@ -8748,7 +8748,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "participantStatus",
-                    "type": "QUICK.ParticipantStatus"
+                    "type": "ParticipantStatus"
                 },
                 {
                     "name": "comment",
@@ -8764,7 +8764,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "lastModifiedBy",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lastModified",
@@ -8774,18 +8774,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.uuid",
-            "baseType": "QUICK.Element",
+            "name": "uuid",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.uuid_primitive"
+                "type": "uuid_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentReference.Parameter",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DocumentReference.Parameter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8800,12 +8800,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.AllergyIntoleranceCategory_list"
+            "name": "AllergyIntoleranceCategory_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Additem",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Additem",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8818,7 +8818,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "fee",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "noteNumberLinkId",
@@ -8836,32 +8836,32 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ContactPointUse",
-            "baseType": "QUICK.Element",
+            "name": "ContactPointUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ContactPointUse_list"
+                "type": "ContactPointUse_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.LocationMode_list"
+            "name": "LocationMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationAdministrationStatus",
-            "baseType": "QUICK.Element",
+            "name": "MedicationAdministrationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MedicationAdministrationStatus_list"
+                "type": "MedicationAdministrationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Immunization.Explanation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Immunization.Explanation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8876,13 +8876,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DataElement",
-            "baseType": "QUICK.DomainResource",
+            "name": "DataElement",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
@@ -8898,7 +8898,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ResourceDataElementStatus"
+                    "type": "ResourceDataElementStatus"
                 },
                 {
                     "name": "date",
@@ -8938,7 +8938,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "maxLength",
@@ -8950,7 +8950,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "binding",
-                    "type": "QUICK.DataElement.Binding"
+                    "type": "DataElement.Binding"
                 },
                 {
                     "name": "mapping",
@@ -8960,12 +8960,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.FilterOperator_list"
+            "name": "FilterOperator_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrder.EnteralFormula",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NutritionOrder.EnteralFormula",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8996,12 +8996,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ExtensionContext_list"
+            "name": "ExtensionContext_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DeviceComponent.ProductionSpecification",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DeviceComponent.ProductionSpecification",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9010,7 +9010,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "componentId",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "productionSpec",
@@ -9020,22 +9020,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticReportStatus",
-            "baseType": "QUICK.Element",
+            "name": "DiagnosticReportStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DiagnosticReportStatus_list"
+                "type": "DiagnosticReportStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CommunicationRequestStatus_list"
+            "name": "CommunicationRequestStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.SearchParam",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.SearchParam",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9048,7 +9048,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.SearchParamType"
+                    "type": "SearchParamType"
                 },
                 {
                     "name": "documentation",
@@ -9066,8 +9066,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Profile",
-            "baseType": "QUICK.DomainResource",
+            "name": "Profile",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9104,7 +9104,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ResourceProfileStatus"
+                    "type": "ResourceProfileStatus"
                 },
                 {
                     "name": "experimental",
@@ -9120,7 +9120,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "fhirVersion",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "mapping",
@@ -9128,7 +9128,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "base",
@@ -9136,18 +9136,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "snapshot",
-                    "type": "QUICK.Profile.Snapshot"
+                    "type": "Profile.Snapshot"
                 },
                 {
                     "name": "differential",
-                    "type": "QUICK.Profile.Snapshot"
+                    "type": "Profile.Snapshot"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationPrescription.DosageInstruction",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationPrescription.DosageInstruction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9176,18 +9176,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.Item",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9200,7 +9200,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "service",
@@ -9216,7 +9216,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -9228,7 +9228,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
@@ -9252,14 +9252,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prosthesis",
-                    "type": "QUICK.OralHealthClaim.Prosthesis"
+                    "type": "OralHealthClaim.Prosthesis"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Group.Characteristic",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Group.Characteristic",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9274,48 +9274,48 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OrderOutcomeStatus",
-            "baseType": "QUICK.Element",
+            "name": "OrderOutcomeStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.OrderOutcomeStatus_list"
+                "type": "OrderOutcomeStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.HierarchicalRelationshipType",
-            "baseType": "QUICK.Element",
+            "name": "HierarchicalRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.HierarchicalRelationshipType_list"
+                "type": "HierarchicalRelationshipType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.BundleEntryStatus",
-            "baseType": "QUICK.Element",
+            "name": "BundleEntryStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.BundleEntryStatus_list"
+                "type": "BundleEntryStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ParticipantStatus",
-            "baseType": "QUICK.Element",
+            "name": "ParticipantStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ParticipantStatus_list"
+                "type": "ParticipantStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ProcedureRequest",
-            "baseType": "QUICK.DomainResource",
+            "name": "ProcedureRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-procedurerequest",
             "label": "ProcedureRequest",
@@ -9327,7 +9327,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -9343,11 +9343,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
@@ -9355,7 +9355,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "mode",
-                    "type": "QUICK.ProcedureRequestMode"
+                    "type": "ProcedureRequestMode"
                 },
                 {
                     "name": "notes",
@@ -9367,40 +9367,40 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "orderer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
-                    "type": "QUICK.ProcedureRequestPriority"
+                    "type": "ProcedureRequestPriority"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.InstanceAvailability_list"
+            "name": "InstanceAvailability_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MessageEvent_list"
+            "name": "MessageEvent_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.NamingSystemType_list"
+            "name": "NamingSystemType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.EncounterClass",
-            "baseType": "QUICK.Element",
+            "name": "EncounterClass",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.EncounterClass_list"
+                "type": "EncounterClass_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrder.Nutrients",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NutritionOrder.Nutrients",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "modifier",
@@ -9409,22 +9409,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DataType",
-            "baseType": "QUICK.Element",
+            "name": "DataType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DataType_list"
+                "type": "DataType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.CarePlanActivityStatus_list"
+            "name": "CarePlanActivityStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Event",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9433,11 +9433,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "category",
-                    "type": "QUICK.MessageSignificanceCategory"
+                    "type": "MessageSignificanceCategory"
                 },
                 {
                     "name": "mode",
-                    "type": "QUICK.ConformanceEventMode"
+                    "type": "ConformanceEventMode"
                 },
                 {
                     "name": "protocol",
@@ -9445,15 +9445,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "focus",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "request",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "documentation",
@@ -9463,8 +9463,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.Coverage",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.Coverage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9477,7 +9477,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -9493,7 +9493,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "originalRuleset",
@@ -9503,8 +9503,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Bundle.Link",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Bundle.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9519,12 +9519,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.LocationStatus_list"
+            "name": "LocationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Implementation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Implementation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9539,8 +9539,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.List.Entry",
-            "baseType": "QUICK.BackboneElement",
+            "name": "List.Entry",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9557,14 +9557,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "item",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Range",
-            "baseType": "QUICK.Element",
+            "name": "Range",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -9579,60 +9579,60 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.EncounterState",
-            "baseType": "QUICK.Element",
+            "name": "EncounterState",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.EncounterState_list"
+                "type": "EncounterState_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ProcedureRelationshipType",
-            "baseType": "QUICK.Element",
+            "name": "ProcedureRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ProcedureRelationshipType_list"
+                "type": "ProcedureRelationshipType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.QuestionnaireAnswers.Answer",
-            "baseType": "QUICK.BackboneElement",
+            "name": "QuestionnaireAnswers.Answer",
+            "baseType": "BackboneElement",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Certificate",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Certificate",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "blob",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.LocationStatus",
-            "baseType": "QUICK.Element",
+            "name": "LocationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.LocationStatus_list"
+                "type": "LocationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.HealthcareService.AvailableTime",
-            "baseType": "QUICK.BackboneElement",
+            "name": "HealthcareService.AvailableTime",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9655,13 +9655,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Medication.Content",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Medication.Content",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "amount",
@@ -9671,17 +9671,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ObservationStatus_list"
+            "name": "ObservationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Address",
-            "baseType": "QUICK.Element",
+            "name": "Address",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "QUICK.AddressUse"
+                    "type": "AddressUse"
                 },
                 {
                     "name": "text",
@@ -9715,12 +9715,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SecurityEventOutcome_list"
+            "name": "SecurityEventOutcome_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DeviceUseStatement",
-            "baseType": "QUICK.DomainResource",
+            "name": "DeviceUseStatement",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9733,7 +9733,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "device",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -9753,19 +9753,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Count",
+            "name": "Count",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "QUICK.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -9785,14 +9785,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Query",
-            "baseType": "QUICK.DomainResource",
+            "name": "Query",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9805,18 +9805,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "response",
-                    "type": "QUICK.Query.Response"
+                    "type": "Query.Response"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MessageSignificanceCategory",
-            "baseType": "QUICK.Element",
+            "name": "MessageSignificanceCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.MessageSignificanceCategory_list"
+                "type": "MessageSignificanceCategory_list"
             }
         },
         {
@@ -9825,8 +9825,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Operation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Operation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9835,30 +9835,30 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Binary",
-            "baseType": "QUICK.Resource",
+            "name": "Binary",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentType",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "content",
-                    "type": "QUICK.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlan",
-            "baseType": "QUICK.DomainResource",
+            "name": "CarePlan",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-careplan",
             "label": "CarePlan",
@@ -9870,11 +9870,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.CarePlanStatus"
+                    "type": "CarePlanStatus"
                 },
                 {
                     "name": "period",
@@ -9908,52 +9908,52 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentReference.RelatesTo",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DocumentReference.RelatesTo",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "QUICK.DocumentRelationshipType"
+                    "type": "DocumentRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SubscriptionStatus_list"
+            "name": "SubscriptionStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.Modality_list"
+            "name": "Modality_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SystemRestfulInteraction",
-            "baseType": "QUICK.Element",
+            "name": "SystemRestfulInteraction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SystemRestfulInteraction_list"
+                "type": "SystemRestfulInteraction_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AnswerFormat",
-            "baseType": "QUICK.Element",
+            "name": "AnswerFormat",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AnswerFormat_list"
+                "type": "AnswerFormat_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet",
-            "baseType": "QUICK.DomainResource",
+            "name": "ValueSet",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9994,7 +9994,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ValueSetStatus"
+                    "type": "ValueSetStatus"
                 },
                 {
                     "name": "experimental",
@@ -10014,27 +10014,27 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "define",
-                    "type": "QUICK.ValueSet.Define"
+                    "type": "ValueSet.Define"
                 },
                 {
                     "name": "compose",
-                    "type": "QUICK.ValueSet.Compose"
+                    "type": "ValueSet.Compose"
                 },
                 {
                     "name": "expansion",
-                    "type": "QUICK.ValueSet.Expansion"
+                    "type": "ValueSet.Expansion"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance.Interaction1",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Conformance.Interaction1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "QUICK.SystemRestfulInteraction"
+                    "type": "SystemRestfulInteraction"
                 },
                 {
                     "name": "documentation",
@@ -10044,13 +10044,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ElementDefinition.Type",
-            "baseType": "QUICK.Element",
+            "name": "ElementDefinition.Type",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
@@ -10064,8 +10064,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Conformance",
-            "baseType": "QUICK.DomainResource",
+            "name": "Conformance",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -10094,7 +10094,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ConformanceStatementStatus"
+                    "type": "ConformanceStatementStatus"
                 },
                 {
                     "name": "experimental",
@@ -10106,15 +10106,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "software",
-                    "type": "QUICK.Conformance.Software"
+                    "type": "Conformance.Software"
                 },
                 {
                     "name": "implementation",
-                    "type": "QUICK.Conformance.Implementation"
+                    "type": "Conformance.Implementation"
                 },
                 {
                     "name": "fhirVersion",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "acceptUnknown",
@@ -10144,8 +10144,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConceptMap",
-            "baseType": "QUICK.DomainResource",
+            "name": "ConceptMap",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -10178,7 +10178,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.ValueSetStatus"
+                    "type": "ValueSetStatus"
                 },
                 {
                     "name": "experimental",
@@ -10196,16 +10196,16 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DataAbsentReason_list"
+            "name": "DataAbsentReason_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.FHIRDefinedType_list"
+            "name": "FHIRDefinedType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrder",
-            "baseType": "QUICK.DomainResource",
+            "name": "NutritionOrder",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-nutritionorder",
             "label": "NutritionOrder",
@@ -10213,11 +10213,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -10225,7 +10225,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateTime",
@@ -10249,23 +10249,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.NutritionOrderStatus"
+                    "type": "NutritionOrderStatus"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SpecialValues_list"
+            "name": "SpecialValues_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Money",
+            "name": "Money",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "QUICK.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -10285,14 +10285,14 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationAdministration.Dosage",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationAdministration.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10313,18 +10313,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "QUICK.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Patient",
-            "baseType": "QUICK.DomainResource",
+            "name": "Patient",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-patient",
             "label": "Patient",
@@ -10367,7 +10367,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "animal",
-                    "type": "QUICK.Patient.Animal"
+                    "type": "Patient.Animal"
                 },
                 {
                     "name": "communication",
@@ -10379,7 +10379,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "link",
@@ -10393,8 +10393,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ClaimResponse.Detail1",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ClaimResponse.Detail1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10403,7 +10403,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "fee",
-                    "type": "QUICK.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "adjudication",
@@ -10413,8 +10413,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationPrescription",
-            "baseType": "QUICK.DomainResource",
+            "name": "MedicationPrescription",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationprescription",
             "label": "MedicationPrescription",
@@ -10430,23 +10430,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.MedicationPrescriptionStatus"
+                    "type": "MedicationPrescriptionStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescriber",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "medication",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dosageInstruction",
@@ -10454,23 +10454,23 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispense",
-                    "type": "QUICK.MedicationPrescription.Dispense"
+                    "type": "MedicationPrescription.Dispense"
                 },
                 {
                     "name": "substitution",
-                    "type": "QUICK.MedicationPrescription.Substitution"
+                    "type": "MedicationPrescription.Substitution"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ElementDefinition.Mapping",
-            "baseType": "QUICK.Element",
+            "name": "ElementDefinition.Mapping",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "map",
@@ -10480,8 +10480,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Specimen.Container",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Specimen.Container",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10512,8 +10512,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ValueSet.Define",
-            "baseType": "QUICK.BackboneElement",
+            "name": "ValueSet.Define",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10536,33 +10536,33 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ObservationStatus",
-            "baseType": "QUICK.Element",
+            "name": "ObservationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ObservationStatus_list"
+                "type": "ObservationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.AllergyIntoleranceCertainty",
-            "baseType": "QUICK.Element",
+            "name": "AllergyIntoleranceCertainty",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.AllergyIntoleranceCertainty_list"
+                "type": "AllergyIntoleranceCertainty_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MessageHeader",
-            "baseType": "QUICK.DomainResource",
+            "name": "MessageHeader",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "timestamp",
@@ -10574,11 +10574,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "response",
-                    "type": "QUICK.MessageHeader.Response"
+                    "type": "MessageHeader.Response"
                 },
                 {
                     "name": "source",
-                    "type": "QUICK.MessageHeader.Source"
+                    "type": "MessageHeader.Source"
                 },
                 {
                     "name": "destination",
@@ -10586,19 +10586,19 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responsible",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -10612,8 +10612,8 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OperationOutcome",
-            "baseType": "QUICK.DomainResource",
+            "name": "OperationOutcome",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": {
                 "name": "issue",
@@ -10622,27 +10622,27 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.NameUse_list"
+            "name": "NameUse_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ConditionStatus",
-            "baseType": "QUICK.Element",
+            "name": "ConditionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ConditionStatus_list"
+                "type": "ConditionStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MedicationPrescription.Dispense",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MedicationPrescription.Dispense",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "medication",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "validityPeriod",
@@ -10658,42 +10658,42 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "expectedSupplyDuration",
-                    "type": "QUICK.Duration"
+                    "type": "Duration"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ResourceVersionPolicy",
-            "baseType": "QUICK.Element",
+            "name": "ResourceVersionPolicy",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ResourceVersionPolicy_list"
+                "type": "ResourceVersionPolicy_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ReferralStatus",
-            "baseType": "QUICK.Element",
+            "name": "ReferralStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ReferralStatus_list"
+                "type": "ReferralStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ConceptMapEquivalence_list"
+            "name": "ConceptMapEquivalence_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Element",
+            "name": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "QUICK.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "extension",
@@ -10703,18 +10703,18 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ParticipantRequired",
-            "baseType": "QUICK.Element",
+            "name": "ParticipantRequired",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ParticipantRequired_list"
+                "type": "ParticipantRequired_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.NutritionOrder.Item",
-            "baseType": "QUICK.BackboneElement",
+            "name": "NutritionOrder.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10723,36 +10723,36 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "oralDiet",
-                    "type": "QUICK.NutritionOrder.OralDiet"
+                    "type": "NutritionOrder.OralDiet"
                 },
                 {
                     "name": "supplement",
-                    "type": "QUICK.NutritionOrder.Supplement"
+                    "type": "NutritionOrder.Supplement"
                 },
                 {
                     "name": "enteralFormula",
-                    "type": "QUICK.NutritionOrder.EnteralFormula"
+                    "type": "NutritionOrder.EnteralFormula"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.id",
-            "baseType": "QUICK.Element",
+            "name": "id",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.id_primitive"
+                "type": "id_primitive"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.time_primitive"
+            "name": "time_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DocumentReference.Context",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DocumentReference.Context",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10771,16 +10771,16 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.MedicationDispenseStatus_list"
+            "name": "MedicationDispenseStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ContactPointUse_list"
+            "name": "ContactPointUse_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticOrder.Item",
-            "baseType": "QUICK.BackboneElement",
+            "name": "DiagnosticOrder.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10797,7 +10797,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "event",
@@ -10807,22 +10807,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.EncounterState_list"
+            "name": "EncounterState_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DeviceUseRequestMode",
-            "baseType": "QUICK.Element",
+            "name": "DeviceUseRequestMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.DeviceUseRequestMode_list"
+                "type": "DeviceUseRequestMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.HealthcareService.NotAvailableTime",
-            "baseType": "QUICK.BackboneElement",
+            "name": "HealthcareService.NotAvailableTime",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10841,17 +10841,17 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Supply.Dispense",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Supply.Dispense",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.SupplyDispenseStatus"
+                    "type": "SupplyDispenseStatus"
                 },
                 {
                     "name": "type",
@@ -10863,11 +10863,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "suppliedItem",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "supplier",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenPrepared",
@@ -10879,7 +10879,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -10889,13 +10889,13 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Coverage",
-            "baseType": "QUICK.DomainResource",
+            "name": "Coverage",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "issuer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -10907,7 +10907,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "group",
@@ -10931,11 +10931,11 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subscriber",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "network",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "contract",
@@ -10945,28 +10945,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.MessageHeader.Response",
-            "baseType": "QUICK.BackboneElement",
+            "name": "MessageHeader.Response",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "QUICK.id"
+                    "type": "id"
                 },
                 {
                     "name": "code",
-                    "type": "QUICK.ResponseType"
+                    "type": "ResponseType"
                 },
                 {
                     "name": "details",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.OralHealthClaim.Missingteeth",
-            "baseType": "QUICK.BackboneElement",
+            "name": "OralHealthClaim.Missingteeth",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10985,22 +10985,22 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEventObjectRole",
-            "baseType": "QUICK.Element",
+            "name": "SecurityEventObjectRole",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SecurityEventObjectRole_list"
+                "type": "SecurityEventObjectRole_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.uuid_primitive"
+            "name": "uuid_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.DiagnosticReport",
-            "baseType": "QUICK.DomainResource",
+            "name": "DiagnosticReport",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-diagnosticreport",
             "label": "DiagnosticReport",
@@ -11012,7 +11012,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.DiagnosticReportStatus"
+                    "type": "DiagnosticReportStatus"
                 },
                 {
                     "name": "issued",
@@ -11020,15 +11020,15 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "QUICK.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "requestDetail",
@@ -11070,37 +11070,37 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SubscriptionStatus",
-            "baseType": "QUICK.Element",
+            "name": "SubscriptionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SubscriptionStatus_list"
+                "type": "SubscriptionStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DeviceUseRequestMode_list"
+            "name": "DeviceUseRequestMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.SecurityEventObjectLifecycle",
-            "baseType": "QUICK.Element",
+            "name": "SecurityEventObjectLifecycle",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.SecurityEventObjectLifecycle_list"
+                "type": "SecurityEventObjectLifecycle_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Encounter.Accomodation",
-            "baseType": "QUICK.BackboneElement",
+            "name": "Encounter.Accomodation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "bed",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -11110,12 +11110,12 @@ final quickmodelinfo030 = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.ListMode_list"
+            "name": "ListMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CarePlan.Participant",
-            "baseType": "QUICK.BackboneElement",
+            "name": "CarePlan.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11124,28 +11124,28 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "member",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.CommunicationRequestMode",
-            "baseType": "QUICK.Element",
+            "name": "CommunicationRequestMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.CommunicationRequestMode_list"
+                "type": "CommunicationRequestMode_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.DocumentRelationshipType_list"
+            "name": "DocumentRelationshipType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.Location",
-            "baseType": "QUICK.DomainResource",
+            "name": "Location",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-location",
             "label": "Location",
@@ -11173,7 +11173,7 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "QUICK.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "physicalType",
@@ -11181,39 +11181,39 @@ final quickmodelinfo030 = ModelInfo.fromJson({
                 },
                 {
                     "name": "position",
-                    "type": "QUICK.Location.Position"
+                    "type": "Location.Position"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "QUICK.LocationStatus"
+                    "type": "LocationStatus"
                 },
                 {
                     "name": "partOf",
-                    "type": "QUICK.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "mode",
-                    "type": "QUICK.LocationMode"
+                    "type": "LocationMode"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "QUICK.ProvenanceEntityRole",
-            "baseType": "QUICK.Element",
+            "name": "ProvenanceEntityRole",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "QUICK.ProvenanceEntityRole_list"
+                "type": "ProvenanceEntityRole_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "QUICK.SecurityEventObjectType_list"
+            "name": "SecurityEventObjectType_list"
         }
     ]
 });

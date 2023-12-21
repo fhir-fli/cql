@@ -8,7 +8,7 @@ final testmodelinfowithgenericssad1 = ModelInfo.fromJson({
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyGeneric",
+            "name": "MyGeneric",
             "baseType": "System.Any",
             "retrievable": false,
             "parameter": [
@@ -42,8 +42,8 @@ final testmodelinfowithgenericssad1 = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "GENTEST.MyQuantity",
-            "baseType": "GENTEST.MyGeneric",
+            "name": "MyQuantity",
+            "baseType": "MyGeneric",
             "retrievable": false,
             "element": {
                 "name": "field1",

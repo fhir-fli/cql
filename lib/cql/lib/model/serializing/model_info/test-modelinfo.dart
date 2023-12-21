@@ -5,14 +5,14 @@ final testmodelinfo = ModelInfo.fromJson({
     "url": "http://cqframework.org/test",
     "schemaLocation": "http://cqframework.org/Test test.xsd",
     "targetQualifier": "Test",
-    "patientClassName": "Test.Patient",
+    "patientClassName": "Patient",
     "patientClassIdentifier": "cqf-patient",
     "patientBirthDatePropertyName": "birthDate",
     "typeInfo": [
         {
             "type": "ClassInfo",
-            "name": "Test.Composition.Event",
-            "baseType": "Test.BackboneElement",
+            "name": "Composition.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -31,54 +31,54 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Patient.Link",
-            "baseType": "Test.BackboneElement",
+            "name": "Patient.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "other",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "Test.LinkType"
+                    "type": "LinkType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SpecialValues",
-            "baseType": "Test.Element",
+            "name": "SpecialValues",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SpecialValues_list"
+                "type": "SpecialValues_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AggregationMode",
-            "baseType": "Test.Element",
+            "name": "AggregationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AggregationMode_list"
+                "type": "AggregationMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrderStatus",
-            "baseType": "Test.Element",
+            "name": "NutritionOrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.NutritionOrderStatus_list"
+                "type": "NutritionOrderStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntolerance",
-            "baseType": "Test.DomainResource",
+            "name": "AllergyIntolerance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-allergyintolerance",
             "label": "AllergyIntolerance",
@@ -94,11 +94,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "substance",
@@ -106,19 +106,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.AllergyIntoleranceStatus"
+                    "type": "AllergyIntoleranceStatus"
                 },
                 {
                     "name": "criticality",
-                    "type": "Test.AllergyIntoleranceCriticality"
+                    "type": "AllergyIntoleranceCriticality"
                 },
                 {
                     "name": "type",
-                    "type": "Test.AllergyIntoleranceType"
+                    "type": "AllergyIntoleranceType"
                 },
                 {
                     "name": "category",
-                    "type": "Test.AllergyIntoleranceCategory"
+                    "type": "AllergyIntoleranceCategory"
                 },
                 {
                     "name": "lastOccurence",
@@ -136,12 +136,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.RestfulConformanceMode_list"
+            "name": "RestfulConformanceMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Timing",
-            "baseType": "Test.Element",
+            "name": "Timing",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -150,14 +150,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "repeat",
-                    "type": "Test.Timing.Repeat"
+                    "type": "Timing.Repeat"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEvent.Network",
-            "baseType": "Test.BackboneElement",
+            "name": "SecurityEvent.Network",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -166,14 +166,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "Test.SecurityEventParticipantNetworkType"
+                    "type": "SecurityEventParticipantNetworkType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Order.When",
-            "baseType": "Test.BackboneElement",
+            "name": "Order.When",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -182,18 +182,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "schedule",
-                    "type": "Test.Timing"
+                    "type": "Timing"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.RemittanceOutcome_list"
+            "name": "RemittanceOutcome_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Medication",
-            "baseType": "Test.DomainResource",
+            "name": "Medication",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medication",
             "label": "Medication",
@@ -213,31 +213,31 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "manufacturer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "kind",
-                    "type": "Test.MedicationKind"
+                    "type": "MedicationKind"
                 },
                 {
                     "name": "product",
-                    "type": "Test.Medication.Product"
+                    "type": "Medication.Product"
                 },
                 {
                     "name": "package",
-                    "type": "Test.Medication.Package"
+                    "type": "Medication.Package"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Profile.Mapping",
-            "baseType": "Test.BackboneElement",
+            "name": "Profile.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "uri",
@@ -255,8 +255,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MessageHeader.Source",
-            "baseType": "Test.BackboneElement",
+            "name": "MessageHeader.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -273,7 +273,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "contact",
-                    "type": "Test.ContactPoint"
+                    "type": "ContactPoint"
                 },
                 {
                     "name": "endpoint",
@@ -283,12 +283,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ResourceProfileStatus_list"
+            "name": "ResourceProfileStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Reference",
-            "baseType": "Test.Element",
+            "name": "Reference",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -303,26 +303,26 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntoleranceStatus",
-            "baseType": "Test.Element",
+            "name": "AllergyIntoleranceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AllergyIntoleranceStatus_list"
+                "type": "AllergyIntoleranceStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ObservationRelationshipType_list"
+            "name": "ObservationRelationshipType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SupplyStatus_list"
+            "name": "SupplyStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.List",
-            "baseType": "Test.DomainResource",
+            "name": "List",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -335,11 +335,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -351,7 +351,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "mode",
-                    "type": "Test.ListMode"
+                    "type": "ListMode"
                 },
                 {
                     "name": "entry",
@@ -365,8 +365,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.RiskAssessment.Prediction",
-            "baseType": "Test.BackboneElement",
+            "name": "RiskAssessment.Prediction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -385,26 +385,26 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.base64Binary",
-            "baseType": "Test.Element",
+            "name": "base64Binary",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.base64Binary_primitive"
+                "type": "base64Binary_primitive"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CarePlanActivityCategory_list"
+            "name": "CarePlanActivityCategory_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DeviceUseRequestPriority_list"
+            "name": "DeviceUseRequestPriority_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImmunizationRecommendation.Protocol",
-            "baseType": "Test.BackboneElement",
+            "name": "ImmunizationRecommendation.Protocol",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -417,7 +417,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
@@ -427,8 +427,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Alert",
-            "baseType": "Test.DomainResource",
+            "name": "Alert",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -441,15 +441,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.AlertStatus"
+                    "type": "AlertStatus"
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "note",
@@ -459,18 +459,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OperationKind",
-            "baseType": "Test.Element",
+            "name": "OperationKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.OperationKind_list"
+                "type": "OperationKind_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.HealthcareService.ServiceType",
-            "baseType": "Test.BackboneElement",
+            "name": "HealthcareService.ServiceType",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -485,42 +485,42 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.EventTiming",
-            "baseType": "Test.Element",
+            "name": "EventTiming",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.EventTiming_list"
+                "type": "EventTiming_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.BundleEntryStatus_list"
+            "name": "BundleEntryStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Filter",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Filter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "property",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "op",
-                    "type": "Test.FilterOperator"
+                    "type": "FilterOperator"
                 },
                 {
                     "name": "value",
-                    "type": "Test.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Appointment.Participant",
-            "baseType": "Test.BackboneElement",
+            "name": "Appointment.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -529,27 +529,27 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "required",
-                    "type": "Test.ParticipantRequired"
+                    "type": "ParticipantRequired"
                 },
                 {
                     "name": "status",
-                    "type": "Test.ParticipationStatus"
+                    "type": "ParticipationStatus"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DomainResource",
-            "baseType": "Test.Resource",
+            "name": "DomainResource",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "text",
-                    "type": "Test.Narrative"
+                    "type": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -567,23 +567,23 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.QuestionnaireStatus",
-            "baseType": "Test.Element",
+            "name": "QuestionnaireStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.QuestionnaireStatus_list"
+                "type": "QuestionnaireStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Specimen.Collection",
-            "baseType": "Test.BackboneElement",
+            "name": "Specimen.Collection",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "collector",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "comment",
@@ -605,29 +605,29 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEvent.Object",
-            "baseType": "Test.BackboneElement",
+            "name": "SecurityEvent.Object",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reference",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
-                    "type": "Test.SecurityEventObjectType"
+                    "type": "SecurityEventObjectType"
                 },
                 {
                     "name": "role",
-                    "type": "Test.SecurityEventObjectRole"
+                    "type": "SecurityEventObjectRole"
                 },
                 {
                     "name": "lifecycle",
-                    "type": "Test.SecurityEventObjectLifecycle"
+                    "type": "SecurityEventObjectLifecycle"
                 },
                 {
                     "name": "sensitivity",
@@ -643,7 +643,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "query",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "detail",
@@ -653,13 +653,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Procedure.Performer",
-            "baseType": "Test.BackboneElement",
+            "name": "Procedure.Performer",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "person",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -669,21 +669,21 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.IssueSeverity_list"
+            "name": "IssueSeverity_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.NarrativeStatus_list"
+            "name": "NarrativeStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NamingSystem.UniqueId",
-            "baseType": "Test.BackboneElement",
+            "name": "NamingSystem.UniqueId",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.NamingSystemIdentifierType"
+                    "type": "NamingSystemIdentifierType"
                 },
                 {
                     "name": "value",
@@ -701,8 +701,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.RelatedPerson",
-            "baseType": "Test.DomainResource",
+            "name": "RelatedPerson",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -711,7 +711,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -719,7 +719,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "Test.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -731,7 +731,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "Test.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "photo",
@@ -741,14 +741,14 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CommunicationRequest.MessagePart",
-            "baseType": "Test.BackboneElement",
+            "name": "CommunicationRequest.MessagePart",
+            "baseType": "BackboneElement",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Encounter",
-            "baseType": "Test.DomainResource",
+            "name": "Encounter",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-encounter",
             "label": "Encounter",
@@ -760,11 +760,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.EncounterState"
+                    "type": "EncounterState"
                 },
                 {
                     "name": "class",
-                    "type": "Test.EncounterClass"
+                    "type": "EncounterClass"
                 },
                 {
                     "name": "type",
@@ -772,7 +772,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participant",
@@ -780,7 +780,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "fulfills",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -788,7 +788,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "length",
-                    "type": "Test.Duration"
+                    "type": "Duration"
                 },
                 {
                     "name": "reason",
@@ -796,7 +796,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "indication",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
@@ -804,7 +804,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "hospitalization",
-                    "type": "Test.Encounter.Hospitalization"
+                    "type": "Encounter.Hospitalization"
                 },
                 {
                     "name": "location",
@@ -812,27 +812,27 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "serviceProvider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.BindingConformance_list"
+            "name": "BindingConformance_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NamingSystem",
-            "baseType": "Test.DomainResource",
+            "name": "NamingSystem",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.NamingSystemType"
+                    "type": "NamingSystemType"
                 },
                 {
                     "name": "name",
@@ -840,11 +840,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.NamingSystemStatus"
+                    "type": "NamingSystemStatus"
                 },
                 {
                     "name": "country",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "category",
@@ -868,18 +868,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "contact",
-                    "type": "Test.NamingSystem.Contact"
+                    "type": "NamingSystem.Contact"
                 },
                 {
                     "name": "replacedBy",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ExplanationOfBenefit",
-            "baseType": "Test.DomainResource",
+            "name": "ExplanationOfBenefit",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -888,7 +888,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
@@ -896,7 +896,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "Test.RemittanceOutcome"
+                    "type": "RemittanceOutcome"
                 },
                 {
                     "name": "disposition",
@@ -916,22 +916,22 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlan.Activity",
-            "baseType": "Test.BackboneElement",
+            "name": "CarePlan.Activity",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -940,7 +940,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.CarePlanActivityStatus"
+                    "type": "CarePlanActivityStatus"
                 },
                 {
                     "name": "prohibited",
@@ -956,18 +956,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "simple",
-                    "type": "Test.CarePlan.Simple"
+                    "type": "CarePlan.Simple"
                 }
             ]
         },
         {
             "type": "ClassInfo",
             "name": "System.QuantityComparator",
-            "baseType": "Test.Element",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -976,18 +976,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ObservationReliability",
-            "baseType": "Test.Element",
+            "name": "ObservationReliability",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ObservationReliability_list"
+                "type": "ObservationReliability_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.QuestionnaireAnswers.Group",
-            "baseType": "Test.BackboneElement",
+            "name": "QuestionnaireAnswers.Group",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1004,7 +1004,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
@@ -1018,8 +1018,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrder.Texture",
-            "baseType": "Test.BackboneElement",
+            "name": "NutritionOrder.Texture",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1034,18 +1034,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.GroupType",
-            "baseType": "Test.Element",
+            "name": "GroupType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.GroupType_list"
+                "type": "GroupType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.FamilyHistory.Condition",
-            "baseType": "Test.BackboneElement",
+            "name": "FamilyHistory.Condition",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1064,12 +1064,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AllergyIntoleranceSeverity_list"
+            "name": "AllergyIntoleranceSeverity_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Messaging",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Messaging",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1092,8 +1092,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Reversal",
-            "baseType": "Test.DomainResource",
+            "name": "Reversal",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1114,39 +1114,39 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "request",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "response",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responseIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "payee",
-                    "type": "Test.Reversal.Payee"
+                    "type": "Reversal.Payee"
                 },
                 {
                     "name": "coverage",
-                    "type": "Test.Reversal.Coverage"
+                    "type": "Reversal.Coverage"
                 },
                 {
                     "name": "nullify",
@@ -1156,20 +1156,20 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AdministrativeGender_list"
+            "name": "AdministrativeGender_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ParticipantStatus_list"
+            "name": "ParticipantStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DiagnosticOrderStatus_list"
+            "name": "DiagnosticOrderStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Observation.ReferenceRange",
-            "baseType": "Test.BackboneElement",
+            "name": "Observation.ReferenceRange",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1186,7 +1186,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "age",
-                    "type": "Test.Range"
+                    "type": "Range"
                 },
                 {
                     "name": "text",
@@ -1196,28 +1196,28 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DeviceUseRequestStatus",
-            "baseType": "Test.Element",
+            "name": "DeviceUseRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DeviceUseRequestStatus_list"
+                "type": "DeviceUseRequestStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SlicingRules",
-            "baseType": "Test.Element",
+            "name": "SlicingRules",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SlicingRules_list"
+                "type": "SlicingRules_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Subscription",
-            "baseType": "Test.DomainResource",
+            "name": "Subscription",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1234,7 +1234,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.SubscriptionStatus"
+                    "type": "SubscriptionStatus"
                 },
                 {
                     "name": "error",
@@ -1242,7 +1242,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "channel",
-                    "type": "Test.Subscription.Channel"
+                    "type": "Subscription.Channel"
                 },
                 {
                     "name": "end",
@@ -1256,22 +1256,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlanStatus",
-            "baseType": "Test.Element",
+            "name": "CarePlanStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CarePlanStatus_list"
+                "type": "CarePlanStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ValueSetStatus_list"
+            "name": "ValueSetStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImagingStudy.Instance",
-            "baseType": "Test.BackboneElement",
+            "name": "ImagingStudy.Instance",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1280,11 +1280,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "uid",
-                    "type": "Test.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "sopclass",
-                    "type": "Test.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "type",
@@ -1300,38 +1300,38 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "attachment",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Measmnt_Principle",
-            "baseType": "Test.Element",
+            "name": "Measmnt_Principle",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.Measmnt_Principle_list"
+                "type": "Measmnt_Principle_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ContactPointSystem_list"
+            "name": "ContactPointSystem_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NamingSystemType",
-            "baseType": "Test.Element",
+            "name": "NamingSystemType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.NamingSystemType_list"
+                "type": "NamingSystemType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Condition.Evidence",
-            "baseType": "Test.BackboneElement",
+            "name": "Condition.Evidence",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1346,12 +1346,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SupplyDispenseStatus_list"
+            "name": "SupplyDispenseStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Condition.OccurredFollowing",
-            "baseType": "Test.BackboneElement",
+            "name": "Condition.OccurredFollowing",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1360,40 +1360,40 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ExtensionContext",
-            "baseType": "Test.Element",
+            "name": "ExtensionContext",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ExtensionContext_list"
+                "type": "ExtensionContext_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ProcedureRequestPriority_list"
+            "name": "ProcedureRequestPriority_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CarePlanStatus_list"
+            "name": "CarePlanStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ConditionStatus_list"
+            "name": "ConditionStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.OrderOutcomeStatus_list"
+            "name": "OrderOutcomeStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Practitioner",
-            "baseType": "Test.DomainResource",
+            "name": "Practitioner",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-practitioner",
             "label": "Practitioner",
@@ -1405,7 +1405,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "Test.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -1429,7 +1429,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "role",
@@ -1459,12 +1459,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.QuestionnaireStatus_list"
+            "name": "QuestionnaireStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEvent.Detail",
-            "baseType": "Test.BackboneElement",
+            "name": "SecurityEvent.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1473,32 +1473,32 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "value",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ProcedureRequestStatus",
-            "baseType": "Test.Element",
+            "name": "ProcedureRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ProcedureRequestStatus_list"
+                "type": "ProcedureRequestStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Resource",
+            "name": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "meta",
-                    "type": "Test.Resource.Meta"
+                    "type": "Resource.Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -1506,14 +1506,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "language",
-                    "type": "Test.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Medication.Product",
-            "baseType": "Test.BackboneElement",
+            "name": "Medication.Product",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1528,30 +1528,30 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.InstanceAvailability",
-            "baseType": "Test.Element",
+            "name": "InstanceAvailability",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.InstanceAvailability_list"
+                "type": "InstanceAvailability_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AllergyIntoleranceType_list"
+            "name": "AllergyIntoleranceType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SearchParamType_list"
+            "name": "SearchParamType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ResourceDataElementStatus_list"
+            "name": "ResourceDataElementStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Patient.Animal",
-            "baseType": "Test.BackboneElement",
+            "name": "Patient.Animal",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1570,37 +1570,37 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.BundleType_list"
+            "name": "BundleType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Procedure.RelatedItem",
-            "baseType": "Test.BackboneElement",
+            "name": "Procedure.RelatedItem",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.ProcedureRelationshipType"
+                    "type": "ProcedureRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Group",
-            "baseType": "Test.DomainResource",
+            "name": "Group",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
-                    "type": "Test.GroupType"
+                    "type": "GroupType"
                 },
                 {
                     "name": "actual",
@@ -1630,43 +1630,43 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Modality",
-            "baseType": "Test.Element",
+            "name": "Modality",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.Modality_list"
+                "type": "Modality_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ContactPointSystem",
-            "baseType": "Test.Element",
+            "name": "ContactPointSystem",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ContactPointSystem_list"
+                "type": "ContactPointSystem_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ParticipationStatus",
-            "baseType": "Test.Element",
+            "name": "ParticipationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ParticipationStatus_list"
+                "type": "ParticipationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Substance.Instance",
-            "baseType": "Test.BackboneElement",
+            "name": "Substance.Instance",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "expiry",
@@ -1680,8 +1680,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse",
-            "baseType": "Test.DomainResource",
+            "name": "ClaimResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1690,7 +1690,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
@@ -1710,19 +1710,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
-                    "type": "Test.RemittanceOutcome"
+                    "type": "RemittanceOutcome"
                 },
                 {
                     "name": "disposition",
@@ -1746,19 +1746,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "totalCost",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "unallocDeductable",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "totalBenefit",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentAdjustment",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentAdjustmentReason",
@@ -1770,11 +1770,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "paymentAmount",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "paymentRef",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reserved",
@@ -1792,8 +1792,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Contains",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Contains",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1810,7 +1810,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "display",
@@ -1824,8 +1824,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationDispense.Dosage",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationDispense.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1850,23 +1850,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Resource.Meta",
-            "baseType": "Test.Element",
+            "name": "Resource.Meta",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "versionId",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "lastUpdated",
@@ -1888,22 +1888,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.QuestionnaireAnswersStatus_list"
+            "name": "QuestionnaireAnswersStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CompositionStatus",
-            "baseType": "Test.Element",
+            "name": "CompositionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CompositionStatus_list"
+                "type": "CompositionStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SearchParameter",
-            "baseType": "Test.DomainResource",
+            "name": "SearchParameter",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -1928,11 +1928,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "type",
-                    "type": "Test.SearchParamType"
+                    "type": "SearchParamType"
                 },
                 {
                     "name": "description",
@@ -1950,22 +1950,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.base64Binary_primitive"
+            "name": "base64Binary_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.RemittanceOutcome",
-            "baseType": "Test.Element",
+            "name": "RemittanceOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.RemittanceOutcome_list"
+                "type": "RemittanceOutcome_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImmunizationRecommendation.DateCriterion",
-            "baseType": "Test.BackboneElement",
+            "name": "ImmunizationRecommendation.DateCriterion",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1980,8 +1980,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Condition.Location",
-            "baseType": "Test.BackboneElement",
+            "name": "Condition.Location",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1996,13 +1996,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Provenance.Entity",
-            "baseType": "Test.BackboneElement",
+            "name": "Provenance.Entity",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "role",
-                    "type": "Test.ProvenanceEntityRole"
+                    "type": "ProvenanceEntityRole"
                 },
                 {
                     "name": "type",
@@ -2018,39 +2018,39 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "agent",
-                    "type": "Test.Provenance.Agent"
+                    "type": "Provenance.Agent"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ProcedureRequestMode",
-            "baseType": "Test.Element",
+            "name": "ProcedureRequestMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ProcedureRequestMode_list"
+                "type": "ProcedureRequestMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentMode",
-            "baseType": "Test.Element",
+            "name": "DocumentMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DocumentMode_list"
+                "type": "DocumentMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentReference",
-            "baseType": "Test.DomainResource",
+            "name": "DocumentReference",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "masterIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -2058,7 +2058,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -2074,7 +2074,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "custodian",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "policyManager",
@@ -2082,7 +2082,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "authenticator",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -2094,7 +2094,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.DocumentReferenceStatus"
+                    "type": "DocumentReferenceStatus"
                 },
                 {
                     "name": "docStatus",
@@ -2114,11 +2114,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "primaryLanguage",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "mimeType",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "format",
@@ -2130,7 +2130,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "hash",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "location",
@@ -2138,18 +2138,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "service",
-                    "type": "Test.DocumentReference.Service"
+                    "type": "DocumentReference.Service"
                 },
                 {
                     "name": "context",
-                    "type": "Test.DocumentReference.Context"
+                    "type": "DocumentReference.Context"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Adjudication2",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Adjudication2",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2158,7 +2158,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2168,8 +2168,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Questionnaire.Group",
-            "baseType": "Test.BackboneElement",
+            "name": "Questionnaire.Group",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2208,18 +2208,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ResourceType",
-            "baseType": "Test.Element",
+            "name": "ResourceType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ResourceType_list"
+                "type": "ResourceType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Adjudication1",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Adjudication1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2228,7 +2228,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2238,8 +2238,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Adjudication4",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Adjudication4",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2248,7 +2248,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2258,8 +2258,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Adjudication3",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Adjudication3",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2268,7 +2268,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -2278,8 +2278,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Specimen.Treatment",
-            "baseType": "Test.BackboneElement",
+            "name": "Specimen.Treatment",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2298,8 +2298,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Composition.Attester",
-            "baseType": "Test.BackboneElement",
+            "name": "Composition.Attester",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2312,14 +2312,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticReport.Image",
-            "baseType": "Test.BackboneElement",
+            "name": "DiagnosticReport.Image",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2328,14 +2328,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "link",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationDispense",
-            "baseType": "Test.DomainResource",
+            "name": "MedicationDispense",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationdispense",
             "label": "MedicationDispense",
@@ -2343,19 +2343,19 @@ final testmodelinfo = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "Test.MedicationDispenseStatus"
+                    "type": "MedicationDispenseStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dispenser",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authorizingPrescription",
@@ -2367,29 +2367,29 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "substitution",
-                    "type": "Test.MedicationDispense.Substitution"
+                    "type": "MedicationDispense.Substitution"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConformanceStatementStatus",
-            "baseType": "Test.Element",
+            "name": "ConformanceStatementStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ConformanceStatementStatus_list"
+                "type": "ConformanceStatementStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ReferralRequest",
-            "baseType": "Test.DomainResource",
+            "name": "ReferralRequest",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "Test.ReferralStatus"
+                    "type": "ReferralStatus"
                 },
                 {
                     "name": "identifier",
@@ -2409,11 +2409,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requester",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -2421,7 +2421,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateSent",
@@ -2451,16 +2451,16 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AggregationMode_list"
+            "name": "AggregationMode_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CommunicationRequestMode_list"
+            "name": "CommunicationRequestMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.Detail",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2481,7 +2481,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -2493,7 +2493,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
@@ -2507,13 +2507,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Contract.Term",
-            "baseType": "Test.BackboneElement",
+            "name": "Contract.Term",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "type",
@@ -2525,7 +2525,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "text",
@@ -2535,12 +2535,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SystemRestfulInteraction_list"
+            "name": "SystemRestfulInteraction_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.EligibilityResponse",
-            "baseType": "Test.DomainResource",
+            "name": "EligibilityResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -2549,7 +2549,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
@@ -2557,7 +2557,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "Test.RemittanceOutcome"
+                    "type": "RemittanceOutcome"
                 },
                 {
                     "name": "disposition",
@@ -2577,36 +2577,36 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestProvider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestOrganization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SecurityEventParticipantNetworkType_list"
+            "name": "SecurityEventParticipantNetworkType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ResponseType",
-            "baseType": "Test.Element",
+            "name": "ResponseType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ResponseType_list"
+                "type": "ResponseType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEvent.Event",
-            "baseType": "Test.BackboneElement",
+            "name": "SecurityEvent.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2619,7 +2619,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "action",
-                    "type": "Test.SecurityEventAction"
+                    "type": "SecurityEventAction"
                 },
                 {
                     "name": "dateTime",
@@ -2627,7 +2627,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "Test.SecurityEventOutcome"
+                    "type": "SecurityEventOutcome"
                 },
                 {
                     "name": "outcomeDesc",
@@ -2637,18 +2637,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MediaType",
-            "baseType": "Test.Element",
+            "name": "MediaType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MediaType_list"
+                "type": "MediaType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConceptMap.Map",
-            "baseType": "Test.BackboneElement",
+            "name": "ConceptMap.Map",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2657,11 +2657,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "equivalence",
-                    "type": "Test.ConceptMapEquivalence"
+                    "type": "ConceptMapEquivalence"
                 },
                 {
                     "name": "comments",
@@ -2675,8 +2675,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEvent.Source",
-            "baseType": "Test.BackboneElement",
+            "name": "SecurityEvent.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2695,8 +2695,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Parameters",
-            "baseType": "Test.Resource",
+            "name": "Parameters",
+            "baseType": "Resource",
             "retrievable": false,
             "element": {
                 "name": "parameter",
@@ -2705,13 +2705,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Rest",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Rest",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "mode",
-                    "type": "Test.RestfulConformanceMode"
+                    "type": "RestfulConformanceMode"
                 },
                 {
                     "name": "documentation",
@@ -2719,7 +2719,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "security",
-                    "type": "Test.Conformance.Security"
+                    "type": "Conformance.Security"
                 },
                 {
                     "name": "resource",
@@ -2741,21 +2741,21 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.LinkType_list"
+            "name": "LinkType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Resource",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Resource",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "interaction",
@@ -2763,7 +2763,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "versioning",
-                    "type": "Test.ResourceVersionPolicy"
+                    "type": "ResourceVersionPolicy"
                 },
                 {
                     "name": "readHistory",
@@ -2785,32 +2785,32 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticOrderStatus",
-            "baseType": "Test.Element",
+            "name": "DiagnosticOrderStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DiagnosticOrderStatus_list"
+                "type": "DiagnosticOrderStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MessageSignificanceCategory_list"
+            "name": "MessageSignificanceCategory_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.BundleType",
-            "baseType": "Test.Element",
+            "name": "BundleType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.BundleType_list"
+                "type": "BundleType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationDispense.Substitution",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationDispense.Substitution",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2829,335 +2829,335 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ResourceContainer",
+            "name": "ResourceContainer",
             "retrievable": false,
             "element": [
                 {
                     "name": "Alert",
-                    "type": "Test.Alert"
+                    "type": "Alert"
                 },
                 {
                     "name": "AllergyIntolerance",
-                    "type": "Test.AllergyIntolerance"
+                    "type": "AllergyIntolerance"
                 },
                 {
                     "name": "Appointment",
-                    "type": "Test.Appointment"
+                    "type": "Appointment"
                 },
                 {
                     "name": "AppointmentResponse",
-                    "type": "Test.AppointmentResponse"
+                    "type": "AppointmentResponse"
                 },
                 {
                     "name": "Availability",
-                    "type": "Test.Availability"
+                    "type": "Availability"
                 },
                 {
                     "name": "Basic",
-                    "type": "Test.Basic"
+                    "type": "Basic"
                 },
                 {
                     "name": "Binary",
-                    "type": "Test.Binary"
+                    "type": "Binary"
                 },
                 {
                     "name": "Bundle",
-                    "type": "Test.Bundle"
+                    "type": "Bundle"
                 },
                 {
                     "name": "CarePlan",
-                    "type": "Test.CarePlan"
+                    "type": "CarePlan"
                 },
                 {
                     "name": "ClaimResponse",
-                    "type": "Test.ClaimResponse"
+                    "type": "ClaimResponse"
                 },
                 {
                     "name": "CommunicationRequest",
-                    "type": "Test.CommunicationRequest"
+                    "type": "CommunicationRequest"
                 },
                 {
                     "name": "Composition",
-                    "type": "Test.Composition"
+                    "type": "Composition"
                 },
                 {
                     "name": "ConceptMap",
-                    "type": "Test.ConceptMap"
+                    "type": "ConceptMap"
                 },
                 {
                     "name": "Condition",
-                    "type": "Test.Condition"
+                    "type": "Condition"
                 },
                 {
                     "name": "Conformance",
-                    "type": "Test.Conformance"
+                    "type": "Conformance"
                 },
                 {
                     "name": "Contract",
-                    "type": "Test.Contract"
+                    "type": "Contract"
                 },
                 {
                     "name": "Contraindication",
-                    "type": "Test.Contraindication"
+                    "type": "Contraindication"
                 },
                 {
                     "name": "Coverage",
-                    "type": "Test.Coverage"
+                    "type": "Coverage"
                 },
                 {
                     "name": "DataElement",
-                    "type": "Test.DataElement"
+                    "type": "DataElement"
                 },
                 {
                     "name": "Device",
-                    "type": "Test.Device"
+                    "type": "Device"
                 },
                 {
                     "name": "DeviceComponent",
-                    "type": "Test.DeviceComponent"
+                    "type": "DeviceComponent"
                 },
                 {
                     "name": "DeviceUseRequest",
-                    "type": "Test.DeviceUseRequest"
+                    "type": "DeviceUseRequest"
                 },
                 {
                     "name": "DeviceUseStatement",
-                    "type": "Test.DeviceUseStatement"
+                    "type": "DeviceUseStatement"
                 },
                 {
                     "name": "DiagnosticOrder",
-                    "type": "Test.DiagnosticOrder"
+                    "type": "DiagnosticOrder"
                 },
                 {
                     "name": "DiagnosticReport",
-                    "type": "Test.DiagnosticReport"
+                    "type": "DiagnosticReport"
                 },
                 {
                     "name": "DocumentManifest",
-                    "type": "Test.DocumentManifest"
+                    "type": "DocumentManifest"
                 },
                 {
                     "name": "DocumentReference",
-                    "type": "Test.DocumentReference"
+                    "type": "DocumentReference"
                 },
                 {
                     "name": "Eligibility",
-                    "type": "Test.Eligibility"
+                    "type": "Eligibility"
                 },
                 {
                     "name": "EligibilityResponse",
-                    "type": "Test.EligibilityResponse"
+                    "type": "EligibilityResponse"
                 },
                 {
                     "name": "Encounter",
-                    "type": "Test.Encounter"
+                    "type": "Encounter"
                 },
                 {
                     "name": "ExplanationOfBenefit",
-                    "type": "Test.ExplanationOfBenefit"
+                    "type": "ExplanationOfBenefit"
                 },
                 {
                     "name": "ExtensionDefinition",
-                    "type": "Test.ExtensionDefinition"
+                    "type": "ExtensionDefinition"
                 },
                 {
                     "name": "FamilyHistory",
-                    "type": "Test.FamilyHistory"
+                    "type": "FamilyHistory"
                 },
                 {
                     "name": "Group",
-                    "type": "Test.Group"
+                    "type": "Group"
                 },
                 {
                     "name": "HealthcareService",
-                    "type": "Test.HealthcareService"
+                    "type": "HealthcareService"
                 },
                 {
                     "name": "ImagingStudy",
-                    "type": "Test.ImagingStudy"
+                    "type": "ImagingStudy"
                 },
                 {
                     "name": "Immunization",
-                    "type": "Test.Immunization"
+                    "type": "Immunization"
                 },
                 {
                     "name": "ImmunizationRecommendation",
-                    "type": "Test.ImmunizationRecommendation"
+                    "type": "ImmunizationRecommendation"
                 },
                 {
                     "name": "List",
-                    "type": "Test.List"
+                    "type": "List"
                 },
                 {
                     "name": "Location",
-                    "type": "Test.Location"
+                    "type": "Location"
                 },
                 {
                     "name": "Media",
-                    "type": "Test.Media"
+                    "type": "Media"
                 },
                 {
                     "name": "Medication",
-                    "type": "Test.Medication"
+                    "type": "Medication"
                 },
                 {
                     "name": "MedicationAdministration",
-                    "type": "Test.MedicationAdministration"
+                    "type": "MedicationAdministration"
                 },
                 {
                     "name": "MedicationDispense",
-                    "type": "Test.MedicationDispense"
+                    "type": "MedicationDispense"
                 },
                 {
                     "name": "MedicationPrescription",
-                    "type": "Test.MedicationPrescription"
+                    "type": "MedicationPrescription"
                 },
                 {
                     "name": "MedicationStatement",
-                    "type": "Test.MedicationStatement"
+                    "type": "MedicationStatement"
                 },
                 {
                     "name": "MessageHeader",
-                    "type": "Test.MessageHeader"
+                    "type": "MessageHeader"
                 },
                 {
                     "name": "NamingSystem",
-                    "type": "Test.NamingSystem"
+                    "type": "NamingSystem"
                 },
                 {
                     "name": "NutritionOrder",
-                    "type": "Test.NutritionOrder"
+                    "type": "NutritionOrder"
                 },
                 {
                     "name": "Observation",
-                    "type": "Test.Observation"
+                    "type": "Observation"
                 },
                 {
                     "name": "OperationDefinition",
-                    "type": "Test.OperationDefinition"
+                    "type": "OperationDefinition"
                 },
                 {
                     "name": "OperationOutcome",
-                    "type": "Test.OperationOutcome"
+                    "type": "OperationOutcome"
                 },
                 {
                     "name": "OralHealthClaim",
-                    "type": "Test.OralHealthClaim"
+                    "type": "OralHealthClaim"
                 },
                 {
                     "name": "Order",
-                    "type": "Test.Order"
+                    "type": "Order"
                 },
                 {
                     "name": "OrderResponse",
-                    "type": "Test.OrderResponse"
+                    "type": "OrderResponse"
                 },
                 {
                     "name": "Organization",
-                    "type": "Test.Organization"
+                    "type": "Organization"
                 },
                 {
                     "name": "Other",
-                    "type": "Test.Other"
+                    "type": "Other"
                 },
                 {
                     "name": "Patient",
-                    "type": "Test.Patient"
+                    "type": "Patient"
                 },
                 {
                     "name": "Practitioner",
-                    "type": "Test.Practitioner"
+                    "type": "Practitioner"
                 },
                 {
                     "name": "Procedure",
-                    "type": "Test.Procedure"
+                    "type": "Procedure"
                 },
                 {
                     "name": "ProcedureRequest",
-                    "type": "Test.ProcedureRequest"
+                    "type": "ProcedureRequest"
                 },
                 {
                     "name": "Profile",
-                    "type": "Test.Profile"
+                    "type": "Profile"
                 },
                 {
                     "name": "Provenance",
-                    "type": "Test.Provenance"
+                    "type": "Provenance"
                 },
                 {
                     "name": "Query",
-                    "type": "Test.Query"
+                    "type": "Query"
                 },
                 {
                     "name": "Questionnaire",
-                    "type": "Test.Questionnaire"
+                    "type": "Questionnaire"
                 },
                 {
                     "name": "QuestionnaireAnswers",
-                    "type": "Test.QuestionnaireAnswers"
+                    "type": "QuestionnaireAnswers"
                 },
                 {
                     "name": "ReferralRequest",
-                    "type": "Test.ReferralRequest"
+                    "type": "ReferralRequest"
                 },
                 {
                     "name": "RelatedPerson",
-                    "type": "Test.RelatedPerson"
+                    "type": "RelatedPerson"
                 },
                 {
                     "name": "Reversal",
-                    "type": "Test.Reversal"
+                    "type": "Reversal"
                 },
                 {
                     "name": "RiskAssessment",
-                    "type": "Test.RiskAssessment"
+                    "type": "RiskAssessment"
                 },
                 {
                     "name": "SearchParameter",
-                    "type": "Test.SearchParameter"
+                    "type": "SearchParameter"
                 },
                 {
                     "name": "SecurityEvent",
-                    "type": "Test.SecurityEvent"
+                    "type": "SecurityEvent"
                 },
                 {
                     "name": "Slot",
-                    "type": "Test.Slot"
+                    "type": "Slot"
                 },
                 {
                     "name": "Specimen",
-                    "type": "Test.Specimen"
+                    "type": "Specimen"
                 },
                 {
                     "name": "Subscription",
-                    "type": "Test.Subscription"
+                    "type": "Subscription"
                 },
                 {
                     "name": "Substance",
-                    "type": "Test.Substance"
+                    "type": "Substance"
                 },
                 {
                     "name": "Supply",
-                    "type": "Test.Supply"
+                    "type": "Supply"
                 },
                 {
                     "name": "SupportingDocumentation",
-                    "type": "Test.SupportingDocumentation"
+                    "type": "SupportingDocumentation"
                 },
                 {
                     "name": "ValueSet",
-                    "type": "Test.ValueSet"
+                    "type": "ValueSet"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ConformanceEventMode_list"
+            "name": "ConformanceEventMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Immunization.Reaction",
-            "baseType": "Test.BackboneElement",
+            "name": "Immunization.Reaction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3166,7 +3166,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reported",
@@ -3176,8 +3176,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Patient.Contact",
-            "baseType": "Test.BackboneElement",
+            "name": "Patient.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3186,7 +3186,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "Test.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -3194,7 +3194,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "Test.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "gender",
@@ -3202,7 +3202,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -3212,8 +3212,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.BackboneElement",
-            "baseType": "Test.Element",
+            "name": "BackboneElement",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "modifierExtension",
@@ -3222,8 +3222,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Reversal.Payee",
-            "baseType": "Test.BackboneElement",
+            "name": "Reversal.Payee",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3232,26 +3232,26 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "person",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DiagnosticOrderPriority_list"
+            "name": "DiagnosticOrderPriority_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Immunization",
-            "baseType": "Test.DomainResource",
+            "name": "Immunization",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-immunization",
             "label": "Immunization",
@@ -3271,7 +3271,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "refusedIndicator",
@@ -3283,19 +3283,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requester",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "location",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lotNumber",
@@ -3319,7 +3319,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "explanation",
-                    "type": "Test.Immunization.Explanation"
+                    "type": "Immunization.Explanation"
                 },
                 {
                     "name": "reaction",
@@ -3333,22 +3333,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlanActivityCategory",
-            "baseType": "Test.Element",
+            "name": "CarePlanActivityCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CarePlanActivityCategory_list"
+                "type": "CarePlanActivityCategory_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.EventTiming_list"
+            "name": "EventTiming_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Other",
-            "baseType": "Test.DomainResource",
+            "name": "Other",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3361,11 +3361,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -3375,13 +3375,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentManifest",
-            "baseType": "Test.DomainResource",
+            "name": "DocumentManifest",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "masterIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -3413,11 +3413,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.DocumentReferenceStatus"
+                    "type": "DocumentReferenceStatus"
                 },
                 {
                     "name": "supercedes",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
@@ -3435,12 +3435,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.code_primitive"
+            "name": "code_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Provenance.Agent",
-            "baseType": "Test.BackboneElement",
+            "name": "Provenance.Agent",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3463,12 +3463,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SecurityEventObjectRole_list"
+            "name": "SecurityEventObjectRole_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Subscription.Tag",
-            "baseType": "Test.BackboneElement",
+            "name": "Subscription.Tag",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3487,8 +3487,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Appointment",
-            "baseType": "Test.DomainResource",
+            "name": "Appointment",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3501,7 +3501,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "type",
@@ -3529,7 +3529,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "comment",
@@ -3537,7 +3537,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "order",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participant",
@@ -3545,7 +3545,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "lastModifiedBy",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lastModified",
@@ -3555,8 +3555,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Substance",
-            "baseType": "Test.DomainResource",
+            "name": "Substance",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-substance",
             "label": "Substance",
@@ -3572,7 +3572,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "instance",
-                    "type": "Test.Substance.Instance"
+                    "type": "Substance.Instance"
                 },
                 {
                     "name": "ingredient",
@@ -3582,8 +3582,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationPrescription.Substitution",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationPrescription.Substitution",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3598,26 +3598,26 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.NamingSystemIdentifierType_list"
+            "name": "NamingSystemIdentifierType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CarePlanGoalStatus_list"
+            "name": "CarePlanGoalStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DataAbsentReason",
-            "baseType": "Test.Element",
+            "name": "DataAbsentReason",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DataAbsentReason_list"
+                "type": "DataAbsentReason_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Immunization.VaccinationProtocol",
-            "baseType": "Test.BackboneElement",
+            "name": "Immunization.VaccinationProtocol",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3630,7 +3630,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "series",
@@ -3656,8 +3656,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SupportingDocumentation.Detail",
-            "baseType": "Test.BackboneElement",
+            "name": "SupportingDocumentation.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3672,8 +3672,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CommunicationRequest",
-            "baseType": "Test.DomainResource",
+            "name": "CommunicationRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-communicationrequest",
             "label": "CommunicationRequest",
@@ -3689,7 +3689,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -3705,19 +3705,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "Test.CommunicationRequestStatus"
+                    "type": "CommunicationRequestStatus"
                 },
                 {
                     "name": "mode",
-                    "type": "Test.CommunicationRequestMode"
+                    "type": "CommunicationRequestMode"
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "scheduledTime",
@@ -3733,7 +3733,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
@@ -3743,13 +3743,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.HumanName",
-            "baseType": "Test.Element",
+            "name": "HumanName",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "Test.NameUse"
+                    "type": "NameUse"
                 },
                 {
                     "name": "text",
@@ -3779,8 +3779,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.HealthcareService",
-            "baseType": "Test.DomainResource",
+            "name": "HealthcareService",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3789,7 +3789,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "serviceCategory",
@@ -3887,8 +3887,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConceptMap.Element",
-            "baseType": "Test.BackboneElement",
+            "name": "ConceptMap.Element",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3897,7 +3897,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "dependsOn",
@@ -3911,26 +3911,26 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AddressUse_list"
+            "name": "AddressUse_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MedicationPrescriptionStatus_list"
+            "name": "MedicationPrescriptionStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntoleranceSeverity",
-            "baseType": "Test.Element",
+            "name": "AllergyIntoleranceSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AllergyIntoleranceSeverity_list"
+                "type": "AllergyIntoleranceSeverity_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Basic",
-            "baseType": "Test.DomainResource",
+            "name": "Basic",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -3943,11 +3943,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "created",
@@ -3957,8 +3957,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Organization.Contact",
-            "baseType": "Test.BackboneElement",
+            "name": "Organization.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3967,7 +3967,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "type": "Test.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -3975,7 +3975,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "Test.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "gender",
@@ -3985,33 +3985,33 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AlertStatus",
-            "baseType": "Test.Element",
+            "name": "AlertStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AlertStatus_list"
+                "type": "AlertStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.UnitsOfTime",
-            "baseType": "Test.Element",
+            "name": "UnitsOfTime",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.UnitsOfTime_list"
+                "type": "UnitsOfTime_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OperationOutcome.Issue",
-            "baseType": "Test.BackboneElement",
+            "name": "OperationOutcome.Issue",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "severity",
-                    "type": "Test.IssueSeverity"
+                    "type": "IssueSeverity"
                 },
                 {
                     "name": "type",
@@ -4029,8 +4029,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OperationDefinition",
-            "baseType": "Test.DomainResource",
+            "name": "OperationDefinition",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4063,7 +4063,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ResourceProfileStatus"
+                    "type": "ResourceProfileStatus"
                 },
                 {
                     "name": "experimental",
@@ -4075,11 +4075,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "kind",
-                    "type": "Test.OperationKind"
+                    "type": "OperationKind"
                 },
                 {
                     "name": "name",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "notes",
@@ -4087,7 +4087,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "base",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "system",
@@ -4109,8 +4109,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Questionnaire.Question",
-            "baseType": "Test.BackboneElement",
+            "name": "Questionnaire.Question",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4127,7 +4127,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "Test.AnswerFormat"
+                    "type": "AnswerFormat"
                 },
                 {
                     "name": "required",
@@ -4139,7 +4139,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "options",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
@@ -4149,13 +4149,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Composition",
-            "baseType": "Test.DomainResource",
+            "name": "Composition",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "date",
@@ -4175,7 +4175,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.CompositionStatus"
+                    "type": "CompositionStatus"
                 },
                 {
                     "name": "confidentiality",
@@ -4183,7 +4183,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
@@ -4195,7 +4195,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "custodian",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "event",
@@ -4203,7 +4203,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "section",
@@ -4213,13 +4213,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ExtensionDefinition.Mapping",
-            "baseType": "Test.BackboneElement",
+            "name": "ExtensionDefinition.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "uri",
@@ -4237,18 +4237,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SampledDataDataType",
-            "baseType": "Test.Element",
+            "name": "SampledDataDataType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SampledDataDataType_primitive"
+                "type": "SampledDataDataType_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Provenance",
-            "baseType": "Test.DomainResource",
+            "name": "Provenance",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4269,7 +4269,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "policy",
@@ -4291,31 +4291,31 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.code",
-            "baseType": "Test.Element",
+            "name": "code",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.code_primitive"
+                "type": "code_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Attachment",
-            "baseType": "Test.Element",
+            "name": "Attachment",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentType",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "language",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "data",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "url",
@@ -4327,7 +4327,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "hash",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 },
                 {
                     "name": "title",
@@ -4337,33 +4337,33 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.id_primitive"
+            "name": "id_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.QuestionnaireAnswers",
-            "baseType": "Test.DomainResource",
+            "name": "QuestionnaireAnswers",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "questionnaire",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "Test.QuestionnaireAnswersStatus"
+                    "type": "QuestionnaireAnswersStatus"
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authored",
@@ -4371,22 +4371,22 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "group",
-                    "type": "Test.QuestionnaireAnswers.Group"
+                    "type": "QuestionnaireAnswers.Group"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Medication.Package",
-            "baseType": "Test.BackboneElement",
+            "name": "Medication.Package",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4401,8 +4401,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MessageHeader.Destination",
-            "baseType": "Test.BackboneElement",
+            "name": "MessageHeader.Destination",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4411,7 +4411,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "endpoint",
@@ -4421,8 +4421,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Order",
-            "baseType": "Test.DomainResource",
+            "name": "Order",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4435,23 +4435,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "source",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "authority",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "when",
-                    "type": "Test.Order.When"
+                    "type": "Order.When"
                 },
                 {
                     "name": "detail",
@@ -4461,13 +4461,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Encounter.Location",
-            "baseType": "Test.BackboneElement",
+            "name": "Encounter.Location",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "location",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -4477,13 +4477,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Identifier",
-            "baseType": "Test.Element",
+            "name": "Identifier",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "Test.IdentifierUse"
+                    "type": "IdentifierUse"
                 },
                 {
                     "name": "label",
@@ -4503,28 +4503,28 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "assigner",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.UnitsOfTime_list"
+            "name": "UnitsOfTime_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NameUse",
-            "baseType": "Test.Element",
+            "name": "NameUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.NameUse_list"
+                "type": "NameUse_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Detail",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Detail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4543,26 +4543,26 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SlotStatus_list"
+            "name": "SlotStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImagingModality",
-            "baseType": "Test.Element",
+            "name": "ImagingModality",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ImagingModality_list"
+                "type": "ImagingModality_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.OperationKind_list"
+            "name": "OperationKind_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Slot",
-            "baseType": "Test.DomainResource",
+            "name": "Slot",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4575,11 +4575,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "availability",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "freeBusyType",
-                    "type": "Test.SlotStatus"
+                    "type": "SlotStatus"
                 },
                 {
                     "name": "start",
@@ -4605,34 +4605,34 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MedicationKind_list"
+            "name": "MedicationKind_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AnswerFormat_list"
+            "name": "AnswerFormat_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ObservationReliability_list"
+            "name": "ObservationReliability_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.PropertyRepresentation",
-            "baseType": "Test.Element",
+            "name": "PropertyRepresentation",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.PropertyRepresentation_list"
+                "type": "PropertyRepresentation_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.Use_list"
+            "name": "Use_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Device",
-            "baseType": "Test.DomainResource",
+            "name": "Device",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4669,15 +4669,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "owner",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "location",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -4691,28 +4691,28 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEventParticipantNetworkType",
-            "baseType": "Test.Element",
+            "name": "SecurityEventParticipantNetworkType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SecurityEventParticipantNetworkType_list"
+                "type": "SecurityEventParticipantNetworkType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AdministrativeGender",
-            "baseType": "Test.Element",
+            "name": "AdministrativeGender",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AdministrativeGender_list"
+                "type": "AdministrativeGender_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntolerance.Event",
-            "baseType": "Test.BackboneElement",
+            "name": "AllergyIntolerance.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4721,7 +4721,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "certainty",
-                    "type": "Test.AllergyIntoleranceCertainty"
+                    "type": "AllergyIntoleranceCertainty"
                 },
                 {
                     "name": "manifestation",
@@ -4737,11 +4737,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "duration",
-                    "type": "Test.Duration"
+                    "type": "Duration"
                 },
                 {
                     "name": "severity",
-                    "type": "Test.AllergyIntoleranceSeverity"
+                    "type": "AllergyIntoleranceSeverity"
                 },
                 {
                     "name": "exposureRoute",
@@ -4755,24 +4755,24 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Substance.Ingredient",
-            "baseType": "Test.BackboneElement",
+            "name": "Substance.Ingredient",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "quantity",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "substance",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Procedure",
-            "baseType": "Test.DomainResource",
+            "name": "Procedure",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-procedure",
             "label": "Procedure",
@@ -4784,7 +4784,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -4808,7 +4808,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "outcome",
@@ -4838,18 +4838,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ProcedureRequestPriority",
-            "baseType": "Test.Element",
+            "name": "ProcedureRequestPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ProcedureRequestPriority_list"
+                "type": "ProcedureRequestPriority_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImagingStudy",
-            "baseType": "Test.DomainResource",
+            "name": "ImagingStudy",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -4858,15 +4858,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "uid",
-                    "type": "Test.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "accession",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "identifier",
@@ -4882,11 +4882,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "referrer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "availability",
-                    "type": "Test.InstanceAvailability"
+                    "type": "InstanceAvailability"
                 },
                 {
                     "name": "url",
@@ -4910,7 +4910,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "interpreter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "description",
@@ -4924,18 +4924,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationDispenseStatus",
-            "baseType": "Test.Element",
+            "name": "MedicationDispenseStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MedicationDispenseStatus_list"
+                "type": "MedicationDispenseStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Observation",
-            "baseType": "Test.DomainResource",
+            "name": "Observation",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-observation",
             "label": "Observation",
@@ -4951,7 +4951,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "dataAbsentReason",
-                    "type": "Test.DataAbsentReason"
+                    "type": "DataAbsentReason"
                 },
                 {
                     "name": "interpretation",
@@ -4967,11 +4967,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ObservationStatus"
+                    "type": "ObservationStatus"
                 },
                 {
                     "name": "reliability",
-                    "type": "Test.ObservationReliability"
+                    "type": "ObservationReliability"
                 },
                 {
                     "name": "bodySite",
@@ -4983,15 +4983,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "specimen",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
@@ -4999,7 +4999,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -5013,22 +5013,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEventOutcome",
-            "baseType": "Test.Element",
+            "name": "SecurityEventOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SecurityEventOutcome_list"
+                "type": "SecurityEventOutcome_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ReferralStatus_list"
+            "name": "ReferralStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticOrder",
-            "baseType": "Test.DomainResource",
+            "name": "DiagnosticOrder",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-diagnosticorder",
             "label": "DiagnosticOrder",
@@ -5036,11 +5036,11 @@ final testmodelinfo = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -5048,7 +5048,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "clinicalNotes",
@@ -5064,11 +5064,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "priority",
-                    "type": "Test.DiagnosticOrderPriority"
+                    "type": "DiagnosticOrderPriority"
                 },
                 {
                     "name": "event",
@@ -5082,13 +5082,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Duration",
+            "name": "Duration",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "Test.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -5108,32 +5108,32 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CompositionAttestationMode_list"
+            "name": "CompositionAttestationMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ObservationRelationshipType",
-            "baseType": "Test.Element",
+            "name": "ObservationRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ObservationRelationshipType_list"
+                "type": "ObservationRelationshipType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.oid_primitive"
+            "name": "oid_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Software",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Software",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5152,33 +5152,33 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.QuestionnaireAnswersStatus",
-            "baseType": "Test.Element",
+            "name": "QuestionnaireAnswersStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.QuestionnaireAnswersStatus_list"
+                "type": "QuestionnaireAnswersStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SupplyDispenseStatus",
-            "baseType": "Test.Element",
+            "name": "SupplyDispenseStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SupplyDispenseStatus_list"
+                "type": "SupplyDispenseStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ElementDefinition.Constraint",
-            "baseType": "Test.Element",
+            "name": "ElementDefinition.Constraint",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "key",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "name",
@@ -5186,7 +5186,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "severity",
-                    "type": "Test.ConstraintSeverity"
+                    "type": "ConstraintSeverity"
                 },
                 {
                     "name": "human",
@@ -5200,52 +5200,52 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.oid",
-            "baseType": "Test.Element",
+            "name": "oid",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.oid_primitive"
+                "type": "oid_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CompositionAttestationMode",
-            "baseType": "Test.Element",
+            "name": "CompositionAttestationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CompositionAttestationMode_list"
+                "type": "CompositionAttestationMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AddressUse",
-            "baseType": "Test.Element",
+            "name": "AddressUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AddressUse_list"
+                "type": "AddressUse_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ConformanceStatementStatus_list"
+            "name": "ConformanceStatementStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentReferenceStatus",
-            "baseType": "Test.Element",
+            "name": "DocumentReferenceStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DocumentReferenceStatus_list"
+                "type": "DocumentReferenceStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImmunizationRecommendation",
-            "baseType": "Test.DomainResource",
+            "name": "ImmunizationRecommendation",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-immunization-recommendation",
             "label": "ImmunizationRecommendation",
@@ -5257,7 +5257,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "recommendation",
@@ -5267,18 +5267,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MessageEvent",
-            "baseType": "Test.Element",
+            "name": "MessageEvent",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MessageEvent_list"
+                "type": "MessageEvent_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Period",
-            "baseType": "Test.Element",
+            "name": "Period",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -5293,17 +5293,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ResponseType_list"
+            "name": "ResponseType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Expansion",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Expansion",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "timestamp",
@@ -5317,13 +5317,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlan.Simple",
-            "baseType": "Test.BackboneElement",
+            "name": "CarePlan.Simple",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "category",
-                    "type": "Test.CarePlanActivityCategory"
+                    "type": "CarePlanActivityCategory"
                 },
                 {
                     "name": "code",
@@ -5331,7 +5331,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
@@ -5339,7 +5339,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "product",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dailyAmount",
@@ -5357,8 +5357,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlan.Goal",
-            "baseType": "Test.BackboneElement",
+            "name": "CarePlan.Goal",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5367,7 +5367,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.CarePlanGoalStatus"
+                    "type": "CarePlanGoalStatus"
                 },
                 {
                     "name": "notes",
@@ -5381,8 +5381,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ExtensionDefinition",
-            "baseType": "Test.DomainResource",
+            "name": "ExtensionDefinition",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -5419,7 +5419,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ResourceProfileStatus"
+                    "type": "ResourceProfileStatus"
                 },
                 {
                     "name": "experimental",
@@ -5439,7 +5439,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "contextType",
-                    "type": "Test.ExtensionContext"
+                    "type": "ExtensionContext"
                 },
                 {
                     "name": "context",
@@ -5453,22 +5453,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NarrativeStatus",
-            "baseType": "Test.Element",
+            "name": "NarrativeStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.NarrativeStatus_list"
+                "type": "NarrativeStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AllergyIntoleranceStatus_list"
+            "name": "AllergyIntoleranceStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Condition.DueTo",
-            "baseType": "Test.BackboneElement",
+            "name": "Condition.DueTo",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5477,23 +5477,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.GroupType_list"
+            "name": "GroupType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ContactPoint",
-            "baseType": "Test.Element",
+            "name": "ContactPoint",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "system",
-                    "type": "Test.ContactPointSystem"
+                    "type": "ContactPointSystem"
                 },
                 {
                     "name": "value",
@@ -5501,7 +5501,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "type": "Test.ContactPointUse"
+                    "type": "ContactPointUse"
                 },
                 {
                     "name": "period",
@@ -5511,17 +5511,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.NamingSystemStatus_list"
+            "name": "NamingSystemStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NamingSystem.Contact",
-            "baseType": "Test.BackboneElement",
+            "name": "NamingSystem.Contact",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "Test.HumanName"
+                    "type": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -5531,12 +5531,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ProvenanceEntityRole_list"
+            "name": "ProvenanceEntityRole_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.Diagnosis",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.Diagnosis",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5551,8 +5551,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Note",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Note",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5571,17 +5571,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.Measmnt_Principle_list"
+            "name": "Measmnt_Principle_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Document",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Document",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "mode",
-                    "type": "Test.DocumentMode"
+                    "type": "DocumentMode"
                 },
                 {
                     "name": "documentation",
@@ -5589,14 +5589,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Timing.Repeat",
-            "baseType": "Test.Element",
+            "name": "Timing.Repeat",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -5605,7 +5605,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "when",
-                    "type": "Test.EventTiming"
+                    "type": "EventTiming"
                 },
                 {
                     "name": "duration",
@@ -5613,7 +5613,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "units",
-                    "type": "Test.UnitsOfTime"
+                    "type": "UnitsOfTime"
                 },
                 {
                     "name": "count",
@@ -5627,8 +5627,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Subdetail",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Subdetail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5643,8 +5643,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ElementDefinition",
-            "baseType": "Test.Element",
+            "name": "ElementDefinition",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -5661,7 +5661,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "slicing",
-                    "type": "Test.ElementDefinition.Slicing"
+                    "type": "ElementDefinition.Slicing"
                 },
                 {
                     "name": "short",
@@ -5729,7 +5729,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "binding",
-                    "type": "Test.ElementDefinition.Binding"
+                    "type": "ElementDefinition.Binding"
                 },
                 {
                     "name": "mapping",
@@ -5739,8 +5739,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SupportingDocumentation",
-            "baseType": "Test.DomainResource",
+            "name": "SupportingDocumentation",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -5761,39 +5761,39 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "requestIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "request",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responseIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "response",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "detail",
@@ -5803,13 +5803,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Concept",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Concept",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "abstract",
@@ -5835,52 +5835,52 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AllergyIntoleranceCertainty_list"
+            "name": "AllergyIntoleranceCertainty_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.FilterOperator",
-            "baseType": "Test.Element",
+            "name": "FilterOperator",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.FilterOperator_list"
+                "type": "FilterOperator_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.IssueSeverity",
-            "baseType": "Test.Element",
+            "name": "IssueSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.IssueSeverity_list"
+                "type": "IssueSeverity_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SlotStatus",
-            "baseType": "Test.Element",
+            "name": "SlotStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SlotStatus_list"
+                "type": "SlotStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MaritalStatus",
-            "baseType": "Test.Element",
+            "name": "MaritalStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MaritalStatus_list"
+                "type": "MaritalStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DataElement.Mapping",
-            "baseType": "Test.BackboneElement",
+            "name": "DataElement.Mapping",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5903,21 +5903,21 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DocumentMode_list"
+            "name": "DocumentMode_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.OperationParameterUse_list"
+            "name": "OperationParameterUse_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.RiskAssessment",
-            "baseType": "Test.DomainResource",
+            "name": "RiskAssessment",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -5925,15 +5925,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "method",
@@ -5955,8 +5955,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DataElement.Binding",
-            "baseType": "Test.BackboneElement",
+            "name": "DataElement.Binding",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5965,7 +5965,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "conformance",
-                    "type": "Test.BindingConformance"
+                    "type": "BindingConformance"
                 },
                 {
                     "name": "description",
@@ -5973,23 +5973,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "valueSet",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DiagnosticReportStatus_list"
+            "name": "DiagnosticReportStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim",
-            "baseType": "Test.DomainResource",
+            "name": "OralHealthClaim",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "ruleset",
@@ -6005,19 +6005,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "use",
-                    "type": "Test.Use"
+                    "type": "Use"
                 },
                 {
                     "name": "priority",
@@ -6029,19 +6029,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "facility",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "payee",
-                    "type": "Test.OralHealthClaim.Payee"
+                    "type": "OralHealthClaim.Payee"
                 },
                 {
                     "name": "referral",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "diagnosis",
@@ -6053,7 +6053,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "coverage",
@@ -6085,7 +6085,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "orthoPlan",
-                    "type": "Test.OralHealthClaim.OrthoPlan"
+                    "type": "OralHealthClaim.OrthoPlan"
                 },
                 {
                     "name": "item",
@@ -6099,8 +6099,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Availability",
-            "baseType": "Test.DomainResource",
+            "name": "Availability",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -6113,7 +6113,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "planningHorizon",
@@ -6131,22 +6131,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.NutritionOrderStatus_list"
+            "name": "NutritionOrderStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationPrescriptionStatus",
-            "baseType": "Test.Element",
+            "name": "MedicationPrescriptionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MedicationPrescriptionStatus_list"
+                "type": "MedicationPrescriptionStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImmunizationRecommendation.Recommendation",
-            "baseType": "Test.BackboneElement",
+            "name": "ImmunizationRecommendation.Recommendation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6171,7 +6171,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "protocol",
-                    "type": "Test.ImmunizationRecommendation.Protocol"
+                    "type": "ImmunizationRecommendation.Protocol"
                 },
                 {
                     "name": "supportingImmunization",
@@ -6185,35 +6185,35 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ProcedureRequestMode_list"
+            "name": "ProcedureRequestMode_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SecurityEventObjectLifecycle_list"
+            "name": "SecurityEventObjectLifecycle_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.EncounterClass_list"
+            "name": "EncounterClass_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConceptMapEquivalence",
-            "baseType": "Test.Element",
+            "name": "ConceptMapEquivalence",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ConceptMapEquivalence_list"
+                "type": "ConceptMapEquivalence_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Distance",
+            "name": "Distance",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "Test.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -6233,30 +6233,30 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SubscriptionChannelType_list"
+            "name": "SubscriptionChannelType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DeviceUseRequestStatus_list"
+            "name": "DeviceUseRequestStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SampledDataDataType_primitive"
+            "name": "SampledDataDataType_primitive"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CompositionStatus_list"
+            "name": "CompositionStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Condition",
-            "baseType": "Test.DomainResource",
+            "name": "Condition",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-condition",
             "label": "Condition",
@@ -6268,15 +6268,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateAsserted",
@@ -6300,7 +6300,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ConditionStatus"
+                    "type": "ConditionStatus"
                 },
                 {
                     "name": "certainty",
@@ -6312,7 +6312,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "stage",
-                    "type": "Test.Condition.Stage"
+                    "type": "Condition.Stage"
                 },
                 {
                     "name": "evidence",
@@ -6338,13 +6338,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Contract",
-            "baseType": "Test.DomainResource",
+            "name": "Contract",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "subject",
@@ -6372,7 +6372,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -6384,7 +6384,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "author",
@@ -6420,54 +6420,54 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "friendly",
-                    "type": "Test.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "legal",
-                    "type": "Test.Attachment"
+                    "type": "Attachment"
                 },
                 {
                     "name": "rule",
-                    "type": "Test.Attachment"
+                    "type": "Attachment"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ConstraintSeverity_list"
+            "name": "ConstraintSeverity_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.RestfulConformanceMode",
-            "baseType": "Test.Element",
+            "name": "RestfulConformanceMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.RestfulConformanceMode_list"
+                "type": "RestfulConformanceMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SearchParamType",
-            "baseType": "Test.Element",
+            "name": "SearchParamType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SearchParamType_list"
+                "type": "SearchParamType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.IdentifierUse_list"
+            "name": "IdentifierUse_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ParticipantRequired_list"
+            "name": "ParticipantRequired_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Condition.Stage",
-            "baseType": "Test.BackboneElement",
+            "name": "Condition.Stage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6482,28 +6482,28 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SupplyStatus",
-            "baseType": "Test.Element",
+            "name": "SupplyStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SupplyStatus_list"
+                "type": "SupplyStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.IdentifierUse",
-            "baseType": "Test.Element",
+            "name": "IdentifierUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.IdentifierUse_list"
+                "type": "IdentifierUse_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Extension",
-            "baseType": "Test.Element",
+            "name": "Extension",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "url",
@@ -6512,17 +6512,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.QueryOutcome_list"
+            "name": "QueryOutcome_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Specimen.Source",
-            "baseType": "Test.BackboneElement",
+            "name": "Specimen.Source",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "relationship",
-                    "type": "Test.HierarchicalRelationshipType"
+                    "type": "HierarchicalRelationshipType"
                 },
                 {
                     "name": "target",
@@ -6532,8 +6532,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Questionnaire",
-            "baseType": "Test.DomainResource",
+            "name": "Questionnaire",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -6546,7 +6546,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.QuestionnaireStatus"
+                    "type": "QuestionnaireStatus"
                 },
                 {
                     "name": "date",
@@ -6558,14 +6558,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "group",
-                    "type": "Test.Questionnaire.Group"
+                    "type": "Questionnaire.Group"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Composition.Section",
-            "baseType": "Test.BackboneElement",
+            "name": "Composition.Section",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6582,14 +6582,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "content",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ImagingStudy.Series",
-            "baseType": "Test.BackboneElement",
+            "name": "ImagingStudy.Series",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6598,11 +6598,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "modality",
-                    "type": "Test.Modality"
+                    "type": "Modality"
                 },
                 {
                     "name": "uid",
-                    "type": "Test.oid"
+                    "type": "oid"
                 },
                 {
                     "name": "description",
@@ -6614,7 +6614,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "availability",
-                    "type": "Test.InstanceAvailability"
+                    "type": "InstanceAvailability"
                 },
                 {
                     "name": "url",
@@ -6636,8 +6636,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Practitioner.Qualification",
-            "baseType": "Test.BackboneElement",
+            "name": "Practitioner.Qualification",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6654,34 +6654,34 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "issuer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OperationParameterUse",
-            "baseType": "Test.Element",
+            "name": "OperationParameterUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.OperationParameterUse_list"
+                "type": "OperationParameterUse_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntoleranceCategory",
-            "baseType": "Test.Element",
+            "name": "AllergyIntoleranceCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AllergyIntoleranceCategory_list"
+                "type": "AllergyIntoleranceCategory_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Encounter.Participant",
-            "baseType": "Test.BackboneElement",
+            "name": "Encounter.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6690,14 +6690,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "individual",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationStatement",
-            "baseType": "Test.DomainResource",
+            "name": "MedicationStatement",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationstatement",
             "label": "MedicationStatement",
@@ -6709,7 +6709,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "wasNotGiven",
@@ -6725,7 +6725,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "medication",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
@@ -6739,8 +6739,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ElementDefinition.Slicing",
-            "baseType": "Test.Element",
+            "name": "ElementDefinition.Slicing",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -6757,14 +6757,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "rules",
-                    "type": "Test.SlicingRules"
+                    "type": "SlicingRules"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DeviceComponent",
-            "baseType": "Test.DomainResource",
+            "name": "DeviceComponent",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -6773,7 +6773,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "lastSystemChange",
@@ -6781,11 +6781,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "parent",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operationalStatus",
@@ -6797,7 +6797,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "measurementPrinciple",
-                    "type": "Test.Measmnt_Principle"
+                    "type": "Measmnt_Principle"
                 },
                 {
                     "name": "productionSpecification",
@@ -6811,28 +6811,28 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NamingSystemStatus",
-            "baseType": "Test.Element",
+            "name": "NamingSystemStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.NamingSystemStatus_list"
+                "type": "NamingSystemStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlanGoalStatus",
-            "baseType": "Test.Element",
+            "name": "CarePlanGoalStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CarePlanGoalStatus_list"
+                "type": "CarePlanGoalStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentReference.Service",
-            "baseType": "Test.BackboneElement",
+            "name": "DocumentReference.Service",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6851,28 +6851,28 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Use",
-            "baseType": "Test.Element",
+            "name": "Use",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.Use_list"
+                "type": "Use_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.BindingConformance",
-            "baseType": "Test.Element",
+            "name": "BindingConformance",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.BindingConformance_list"
+                "type": "BindingConformance_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Adjudication",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Adjudication",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6881,7 +6881,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "amount",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "value",
@@ -6891,13 +6891,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticOrder.Event",
-            "baseType": "Test.BackboneElement",
+            "name": "DiagnosticOrder.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "type": "Test.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "description",
@@ -6909,19 +6909,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Contraindication",
-            "baseType": "Test.DomainResource",
+            "name": "Contraindication",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "category",
@@ -6929,7 +6929,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "severity",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "implicated",
@@ -6945,11 +6945,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "reference",
@@ -6963,8 +6963,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Ratio",
-            "baseType": "Test.Element",
+            "name": "Ratio",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -6979,8 +6979,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.QuestionnaireAnswers.Question",
-            "baseType": "Test.BackboneElement",
+            "name": "QuestionnaireAnswers.Question",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7003,18 +7003,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConstraintSeverity",
-            "baseType": "Test.Element",
+            "name": "ConstraintSeverity",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ConstraintSeverity_list"
+                "type": "ConstraintSeverity_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Reversal.Coverage",
-            "baseType": "Test.BackboneElement",
+            "name": "Reversal.Coverage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7027,7 +7027,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -7041,57 +7041,57 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Observation.Related",
-            "baseType": "Test.BackboneElement",
+            "name": "Observation.Related",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.ObservationRelationshipType"
+                    "type": "ObservationRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SecurityEventAction_list"
+            "name": "SecurityEventAction_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.time",
-            "baseType": "Test.Element",
+            "name": "time",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.time_primitive"
+                "type": "time_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEventAction",
-            "baseType": "Test.Element",
+            "name": "SecurityEventAction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SecurityEventAction_list"
+                "type": "SecurityEventAction_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AllergyIntoleranceCriticality_list"
+            "name": "AllergyIntoleranceCriticality_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Interaction",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Interaction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "Test.TypeRestfulInteraction"
+                    "type": "TypeRestfulInteraction"
                 },
                 {
                     "name": "documentation",
@@ -7101,8 +7101,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrder.OralDiet",
-            "baseType": "Test.BackboneElement",
+            "name": "NutritionOrder.OralDiet",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7129,8 +7129,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.Payee",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.Payee",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7139,26 +7139,26 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "person",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DataType_list"
+            "name": "DataType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.Prosthesis",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.Prosthesis",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7177,13 +7177,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Bundle",
-            "baseType": "Test.Resource",
+            "name": "Bundle",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.BundleType"
+                    "type": "BundleType"
                 },
                 {
                     "name": "base",
@@ -7203,14 +7203,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "signature",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConceptMap.DependsOn",
-            "baseType": "Test.BackboneElement",
+            "name": "ConceptMap.DependsOn",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7229,18 +7229,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConformanceEventMode",
-            "baseType": "Test.Element",
+            "name": "ConformanceEventMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ConformanceEventMode_list"
+                "type": "ConformanceEventMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Error",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Error",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7263,18 +7263,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.LinkType",
-            "baseType": "Test.Element",
+            "name": "LinkType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.LinkType_list"
+                "type": "LinkType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Contraindication.Mitigation",
-            "baseType": "Test.BackboneElement",
+            "name": "Contraindication.Mitigation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7287,24 +7287,24 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NamingSystemIdentifierType",
-            "baseType": "Test.Element",
+            "name": "NamingSystemIdentifierType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.NamingSystemIdentifierType_list"
+                "type": "NamingSystemIdentifierType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEvent.Participant",
-            "baseType": "Test.BackboneElement",
+            "name": "SecurityEvent.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7313,7 +7313,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "userId",
@@ -7337,14 +7337,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "network",
-                    "type": "Test.SecurityEvent.Network"
+                    "type": "SecurityEvent.Network"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Include",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Include",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7367,8 +7367,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Bundle.Entry",
-            "baseType": "Test.BackboneElement",
+            "name": "Bundle.Entry",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7377,7 +7377,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.BundleEntryStatus"
+                    "type": "BundleEntryStatus"
                 },
                 {
                     "name": "search",
@@ -7389,14 +7389,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "Test.ResourceContainer"
+                    "type": "ResourceContainer"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.FamilyHistory",
-            "baseType": "Test.DomainResource",
+            "name": "FamilyHistory",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-familyhistory",
             "label": "FamilyHistory",
@@ -7407,7 +7407,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -7425,18 +7425,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ListMode",
-            "baseType": "Test.Element",
+            "name": "ListMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ListMode_list"
+                "type": "ListMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Specimen",
-            "baseType": "Test.DomainResource",
+            "name": "Specimen",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7453,11 +7453,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "accessionIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "receivedTime",
@@ -7465,7 +7465,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "collection",
-                    "type": "Test.Specimen.Collection"
+                    "type": "Specimen.Collection"
                 },
                 {
                     "name": "treatment",
@@ -7479,38 +7479,38 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Narrative",
-            "baseType": "Test.Element",
+            "name": "Narrative",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "status",
-                "type": "Test.NarrativeStatus"
+                "type": "NarrativeStatus"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationKind",
-            "baseType": "Test.Element",
+            "name": "MedicationKind",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MedicationKind_list"
+                "type": "MedicationKind_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.FHIRDefinedType",
-            "baseType": "Test.Element",
+            "name": "FHIRDefinedType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.FHIRDefinedType_list"
+                "type": "FHIRDefinedType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Profile.Snapshot",
-            "baseType": "Test.BackboneElement",
+            "name": "Profile.Snapshot",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "element",
@@ -7519,17 +7519,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.HierarchicalRelationshipType_list"
+            "name": "HierarchicalRelationshipType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Subscription.Channel",
-            "baseType": "Test.BackboneElement",
+            "name": "Subscription.Channel",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.SubscriptionChannelType"
+                    "type": "SubscriptionChannelType"
                 },
                 {
                     "name": "url",
@@ -7547,13 +7547,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Age",
+            "name": "Age",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "Test.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -7573,18 +7573,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AlertStatus_list"
+            "name": "AlertStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Query.Response",
-            "baseType": "Test.BackboneElement",
+            "name": "Query.Response",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7593,7 +7593,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "outcome",
-                    "type": "Test.QueryOutcome"
+                    "type": "QueryOutcome"
                 },
                 {
                     "name": "total",
@@ -7627,27 +7627,27 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ResourceVersionPolicy_list"
+            "name": "ResourceVersionPolicy_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEventObjectType",
-            "baseType": "Test.Element",
+            "name": "SecurityEventObjectType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SecurityEventObjectType_list"
+                "type": "SecurityEventObjectType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Concept1",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Concept1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "display",
@@ -7661,20 +7661,20 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MediaType_list"
+            "name": "MediaType_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MaritalStatus_list"
+            "name": "MaritalStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MedicationAdministrationStatus_list"
+            "name": "MedicationAdministrationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Item",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7697,23 +7697,23 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ResourceProfileStatus",
-            "baseType": "Test.Element",
+            "name": "ResourceProfileStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ResourceProfileStatus_list"
+                "type": "ResourceProfileStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationStatement.Dosage",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationStatement.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "schedule",
-                    "type": "Test.Timing"
+                    "type": "Timing"
                 },
                 {
                     "name": "site",
@@ -7733,22 +7733,22 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ResourceType_list"
+            "name": "ResourceType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrder.Supplement",
-            "baseType": "Test.BackboneElement",
+            "name": "NutritionOrder.Supplement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7767,16 +7767,16 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.TypeRestfulInteraction_list"
+            "name": "TypeRestfulInteraction_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ProcedureRelationshipType_list"
+            "name": "ProcedureRelationshipType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Security",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Security",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7799,18 +7799,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSetStatus",
-            "baseType": "Test.Element",
+            "name": "ValueSetStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ValueSetStatus_list"
+                "type": "ValueSetStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationAdministration",
-            "baseType": "Test.DomainResource",
+            "name": "MedicationAdministration",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationadministration",
             "label": "MedicationAdministration",
@@ -7822,23 +7822,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.MedicationAdministrationStatus"
+                    "type": "MedicationAdministrationStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "practitioner",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescription",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "wasNotGiven",
@@ -7850,7 +7850,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "medication",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "device",
@@ -7864,8 +7864,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.OrthoPlan",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.OrthoPlan",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7874,15 +7874,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "examFee",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "diagnosticFee",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "initialPayment",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "durationMonths",
@@ -7894,14 +7894,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "periodicPayment",
-                    "type": "Test.Money"
+                    "type": "Money"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Eligibility",
-            "baseType": "Test.DomainResource",
+            "name": "Eligibility",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7922,22 +7922,22 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "provider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "organization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Supply",
-            "baseType": "Test.DomainResource",
+            "name": "Supply",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7946,19 +7946,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "Test.SupplyStatus"
+                    "type": "SupplyStatus"
                 },
                 {
                     "name": "orderedItem",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dispense",
@@ -7968,8 +7968,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DeviceUseRequest",
-            "baseType": "Test.DomainResource",
+            "name": "DeviceUseRequest",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -7978,19 +7978,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.DeviceUseRequestStatus"
+                    "type": "DeviceUseRequestStatus"
                 },
                 {
                     "name": "mode",
-                    "type": "Test.DeviceUseRequestMode"
+                    "type": "DeviceUseRequestMode"
                 },
                 {
                     "name": "device",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -8018,18 +8018,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
-                    "type": "Test.DeviceUseRequestPriority"
+                    "type": "DeviceUseRequestPriority"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.SubDetail",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.SubDetail",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8050,7 +8050,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -8062,7 +8062,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
@@ -8072,8 +8072,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OrderResponse",
-            "baseType": "Test.DomainResource",
+            "name": "OrderResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -8082,7 +8082,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "date",
@@ -8090,11 +8090,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "who",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "code",
-                    "type": "Test.OrderOutcomeStatus"
+                    "type": "OrderOutcomeStatus"
                 },
                 {
                     "name": "description",
@@ -8108,18 +8108,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DeviceUseRequestPriority",
-            "baseType": "Test.Element",
+            "name": "DeviceUseRequestPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DeviceUseRequestPriority_list"
+                "type": "DeviceUseRequestPriority_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SampledData",
-            "baseType": "Test.Element",
+            "name": "SampledData",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -8148,14 +8148,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "data",
-                    "type": "Test.SampledDataDataType"
+                    "type": "SampledDataDataType"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ElementDefinition.Binding",
-            "baseType": "Test.Element",
+            "name": "ElementDefinition.Binding",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -8168,7 +8168,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "conformance",
-                    "type": "Test.BindingConformance"
+                    "type": "BindingConformance"
                 },
                 {
                     "name": "description",
@@ -8178,17 +8178,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Encounter.Hospitalization",
-            "baseType": "Test.BackboneElement",
+            "name": "Encounter.Hospitalization",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "preAdmissionIdentifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "origin",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "admitSource",
@@ -8216,7 +8216,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dischargeDisposition",
@@ -8224,7 +8224,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "dischargeDiagnosis",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reAdmission",
@@ -8234,27 +8234,27 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SlicingRules_list"
+            "name": "SlicingRules_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticOrderPriority",
-            "baseType": "Test.Element",
+            "name": "DiagnosticOrderPriority",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DiagnosticOrderPriority_list"
+                "type": "DiagnosticOrderPriority_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEvent",
-            "baseType": "Test.DomainResource",
+            "name": "SecurityEvent",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "event",
-                    "type": "Test.SecurityEvent.Event"
+                    "type": "SecurityEvent.Event"
                 },
                 {
                     "name": "participant",
@@ -8262,7 +8262,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "type": "Test.SecurityEvent.Source"
+                    "type": "SecurityEvent.Source"
                 },
                 {
                     "name": "object",
@@ -8272,18 +8272,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlanActivityStatus",
-            "baseType": "Test.Element",
+            "name": "CarePlanActivityStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CarePlanActivityStatus_list"
+                "type": "CarePlanActivityStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Compose",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Compose",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8302,17 +8302,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationDispense.Dispense",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationDispense.Dispense",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "Test.MedicationDispenseStatus"
+                    "type": "MedicationDispenseStatus"
                 },
                 {
                     "name": "type",
@@ -8324,7 +8324,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "medication",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenPrepared",
@@ -8336,7 +8336,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -8350,27 +8350,27 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.LocationMode",
-            "baseType": "Test.Element",
+            "name": "LocationMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.LocationMode_list"
+                "type": "LocationMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OperationDefinition.Parameter",
-            "baseType": "Test.BackboneElement",
+            "name": "OperationDefinition.Parameter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "name",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "use",
-                    "type": "Test.OperationParameterUse"
+                    "type": "OperationParameterUse"
                 },
                 {
                     "name": "min",
@@ -8390,39 +8390,39 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "profile",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.QueryOutcome",
-            "baseType": "Test.Element",
+            "name": "QueryOutcome",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.QueryOutcome_list"
+                "type": "QueryOutcome_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntoleranceCriticality",
-            "baseType": "Test.Element",
+            "name": "AllergyIntoleranceCriticality",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AllergyIntoleranceCriticality_list"
+                "type": "AllergyIntoleranceCriticality_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Media",
-            "baseType": "Test.DomainResource",
+            "name": "Media",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.MediaType"
+                    "type": "MediaType"
                 },
                 {
                     "name": "subtype",
@@ -8438,11 +8438,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "operator",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "view",
@@ -8470,28 +8470,28 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "content",
-                    "type": "Test.Attachment"
+                    "type": "Attachment"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DocumentReferenceStatus_list"
+            "name": "DocumentReferenceStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CommunicationRequestStatus",
-            "baseType": "Test.Element",
+            "name": "CommunicationRequestStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CommunicationRequestStatus_list"
+                "type": "CommunicationRequestStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.FamilyHistory.Relation",
-            "baseType": "Test.BackboneElement",
+            "name": "FamilyHistory.Relation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8514,18 +8514,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ResourceDataElementStatus",
-            "baseType": "Test.Element",
+            "name": "ResourceDataElementStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ResourceDataElementStatus_list"
+                "type": "ResourceDataElementStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Organization",
-            "baseType": "Test.DomainResource",
+            "name": "Organization",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -8550,7 +8550,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "partOf",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "contact",
@@ -8568,22 +8568,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntoleranceType",
-            "baseType": "Test.Element",
+            "name": "AllergyIntoleranceType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AllergyIntoleranceType_list"
+                "type": "AllergyIntoleranceType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ImagingModality_list"
+            "name": "ImagingModality_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Contract.Signer",
-            "baseType": "Test.BackboneElement",
+            "name": "Contract.Signer",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8598,29 +8598,29 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Medication.Ingredient",
-            "baseType": "Test.BackboneElement",
+            "name": "Medication.Ingredient",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "amount",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Designation",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Designation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "language",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "use",
@@ -8634,38 +8634,38 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentRelationshipType",
-            "baseType": "Test.Element",
+            "name": "DocumentRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DocumentRelationshipType_list"
+                "type": "DocumentRelationshipType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SubscriptionChannelType",
-            "baseType": "Test.Element",
+            "name": "SubscriptionChannelType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SubscriptionChannelType_list"
+                "type": "SubscriptionChannelType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.TypeRestfulInteraction",
-            "baseType": "Test.Element",
+            "name": "TypeRestfulInteraction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.TypeRestfulInteraction_list"
+                "type": "TypeRestfulInteraction_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Location.Position",
-            "baseType": "Test.BackboneElement",
+            "name": "Location.Position",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8684,12 +8684,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ParticipationStatus_list"
+            "name": "ParticipationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Parameters.Parameter",
-            "baseType": "Test.Element",
+            "name": "Parameters.Parameter",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -8698,18 +8698,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "resource",
-                    "type": "Test.ResourceContainer"
+                    "type": "ResourceContainer"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.PropertyRepresentation_list"
+            "name": "PropertyRepresentation_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AppointmentResponse",
-            "baseType": "Test.DomainResource",
+            "name": "AppointmentResponse",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -8718,7 +8718,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "appointment",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "participantType",
@@ -8730,7 +8730,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "participantStatus",
-                    "type": "Test.ParticipantStatus"
+                    "type": "ParticipantStatus"
                 },
                 {
                     "name": "comment",
@@ -8746,7 +8746,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "lastModifiedBy",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "lastModified",
@@ -8756,18 +8756,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.uuid",
-            "baseType": "Test.Element",
+            "name": "uuid",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.uuid_primitive"
+                "type": "uuid_primitive"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentReference.Parameter",
-            "baseType": "Test.BackboneElement",
+            "name": "DocumentReference.Parameter",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8782,12 +8782,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.AllergyIntoleranceCategory_list"
+            "name": "AllergyIntoleranceCategory_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Additem",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Additem",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8800,7 +8800,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "fee",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "noteNumberLinkId",
@@ -8818,32 +8818,32 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ContactPointUse",
-            "baseType": "Test.Element",
+            "name": "ContactPointUse",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ContactPointUse_list"
+                "type": "ContactPointUse_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.LocationMode_list"
+            "name": "LocationMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationAdministrationStatus",
-            "baseType": "Test.Element",
+            "name": "MedicationAdministrationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MedicationAdministrationStatus_list"
+                "type": "MedicationAdministrationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Immunization.Explanation",
-            "baseType": "Test.BackboneElement",
+            "name": "Immunization.Explanation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8858,17 +8858,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ProcedureRequestStatus_list"
+            "name": "ProcedureRequestStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DataElement",
-            "baseType": "Test.DomainResource",
+            "name": "DataElement",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "version",
@@ -8884,7 +8884,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ResourceDataElementStatus"
+                    "type": "ResourceDataElementStatus"
                 },
                 {
                     "name": "date",
@@ -8924,7 +8924,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "maxLength",
@@ -8936,7 +8936,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "binding",
-                    "type": "Test.DataElement.Binding"
+                    "type": "DataElement.Binding"
                 },
                 {
                     "name": "mapping",
@@ -8946,12 +8946,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.FilterOperator_list"
+            "name": "FilterOperator_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrder.EnteralFormula",
-            "baseType": "Test.BackboneElement",
+            "name": "NutritionOrder.EnteralFormula",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8982,12 +8982,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ExtensionContext_list"
+            "name": "ExtensionContext_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DeviceComponent.ProductionSpecification",
-            "baseType": "Test.BackboneElement",
+            "name": "DeviceComponent.ProductionSpecification",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8996,7 +8996,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "componentId",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "productionSpec",
@@ -9006,22 +9006,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticReportStatus",
-            "baseType": "Test.Element",
+            "name": "DiagnosticReportStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DiagnosticReportStatus_list"
+                "type": "DiagnosticReportStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CommunicationRequestStatus_list"
+            "name": "CommunicationRequestStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.SearchParam",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.SearchParam",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9034,7 +9034,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "Test.SearchParamType"
+                    "type": "SearchParamType"
                 },
                 {
                     "name": "documentation",
@@ -9052,8 +9052,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Profile",
-            "baseType": "Test.DomainResource",
+            "name": "Profile",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9090,7 +9090,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ResourceProfileStatus"
+                    "type": "ResourceProfileStatus"
                 },
                 {
                     "name": "experimental",
@@ -9106,7 +9106,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "fhirVersion",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "mapping",
@@ -9114,7 +9114,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "base",
@@ -9122,18 +9122,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "snapshot",
-                    "type": "Test.Profile.Snapshot"
+                    "type": "Profile.Snapshot"
                 },
                 {
                     "name": "differential",
-                    "type": "Test.Profile.Snapshot"
+                    "type": "Profile.Snapshot"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationPrescription.DosageInstruction",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationPrescription.DosageInstruction",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9162,18 +9162,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.Item",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9186,7 +9186,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "service",
@@ -9202,7 +9202,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "unitPrice",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "factor",
@@ -9214,7 +9214,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "net",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "udi",
@@ -9238,14 +9238,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "prosthesis",
-                    "type": "Test.OralHealthClaim.Prosthesis"
+                    "type": "OralHealthClaim.Prosthesis"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Group.Characteristic",
-            "baseType": "Test.BackboneElement",
+            "name": "Group.Characteristic",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9260,48 +9260,48 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OrderOutcomeStatus",
-            "baseType": "Test.Element",
+            "name": "OrderOutcomeStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.OrderOutcomeStatus_list"
+                "type": "OrderOutcomeStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.HierarchicalRelationshipType",
-            "baseType": "Test.Element",
+            "name": "HierarchicalRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.HierarchicalRelationshipType_list"
+                "type": "HierarchicalRelationshipType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.BundleEntryStatus",
-            "baseType": "Test.Element",
+            "name": "BundleEntryStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.BundleEntryStatus_list"
+                "type": "BundleEntryStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ParticipantStatus",
-            "baseType": "Test.Element",
+            "name": "ParticipantStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ParticipantStatus_list"
+                "type": "ParticipantStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ProcedureRequest",
-            "baseType": "Test.DomainResource",
+            "name": "ProcedureRequest",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-procedurerequest",
             "label": "ProcedureRequest",
@@ -9313,7 +9313,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "type",
@@ -9329,19 +9329,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "Test.ProcedureRequestStatus"
+                    "type": "ProcedureRequestStatus"
                 },
                 {
                     "name": "mode",
-                    "type": "Test.ProcedureRequestMode"
+                    "type": "ProcedureRequestMode"
                 },
                 {
                     "name": "notes",
@@ -9353,40 +9353,40 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "orderer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "priority",
-                    "type": "Test.ProcedureRequestPriority"
+                    "type": "ProcedureRequestPriority"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.InstanceAvailability_list"
+            "name": "InstanceAvailability_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MessageEvent_list"
+            "name": "MessageEvent_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.NamingSystemType_list"
+            "name": "NamingSystemType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.EncounterClass",
-            "baseType": "Test.Element",
+            "name": "EncounterClass",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.EncounterClass_list"
+                "type": "EncounterClass_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrder.Nutrients",
-            "baseType": "Test.BackboneElement",
+            "name": "NutritionOrder.Nutrients",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "modifier",
@@ -9395,22 +9395,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DataType",
-            "baseType": "Test.Element",
+            "name": "DataType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DataType_list"
+                "type": "DataType_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.CarePlanActivityStatus_list"
+            "name": "CarePlanActivityStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Event",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Event",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9419,11 +9419,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "category",
-                    "type": "Test.MessageSignificanceCategory"
+                    "type": "MessageSignificanceCategory"
                 },
                 {
                     "name": "mode",
-                    "type": "Test.ConformanceEventMode"
+                    "type": "ConformanceEventMode"
                 },
                 {
                     "name": "protocol",
@@ -9431,15 +9431,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "focus",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "request",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "response",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "documentation",
@@ -9449,8 +9449,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.Coverage",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.Coverage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9463,7 +9463,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "coverage",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -9479,7 +9479,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "originalRuleset",
@@ -9489,8 +9489,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Bundle.Link",
-            "baseType": "Test.BackboneElement",
+            "name": "Bundle.Link",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9505,12 +9505,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.LocationStatus_list"
+            "name": "LocationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Implementation",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Implementation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9525,8 +9525,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.List.Entry",
-            "baseType": "Test.BackboneElement",
+            "name": "List.Entry",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9543,14 +9543,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "item",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Range",
-            "baseType": "Test.Element",
+            "name": "Range",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
@@ -9565,60 +9565,60 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.EncounterState",
-            "baseType": "Test.Element",
+            "name": "EncounterState",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.EncounterState_list"
+                "type": "EncounterState_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ProcedureRelationshipType",
-            "baseType": "Test.Element",
+            "name": "ProcedureRelationshipType",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ProcedureRelationshipType_list"
+                "type": "ProcedureRelationshipType_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.QuestionnaireAnswers.Answer",
-            "baseType": "Test.BackboneElement",
+            "name": "QuestionnaireAnswers.Answer",
+            "baseType": "BackboneElement",
             "retrievable": false
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Certificate",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Certificate",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "type",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "blob",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.LocationStatus",
-            "baseType": "Test.Element",
+            "name": "LocationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.LocationStatus_list"
+                "type": "LocationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.HealthcareService.AvailableTime",
-            "baseType": "Test.BackboneElement",
+            "name": "HealthcareService.AvailableTime",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9641,13 +9641,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Medication.Content",
-            "baseType": "Test.BackboneElement",
+            "name": "Medication.Content",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "item",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "amount",
@@ -9657,17 +9657,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ObservationStatus_list"
+            "name": "ObservationStatus_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Address",
-            "baseType": "Test.Element",
+            "name": "Address",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "use",
-                    "type": "Test.AddressUse"
+                    "type": "AddressUse"
                 },
                 {
                     "name": "text",
@@ -9701,12 +9701,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SecurityEventOutcome_list"
+            "name": "SecurityEventOutcome_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DeviceUseStatement",
-            "baseType": "Test.DomainResource",
+            "name": "DeviceUseStatement",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9719,7 +9719,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "device",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -9739,19 +9739,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Count",
+            "name": "Count",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "Test.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -9771,14 +9771,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Query",
-            "baseType": "Test.DomainResource",
+            "name": "Query",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9791,18 +9791,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "response",
-                    "type": "Test.Query.Response"
+                    "type": "Query.Response"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MessageSignificanceCategory",
-            "baseType": "Test.Element",
+            "name": "MessageSignificanceCategory",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.MessageSignificanceCategory_list"
+                "type": "MessageSignificanceCategory_list"
             }
         },
         {
@@ -9811,8 +9811,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Operation",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Operation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9821,30 +9821,30 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Binary",
-            "baseType": "Test.Resource",
+            "name": "Binary",
+            "baseType": "Resource",
             "retrievable": false,
             "element": [
                 {
                     "name": "contentType",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "content",
-                    "type": "Test.base64Binary"
+                    "type": "base64Binary"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlan",
-            "baseType": "Test.DomainResource",
+            "name": "CarePlan",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-careplan",
             "label": "CarePlan",
@@ -9856,11 +9856,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "Test.CarePlanStatus"
+                    "type": "CarePlanStatus"
                 },
                 {
                     "name": "period",
@@ -9894,52 +9894,52 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentReference.RelatesTo",
-            "baseType": "Test.BackboneElement",
+            "name": "DocumentReference.RelatesTo",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "Test.DocumentRelationshipType"
+                    "type": "DocumentRelationshipType"
                 },
                 {
                     "name": "target",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SubscriptionStatus_list"
+            "name": "SubscriptionStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.Modality_list"
+            "name": "Modality_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SystemRestfulInteraction",
-            "baseType": "Test.Element",
+            "name": "SystemRestfulInteraction",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SystemRestfulInteraction_list"
+                "type": "SystemRestfulInteraction_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AnswerFormat",
-            "baseType": "Test.Element",
+            "name": "AnswerFormat",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AnswerFormat_list"
+                "type": "AnswerFormat_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet",
-            "baseType": "Test.DomainResource",
+            "name": "ValueSet",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -9980,7 +9980,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ValueSetStatus"
+                    "type": "ValueSetStatus"
                 },
                 {
                     "name": "experimental",
@@ -10000,27 +10000,27 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "define",
-                    "type": "Test.ValueSet.Define"
+                    "type": "ValueSet.Define"
                 },
                 {
                     "name": "compose",
-                    "type": "Test.ValueSet.Compose"
+                    "type": "ValueSet.Compose"
                 },
                 {
                     "name": "expansion",
-                    "type": "Test.ValueSet.Expansion"
+                    "type": "ValueSet.Expansion"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance.Interaction1",
-            "baseType": "Test.BackboneElement",
+            "name": "Conformance.Interaction1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "Test.SystemRestfulInteraction"
+                    "type": "SystemRestfulInteraction"
                 },
                 {
                     "name": "documentation",
@@ -10030,13 +10030,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ElementDefinition.Type",
-            "baseType": "Test.Element",
+            "name": "ElementDefinition.Type",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 },
                 {
                     "name": "profile",
@@ -10050,8 +10050,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Conformance",
-            "baseType": "Test.DomainResource",
+            "name": "Conformance",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -10080,7 +10080,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ConformanceStatementStatus"
+                    "type": "ConformanceStatementStatus"
                 },
                 {
                     "name": "experimental",
@@ -10092,15 +10092,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "software",
-                    "type": "Test.Conformance.Software"
+                    "type": "Conformance.Software"
                 },
                 {
                     "name": "implementation",
-                    "type": "Test.Conformance.Implementation"
+                    "type": "Conformance.Implementation"
                 },
                 {
                     "name": "fhirVersion",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "acceptUnknown",
@@ -10130,8 +10130,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConceptMap",
-            "baseType": "Test.DomainResource",
+            "name": "ConceptMap",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
@@ -10164,7 +10164,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.ValueSetStatus"
+                    "type": "ValueSetStatus"
                 },
                 {
                     "name": "experimental",
@@ -10182,16 +10182,16 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DataAbsentReason_list"
+            "name": "DataAbsentReason_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.FHIRDefinedType_list"
+            "name": "FHIRDefinedType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrder",
-            "baseType": "Test.DomainResource",
+            "name": "NutritionOrder",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-nutritionorder",
             "label": "NutritionOrder",
@@ -10199,11 +10199,11 @@ final testmodelinfo = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "orderer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
@@ -10211,7 +10211,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dateTime",
@@ -10235,23 +10235,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.NutritionOrderStatus"
+                    "type": "NutritionOrderStatus"
                 }
             ]
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SpecialValues_list"
+            "name": "SpecialValues_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Money",
+            "name": "Money",
             "baseType": "System.Quantity",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "Test.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "value",
@@ -10271,14 +10271,14 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "code",
-                    "type": "Test.code"
+                    "type": "code"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationAdministration.Dosage",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationAdministration.Dosage",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10299,18 +10299,18 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "rate",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 },
                 {
                     "name": "maxDosePerPeriod",
-                    "type": "Test.Ratio"
+                    "type": "Ratio"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Patient",
-            "baseType": "Test.DomainResource",
+            "name": "Patient",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-patient",
             "label": "Patient",
@@ -10353,7 +10353,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "animal",
-                    "type": "Test.Patient.Animal"
+                    "type": "Patient.Animal"
                 },
                 {
                     "name": "communication",
@@ -10365,7 +10365,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "link",
@@ -10379,8 +10379,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ClaimResponse.Detail1",
-            "baseType": "Test.BackboneElement",
+            "name": "ClaimResponse.Detail1",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10389,7 +10389,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "fee",
-                    "type": "Test.Money"
+                    "type": "Money"
                 },
                 {
                     "name": "adjudication",
@@ -10399,8 +10399,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationPrescription",
-            "baseType": "Test.DomainResource",
+            "name": "MedicationPrescription",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-medicationprescription",
             "label": "MedicationPrescription",
@@ -10416,23 +10416,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.MedicationPrescriptionStatus"
+                    "type": "MedicationPrescriptionStatus"
                 },
                 {
                     "name": "patient",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "prescriber",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "medication",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "dosageInstruction",
@@ -10440,23 +10440,23 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispense",
-                    "type": "Test.MedicationPrescription.Dispense"
+                    "type": "MedicationPrescription.Dispense"
                 },
                 {
                     "name": "substitution",
-                    "type": "Test.MedicationPrescription.Substitution"
+                    "type": "MedicationPrescription.Substitution"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ElementDefinition.Mapping",
-            "baseType": "Test.Element",
+            "name": "ElementDefinition.Mapping",
+            "baseType": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "identity",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "map",
@@ -10466,8 +10466,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Specimen.Container",
-            "baseType": "Test.BackboneElement",
+            "name": "Specimen.Container",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10498,8 +10498,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ValueSet.Define",
-            "baseType": "Test.BackboneElement",
+            "name": "ValueSet.Define",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10522,33 +10522,33 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ObservationStatus",
-            "baseType": "Test.Element",
+            "name": "ObservationStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ObservationStatus_list"
+                "type": "ObservationStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.AllergyIntoleranceCertainty",
-            "baseType": "Test.Element",
+            "name": "AllergyIntoleranceCertainty",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.AllergyIntoleranceCertainty_list"
+                "type": "AllergyIntoleranceCertainty_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MessageHeader",
-            "baseType": "Test.DomainResource",
+            "name": "MessageHeader",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "timestamp",
@@ -10560,11 +10560,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "response",
-                    "type": "Test.MessageHeader.Response"
+                    "type": "MessageHeader.Response"
                 },
                 {
                     "name": "source",
-                    "type": "Test.MessageHeader.Source"
+                    "type": "MessageHeader.Source"
                 },
                 {
                     "name": "destination",
@@ -10572,19 +10572,19 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "author",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "responsible",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "reason",
@@ -10598,8 +10598,8 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OperationOutcome",
-            "baseType": "Test.DomainResource",
+            "name": "OperationOutcome",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": {
                 "name": "issue",
@@ -10608,27 +10608,27 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.NameUse_list"
+            "name": "NameUse_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ConditionStatus",
-            "baseType": "Test.Element",
+            "name": "ConditionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ConditionStatus_list"
+                "type": "ConditionStatus_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MedicationPrescription.Dispense",
-            "baseType": "Test.BackboneElement",
+            "name": "MedicationPrescription.Dispense",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "medication",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "validityPeriod",
@@ -10644,42 +10644,42 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "expectedSupplyDuration",
-                    "type": "Test.Duration"
+                    "type": "Duration"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ResourceVersionPolicy",
-            "baseType": "Test.Element",
+            "name": "ResourceVersionPolicy",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ResourceVersionPolicy_list"
+                "type": "ResourceVersionPolicy_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ReferralStatus",
-            "baseType": "Test.Element",
+            "name": "ReferralStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ReferralStatus_list"
+                "type": "ReferralStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ConceptMapEquivalence_list"
+            "name": "ConceptMapEquivalence_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Element",
+            "name": "Element",
             "retrievable": false,
             "element": [
                 {
                     "name": "id",
-                    "type": "Test.id_primitive"
+                    "type": "id_primitive"
                 },
                 {
                     "name": "extension",
@@ -10689,18 +10689,18 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ParticipantRequired",
-            "baseType": "Test.Element",
+            "name": "ParticipantRequired",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ParticipantRequired_list"
+                "type": "ParticipantRequired_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.NutritionOrder.Item",
-            "baseType": "Test.BackboneElement",
+            "name": "NutritionOrder.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10709,36 +10709,36 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "oralDiet",
-                    "type": "Test.NutritionOrder.OralDiet"
+                    "type": "NutritionOrder.OralDiet"
                 },
                 {
                     "name": "supplement",
-                    "type": "Test.NutritionOrder.Supplement"
+                    "type": "NutritionOrder.Supplement"
                 },
                 {
                     "name": "enteralFormula",
-                    "type": "Test.NutritionOrder.EnteralFormula"
+                    "type": "NutritionOrder.EnteralFormula"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.id",
-            "baseType": "Test.Element",
+            "name": "id",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.id_primitive"
+                "type": "id_primitive"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.time_primitive"
+            "name": "time_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DocumentReference.Context",
-            "baseType": "Test.BackboneElement",
+            "name": "DocumentReference.Context",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10757,16 +10757,16 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.MedicationDispenseStatus_list"
+            "name": "MedicationDispenseStatus_list"
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ContactPointUse_list"
+            "name": "ContactPointUse_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticOrder.Item",
-            "baseType": "Test.BackboneElement",
+            "name": "DiagnosticOrder.Item",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10783,7 +10783,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.DiagnosticOrderStatus"
+                    "type": "DiagnosticOrderStatus"
                 },
                 {
                     "name": "event",
@@ -10793,22 +10793,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.EncounterState_list"
+            "name": "EncounterState_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DeviceUseRequestMode",
-            "baseType": "Test.Element",
+            "name": "DeviceUseRequestMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.DeviceUseRequestMode_list"
+                "type": "DeviceUseRequestMode_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.HealthcareService.NotAvailableTime",
-            "baseType": "Test.BackboneElement",
+            "name": "HealthcareService.NotAvailableTime",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10827,17 +10827,17 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Supply.Dispense",
-            "baseType": "Test.BackboneElement",
+            "name": "Supply.Dispense",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "status",
-                    "type": "Test.SupplyDispenseStatus"
+                    "type": "SupplyDispenseStatus"
                 },
                 {
                     "name": "type",
@@ -10849,11 +10849,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "suppliedItem",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "supplier",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "whenPrepared",
@@ -10865,7 +10865,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -10875,13 +10875,13 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Coverage",
-            "baseType": "Test.DomainResource",
+            "name": "Coverage",
+            "baseType": "DomainResource",
             "retrievable": false,
             "element": [
                 {
                     "name": "issuer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -10893,7 +10893,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "group",
@@ -10917,11 +10917,11 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subscriber",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "network",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "contract",
@@ -10931,28 +10931,28 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.MessageHeader.Response",
-            "baseType": "Test.BackboneElement",
+            "name": "MessageHeader.Response",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "type": "Test.id"
+                    "type": "id"
                 },
                 {
                     "name": "code",
-                    "type": "Test.ResponseType"
+                    "type": "ResponseType"
                 },
                 {
                     "name": "details",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.OralHealthClaim.Missingteeth",
-            "baseType": "Test.BackboneElement",
+            "name": "OralHealthClaim.Missingteeth",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -10971,22 +10971,22 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEventObjectRole",
-            "baseType": "Test.Element",
+            "name": "SecurityEventObjectRole",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SecurityEventObjectRole_list"
+                "type": "SecurityEventObjectRole_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.uuid_primitive"
+            "name": "uuid_primitive"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.DiagnosticReport",
-            "baseType": "Test.DomainResource",
+            "name": "DiagnosticReport",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-diagnosticreport",
             "label": "DiagnosticReport",
@@ -10998,7 +10998,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "type": "Test.DiagnosticReportStatus"
+                    "type": "DiagnosticReportStatus"
                 },
                 {
                     "name": "issued",
@@ -11006,15 +11006,15 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "performer",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "identifier",
-                    "type": "Test.Identifier"
+                    "type": "Identifier"
                 },
                 {
                     "name": "requestDetail",
@@ -11056,37 +11056,37 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SubscriptionStatus",
-            "baseType": "Test.Element",
+            "name": "SubscriptionStatus",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SubscriptionStatus_list"
+                "type": "SubscriptionStatus_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DeviceUseRequestMode_list"
+            "name": "DeviceUseRequestMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.SecurityEventObjectLifecycle",
-            "baseType": "Test.Element",
+            "name": "SecurityEventObjectLifecycle",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.SecurityEventObjectLifecycle_list"
+                "type": "SecurityEventObjectLifecycle_list"
             }
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Encounter.Accomodation",
-            "baseType": "Test.BackboneElement",
+            "name": "Encounter.Accomodation",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "bed",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "period",
@@ -11096,12 +11096,12 @@ final testmodelinfo = ModelInfo.fromJson({
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.ListMode_list"
+            "name": "ListMode_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CarePlan.Participant",
-            "baseType": "Test.BackboneElement",
+            "name": "CarePlan.Participant",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -11110,28 +11110,28 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "member",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.CommunicationRequestMode",
-            "baseType": "Test.Element",
+            "name": "CommunicationRequestMode",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.CommunicationRequestMode_list"
+                "type": "CommunicationRequestMode_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.DocumentRelationshipType_list"
+            "name": "DocumentRelationshipType_list"
         },
         {
             "type": "ClassInfo",
-            "name": "Test.Location",
-            "baseType": "Test.DomainResource",
+            "name": "Location",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "cqf-location",
             "label": "Location",
@@ -11159,7 +11159,7 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "type": "Test.Address"
+                    "type": "Address"
                 },
                 {
                     "name": "physicalType",
@@ -11167,39 +11167,39 @@ final testmodelinfo = ModelInfo.fromJson({
                 },
                 {
                     "name": "position",
-                    "type": "Test.Location.Position"
+                    "type": "Location.Position"
                 },
                 {
                     "name": "managingOrganization",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "status",
-                    "type": "Test.LocationStatus"
+                    "type": "LocationStatus"
                 },
                 {
                     "name": "partOf",
-                    "type": "Test.Reference"
+                    "type": "Reference"
                 },
                 {
                     "name": "mode",
-                    "type": "Test.LocationMode"
+                    "type": "LocationMode"
                 }
             ]
         },
         {
             "type": "ClassInfo",
-            "name": "Test.ProvenanceEntityRole",
-            "baseType": "Test.Element",
+            "name": "ProvenanceEntityRole",
+            "baseType": "Element",
             "retrievable": false,
             "element": {
                 "name": "value",
-                "type": "Test.ProvenanceEntityRole_list"
+                "type": "ProvenanceEntityRole_list"
             }
         },
         {
             "type": "SimpleTypeInfo",
-            "name": "Test.SecurityEventObjectType_list"
+            "name": "SecurityEventObjectType_list"
         }
     ]
 });

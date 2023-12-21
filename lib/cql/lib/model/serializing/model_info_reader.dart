@@ -51,6 +51,8 @@ abstract class ModelInfoReader {
     if (value is String) {
       if (value.startsWith('$modelName.')) {
         return value.replaceFirst('$modelName.', '');
+      } else {
+        return value;
       }
     } else if (value is List) {
       return value.map((e) => removeModelName(e, modelName)).toList();

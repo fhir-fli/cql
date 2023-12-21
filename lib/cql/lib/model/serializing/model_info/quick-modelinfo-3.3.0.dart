@@ -4,7 +4,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
     "name": "QUICK",
     "url": "http://hl7.org/fhir/us/qicore",
     "targetQualifier": "quick",
-    "patientClassName": "QUICK.Patient",
+    "patientClassName": "Patient",
     "patientBirthDatePropertyName": "birthDate",
     "version": "3.3.0",
     "requiredModelInfo": {
@@ -16,18 +16,18 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Address",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Address",
             "label": "Address",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "QUICK.AddressUse"
+                    "elementType": "AddressUse"
                 },
                 {
                     "name": "type",
-                    "elementType": "QUICK.AddressType"
+                    "elementType": "AddressType"
                 },
                 {
                     "name": "text",
@@ -92,7 +92,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "AdverseEvent",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-adverseevent",
             "label": "AdverseEvent",
@@ -100,11 +100,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "identifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "actuality",
-                    "elementType": "QUICK.AdverseEventActuality"
+                    "elementType": "AdverseEventActuality"
                 },
                 {
                     "name": "category",
@@ -118,11 +118,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -144,7 +144,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "seriousness",
@@ -160,7 +160,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contributor",
@@ -198,16 +198,16 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "AdverseEvent.SuspectEntity",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "instance",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "causality",
-                    "elementType": "QUICK.AdverseEvent.SuspectEntity.Causality"
+                    "elementType": "AdverseEvent.SuspectEntity.Causality"
                 }
             ]
         },
@@ -215,7 +215,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "AdverseEvent.SuspectEntity.Causality",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -228,7 +228,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "method",
@@ -247,7 +247,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "AllergyIntolerance",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance",
             "label": "AllergyIntolerance",
@@ -255,11 +255,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "resolutionAge",
-                    "elementType": "QUICK.resolutionAge"
+                    "elementType": "resolutionAge"
                 },
                 {
                     "name": "reasonRefuted",
-                    "elementType": "QUICK.reasonRefuted"
+                    "elementType": "reasonRefuted"
                 },
                 {
                     "name": "identifier",
@@ -277,7 +277,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QUICK.AllergyIntoleranceType"
+                    "elementType": "AllergyIntoleranceType"
                 },
                 {
                     "name": "category",
@@ -287,7 +287,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "criticality",
-                    "elementType": "QUICK.AllergyIntoleranceCriticality"
+                    "elementType": "AllergyIntoleranceCriticality"
                 },
                 {
                     "name": "code",
@@ -295,11 +295,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onset",
@@ -331,11 +331,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "lastOccurrence",
@@ -359,7 +359,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "AllergyIntolerance.Reaction",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -382,7 +382,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "severity",
-                    "elementType": "QUICK.AllergyIntoleranceSeverity"
+                    "elementType": "AllergyIntoleranceSeverity"
                 },
                 {
                     "name": "exposureRoute",
@@ -428,7 +428,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Annotation",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Annotation",
             "label": "Annotation",
@@ -465,14 +465,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Attachment",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Attachment",
             "label": "Attachment",
             "element": [
                 {
                     "name": "contentType",
-                    "elementType": "QUICK.MimeType"
+                    "elementType": "MimeType"
                 },
                 {
                     "name": "language",
@@ -508,7 +508,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "BackboneElement",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/BackboneElement",
             "label": "BackboneElement",
@@ -530,7 +530,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "BodyStructure",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-bodystructure",
             "label": "BodyStructure",
@@ -571,7 +571,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -593,7 +593,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claim",
             "label": "Claim",
@@ -607,7 +607,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.ClaimStatus"
+                    "elementType": "ClaimStatus"
                 },
                 {
                     "name": "type",
@@ -619,11 +619,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "QUICK.Use"
+                    "elementType": "Use"
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "billablePeriod",
@@ -637,15 +637,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enterer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "insurer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "provider",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "priority",
@@ -663,23 +663,23 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "prescription",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "originalPrescription",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "payee",
-                    "elementType": "QUICK.Claim.Payee"
+                    "elementType": "Claim.Payee"
                 },
                 {
                     "name": "referral",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "facility",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "careTeam",
@@ -713,7 +713,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "accident",
-                    "elementType": "QUICK.Claim.Accident"
+                    "elementType": "Claim.Accident"
                 },
                 {
                     "name": "item",
@@ -731,7 +731,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Accident",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -766,7 +766,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.CareTeam",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -775,7 +775,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "provider",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "responsible",
@@ -795,7 +795,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Diagnosis",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -840,7 +840,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Insurance",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -853,11 +853,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "coverage",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "businessArrangement",
@@ -871,7 +871,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "claimResponse",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -879,7 +879,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Item",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1023,7 +1023,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Item.Detail",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1088,7 +1088,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Item.Detail.SubDetail",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1147,7 +1147,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Payee",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1156,7 +1156,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "party",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -1164,7 +1164,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Procedure",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1211,12 +1211,12 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.Related",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "claim",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -1224,7 +1224,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reference",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 }
             ]
         },
@@ -1232,7 +1232,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Claim.SupportingInfo",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1313,7 +1313,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Communication",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communication",
             "label": "Communication",
@@ -1357,7 +1357,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.CommunicationStatus"
+                    "elementType": "CommunicationStatus"
                 },
                 {
                     "name": "statusReason",
@@ -1371,7 +1371,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QUICK.CommunicationPriority"
+                    "elementType": "CommunicationPriority"
                 },
                 {
                     "name": "medium",
@@ -1381,7 +1381,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "topic",
@@ -1395,7 +1395,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "sent",
@@ -1413,7 +1413,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -1445,7 +1445,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Communication.Payload",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "content",
@@ -1482,7 +1482,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "CommunicationRequest",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationrequest",
             "label": "CommunicationRequest",
@@ -1508,11 +1508,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.CommunicationRequestStatus"
+                    "elementType": "CommunicationRequestStatus"
                 },
                 {
                     "name": "statusReason",
@@ -1526,7 +1526,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QUICK.CommunicationPriority"
+                    "elementType": "CommunicationPriority"
                 },
                 {
                     "name": "doNotPerform",
@@ -1540,7 +1540,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "about",
@@ -1550,7 +1550,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "payload",
@@ -1580,7 +1580,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "recipient",
@@ -1590,7 +1590,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "sender",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -1616,7 +1616,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "CommunicationRequest.Payload",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "content",
@@ -1660,7 +1660,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Condition",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition",
             "label": "Condition",
@@ -1714,11 +1714,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onset",
@@ -1774,11 +1774,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "stage",
@@ -1804,7 +1804,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Condition.Evidence",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1825,7 +1825,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Condition.Stage",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -1848,7 +1848,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ContactDetail",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ContactDetail",
             "label": "ContactDetail",
@@ -1869,14 +1869,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ContactPoint",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ContactPoint",
             "label": "ContactPoint",
             "element": [
                 {
                     "name": "system",
-                    "elementType": "QUICK.ContactPointSystem"
+                    "elementType": "ContactPointSystem"
                 },
                 {
                     "name": "value",
@@ -1884,7 +1884,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "QUICK.ContactPointUse"
+                    "elementType": "ContactPointUse"
                 },
                 {
                     "name": "rank",
@@ -1916,14 +1916,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Contributor",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Contributor",
             "label": "Contributor",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QUICK.ContributorType"
+                    "elementType": "ContributorType"
                 },
                 {
                     "name": "name",
@@ -1948,7 +1948,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Coverage",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage",
             "label": "Coverage",
@@ -1962,7 +1962,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.CoverageStatus"
+                    "elementType": "CoverageStatus"
                 },
                 {
                     "name": "type",
@@ -1970,11 +1970,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "policyHolder",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "subscriber",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "subscriberId",
@@ -1982,7 +1982,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "beneficiary",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "dependent",
@@ -2040,7 +2040,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Coverage.Class",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2061,7 +2061,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Coverage.CostToBeneficiary",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2098,7 +2098,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Coverage.CostToBeneficiary.Exception",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2124,14 +2124,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "DataRequirement",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/DataRequirement",
             "label": "DataRequirement",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QUICK.FHIRAllTypes"
+                    "elementType": "FHIRAllTypes"
                 },
                 {
                     "name": "profile",
@@ -2238,7 +2238,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "direction",
-                    "elementType": "QUICK.SortDirection"
+                    "elementType": "SortDirection"
                 }
             ]
         },
@@ -2260,7 +2260,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Device",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-device",
             "label": "Device",
@@ -2274,15 +2274,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "definition",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "udiCarrier",
-                    "elementType": "QUICK.Device.UdiCarrier"
+                    "elementType": "Device.UdiCarrier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.FHIRDeviceStatus"
+                    "elementType": "FHIRDeviceStatus"
                 },
                 {
                     "name": "statusReason",
@@ -2352,11 +2352,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "owner",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contact",
@@ -2366,7 +2366,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "url",
@@ -2386,7 +2386,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "parent",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -2394,7 +2394,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Device.DeviceName",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2403,7 +2403,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QUICK.DeviceNameType"
+                    "elementType": "DeviceNameType"
                 }
             ]
         },
@@ -2411,7 +2411,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Device.Property",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2436,7 +2436,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Device.Specialization",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2453,7 +2453,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Device.UdiCarrier",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2478,7 +2478,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "entryType",
-                    "elementType": "QUICK.UDIEntryType"
+                    "elementType": "UDIEntryType"
                 }
             ]
         },
@@ -2486,7 +2486,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Device.Version",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2495,7 +2495,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "component",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "value",
@@ -2514,7 +2514,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "DeviceUseStatement",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-deviceusestatement",
             "label": "DeviceUseStatement",
@@ -2522,7 +2522,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "notDone",
-                    "elementType": "QUICK._Not_Done_Extension"
+                    "elementType": "_Not_Done_Extension"
                 },
                 {
                     "name": "identifier",
@@ -2538,11 +2538,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.DeviceUseStatementStatus"
+                    "elementType": "DeviceUseStatementStatus"
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "derivedFrom",
@@ -2577,11 +2577,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "source",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -2618,7 +2618,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "DiagnosticReport.Media",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -2627,7 +2627,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "link",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -2635,7 +2635,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "DiagnosticReportLab",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-lab",
             "label": "DiagnosticReportLab",
@@ -2643,7 +2643,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "locationPerformed",
-                    "elementType": "QUICK.locationPerformed"
+                    "elementType": "locationPerformed"
                 },
                 {
                     "name": "identifier",
@@ -2677,11 +2677,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -2761,7 +2761,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "DiagnosticReportNote",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-note",
             "label": "DiagnosticReportNote",
@@ -2769,7 +2769,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "locationPerformed",
-                    "elementType": "QUICK.locationPerformed"
+                    "elementType": "locationPerformed"
                 },
                 {
                     "name": "identifier",
@@ -2799,11 +2799,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -2883,14 +2883,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "DomainResource",
-            "baseType": "QUICK.Resource",
+            "baseType": "Resource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/DomainResource",
             "label": "DomainResource",
             "element": [
                 {
                     "name": "text",
-                    "elementType": "QUICK.Narrative"
+                    "elementType": "Narrative"
                 },
                 {
                     "name": "contained",
@@ -2916,7 +2916,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Dosage",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Dosage",
             "label": "Dosage",
@@ -2941,7 +2941,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "timing",
-                    "elementType": "QUICK.Timing"
+                    "elementType": "Timing"
                 },
                 {
                     "name": "asNeeded",
@@ -3065,7 +3065,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Encounter",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter",
             "label": "Encounter",
@@ -3073,7 +3073,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "reasonCancelled",
-                    "elementType": "QUICK.reasonCancelled"
+                    "elementType": "reasonCancelled"
                 },
                 {
                     "name": "procedure",
@@ -3089,7 +3089,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.EncounterStatus"
+                    "elementType": "EncounterStatus"
                 },
                 {
                     "name": "statusHistory",
@@ -3123,7 +3123,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "episodeOfCare",
@@ -3185,7 +3185,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "hospitalization",
-                    "elementType": "QUICK.Encounter.Hospitalization"
+                    "elementType": "Encounter.Hospitalization"
                 },
                 {
                     "name": "location",
@@ -3195,11 +3195,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "serviceProvider",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -3207,7 +3207,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Encounter.ClassHistory",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3226,12 +3226,12 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Encounter.Diagnosis",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "condition",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "use",
@@ -3247,16 +3247,16 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Encounter.Hospitalization",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "preAdmissionIdentifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "origin",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "admitSource",
@@ -3286,7 +3286,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "dischargeDisposition",
@@ -3298,16 +3298,16 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Encounter.Location",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.EncounterLocationStatus"
+                    "elementType": "EncounterLocationStatus"
                 },
                 {
                     "name": "physicalType",
@@ -3325,7 +3325,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Encounter.Participant",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3342,7 +3342,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "individual",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -3350,12 +3350,12 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Encounter.StatusHistory",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "status",
-                    "elementType": "QUICK.EncounterStatus"
+                    "elementType": "EncounterStatus"
                 },
                 {
                     "name": "period",
@@ -3376,22 +3376,22 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "EncounterProcedureExtension",
-            "baseType": "QUICK.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter-procedure",
             "label": "EncounterProcedureExtension",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 },
                 {
                     "name": "rank",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 },
                 {
                     "name": "procedure",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 },
                 {
                     "name": "url",
@@ -3417,7 +3417,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Expression",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Expression",
             "label": "Expression",
@@ -3448,7 +3448,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Extension",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Extension",
             "label": "Extension",
@@ -3740,7 +3740,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "FamilyMemberHistory",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-familymemberhistory",
             "label": "FamilyMemberHistory",
@@ -3765,7 +3765,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.FamilyHistoryStatus"
+                    "elementType": "FamilyHistoryStatus"
                 },
                 {
                     "name": "dataAbsentReason",
@@ -3773,7 +3773,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -3898,7 +3898,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "FamilyMemberHistory.Condition",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -3949,7 +3949,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Flag",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-flag",
             "label": "Flag",
@@ -3963,7 +3963,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.FlagStatus"
+                    "elementType": "FlagStatus"
                 },
                 {
                     "name": "category",
@@ -3977,7 +3977,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -3987,11 +3987,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "author",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -4006,7 +4006,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Goal",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-goal",
             "label": "Goal",
@@ -4014,7 +4014,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "reasonRejected",
-                    "elementType": "QUICK.reasonRejected"
+                    "elementType": "reasonRejected"
                 },
                 {
                     "name": "identifier",
@@ -4046,7 +4046,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "start",
@@ -4068,7 +4068,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "expressedBy",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "addresses",
@@ -4100,7 +4100,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Goal.Target",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4172,14 +4172,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "HumanName",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/HumanName",
             "label": "HumanName",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "QUICK.NameUse"
+                    "elementType": "NameUse"
                 },
                 {
                     "name": "text",
@@ -4219,14 +4219,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Identifier",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Identifier",
             "label": "Identifier",
             "element": [
                 {
                     "name": "use",
-                    "elementType": "QUICK.IdentifierUse"
+                    "elementType": "IdentifierUse"
                 },
                 {
                     "name": "type",
@@ -4248,7 +4248,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "assigner",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -4263,7 +4263,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ImagingStudy",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-imagingstudy",
             "label": "ImagingStudy",
@@ -4276,7 +4276,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.ImagingStudyStatus"
+                    "elementType": "ImagingStudyStatus"
                 },
                 {
                     "name": "modality",
@@ -4286,11 +4286,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "started",
@@ -4304,7 +4304,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "referrer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "interpreter",
@@ -4328,7 +4328,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "procedureReference",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "procedureCode",
@@ -4338,7 +4338,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -4374,7 +4374,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ImagingStudy.Series",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4439,7 +4439,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ImagingStudy.Series.Instance",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4464,7 +4464,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ImagingStudy.Series.Performer",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4473,7 +4473,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -4488,7 +4488,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Immunization",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunization",
             "label": "Immunization",
@@ -4514,11 +4514,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -4552,11 +4552,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "manufacturer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "lotNumber",
@@ -4646,7 +4646,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Immunization.Education",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4671,7 +4671,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Immunization.Performer",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4680,7 +4680,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -4688,7 +4688,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Immunization.ProtocolApplied",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4697,7 +4697,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "targetDisease",
@@ -4747,7 +4747,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Immunization.Reaction",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4756,7 +4756,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "detail",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reported",
@@ -4768,7 +4768,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ImmunizationRecommendation",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationrec",
             "label": "ImmunizationRecommendation",
@@ -4781,7 +4781,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "date",
@@ -4789,7 +4789,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "authority",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "recommendation",
@@ -4803,7 +4803,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ImmunizationRecommendation.Recommendation",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4900,7 +4900,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ImmunizationRecommendation.Recommendation.DateCriterion",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -4924,7 +4924,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Location",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-location",
             "label": "Location",
@@ -4959,7 +4959,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "mode",
-                    "elementType": "QUICK.LocationMode"
+                    "elementType": "LocationMode"
                 },
                 {
                     "name": "type",
@@ -4975,7 +4975,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "QUICK.Address"
+                    "elementType": "Address"
                 },
                 {
                     "name": "physicalType",
@@ -4983,15 +4983,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "position",
-                    "elementType": "QUICK.Location.Position"
+                    "elementType": "Location.Position"
                 },
                 {
                     "name": "managingOrganization",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "partOf",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "hoursOfOperation",
@@ -5015,7 +5015,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Location.HoursOfOperation",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5042,7 +5042,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Location.Position",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5070,7 +5070,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Medication",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medication",
             "label": "Medication",
@@ -5088,11 +5088,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.MedicationStatus"
+                    "elementType": "MedicationStatus"
                 },
                 {
                     "name": "manufacturer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "form",
@@ -5110,7 +5110,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "batch",
-                    "elementType": "QUICK.Medication.Batch"
+                    "elementType": "Medication.Batch"
                 }
             ]
         },
@@ -5118,7 +5118,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Medication.Batch",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5135,7 +5135,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Medication.Ingredient",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5170,7 +5170,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationAdministration",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration",
             "label": "MedicationAdministration",
@@ -5196,7 +5196,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.MedicationAdministrationStatus"
+                    "elementType": "MedicationAdministrationStatus"
                 },
                 {
                     "name": "statusReason",
@@ -5228,11 +5228,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -5276,7 +5276,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "request",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
@@ -5292,7 +5292,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dosage",
-                    "elementType": "QUICK.MedicationAdministration.Dosage"
+                    "elementType": "MedicationAdministration.Dosage"
                 },
                 {
                     "name": "eventHistory",
@@ -5306,7 +5306,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationAdministration.Dosage",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5353,7 +5353,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationAdministration.Performer",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5362,7 +5362,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5377,7 +5377,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationDispense",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispense",
             "label": "MedicationDispense",
@@ -5397,7 +5397,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.MedicationDispenseStatus"
+                    "elementType": "MedicationDispenseStatus"
                 },
                 {
                     "name": "statusReason",
@@ -5441,11 +5441,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -5461,7 +5461,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "authorizingPrescription",
@@ -5491,7 +5491,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "destination",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "receiver",
@@ -5513,7 +5513,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substitution",
-                    "elementType": "QUICK.MedicationDispense.Substitution"
+                    "elementType": "MedicationDispense.Substitution"
                 },
                 {
                     "name": "detectedIssue",
@@ -5533,7 +5533,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationDispense.Performer",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5542,7 +5542,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5550,7 +5550,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationDispense.Substitution",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5586,7 +5586,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationRequest",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest",
             "label": "MedicationRequest",
@@ -5608,7 +5608,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "intent",
-                    "elementType": "QUICK.MedicationRequestIntent"
+                    "elementType": "MedicationRequestIntent"
                 },
                 {
                     "name": "category",
@@ -5618,7 +5618,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QUICK.MedicationRequestPriority"
+                    "elementType": "MedicationRequestPriority"
                 },
                 {
                     "name": "doNotPerform",
@@ -5662,11 +5662,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "supportingInformation",
@@ -5680,11 +5680,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -5692,7 +5692,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -5726,7 +5726,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "courseOfTherapyType",
@@ -5752,15 +5752,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "dispenseRequest",
-                    "elementType": "QUICK.MedicationRequest.DispenseRequest"
+                    "elementType": "MedicationRequest.DispenseRequest"
                 },
                 {
                     "name": "substitution",
-                    "elementType": "QUICK.MedicationRequest.Substitution"
+                    "elementType": "MedicationRequest.Substitution"
                 },
                 {
                     "name": "priorPrescription",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "detectedIssue",
@@ -5780,12 +5780,12 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationRequest.DispenseRequest",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "initialFill",
-                    "elementType": "QUICK.MedicationRequest.DispenseRequest.InitialFill"
+                    "elementType": "MedicationRequest.DispenseRequest.InitialFill"
                 },
                 {
                     "name": "dispenseInterval",
@@ -5811,7 +5811,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "performer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -5819,7 +5819,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationRequest.DispenseRequest.InitialFill",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5836,7 +5836,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationRequest.Substitution",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -5881,7 +5881,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "MedicationStatement",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationstatement",
             "label": "MedicationStatement",
@@ -5939,11 +5939,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "context",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -5967,7 +5967,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "informationSource",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "derivedFrom",
@@ -6012,7 +6012,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Meta",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Meta",
             "label": "Meta",
@@ -6076,14 +6076,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Narrative",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Narrative",
             "label": "Narrative",
             "element": [
                 {
                     "name": "status",
-                    "elementType": "QUICK.NarrativeStatus"
+                    "elementType": "NarrativeStatus"
                 },
                 {
                     "name": "div",
@@ -6102,7 +6102,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Observation",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation",
             "label": "Observation",
@@ -6110,11 +6110,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "bodyPosition",
-                    "elementType": "QUICK.bodyPosition"
+                    "elementType": "bodyPosition"
                 },
                 {
                     "name": "delta",
-                    "elementType": "QUICK.delta"
+                    "elementType": "delta"
                 },
                 {
                     "name": "identifier",
@@ -6136,7 +6136,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.ObservationStatus"
+                    "elementType": "ObservationStatus"
                 },
                 {
                     "name": "category",
@@ -6150,7 +6150,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -6160,7 +6160,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -6283,11 +6283,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -6319,7 +6319,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Observation.Component",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6412,7 +6412,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Observation.ReferenceRange",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6456,7 +6456,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Organization",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization",
             "label": "Organization",
@@ -6501,7 +6501,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "partOf",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "contact",
@@ -6521,7 +6521,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Organization.Contact",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6530,7 +6530,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "elementType": "QUICK.HumanName"
+                    "elementType": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -6540,7 +6540,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "QUICK.Address"
+                    "elementType": "Address"
                 }
             ]
         },
@@ -6548,7 +6548,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ParameterDefinition",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/ParameterDefinition",
             "label": "ParameterDefinition",
@@ -6559,7 +6559,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "use",
-                    "elementType": "QUICK.ParameterUse"
+                    "elementType": "ParameterUse"
                 },
                 {
                     "name": "min",
@@ -6575,7 +6575,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QUICK.FHIRAllTypes"
+                    "elementType": "FHIRAllTypes"
                 },
                 {
                     "name": "profile",
@@ -6594,30 +6594,30 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Patient",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient",
             "label": "Patient",
             "element": [
                 {
                     "name": "race",
-                    "elementType": "QUICK.USCoreRaceExtension"
+                    "elementType": "USCoreRaceExtension"
                 },
                 {
                     "name": "ethnicity",
-                    "elementType": "QUICK.USCoreEthnicityExtension"
+                    "elementType": "USCoreEthnicityExtension"
                 },
                 {
                     "name": "birthsex",
-                    "elementType": "QUICK.USCoreBirthSexExtension"
+                    "elementType": "USCoreBirthSexExtension"
                 },
                 {
                     "name": "religion",
-                    "elementType": "QUICK.religion"
+                    "elementType": "religion"
                 },
                 {
                     "name": "birthPlace",
-                    "elementType": "QUICK.birthPlace"
+                    "elementType": "birthPlace"
                 },
                 {
                     "name": "disability",
@@ -6633,15 +6633,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "cadavericDonor",
-                    "elementType": "QUICK.cadavericDonor"
+                    "elementType": "cadavericDonor"
                 },
                 {
                     "name": "military-service",
-                    "elementType": "QUICK.MilitaryService"
+                    "elementType": "MilitaryService"
                 },
                 {
                     "name": "birthTime",
-                    "elementType": "QUICK.birthTime"
+                    "elementType": "birthTime"
                 },
                 {
                     "name": "identifier",
@@ -6745,7 +6745,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "managingOrganization",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "link",
@@ -6759,7 +6759,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Patient.Communication",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6776,7 +6776,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Patient.Contact",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6787,7 +6787,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "elementType": "QUICK.HumanName"
+                    "elementType": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -6797,15 +6797,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "address",
-                    "elementType": "QUICK.Address"
+                    "elementType": "Address"
                 },
                 {
                     "name": "gender",
-                    "elementType": "QUICK.AdministrativeGender"
+                    "elementType": "AdministrativeGender"
                 },
                 {
                     "name": "organization",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "period",
@@ -6819,16 +6819,16 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Patient.Link",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "other",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "type",
-                    "elementType": "QUICK.LinkType"
+                    "elementType": "LinkType"
                 }
             ]
         },
@@ -6836,7 +6836,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Practitioner",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitioner",
             "label": "Practitioner",
@@ -6849,7 +6849,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "npislice",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "active",
@@ -6857,7 +6857,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "name",
-                    "elementType": "QUICK.HumanName"
+                    "elementType": "HumanName"
                 },
                 {
                     "name": "telecom",
@@ -6873,7 +6873,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "elementType": "QUICK.AdministrativeGender"
+                    "elementType": "AdministrativeGender"
                 },
                 {
                     "name": "birthDate",
@@ -6903,7 +6903,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Practitioner.Qualification",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -6924,7 +6924,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "issuer",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -6932,7 +6932,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "PractitionerRole",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitionerrole",
             "label": "PractitionerRole",
@@ -6956,11 +6956,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "practitioner",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "organization",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "code",
@@ -7016,7 +7016,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "PractitionerRole.AvailableTime",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7043,7 +7043,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "PractitionerRole.NotAvailable",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7062,7 +7062,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Procedure",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure",
             "label": "Procedure",
@@ -7076,7 +7076,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "incisionDateTime",
-                    "elementType": "QUICK.incisionDateTime"
+                    "elementType": "incisionDateTime"
                 },
                 {
                     "name": "identifier",
@@ -7126,11 +7126,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performed",
@@ -7150,11 +7150,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "recorder",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "asserter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performer",
@@ -7164,7 +7164,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -7242,7 +7242,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Procedure.FocalDevice",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7251,7 +7251,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "manipulated",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -7259,7 +7259,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Procedure.Performer",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7268,11 +7268,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "actor",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -7294,7 +7294,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Questionnaire",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Questionnaire",
             "label": "Questionnaire",
@@ -7330,7 +7330,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.PublicationStatus"
+                    "elementType": "PublicationStatus"
                 },
                 {
                     "name": "experimental",
@@ -7412,7 +7412,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Questionnaire.Item",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7439,7 +7439,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "type",
-                    "elementType": "QUICK.QuestionnaireItemType"
+                    "elementType": "QuestionnaireItemType"
                 },
                 {
                     "name": "enableWhen",
@@ -7449,7 +7449,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "enableBehavior",
-                    "elementType": "QUICK.EnableWhenBehavior"
+                    "elementType": "EnableWhenBehavior"
                 },
                 {
                     "name": "required",
@@ -7500,7 +7500,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Questionnaire.Item.AnswerOption",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7551,7 +7551,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Questionnaire.Item.EnableWhen",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7560,7 +7560,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "operator",
-                    "elementType": "QUICK.QuestionnaireItemOperator"
+                    "elementType": "QuestionnaireItemOperator"
                 },
                 {
                     "name": "answer",
@@ -7626,7 +7626,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Questionnaire.Item.Initial",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": {
                 "name": "value",
@@ -7715,14 +7715,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "QuestionnaireResponse",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
             "label": "QuestionnaireResponse",
             "element": [
                 {
                     "name": "identifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "basedOn",
@@ -7742,15 +7742,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.QuestionnaireResponseStatus"
+                    "elementType": "QuestionnaireResponseStatus"
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "authored",
@@ -7758,11 +7758,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "author",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "source",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "item",
@@ -7776,7 +7776,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "QuestionnaireResponse.Item",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7814,7 +7814,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "QuestionnaireResponse.Item.Answer",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -7909,7 +7909,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Reference",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Reference",
             "label": "Reference",
@@ -7924,7 +7924,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "identifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "display",
@@ -7936,14 +7936,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "RelatedArtifact",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/RelatedArtifact",
             "label": "RelatedArtifact",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QUICK.RelatedArtifactType"
+                    "elementType": "RelatedArtifactType"
                 },
                 {
                     "name": "label",
@@ -7963,7 +7963,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "document",
-                    "elementType": "QUICK.Attachment"
+                    "elementType": "Attachment"
                 },
                 {
                     "name": "resource",
@@ -7982,7 +7982,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "RelatedPerson",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-relatedperson",
             "label": "RelatedPerson",
@@ -7999,7 +7999,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "patient",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "relationship",
@@ -8021,7 +8021,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "gender",
-                    "elementType": "QUICK.AdministrativeGender"
+                    "elementType": "AdministrativeGender"
                 },
                 {
                     "name": "birthDate",
@@ -8057,7 +8057,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "RelatedPerson.Communication",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8084,7 +8084,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "meta",
-                    "elementType": "QUICK.Meta"
+                    "elementType": "Meta"
                 },
                 {
                     "name": "implicitRules",
@@ -8107,7 +8107,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "SampledData",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/SampledData",
             "label": "SampledData",
@@ -8146,7 +8146,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ServiceRequest",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest",
             "label": "ServiceRequest",
@@ -8154,7 +8154,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "element": [
                 {
                     "name": "statusReason",
-                    "elementType": "QUICK.statusReason"
+                    "elementType": "statusReason"
                 },
                 {
                     "name": "approachBodyStructure",
@@ -8164,7 +8164,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "appropriatenessScore",
-                    "elementType": "QUICK.ServiceRequestAppropriatenessScore"
+                    "elementType": "ServiceRequestAppropriatenessScore"
                 },
                 {
                     "name": "identifier",
@@ -8198,15 +8198,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requisition",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.ServiceRequestStatus"
+                    "elementType": "ServiceRequestStatus"
                 },
                 {
                     "name": "intent",
-                    "elementType": "QUICK.ServiceRequestIntent"
+                    "elementType": "ServiceRequestIntent"
                 },
                 {
                     "name": "category",
@@ -8216,7 +8216,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "priority",
-                    "elementType": "QUICK.ServiceRequestPriority"
+                    "elementType": "ServiceRequestPriority"
                 },
                 {
                     "name": "doNotPerform",
@@ -8255,11 +8255,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "occurrence",
@@ -8306,7 +8306,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -8388,7 +8388,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "ServiceRequestAppropriatenessScore",
-            "baseType": "QUICK.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest-appropriatenessScore",
             "label": "RAND Appropriateness Score Extension",
@@ -8446,7 +8446,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Signature",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Signature",
             "label": "Signature",
@@ -8463,19 +8463,19 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "who",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "onBehalfOf",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "targetFormat",
-                    "elementType": "QUICK.MimeType"
+                    "elementType": "MimeType"
                 },
                 {
                     "name": "sigFormat",
-                    "elementType": "QUICK.MimeType"
+                    "elementType": "MimeType"
                 },
                 {
                     "name": "data",
@@ -8494,7 +8494,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Specimen",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-specimen",
             "label": "Specimen",
@@ -8508,11 +8508,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "accessionIdentifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.SpecimenStatus"
+                    "elementType": "SpecimenStatus"
                 },
                 {
                     "name": "type",
@@ -8520,7 +8520,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "receivedTime",
@@ -8540,7 +8540,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "collection",
-                    "elementType": "QUICK.Specimen.Collection"
+                    "elementType": "Specimen.Collection"
                 },
                 {
                     "name": "processing",
@@ -8572,12 +8572,12 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Specimen.Collection",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "collector",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "collected",
@@ -8635,7 +8635,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Specimen.Container",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8684,7 +8684,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Specimen.Processing",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8737,7 +8737,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Substance",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-substance",
             "label": "Substance",
@@ -8751,7 +8751,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.FHIRSubstanceStatus"
+                    "elementType": "FHIRSubstanceStatus"
                 },
                 {
                     "name": "category",
@@ -8785,7 +8785,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Substance.Ingredient",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -8794,7 +8794,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "substance",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 }
             ]
         },
@@ -8802,12 +8802,12 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Substance.Instance",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
                     "name": "identifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "expiry",
@@ -8823,7 +8823,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Task",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task",
             "label": "Task",
@@ -8851,7 +8851,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "groupIdentifier",
-                    "elementType": "QUICK.Identifier"
+                    "elementType": "Identifier"
                 },
                 {
                     "name": "partOf",
@@ -8861,7 +8861,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.TaskStatus"
+                    "elementType": "TaskStatus"
                 },
                 {
                     "name": "statusReason",
@@ -8873,11 +8873,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "intent",
-                    "elementType": "QUICK.TaskIntent"
+                    "elementType": "TaskIntent"
                 },
                 {
                     "name": "priority",
-                    "elementType": "QUICK.TaskPriority"
+                    "elementType": "TaskPriority"
                 },
                 {
                     "name": "code",
@@ -8889,15 +8889,15 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "focus",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "for",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "executionPeriod",
@@ -8915,7 +8915,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "requester",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "performerType",
@@ -8925,11 +8925,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "owner",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "location",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "reasonCode",
@@ -8937,7 +8937,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "reasonReference",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "insurance",
@@ -8959,7 +8959,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "restriction",
-                    "elementType": "QUICK.Task.Restriction"
+                    "elementType": "Task.Restriction"
                 },
                 {
                     "name": "input",
@@ -8979,7 +8979,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Task.Input",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9241,7 +9241,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Task.Output",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9503,7 +9503,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Task.Restriction",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "element": [
                 {
@@ -9549,7 +9549,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "Timing",
-            "baseType": "QUICK.BackboneElement",
+            "baseType": "BackboneElement",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/Timing",
             "label": "Timing",
@@ -9563,7 +9563,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "repeat",
-                    "elementType": "QUICK.Element"
+                    "elementType": "Element"
                 },
                 {
                     "name": "bounds",
@@ -9602,7 +9602,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "durationUnit",
-                    "elementType": "QUICK.UnitsOfTime"
+                    "elementType": "UnitsOfTime"
                 },
                 {
                     "name": "frequency",
@@ -9622,7 +9622,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "periodUnit",
-                    "elementType": "QUICK.UnitsOfTime"
+                    "elementType": "UnitsOfTime"
                 },
                 {
                     "name": "dayOfWeek",
@@ -9656,14 +9656,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "TriggerDefinition",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/TriggerDefinition",
             "label": "TriggerDefinition",
             "element": [
                 {
                     "name": "type",
-                    "elementType": "QUICK.TriggerType"
+                    "elementType": "TriggerType"
                 },
                 {
                     "name": "name",
@@ -9705,7 +9705,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "condition",
-                    "elementType": "QUICK.Expression"
+                    "elementType": "Expression"
                 }
             ]
         },
@@ -9727,7 +9727,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "USCoreBirthSexExtension",
-            "baseType": "QUICK.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
             "label": "US Core Birth Sex Extension"
@@ -9736,14 +9736,14 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "USCoreEthnicityExtension",
-            "baseType": "QUICK.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
             "label": "US Core Ethnicity Extension",
             "element": [
                 {
                     "name": "ombCategory",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 },
                 {
                     "name": "detailed",
@@ -9753,7 +9753,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 }
             ]
         },
@@ -9761,7 +9761,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "USCoreLaboratoryResultObservationProfile",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab",
             "label": "US Core Laboratory Result Observation Profile",
@@ -9805,7 +9805,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -9815,7 +9815,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -9928,11 +9928,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -9964,7 +9964,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "USCorePediatricBMIforAgeObservationProfile",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age",
             "label": "US Core Pediatric BMI for Age Observation Profile",
@@ -9990,7 +9990,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -10008,7 +10008,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -10018,7 +10018,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -10076,11 +10076,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -10112,7 +10112,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "USCorePediatricWeightForHeightObservationProfile",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height",
             "label": "US Core Pediatric Weight for Height Observation Profile",
@@ -10138,7 +10138,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -10156,7 +10156,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -10166,7 +10166,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -10224,11 +10224,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -10260,7 +10260,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "USCoreRaceExtension",
-            "baseType": "QUICK.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
             "label": "US Core Race Extension",
@@ -10279,7 +10279,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "text",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 }
             ]
         },
@@ -10287,7 +10287,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "USCoreSmokingStatusProfile",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus",
             "label": "US Core Smoking Status Observation Profile",
@@ -10327,7 +10327,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -10337,7 +10337,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -10405,11 +10405,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -10448,7 +10448,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "UsageContext",
-            "baseType": "QUICK.Element",
+            "baseType": "Element",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/UsageContext",
             "label": "UsageContext",
@@ -10497,7 +10497,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "_Not_Done_Extension",
-            "baseType": "QUICK.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-deviceusestatement-notDone",
             "label": "QICore Not Done Extension",
@@ -10528,7 +10528,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "approachBodyStructure",
-            "baseType": "QUICK.Reference",
+            "baseType": "Reference",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/procedure-approachBodyStructure",
             "label": "approachBodyStructure"
@@ -10537,7 +10537,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "birthPlace",
-            "baseType": "QUICK.Address",
+            "baseType": "Address",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
             "label": "Birth Place"
@@ -10617,7 +10617,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "locationPerformed",
-            "baseType": "QUICK.Reference",
+            "baseType": "Reference",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/diagnosticReport-locationPerformed",
             "label": "locationPerformed"
@@ -10626,18 +10626,18 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "nationality",
-            "baseType": "QUICK.Extension",
+            "baseType": "Extension",
             "retrievable": false,
             "identifier": "http://hl7.org/fhir/StructureDefinition/patient-nationality",
             "label": "nationality",
             "element": [
                 {
                     "name": "code",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 },
                 {
                     "name": "period",
-                    "elementType": "QUICK.Extension"
+                    "elementType": "Extension"
                 },
                 {
                     "name": "url",
@@ -10649,7 +10649,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-bmi",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bmi",
             "label": "Observation Body Mass Index Profile",
@@ -10675,7 +10675,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -10693,7 +10693,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -10703,7 +10703,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -10761,11 +10761,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -10797,7 +10797,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-bodyheight",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodyheight",
             "label": "Observation Body Height Profile",
@@ -10823,7 +10823,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -10841,7 +10841,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -10851,7 +10851,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -10909,11 +10909,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -10945,7 +10945,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-bodytemp",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodytemp",
             "label": "Observation Body Temperature Profile",
@@ -10971,7 +10971,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -10989,7 +10989,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -10999,7 +10999,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -11057,11 +11057,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -11093,7 +11093,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-bodyweight",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bodyweight",
             "label": "Observation Body Weight Profile",
@@ -11119,7 +11119,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -11137,7 +11137,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -11147,7 +11147,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -11205,11 +11205,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -11241,7 +11241,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-bp",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/bp",
             "label": "Observation Blood Pressure Profile",
@@ -11267,7 +11267,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -11285,7 +11285,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -11295,7 +11295,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -11349,11 +11349,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -11385,7 +11385,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-headcircum",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/headcircum",
             "label": "Observation Head Circumference Profile",
@@ -11411,7 +11411,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -11429,7 +11429,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -11439,7 +11439,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -11497,11 +11497,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -11533,7 +11533,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-heartrate",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/heartrate",
             "label": "Observation Heart Rate Profile",
@@ -11559,7 +11559,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -11577,7 +11577,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -11587,7 +11587,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -11645,11 +11645,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -11681,7 +11681,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-oxygensat",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/oxygensat",
             "label": "Observation Oxygen Saturation Profile",
@@ -11707,7 +11707,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -11725,7 +11725,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -11735,7 +11735,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -11793,11 +11793,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -11829,7 +11829,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-resprate",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/resprate",
             "label": "Observation Respiratory Rate Profile",
@@ -11855,7 +11855,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -11873,7 +11873,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -11883,7 +11883,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -11941,11 +11941,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
@@ -11977,7 +11977,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
             "type": "ClassInfo",
             "namespace": "QUICK",
             "name": "observation-vitalspanel",
-            "baseType": "QUICK.DomainResource",
+            "baseType": "DomainResource",
             "retrievable": true,
             "identifier": "http://hl7.org/fhir/StructureDefinition/vitalspanel",
             "label": "Observation Vital Signs Panel Profile",
@@ -12003,7 +12003,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "status",
-                    "elementType": "QUICK.Status"
+                    "elementType": "Status"
                 },
                 {
                     "name": "category",
@@ -12021,7 +12021,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "subject",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "focus",
@@ -12031,7 +12031,7 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "encounter",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "effective",
@@ -12085,11 +12085,11 @@ final quickmodelinfo330 = ModelInfo.fromJson({
                 },
                 {
                     "name": "specimen",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "device",
-                    "elementType": "QUICK.Reference"
+                    "elementType": "Reference"
                 },
                 {
                     "name": "referenceRange",
