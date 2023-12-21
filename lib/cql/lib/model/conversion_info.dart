@@ -29,6 +29,7 @@ class ConversionInfo {
   });
 
   factory ConversionInfo.fromJson(Map<String, dynamic> json) {
+    print('conversion info from json');
     return ConversionInfo(
       functionName: json['functionName'],
       fromTypeSpecifier: json['fromTypeSpecifier'],

@@ -73,24 +73,54 @@ class ModelInfo {
 
   factory ModelInfo.fromJson(Map<String, dynamic> json) {
     return ModelInfo(
-      name: json['name'],
-      version: json['version'],
-      url: json['url'],
-      targetUrl: json['targetUrl'],
-      targetVersion: json['targetVersion'],
-      schemaLocation: json['schemaLocation'],
-      targetQualifier: json['targetQualifier'],
-      patientClassName: json['patientClassName'],
-      patientClassIdentifier: json['patientClassIdentifier'],
-      patientBirthDatePropertyName: json['patientBirthDatePropertyName'],
-      caseSensitive: json['caseSensitive'],
-      strictRetrieveTyping: json['strictRetrieveTyping'],
-      defaultContext: json['defaultContext'],
-      requiredModelInfo: json['requiredModelInfo'],
-      typeInfo: json['typeInfo'],
-      conversionInfo: json['conversionInfo'],
-      contextInfo: json['contextInfo'],
-    );
+        name: json['name'] as String? ?? '',
+        version: json['version'] as String?,
+        url: Uri.parse(json['url'] as String? ?? ''),
+        targetUrl: Uri.tryParse(json['targetUrl'] as String? ?? ''),
+        targetVersion: json['targetVersion'] as String?,
+        schemaLocation: json['schemaLocation'] as String?,
+        targetQualifier: json['targetQualifier'] as String?,
+        patientClassName: json['patientClassName'] as String?,
+        patientClassIdentifier: json['patientClassIdentifier'] as String?,
+        patientBirthDatePropertyName:
+            json['patientBirthDatePropertyName'] as String?,
+        caseSensitive: json['caseSensitive'] as bool?,
+        strictRetrieveTyping: json['strictRetrieveTyping'] == null
+            ? null
+            : json['strictRetrieveTyping'] is bool
+                ? json['strictRetrieveTyping'] as bool?
+                : json['strictRetrieveTyping'] is String
+                    ? json['strictRetrieveTyping'] == 'true'
+                        ? true
+                        : json['strictRetrieveTyping'] == 'false'
+                            ? false
+                            : null
+                    : null,
+        defaultContext: json['defaultContext'] as String?,
+        requiredModelInfo: (json['requiredModelInfo'] as List<dynamic>?)
+                ?.map((e) => ModelSpecifier.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
+        typeInfo: (json['typeInfo'] as List<dynamic>?)
+                ?.map((e) => TypeInfo.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
+        conversionInfo: (json['conversionInfo'] as List<dynamic>?)
+                ?.map((e) => ConversionInfo.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
+        contextInfo: json['contextInfo'] is List<dynamic>
+            ? (json['contextInfo'] as List<dynamic>?)
+                    ?.map(
+                        (e) => ContextInfo.fromJson(e as Map<String, dynamic>))
+                    .toList() ??
+                []
+            : json['contextInfo'] is Map<String, dynamic>
+                ? [
+                    ContextInfo.fromJson(
+                        json['contextInfo'] as Map<String, dynamic>)
+                  ]
+                : []);
   }
 
   Map<String, dynamic> toJson() {

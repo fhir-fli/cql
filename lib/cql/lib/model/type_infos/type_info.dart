@@ -17,6 +17,7 @@ abstract class TypeInfo {
   });
 
   factory TypeInfo.fromJson(Map<String, dynamic> json) {
+    print('type info from json');
     final type = json['type'];
     switch (type) {
       case 'ChoiceTypeInfo':
@@ -27,6 +28,8 @@ abstract class TypeInfo {
         return IntervalTypeInfo.fromJson(json);
       case 'ListTypeInfo':
         return ListTypeInfo.fromJson(json);
+      case 'ProfileInfo':
+        return ProfileInfo.fromJson(json);
       case 'SimpleTypeInfo':
         return SimpleTypeInfo.fromJson(json);
       case 'TupleTypeInfo':

@@ -11,6 +11,8 @@ class IntervalTypeInfo extends TypeInfo {
   /// Point type as a string.
   String? pointType;
 
+  final String type = 'IntervalTypeInfo';
+
   IntervalTypeInfo({
     this.pointTypeSpecifier,
     this.pointType,
@@ -27,7 +29,7 @@ class IntervalTypeInfo extends TypeInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
+    final data = <String, dynamic>{'type': type};
     if (pointTypeSpecifier != null) {
       data['pointTypeSpecifier'] = pointTypeSpecifier!.toJson();
     }

@@ -10,6 +10,20 @@ class ExpressionInfo {
     required this.language,
   });
 
+  factory ExpressionInfo.fromJson(Map<String, dynamic> json) {
+    return ExpressionInfo(
+      expression: json['expression'],
+      language: json['language'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['expression'] = expression;
+    data['language'] = language;
+    return data;
+  }
+
   @override
   String toString() {
     return 'ExpressionInfo{expression: $expression, language: $language}';

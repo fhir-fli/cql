@@ -1,7 +1,9 @@
 // Create a registry of providers
 import '../../cql.dart';
 
-final List<ModelInfoReaderProvider> modelInfoReaderProviders = [];
+final List<ModelInfoReaderProvider> modelInfoReaderProviders = [
+  QdmModelInfoReaderProvider(),
+];
 
 class ModelInfoReaderFactory {
   static ModelInfoReaderProvider? _provider;

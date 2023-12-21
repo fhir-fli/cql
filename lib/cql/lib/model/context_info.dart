@@ -25,9 +25,10 @@ class ContextInfo {
   });
 
   factory ContextInfo.fromJson(Map<String, dynamic> json) {
+    print('context info from json');
     return ContextInfo(
       name: json['name'],
-      contextType: json['contextType'],
+      contextType: NamedTypeSpecifier.fromJson(json['contextType']),
       keyElement: json['keyElement'],
       birthDateElement: json['birthDateElement'],
     );

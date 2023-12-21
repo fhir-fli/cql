@@ -22,9 +22,11 @@ class TupleTypeInfo extends TypeInfo {
     );
   }
 
+  String get type => 'TupleTypeInfo';
+
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
+    final data = <String, dynamic>{'type': type};
     if (element != null) {
       data['element'] = element!.map((v) => v.toJson()).toList();
     }

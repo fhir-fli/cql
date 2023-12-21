@@ -26,6 +26,38 @@ class ConstraintInfo {
     this.message,
   }) : expressions = expressions ?? [];
 
+  factory ConstraintInfo.fromJson(Map<String, dynamic> json) {
+    return ConstraintInfo(
+      name: json['name'],
+      severity: json['severity'] == 'info'
+          ? ConstraintSeverity.info
+          : json['severity'] == 'warning'
+              ? ConstraintSeverity.warning
+              : ConstraintSeverity.error,
+      expressions: json['expressions'] == null
+          ? []
+          : (json['expressions'] as List)
+              .map((e) => ExpressionInfo.fromJson(e))
+              .toList(),
+      description: json['description'],
+      message: json['message'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['name'] = name;
+    data['severity'] = severity.toString().split('.').last;
+    data['expressions'] = expressions.map((e) => e.toJson()).toList();
+    if (description != null) {
+      data['description'] = description;
+    }
+    if (message != null) {
+      data['message'] = message;
+    }
+    return data;
+  }
+
   void addExpression(ExpressionInfo expression) {
     expressions.add(expression);
   }

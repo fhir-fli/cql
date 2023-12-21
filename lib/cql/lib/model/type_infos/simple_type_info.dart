@@ -23,9 +23,11 @@ class SimpleTypeInfo extends TypeInfo {
     );
   }
 
+  String get type => 'SimpleTypeInfo';
+
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
+    final data = <String, dynamic>{'type': type};
     data['name'] = name;
     if (namespace != null) {
       data['namespace'] = namespace;

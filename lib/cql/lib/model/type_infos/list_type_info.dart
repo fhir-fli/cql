@@ -11,6 +11,8 @@ class ListTypeInfo extends TypeInfo {
   /// Element type as a string.
   String? elementType;
 
+  final String type = 'ListTypeInfo';
+
   ListTypeInfo({
     this.elementTypeSpecifier,
     this.elementType,
@@ -27,7 +29,7 @@ class ListTypeInfo extends TypeInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
+    final data = <String, dynamic>{'type': type};
     if (elementTypeSpecifier != null) {
       data['elementTypeSpecifier'] = elementTypeSpecifier!.toJson();
     }

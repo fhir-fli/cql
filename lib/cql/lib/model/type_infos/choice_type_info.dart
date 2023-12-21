@@ -33,7 +33,7 @@ class ChoiceTypeInfo extends TypeInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
+    final data = <String, dynamic>{'type': 'ChoiceTypeInfo'};
     if (type != null) {
       data['type'] = type!.map((v) => v.toJson()).toList();
     }

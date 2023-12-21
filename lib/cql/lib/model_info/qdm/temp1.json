@@ -1,0 +1,4341 @@
+[
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Patient",
+        "baseType": "System.Any",
+        "identifier": "Patient",
+        "element": {
+            "name": "birthDatetime",
+            "type": "System.DateTime"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Identifier",
+        "baseType": "System.Any",
+        "element": [
+            {
+                "name": "namingSystem",
+                "type": "System.String"
+            },
+            {
+                "name": "value",
+                "type": "System.String"
+            }
+        ]
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Entity",
+        "baseType": "System.Any",
+        "retrievable": "false",
+        "element": [
+            {
+                "name": "id",
+                "type": "System.String"
+            },
+            {
+                "name": "identifier",
+                "type": "QDM.Identifier"
+            }
+        ]
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientEntity",
+        "baseType": "QDM.Entity",
+        "retrievable": "false"
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.CarePartner",
+        "baseType": "QDM.Entity",
+        "retrievable": "false",
+        "element": {
+            "name": "relationship",
+            "type": "System.Code"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.RelatedPerson",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Related Person",
+        "retrievable": "true",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "identifier",
+                "type": "QDM.Identifier"
+            },
+            {
+                "name": "linkedPatientId",
+                "type": "System.String"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        },
+        "targetContextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "linkedPatientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Practitioner",
+        "baseType": "QDM.Entity",
+        "retrievable": "false",
+        "element": [
+            {
+                "name": "role",
+                "type": "System.Code"
+            },
+            {
+                "name": "specialty",
+                "type": "System.Code"
+            },
+            {
+                "name": "qualification",
+                "type": "System.Code"
+            }
+        ]
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Organization",
+        "baseType": "QDM.Entity",
+        "retrievable": "false",
+        "element": {
+            "name": "organizationType",
+            "type": "System.Code"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Location",
+        "baseType": "QDM.Entity",
+        "retrievable": "false",
+        "element": {
+            "name": "locationType",
+            "type": "System.Code"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PhysicalExamOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "anatomicalLocationSite",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Participation",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Participation",
+        "primaryCodePath": "code",
+        "element": {
+            "name": "participationPeriod",
+            "type": "interval<System.DateTime>"
+        },
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristicSex",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic Sex",
+        "primaryCodePath": "code",
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.CareGoal",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Care Goal",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "statusDate",
+                "type": "System.Date"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            },
+            {
+                "name": "targetOutcome",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristic",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic",
+        "primaryCodePath": "code",
+        "element": {
+            "name": "authorDatetime",
+            "type": "System.DateTime"
+        },
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristicEthnicity",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic Ethnicity",
+        "primaryCodePath": "code",
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristicRace",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic Race",
+        "primaryCodePath": "code",
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.LaboratoryTestPerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "status",
+                "type": "System.Code"
+            },
+            {
+                "name": "method",
+                "type": "System.Code"
+            },
+            {
+                "name": "result",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "resultDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "referenceRange",
+                "type": "interval<System.Quantity>"
+            },
+            {
+                "name": "interpretation",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "components",
+                "type": "list<QDM.ResultComponent>"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Symptom",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Symptom",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "prevalencePeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "severity",
+                "type": "System.Code"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.MedicationAdministered",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.ProcedureRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "anatomicalLocationSite",
+                "type": "System.Code"
+            },
+            {
+                "name": "rank",
+                "type": "System.Integer"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.EncounterPerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "admissionSource",
+                "type": "System.Code"
+            },
+            {
+                "name": "class",
+                "type": "System.Code"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "dischargeDisposition",
+                "type": "System.Code"
+            },
+            {
+                "name": "facilityLocations",
+                "type": "list<QDM.FacilityLocation>"
+            },
+            {
+                "name": "diagnoses",
+                "type": "list<QDM.DiagnosisComponent>"
+            },
+            {
+                "name": "lengthOfStay",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "priority",
+                "type": "System.Code"
+            },
+            {
+                "name": "participant",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Diagnosis",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Diagnosis",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "prevalencePeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "anatomicalLocationSite",
+                "type": "System.Code"
+            },
+            {
+                "name": "severity",
+                "type": "System.Code"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.CommunicationPerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "category",
+                "type": "System.Code"
+            },
+            {
+                "name": "medium",
+                "type": "System.Code"
+            },
+            {
+                "name": "sender",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "recipient",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            },
+            {
+                "name": "sentDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "receivedDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.AssessmentPerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "method",
+                "type": "System.Code"
+            },
+            {
+                "name": "result",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "DateTime"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Time"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "interpretation",
+                "type": "System.Code"
+            },
+            {
+                "name": "components",
+                "type": "list<QDM.Component>"
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristicClinicalTrialParticipant",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic Clinical Trial Participant",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.DeviceOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.DiagnosticStudyPerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "result",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "resultDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "interpretation",
+                "type": "System.Code"
+            },
+            {
+                "name": "status",
+                "type": "System.Code"
+            },
+            {
+                "name": "method",
+                "type": "System.Code"
+            },
+            {
+                "name": "facilityLocation",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "components",
+                "type": "list<QDM.Component>"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.InterventionOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.FamilyHistory",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Family History",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relationship",
+                "type": "System.Code"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.Component",
+        "retrievable": "false",
+        "baseType": "System.Any",
+        "element": [
+            {
+                "name": "code",
+                "type": "System.Code"
+            },
+            {
+                "name": "result",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "DateTime"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Time"
+                        }
+                    ]
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.DiagnosisComponent",
+        "retrievable": "false",
+        "baseType": "System.Any",
+        "element": [
+            {
+                "name": "code",
+                "type": "System.Code"
+            },
+            {
+                "name": "presentOnAdmissionIndicator",
+                "type": "System.Code"
+            },
+            {
+                "name": "rank",
+                "type": "System.Integer"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.ResultComponent",
+        "retrievable": "false",
+        "baseType": "QDM.Component",
+        "element": {
+            "name": "referenceRange",
+            "type": "interval<System.Quantity>"
+        },
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.FacilityLocation",
+        "retrievable": "false",
+        "baseType": "System.Any",
+        "element": [
+            {
+                "name": "code",
+                "type": "System.Code"
+            },
+            {
+                "name": "locationPeriod",
+                "type": "interval<System.DateTime>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.MedicationActive",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Medication, Active",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.LaboratoryTestOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.DiagnosticStudyOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.SubstanceOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "supply",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "refills",
+                "type": "System.Integer"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristicPayer",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic Payer",
+        "primaryCodePath": "code",
+        "element": {
+            "name": "relevantPeriod",
+            "type": "interval<System.DateTime>"
+        },
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristicExpired",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic Expired",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "expiredDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "cause",
+                "type": "System.Code"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.AssessmentOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.AssessmentRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.ImmunizationAdministered",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.SubstanceAdministered",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.EncounterOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "facilityLocation",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "priority",
+                "type": "System.Code"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.EncounterRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "facilityLocation",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.ProcedurePerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "method",
+                "type": "System.Code"
+            },
+            {
+                "name": "result",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "status",
+                "type": "System.Code"
+            },
+            {
+                "name": "anatomicalLocationSite",
+                "type": "System.Code"
+            },
+            {
+                "name": "rank",
+                "type": "System.Integer"
+            },
+            {
+                "name": "incisionDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "components",
+                "type": "list<QDM.Component>"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.AllergyIntolerance",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Allergy/Intolerance",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "prevalencePeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "type",
+                "type": "System.Code"
+            },
+            {
+                "name": "severity",
+                "type": "System.Code"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PhysicalExamRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "anatomicalLocationSite",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCharacteristicBirthdate",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Characteristic Birthdate",
+        "primaryCodePath": "code",
+        "element": {
+            "name": "birthDatetime",
+            "type": "System.DateTime"
+        },
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.AdverseEvent",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Adverse Event",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "severity",
+                "type": "System.Code"
+            },
+            {
+                "name": "facilityLocation",
+                "type": "System.Code"
+            },
+            {
+                "name": "type",
+                "type": "System.Code"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.QDMBaseType",
+        "retrievable": "false",
+        "baseType": "System.Any",
+        "element": [
+            {
+                "name": "id",
+                "type": "System.String"
+            },
+            {
+                "name": "code",
+                "type": "System.Code"
+            },
+            {
+                "name": "patientId",
+                "type": "System.String"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.DeviceRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.MedicationDischarge",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "refills",
+                "type": "System.Integer"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "supply",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "daysSupplied",
+                "type": "System.Integer"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "prescriber",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.InterventionPerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "result",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "status",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.LaboratoryTestRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.MedicationDispensed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "refills",
+                "type": "System.Integer"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "supply",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "daysSupplied",
+                "type": "System.Integer"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "prescriber",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "dispenser",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.DiagnosticStudyRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.ImmunizationOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "activeDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "supply",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PatientCareExperience",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Patient Care Experience",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.ProviderCareExperience",
+        "retrievable": "true",
+        "baseType": "QDM.QDMBaseType",
+        "label": "Provider Care Experience",
+        "primaryCodePath": "code",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "recorder",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.ProcedureOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "anatomicalLocationSite",
+                "type": "System.Code"
+            },
+            {
+                "name": "rank",
+                "type": "System.Integer"
+            },
+            {
+                "name": "priority",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.MedicationOrder",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "refills",
+                "type": "System.Integer"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "supply",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "daysSupplied",
+                "type": "System.Integer"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "setting",
+                "type": "System.Code"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "prescriber",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.SubstanceRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "dosage",
+                "type": "System.Quantity"
+            },
+            {
+                "name": "frequency",
+                "type": "System.Code"
+            },
+            {
+                "name": "refills",
+                "type": "System.Integer"
+            },
+            {
+                "name": "route",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.InterventionRecommended",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "requester",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ClassInfo",
+        "name": "QDM.PhysicalExamPerformed",
+        "retrievable": "false",
+        "baseType": "QDM.QDMBaseType",
+        "element": [
+            {
+                "name": "authorDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantDatetime",
+                "type": "System.DateTime"
+            },
+            {
+                "name": "relevantPeriod",
+                "type": "interval<System.DateTime>"
+            },
+            {
+                "name": "reason",
+                "type": "System.Code"
+            },
+            {
+                "name": "method",
+                "type": "System.Code"
+            },
+            {
+                "name": "result",
+                "typeSpecifier": {
+                    "type": "ChoiceTypeSpecifier",
+                    "choice": [
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Integer"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Code"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Date"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "DateTime"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Decimal"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Quantity"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Ratio"
+                        },
+                        {
+                            "type": "NamedTypeSpecifier",
+                            "modelName": "System",
+                            "name": "Time"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "anatomicalLocationSite",
+                "type": "System.Code"
+            },
+            {
+                "name": "negationRationale",
+                "type": "System.Code"
+            },
+            {
+                "name": "components",
+                "type": "list<QDM.Component>"
+            },
+            {
+                "name": "performer",
+                "typeSpecifier": {
+                    "type": "ListTypeSpecifier",
+                    "elementTypeSpecifier": {
+                        "type": "ChoiceTypeSpecifier",
+                        "choice": [
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "PatientEntity"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "CarePartner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Practitioner"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Organization"
+                            },
+                            {
+                                "type": "NamedTypeSpecifier",
+                                "modelName": "QDM",
+                                "name": "Location"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "relatedTo",
+                "type": "list<System.String>"
+            }
+        ],
+        "contextRelationship": {
+            "context": "Patient",
+            "relatedKeyElement": "patientId"
+        }
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveAssessmentOrder",
+        "retrievable": "true",
+        "baseType": "QDM.AssessmentOrder",
+        "identifier": "PositiveAssessmentOrder",
+        "label": "Assessment, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeAssessmentOrder",
+        "retrievable": "true",
+        "baseType": "QDM.AssessmentOrder",
+        "identifier": "NegativeAssessmentOrder",
+        "label": "Assessment, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveAssessmentRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.AssessmentRecommended",
+        "identifier": "PositiveAssessmentRecommended",
+        "label": "Assessment, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeAssessmentRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.AssessmentRecommended",
+        "identifier": "NegativeAssessmentRecommended",
+        "label": "Assessment, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveAssessmentPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.AssessmentPerformed",
+        "identifier": "PositiveAssessmentPerformed",
+        "label": "Assessment, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeAssessmentPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.AssessmentPerformed",
+        "identifier": "NegativeAssessmentPerformed",
+        "label": "Assessment, Not Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveCommunicationPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.CommunicationPerformed",
+        "identifier": "PositiveCommunicationPerformed",
+        "label": "Communication, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeCommunicationPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.CommunicationPerformed",
+        "identifier": "NegativeCommunicationPerformed",
+        "label": "Communication, Not Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveDeviceOrder",
+        "retrievable": "true",
+        "baseType": "QDM.DeviceOrder",
+        "identifier": "PositiveDeviceOrder",
+        "label": "Device, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeDeviceOrder",
+        "retrievable": "true",
+        "baseType": "QDM.DeviceOrder",
+        "identifier": "NegativeDeviceOrder",
+        "label": "Device, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveDeviceRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.DeviceRecommended",
+        "identifier": "PositiveDeviceRecommended",
+        "label": "Device, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeDeviceRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.DeviceRecommended",
+        "identifier": "NegativeDeviceRecommended",
+        "label": "Device, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveDiagnosticStudyOrder",
+        "retrievable": "true",
+        "baseType": "QDM.DiagnosticStudyOrder",
+        "identifier": "PositiveDiagnosticStudyOrder",
+        "label": "Diagnostic Study, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeDiagnosticStudyOrder",
+        "retrievable": "true",
+        "baseType": "QDM.DiagnosticStudyOrder",
+        "identifier": "NegativeDiagnosticStudyOrder",
+        "label": "Diagnostic Study, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveDiagnosticStudyRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.DiagnosticStudyRecommended",
+        "identifier": "PositiveDiagnosticStudyRecommended",
+        "label": "Diagnostic Study, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeDiagnosticStudyRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.DiagnosticStudyRecommended",
+        "identifier": "NegativeDiagnosticStudyRecommended",
+        "label": "Diagnostic Study, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveDiagnosticStudyPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.DiagnosticStudyPerformed",
+        "identifier": "PositiveDiagnosticStudyPerformed",
+        "label": "Diagnostic Study, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeDiagnosticStudyPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.DiagnosticStudyPerformed",
+        "identifier": "NegativeDiagnosticStudyPerformed",
+        "label": "Diagnostic Study, Not Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveEncounterOrder",
+        "retrievable": "true",
+        "baseType": "QDM.EncounterOrder",
+        "identifier": "PositiveEncounterOrder",
+        "label": "Encounter, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeEncounterOrder",
+        "retrievable": "true",
+        "baseType": "QDM.EncounterOrder",
+        "identifier": "NegativeEncounterOrder",
+        "label": "Encounter, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveEncounterRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.EncounterRecommended",
+        "identifier": "PositiveEncounterRecommended",
+        "label": "Encounter, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeEncounterRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.EncounterRecommended",
+        "identifier": "NegativeEncounterRecommended",
+        "label": "Encounter, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveEncounterPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.EncounterPerformed",
+        "identifier": "PositiveEncounterPerformed",
+        "label": "Encounter, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveInterventionOrder",
+        "retrievable": "true",
+        "baseType": "QDM.InterventionOrder",
+        "identifier": "PositiveInterventionOrder",
+        "label": "Intervention, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeInterventionOrder",
+        "retrievable": "true",
+        "baseType": "QDM.InterventionOrder",
+        "identifier": "NegativeInterventionOrder",
+        "label": "Intervention, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveInterventionRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.InterventionRecommended",
+        "identifier": "PositiveInterventionRecommended",
+        "label": "Intervention, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeInterventionRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.InterventionRecommended",
+        "identifier": "NegativeInterventionRecommended",
+        "label": "Intervention, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveInterventionPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.InterventionPerformed",
+        "identifier": "PositiveInterventionPerformed",
+        "label": "Intervention, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeInterventionPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.InterventionPerformed",
+        "identifier": "NegativeInterventionPerformed",
+        "label": "Intervention, Not Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveImmunizationOrder",
+        "retrievable": "true",
+        "baseType": "QDM.ImmunizationOrder",
+        "identifier": "PositiveImmunizationOrder",
+        "label": "Immunization, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeImmunizationOrder",
+        "retrievable": "true",
+        "baseType": "QDM.ImmunizationOrder",
+        "identifier": "NegativeImmunizationOrder",
+        "label": "Immunization, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveImmunizationAdministered",
+        "retrievable": "true",
+        "baseType": "QDM.ImmunizationAdministered",
+        "identifier": "PositiveImmunizationAdministered",
+        "label": "Immunization, Administered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeImmunizationAdministered",
+        "retrievable": "true",
+        "baseType": "QDM.ImmunizationAdministered",
+        "identifier": "NegativeImmunizationAdministered",
+        "label": "Immunization, Not Administered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveMedicationAdministered",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationAdministered",
+        "identifier": "PositiveMedicationAdministered",
+        "label": "Medication, Administered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeMedicationAdministered",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationAdministered",
+        "identifier": "NegativeMedicationAdministered",
+        "label": "Medication, Not Administered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveMedicationDispensed",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationDispensed",
+        "identifier": "PositiveMedicationDispensed",
+        "label": "Medication, Dispensed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeMedicationDispensed",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationDispensed",
+        "identifier": "NegativeMedicationDispensed",
+        "label": "Medication, Not Dispensed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveMedicationDischarge",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationDischarge",
+        "identifier": "PositiveMedicationDischarge",
+        "label": "Medication, Discharge",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeMedicationDischarge",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationDischarge",
+        "identifier": "NegativeMedicationDischarge",
+        "label": "Medication, Not Discharged",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveMedicationOrder",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationOrder",
+        "identifier": "PositiveMedicationOrder",
+        "label": "Medication, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeMedicationOrder",
+        "retrievable": "true",
+        "baseType": "QDM.MedicationOrder",
+        "identifier": "NegativeMedicationOrder",
+        "label": "Medication, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositivePhysicalExamOrder",
+        "retrievable": "true",
+        "baseType": "QDM.PhysicalExamOrder",
+        "identifier": "PositivePhysicalExamOrder",
+        "label": "Physical Exam, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativePhysicalExamOrder",
+        "retrievable": "true",
+        "baseType": "QDM.PhysicalExamOrder",
+        "identifier": "NegativePhysicalExamOrder",
+        "label": "Physical Exam, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositivePhysicalExamRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.PhysicalExamRecommended",
+        "identifier": "PositivePhysicalExamRecommended",
+        "label": "Physical Exam, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativePhysicalExamRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.PhysicalExamRecommended",
+        "identifier": "NegativePhysicalExamRecommended",
+        "label": "Physical Exam, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositivePhysicalExamPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.PhysicalExamPerformed",
+        "identifier": "PositivePhysicalExamPerformed",
+        "label": "Physical Exam, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativePhysicalExamPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.PhysicalExamPerformed",
+        "identifier": "NegativePhysicalExamPerformed",
+        "label": "Physical Exam, Not Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveProcedureOrder",
+        "retrievable": "true",
+        "baseType": "QDM.ProcedureOrder",
+        "identifier": "PositiveProcedureOrder",
+        "label": "Procedure, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeProcedureOrder",
+        "retrievable": "true",
+        "baseType": "QDM.ProcedureOrder",
+        "identifier": "NegativeProcedureOrder",
+        "label": "Procedure, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveProcedureRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.ProcedureRecommended",
+        "identifier": "PositiveProcedureRecommended",
+        "label": "Procedure, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeProcedureRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.ProcedureRecommended",
+        "identifier": "NegativeProcedureRecommended",
+        "label": "Procedure, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveProcedurePerformed",
+        "retrievable": "true",
+        "baseType": "QDM.ProcedurePerformed",
+        "identifier": "PositiveProcedurePerformed",
+        "label": "Procedure, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeProcedurePerformed",
+        "retrievable": "true",
+        "baseType": "QDM.ProcedurePerformed",
+        "identifier": "NegativeProcedurePerformed",
+        "label": "Procedure, Not Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveSubstanceOrder",
+        "retrievable": "true",
+        "baseType": "QDM.SubstanceOrder",
+        "identifier": "PositiveSubstanceOrder",
+        "label": "Substance, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeSubstanceOrder",
+        "retrievable": "true",
+        "baseType": "QDM.SubstanceOrder",
+        "identifier": "NegativeSubstanceOrder",
+        "label": "Substance, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveSubstanceRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.SubstanceRecommended",
+        "identifier": "PositiveSubstanceRecommended",
+        "label": "Substance, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeSubstanceRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.SubstanceRecommended",
+        "identifier": "NegativeSubstanceRecommended",
+        "label": "Substance, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveSubstanceAdministered",
+        "retrievable": "true",
+        "baseType": "QDM.SubstanceAdministered",
+        "identifier": "PositiveSubstanceAdministered",
+        "label": "Substance, Administered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeSubstanceAdministered",
+        "retrievable": "true",
+        "baseType": "QDM.SubstanceAdministered",
+        "identifier": "NegativeSubstanceAdministered",
+        "label": "Substance, Not Administered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveLaboratoryTestOrder",
+        "retrievable": "true",
+        "baseType": "QDM.LaboratoryTestOrder",
+        "identifier": "PositiveLaboratoryTestOrder",
+        "label": "Laboratory Test, Order",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeLaboratoryTestOrder",
+        "retrievable": "true",
+        "baseType": "QDM.LaboratoryTestOrder",
+        "identifier": "NegativeLaboratoryTestOrder",
+        "label": "Laboratory Test, Not Ordered",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveLaboratoryTestRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.LaboratoryTestRecommended",
+        "identifier": "PositiveLaboratoryTestRecommended",
+        "label": "Laboratory Test, Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeLaboratoryTestRecommended",
+        "retrievable": "true",
+        "baseType": "QDM.LaboratoryTestRecommended",
+        "identifier": "NegativeLaboratoryTestRecommended",
+        "label": "Laboratory Test, Not Recommended",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.PositiveLaboratoryTestPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.LaboratoryTestPerformed",
+        "identifier": "PositiveLaboratoryTestPerformed",
+        "label": "Laboratory Test, Performed",
+        "primaryCodePath": "code"
+    },
+    {
+        "type": "ProfileInfo",
+        "name": "QDM.NegativeLaboratoryTestPerformed",
+        "retrievable": "true",
+        "baseType": "QDM.LaboratoryTestPerformed",
+        "identifier": "NegativeLaboratoryTestPerformed",
+        "label": "Laboratory Test, Not Performed",
+        "primaryCodePath": "code"
+    }
+]

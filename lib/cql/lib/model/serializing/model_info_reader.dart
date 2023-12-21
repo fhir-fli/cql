@@ -3,7 +3,7 @@ import 'dart:io';
 import '../../cql.dart';
 
 abstract class ModelInfoReader {
-  // Replace this method with your actual XML parsing logic.
+  /// Replace this method with your actual XML parsing logic.
   ModelInfo read(String xmlContent);
 
   /// Reads model information from a file. throws IOException
@@ -23,4 +23,51 @@ abstract class ModelInfoReader {
 
   /// Reads model information from a string. throws IOException
   ModelInfo readFromString(String string);
+
+  static const tags = [
+    "@baseType",
+    "@birthDateElement",
+    "@context",
+    "@identifier",
+    "@keyElement",
+    "@label",
+    "@modelName",
+    "@name",
+    "@patientBirthDatePropertyName",
+    "@patientClassIdentifier",
+    "@patientClassName",
+    "@primaryCodePath",
+    "@relatedKeyElement",
+    "@retrievable",
+    "@strictRetrieveTyping",
+    "@targetQualifier",
+    "@type",
+    "@url",
+    "@version",
+    "@xmlns",
+    "@xsi:type",
+  ];
+
+  static dynamic removeAts(dynamic value) {
+    if (value is String) {
+      var newValue = value;
+      if (tags.contains(newValue)) {
+        newValue = newValue.replaceFirst('@', '');
+      }
+      if (newValue.startsWith('xsi:')) {
+        newValue = newValue.replaceFirst('xsi:', '');
+      }
+      if (newValue.startsWith('ns4:')) {
+        newValue = newValue.replaceFirst('ns4:', '');
+      }
+      return newValue;
+    } else if (value is List) {
+      return value.map((e) => removeAts(e)).toList();
+    } else if (value is Map) {
+      return value
+          .map((key, value) => MapEntry(removeAts(key), removeAts(value)));
+    } else {
+      return value;
+    }
+  }
 }
