@@ -10,7 +10,9 @@ Future<void> main() async {
 
   print('ModelInfo JSON:');
   if (modelInfo != null) {
-    print(jsonPrettyPrint(modelInfo.toJson()));
+    // print(jsonPrettyPrint(modelInfo.toJson()));
+    File('qdm/temp1.json')
+        .writeAsStringSync(jsonPrettyPrint(modelInfo.toJson()));
   } else {
     print('ModelInfo is null');
   }

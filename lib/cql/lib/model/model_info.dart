@@ -9,9 +9,6 @@ class ModelInfo {
   // Required - Model name used in CQL definitions/specifiers
   final String name;
 
-  // Optional - Model version used in CQL using definitions
-  final String? version;
-
   // Required - XML namespace associated with the model
   final Uri url;
 
@@ -36,6 +33,9 @@ class ModelInfo {
   // Optional - Deprecated: Birthdate property name on the Patient model
   final String? patientBirthDatePropertyName;
 
+  // Optional - Model version used in CQL using definitions
+  final String? version;
+
   // Optional - If identifiers should be resolved case-sensitively
   final bool? caseSensitive;
 
@@ -50,6 +50,7 @@ class ModelInfo {
   final List<TypeInfo> typeInfo;
   final List<ConversionInfo> conversionInfo;
   final List<ContextInfo> contextInfo;
+  final bool? contextInfoSingle;
 
   ModelInfo({
     required this.name,
@@ -69,6 +70,7 @@ class ModelInfo {
     this.typeInfo = const [],
     this.conversionInfo = const [],
     this.contextInfo = const [],
+    this.contextInfoSingle,
   });
 
   factory ModelInfo.fromJson(Map<String, dynamic> json) {
@@ -76,7 +78,9 @@ class ModelInfo {
         name: json['name'] as String? ?? '',
         version: json['version'] as String?,
         url: Uri.parse(json['url'] as String? ?? ''),
-        targetUrl: Uri.tryParse(json['targetUrl'] as String? ?? ''),
+        targetUrl: json['targetUrl'] is! String
+            ? null
+            : Uri.tryParse(json['targetUrl']),
         targetVersion: json['targetVersion'] as String?,
         schemaLocation: json['schemaLocation'] as String?,
         targetQualifier: json['targetQualifier'] as String?,
@@ -120,14 +124,12 @@ class ModelInfo {
                     ContextInfo.fromJson(
                         json['contextInfo'] as Map<String, dynamic>)
                   ]
-                : []);
+                : [],
+        contextInfoSingle: json['contextInfo'] is Map<String, dynamic>);
   }
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{'name': name};
-    if (version != null) {
-      json['version'] = version!;
-    }
     json['url'] = url.toString();
     if (targetUrl != null) {
       json['targetUrl'] = targetUrl.toString();
@@ -150,6 +152,9 @@ class ModelInfo {
     if (patientBirthDatePropertyName != null) {
       json['patientBirthDatePropertyName'] = patientBirthDatePropertyName!;
     }
+    if (version != null) {
+      json['version'] = version!;
+    }
     if (caseSensitive != null) {
       json['caseSensitive'] = caseSensitive!;
     }
@@ -170,7 +175,11 @@ class ModelInfo {
       json['conversionInfo'] = conversionInfo.map((e) => e.toJson()).toList();
     }
     if (contextInfo.isNotEmpty) {
-      json['contextInfo'] = contextInfo.map((e) => e.toJson()).toList();
+      if (contextInfoSingle != null && contextInfoSingle!) {
+        json['contextInfo'] = contextInfo.first.toJson();
+      } else {
+        json['contextInfo'] = contextInfo.map((e) => e.toJson()).toList();
+      }
     }
     return json;
   }

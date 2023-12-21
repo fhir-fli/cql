@@ -12,18 +12,26 @@ class ClassInfo extends TypeInfo {
   final bool retrievable;
   final String? primaryCodePath;
   final String? primaryValueSetPath;
-  final List<TypeParameterInfo>? parameters;
-  final List<ClassInfoElement>? elements;
-  final List<RelationshipInfo>? contextRelationships;
-  final List<RelationshipInfo>? targetContextRelationships;
-  final List<SearchInfo>? searches;
-  final List<ExpressionInfo>? inferenceExpressions;
-  final List<ConstraintInfo>? constraints;
+  final List<TypeParameterInfo>? parameter;
+  final bool? singleParameter;
+  final List<ClassInfoElement>? element;
+  final bool? singleElement;
+  final List<RelationshipInfo>? contextRelationship;
+  final bool? singleContextRelationship;
+  final List<RelationshipInfo>? targetContextRelationship;
+  final bool? singleTargetContextRelationship;
+  final List<SearchInfo>? search;
+  final bool? singleSearch;
+  final List<ExpressionInfo>? inferenceExpression;
+  final bool? singleInferenceExpression;
+  final List<ConstraintInfo>? constraint;
+  final bool? singleConstraint;
   final String type = 'ClassInfo';
 
   ClassInfo({
     this.namespace,
     required this.name,
+    super.baseType,
     this.identifier,
     this.label,
     this.description,
@@ -33,64 +41,111 @@ class ClassInfo extends TypeInfo {
     this.retrievable = false,
     this.primaryCodePath,
     this.primaryValueSetPath,
-    this.parameters,
-    this.elements,
-    this.contextRelationships,
-    this.targetContextRelationships,
-    this.searches,
-    this.inferenceExpressions,
-    this.constraints,
+    this.parameter,
+    this.singleParameter,
+    this.element,
+    this.singleElement,
+    this.contextRelationship,
+    this.singleContextRelationship,
+    this.targetContextRelationship,
+    this.singleTargetContextRelationship,
+    this.search,
+    this.singleSearch,
+    this.inferenceExpression,
+    this.singleInferenceExpression,
+    this.constraint,
+    this.singleConstraint,
   });
 
   factory ClassInfo.fromJson(Map<String, dynamic> json) {
-    print('class info from json');
     return ClassInfo(
       namespace: json['namespace'],
       name: json['name'],
+      baseType: json['baseType'],
       identifier: json['identifier'],
       label: json['label'],
       description: json['description'],
       definition: json['definition'],
       comment: json['comment'],
       target: json['target'],
-      retrievable: json['retrievable'] == true, // Cast to boolean
+      retrievable: json['retrievable'] is bool
+          ? json['retrievable']
+          : json['retrievable'] == 'true',
       primaryCodePath: json['primaryCodePath'],
       primaryValueSetPath: json['primaryValueSetPath'],
-      parameters: json['parameters'] == null
+      parameter: json['parameter'] == null
           ? null
-          : (json['parameters'] as List)
-              .map((e) => TypeParameterInfo.fromJson(e))
-              .toList(),
-      elements: json['elements'] == null
+          : json['parameter'] is List
+              ? (json['parameter'] as List)
+                  .map((e) => TypeParameterInfo.fromJson(e))
+                  .toList()
+              : json['parameter'] is Map
+                  ? [TypeParameterInfo.fromJson(json['parameter'])]
+                  : null,
+      singleParameter: json['parameter'] is Map,
+      element: json['element'] == null
           ? null
-          : (json['elements'] as List)
-              .map((e) => ClassInfoElement.fromJson(e))
-              .toList(),
-      contextRelationships: json['contextRelationships'] == null
+          : json['element'] is List
+              ? (json['element'] as List)
+                  .map((e) => ClassInfoElement.fromJson(e))
+                  .toList()
+              : json['element'] is Map
+                  ? [ClassInfoElement.fromJson(json['element'])]
+                  : null,
+      singleElement: json['element'] is Map,
+      contextRelationship: json['contextRelationship'] == null
           ? null
-          : (json['contextRelationships'] as List)
-              .map((e) => RelationshipInfo.fromJson(e))
-              .toList(),
-      targetContextRelationships: json['targetContextRelationships'] == null
+          : json['contextRelationship'] is List
+              ? (json['contextRelationship'] as List)
+                  .map((e) => RelationshipInfo.fromJson(e))
+                  .toList()
+              : json['contextRelationship'] is Map
+                  ? [RelationshipInfo.fromJson(json['contextRelationship'])]
+                  : null,
+      singleContextRelationship: json['contextRelationship'] is Map,
+      targetContextRelationship: json['targetContextRelationship'] == null
           ? null
-          : (json['targetContextRelationships'] as List)
-              .map((e) => RelationshipInfo.fromJson(e))
-              .toList(),
-      searches: json['searches'] == null
+          : json['targetContextRelationship'] is List
+              ? (json['targetContextRelationship'] as List)
+                  .map((e) => RelationshipInfo.fromJson(e))
+                  .toList()
+              : json['targetContextRelationship'] is Map
+                  ? [
+                      RelationshipInfo.fromJson(
+                          json['targetContextRelationship'])
+                    ]
+                  : null,
+      singleTargetContextRelationship: json['targetContextRelationship'] is Map,
+      search: json['search'] == null
           ? null
-          : (json['searches'] as List)
-              .map((e) => SearchInfo.fromJson(e))
-              .toList(),
-      inferenceExpressions: json['inferenceExpressions'] == null
+          : json['search'] is List
+              ? (json['search'] as List)
+                  .map((e) => SearchInfo.fromJson(e))
+                  .toList()
+              : json['search'] is Map
+                  ? [SearchInfo.fromJson(json['search'])]
+                  : null,
+      singleSearch: json['search'] is Map,
+      inferenceExpression: json['inferenceExpression'] == null
           ? null
-          : (json['inferenceExpressions'] as List)
-              .map((e) => ExpressionInfo.fromJson(e))
-              .toList(),
-      constraints: json['constraints'] == null
+          : json['inferenceExpression'] is List
+              ? (json['inferenceExpression'] as List)
+                  .map((e) => ExpressionInfo.fromJson(e))
+                  .toList()
+              : json['inferenceExpression'] is Map
+                  ? [ExpressionInfo.fromJson(json['inferenceExpression'])]
+                  : null,
+      singleInferenceExpression: json['inferenceExpression'] is Map,
+      constraint: json['constraint'] == null
           ? null
-          : (json['constraints'] as List)
-              .map((e) => ConstraintInfo.fromJson(e))
-              .toList(),
+          : json['constraint'] is List
+              ? (json['constraint'] as List)
+                  .map((e) => ConstraintInfo.fromJson(e))
+                  .toList()
+              : json['constraint'] is Map
+                  ? [ConstraintInfo.fromJson(json['constraint'])]
+                  : null,
+      singleConstraint: json['constraint'] is Map,
     );
   }
 
@@ -101,6 +156,10 @@ class ClassInfo extends TypeInfo {
       data['namespace'] = namespace;
     }
     data['name'] = name;
+    if (baseType != null) {
+      data['baseType'] = baseType;
+    }
+    data['retrievable'] = retrievable;
     if (identifier != null) {
       data['identifier'] = identifier;
     }
@@ -119,36 +178,47 @@ class ClassInfo extends TypeInfo {
     if (target != null) {
       data['target'] = target;
     }
-    data['retrievable'] = retrievable;
     if (primaryCodePath != null) {
       data['primaryCodePath'] = primaryCodePath;
     }
     if (primaryValueSetPath != null) {
       data['primaryValueSetPath'] = primaryValueSetPath;
     }
-    if (parameters != null) {
-      data['parameters'] = parameters!.map((e) => e.toJson()).toList();
+    if (parameter != null) {
+      data['parameter'] = singleParameter ?? false
+          ? parameter!.first.toJson()
+          : parameter!.map((e) => e.toJson()).toList();
     }
-    if (elements != null) {
-      data['elements'] = elements!.map((e) => e.toJson()).toList();
+    if (element != null) {
+      data['element'] = singleElement ?? false
+          ? element!.first.toJson()
+          : element!.map((e) => e.toJson()).toList();
     }
-    if (contextRelationships != null) {
-      data['contextRelationships'] =
-          contextRelationships!.map((e) => e.toJson()).toList();
+    if (contextRelationship != null) {
+      data['contextRelationship'] = singleContextRelationship ?? false
+          ? contextRelationship!.first.toJson()
+          : contextRelationship!.map((e) => e.toJson()).toList();
     }
-    if (targetContextRelationships != null) {
-      data['targetContextRelationships'] =
-          targetContextRelationships!.map((e) => e.toJson()).toList();
+    if (targetContextRelationship != null) {
+      data['targetContextRelationship'] =
+          singleTargetContextRelationship ?? false
+              ? targetContextRelationship!.first.toJson()
+              : targetContextRelationship!.map((e) => e.toJson()).toList();
     }
-    if (searches != null) {
-      data['searches'] = searches!.map((e) => e.toJson()).toList();
+    if (search != null) {
+      data['search'] = singleSearch ?? false
+          ? search!.first.toJson()
+          : search!.map((e) => e.toJson()).toList();
     }
-    if (inferenceExpressions != null) {
-      data['inferenceExpressions'] =
-          inferenceExpressions!.map((e) => e.toJson()).toList();
+    if (inferenceExpression != null) {
+      data['inferenceExpression'] = singleInferenceExpression ?? false
+          ? inferenceExpression!.first.toJson()
+          : inferenceExpression!.map((e) => e.toJson()).toList();
     }
-    if (constraints != null) {
-      data['constraints'] = constraints!.map((e) => e.toJson()).toList();
+    if (constraint != null) {
+      data['constraint'] = singleConstraint ?? false
+          ? constraint!.first.toJson()
+          : constraint!.map((e) => e.toJson()).toList();
     }
     return data;
   }

@@ -10,6 +10,7 @@ class TupleTypeInfo extends TypeInfo {
 
   TupleTypeInfo({
     this.element,
+    super.baseType,
   });
 
   factory TupleTypeInfo.fromJson(Map<String, dynamic> json) {
@@ -19,6 +20,7 @@ class TupleTypeInfo extends TypeInfo {
               .map((i) => TupleTypeInfoElement.fromJson(i))
               .toList()
           : null,
+      baseType: json['baseType'] as String?,
     );
   }
 
@@ -27,6 +29,9 @@ class TupleTypeInfo extends TypeInfo {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{'type': type};
+    if (baseType != null) {
+      data['baseType'] = baseType;
+    }
     if (element != null) {
       data['element'] = element!.map((v) => v.toJson()).toList();
     }

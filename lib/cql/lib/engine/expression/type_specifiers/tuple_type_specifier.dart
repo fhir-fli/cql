@@ -8,7 +8,7 @@ class TupleTypeSpecifier extends TypeSpecifier {
   List<TupleTypeSpecifierElement>? element;
 
   @override
-  String type = 'TupleType';
+  String type = 'TupleTypeSpecifier';
 
   TupleTypeSpecifier({
     this.element,

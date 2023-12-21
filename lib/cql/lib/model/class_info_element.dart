@@ -81,9 +81,17 @@ class ClassInfoElement {
   factory ClassInfoElement.fromJson(Map<String, dynamic> json) {
     return ClassInfoElement(
       name: json['name'],
-      typeSpecifier: json['typeSpecifier'],
-      elementTypeSpecifier: json['elementTypeSpecifier'],
-      binding: json['binding'],
+      typeSpecifier:
+          json['typeSpecifier'] == null || json['typeSpecifier'] == ''
+              ? null
+              : TypeSpecifier.fromJson(json['typeSpecifier']),
+      elementTypeSpecifier: json['elementTypeSpecifier'] == null ||
+              json['elementTypeSpecifier'] == ''
+          ? null
+          : TypeSpecifier.fromJson(json['elementTypeSpecifier']),
+      binding: json['binding'] == null || json['binding'] == ''
+          ? null
+          : BindingInfo.fromJson(json['binding']),
       type: json['type'],
       elementType: json['elementType'],
       prohibited: json['prohibited'],
@@ -101,21 +109,22 @@ class ClassInfoElement {
 
   Map<String, dynamic> toJson() => {
         'name': name,
-        'typeSpecifier': typeSpecifier,
-        'elementTypeSpecifier': elementTypeSpecifier,
-        'binding': binding,
-        'type': type,
-        'elementType': elementType,
-        'prohibited': prohibited,
-        'oneBased': oneBased,
-        'target': target,
-        'label': label,
-        'description': description,
-        'definition': definition,
-        'comment': comment,
-        'min': min,
-        'max': max,
-        'mustSupport': mustSupport,
+        if (typeSpecifier != null) 'typeSpecifier': typeSpecifier!.toJson(),
+        if (elementTypeSpecifier != null)
+          'elementTypeSpecifier': elementTypeSpecifier!.toJson(),
+        if (binding != null) 'binding': binding!.toJson(),
+        if (type != null) 'type': type,
+        if (elementType != null) 'elementType': elementType,
+        if (prohibited != null) 'prohibited': prohibited,
+        if (oneBased != null) 'oneBased': oneBased,
+        if (target != null) 'target': target,
+        if (label != null) 'label': label,
+        if (description != null) 'description': description,
+        if (definition != null) 'definition': definition,
+        if (comment != null) 'comment': comment,
+        if (min != null) 'min': min,
+        if (max != null) 'max': max,
+        if (mustSupport != null) 'mustSupport': mustSupport,
       };
 
   void addConstraint(ConstraintInfo constraint) {

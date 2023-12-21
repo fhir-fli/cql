@@ -9,7 +9,7 @@ class ParameterTypeSpecifier extends TypeSpecifier {
   QName name;
 
   @override
-  final String type = 'ParameterType';
+  final String type = 'ParameterTypeSpecifier';
 
   ParameterTypeSpecifier({required String name}) : name = QName.fromFull(name);
 

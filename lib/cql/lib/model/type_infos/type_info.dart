@@ -17,7 +17,6 @@ abstract class TypeInfo {
   });
 
   factory TypeInfo.fromJson(Map<String, dynamic> json) {
-    print('type info from json');
     final type = json['type'];
     switch (type) {
       case 'ChoiceTypeInfo':

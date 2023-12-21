@@ -14,6 +14,7 @@ class ChoiceTypeInfo extends TypeInfo {
   ChoiceTypeInfo({
     this.type,
     this.choice,
+    super.baseType,
   });
 
   factory ChoiceTypeInfo.fromJson(Map<String, dynamic> json) {
@@ -28,6 +29,7 @@ class ChoiceTypeInfo extends TypeInfo {
               .map((i) => TypeSpecifier.fromJson(i))
               .toList()
           : null,
+      baseType: json['baseType'] as String?,
     );
   }
 
@@ -39,6 +41,9 @@ class ChoiceTypeInfo extends TypeInfo {
     }
     if (choice != null) {
       data['choice'] = choice!.map((v) => v.toJson()).toList();
+    }
+    if (baseType != null) {
+      data['baseType'] = baseType;
     }
     return data;
   }

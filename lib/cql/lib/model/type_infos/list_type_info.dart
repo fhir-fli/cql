@@ -16,6 +16,7 @@ class ListTypeInfo extends TypeInfo {
   ListTypeInfo({
     this.elementTypeSpecifier,
     this.elementType,
+    super.baseType,
   });
 
   factory ListTypeInfo.fromJson(Map<String, dynamic> json) {
@@ -24,6 +25,7 @@ class ListTypeInfo extends TypeInfo {
           ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
           : null,
       elementType: json['elementType'] as String?,
+      baseType: json['baseType'] as String?,
     );
   }
 
@@ -35,6 +37,9 @@ class ListTypeInfo extends TypeInfo {
     }
     if (elementType != null) {
       data['elementType'] = elementType;
+    }
+    if (baseType != null) {
+      data['baseType'] = baseType;
     }
     return data;
   }

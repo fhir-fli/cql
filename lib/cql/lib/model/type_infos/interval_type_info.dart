@@ -16,6 +16,7 @@ class IntervalTypeInfo extends TypeInfo {
   IntervalTypeInfo({
     this.pointTypeSpecifier,
     this.pointType,
+    super.baseType,
   });
 
   factory IntervalTypeInfo.fromJson(Map<String, dynamic> json) {
@@ -24,6 +25,7 @@ class IntervalTypeInfo extends TypeInfo {
           ? TypeSpecifier.fromJson(json['pointTypeSpecifier'])
           : null,
       pointType: json['pointType'] as String?,
+      baseType: json['baseType'] as String?,
     );
   }
 
@@ -35,6 +37,9 @@ class IntervalTypeInfo extends TypeInfo {
     }
     if (pointType != null) {
       data['pointType'] = pointType;
+    }
+    if (baseType != null) {
+      data['baseType'] = baseType;
     }
     return data;
   }

@@ -22,15 +22,17 @@ class NamedTypeSpecifier extends TypeSpecifier {
       );
 
   factory NamedTypeSpecifier.fromJson(Map<String, dynamic> json) {
-    String? nameSpace = json['modelName'] as String?;
+    String? modelName = json['modelName'] as String?;
+    String? name = json['name'] as String?;
     return NamedTypeSpecifier(
-      namespace: QName.fromFull(nameSpace),
-    );
+      namespace: QName.fromFull(name ?? modelName ?? ''),
+    )..modelName = modelName;
   }
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type,
+        if (modelName != null) 'modelName': modelName,
         'name': namespace.toJson(),
-        'type': 'NamedTypeSpecifier',
       };
 }

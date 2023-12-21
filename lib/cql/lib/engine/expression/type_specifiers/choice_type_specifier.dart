@@ -9,7 +9,7 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
   List<TypeSpecifier>? choice;
 
   @override
-  final String type = 'ChoiceType';
+  final String type = 'ChoiceTypeSpecifier';
 
   ChoiceTypeSpecifier({this.choice});
 

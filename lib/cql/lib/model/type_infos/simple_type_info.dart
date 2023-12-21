@@ -14,12 +14,14 @@ class SimpleTypeInfo extends TypeInfo {
   SimpleTypeInfo({
     required this.name,
     this.namespace,
+    super.baseType,
   });
 
   factory SimpleTypeInfo.fromJson(Map<String, dynamic> json) {
     return SimpleTypeInfo(
       name: json['name'] as String,
       namespace: json['namespace'] as String?,
+      baseType: json['baseType'] as String?,
     );
   }
 
@@ -29,6 +31,9 @@ class SimpleTypeInfo extends TypeInfo {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{'type': type};
     data['name'] = name;
+    if (baseType != null) {
+      data['baseType'] = baseType;
+    }
     if (namespace != null) {
       data['namespace'] = namespace;
     }

@@ -7,7 +7,7 @@ import '../../../cql.dart';
 
 class ListTypeSpecifier extends TypeSpecifier {
   @override
-  final String type = 'List';
+  final String type = 'ListTypeSpecifier';
 
   /// Element type specifier.
   TypeSpecifier? elementTypeSpecifier;

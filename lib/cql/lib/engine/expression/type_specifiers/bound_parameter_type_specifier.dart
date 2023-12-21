@@ -15,7 +15,7 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
   TypeSpecifier? elementTypeSpecifier;
 
   @override
-  final String type = 'BoundParameterType';
+  final String type = 'BoundParameterTypeSpecifier';
 
   BoundParameterTypeSpecifier({
     required this.parameterName,
