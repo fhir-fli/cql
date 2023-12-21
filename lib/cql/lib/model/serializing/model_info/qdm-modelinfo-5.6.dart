@@ -165,29 +165,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -253,29 +253,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -288,29 +288,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -394,29 +394,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -453,29 +453,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -515,29 +515,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -595,29 +595,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -659,29 +659,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -747,29 +747,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -817,29 +817,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -877,29 +877,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -913,29 +913,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -999,39 +999,39 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1056,29 +1056,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1138,29 +1138,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1200,29 +1200,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1263,29 +1263,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1327,29 +1327,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1385,29 +1385,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1435,39 +1435,39 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1572,29 +1572,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1632,29 +1632,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1692,29 +1692,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1776,29 +1776,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1874,29 +1874,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -1934,29 +1934,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2006,29 +2006,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2082,29 +2082,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2146,29 +2146,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2214,29 +2214,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2280,29 +2280,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2339,29 +2339,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2409,29 +2409,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2473,29 +2473,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2559,29 +2559,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2643,29 +2643,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2723,29 +2723,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2759,29 +2759,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2821,29 +2821,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2864,29 +2864,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -2928,29 +2928,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3012,29 +3012,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3048,29 +3048,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3112,29 +3112,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3188,29 +3188,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3242,29 +3242,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3296,29 +3296,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3368,29 +3368,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3460,29 +3460,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3540,29 +3540,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3600,29 +3600,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -3666,44 +3666,44 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3728,29 +3728,29 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
                             "type": "ChoiceTypeSpecifier",
                             "choice": [
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "PatientEntity"
+                                    "name": "PatientEntity",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "CarePartner"
+                                    "name": "CarePartner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Practitioner"
+                                    "name": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Organization"
+                                    "name": "{http://hl7.org/fhir}Organization",
+                                    "type": "NamedTypeSpecifier"
                                 },
                                 {
-                                    "type": "NamedTypeSpecifier",
                                     "modelName": "QDM",
-                                    "name": "{http://hl7.org/fhir}Location"
+                                    "name": "{http://hl7.org/fhir}Location",
+                                    "type": "NamedTypeSpecifier"
                                 }
                             ]
                         }
@@ -4357,9 +4357,9 @@ final qdmmodelinfo56 = ModelInfo.fromJson({
         "keyElement": "id",
         "birthDateElement": "birthDatetime",
         "contextType": {
-            "type": "NamedTypeSpecifier",
             "modelName": "QDM",
-            "name": "{http://hl7.org/fhir}Patient"
+            "name": "{http://hl7.org/fhir}Patient",
+            "type": "NamedTypeSpecifier"
         }
     }
 });

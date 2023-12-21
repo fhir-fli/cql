@@ -46,4 +46,19 @@ abstract class ModelInfoReader {
       return value;
     }
   }
+
+  static dynamic removeModelName(dynamic value, String modelName) {
+    if (value is String) {
+      if (value.startsWith('$modelName.')) {
+        return value.replaceFirst('$modelName.', '');
+      }
+    } else if (value is List) {
+      return value.map((e) => removeModelName(e, modelName)).toList();
+    } else if (value is Map) {
+      return value.map((key, value) => MapEntry(
+          removeModelName(key, modelName), removeModelName(value, modelName)));
+    } else {
+      return value;
+    }
+  }
 }

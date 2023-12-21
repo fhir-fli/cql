@@ -352,12 +352,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -522,12 +522,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -968,15 +968,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -998,12 +998,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -1398,12 +1398,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -1462,12 +1462,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -1610,8 +1610,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -1626,16 +1626,16 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -1885,12 +1885,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -1954,8 +1954,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -1970,24 +1970,24 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -2204,16 +2204,16 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}String"
+                            "name": "{urn:hl7-org:elm-types:r1}String",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 },
@@ -2478,8 +2478,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -2594,16 +2594,16 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}String"
+                            "name": "{urn:hl7-org:elm-types:r1}String",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 },
@@ -2702,12 +2702,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -2725,12 +2725,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -3125,12 +3125,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -3199,12 +3199,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -3296,15 +3296,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -3731,15 +3731,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -3869,12 +3869,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -3900,15 +3900,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -4027,19 +4027,19 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -4097,15 +4097,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -4258,8 +4258,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -4388,8 +4388,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -4542,12 +4542,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -4612,8 +4612,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -4625,15 +4625,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -5132,202 +5132,202 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
-                            },
-                            {
-                                "type": "IntervalTypeSpecifier"
-                            },
-                            {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
+                            },
+                            {
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
+                            },
+                            {
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -5436,12 +5436,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -5453,15 +5453,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -5478,23 +5478,23 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -5559,8 +5559,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -5569,8 +5569,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -5795,31 +5795,31 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6231,12 +6231,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6445,12 +6445,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6462,12 +6462,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6569,12 +6569,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6586,12 +6586,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6661,12 +6661,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6890,12 +6890,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -6907,12 +6907,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -7221,12 +7221,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -7296,12 +7296,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -7327,8 +7327,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -7452,12 +7452,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -7565,8 +7565,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -7662,12 +7662,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -7684,12 +7684,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -7923,12 +7923,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -7940,12 +7940,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -8163,12 +8163,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -8239,12 +8239,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -8264,8 +8264,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -8535,19 +8535,19 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -8570,43 +8570,43 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -8725,43 +8725,43 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -8787,8 +8787,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Observation.ReferenceRange"
+                            "name": "Observation.ReferenceRange",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -8946,19 +8946,19 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -8981,43 +8981,43 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -9351,12 +9351,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -9379,12 +9379,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -9880,8 +9880,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -10135,19 +10135,19 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -10501,8 +10501,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Questionnaire.Item"
+                            "name": "Questionnaire.Item",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -10521,28 +10521,28 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -10578,44 +10578,44 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -10635,52 +10635,52 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                            "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                            "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Integer"
+                            "name": "{urn:hl7-org:elm-types:r1}Integer",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Date"
+                            "name": "{urn:hl7-org:elm-types:r1}Date",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Time"
+                            "name": "{urn:hl7-org:elm-types:r1}Time",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}String"
+                            "name": "{urn:hl7-org:elm-types:r1}String",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}String"
+                            "name": "{urn:hl7-org:elm-types:r1}String",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Code"
+                            "name": "{urn:hl7-org:elm-types:r1}Code",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                            "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 },
@@ -10832,8 +10832,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "QuestionnaireResponse.Item"
+                            "name": "QuestionnaireResponse.Item",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -10852,52 +10852,52 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -10908,8 +10908,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "QuestionnaireResponse.Item"
+                            "name": "QuestionnaireResponse.Item",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -11324,12 +11324,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -11352,15 +11352,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -11372,12 +11372,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -11585,12 +11585,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -11613,15 +11613,15 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -11633,12 +11633,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -11963,8 +11963,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -11999,12 +11999,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -12051,12 +12051,12 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -12098,8 +12098,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -12405,202 +12405,202 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
-                            },
-                            {
-                                "type": "IntervalTypeSpecifier"
-                            },
-                            {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
+                            },
+                            {
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
+                            },
+                            {
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -12626,202 +12626,202 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
-                            },
-                            {
-                                "type": "IntervalTypeSpecifier"
-                            },
-                            {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
+                            },
+                            {
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
+                            },
+                            {
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -12918,8 +12918,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -13034,20 +13034,20 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Date"
+                                "name": "{urn:hl7-org:elm-types:r1}Date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -13340,8 +13340,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -13367,43 +13367,43 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -13545,8 +13545,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -13704,8 +13704,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -13873,8 +13873,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -14070,19 +14070,19 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -14194,19 +14194,19 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     },
@@ -14441,8 +14441,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -14605,8 +14605,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -14769,8 +14769,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -14933,8 +14933,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -15097,8 +15097,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -15271,8 +15271,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -15435,8 +15435,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -15599,8 +15599,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -15763,8 +15763,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -15929,8 +15929,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -16108,8 +16108,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}Practitioner"
+                "name": "{http://hl7.org/fhir}Practitioner",
+                "type": "NamedTypeSpecifier"
             }
         },
         {
@@ -16117,8 +16117,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}Device"
+                "name": "{http://hl7.org/fhir}Device",
+                "type": "NamedTypeSpecifier"
             }
         },
         {
@@ -16126,8 +16126,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": "birthDate",
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}Patient"
+                "name": "{http://hl7.org/fhir}Patient",
+                "type": "NamedTypeSpecifier"
             }
         },
         {
@@ -16135,8 +16135,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}Encounter"
+                "name": "{http://hl7.org/fhir}Encounter",
+                "type": "NamedTypeSpecifier"
             }
         },
         {
@@ -16144,8 +16144,8 @@ final qicoremodelinfo400 = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}RelatedPerson"
+                "name": "{http://hl7.org/fhir}RelatedPerson",
+                "type": "NamedTypeSpecifier"
             }
         }
     ]

@@ -273,12 +273,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -409,28 +409,28 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -451,12 +451,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -896,24 +896,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1062,12 +1062,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1612,12 +1612,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1859,12 +1859,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1888,12 +1888,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1925,12 +1925,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2099,8 +2099,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Bundle.Link"
+                            "name": "Bundle.Link",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -2511,8 +2511,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "CapabilityStatement.Rest.Resource.SearchParam"
+                            "name": "CapabilityStatement.Rest.Resource.SearchParam",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -2521,8 +2521,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "CapabilityStatement.Rest.Resource.Operation"
+                            "name": "CapabilityStatement.Rest.Resource.Operation",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -3004,16 +3004,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3034,12 +3034,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3393,16 +3393,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3473,12 +3473,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3707,8 +3707,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ChargeItemDefinition.Applicability"
+                            "name": "ChargeItemDefinition.Applicability",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -3966,12 +3966,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4024,12 +4024,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4154,12 +4154,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4170,16 +4170,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4398,12 +4398,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4462,12 +4462,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4478,24 +4478,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4594,8 +4594,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ClaimResponse.Item.Adjudication"
+                            "name": "ClaimResponse.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -4704,12 +4704,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4720,16 +4720,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4771,8 +4771,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ClaimResponse.Item.Adjudication"
+                            "name": "ClaimResponse.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -4828,8 +4828,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ClaimResponse.Item.Adjudication"
+                            "name": "ClaimResponse.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -4885,8 +4885,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ClaimResponse.Item.Adjudication"
+                            "name": "ClaimResponse.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -5024,8 +5024,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ClaimResponse.Item.Adjudication"
+                            "name": "ClaimResponse.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -5059,8 +5059,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ClaimResponse.Item.Adjudication"
+                            "name": "ClaimResponse.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -5209,12 +5209,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -5522,8 +5522,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "CodeSystem.Concept"
+                            "name": "CodeSystem.Concept",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -5567,32 +5567,32 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -5900,16 +5900,16 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -6012,12 +6012,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6110,16 +6110,16 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -6438,12 +6438,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6502,8 +6502,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Composition.Section"
+                            "name": "Composition.Section",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -6612,12 +6612,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6628,12 +6628,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6738,8 +6738,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ConceptMap.Group.Element.Target.DependsOn"
+                            "name": "ConceptMap.Group.Element.Target.DependsOn",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -6875,24 +6875,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6903,24 +6903,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7093,12 +7093,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7208,8 +7208,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Consent.Provision"
+                            "name": "Consent.Provision",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -7499,12 +7499,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7571,12 +7571,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7628,12 +7628,12 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -7651,12 +7651,12 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -7674,12 +7674,12 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -7733,12 +7733,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7782,8 +7782,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Contract.Term"
+                            "name": "Contract.Term",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -7840,16 +7840,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8019,8 +8019,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Contract.Term.Offer.Answer"
+                            "name": "Contract.Term.Offer.Answer",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -8074,12 +8074,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8215,52 +8215,52 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "boolean"
+                            "name": "boolean",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "decimal"
+                            "name": "decimal",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "integer"
+                            "name": "integer",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "date"
+                            "name": "date",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "dateTime"
+                            "name": "dateTime",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "time"
+                            "name": "time",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "uri"
+                            "name": "uri",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Coding"
+                            "name": "Coding",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                            "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -8525,12 +8525,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8599,12 +8599,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8749,12 +8749,12 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "CodeableConcept"
+                            "name": "CodeableConcept",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -8816,12 +8816,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9002,16 +9002,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9022,16 +9022,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9133,204 +9133,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9355,40 +9355,40 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9399,40 +9399,40 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9498,12 +9498,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9586,16 +9586,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9679,12 +9679,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10071,12 +10071,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10506,12 +10506,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10536,16 +10536,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10651,20 +10651,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10724,16 +10724,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10839,12 +10839,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11397,12 +11397,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11456,12 +11456,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11472,16 +11472,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11937,204 +11937,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12153,204 +12153,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12361,204 +12361,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12575,40 +12575,40 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12619,40 +12619,40 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12797,204 +12797,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13839,12 +13839,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14267,28 +14267,28 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14309,20 +14309,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14582,8 +14582,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExampleScenario.Process"
+                            "name": "ExampleScenario.Process",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -14623,8 +14623,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExampleScenario.Process.Step"
+                            "name": "ExampleScenario.Process.Step",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -14867,8 +14867,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExplanationOfBenefit.Item.Adjudication"
+                            "name": "ExplanationOfBenefit.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -14971,12 +14971,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15036,12 +15036,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15052,16 +15052,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15103,8 +15103,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExplanationOfBenefit.Item.Adjudication"
+                            "name": "ExplanationOfBenefit.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -15160,8 +15160,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExplanationOfBenefit.Item.Adjudication"
+                            "name": "ExplanationOfBenefit.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -15217,8 +15217,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExplanationOfBenefit.Item.Adjudication"
+                            "name": "ExplanationOfBenefit.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -15284,16 +15284,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15304,12 +15304,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15362,12 +15362,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15476,12 +15476,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15492,16 +15492,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15657,8 +15657,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExplanationOfBenefit.Item.Adjudication"
+                            "name": "ExplanationOfBenefit.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -15738,8 +15738,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ExplanationOfBenefit.Item.Adjudication"
+                            "name": "ExplanationOfBenefit.Item.Adjudication",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -15822,12 +15822,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15911,12 +15911,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15927,24 +15927,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16044,204 +16044,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16397,16 +16397,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16417,16 +16417,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16441,24 +16441,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16514,20 +16514,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16668,12 +16668,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16739,32 +16739,32 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16775,12 +16775,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16964,8 +16964,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "GraphDefinition.Link"
+                            "name": "GraphDefinition.Link",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -17085,24 +17085,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17186,16 +17186,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17878,12 +17878,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18065,12 +18065,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18081,12 +18081,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18177,12 +18177,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18193,12 +18193,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18304,12 +18304,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18320,12 +18320,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18542,12 +18542,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18565,8 +18565,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ImplementationGuide.Definition.Page"
+                            "name": "ImplementationGuide.Definition.Page",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -18620,12 +18620,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18772,12 +18772,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19162,8 +19162,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Invoice.LineItem.PriceComponent"
+                            "name": "Invoice.LineItem.PriceComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -19218,12 +19218,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19376,12 +19376,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19937,12 +19937,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20509,12 +20509,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20680,12 +20680,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20748,12 +20748,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20778,12 +20778,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20885,12 +20885,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20957,12 +20957,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20977,12 +20977,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21293,12 +21293,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21343,12 +21343,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21399,20 +21399,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21432,12 +21432,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21699,12 +21699,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21715,12 +21715,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21918,12 +21918,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22015,12 +22015,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22039,12 +22039,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22365,12 +22365,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22526,12 +22526,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22541,8 +22541,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "MedicinalProductAuthorization.Procedure"
+                            "name": "MedicinalProductAuthorization.Procedure",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -22614,12 +22614,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22700,12 +22700,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22866,8 +22866,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "MedicinalProductIngredient.SpecifiedSubstance.Strength"
+                            "name": "MedicinalProductIngredient.SpecifiedSubstance.Strength",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -22928,12 +22928,12 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "CodeableConcept"
+                            "name": "CodeableConcept",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -23110,8 +23110,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "MedicinalProductPackaged.PackageItem"
+                            "name": "MedicinalProductPackaged.PackageItem",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -23419,12 +23419,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23514,12 +23514,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24533,12 +24533,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24726,20 +24726,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24760,48 +24760,48 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24903,48 +24903,48 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24964,8 +24964,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Observation.ReferenceRange"
+                            "name": "Observation.ReferenceRange",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -25382,8 +25382,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "OperationDefinition.Parameter"
+                            "name": "OperationDefinition.Parameter",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -25758,204 +25758,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25969,8 +25969,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Parameters.Parameter"
+                            "name": "Parameters.Parameter",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -26054,12 +26054,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26080,12 +26080,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26605,12 +26605,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26782,12 +26782,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26828,28 +26828,28 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26890,12 +26890,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26915,8 +26915,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "PlanDefinition.Action"
+                            "name": "PlanDefinition.Action",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -26994,12 +26994,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27066,16 +27066,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27101,12 +27101,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27420,24 +27420,24 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27728,12 +27728,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27843,8 +27843,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Provenance.Agent"
+                            "name": "Provenance.Agent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -28122,8 +28122,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Questionnaire.Item"
+                            "name": "Questionnaire.Item",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -28142,28 +28142,28 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28195,44 +28195,44 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28251,52 +28251,52 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "boolean"
+                            "name": "boolean",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "decimal"
+                            "name": "decimal",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "integer"
+                            "name": "integer",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "date"
+                            "name": "date",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "dateTime"
+                            "name": "dateTime",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "time"
+                            "name": "time",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "uri"
+                            "name": "uri",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Coding"
+                            "name": "Coding",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                            "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -28441,8 +28441,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "QuestionnaireResponse.Item"
+                            "name": "QuestionnaireResponse.Item",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -28461,52 +28461,52 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28516,8 +28516,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "QuestionnaireResponse.Item"
+                            "name": "QuestionnaireResponse.Item",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -28975,28 +28975,28 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29040,8 +29040,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "RequestGroup.Action"
+                            "name": "RequestGroup.Action",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -29085,12 +29085,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29183,12 +29183,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29366,12 +29366,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29507,20 +29507,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29549,20 +29549,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29585,20 +29585,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29990,12 +29990,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30071,12 +30071,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30095,12 +30095,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30834,16 +30834,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30862,16 +30862,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30882,12 +30882,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31305,12 +31305,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31337,12 +31337,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31384,12 +31384,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31423,12 +31423,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31565,12 +31565,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SimpleQuantity"
+                                "name": "SimpleQuantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31599,12 +31599,12 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "CodeableConcept"
+                            "name": "CodeableConcept",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -32069,8 +32069,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "StructureMap.Group.Rule"
+                            "name": "StructureMap.Group.Rule",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -32134,204 +32134,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -32419,24 +32419,24 @@ final cmodelinfo = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "id"
+                            "name": "id",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "boolean"
+                            "name": "boolean",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "integer"
+                            "name": "integer",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
-                            "name": "decimal"
+                            "name": "decimal",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -32699,12 +32699,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -32747,16 +32747,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33320,16 +33320,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33645,8 +33645,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "SubstanceSpecification.Structure.Isotope.MolecularWeight"
+                            "name": "SubstanceSpecification.Structure.Isotope.MolecularWeight",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -33742,12 +33742,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33800,8 +33800,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "SubstanceSpecification.Name"
+                            "name": "SubstanceSpecification.Name",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -33810,8 +33810,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "SubstanceSpecification.Name"
+                            "name": "SubstanceSpecification.Name",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -33875,12 +33875,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33891,12 +33891,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33916,12 +33916,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33940,20 +33940,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34142,16 +34142,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34199,12 +34199,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34256,12 +34256,12 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34282,16 +34282,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34363,20 +34363,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34576,204 +34576,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34797,204 +34797,204 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -36269,16 +36269,16 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -36370,20 +36370,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -36475,20 +36475,20 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -36623,8 +36623,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ValueSet.Compose.Include"
+                            "name": "ValueSet.Compose.Include",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -36803,8 +36803,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ValueSet.Compose.Include.Concept.Designation"
+                            "name": "ValueSet.Compose.Include.Concept.Designation",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -36813,8 +36813,8 @@ final cmodelinfo = ModelInfo.fromJson({
                     "elementTypeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
-                            "name": "ValueSet.Expansion.Contains"
+                            "name": "ValueSet.Expansion.Contains",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -36837,32 +36837,32 @@ final cmodelinfo = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -38819,8 +38819,8 @@ final cmodelinfo = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}Practitioner"
+                "name": "{http://hl7.org/fhir}Practitioner",
+                "type": "NamedTypeSpecifier"
             }
         },
         {
@@ -38828,8 +38828,8 @@ final cmodelinfo = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}Device"
+                "name": "{http://hl7.org/fhir}Device",
+                "type": "NamedTypeSpecifier"
             }
         },
         {
@@ -38837,8 +38837,8 @@ final cmodelinfo = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}Encounter"
+                "name": "{http://hl7.org/fhir}Encounter",
+                "type": "NamedTypeSpecifier"
             }
         },
         {
@@ -38846,8 +38846,8 @@ final cmodelinfo = ModelInfo.fromJson({
             "keyElement": "id",
             "birthDateElement": null,
             "contextType": {
-                "type": "NamedTypeSpecifier",
-                "name": "{http://hl7.org/fhir}RelatedPerson"
+                "name": "{http://hl7.org/fhir}RelatedPerson",
+                "type": "NamedTypeSpecifier"
             }
         }
     ]

@@ -356,14 +356,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -390,14 +390,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -807,14 +807,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -823,9 +823,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -939,14 +939,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2041,9 +2041,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "Bundle.LinkComponent"
+                            "name": "Bundle.LinkComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -2869,9 +2869,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "CapabilityStatement.Rest.Resource.SearchParamComponent"
+                            "name": "CapabilityStatement.Rest.Resource.SearchParamComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -3147,17 +3147,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3178,14 +3178,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3491,17 +3491,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3842,14 +3842,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3932,14 +3932,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3996,9 +3996,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -4012,24 +4012,24 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4324,9 +4324,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -4340,19 +4340,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4475,14 +4475,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4733,9 +4733,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ClaimResponse.Item.AdjudicationComponent"
+                            "name": "ClaimResponse.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -4802,9 +4802,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ClaimResponse.Item.AdjudicationComponent"
+                            "name": "ClaimResponse.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -4983,9 +4983,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ClaimResponse.Item.AdjudicationComponent"
+                            "name": "ClaimResponse.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -5028,9 +5028,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ClaimResponse.Item.AdjudicationComponent"
+                            "name": "ClaimResponse.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -5250,9 +5250,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -5354,14 +5354,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -5633,29 +5633,29 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -5713,9 +5713,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "CodeSystem.ConceptComponent"
+                            "name": "CodeSystem.ConceptComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -5979,19 +5979,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6118,9 +6118,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -6188,19 +6188,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6623,14 +6623,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6694,9 +6694,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "Composition.SectionComponent"
+                            "name": "Composition.SectionComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -6819,14 +6819,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6837,14 +6837,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6946,9 +6946,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ConceptMap.Group.Element.Target.DependsOnComponent"
+                            "name": "ConceptMap.Group.Element.Target.DependsOnComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -7168,14 +7168,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -7184,9 +7184,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7197,19 +7197,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -7218,9 +7218,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7425,19 +7425,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7943,14 +7943,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8037,14 +8037,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8079,14 +8079,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8121,14 +8121,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8235,14 +8235,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8360,9 +8360,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "Contract.TermComponent"
+                            "name": "Contract.TermComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -8396,14 +8396,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9498,14 +9498,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9524,17 +9524,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9690,17 +9690,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9819,9 +9819,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -10078,14 +10078,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10495,14 +10495,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10528,9 +10528,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10553,17 +10553,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10683,79 +10683,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -10764,34 +10764,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10810,79 +10810,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -10891,34 +10891,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10929,79 +10929,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -11010,34 +11010,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11054,29 +11054,29 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11087,29 +11087,29 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11223,9 +11223,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -11440,19 +11440,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11463,14 +11463,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13048,14 +13048,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13117,9 +13117,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent"
+                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -13186,9 +13186,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent"
+                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -13232,19 +13232,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13255,14 +13255,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13407,14 +13407,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13471,9 +13471,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -13487,24 +13487,24 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13676,9 +13676,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent"
+                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -13771,9 +13771,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent"
+                            "name": "ExplanationOfBenefit.Item.AdjudicationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -13865,9 +13865,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -13881,19 +13881,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14072,14 +14072,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14189,79 +14189,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -14270,34 +14270,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14398,14 +14398,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14416,17 +14416,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14441,27 +14441,27 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14528,9 +14528,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -14539,9 +14539,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14718,14 +14718,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14804,17 +14804,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14825,14 +14825,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15035,9 +15035,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "GraphDefinition.LinkComponent"
+                            "name": "GraphDefinition.LinkComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -15215,19 +15215,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -15368,14 +15368,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16928,14 +16928,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17039,9 +17039,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ImplementationGuide.PageComponent"
+                            "name": "ImplementationGuide.PageComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -18373,9 +18373,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -18545,14 +18545,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18627,14 +18627,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18763,14 +18763,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18795,9 +18795,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -18909,14 +18909,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19027,14 +19027,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19295,14 +19295,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19575,14 +19575,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19593,9 +19593,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -20467,14 +20467,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20797,9 +20797,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -20823,52 +20823,52 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -20956,47 +20956,47 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -21017,9 +21017,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "Observation.ReferenceRangeComponent"
+                            "name": "Observation.ReferenceRangeComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -21327,14 +21327,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21404,9 +21404,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "OperationDefinition.ParameterComponent"
+                            "name": "OperationDefinition.ParameterComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -21770,79 +21770,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -21851,34 +21851,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21892,9 +21892,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "Parameters.ParameterComponent"
+                            "name": "Parameters.ParameterComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -21981,14 +21981,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22009,14 +22009,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22953,9 +22953,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -23063,25 +23063,25 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23135,9 +23135,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "PlanDefinition.ActionComponent"
+                            "name": "PlanDefinition.ActionComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -23175,17 +23175,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23698,9 +23698,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -23966,17 +23966,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23987,14 +23987,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24510,14 +24510,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24528,14 +24528,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24578,19 +24578,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24600,9 +24600,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "Provenance.AgentComponent"
+                            "name": "Provenance.AgentComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -24831,54 +24831,54 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24913,29 +24913,29 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25028,54 +25028,54 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25085,9 +25085,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "Questionnaire.ItemComponent"
+                            "name": "Questionnaire.ItemComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -25218,54 +25218,54 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25275,9 +25275,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "QuestionnaireResponse.ItemComponent"
+                            "name": "QuestionnaireResponse.ItemComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -25332,9 +25332,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "QuestionnaireResponse.ItemComponent"
+                            "name": "QuestionnaireResponse.ItemComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -25481,9 +25481,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -25830,14 +25830,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25932,9 +25932,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -26012,25 +26012,25 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26074,9 +26074,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "RequestGroup.ActionComponent"
+                            "name": "RequestGroup.ActionComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -26462,9 +26462,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -26486,14 +26486,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26552,9 +26552,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -27466,14 +27466,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27484,14 +27484,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27743,9 +27743,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -27817,14 +27817,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27873,9 +27873,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -28405,79 +28405,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -28486,34 +28486,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28568,24 +28568,24 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28691,9 +28691,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "StructureMap.Group.RuleComponent"
+                            "name": "StructureMap.Group.RuleComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -29042,14 +29042,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29176,17 +29176,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29239,14 +29239,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29325,17 +29325,17 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29360,14 +29360,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29414,14 +29414,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29518,14 +29518,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29676,79 +29676,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -29757,34 +29757,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29823,79 +29823,79 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Time"
+                                "name": "{urn:hl7-org:elm-types:r1}Time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Code"
+                                "name": "{urn:hl7-org:elm-types:r1}Code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -29904,34 +29904,34 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                                 "type": "IntervalTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Meta"
+                                "name": "Meta",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31685,19 +31685,19 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}DateTime"
+                                "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31736,14 +31736,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
                                 "type": "IntervalTypeSpecifier"
@@ -32085,9 +32085,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ValueSet.Compose.IncludeComponent"
+                            "name": "ValueSet.Compose.IncludeComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -32144,9 +32144,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ValueSet.Compose.Include.Concept.DesignationComponent"
+                            "name": "ValueSet.Compose.Include.Concept.DesignationComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 },
@@ -32155,9 +32155,9 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                     "typeSpecifier": {
                         "type": "ListTypeSpecifier",
                         "elementTypeSpecifier": {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "QUICKFHIR",
-                            "name": "ValueSet.Expansion.ContainsComponent"
+                            "name": "ValueSet.Expansion.ContainsComponent",
+                            "type": "NamedTypeSpecifier"
                         }
                     }
                 }
@@ -32195,24 +32195,24 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}String"
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Boolean"
+                                "name": "{urn:hl7-org:elm-types:r1}Boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Integer"
+                                "name": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Decimal"
+                                "name": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -32348,14 +32348,14 @@ final quickfhirmodelinfo301 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "System",
-                                "name": "{urn:hl7-org:elm-types:r1}Concept"
+                                "name": "{urn:hl7-org:elm-types:r1}Concept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "QUICKFHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }

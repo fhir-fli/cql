@@ -9,6 +9,7 @@ Future<void> main() async {
   final files = dir.listSync();
   final StandardModelInfoReader reader = StandardModelInfoReader();
   for (final file in files) {
+    print(file.path);
     final fileString = await File(file.path).readAsString();
     final modelInfo = reader.read(fileString);
     final json = modelInfo.toJson();

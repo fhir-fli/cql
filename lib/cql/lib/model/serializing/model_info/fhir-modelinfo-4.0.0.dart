@@ -40,14 +40,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -58,19 +58,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -200,14 +200,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "CodeableConcept"
+                            "name": "CodeableConcept",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -293,14 +293,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -494,14 +494,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -962,19 +962,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1118,29 +1118,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1586,14 +1586,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -1844,249 +1844,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2105,249 +2105,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2358,249 +2358,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2617,49 +2617,49 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2670,49 +2670,49 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -2777,249 +2777,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3191,19 +3191,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -3903,14 +3903,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4210,14 +4210,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4300,39 +4300,39 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4662,24 +4662,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4808,34 +4808,34 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -4856,24 +4856,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -5196,14 +5196,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "CodeableConcept"
+                            "name": "CodeableConcept",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -5715,14 +5715,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -5743,14 +5743,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6159,24 +6159,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6649,14 +6649,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -6901,14 +6901,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7260,19 +7260,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7311,14 +7311,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7479,14 +7479,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7497,19 +7497,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7588,14 +7588,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -7907,14 +7907,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8233,39 +8233,39 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -8983,14 +8983,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9115,14 +9115,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9149,14 +9149,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9234,14 +9234,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9252,14 +9252,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9626,19 +9626,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9706,64 +9706,64 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "boolean"
+                            "name": "boolean",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "decimal"
+                            "name": "decimal",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "integer"
+                            "name": "integer",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "date"
+                            "name": "date",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "dateTime"
+                            "name": "dateTime",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "time"
+                            "name": "time",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "uri"
+                            "name": "uri",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Coding"
+                            "name": "Coding",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                            "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -9867,14 +9867,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9974,14 +9974,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -9996,14 +9996,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10130,14 +10130,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10214,14 +10214,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10489,14 +10489,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10770,14 +10770,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -10788,14 +10788,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11353,19 +11353,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11446,14 +11446,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11523,14 +11523,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11717,14 +11717,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11791,14 +11791,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -11896,14 +11896,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12373,14 +12373,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12405,14 +12405,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12656,14 +12656,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12732,14 +12732,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12905,39 +12905,39 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -12948,14 +12948,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13012,19 +13012,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13209,24 +13209,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13387,14 +13387,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13479,54 +13479,54 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -13820,14 +13820,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14201,14 +14201,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14319,14 +14319,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14337,19 +14337,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14487,14 +14487,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -14515,19 +14515,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15199,14 +15199,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15365,59 +15365,59 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15571,14 +15571,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -15858,19 +15858,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16261,29 +16261,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16294,29 +16294,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16534,14 +16534,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16834,14 +16834,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -16912,14 +16912,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17266,14 +17266,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17455,14 +17455,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17633,14 +17633,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17651,29 +17651,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -17972,14 +17972,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18121,14 +18121,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18343,14 +18343,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18493,24 +18493,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18539,24 +18539,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18579,24 +18579,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18667,14 +18667,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18801,14 +18801,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -18957,14 +18957,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19125,14 +19125,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19151,24 +19151,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19416,14 +19416,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19751,14 +19751,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19807,14 +19807,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -19884,29 +19884,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "id"
+                            "name": "id",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "boolean"
+                            "name": "boolean",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "integer"
+                            "name": "integer",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "decimal"
+                            "name": "decimal",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -19948,14 +19948,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20208,14 +20208,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -20939,19 +20939,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -21004,14 +21004,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21142,34 +21142,34 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21190,14 +21190,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21280,24 +21280,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21344,14 +21344,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -21369,64 +21369,64 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "boolean"
+                            "name": "boolean",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "decimal"
+                            "name": "decimal",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "integer"
+                            "name": "integer",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "date"
+                            "name": "date",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "dateTime"
+                            "name": "dateTime",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "time"
+                            "name": "time",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "uri"
+                            "name": "uri",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Coding"
+                            "name": "Coding",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                            "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -21901,14 +21901,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22178,14 +22178,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -22261,14 +22261,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22359,249 +22359,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22952,14 +22952,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -22970,19 +22970,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23049,19 +23049,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23072,14 +23072,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23222,14 +23222,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -23999,14 +23999,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24031,19 +24031,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24181,19 +24181,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24212,19 +24212,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24235,14 +24235,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24728,14 +24728,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24746,14 +24746,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -24876,14 +24876,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25076,14 +25076,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25214,14 +25214,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25239,14 +25239,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -25335,29 +25335,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25579,14 +25579,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25623,19 +25623,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25646,19 +25646,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -25865,249 +25865,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26130,29 +26130,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26647,19 +26647,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26680,14 +26680,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26758,14 +26758,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -26776,14 +26776,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27199,249 +27199,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -27937,249 +27937,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28216,19 +28216,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28307,14 +28307,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -28440,14 +28440,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28458,14 +28458,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28524,24 +28524,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28803,14 +28803,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -28903,14 +28903,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29018,14 +29018,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29319,24 +29319,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29357,59 +29357,59 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29518,14 +29518,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29624,14 +29624,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -29642,29 +29642,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30737,14 +30737,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30863,34 +30863,34 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -30941,14 +30941,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31239,249 +31239,249 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "base64Binary"
+                                "name": "base64Binary",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "code"
+                                "name": "code",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "id"
+                                "name": "id",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "instant"
+                                "name": "instant",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "markdown"
+                                "name": "markdown",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "oid"
+                                "name": "oid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "positiveInt"
+                                "name": "positiveInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "unsignedInt"
+                                "name": "unsignedInt",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "url"
+                                "name": "url",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uuid"
+                                "name": "uuid",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Annotation"
+                                "name": "Annotation",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactPoint"
+                                "name": "ContactPoint",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Count"
+                                "name": "Count",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Distance"
+                                "name": "Distance",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "HumanName"
+                                "name": "HumanName",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Identifier"
+                                "name": "Identifier",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Money"
+                                "name": "Money",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Ratio"
+                                "name": "{urn:hl7-org:elm-types:r1}Ratio",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "SampledData"
+                                "name": "SampledData",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Signature"
+                                "name": "Signature",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ContactDetail"
+                                "name": "ContactDetail",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Contributor"
+                                "name": "Contributor",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "DataRequirement"
+                                "name": "DataRequirement",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Expression"
+                                "name": "Expression",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "ParameterDefinition"
+                                "name": "ParameterDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "RelatedArtifact"
+                                "name": "RelatedArtifact",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "TriggerDefinition"
+                                "name": "TriggerDefinition",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "UsageContext"
+                                "name": "UsageContext",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Dosage"
+                                "name": "Dosage",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31931,14 +31931,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -31997,14 +31997,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -32023,14 +32023,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -32144,19 +32144,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "string"
+                            "name": "string",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Attachment"
+                            "name": "Attachment",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
@@ -32406,14 +32406,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -32714,34 +32714,34 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -32800,14 +32800,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33131,14 +33131,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33423,14 +33423,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33554,19 +33554,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33637,14 +33637,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33864,14 +33864,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -33882,14 +33882,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34148,64 +34148,64 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "decimal"
+                                "name": "decimal",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "integer"
+                                "name": "integer",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "time"
+                                "name": "time",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Attachment"
+                                "name": "Attachment",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Coding"
+                                "name": "Coding",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34399,14 +34399,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34425,14 +34425,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34557,14 +34557,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34575,19 +34575,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Address"
+                                "name": "Address",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34848,19 +34848,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34871,19 +34871,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -34898,29 +34898,29 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "boolean"
+                                "name": "boolean",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35017,14 +35017,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35065,34 +35065,34 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Age"
+                                "name": "Age",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Duration"
+                                "name": "Duration",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Timing"
+                                "name": "Timing",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35133,14 +35133,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "canonical"
+                                "name": "canonical",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "uri"
+                                "name": "uri",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35225,14 +35225,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "date"
+                                "name": "date",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35301,14 +35301,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "dateTime"
+                                "name": "dateTime",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Period"
+                                "name": "Period",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35545,19 +35545,19 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "string"
+                                "name": "string",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35600,24 +35600,24 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                         "type": "ChoiceTypeSpecifier",
                         "choice": [
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "CodeableConcept"
+                                "name": "CodeableConcept",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "{urn:hl7-org:elm-types:r1}Quantity"
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Range"
+                                "name": "Range",
+                                "type": "NamedTypeSpecifier"
                             },
                             {
-                                "type": "NamedTypeSpecifier",
                                 "modelName": "FHIR",
-                                "name": "Reference"
+                                "name": "Reference",
+                                "type": "NamedTypeSpecifier"
                             }
                         ]
                     }
@@ -35701,14 +35701,14 @@ final fhirmodelinfo400 = ModelInfo.fromJson({
                     "type": "ChoiceTypeSpecifier",
                     "choice": [
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "CodeableConcept"
+                            "name": "CodeableConcept",
+                            "type": "NamedTypeSpecifier"
                         },
                         {
-                            "type": "NamedTypeSpecifier",
                             "modelName": "FHIR",
-                            "name": "Reference"
+                            "name": "Reference",
+                            "type": "NamedTypeSpecifier"
                         }
                     ]
                 }
