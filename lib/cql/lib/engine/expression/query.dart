@@ -42,9 +42,9 @@ class Query extends Expression {
         'type': type,
         'source': List<dynamic>.from(source.map((x) => x.toJson())),
         if (let != null) 'let': List<dynamic>.from(let!.map((x) => x.toJson())),
-        if (relationship != null)
-          'relationship':
-              List<dynamic>.from(relationship!.map((x) => x.toJson())),
+        'relationship': relationship == null
+            ? []
+            : List<dynamic>.from(relationship!.map((x) => x.toJson())),
         if (where != null) 'where': where!.toJson(),
         if (returnClause != null) 'return': returnClause!.toJson(),
         if (sort != null) 'sort': sort!.toJson(),

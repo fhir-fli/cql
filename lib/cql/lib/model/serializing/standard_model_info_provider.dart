@@ -74,6 +74,15 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
     return modelIdentifier.id == "Simple";
   }
 
+  bool isSystemModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "System" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "urn:hl7-org:elm-types:r1");
+    }
+    return modelIdentifier.id == "System";
+  }
+
   @override
   ModelInfo? load(ModelIdentifier modelIdentifier) {
     if (isQDMModelIdentifier(modelIdentifier)) {
@@ -212,7 +221,21 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
       try {
         switch (localVersion) {
           case "1.0.0":
+          case "":
+          default:
             return simplemodelinfo;
+        }
+      } catch (e) {
+        // Do not throw, allow other providers to resolve
+      }
+    } else if (isSystemModelIdentifier(modelIdentifier)) {
+      final localVersion = modelIdentifier.version ?? "";
+      try {
+        switch (localVersion) {
+          case "1.0.0":
+          case "":
+          default:
+            return systemmodelinfo;
         }
       } catch (e) {
         // Do not throw, allow other providers to resolve

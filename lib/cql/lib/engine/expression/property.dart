@@ -25,10 +25,13 @@ class Property extends Expression {
         scope: json['scope'],
       );
 
+  String get type => 'Property';
+
   @override
   Map<String, dynamic> toJson() => {
         'path': path,
-        'source': source?.toJson(),
-        'scope': scope,
+        if (source != null) 'source': source!.toJson(),
+        if (scope != null) 'scope': scope,
+        'type': type,
       };
 }

@@ -17,9 +17,12 @@ class IncludedIn extends BinaryExpression {
         operand: json['operand']!,
       );
 
+  String get type => 'IncludedIn';
+
   @override
   Map<String, dynamic> toJson() => {
-        'precision': precision?.toJson(),
+        'type': type,
+        if (precision != null) 'precision': precision!.toJson(),
         'operand': operand,
       };
 }
