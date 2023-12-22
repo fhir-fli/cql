@@ -14,7 +14,7 @@ class Starts extends BinaryExpression {
       {required this.left,
       required this.right,
       this.precision,
-      required super.operands});
+      required super.operand});
 
   factory Starts.fromJson(Map<String, dynamic> json) => Starts(
         left: Expression.fromJson(json['left']),
@@ -22,7 +22,7 @@ class Starts extends BinaryExpression {
         precision: json['precision'] != null
             ? DateTimePrecisionJson.fromJson(json['precision'])
             : null,
-        operands: (json['operands'] as List)
+        operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))
             .toList(),
       );

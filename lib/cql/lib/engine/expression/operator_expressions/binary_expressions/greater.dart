@@ -7,14 +7,14 @@ import '../../../../cql.dart';
 /// The Greater operator is defined for the Integer, Decimal, String, Date, DateTime, Time, and Quantity types.
 /// Note that relative ratio comparisons are not directly supported due to healthcare variance.
 class Greater extends BinaryExpression {
-  Greater({required super.operands});
+  Greater({required super.operand});
 
   factory Greater.fromJson(Map<String, dynamic> json) => Greater(
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

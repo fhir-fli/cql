@@ -8,18 +8,18 @@ import '../../../../cql.dart';
 class In extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  In({this.precision, required super.operands});
+  In({this.precision, required super.operand});
 
   factory In.fromJson(Map<String, dynamic> json) => In(
         precision: json['precision'] != null
             ? DateTimePrecisionJson.fromJson(json['precision'])
             : null,
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision?.toJson(),
-        'operands': operands,
+        'operand': operand,
       };
 }

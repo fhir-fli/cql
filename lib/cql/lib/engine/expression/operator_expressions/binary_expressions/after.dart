@@ -7,14 +7,14 @@ import '../../../../cql.dart';
 class After extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  After({this.precision, required super.operands});
+  After({this.precision, required super.operand});
 
   factory After.fromJson(Map<String, dynamic> json) =>
-      After(precision: json['precision'], operands: json['operands']!);
+      After(precision: json['precision'], operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision,
-        'operands': operands,
+        'operand': operand,
       };
 }

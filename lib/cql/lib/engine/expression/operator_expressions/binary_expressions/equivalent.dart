@@ -5,13 +5,13 @@ import '../../../../cql.dart';
 /// Equivalence is the same as equality except for null behavior and specific type semantics.
 /// If either argument is null, the result is null.
 class Equivalent extends BinaryExpression {
-  Equivalent({required super.operands});
+  Equivalent({required super.operand});
 
   factory Equivalent.fromJson(Map<String, dynamic> json) =>
-      Equivalent(operands: json['operands']!);
+      Equivalent(operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

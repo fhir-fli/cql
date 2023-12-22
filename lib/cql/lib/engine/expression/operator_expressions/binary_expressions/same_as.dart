@@ -10,13 +10,13 @@ import '../../../../cql.dart';
 class SameAs extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  SameAs({this.precision, required super.operands});
+  SameAs({this.precision, required super.operand});
 
   factory SameAs.fromJson(Map<String, dynamic> json) => SameAs(
         precision: json['precision'] != null
             ? DateTimePrecisionJson.fromJson(json['precision'])
             : null,
-        operands: (json['operands'] as List)
+        operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))
             .toList(),
       );
@@ -24,6 +24,6 @@ class SameAs extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision?.toJson(),
-        'operands': operands.map((e) => e.toJson()).toList(),
+        'operand': operand.map((e) => e.toJson()).toList(),
       };
 }

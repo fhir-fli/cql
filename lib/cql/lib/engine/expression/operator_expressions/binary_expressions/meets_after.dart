@@ -14,13 +14,13 @@ class MeetsAfter extends BinaryExpression {
       {required this.left,
       required this.right,
       this.precision,
-      required super.operands});
+      required super.operand});
 
   factory MeetsAfter.fromJson(Map<String, dynamic> json) => MeetsAfter(
         left: json['left']!,
         right: json['right']!,
         precision: json['precision']!,
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
@@ -28,6 +28,6 @@ class MeetsAfter extends BinaryExpression {
         'left': left.toJson(),
         'right': right.toJson(),
         'precision': precision,
-        'operands': operands,
+        'operand': operand,
       };
 }

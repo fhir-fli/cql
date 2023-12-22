@@ -7,14 +7,14 @@ import '../../../../cql.dart';
 class Before extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  Before({this.precision, required super.operands});
+  Before({this.precision, required super.operand});
 
   factory Before.fromJson(Map<String, dynamic> json) =>
-      Before(precision: json['precision'], operands: json['operands']!);
+      Before(precision: json['precision'], operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision,
-        'operands': operands,
+        'operand': operand,
       };
 }

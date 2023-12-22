@@ -14,17 +14,17 @@ class Ends extends BinaryExpression {
       {required this.left,
       required this.right,
       this.precision,
-      required super.operands});
+      required super.operand});
 
   factory Ends.fromJson(Map<String, dynamic> json) => Ends(
       left: json['left'],
       right: json['right'],
       precision: json['precision'],
-      operands: json['operands']!);
+      operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision,
-        'operands': operands,
+        'operand': operand,
       };
 }

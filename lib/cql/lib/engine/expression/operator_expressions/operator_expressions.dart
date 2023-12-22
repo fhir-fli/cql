@@ -15,6 +15,7 @@ export 'message.dart';
 export 'now.dart';
 export 'operator_expression.dart';
 export 'position_of.dart';
+export 'replace_matches.dart';
 export 'round.dart';
 export 'slice.dart';
 export 'split_on_matches.dart';

@@ -4,14 +4,14 @@ import '../../../../cql.dart';
 /// The operator can be used with Decimal, Date, DateTime, and Time values.
 /// If the input value is null, the result is null.
 class HighBoundary extends BinaryExpression {
-  HighBoundary({required super.operands});
+  HighBoundary({required super.operand});
 
   factory HighBoundary.fromJson(Map<String, dynamic> json) => HighBoundary(
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

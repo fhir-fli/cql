@@ -6,14 +6,14 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
 class Multiply extends BinaryExpression {
-  Multiply({required super.operands});
+  Multiply({required super.operand});
 
   factory Multiply.fromJson(Map<String, dynamic> json) => Multiply(
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

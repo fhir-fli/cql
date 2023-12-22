@@ -5,14 +5,14 @@ import '../../../../cql.dart';
 /// If the index is less than 0 or greater than the length of the string or list being indexed, the result is null.
 /// If either argument is null, the result is null.
 class Indexer extends BinaryExpression {
-  Indexer({required super.operands});
+  Indexer({required super.operand});
 
   factory Indexer.fromJson(Map<String, dynamic> json) => Indexer(
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

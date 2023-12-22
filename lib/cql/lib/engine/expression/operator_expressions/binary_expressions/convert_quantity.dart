@@ -6,13 +6,13 @@ import '../../../../cql.dart';
 /// Otherwise, the result is null.
 /// If either argument is null, the result is null.
 class ConvertQuantity extends BinaryExpression {
-  ConvertQuantity({required super.operands});
+  ConvertQuantity({required super.operand});
 
   factory ConvertQuantity.fromJson(Map<String, dynamic> json) =>
-      ConvertQuantity(operands: json['operands']!);
+      ConvertQuantity(operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

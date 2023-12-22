@@ -4,16 +4,16 @@ import '../../../../cql.dart';
 /// If the prefix is the empty string, the result is true.
 /// If either argument is null, the result is null.
 class StartsWith extends BinaryExpression {
-  StartsWith({required super.operands});
+  StartsWith({required super.operand});
 
   factory StartsWith.fromJson(Map<String, dynamic> json) => StartsWith(
-        operands: (json['operands'] as List)
+        operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))
             .toList(),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands.map((e) => e.toJson()).toList(),
+        'operand': operand.map((e) => e.toJson()).toList(),
       };
 }

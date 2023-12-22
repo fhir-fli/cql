@@ -7,13 +7,13 @@ import '../../../../cql.dart';
 /// If the result of the division cannot be represented, or the right argument is 0, the result is null.
 /// The Divide operator is defined for the Decimal and Quantity types.
 class Divide extends BinaryExpression {
-  Divide({required super.operands});
+  Divide({required super.operand});
 
   factory Divide.fromJson(Map<String, dynamic> json) =>
-      Divide(operands: json['operands']!);
+      Divide(operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

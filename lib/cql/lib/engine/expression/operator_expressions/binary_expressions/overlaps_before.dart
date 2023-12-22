@@ -14,7 +14,7 @@ class OverlapsBefore extends BinaryExpression {
       {required this.left,
       required this.right,
       this.precision,
-      required super.operands});
+      required super.operand});
 
   factory OverlapsBefore.fromJson(Map<String, dynamic> json) => OverlapsBefore(
         left: Expression.fromJson(json['left']),
@@ -22,7 +22,7 @@ class OverlapsBefore extends BinaryExpression {
         precision: json['precision'] != null
             ? DateTimePrecisionJson.fromJson(json['precision'])
             : null,
-        operands: (json['operands'] as List)
+        operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))
             .toList(),
       );

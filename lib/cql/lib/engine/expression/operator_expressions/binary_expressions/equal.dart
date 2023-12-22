@@ -5,13 +5,13 @@ import '../../../../cql.dart';
 /// Equality semantics are defined to be value-based.
 /// If either argument is null, the result is null.
 class Equal extends BinaryExpression {
-  Equal({required super.operands});
+  Equal({required super.operand});
 
   factory Equal.fromJson(Map<String, dynamic> json) =>
-      Equal(operands: json['operands']!);
+      Equal(operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

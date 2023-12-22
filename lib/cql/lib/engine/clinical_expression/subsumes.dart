@@ -9,14 +9,14 @@ import '../../cql.dart';
 ///
 /// If either or both arguments are null, the result is null.
 class Subsumes extends BinaryExpression {
-  Subsumes({required super.operands});
+  Subsumes({required super.operand});
 
   factory Subsumes.fromJson(Map<String, dynamic> json) => Subsumes(
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

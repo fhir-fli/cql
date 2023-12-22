@@ -7,13 +7,13 @@ import '../../../../cql.dart';
 class ProperContains extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  ProperContains({this.precision, required super.operands});
+  ProperContains({this.precision, required super.operand});
 
   factory ProperContains.fromJson(Map<String, dynamic> json) => ProperContains(
         precision: json['precision'] != null
             ? DateTimePrecisionJson.fromJson(json['precision'])
             : null,
-        operands: (json['operands'] as List)
+        operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))
             .toList(),
       );
@@ -21,6 +21,6 @@ class ProperContains extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision?.toJson(),
-        'operands': operands.map((e) => e.toJson()).toList(),
+        'operand': operand.map((e) => e.toJson()).toList(),
       };
 }

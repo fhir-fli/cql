@@ -1,5 +1,3 @@
-import 'package:antlr4/antlr4.dart';
-
 import '../antlr4/cql_parser.dart';
 import 'base_info.dart';
 

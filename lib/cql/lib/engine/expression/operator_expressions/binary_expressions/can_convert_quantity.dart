@@ -4,13 +4,13 @@ import '../../../../cql.dart';
 /// Returns true if the conversion is valid according to the UCUM conversion.
 /// If either argument is null, the result is null.
 class CanConvertQuantity extends BinaryExpression {
-  CanConvertQuantity({required super.operands});
+  CanConvertQuantity({required super.operand});
 
   factory CanConvertQuantity.fromJson(Map<String, dynamic> json) =>
-      CanConvertQuantity(operands: json['operands']!);
+      CanConvertQuantity(operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

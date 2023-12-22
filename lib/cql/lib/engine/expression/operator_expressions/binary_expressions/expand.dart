@@ -8,13 +8,13 @@ import '../../../../cql.dart';
 /// If the list contains nulls, they will be excluded from the resulting list.
 /// If the source argument is null, the result is null.
 class Expand extends BinaryExpression {
-  Expand({required super.operands});
+  Expand({required super.operand});
 
   factory Expand.fromJson(Map<String, dynamic> json) =>
-      Expand(operands: json['operands']!);
+      Expand(operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

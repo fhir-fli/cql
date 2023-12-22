@@ -1,12 +1,15 @@
-import '../../cql.dart';
+import '../../../cql.dart';
 
-/// The ConceptRef expression allows a previously defined concept to be
-/// referenced within an expression.
-class ConceptRef extends Ref {
-  ConceptRef({super.name, super.libraryName}) : super(type: 'CodeRef');
+/// The CodeRef expression allows a previously defined code to be referenced
+/// within an expression.
+class CodeRef extends Ref {
+  CodeRef({
+    super.name,
+    super.libraryName,
+  }) : super(type: 'CodeRef');
 
-  factory ConceptRef.fromJson(Map<String, dynamic> json) {
-    return ConceptRef(
+  factory CodeRef.fromJson(Map<String, dynamic> json) {
+    return CodeRef(
       name: json['name'] as String?,
       libraryName: json['libraryName'] as String?,
     );

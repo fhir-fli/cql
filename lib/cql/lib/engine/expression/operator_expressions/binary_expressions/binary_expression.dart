@@ -2,10 +2,10 @@ import '../../../../cql.dart';
 
 /// Abstract base class for expressions that take two arguments.
 abstract class BinaryExpression extends OperatorExpression {
-  /// List of expressions as operands.
-  List<Expression> operands;
+  /// List of expressions as operand.
+  List<Expression> operand;
 
-  BinaryExpression({required this.operands});
+  BinaryExpression({required this.operand});
 
   factory BinaryExpression.fromJson(Map<String, dynamic> json) {
     final type = json['type'];
@@ -36,7 +36,6 @@ abstract class BinaryExpression extends OperatorExpression {
         return EndsWith.fromJson(json);
       case 'Ends':
         return Ends.fromJson(json);
-
       case 'Equal':
         return Equal.fromJson(json);
       case 'Equivalent':

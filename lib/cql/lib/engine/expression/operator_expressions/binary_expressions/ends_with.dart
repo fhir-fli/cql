@@ -4,13 +4,13 @@ import '../../../../cql.dart';
 /// If the suffix is the empty string, the result is true.
 /// If either argument is null, the result is null.
 class EndsWith extends BinaryExpression {
-  EndsWith({required super.operands});
+  EndsWith({required super.operand});
 
   factory EndsWith.fromJson(Map<String, dynamic> json) =>
-      EndsWith(operands: json['operands']!);
+      EndsWith(operand: json['operand']!);
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }

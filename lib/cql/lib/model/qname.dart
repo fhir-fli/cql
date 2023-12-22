@@ -30,7 +30,9 @@ class QName {
       );
 
   factory QName.fromNamespace(String? namespaceURI, String localPart) => QName(
-      namespaceURI: _nameSpace(localPart), localPart: localPart, prefix: '');
+      namespaceURI: _nameSpace(localPart, namespaceURI),
+      localPart: localPart,
+      prefix: '');
 
   factory QName.fromFull(String? qNameAsString) {
     if (qNameAsString?.isEmpty ?? true) {
@@ -59,18 +61,18 @@ class QName {
   String toJson() => toString();
 
   @override
-  bool operator ==(Object? objectToTest) {
-    if (objectToTest == this) {
+  bool operator ==(Object? other) {
+    if (other == this) {
       return true;
-    } else if (objectToTest is QName) {
-      final qName = objectToTest;
+    } else if (other is QName) {
+      final qName = other;
       return localPart == qName.localPart && namespaceURI == qName.namespaceURI;
     } else {
       return false;
     }
   }
 
-  bool equals(Object? objectToTest) => this == objectToTest;
+  bool equals(Object? other) => this == other;
 
   @override
   int get hashCode => namespaceURI.hashCode ^ localPart.hashCode;

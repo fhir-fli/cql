@@ -7,14 +7,14 @@ import '../../../../cql.dart';
 /// The GreaterOrEqual operator is defined for the Integer, Decimal, String, Date, DateTime, Time, and Quantity types.
 /// Note that relative ratio comparisons are not directly supported due to healthcare variance.
 class GreaterOrEqual extends BinaryExpression {
-  GreaterOrEqual({required super.operands});
+  GreaterOrEqual({required super.operand});
 
   factory GreaterOrEqual.fromJson(Map<String, dynamic> json) => GreaterOrEqual(
-        operands: json['operands']!,
+        operand: json['operand']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operands': operands,
+        'operand': operand,
       };
 }
