@@ -334,17 +334,20 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// codeIdentifier: (libraryIdentifier '.')? identifier;
   @override
-  IdentifierRef visitCodeIdentifier(CodeIdentifierContext ctx) {
+  CodeRef visitCodeIdentifier(CodeIdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? name;
+    String? libraryName;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
         name = visitIdentifier(child);
+      } else if (child is LibraryIdentifierContext) {
+        libraryName = visitLibraryIdentifier(child);
       }
     }
     if (name != null) {
-      return IdentifierRef(name: name);
+      return CodeRef(name: name, libraryName: libraryName);
     }
     throw ArgumentError('Invalid CodeIdentifier');
   }
@@ -480,7 +483,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     AccessModifier accessLevel = AccessModifier.public;
     String? name;
     String? display;
-    List<Ref> code = [];
+    List<CodeRef> code = [];
 
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is AccessModifierContext) {

@@ -12,6 +12,7 @@ abstract class Ref extends Expression {
   Ref({required this.name, this.libraryName});
 
   factory Ref.fromJson(Map<String, dynamic> json) {
+    print(json);
     switch (json['type']) {
       case 'CodeRef':
         return CodeRef.fromJson(json);
@@ -21,6 +22,14 @@ abstract class Ref extends Expression {
         return CodeSystemRef.fromJson(json);
       case 'ValueSetRef':
         return ValueSetRef.fromJson(json);
+      case 'ParameterRef':
+        return ParameterRef.fromJson(json);
+      case 'ExpressionRef':
+        return ExpressionRef.fromJson(json);
+      case 'FunctionRef':
+        return FunctionRef.fromJson(json);
+      case 'IdentifierRef':
+        return IdentifierRef.fromJson(json);
       default:
         throw ArgumentError('Invalid type: ${json['type']}');
     }

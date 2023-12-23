@@ -6,3 +6,16 @@ enum AccessModifier {
   @JsonValue('Private')
   private
 }
+
+extension AccessModifierExtension on AccessModifier {
+  static AccessModifier fromJson(String json) {
+    switch (json) {
+      case 'Public':
+        return AccessModifier.public;
+      case 'Private':
+        return AccessModifier.private;
+      default:
+        throw ArgumentError.value(json, 'json', 'Invalid AccessModifier.');
+    }
+  }
+}

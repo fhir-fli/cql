@@ -111,8 +111,17 @@ class LiteralDate extends Literal {
   LiteralDate({required this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Date'));
 
-  factory LiteralDate.fromJson(Map<String, dynamic> json) =>
-      LiteralDate(value: json['value'] as String);
+  factory LiteralDate.fromJson(Map<String, dynamic> json) {
+    if (json['value'] is String && DateTime.tryParse(json['value']) != null) {
+      return LiteralDate(value: json['value']);
+    } else {
+      return LiteralDate(
+          value:
+              '${LiteralInteger.fromJson(json['year']).value.toString().padLeft(4, '0')}'
+              '-${LiteralInteger.fromJson(json['month']).value.toString().padLeft(2, '0')}'
+              '-${LiteralInteger.fromJson(json['day']).value.toString().padLeft(2, '0')}');
+    }
+  }
 
   @override
   Map<String, dynamic> toJson() => {
@@ -132,8 +141,22 @@ class LiteralDateTime extends Literal {
   LiteralDateTime({required this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}DateTime'));
 
-  factory LiteralDateTime.fromJson(Map<String, dynamic> json) =>
-      LiteralDateTime(value: json['value'] as DateTime);
+  factory LiteralDateTime.fromJson(Map<String, dynamic> json) {
+    if (json['value'] is String && DateTime.tryParse(json['value']) != null) {
+      return LiteralDateTime(value: DateTime.parse(json['value']));
+    } else {
+      return LiteralDateTime(
+          value: DateTime(
+        LiteralInteger.fromJson(json['year']).value,
+        LiteralInteger.fromJson(json['month']).value,
+        LiteralInteger.fromJson(json['day']).value,
+        LiteralInteger.fromJson(json['hour']).value,
+        LiteralInteger.fromJson(json['minute']).value,
+        LiteralInteger.fromJson(json['second']).value,
+        LiteralInteger.fromJson(json['millisecond']).value,
+      ));
+    }
+  }
 
   @override
   Map<String, dynamic> toJson() => {
@@ -174,8 +197,13 @@ class LiteralInteger extends Literal {
   LiteralInteger({required this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Integer'));
 
-  factory LiteralInteger.fromJson(Map<String, dynamic> json) =>
-      LiteralInteger(value: json['value'] as int);
+  factory LiteralInteger.fromJson(Map<String, dynamic> json) => LiteralInteger(
+      value: json['value'] is int
+          ? json['value'] as int
+          : json['value'] is String
+              ? int.parse(json['value'] as String)
+              : throw ArgumentError(
+                  'LiteralInteger.fromJson: value is not an int or String'));
 
   @override
   Map<String, dynamic> toJson() => {

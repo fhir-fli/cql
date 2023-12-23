@@ -4,4 +4,19 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 class ToChars extends UnaryExpression {
   ToChars({required super.operand});
+
+  factory ToChars.fromJson(Map<String, dynamic> json) => ToChars(
+        operand: json['operand']!,
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'operand': operand.toJson(),
+      };
+
+  String get type => 'ToChars';
+
+  @override
+  String toString() => 'ToChars(${operand.toString()})';
 }

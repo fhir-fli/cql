@@ -10,7 +10,11 @@ class Quantity extends Expression {
   Quantity({required this.value, required this.unit});
 
   factory Quantity.fromJson(Map<String, dynamic> json) => Quantity(
-        value: json['value']!,
+        value: json['value'] is String
+            ? double.parse(json['value'])
+            : json['value'] is num
+                ? (json['value'] as num).toDouble()
+                : throw ArgumentError('Quantity value must be a number'),
         unit: json['unit']!,
       );
 
