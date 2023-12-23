@@ -26,8 +26,11 @@ class Ends extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision,
+        'type': type,
         'operand': isList
             ? operand.map((e) => e.toJson()).toList()
             : operand.first.toJson(),
       };
+
+  String get type => 'Ends';
 }

@@ -33,18 +33,19 @@ extension DateTimePrecisionJson on DateTimePrecision {
   };
 
   static const _jsonValuesReversed = {
-    'Year': DateTimePrecision.year,
-    'Month': DateTimePrecision.month,
-    'Week': DateTimePrecision.week,
-    'Day': DateTimePrecision.day,
-    'Hour': DateTimePrecision.hour,
-    'Minute': DateTimePrecision.minute,
-    'Second': DateTimePrecision.second,
-    'Millisecond': DateTimePrecision.millisecond,
+    'year': DateTimePrecision.year,
+    'month': DateTimePrecision.month,
+    'week': DateTimePrecision.week,
+    'day': DateTimePrecision.day,
+    'hour': DateTimePrecision.hour,
+    'minute': DateTimePrecision.minute,
+    'second': DateTimePrecision.second,
+    'millisecond': DateTimePrecision.millisecond,
   };
 
-  static DateTimePrecision fromJson(String? json) =>
-      _jsonValuesReversed[json] ?? DateTimePrecision.year;
+  static DateTimePrecision fromJson(String? json) => json == null
+      ? DateTimePrecision.year
+      : _jsonValuesReversed[json.toLowerCase()] ?? DateTimePrecision.year;
 
   String toJson() => _jsonValues[this]!;
 }

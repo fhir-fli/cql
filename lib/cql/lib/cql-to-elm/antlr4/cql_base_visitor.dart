@@ -114,12 +114,97 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// ('starts' | 'ends' | 'occurs')? quantityOffset? temporalRelationship
   ///	dateTimePrecisionSpecifier? ('start' | 'end')?
   @override
-  dynamic visitBeforeOrAfterIntervalOperatorPhrase(
-      BeforeOrAfterIntervalOperatorPhraseContext ctx) {
-    printIf(ctx, true);
+  Expression visitBeforeOrAfterIntervalOperatorPhrase(
+      BeforeOrAfterIntervalOperatorPhraseContext ctx,
+      [Expression? left,
+      Expression? right]) {
+    printIf(ctx);
     final int thisNode = getNextNode();
+    String? startsEndsOccurs;
+    LiteralQuantity? quantityOffset;
+    String? temporalRelationship;
+    DateTimePrecision? dateTimePrecisionSpecifier;
+    String? startEnd;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        if (child.text == 'starts' ||
+            child.text == 'ends' ||
+            child.text == 'occurs') {
+          startsEndsOccurs = child.text;
+        } else if (child.text == 'start' || child.text == 'end') {
+          startEnd = child.text;
+        }
+      } else if (child is QuantityOffsetContext) {
+        quantityOffset = visitQuantityOffset(child);
+      } else if (child is TemporalRelationshipContext) {
+        temporalRelationship = visitTemporalRelationship(child);
+      } else if (child is DateTimePrecisionSpecifierContext) {
+        dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
+      }
+    }
 
-    visitChildren(ctx);
+    if (temporalRelationship != null) {
+      final before = temporalRelationship.contains('before');
+      final after = temporalRelationship.contains('after');
+      final leftOperand = startsEndsOccurs != null && left != null
+          ? (startsEndsOccurs == 'starts'
+              ? Start(operand: left)
+              : (startsEndsOccurs == 'ends' ? End(operand: left) : null))
+          : null;
+      final rightOperand = before
+          ? Subtract(operand: [
+              if (right != null) right,
+              if (quantityOffset != null) quantityOffset
+            ])
+          : after
+              ? Add(operand: [
+                  if (right != null) right,
+                  if (quantityOffset != null) quantityOffset
+                ])
+              : null;
+      final same = temporalRelationship.contains('on or') ||
+          temporalRelationship.contains('or on') ||
+          (quantityOffset?.offset?.contains('more') ?? false);
+      if (before) {
+        if (same) {
+          return SameOrBefore(
+            operand: [
+              if (leftOperand != null) leftOperand,
+              if (rightOperand != null) rightOperand,
+            ],
+            precision: dateTimePrecisionSpecifier,
+          );
+        } else {
+          return Before(
+            operand: [
+              if (leftOperand != null) leftOperand,
+              if (rightOperand != null) rightOperand,
+            ],
+            precision: dateTimePrecisionSpecifier,
+          );
+        }
+      } else if (after) {
+        if (same) {
+          return SameOrAfter(
+            operand: [
+              if (leftOperand != null) leftOperand,
+              if (rightOperand != null) rightOperand,
+            ],
+            precision: dateTimePrecisionSpecifier,
+          );
+        } else {
+          return After(
+            operand: [
+              if (leftOperand != null) leftOperand,
+              if (rightOperand != null) rightOperand,
+            ],
+            precision: dateTimePrecisionSpecifier,
+          );
+        }
+      }
+    }
+    throw ArgumentError(
+        '$thisNode Invalid BeforeOrAfterIntervalOperatorPhrase');
   }
 
   /// The default implementation returns the result of calling
@@ -607,12 +692,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitDateTimePrecisionSpecifier(
+  DateTimePrecision visitDateTimePrecisionSpecifier(
       DateTimePrecisionSpecifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
+      return DateTimePrecisionJson.fromJson(ctx.getChild(0)!.text);
+    }
+    throw ArgumentError('$thisNode Invalid DateTimePrecisionSpecifier');
   }
 
   /// This can be usingDefinition, includeDefinition, codesystemDefinition,
@@ -714,13 +801,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitExclusiveRelativeQualifier(
-      ExclusiveRelativeQualifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
+  String visitExclusiveRelativeQualifier(
+          ExclusiveRelativeQualifierContext ctx) =>
+      _noQuoteString(ctx.text);
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
@@ -994,7 +1077,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     String? startsEndsOccurs;
     bool? properly;
     String? duringIncludedIn;
-    String? dateTimePrecisionSpecifier;
+    DateTimePrecision? dateTimePrecisionSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
         if (child.text == 'starts' ||
@@ -1616,12 +1699,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitOffsetRelativeQualifier(OffsetRelativeQualifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
+  String visitOffsetRelativeQualifier(OffsetRelativeQualifierContext ctx) =>
+      _noQuoteString(ctx.text);
 
   /// operandDefinition: referentialIdentifier typeSpecifier;
   @override
@@ -1867,11 +1946,23 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitQuantity(QuantityContext ctx) {
+  LiteralQuantity visitQuantity(QuantityContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    if (ctx.childCount == 2) {
+      final double? value = ctx.getChild(0)!.text == null
+          ? null
+          : double.tryParse(ctx.getChild(0)!.text!);
+      final String? unitText = ctx.getChild(1) is UnitContext
+          ? visitUnit(ctx.getChild(1) as UnitContext)
+          : null;
+      if (value != null) {
+        return LiteralQuantity(
+            value: LiteralDecimal(value: value), unit: unitText);
+      }
+    }
 
-    visitChildren(ctx);
+    throw ArgumentError('$thisNode Invalid Quantity');
   }
 
   /// The default implementation returns the result of calling
@@ -1884,14 +1975,30 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// quantityOffset: (quantity offsetRelativeQualifier?)
+  /// | (exclusiveRelativeQualifier quantity);
   @override
-  dynamic visitQuantityOffset(QuantityOffsetContext ctx) {
+  LiteralQuantity visitQuantityOffset(QuantityOffsetContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    LiteralQuantity? quantity;
+    String? relativeQualifier;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is QuantityContext) {
+        quantity = visitQuantity(child);
+      } else if (child is OffsetRelativeQualifierContext) {
+        relativeQualifier = visitOffsetRelativeQualifier(child);
+      } else if (child is ExclusiveRelativeQualifierContext) {
+        relativeQualifier = visitExclusiveRelativeQualifier(child);
+      }
+    }
+    if (quantity != null) {
+      return LiteralQuantity(
+          value: quantity.value,
+          unit: quantity.unit,
+          offset: relativeQualifier);
+    }
+    throw ArgumentError('$thisNode Invalid QuantityOffset');
   }
 
   /// The default implementation returns the result of calling
@@ -2328,12 +2435,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitTemporalRelationship(TemporalRelationshipContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
+  String visitTemporalRelationship(TemporalRelationshipContext ctx) =>
+      _noQuoteString(ctx.text);
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
@@ -2343,7 +2446,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
-        print('TermExpressionContext: ${child.runtimeType}');
+        print('TermExpressionContext: ${child.runtimeType} ${child.text}');
         return byContext(child);
       }
     }
@@ -2430,52 +2533,50 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// expression intervalOperatorPhrase expression # timingExpression
   @override
   Expression visitTimingExpression(TimingExpressionContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 3) {
       Expression left =
           visitTermExpression(ctx.children![0] as TermExpressionContext);
       Expression right =
           visitTermExpression(ctx.children![2] as TermExpressionContext);
+      Expression? result;
       final intervalOperatorPhrase = ctx.children![1];
-      print('intervalOperatorPhrase: ${intervalOperatorPhrase.runtimeType}');
       if (intervalOperatorPhrase
           is ConcurrentWithIntervalOperatorPhraseContext) {
-        final result =
+        result =
             visitConcurrentWithIntervalOperatorPhrase(intervalOperatorPhrase);
       } else if (intervalOperatorPhrase
           is IncludesIntervalOperatorPhraseContext) {
-        final result =
-            visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
+        result = visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
       } else if (intervalOperatorPhrase
           is IncludedInIntervalOperatorPhraseContext) {
-        final result =
-            visitIncludedInIntervalOperatorPhrase(intervalOperatorPhrase);
+        result = visitIncludedInIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is BeforeOrAfterIntervalOperatorPhraseContext) {
+        return visitBeforeOrAfterIntervalOperatorPhrase(
+            intervalOperatorPhrase, left, right);
+      } else if (intervalOperatorPhrase
+          is WithinIntervalOperatorPhraseContext) {
+        result = visitWithinIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase is MeetsIntervalOperatorPhraseContext) {
+        result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is OverlapsIntervalOperatorPhraseContext) {
+        result = visitOverlapsIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is StartsIntervalOperatorPhraseContext) {
+        result = visitStartsIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase is EndsIntervalOperatorPhraseContext) {
+        result = visitEndsIntervalOperatorPhrase(intervalOperatorPhrase);
+      }
+      if (result is BinaryExpression) {
         result.operand.add(left);
         result.operand.add(right);
         return result;
-      } else if (intervalOperatorPhrase
-          is BeforeOrAfterIntervalOperatorPhraseContext) {
-        final result =
-            visitBeforeOrAfterIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is WithinIntervalOperatorPhraseContext) {
-        final result =
-            visitWithinIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase is MeetsIntervalOperatorPhraseContext) {
-        final result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is OverlapsIntervalOperatorPhraseContext) {
-        final result =
-            visitOverlapsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is StartsIntervalOperatorPhraseContext) {
-        final result =
-            visitStartsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase is EndsIntervalOperatorPhraseContext) {
-        final result = visitEndsIntervalOperatorPhrase(intervalOperatorPhrase);
       }
     }
+
     throw ArgumentError('$thisNode Invalid TimingExpression');
   }
 
@@ -2614,12 +2715,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitUnit(UnitContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
+  String visitUnit(UnitContext ctx) => _noQuoteString(ctx.text);
 
   /// usingDefinition:
   /// 'using' modelIdentifier ('version' versionSpecifier)?;

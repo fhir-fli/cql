@@ -6,19 +6,11 @@ import '../../../../cql.dart';
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class Starts extends BinaryExpression {
-  final Expression left;
   final DateTimePrecision? precision;
-  final Expression right;
 
-  Starts(
-      {required this.left,
-      required this.right,
-      this.precision,
-      required super.operand});
+  Starts({this.precision, required super.operand, super.isList = false});
 
   factory Starts.fromJson(Map<String, dynamic> json) => Starts(
-        left: Expression.fromJson(json['left']),
-        right: Expression.fromJson(json['right']),
         precision: json['precision'] != null
             ? DateTimePrecisionJson.fromJson(json['precision'])
             : null,
@@ -29,8 +21,12 @@ class Starts extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'left': left.toJson(),
-        'right': right.toJson(),
-        'precision': precision?.toJson(),
+        'precision': precision,
+        'type': type,
+        'operand': isList
+            ? operand.map((e) => e.toJson()).toList()
+            : operand.first.toJson(),
       };
+
+  String get type => 'Starts';
 }

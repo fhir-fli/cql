@@ -21,7 +21,10 @@ class SameOrBefore extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'precision': precision?.toJson(),
+        'type': type,
+        if (precision != null) 'precision': precision?.toJson(),
         'operand': operand.map((e) => e.toJson()).toList(),
       };
+
+  String get type => 'SameOrBefore';
 }

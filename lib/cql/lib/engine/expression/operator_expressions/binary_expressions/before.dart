@@ -14,7 +14,10 @@ class Before extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'precision': precision,
+        'type': type,
+        if (precision != null) 'precision': precision!.toJson(),
         'operand': operand,
       };
+
+  String get type => 'Before';
 }

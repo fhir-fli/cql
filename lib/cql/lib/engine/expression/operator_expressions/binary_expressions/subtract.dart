@@ -17,6 +17,9 @@ class Subtract extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operand': operand.map((e) => e.toJson()).toList(),
       };
+
+  String get type => 'Subtract';
 }

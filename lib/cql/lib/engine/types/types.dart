@@ -18,6 +18,9 @@ class LiteralString extends Literal {
         'value': value,
         'type': type,
       };
+
+  @override
+  String toString() => value;
 }
 
 /// Represents a boolean type
@@ -36,6 +39,9 @@ class LiteralBoolean extends Literal {
         'value': value,
         'type': type,
       };
+
+  @override
+  String toString() => value.toString();
 }
 
 /// Represents a code type
@@ -64,6 +70,10 @@ class LiteralCode extends Literal {
         'version': version,
         'type': type,
       };
+
+  @override
+  String toString() => '$code${display != null ? ' ($display)' : ''} '
+      '${system != null ? '[$system${version != null ? '|$version' : ''}]' : ''}';
 }
 
 /// Represents a concept type
@@ -88,6 +98,10 @@ class LiteralConcept extends Literal {
         'display': display,
         'type': type,
       };
+
+  @override
+  String toString() =>
+      codes.map((LiteralCode e) => e.toString()).join(', ').toString().trim();
 }
 
 /// Represents a date type
@@ -106,6 +120,9 @@ class LiteralDate extends Literal {
         'value': value,
         'type': type,
       };
+
+  @override
+  String toString() => value;
 }
 
 /// Represents a date-time type
@@ -124,6 +141,9 @@ class LiteralDateTime extends Literal {
         'value': value.toString(),
         'type': type,
       };
+
+  @override
+  String toString() => value.toString();
 }
 
 /// Represents a decimal type
@@ -142,6 +162,9 @@ class LiteralDecimal extends Literal {
         'value': value.toString(),
         'type': type,
       };
+
+  @override
+  String toString() => value.toString();
 }
 
 /// Represents an integer type
@@ -160,6 +183,9 @@ class LiteralInteger extends Literal {
         'value': value.toString(),
         'type': type,
       };
+
+  @override
+  String toString() => value.toString();
 }
 
 /// Represents an integer type
@@ -179,15 +205,26 @@ class LiteralLongNumber extends Literal {
         'value': value,
         'type': type,
       };
+
+  @override
+  String toString() => value.toString();
 }
 
 /// Represents a quantity type
 class LiteralQuantity extends Literal {
   String? unit;
   LiteralDecimal value;
+  String? _offset;
+  static final List<String> _allowedOffsets = <String>[
+    'or more',
+    'or less',
+    'less than',
+    'more than',
+  ];
 
-  LiteralQuantity({required this.value, this.unit})
-      : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Quantity'));
+  LiteralQuantity({required this.value, this.unit, String? offset})
+      : _offset = _allowedOffsets.contains(offset) ? offset : null,
+        super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Quantity'));
 
   factory LiteralQuantity.fromJson(Map<String, dynamic> json) =>
       LiteralQuantity(
@@ -195,13 +232,20 @@ class LiteralQuantity extends Literal {
         unit: json['unit'] as String?,
       );
 
+  String? get offset => _offset;
+
   @override
   Map<String, dynamic> toJson() => {
-        'valueType': valueType.toJson(),
-        'value': value.toJson(),
+        'value': value.value,
         'unit': unit,
         'type': type,
       };
+
+  @override
+  String toString() => '${value.toString()}${unit != null ? ' $unit' : ''}';
+
+  @override
+  String get type => 'Quantity';
 }
 
 /// Represents a ratio type
@@ -226,6 +270,9 @@ class LiteralRatio extends Literal {
         'denominator': denominator.toJson(),
         'type': type,
       };
+
+  @override
+  String toString() => '${numerator.toString()} : ${denominator.toString()}';
 }
 
 /// Represents a string type
@@ -246,6 +293,9 @@ class LiteralStringElement extends Literal {
         'value': value,
         'type': type,
       };
+
+  @override
+  String toString() => value;
 }
 
 /// Represents a time type
@@ -264,6 +314,9 @@ class LiteralTime extends Literal {
         'value': value,
         'type': type,
       };
+
+  @override
+  String toString() => value ?? '';
 }
 
 /// Represents an interval of integers
@@ -318,9 +371,15 @@ class LiteralIntegerInterval extends IntervalExpression {
     }
     return json;
   }
+
+  @override
+  String toString() => '${lowClosed ? '[' : '('}'
+      '${low ?? lowClosedExpression ?? ''}, '
+      '${high ?? highClosedExpression ?? ''}'
+      '${highClosed ? ']' : ')'}';
 }
 
-// /// Represents an interval of decimals
+/// Represents an interval of decimals
 class LiteralDecimalInterval extends IntervalExpression {
   LiteralDecimalInterval({
     LiteralDecimal? low,
@@ -372,9 +431,15 @@ class LiteralDecimalInterval extends IntervalExpression {
     }
     return json;
   }
+
+  @override
+  String toString() => '${lowClosed ? '[' : '('}'
+      '${low ?? lowClosedExpression ?? ''}, '
+      '${high ?? highClosedExpression ?? ''}'
+      '${highClosed ? ']' : ')'}';
 }
 
-// /// Represents an interval of quantities
+/// Represents an interval of quantities
 class LiteralQuantityInterval extends IntervalExpression {
   LiteralQuantityInterval({
     LiteralQuantity? low,
@@ -426,9 +491,15 @@ class LiteralQuantityInterval extends IntervalExpression {
     }
     return json;
   }
+
+  @override
+  String toString() => '${lowClosed ? '[' : '('}'
+      '${low ?? lowClosedExpression ?? ''}, '
+      '${high ?? highClosedExpression ?? ''}'
+      '${highClosed ? ']' : ')'}';
 }
 
-// /// Represents an interval of dates
+/// Represents an interval of dates
 class LiteralDateInterval extends IntervalExpression {
   LiteralDateInterval({
     LiteralDate? low,
@@ -492,9 +563,15 @@ class LiteralDateInterval extends IntervalExpression {
     }
     return json;
   }
+
+  @override
+  String toString() => '${lowClosed ? '[' : '('}'
+      '${low ?? lowClosedExpression ?? ''}, '
+      '${high ?? highClosedExpression ?? ''}'
+      '${highClosed ? ']' : ')'}';
 }
 
-// /// Represents an interval of date-times
+/// Represents an interval of date-times
 class LiteralDateTimeInterval extends IntervalExpression {
   LiteralDateTimeInterval({
     LiteralDateTime? low,
@@ -567,9 +644,15 @@ class LiteralDateTimeInterval extends IntervalExpression {
     }
     return json;
   }
+
+  @override
+  String toString() => '${lowClosed ? '[' : '('}'
+      '${low ?? lowClosedExpression ?? ''}, '
+      '${high ?? highClosedExpression ?? ''}'
+      '${highClosed ? ']' : ')'}';
 }
 
-// /// Represents an interval of times
+/// Represents an interval of times
 class LiteralTimeInterval extends IntervalExpression {
   LiteralTimeInterval({
     LiteralTime? low,
@@ -653,6 +736,12 @@ class LiteralTimeInterval extends IntervalExpression {
     }
     return json;
   }
+
+  @override
+  String toString() => '${lowClosed ? '[' : '('}'
+      '${low ?? lowClosedExpression ?? ''}, '
+      '${high ?? highClosedExpression ?? ''}'
+      '${highClosed ? ']' : ')'}';
 }
 
 const List<String> elmTypes = <String>[
