@@ -4,8 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart';
 
 Future<void> main() async {
-  final librariesAndDefinitionsDir =
-      Directory('../../libraries_and_definitions');
+  final librariesAndDefinitionsDir = Directory('../libraries_and_definitions');
   final librariesAndDefinitionsFiles = librariesAndDefinitionsDir.listSync();
   for (final file in librariesAndDefinitionsFiles) {
     if (file is File) {

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import '../../cql.dart';
+import 'package:cql/cql.dart';
 
 Future<void> main() async {
   final List<String> fileNames = <String>[];

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:cql/cql.dart';
 import 'package:xml/xml.dart';
-import '../../cql.dart';
 
 Future<void> main() async {
   final modelInfoProvider = StandardModelInfoProvider();

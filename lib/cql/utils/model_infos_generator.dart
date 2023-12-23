@@ -1,4 +1,4 @@
-import 'model_info/model_info.dart';
+import 'package:cql/cql.dart';
 
 void main() {
   for (final model in models) {
