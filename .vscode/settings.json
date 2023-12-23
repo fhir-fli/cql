@@ -1,0 +1,20 @@
+{
+    "commandOnAllFiles.commands": {
+        "Format File": {
+            "command": "editor.action.formatDocument",
+            "includeFileExtensions": [
+                ".dart"
+            ]
+        },
+        "Flutter Stylizer": {
+            "command": "extension.flutterStylizer",
+            "includeFileExtensions": [
+                ".dart"
+            ]
+        }
+    },
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.project.sourcePaths": [
+        ""
+    ],
+}

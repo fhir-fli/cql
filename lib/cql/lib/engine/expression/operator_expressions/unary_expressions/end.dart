@@ -10,8 +10,11 @@ class End extends UnaryExpression {
   factory End.fromJson(Map<String, dynamic> json) =>
       End(operand: json['operand']!);
 
+  String get type => 'End';
+
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operand': operand,
       };
 }

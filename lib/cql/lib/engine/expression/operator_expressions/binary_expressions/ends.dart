@@ -7,24 +7,27 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 class Ends extends BinaryExpression {
   final DateTimePrecision? precision;
-  final Expression left;
-  final Expression right;
 
-  Ends(
-      {required this.left,
-      required this.right,
-      this.precision,
-      required super.operand});
+  Ends({this.precision, required super.operand, super.isList = true});
 
   factory Ends.fromJson(Map<String, dynamic> json) => Ends(
-      left: json['left'],
-      right: json['right'],
-      precision: json['precision'],
-      operand: json['operand']!);
+      precision: json['precision'] != null
+          ? DateTimePrecisionJson.fromJson(json['precision'])
+          : null,
+      operand: json['operand'] != null
+          ? json['operand'] is List
+              ? (json['operand'] as List)
+                  .map((e) => Expression.fromJson(e as Map<String, dynamic>))
+                  .toList()
+              : [Expression.fromJson(json['operand'] as Map<String, dynamic>)]
+          : <Expression>[],
+      isList: json['operand'] == null ? false : json['operand'] is List);
 
   @override
   Map<String, dynamic> toJson() => {
         'precision': precision,
-        'operand': operand,
+        'operand': isList
+            ? operand.map((e) => e.toJson()).toList()
+            : operand.first.toJson(),
       };
 }

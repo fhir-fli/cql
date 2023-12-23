@@ -5,7 +5,10 @@ abstract class BinaryExpression extends OperatorExpression {
   /// List of expressions as operand.
   List<Expression> operand;
 
-  BinaryExpression({required this.operand});
+  /// Because XML doesn't always directly translate lists to maps
+  final bool isList;
+
+  BinaryExpression({required this.operand, this.isList = true});
 
   factory BinaryExpression.fromJson(Map<String, dynamic> json) {
     final type = json['type'];
