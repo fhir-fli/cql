@@ -8,9 +8,9 @@ import 'qdm_5_6.dart';
 
 class EncounterRecommended {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? facilityLocation;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final QDMEntity? requester;
 
   EncounterRecommended({

@@ -5,9 +5,9 @@ import 'qdm_5_0_draft.dart';
 /// of the substance indicated by the QDM category and its corresponding value set.
 
 class SubstanceIntolerance {
+  final CodeableConcept? frequency;
   final Interval? interval;
   final CodeableConcept? reaction;
-  final CodeableConcept? frequency;
 
   SubstanceIntolerance({
     this.interval,

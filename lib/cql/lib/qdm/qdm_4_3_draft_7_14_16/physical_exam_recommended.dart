@@ -10,12 +10,12 @@ import 'package:cql/engine/types/types.dart';
 /// clinical workflow to capture recommendations when evaluating measures.
 
 class PhysicalExamRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? anatomicalLocationSite;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
-  final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   PhysicalExamRecommended({
     this.startDatetime,

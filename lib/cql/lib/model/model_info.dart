@@ -6,11 +6,40 @@ import '../cql.dart';
 /// by the CQL translator. None of the information specified here is mandatory;
 /// it offers convenient shorthands within the language.
 class ModelInfo {
+  // Optional - If identifiers should be resolved case-sensitively
+  final bool? caseSensitive;
+
+  final List<ContextInfo> contextInfo;
+  final bool? contextInfoSingle;
+  final List<ConversionInfo> conversionInfo;
+  final bool? conversionInfoSingle;
+  // Optional - Default context for CQL expressions on this model
+  final String? defaultContext;
+
   // Required - Model name used in CQL definitions/specifiers
   final String name;
 
-  // Required - XML namespace associated with the model
-  final Uri url;
+  // Optional - Deprecated: Birthdate property name on the Patient model
+  final String? patientBirthDatePropertyName;
+
+  // Optional - Deprecated: Unique name for the Patient class
+  final String? patientClassIdentifier;
+
+  // Optional - Deprecated: Patient class name within the model
+  final String? patientClassName;
+
+  // Lists for nested elements
+  final List<ModelSpecifier> requiredModelInfo;
+
+  final bool? requiredModelInfoSingle;
+  // Optional - Schema location for the XSD of the data model
+  final String? schemaLocation;
+
+  // Optional - If retrieve expressions should be semantically validated
+  final bool? strictRetrieveTyping;
+
+  // Optional - Namespace qualifier for referencing model types in ELM
+  final String? targetQualifier;
 
   // Optional - Target XML namespace of the underlying representation
   final Uri? targetUrl;
@@ -18,45 +47,13 @@ class ModelInfo {
   // Optional - Target version of the underlying representation
   final String? targetVersion;
 
-  // Optional - Schema location for the XSD of the data model
-  final String? schemaLocation;
-
-  // Optional - Namespace qualifier for referencing model types in ELM
-  final String? targetQualifier;
-
-  // Optional - Deprecated: Patient class name within the model
-  final String? patientClassName;
-
-  // Optional - Deprecated: Unique name for the Patient class
-  final String? patientClassIdentifier;
-
-  // Optional - Deprecated: Birthdate property name on the Patient model
-  final String? patientBirthDatePropertyName;
+  final List<TypeInfo> typeInfo;
+  final bool? typeInfoSingle;
+  // Required - XML namespace associated with the model
+  final Uri url;
 
   // Optional - Model version used in CQL using definitions
   final String? version;
-
-  // Optional - If identifiers should be resolved case-sensitively
-  final bool? caseSensitive;
-
-  // Optional - If retrieve expressions should be semantically validated
-  final bool? strictRetrieveTyping;
-
-  // Optional - Default context for CQL expressions on this model
-  final String? defaultContext;
-
-  // Lists for nested elements
-  final List<ModelSpecifier> requiredModelInfo;
-  final bool? requiredModelInfoSingle;
-
-  final List<TypeInfo> typeInfo;
-  final bool? typeInfoSingle;
-
-  final List<ConversionInfo> conversionInfo;
-  final bool? conversionInfoSingle;
-
-  final List<ContextInfo> contextInfo;
-  final bool? contextInfoSingle;
 
   ModelInfo({
     required this.name,
@@ -160,6 +157,11 @@ class ModelInfo {
     );
   }
 
+  @override
+  String toString() {
+    return 'ModelInfo{name: $name, version: $version, url: $url, targetUrl: $targetUrl, targetVersion: $targetVersion, schemaLocation: $schemaLocation, targetQualifier: $targetQualifier, patientClassName: $patientClassName, patientClassIdentifier: $patientClassIdentifier, patientBirthDatePropertyName: $patientBirthDatePropertyName, caseSensitive: $caseSensitive, strictRetrieveTyping: $strictRetrieveTyping, defaultContext: $defaultContext, requiredModelInfo: $requiredModelInfo, typeInfo: $typeInfo, conversionInfo: $conversionInfo, contextInfo: $contextInfo}';
+  }
+
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{'name': name};
     json['url'] = url.toString();
@@ -226,10 +228,5 @@ class ModelInfo {
       }
     }
     return json;
-  }
-
-  @override
-  String toString() {
-    return 'ModelInfo{name: $name, version: $version, url: $url, targetUrl: $targetUrl, targetVersion: $targetVersion, schemaLocation: $schemaLocation, targetQualifier: $targetQualifier, patientClassName: $patientClassName, patientClassIdentifier: $patientClassIdentifier, patientBirthDatePropertyName: $patientBirthDatePropertyName, caseSensitive: $caseSensitive, strictRetrieveTyping: $strictRetrieveTyping, defaultContext: $defaultContext, requiredModelInfo: $requiredModelInfo, typeInfo: $typeInfo, conversionInfo: $conversionInfo, contextInfo: $contextInfo}';
   }
 }

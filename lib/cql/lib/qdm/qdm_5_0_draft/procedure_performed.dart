@@ -7,18 +7,18 @@ import 'qdm_5_0_draft.dart';
 /// value set.
 
 class ProcedurePerformed {
-  final Interval? interval;
-  final CodeableConcept? negationRationale;
-  final CodeableConcept? reason;
-  final CodeableConcept? method;
-  final CodeableConcept? result;
-  final CodeableConcept? status;
   final CodeableConcept? anatomicalApproachSite;
   final CodeableConcept? anatomicalLocationSite;
-  final CodeableConcept? ordinality;
-  final CodeableConcept? radiationDuration;
-  final CodeableConcept? radiationDosage;
   final LiteralDateTime? incisionDatetime;
+  final Interval? interval;
+  final CodeableConcept? method;
+  final CodeableConcept? negationRationale;
+  final CodeableConcept? ordinality;
+  final CodeableConcept? radiationDosage;
+  final CodeableConcept? radiationDuration;
+  final CodeableConcept? reason;
+  final CodeableConcept? result;
+  final CodeableConcept? status;
 
   ProcedurePerformed({
     this.interval,

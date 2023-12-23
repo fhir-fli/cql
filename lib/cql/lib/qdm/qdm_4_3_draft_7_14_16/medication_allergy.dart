@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class MedicationAllergy {
+  final LiteralCode? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
 
   MedicationAllergy({
     this.startDatetime,

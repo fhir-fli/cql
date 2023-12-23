@@ -4,8 +4,8 @@ import '../../cql.dart';
 /// for use within a retrieve, specified as either
 /// [property] [comparator] [value] or [search] [comparator] [value].
 class OtherFilterElement extends Element {
-  /// An expression that provides the comparison value for the filter.
-  Expression value;
+  /// The comparator attribute specifies the comparison operation for the filter.
+  String comparator;
 
   /// The property attribute specifies which property the filter applies to.
   /// This property may be specified as a path, including qualifiers and
@@ -16,8 +16,8 @@ class OtherFilterElement extends Element {
   /// The search attribute specifies the name of a search path for the filter.
   String? search;
 
-  /// The comparator attribute specifies the comparison operation for the filter.
-  String comparator;
+  /// An expression that provides the comparison value for the filter.
+  Expression value;
 
   OtherFilterElement({
     required this.value,

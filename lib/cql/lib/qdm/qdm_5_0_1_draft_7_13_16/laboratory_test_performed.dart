@@ -16,15 +16,15 @@ import 'qdm_5_0_1_draft_7_13_16.dart';
 ///
 
 class LaboratoryTestPerformed {
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? status;
+  final Component? component;
   final LiteralCode? method;
-  final dynamic result;
-  final LiteralDateTime? resultDatetime;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
   final LiteralQuantityInterval? referenceRange;
-  final LiteralCode? negationRationale;
-  final Component? component;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
+  final LiteralDateTime? resultDatetime;
+  final LiteralCode? status;
 
   LaboratoryTestPerformed({
     this.relevantPeriod,

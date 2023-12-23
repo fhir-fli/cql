@@ -10,8 +10,8 @@ import 'qdm_5_5.dart';
 
 class FamilyHistory {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? relationship;
   final QDMEntity? recorder;
+  final LiteralCode? relationship;
 
   FamilyHistory({
     this.authorDatetime,

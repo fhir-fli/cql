@@ -6,10 +6,11 @@ import '../../../../cql.dart';
 /// For the interval overload, returns the interval that defines the overlapping portion of both arguments. If the arguments do not overlap, returns null.
 /// If either argument is null, the result is null.
 class Intersect extends NaryExpression {
-  @override
-  final String type = 'Intersect';
   Expression left;
   Expression right;
+
+  @override
+  final String type = 'Intersect';
 
   Intersect({required this.left, required this.right});
 

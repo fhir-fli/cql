@@ -8,6 +8,11 @@ class IncludeElement extends Element {
   /// referencing this includeElement.
   String? includeFrom;
 
+  /// The isReverse attribute indicates that the include is reverse, i.e. that
+  /// the relatedDataType is referencing the data being retrieved, rather than
+  /// the retrieved data referencing the relatedDataType.
+  bool? isReverse;
+
   /// The relatedDataType attribute specifies the type of the related data
   /// being requested.
   QName relatedDataType;
@@ -22,11 +27,6 @@ class IncludeElement extends Element {
   /// The relatedSearch attribute specifies the name of the search path to use
   /// for searching for data of the relatedDataType.
   String? relatedSearch;
-
-  /// The isReverse attribute indicates that the include is reverse, i.e. that
-  /// the relatedDataType is referencing the data being retrieved, rather than
-  /// the retrieved data referencing the relatedDataType.
-  bool? isReverse;
 
   IncludeElement({
     this.includeFrom,

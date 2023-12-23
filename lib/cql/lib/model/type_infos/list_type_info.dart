@@ -5,11 +5,11 @@ import '../../cql.dart';
 /// The [ListTypeInfo] type represents a list type, extending [TypeInfo],
 /// including an elementTypeSpecifier element and elementType attribute.
 class ListTypeInfo extends TypeInfo {
-  /// Element type specifier element.
-  TypeSpecifier? elementTypeSpecifier;
-
   /// Element type as a string.
   String? elementType;
+
+  /// Element type specifier element.
+  TypeSpecifier? elementTypeSpecifier;
 
   final String type = 'ListTypeInfo';
 

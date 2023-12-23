@@ -10,9 +10,9 @@ import 'qdm_5_0_draft.dart';
 
 class LaboratoryTestOrder {
   final LiteralDateTime? authorDatetime;
+  final CodeableConcept? method;
   final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
-  final CodeableConcept? method;
 
   LaboratoryTestOrder({
     this.authorDatetime,

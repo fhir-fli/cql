@@ -5,9 +5,9 @@ import 'package:cql/engine/types/types.dart';
 /// the QDM category and its corresponding value set.
 
 class PatientCharacteristicClinicalTrialParticipant {
+  final LiteralCode? reason;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reason;
 
   PatientCharacteristicClinicalTrialParticipant({
     this.startDatetime,

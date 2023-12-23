@@ -2,10 +2,9 @@ import '../../cql.dart';
 
 /// Literal expression defining a single scalar value.
 abstract class Literal extends Expression {
+  final String type = 'Literal';
   /// Qualified name of the value type.
   QName valueType;
-
-  final String type = 'Literal';
 
   Literal({required this.valueType});
 

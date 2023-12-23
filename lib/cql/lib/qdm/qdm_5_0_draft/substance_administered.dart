@@ -7,12 +7,12 @@ import 'qdm_5_0_draft.dart';
 /// actually given to the patient.
 
 class SubstanceAdministered {
-  final Interval? interval;
-  final CodeableConcept? negationRationale;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
-  final CodeableConcept? route;
+  final Interval? interval;
+  final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
+  final CodeableConcept? route;
 
   SubstanceAdministered({
     this.interval,

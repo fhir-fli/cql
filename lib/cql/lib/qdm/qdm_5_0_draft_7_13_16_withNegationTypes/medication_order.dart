@@ -7,9 +7,9 @@ import 'package:cql/engine/types/types.dart';
 class MedicationOrder {
   final LiteralDateTime activeDatetime;
   final LiteralDateTime authorTime;
-  final LiteralInteger? refills;
   final LiteralCode? method;
   final LiteralCode? reason;
+  final LiteralInteger? refills;
 
   MedicationOrder({
     required this.activeDatetime,

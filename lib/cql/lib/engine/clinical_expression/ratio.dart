@@ -4,8 +4,8 @@ import '../../cql.dart';
 /// titre 1:128, or the concentration ratio 5 mg/10 mL. The numerator and
 /// denominator are both quantities.
 class Ratio extends Expression {
-  final Quantity numerator;
   final Quantity denominator;
+  final Quantity numerator;
 
   Ratio({required this.numerator, required this.denominator});
 

@@ -19,9 +19,6 @@ class ParameterDefs {
 /// Definition of a parameter that can be referenced by name within an expression.
 @JsonSerializable()
 class ParameterDef extends Element {
-  /// Name of the parameter.
-  String name;
-
   /// Access level, defaults to Public.
   AccessModifier accessLevel;
 
@@ -29,11 +26,14 @@ class ParameterDef extends Element {
   @JsonKey(name: 'default')
   Expression? defaultExpression;
 
-  /// Type specifier for the parameter.
-  TypeSpecifier? parameterTypeSpecifier;
+  /// Name of the parameter.
+  String name;
 
   /// Qualified name of the parameter type, optional.
   QName? parameterType;
+
+  /// Type specifier for the parameter.
+  TypeSpecifier? parameterTypeSpecifier;
 
   ParameterDef({
     required this.name,

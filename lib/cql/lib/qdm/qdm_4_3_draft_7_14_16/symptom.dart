@@ -9,8 +9,8 @@ import 'package:cql/engine/types/types.dart';
 /// time frame indicated by the timing relationships.
 
 class Symptom {
-  final LiteralDateTime? onsetDatetime;
   final LiteralDateTime? abatementDatetime;
+  final LiteralDateTime? onsetDatetime;
   final LiteralCode? severity;
 
   Symptom({

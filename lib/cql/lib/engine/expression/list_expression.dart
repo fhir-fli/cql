@@ -2,11 +2,11 @@ import '../../cql.dart';
 
 /// List selector returning a List value.
 class ListExpression extends Expression {
-  /// Type specifier for the list, if provided.
-  TypeSpecifier? typeSpecifier;
-
   /// Elements of the list evaluated in order.
   List<Expression>? element;
+
+  /// Type specifier for the list, if provided.
+  TypeSpecifier? typeSpecifier;
 
   ListExpression({this.typeSpecifier, this.element});
 

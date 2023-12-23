@@ -5,18 +5,12 @@ import 'base_info.dart';
 
 class ValuesetDefinitionInfo extends BaseInfo {
   String? name;
+
   @override
   String? header;
+
   @override
   Interval? headerInterval;
-
-  String? getName() {
-    return name;
-  }
-
-  void setName(String value) {
-    name = value;
-  }
 
   @override
   ValuesetDefinitionContext? getDefinition() {
@@ -26,6 +20,14 @@ class ValuesetDefinitionInfo extends BaseInfo {
   @override
   void setDefinition(ParserRuleContext value) {
     super.setDefinition(value);
+  }
+
+  String? getName() {
+    return name;
+  }
+
+  void setName(String value) {
+    name = value;
   }
 
   ValuesetDefinitionInfo withName(String value) {

@@ -10,9 +10,9 @@ import 'qdm_5_0_draft_5_23_16.dart';
 /// has been removed, the use of CMD(interval) is recommended.
 
 class MedicationActive {
-  final Interval? interval;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
+  final Interval? interval;
   final CodeableConcept? route;
 
   MedicationActive({

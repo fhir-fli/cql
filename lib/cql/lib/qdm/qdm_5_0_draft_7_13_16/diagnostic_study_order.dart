@@ -12,11 +12,11 @@ import 'package:cql/engine/types/types.dart';
 
 class DiagnosticStudyOrder {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
-  final LiteralQuantity? radiationDosage;
-  final LiteralQuantity? radiationDuration;
   final LiteralCode? method;
   final LiteralCode? negationRationale;
+  final LiteralQuantity? radiationDosage;
+  final LiteralQuantity? radiationDuration;
+  final LiteralCode? reason;
 
   DiagnosticStudyOrder({
     this.authorDatetime,

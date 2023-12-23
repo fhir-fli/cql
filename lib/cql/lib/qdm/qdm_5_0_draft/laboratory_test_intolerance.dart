@@ -7,8 +7,8 @@ import 'qdm_5_0_draft.dart';
 
 class LaboratoryTestIntolerance {
   final Interval? interval;
-  final CodeableConcept? reaction;
   final LaboratoryTestPerformed laboratoryTestPerformed;
+  final CodeableConcept? reaction;
 
   LaboratoryTestIntolerance({
     this.interval,

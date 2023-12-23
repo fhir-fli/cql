@@ -9,16 +9,16 @@ import 'qdm_5_5.dart';
 /// examination activity ends
 
 class PhysicalExamPerformed {
+  final LiteralCode? anatomicalLocationSite;
   final LiteralDateTime? authorDatetime;
+  final Component? component;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final QDMEntity? performer;
+  final LiteralCode? reason;
   final LiteralDateTime? relevantDatetime;
   final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? reason;
-  final LiteralCode? method;
   final dynamic result;
-  final LiteralCode? anatomicalLocationSite;
-  final LiteralCode? negationRationale;
-  final Component? component;
-  final QDMEntity? performer;
 
   PhysicalExamPerformed({
     this.authorDatetime,

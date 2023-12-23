@@ -8,8 +8,8 @@ import 'package:cql/engine/types/types.dart';
 /// stopTime – when the target outcome is expected to be met
 
 class CareGoal {
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? relatedTo;
+  final LiteralDateTimeInterval? relevantPeriod;
   final dynamic targetOutcome;
 
   CareGoal({

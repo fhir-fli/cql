@@ -2,11 +2,11 @@ import '../../cql.dart';
 
 /// Represents a case operator allowing multiple conditional expressions to be chained together.
 class Case extends Expression {
-  /// Expression to compare against.
-  Expression? comparand;
-
   /// List of case items specifying conditions and actions.
   final List<CaseItem> caseItem;
+
+  /// Expression to compare against.
+  Expression? comparand;
 
   /// Action to perform if none of the conditions are met.
   final Expression elseExpr;

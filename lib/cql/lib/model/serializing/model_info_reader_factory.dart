@@ -8,15 +8,6 @@ final List<ModelInfoReaderProvider> modelInfoReaderProviders = [
 class ModelInfoReaderFactory {
   static ModelInfoReaderProvider? _provider;
 
-  static ModelInfoReaderProvider? _loadProvider() {
-    for (final provider in modelInfoReaderProviders) {
-      if (provider.isSupported()) {
-        return provider;
-      }
-    }
-    return null;
-  }
-
   static ModelInfoReader getReader(String contentType) {
     _provider ??= _loadProvider();
 
@@ -26,5 +17,14 @@ class ModelInfoReaderFactory {
 
     throw Exception(
         'No ModelInfoReaderProviders found. Add references to the desired providers.');
+  }
+
+  static ModelInfoReaderProvider? _loadProvider() {
+    for (final provider in modelInfoReaderProviders) {
+      if (provider.isSupported()) {
+        return provider;
+      }
+    }
+    return null;
   }
 }

@@ -7,9 +7,9 @@ import 'package:cql/engine/types/types.dart';
 
 class AdverseEvent {
   final LiteralDateTime? authorDatetime;
+  final LiteralCode? facilityLocation;
   final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? severity;
-  final LiteralCode? facilityLocation;
 
   AdverseEvent({
     this.authorDatetime,

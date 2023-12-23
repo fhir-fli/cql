@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 /// the event began to when the event completed.
 
 class AdverseEvent {
+  final LiteralCode? facilityLocation;
   final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? severity;
-  final LiteralCode? facilityLocation;
 
   AdverseEvent({
     this.relevantPeriod,

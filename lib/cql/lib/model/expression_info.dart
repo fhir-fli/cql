@@ -17,15 +17,15 @@ class ExpressionInfo {
     );
   }
 
+  @override
+  String toString() {
+    return 'ExpressionInfo{expression: $expression, language: $language}';
+  }
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['expression'] = expression;
     data['language'] = language;
     return data;
-  }
-
-  @override
-  String toString() {
-    return 'ExpressionInfo{expression: $expression, language: $language}';
   }
 }

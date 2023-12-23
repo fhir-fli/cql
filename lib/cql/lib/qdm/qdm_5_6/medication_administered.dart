@@ -14,14 +14,14 @@ import 'qdm_5_6.dart';
 
 class MedicationAdministered {
   final LiteralDateTime? authorDatetime;
-  final LiteralDateTime? relevantDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralQuantity? dosage;
   final LiteralCode? frequency;
-  final LiteralCode? route;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
   final QDMEntity? performer;
+  final LiteralCode? reason;
+  final LiteralDateTime? relevantDatetime;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? route;
 
   MedicationAdministered({
     this.authorDatetime,

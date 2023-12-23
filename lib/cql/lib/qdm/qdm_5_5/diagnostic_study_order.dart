@@ -14,8 +14,8 @@ import 'qdm_5_5.dart';
 
 class DiagnosticStudyOrder {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final QDMEntity? requester;
 
   DiagnosticStudyOrder({

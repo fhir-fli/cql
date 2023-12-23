@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class LaboratoryTestIntolerance {
+  final LiteralCode? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
 
   LaboratoryTestIntolerance({
     this.startDatetime,

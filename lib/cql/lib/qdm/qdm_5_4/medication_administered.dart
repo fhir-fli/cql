@@ -12,12 +12,12 @@ import 'package:cql/engine/types/types.dart';
 
 class MedicationAdministered {
   final LiteralDateTime? authorDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralQuantity? dosage;
   final LiteralCode? frequency;
-  final LiteralCode? route;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? route;
 
   MedicationAdministered({
     this.authorDatetime,

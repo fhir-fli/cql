@@ -5,13 +5,13 @@ import '../../../cql.dart';
 /// If the list is empty or no element is found, the result is -1.
 /// If either argument is null, the result is null.
 class IndexOf extends OperatorExpression {
+  final Expression element;
+  final Expression source;
+
   IndexOf({
     required this.source,
     required this.element,
   });
-
-  final Expression source;
-  final Expression element;
 
   factory IndexOf.fromJson(Map<String, dynamic> json) => IndexOf(
         source: json['source']!,

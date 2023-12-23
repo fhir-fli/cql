@@ -10,11 +10,11 @@ import 'qdm_5_5.dart';
 /// stopTime – when the target outcome is expected to be met
 
 class CareGoal {
-  final LiteralDate? statusDate;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralString? relatedTo;
-  final dynamic targetOutcome;
   final QDMEntity? performer;
+  final LiteralString? relatedTo;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralDate? statusDate;
+  final dynamic targetOutcome;
 
   CareGoal({
     this.statusDate,

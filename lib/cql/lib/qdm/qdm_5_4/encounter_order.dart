@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 
 class EncounterOrder {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? facilityLocation;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
 
   EncounterOrder({
     this.authorDatetime,

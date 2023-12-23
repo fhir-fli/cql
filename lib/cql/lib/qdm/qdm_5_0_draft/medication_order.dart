@@ -13,13 +13,13 @@ import 'qdm_5_0_draft.dart';
 class MedicationOrder {
   final LiteralDateTime activeDatetime;
   final LiteralDateTime authorDatetime;
-  final CodeableConcept? negationRationale;
-  final LiteralInteger? refills;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
-  final CodeableConcept? route;
   final CodeableConcept? method;
+  final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
+  final LiteralInteger? refills;
+  final CodeableConcept? route;
 
   MedicationOrder({
     required this.activeDatetime,

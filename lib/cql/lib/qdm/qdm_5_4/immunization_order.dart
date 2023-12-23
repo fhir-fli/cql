@@ -8,9 +8,9 @@ class ImmunizationOrder {
   final LiteralDateTime? activeDatetime;
   final LiteralDateTime? authorDatetime;
   final LiteralQuantity? dosage;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
   final LiteralCode? route;
-  final LiteralCode? negationRationale;
 
   ImmunizationOrder({
     this.activeDatetime,

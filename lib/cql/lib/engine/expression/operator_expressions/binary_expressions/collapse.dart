@@ -8,10 +8,10 @@ import '../../../../cql.dart';
 /// If the list contains nulls, they will be excluded from the resulting list.
 /// If the source argument is null, the result is null.
 class Collapse extends BinaryExpression {
-  Collapse({required this.left, required this.right, required super.operand});
-
   final Expression left;
   final Expression right;
+
+  Collapse({required this.left, required this.right, required super.operand});
 
   factory Collapse.fromJson(Map<String, dynamic> json) => Collapse(
       left: json['left']!, right: json['right']!, operand: json['operand']!);

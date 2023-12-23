@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 /// current location.
 
 class TransferTo {
+  final LiteralCode? negationRationale;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
 
   TransferTo({
     this.startDatetime,

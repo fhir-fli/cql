@@ -12,9 +12,9 @@ import 'package:cql/engine/types/types.dart';
 /// time)
 
 class EncounterActive {
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralDateTimeInterval? locationPeriod;
   final LiteralQuantity? lengthOfStay;
+  final LiteralDateTimeInterval? locationPeriod;
+  final LiteralDateTimeInterval? relevantPeriod;
 
   EncounterActive({
     this.relevantPeriod,

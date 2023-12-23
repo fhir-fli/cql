@@ -7,10 +7,10 @@ import 'package:cql/engine/types/types.dart';
 
 class DiagnosticStudyRecommended {
   final LiteralDateTime? authorDatetime;
-  final LiteralQuantity? radiationDosage;
-  final LiteralQuantity? radiationDuration;
   final LiteralCode? method;
   final LiteralCode? negationRationale;
+  final LiteralQuantity? radiationDosage;
+  final LiteralQuantity? radiationDuration;
 
   DiagnosticStudyRecommended({
     this.authorDatetime,

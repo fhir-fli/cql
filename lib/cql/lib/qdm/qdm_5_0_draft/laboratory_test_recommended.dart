@@ -6,8 +6,8 @@ import 'qdm_5_0_draft.dart';
 
 class LaboratoryTestRecommended {
   final Interval? interval;
-  final CodeableConcept? negationRationale;
   final CodeableConcept? method;
+  final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
 
   LaboratoryTestRecommended({

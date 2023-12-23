@@ -12,10 +12,10 @@ import 'qdm_5_0_draft.dart';
 class EncounterActive {
   final LiteralDateTime? admissionDatetime;
   final LiteralDateTime? dischargeDatetime;
-  final CodeableConcept? reason;
   final CodeableConcept? facilityLocation;
   final LiteralDateTime? facilityLocationArrivalDatetime;
   final LiteralDateTime? facilityLocationDepartureDatetime;
+  final CodeableConcept? reason;
 
   EncounterActive({
     this.admissionDatetime,

@@ -1,16 +1,16 @@
 import '../../cql.dart';
 
 class ErrorAnnotation extends Annotation {
-  final String? librarySystem;
-  final String? libraryId;
-  final String? libraryVersion;
-  final int? startLine;
-  final int? startChar;
-  final int? endLine;
   final int? endChar;
-  final String? message;
-  final String? errorType;
+  final int? endLine;
   final String? errorSeverity;
+  final String? errorType;
+  final String? libraryId;
+  final String? librarySystem;
+  final String? libraryVersion;
+  final String? message;
+  final int? startChar;
+  final int? startLine;
   final String? type;
 
   ErrorAnnotation({

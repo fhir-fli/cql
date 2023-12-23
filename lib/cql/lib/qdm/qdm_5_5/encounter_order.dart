@@ -8,11 +8,11 @@ import 'qdm_5_5.dart';
 
 class EncounterOrder {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? facilityLocation;
   final LiteralCode? negationRationale;
-  final QDMEntity? requester;
   final LiteralCode? priority;
+  final LiteralCode? reason;
+  final QDMEntity? requester;
 
   EncounterOrder({
     this.authorDatetime,

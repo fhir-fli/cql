@@ -9,13 +9,13 @@ import 'qdm_5_0_draft_5_23_16.dart';
 /// Architecture (QRDA). This corresponds to when the order was signed.
 
 class ProcedureOrder {
-  final LiteralDateTime? authorDatetime;
-  final CodeableConcept? reason;
-  final CodeableConcept? method;
   final CodeableConcept? anatomicalApproachSite;
   final CodeableConcept? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
+  final CodeableConcept? method;
   final CodeableConcept? ordinality;
   final CodeableConcept? radiationDuration;
+  final CodeableConcept? reason;
 
   ProcedureOrder({
     this.authorDatetime,

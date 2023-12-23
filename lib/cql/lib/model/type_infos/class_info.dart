@@ -1,31 +1,31 @@
 import '../../cql.dart';
 
 class ClassInfo extends TypeInfo {
-  final String? namespace;
-  final String name;
-  final String? identifier;
-  final String? label;
-  final String? description;
-  final String? definition;
   final String? comment;
-  final String? target;
-  final bool retrievable;
+  final List<ConstraintInfo>? constraint;
+  final List<RelationshipInfo>? contextRelationship;
+  final String? definition;
+  final String? description;
+  final List<ClassInfoElement>? element;
+  final String? identifier;
+  final List<ExpressionInfo>? inferenceExpression;
+  final String? label;
+  final String name;
+  final String? namespace;
+  final List<TypeParameterInfo>? parameter;
   final String? primaryCodePath;
   final String? primaryValueSetPath;
-  final List<TypeParameterInfo>? parameter;
-  final bool? singleParameter;
-  final List<ClassInfoElement>? element;
-  final bool? singleElement;
-  final List<RelationshipInfo>? contextRelationship;
-  final bool? singleContextRelationship;
-  final List<RelationshipInfo>? targetContextRelationship;
-  final bool? singleTargetContextRelationship;
+  final bool retrievable;
   final List<SearchInfo>? search;
-  final bool? singleSearch;
-  final List<ExpressionInfo>? inferenceExpression;
-  final bool? singleInferenceExpression;
-  final List<ConstraintInfo>? constraint;
   final bool? singleConstraint;
+  final bool? singleContextRelationship;
+  final bool? singleElement;
+  final bool? singleInferenceExpression;
+  final bool? singleParameter;
+  final bool? singleSearch;
+  final bool? singleTargetContextRelationship;
+  final String? target;
+  final List<RelationshipInfo>? targetContextRelationship;
   final String type = 'ClassInfo';
 
   ClassInfo({

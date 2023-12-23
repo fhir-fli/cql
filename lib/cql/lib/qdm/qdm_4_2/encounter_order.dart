@@ -14,11 +14,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class EncounterOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? facilityLocation;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
-  final LiteralConcept? facilityLocation;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   EncounterOrder({
     this.startDatetime,

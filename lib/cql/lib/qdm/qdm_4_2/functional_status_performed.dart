@@ -10,12 +10,12 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class FunctionalStatusPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? method;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
-  final LiteralConcept? method;
   final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   FunctionalStatusPerformed({
     this.startDatetime,

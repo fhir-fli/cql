@@ -9,17 +9,17 @@ import 'qdm_5_5.dart';
 
 class DiagnosticStudyPerformed {
   final LiteralDateTime? authorDatetime;
+  final Component? component;
+  final LiteralCode? facilityLocation;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final QDMEntity? performer;
+  final LiteralCode? reason;
   final LiteralDateTime? relevantDatetime;
   final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? reason;
   final dynamic result;
   final LiteralDateTime? resultDatetime;
   final LiteralCode? status;
-  final LiteralCode? method;
-  final LiteralCode? facilityLocation;
-  final LiteralCode? negationRationale;
-  final Component? component;
-  final QDMEntity? performer;
 
   DiagnosticStudyPerformed({
     this.authorDatetime,

@@ -8,12 +8,12 @@ import 'qdm_5_0_draft.dart';
 /// been removed, the use of CMD(interval) is recommended.
 
 class MedicationAdministered {
-  final Interval? interval;
-  final CodeableConcept? negationRationale;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
-  final CodeableConcept? route;
+  final Interval? interval;
+  final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
+  final CodeableConcept? route;
 
   MedicationAdministered({
     this.interval,

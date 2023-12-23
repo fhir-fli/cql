@@ -2,13 +2,13 @@ import '../../cql.dart';
 
 /// Expression allowing class instances to be built up.
 class Instance extends Expression {
-  final String type = 'Instance';
-
   /// Type of the class instance being built.
   QName classType;
 
   /// List of instance elements specifying values for the elements of the class instance.
   List<InstanceElement>? element;
+
+  final String type = 'Instance';
 
   Instance({required this.classType, this.element});
 

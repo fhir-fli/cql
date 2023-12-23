@@ -5,19 +5,19 @@ import 'package:cql/engine/types/types.dart';
 /// value set.
 
 class ProcedurePerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralCode? reason;
-  final LiteralCode? method;
-  final dynamic result;
-  final LiteralCode? status;
   final LiteralCode? anatomicalApproachSite;
   final LiteralCode? anatomicalLocationSite;
-  final LiteralCode? ordinality;
-  final LiteralQuantity? radiationDuration;
-  final LiteralQuantity? radiationDosage;
   final LiteralDateTime? incisionDatetime;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final LiteralCode? ordinality;
+  final LiteralQuantity? radiationDosage;
+  final LiteralQuantity? radiationDuration;
+  final LiteralCode? reason;
+  final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralCode? status;
+  final LiteralDateTime? stopDatetime;
 
   ProcedurePerformed({
     this.startDatetime,

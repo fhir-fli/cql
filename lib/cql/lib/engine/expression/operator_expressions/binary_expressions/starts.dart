@@ -7,8 +7,8 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 class Starts extends BinaryExpression {
   final Expression left;
-  final Expression right;
   final DateTimePrecision? precision;
+  final Expression right;
 
   Starts(
       {required this.left,

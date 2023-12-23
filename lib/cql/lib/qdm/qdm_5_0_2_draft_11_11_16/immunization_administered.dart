@@ -12,10 +12,10 @@ import 'package:cql/engine/types/types.dart';
 class ImmunizationAdministered {
   final LiteralDateTime? authorDatetime;
   final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
   final LiteralCode? route;
-  final LiteralCode? negationRationale;
+  final LiteralQuantity? supply;
 
   ImmunizationAdministered({
     this.authorDatetime,

@@ -2,15 +2,15 @@ import '../../../cql.dart';
 
 /// Abstract base class for Aggregate expressions performing operations on lists of data.
 abstract class AggregateExpression extends Expression {
+  final String? path;
+  final List<TypeSpecifier>? signature;
+  final Expression source;
+
   AggregateExpression({
     required this.signature,
     required this.source,
     required this.path,
   });
-
-  final List<TypeSpecifier>? signature;
-  final Expression source;
-  final String? path;
 
   factory AggregateExpression.fromJson(Map<String, dynamic> json) {
     final type = json['type'];

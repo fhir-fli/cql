@@ -5,15 +5,15 @@ import '../../cql.dart';
 /// If the source argument is null, the result is null.
 /// If the element argument evaluates to null for some item in the source list, the resulting list will contain a null for that element.
 class ForEach extends Expression {
+  final Expression element;
+  final String scope;
+  final Expression source;
+
   ForEach({
     required this.source,
     required this.element,
     required this.scope,
   });
-
-  final Expression source;
-  final Expression element;
-  final String scope;
 
   factory ForEach.fromJson(Map<String, dynamic> json) => ForEach(
         source: json['source']!,

@@ -2,13 +2,13 @@ import '../../cql.dart';
 
 /// The Concept type represents a literal concept selector.
 class Concept extends Expression {
+  /// The codes that constitute the concept.
+  List<Code> code;
+
   /// An optional display string for the concept.
   String? display;
 
   final String type = 'Concept';
-
-  /// The codes that constitute the concept.
-  List<Code> code;
 
   Concept({required this.code, this.display});
 

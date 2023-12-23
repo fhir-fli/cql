@@ -3,9 +3,9 @@ import 'package:cql/engine/types/types.dart';
 class DiagnosticStudyBase {
   final LiteralDateTime? authorTime;
   final LiteralCode? method;
-  final LiteralCode? reason;
   final LiteralCode? radiationDosage;
   final LiteralCode? radiationDuration;
+  final LiteralCode? reason;
 
   DiagnosticStudyBase({
     this.authorTime,

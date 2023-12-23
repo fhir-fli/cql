@@ -26,14 +26,14 @@ class OperandDefs {
 
 /// Operand definition to a function within the body of a function definition.
 class OperandDef extends Element {
-  /// Type specifier for the operand.
-  TypeSpecifier? operandTypeSpecifier;
-
   /// Name of the operand.
   String name;
 
   /// Qualified name of the operand type, optional.
   QName? operandType;
+
+  /// Type specifier for the operand.
+  TypeSpecifier? operandTypeSpecifier;
 
   OperandDef({this.operandTypeSpecifier, required this.name, this.operandType});
 

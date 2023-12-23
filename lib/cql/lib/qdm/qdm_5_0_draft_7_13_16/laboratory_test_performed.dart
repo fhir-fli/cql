@@ -9,14 +9,14 @@ import 'package:cql/engine/types/types.dart';
 /// attribute than the time of the study (specimen collection)
 
 class LaboratoryTestPerformed {
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? status;
   final LiteralCode? method;
-  final dynamic result;
-  final LiteralDateTime? resultDatetime;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
   final LiteralQuantityInterval? referenceRange;
-  final LiteralCode? negationRationale;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
+  final LiteralDateTime? resultDatetime;
+  final LiteralCode? status;
 
   LaboratoryTestPerformed({
     this.relevantPeriod,

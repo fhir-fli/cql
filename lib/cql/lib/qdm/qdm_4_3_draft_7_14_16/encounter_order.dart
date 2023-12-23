@@ -8,11 +8,11 @@ import 'package:cql/engine/types/types.dart';
 /// startDatetime and stopDatetime refer to the same point in time.
 
 class EncounterOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? facilityLocation;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? facilityLocation;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   EncounterOrder({
     this.startDatetime,

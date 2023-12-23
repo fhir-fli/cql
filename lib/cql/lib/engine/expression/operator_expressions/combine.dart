@@ -4,8 +4,8 @@ import '../../../cql.dart';
 /// If either argument is null, the result is null. If the source list is empty, the result is an empty string ('').
 /// For consistency with aggregate operator behavior, null elements in the input list are ignored.
 class Combine extends OperatorExpression {
-  final Expression source;
   final Expression? separator;
+  final Expression source;
 
   Combine(this.source, [this.separator]);
 

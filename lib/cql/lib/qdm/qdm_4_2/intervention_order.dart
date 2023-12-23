@@ -13,10 +13,10 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class InterventionOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   InterventionOrder({
     this.startDatetime,

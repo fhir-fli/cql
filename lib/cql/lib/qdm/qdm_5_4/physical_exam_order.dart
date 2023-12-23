@@ -7,10 +7,10 @@ import 'package:cql/engine/types/types.dart';
 /// for x hours."
 
 class PhysicalExamOrder {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
 
   PhysicalExamOrder({
     this.authorDatetime,

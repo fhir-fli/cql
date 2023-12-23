@@ -227,9 +227,9 @@ String _getDartType(String xsdType) {
 }
 
 class Field {
+  final bool isNullable;
   final String name;
   final String type;
-  final bool isNullable;
 
   Field(String name, this.type, this.isNullable)
       : name = reservedWords(name[0].toLowerCase() + name.substring(1));

@@ -5,13 +5,6 @@ class ListType extends DataType {
 
   ListType(this.elementType) : super(null);
 
-  DataType getElementType() {
-    return elementType;
-  }
-
-  @override
-  int get hashCode => 67 * elementType.hashCode;
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -19,33 +12,11 @@ class ListType extends DataType {
   }
 
   @override
-  bool isSubTypeOf(DataType other) {
-    if (other is ListType) {
-      ListType that = other;
-      return elementType.isSubTypeOf(that.elementType);
-    }
-
-    return super.isSubTypeOf(other);
-  }
+  int get hashCode => 67 * elementType.hashCode;
 
   @override
-  bool isSuperTypeOf(DataType other) {
-    if (other is ListType) {
-      ListType that = other;
-      return elementType.isSuperTypeOf(that.elementType);
-    }
-
-    return super.isSuperTypeOf(other);
-  }
-
-  @override
-  String toString() {
-    return "list<${elementType.toString()}>";
-  }
-
-  @override
-  String toLabel() {
-    return "List of ${elementType.toLabel()}";
+  DataType instantiate(InstantiationContext context) {
+    return ListType(elementType.instantiate(context));
   }
 
   @override
@@ -76,7 +47,36 @@ class ListType extends DataType {
   }
 
   @override
-  DataType instantiate(InstantiationContext context) {
-    return ListType(elementType.instantiate(context));
+  bool isSubTypeOf(DataType other) {
+    if (other is ListType) {
+      ListType that = other;
+      return elementType.isSubTypeOf(that.elementType);
+    }
+
+    return super.isSubTypeOf(other);
+  }
+
+  @override
+  bool isSuperTypeOf(DataType other) {
+    if (other is ListType) {
+      ListType that = other;
+      return elementType.isSuperTypeOf(that.elementType);
+    }
+
+    return super.isSuperTypeOf(other);
+  }
+
+  @override
+  String toLabel() {
+    return "List of ${elementType.toLabel()}";
+  }
+
+  @override
+  String toString() {
+    return "list<${elementType.toString()}>";
+  }
+
+  DataType getElementType() {
+    return elementType;
   }
 }

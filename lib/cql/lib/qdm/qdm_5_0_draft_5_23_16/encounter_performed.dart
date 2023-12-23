@@ -9,14 +9,14 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class EncounterPerformed {
   final LiteralDateTime admissionDatetime;
+  final Diagnosis? diagnosis;
   final LiteralDateTime dischargeDatetime;
   final CodeableConcept? dischargeStatus;
   final CodeableConcept? facilityLocation;
   final LiteralDateTime? facilityLocationArrivalDatetime;
   final LiteralDateTime? facilityLocationDepartureDatetime;
-  final CodeableConcept? reason;
-  final Diagnosis? diagnosis;
   final Diagnosis? principalDiagnosis;
+  final CodeableConcept? reason;
 
   EncounterPerformed({
     required this.admissionDatetime,

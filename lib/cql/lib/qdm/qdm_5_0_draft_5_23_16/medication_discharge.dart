@@ -9,12 +9,12 @@ import 'qdm_5_0_draft_5_23_16.dart';
 /// CMD(interval) is recommended.
 
 class MedicationDischarge {
-  final Interval? interval;
-  final LiteralInteger? refills;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
-  final CodeableConcept? route;
+  final Interval? interval;
   final CodeableConcept? reason;
+  final LiteralInteger? refills;
+  final CodeableConcept? route;
 
   MedicationDischarge({
     this.interval,

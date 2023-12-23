@@ -9,10 +9,10 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class InterventionRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   InterventionRecommended({
     this.startDatetime,

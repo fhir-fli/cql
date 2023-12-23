@@ -9,10 +9,10 @@ import 'qdm_5_6.dart';
 
 class AdverseEvent {
   final LiteralDateTime? authorDatetime;
-  final LiteralDateTime? relevantDatetime;
-  final LiteralCode? severity;
   final LiteralCode? facilityLocation;
   final QDMEntity? recorder;
+  final LiteralDateTime? relevantDatetime;
+  final LiteralCode? severity;
 
   AdverseEvent({
     this.authorDatetime,

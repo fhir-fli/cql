@@ -11,9 +11,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class ImmunizationIntolerance {
+  final LiteralConcept? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reaction;
 
   ImmunizationIntolerance({
     this.startDatetime,

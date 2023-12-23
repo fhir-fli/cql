@@ -8,8 +8,8 @@ import 'qdm_5_6.dart';
 
 class InterventionRecommended {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final QDMEntity? requester;
 
   InterventionRecommended({

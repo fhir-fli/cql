@@ -5,8 +5,8 @@ import 'package:cql/engine/types/types.dart';
 /// code 419099009 (Dead) and therefore cannot be further qualified with a value set.
 
 class PatientCharacteristicExpired {
-  final LiteralDateTime? expiredDatetime;
   final LiteralCode? cause;
+  final LiteralDateTime? expiredDatetime;
 
   PatientCharacteristicExpired({
     this.expiredDatetime,

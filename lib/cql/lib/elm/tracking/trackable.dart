@@ -3,9 +3,9 @@ import 'package:uuid/uuid.dart';
 import '../../cql.dart';
 
 class Trackable {
-  final String trackerId;
-  final List<TrackBack> trackbacks = [];
   DataType? resultType;
+  final List<TrackBack> trackbacks = [];
+  final String trackerId;
 
   Trackable() : trackerId = Uuid().v4();
 

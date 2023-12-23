@@ -2,11 +2,11 @@ import '../../../../cql.dart';
 
 /// As operator allowing casting the result of an expression to a given target type.
 class As extends UnaryExpression {
-  /// Type specifier for casting.
-  TypeSpecifier? asTypeSpecifier;
-
   /// Target type for casting.
   QName? asType;
+
+  /// Type specifier for casting.
+  TypeSpecifier? asTypeSpecifier;
 
   /// Determines if strict type checking should be enforced.
   bool strict = false;

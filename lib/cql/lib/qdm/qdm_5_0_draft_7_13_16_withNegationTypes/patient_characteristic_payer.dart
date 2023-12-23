@@ -7,8 +7,8 @@ import 'package:cql/engine/types/types.dart';
 /// insurance coverage with the referenced payer
 
 class PatientCharacteristicPayer {
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? cause;
+  final LiteralDateTimeInterval? relevantPeriod;
 
   PatientCharacteristicPayer({
     this.relevantPeriod,

@@ -9,11 +9,11 @@ import 'qdm_5_0_2_draft_11_11_16.dart';
 
 class AssessmentPerformed {
   final LiteralDateTime? authorDatetime;
+  final Component? component;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
   final dynamic result;
-  final Component? component;
 
   AssessmentPerformed({
     this.authorDatetime,

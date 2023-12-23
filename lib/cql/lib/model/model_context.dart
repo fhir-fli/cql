@@ -1,10 +1,10 @@
 import '../cql.dart';
 
 class ModelContext {
-  final String name;
-  final ClassType type;
   final String birthDateElement;
   List<String> keys;
+  final String name;
+  final ClassType type;
 
   ModelContext(
       {required this.name,

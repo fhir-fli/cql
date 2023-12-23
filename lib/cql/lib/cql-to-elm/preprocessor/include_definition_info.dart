@@ -4,10 +4,20 @@ import '../antlr4/cql_parser.dart';
 import 'base_info.dart';
 
 class IncludeDefinitionInfo extends BaseInfo {
-  String? namespaceName;
-  String? name;
-  String? version;
   String? localName;
+  String? name;
+  String? namespaceName;
+  String? version;
+
+  @override
+  IncludeDefinitionContext? getDefinition() {
+    return super.getDefinition() as IncludeDefinitionContext?;
+  }
+
+  @override
+  void setDefinition(ParserRuleContext value) {
+    super.setDefinition(value);
+  }
 
   String? getNamespaceName() {
     return namespaceName;
@@ -54,16 +64,6 @@ class IncludeDefinitionInfo extends BaseInfo {
   IncludeDefinitionInfo withLocalName(String value) {
     setLocalName(value);
     return this;
-  }
-
-  @override
-  IncludeDefinitionContext? getDefinition() {
-    return super.getDefinition() as IncludeDefinitionContext?;
-  }
-
-  @override
-  void setDefinition(ParserRuleContext value) {
-    super.setDefinition(value);
   }
 
   IncludeDefinitionInfo withDefinition(IncludeDefinitionContext value) {

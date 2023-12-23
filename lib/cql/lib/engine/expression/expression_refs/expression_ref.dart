@@ -2,11 +2,11 @@ import '../../../cql.dart';
 
 /// Expression that references a previously defined NamedExpression.
 class ExpressionRef extends Expression {
-  /// Name of the referenced expression.
-  String name;
-
   /// Library name, optional.
   String? libraryName;
+
+  /// Name of the referenced expression.
+  String name;
 
   final String type = 'ExpressionRef';
 

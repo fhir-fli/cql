@@ -2,26 +2,11 @@ import '../cql.dart';
 
 class TupleTypeElement {
   String name;
-  DataType type;
   bool oneBased;
+  DataType type;
 
   TupleTypeElement(
       {required this.name, required this.type, this.oneBased = false});
-
-  String getName() {
-    return name;
-  }
-
-  DataType getType() {
-    return type;
-  }
-
-  @override
-  int get hashCode {
-    return (17 * name.hashCode) +
-        (33 * type.hashCode) +
-        (31 * (oneBased ? 1 : 0));
-  }
 
   @override
   bool operator ==(Object o) {
@@ -35,6 +20,26 @@ class TupleTypeElement {
     return false;
   }
 
+  @override
+  int get hashCode {
+    return (17 * name.hashCode) +
+        (33 * type.hashCode) +
+        (31 * (oneBased ? 1 : 0));
+  }
+
+  @override
+  String toString() {
+    return "$name:${type.toString()}";
+  }
+
+  String getName() {
+    return name;
+  }
+
+  DataType getType() {
+    return type;
+  }
+
   bool isSubTypeOf(TupleTypeElement that) {
     return getName() == that.getName() && getType().isSubTypeOf(that.getType());
   }
@@ -42,11 +47,6 @@ class TupleTypeElement {
   bool isSuperTypeOf(TupleTypeElement that) {
     return getName() == that.getName() &&
         getType().isSuperTypeOf(that.getType());
-  }
-
-  @override
-  String toString() {
-    return "$name:${type.toString()}";
   }
 
   String toLabel() {

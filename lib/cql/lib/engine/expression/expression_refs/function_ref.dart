@@ -2,11 +2,11 @@ import '../../../cql.dart';
 
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {
-  /// Declared signature of the function being called.
-  List<TypeSpecifier>? signature;
-
   /// Operands passed to the function.
   List<Expression>? operand;
+
+  /// Declared signature of the function being called.
+  List<TypeSpecifier>? signature;
 
   FunctionRef({this.signature, this.operand, required super.name});
 

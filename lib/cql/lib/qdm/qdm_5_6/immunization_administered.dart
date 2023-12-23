@@ -9,11 +9,11 @@ import 'qdm_5_6.dart';
 class ImmunizationAdministered {
   final LiteralDateTime? authorDatetime;
   final LiteralQuantity? dosage;
-  final LiteralCode? reason;
-  final LiteralCode? route;
   final LiteralCode? negationRationale;
-  final LiteralDateTime? relevantDatetime;
   final QDMEntity? performer;
+  final LiteralCode? reason;
+  final LiteralDateTime? relevantDatetime;
+  final LiteralCode? route;
 
   ImmunizationAdministered({
     this.authorDatetime,

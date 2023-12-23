@@ -9,14 +9,14 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class ProcedureOrder {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
-  final LiteralCode? method;
   final LiteralCode? anatomicalApproachSite;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
   final LiteralCode? ordinality;
   final LiteralQuantity? radiationDuration;
-  final LiteralCode? negationRationale;
+  final LiteralCode? reason;
 
   ProcedureOrder({
     this.authorDatetime,

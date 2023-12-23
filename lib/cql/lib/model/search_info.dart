@@ -1,14 +1,14 @@
 import '../cql.dart';
 
 class SearchInfo {
-  final TypeSpecifier? typeSpecifier;
+  final String? comment;
+  final String? definition;
+  final String? description;
+  final String? label;
   final String name;
   final String path;
   final String? type;
-  final String? label;
-  final String? description;
-  final String? definition;
-  final String? comment;
+  final TypeSpecifier? typeSpecifier;
 
   SearchInfo({
     this.typeSpecifier,

@@ -22,12 +22,12 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class PhysicalExamOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? anatomicalLocationSite;
+  final LiteralConcept? method;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
-  final LiteralConcept? method;
-  final LiteralConcept? anatomicalLocationSite;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   PhysicalExamOrder({
     this.startDatetime,

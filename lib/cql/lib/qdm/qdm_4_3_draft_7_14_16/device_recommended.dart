@@ -5,10 +5,10 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class DeviceRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DeviceRecommended({
     this.startDatetime,

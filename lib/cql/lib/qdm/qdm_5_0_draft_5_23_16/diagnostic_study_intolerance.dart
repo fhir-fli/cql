@@ -7,9 +7,9 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class DiagnosticStudyIntolerance {
   final Interval? interval;
-  final CodeableConcept? reaction;
   final CodeableConcept? radiationDosage;
   final CodeableConcept? radiationDuration;
+  final CodeableConcept? reaction;
 
   DiagnosticStudyIntolerance({
     this.interval,

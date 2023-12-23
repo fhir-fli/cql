@@ -10,8 +10,8 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class LaboratoryTestOrder {
   final LiteralDateTime? authorDatetime;
-  final CodeableConcept? reason;
   final CodeableConcept? method;
+  final CodeableConcept? reason;
 
   LaboratoryTestOrder({
     this.authorDatetime,

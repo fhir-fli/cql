@@ -9,13 +9,13 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class PhysicalExamPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? anatomicalLocationSite;
+  final LiteralConcept? method;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
-  final LiteralConcept? method;
   final dynamic result;
-  final LiteralConcept? anatomicalLocationSite;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   PhysicalExamPerformed({
     this.startDatetime,

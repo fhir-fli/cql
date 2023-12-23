@@ -4,11 +4,26 @@ import '../cql.dart';
 
 class FunctionHeader {
   final FunctionDef functionDef;
+  bool isCompiled = false;
   final TypeSpecifier? resultType;
 
-  bool isCompiled = false;
-
   FunctionHeader(this.functionDef, this.resultType);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FunctionHeader &&
+          runtimeType == other.runtimeType &&
+          functionDef == other.functionDef &&
+          const DeepCollectionEquality().equals(resultType, other.resultType);
+
+  @override
+  int get hashCode => functionDef.hashCode ^ resultType.hashCode;
+
+  @override
+  String toString() {
+    return 'FunctionHeader{functionDef: $functionDef, resultType: $resultType}';
+  }
 
   static FunctionHeader noReturnType(FunctionDef functionDef) {
     return FunctionHeader(functionDef, null);
@@ -30,21 +45,5 @@ class FunctionHeader {
     }
     sb.write('_');
     return sb.toString();
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FunctionHeader &&
-          runtimeType == other.runtimeType &&
-          functionDef == other.functionDef &&
-          const DeepCollectionEquality().equals(resultType, other.resultType);
-
-  @override
-  int get hashCode => functionDef.hashCode ^ resultType.hashCode;
-
-  @override
-  String toString() {
-    return 'FunctionHeader{functionDef: $functionDef, resultType: $resultType}';
   }
 }

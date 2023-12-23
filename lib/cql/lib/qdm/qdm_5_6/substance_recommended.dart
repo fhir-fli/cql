@@ -8,13 +8,13 @@ import 'qdm_5_6.dart';
 
 class SubstanceRecommended {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralQuantity? dosage;
   final LiteralCode? frequency;
-  final LiteralInteger? refills;
-  final LiteralCode? route;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
+  final LiteralInteger? refills;
   final QDMEntity? requester;
+  final LiteralCode? route;
 
   SubstanceRecommended({
     this.authorDatetime,

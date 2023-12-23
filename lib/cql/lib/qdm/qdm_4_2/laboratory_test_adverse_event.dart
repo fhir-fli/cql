@@ -10,9 +10,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class LaboratoryTestAdverseEvent {
+  final LiteralConcept? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reaction;
 
   LaboratoryTestAdverseEvent({
     this.startDatetime,

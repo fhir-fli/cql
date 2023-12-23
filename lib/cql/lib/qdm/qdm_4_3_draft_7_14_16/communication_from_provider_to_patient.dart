@@ -5,9 +5,9 @@ import 'package:cql/engine/types/types.dart';
 /// from a provider to a patient.
 
 class CommunicationFromProviderToPatient {
+  final LiteralCode? negationRationale;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
 
   CommunicationFromProviderToPatient({
     this.startDatetime,

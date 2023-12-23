@@ -18,19 +18,6 @@ class ChoiceType extends DataType {
     }
   }
 
-  void addType(DataType type) {
-    if (type is ChoiceType) {
-      final choiceType = type;
-      for (var choice in choiceType.types) {
-        addType(choice);
-      }
-    } else {
-      _types.add(type);
-    }
-  }
-
-  Iterable<DataType> get types => _types;
-
   @override
   bool operator ==(Object other) {
     if (other is ChoiceType) {
@@ -56,23 +43,8 @@ class ChoiceType extends DataType {
     return result;
   }
 
-  bool isSubSetOf(ChoiceType other) {
-    for (final type in _types) {
-      var isSubType = false;
-      for (final otherType in other.types) {
-        isSubType = type.isSubTypeOf(otherType);
-        if (isSubType) {
-          break;
-        }
-      }
-      if (!isSubType) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  bool isSuperSetOf(ChoiceType other) => other.isSubSetOf(this);
+  @override
+  DataType instantiate(InstantiationContext context) => this;
 
   @override
   bool isCompatibleWith(DataType other) {
@@ -86,6 +58,20 @@ class ChoiceType extends DataType {
     }
     return super.isCompatibleWith(other);
   }
+
+  @override
+  bool get isGeneric {
+    for (var type in _types) {
+      if (type.isGeneric) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @override
+  bool isInstantiable(DataType callType, InstantiationContext context) =>
+      isSuperTypeOf(callType);
 
   @override
   String toString() {
@@ -104,20 +90,34 @@ class ChoiceType extends DataType {
     return sb.toString();
   }
 
-  @override
-  bool get isGeneric {
-    for (var type in _types) {
-      if (type.isGeneric) {
-        return true;
+  void addType(DataType type) {
+    if (type is ChoiceType) {
+      final choiceType = type;
+      for (var choice in choiceType.types) {
+        addType(choice);
       }
+    } else {
+      _types.add(type);
     }
-    return false;
   }
 
-  @override
-  bool isInstantiable(DataType callType, InstantiationContext context) =>
-      isSuperTypeOf(callType);
+  Iterable<DataType> get types => _types;
 
-  @override
-  DataType instantiate(InstantiationContext context) => this;
+  bool isSubSetOf(ChoiceType other) {
+    for (final type in _types) {
+      var isSubType = false;
+      for (final otherType in other.types) {
+        isSubType = type.isSubTypeOf(otherType);
+        if (isSubType) {
+          break;
+        }
+      }
+      if (!isSubType) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  bool isSuperSetOf(ChoiceType other) => other.isSubSetOf(this);
 }

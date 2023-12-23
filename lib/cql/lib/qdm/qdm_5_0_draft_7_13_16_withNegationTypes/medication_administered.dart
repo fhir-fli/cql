@@ -11,8 +11,8 @@ import 'package:cql/engine/types/types.dart';
 /// the same)
 
 class MedicationAdministered {
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? reason;
+  final LiteralDateTimeInterval? relevantPeriod;
 
   MedicationAdministered({
     this.relevantPeriod,

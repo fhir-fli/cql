@@ -4,8 +4,18 @@ import '../antlr4/cql_parser.dart';
 import 'base_info.dart';
 
 class ExpressionDefinitionInfo extends BaseInfo {
-  String? name;
   String? context;
+  String? name;
+
+  @override
+  ExpressionDefinitionContext? getDefinition() {
+    return super.getDefinition() as ExpressionDefinitionContext?;
+  }
+
+  @override
+  void setDefinition(ParserRuleContext value) {
+    super.setDefinition(value);
+  }
 
   String? getName() {
     return name;
@@ -21,16 +31,6 @@ class ExpressionDefinitionInfo extends BaseInfo {
 
   void setContext(String value) {
     context = value;
-  }
-
-  @override
-  ExpressionDefinitionContext? getDefinition() {
-    return super.getDefinition() as ExpressionDefinitionContext?;
-  }
-
-  @override
-  void setDefinition(ParserRuleContext value) {
-    super.setDefinition(value);
   }
 
   ExpressionDefinitionInfo withName(String value) {

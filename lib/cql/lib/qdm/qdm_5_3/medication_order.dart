@@ -6,15 +6,15 @@ import 'package:cql/engine/types/types.dart';
 
 class MedicationOrder {
   final LiteralDateTime authorDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralInteger? refills;
   final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
   final LiteralCode? frequency;
-  final LiteralCode? route;
   final LiteralCode? method;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
+  final LiteralInteger? refills;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? route;
+  final LiteralQuantity? supply;
 
   MedicationOrder({
     required this.authorDatetime,

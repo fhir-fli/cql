@@ -5,9 +5,9 @@ import 'package:cql/engine/types/types.dart';
 /// category and its corresponding value set.
 
 class LaboratoryTestAdverseEvent {
+  final LiteralCode? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
 
   LaboratoryTestAdverseEvent({
     this.startDatetime,

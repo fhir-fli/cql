@@ -4,86 +4,6 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
   NamespaceManager? namespaceManager;
 
   @override
-  void setNamespaceManager(NamespaceManager namespaceManager) {
-    this.namespaceManager = namespaceManager;
-  }
-
-  bool isQDMModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "QDM" &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == "urn:healthit-gov");
-    }
-    return modelIdentifier.id == "QDM";
-  }
-
-  bool isFhirModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "FHIR" &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir");
-    }
-    return modelIdentifier.id == "FHIR";
-  }
-
-  bool isQuickModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "QUICK" &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir");
-    }
-    return modelIdentifier.id == "QUICK";
-  }
-
-  bool isQICoreModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "QICORE" &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir/us/qicore");
-    }
-    return modelIdentifier.id == "QICORE";
-  }
-
-  bool isUsCoreModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id.toLowerCase() == "uscore" &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir/us/core");
-    }
-    return modelIdentifier.id.toLowerCase() == "uscore";
-  }
-
-  bool isTestModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return (modelIdentifier.id == "GENTEST" ||
-              modelIdentifier.id == 'Test') &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://example.com/gentest" ||
-              modelIdentifier.system == "http://cqframework.org/test");
-    }
-    return modelIdentifier.id == "GENTEST" || modelIdentifier.id == 'Test';
-  }
-
-  bool isSimpleModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "Simple" &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system ==
-                  "https://github.com/cqframework/cql-execution/simple");
-    }
-    return modelIdentifier.id == "Simple";
-  }
-
-  bool isSystemModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "System" &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == "urn:hl7-org:elm-types:r1");
-    }
-    return modelIdentifier.id == "System";
-  }
-
-  @override
   ModelInfo? load(ModelIdentifier modelIdentifier) {
     if (isQDMModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? "";
@@ -242,5 +162,85 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
       }
     }
     return null;
+  }
+
+  @override
+  void setNamespaceManager(NamespaceManager namespaceManager) {
+    this.namespaceManager = namespaceManager;
+  }
+
+  bool isQDMModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "QDM" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "urn:healthit-gov");
+    }
+    return modelIdentifier.id == "QDM";
+  }
+
+  bool isFhirModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "FHIR" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "http://hl7.org/fhir");
+    }
+    return modelIdentifier.id == "FHIR";
+  }
+
+  bool isQuickModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "QUICK" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "http://hl7.org/fhir");
+    }
+    return modelIdentifier.id == "QUICK";
+  }
+
+  bool isQICoreModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "QICORE" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "http://hl7.org/fhir/us/qicore");
+    }
+    return modelIdentifier.id == "QICORE";
+  }
+
+  bool isUsCoreModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id.toLowerCase() == "uscore" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "http://hl7.org/fhir/us/core");
+    }
+    return modelIdentifier.id.toLowerCase() == "uscore";
+  }
+
+  bool isTestModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return (modelIdentifier.id == "GENTEST" ||
+              modelIdentifier.id == 'Test') &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "http://example.com/gentest" ||
+              modelIdentifier.system == "http://cqframework.org/test");
+    }
+    return modelIdentifier.id == "GENTEST" || modelIdentifier.id == 'Test';
+  }
+
+  bool isSimpleModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "Simple" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system ==
+                  "https://github.com/cqframework/cql-execution/simple");
+    }
+    return modelIdentifier.id == "Simple";
+  }
+
+  bool isSystemModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == "System" &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == "urn:hl7-org:elm-types:r1");
+    }
+    return modelIdentifier.id == "System";
   }
 }

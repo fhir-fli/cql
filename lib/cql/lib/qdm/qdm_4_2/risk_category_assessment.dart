@@ -14,10 +14,10 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class RiskCategoryAssessment {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralConcept? negationRationale;
   final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   RiskCategoryAssessment({
     this.startDatetime,

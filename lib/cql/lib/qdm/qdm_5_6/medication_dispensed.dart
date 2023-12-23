@@ -13,18 +13,18 @@ import 'qdm_5_6.dart';
 
 class MedicationDispensed {
   final LiteralDateTime? authorDatetime;
+  final LiteralInteger? daysSupplied;
+  final QDMEntity? dispenser;
+  final LiteralQuantity? dosage;
+  final LiteralCode? frequency;
+  final LiteralCode? negationRationale;
+  final QDMEntity? prescriber;
+  final LiteralInteger? refills;
+  final LiteralString? relatedTo;
   final LiteralDateTime? relevantDatetime;
   final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralInteger? refills;
-  final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
-  final LiteralCode? frequency;
-  final LiteralInteger? daysSupplied;
   final LiteralCode? route;
-  final QDMEntity? prescriber;
-  final QDMEntity? dispenser;
-  final LiteralCode? negationRationale;
-  final LiteralString? relatedTo;
+  final LiteralQuantity? supply;
 
   MedicationDispensed({
     this.authorDatetime,

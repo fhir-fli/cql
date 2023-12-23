@@ -2,11 +2,11 @@ import '../../../../cql.dart';
 
 /// Abstract base class for expressions that take two arguments.
 abstract class BinaryExpression extends OperatorExpression {
-  /// List of expressions as operand.
-  List<Expression> operand;
-
   /// Because XML doesn't always directly translate lists to maps
   final bool isList;
+
+  /// List of expressions as operand.
+  List<Expression> operand;
 
   BinaryExpression({required this.operand, this.isList = true});
 

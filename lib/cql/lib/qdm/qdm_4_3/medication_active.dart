@@ -7,12 +7,12 @@ import 'package:cql/engine/types/types.dart';
 /// frame indicated by the timing relationships.
 
 class MedicationActive {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralQuantity? cumulativeMedicationDuration;
   final LiteralQuantity? dose;
   final LiteralCode? frequency;
   final LiteralCode? route;
-  final LiteralQuantity? cumulativeMedicationDuration;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   MedicationActive({
     this.startDatetime,

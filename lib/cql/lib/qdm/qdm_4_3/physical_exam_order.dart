@@ -10,12 +10,12 @@ import 'package:cql/engine/types/types.dart';
 /// the Start Datetime and Stop Datetime refer to the same point in time.
 
 class PhysicalExamOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? anatomicalLocationSite;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
-  final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   PhysicalExamOrder({
     this.startDatetime,

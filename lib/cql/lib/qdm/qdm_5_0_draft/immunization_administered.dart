@@ -7,11 +7,11 @@ import 'qdm_5_0_draft.dart';
 /// actually administered to the patient.
 
 class ImmunizationAdministered {
+  final LiteralQuantity? dose;
   final Interval? interval;
   final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
   final CodeableConcept? route;
-  final LiteralQuantity? dose;
 
   ImmunizationAdministered({
     this.interval,

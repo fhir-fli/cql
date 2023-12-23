@@ -4,8 +4,8 @@ import '../../cql.dart';
 /// When the sort elements do not provide a unique ordering, the order of duplicates is unspecified.
 /// If the argument is null, the result is null.
 class Sort extends Expression {
-  final Expression source;
   final List<SortByItem> by;
+  final Expression source;
 
   Sort({
     required this.source,

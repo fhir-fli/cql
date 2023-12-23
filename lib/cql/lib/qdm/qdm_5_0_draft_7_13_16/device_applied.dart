@@ -9,11 +9,11 @@ import 'package:cql/engine/types/types.dart';
 /// device is removed or last used
 
 class DeviceApplied {
-  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? anatomicalApproachSite;
+  final LiteralCode? anatomicalLocationSite;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? anatomicalLocationSite;
-  final LiteralCode? anatomicalApproachSite;
+  final LiteralDateTimeInterval? relevantPeriod;
 
   DeviceApplied({
     this.relevantPeriod,

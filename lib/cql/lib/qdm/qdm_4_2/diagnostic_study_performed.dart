@@ -9,16 +9,16 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class DiagnosticStudyPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? facilityLocation;
+  final LiteralConcept? method;
   final LiteralConcept? negationRationale;
-  final LiteralConcept? reason;
-  final dynamic result;
-  final LiteralConcept? status;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
-  final LiteralConcept? method;
-  final LiteralConcept? facilityLocation;
+  final LiteralConcept? reason;
+  final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralConcept? status;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyPerformed({
     this.startDatetime,

@@ -12,9 +12,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class TransferFrom {
+  final LiteralConcept? negationRationale;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
 
   TransferFrom({
     this.startDatetime,

@@ -6,9 +6,9 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class ProcedureIntolerance {
   final Interval? interval;
-  final CodeableConcept? reaction;
   final CodeableConcept? ordinality;
   final CodeableConcept? procedurePerformed;
+  final CodeableConcept? reaction;
 
   ProcedureIntolerance({
     this.interval,

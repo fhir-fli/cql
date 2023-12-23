@@ -5,11 +5,11 @@ import 'qdm_5_0_draft.dart';
 /// corresponding value set.
 
 class PhysicalExamRecommended {
+  final CodeableConcept? anatomicalLocationSite;
   final Interval? interval;
+  final CodeableConcept? method;
   final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
-  final CodeableConcept? method;
-  final CodeableConcept? anatomicalLocationSite;
 
   PhysicalExamRecommended({
     this.interval,

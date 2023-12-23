@@ -7,10 +7,10 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class DiagnosticStudyRecommended {
   final Interval? interval;
-  final CodeableConcept? reason;
+  final CodeableConcept? method;
   final CodeableConcept? radiationDosage;
   final CodeableConcept? radiationDuration;
-  final CodeableConcept? method;
+  final CodeableConcept? reason;
 
   DiagnosticStudyRecommended({
     this.interval,

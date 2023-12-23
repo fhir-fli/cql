@@ -1,23 +1,23 @@
 import '../../cql.dart';
 
 class ClassType extends DataType implements NamedType {
-  String name;
-  String? identifier;
-  String? label;
-  String? target;
-  bool? retrievable;
-  String? primaryCodePath;
-  String? primaryValueSetPath;
+  Map<String, ClassTypeElement>? baseElementMap;
   List<ClassTypeElement> elements = [];
-
   /// Generic class parameters such 'S', 'T extends MyType'.
   List<TypeParameter> genericParameters = [];
+
+  String? identifier;
+  String? label;
+  String name;
+  String? primaryCodePath;
+  String? primaryValueSetPath;
   List<Relationship> relationships = [];
-  List<Relationship> targetRelationships = [];
+  bool? retrievable;
   List<SearchType> searches = [];
   List<ClassTypeElement>? sortedElements;
+  String? target;
+  List<Relationship> targetRelationships = [];
   TupleType? tupleType;
-  Map<String, ClassTypeElement>? baseElementMap;
 
   ClassType({
     DataType? baseType,
@@ -45,6 +45,11 @@ class ClassType extends DataType implements NamedType {
   }
 
   @override
+  bool operator ==(Object other) {
+    return other is ClassType && name == other.name;
+  }
+
+  @override
   String getName() => name;
 
   @override
@@ -65,12 +70,81 @@ class ClassType extends DataType implements NamedType {
     return name;
   }
 
+  @override
+  String? getTarget() => target;
+
+  @override
+  int get hashCode => name.hashCode;
+
+  @override
+  DataType instantiate(InstantiationContext context) {
+    if (!isGeneric) {
+      return this;
+    }
+
+    var result = ClassType(name: name, baseType: baseType);
+    for (var element in elements) {
+      result.addElement(ClassTypeElement(
+          name: element.name, type: element.type.instantiate(context)));
+    }
+    return result;
+  }
+
+  @override
+  bool isCompatibleWith(DataType other) {
+    if (other is TupleType) {
+      return getTupleType() == other;
+    }
+    return super.isCompatibleWith(other);
+  }
+
+  @override
+  bool get isGeneric => genericParameters.isNotEmpty;
+
+  @override
+  bool isInstantiable(DataType callType, InstantiationContext context) {
+    if (callType is ClassType) {
+      ClassType classType = callType;
+      if (elements.length == classType.elements.length) {
+        var theseElements = getSortedElements();
+        var thoseElements = classType.getSortedElements();
+        for (var i = 0; i < theseElements.length; i++) {
+          if (!(theseElements[i].name == thoseElements[i].name &&
+              theseElements[i]
+                  .type
+                  .isInstantiable(thoseElements[i].type, context))) {
+            return false;
+          }
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @override
+  String toLabel() => label ?? name;
+
+  @override
+  String toString() {
+    var buffer = StringBuffer();
+    buffer.write(name);
+    if (genericParameters.isNotEmpty) {
+      buffer.write('<');
+      for (var i = 0; i < genericParameters.length; i++) {
+        if (i > 0) {
+          buffer.write(',');
+        }
+        buffer.write(genericParameters[i]);
+      }
+      buffer.write('>');
+    }
+    return buffer.toString();
+  }
+
   String? getIdentifier() => identifier;
 
   String? getLabel() => label;
-
-  @override
-  String? getTarget() => target;
 
   bool? isRetrievable() => retrievable;
 
@@ -218,34 +292,6 @@ class ClassType extends DataType implements NamedType {
     return sortedElements!;
   }
 
-  @override
-  int get hashCode => name.hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    return other is ClassType && name == other.name;
-  }
-
-  @override
-  String toString() {
-    var buffer = StringBuffer();
-    buffer.write(name);
-    if (genericParameters.isNotEmpty) {
-      buffer.write('<');
-      for (var i = 0; i < genericParameters.length; i++) {
-        if (i > 0) {
-          buffer.write(',');
-        }
-        buffer.write(genericParameters[i]);
-      }
-      buffer.write('>');
-    }
-    return buffer.toString();
-  }
-
-  @override
-  String toLabel() => label ?? name;
-
   TupleType getTupleType() {
     tupleType ??= buildTupleType();
     return tupleType!;
@@ -270,51 +316,5 @@ class ClassType extends DataType implements NamedType {
     var tupleElements = <String, TupleTypeElement>{};
     addTupleElements(this, tupleElements);
     return TupleType(elements: tupleElements.values.toList());
-  }
-
-  @override
-  bool isCompatibleWith(DataType other) {
-    if (other is TupleType) {
-      return getTupleType() == other;
-    }
-    return super.isCompatibleWith(other);
-  }
-
-  @override
-  bool get isGeneric => genericParameters.isNotEmpty;
-
-  @override
-  bool isInstantiable(DataType callType, InstantiationContext context) {
-    if (callType is ClassType) {
-      ClassType classType = callType;
-      if (elements.length == classType.elements.length) {
-        var theseElements = getSortedElements();
-        var thoseElements = classType.getSortedElements();
-        for (var i = 0; i < theseElements.length; i++) {
-          if (!(theseElements[i].name == thoseElements[i].name &&
-              theseElements[i]
-                  .type
-                  .isInstantiable(thoseElements[i].type, context))) {
-            return false;
-          }
-        }
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @override
-  DataType instantiate(InstantiationContext context) {
-    if (!isGeneric) {
-      return this;
-    }
-
-    var result = ClassType(name: name, baseType: baseType);
-    for (var element in elements) {
-      result.addElement(ClassTypeElement(
-          name: element.name, type: element.type.instantiate(context)));
-    }
-    return result;
   }
 }

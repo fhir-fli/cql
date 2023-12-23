@@ -10,11 +10,11 @@ import 'package:cql/engine/types/types.dart';
 /// clinical workflow to capture recommendations when evaluating measures.
 
 class LaboratoryTestRecommended {
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralCode? method;
-  final LiteralCode? reason;
 
   LaboratoryTestRecommended({
     this.startDatetime,

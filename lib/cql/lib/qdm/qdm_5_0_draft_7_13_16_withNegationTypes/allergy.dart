@@ -7,8 +7,8 @@ import 'package:cql/engine/types/types.dart';
 
 class Allergy {
   final LiteralDateTimeInterval? prevalencePeriod;
-  final LiteralCode? substance;
   final LiteralCode? reaction;
+  final LiteralCode? substance;
 
   Allergy({
     this.prevalencePeriod,

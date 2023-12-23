@@ -11,9 +11,9 @@ import 'qdm_5_0_draft_5_23_16.dart';
 /// diagnosis for the time frame indicated by the timing relationships.
 
 class Diagnosis {
-  final LiteralDateTime? onsetDatetime;
   final LiteralDateTime? abatementDatetime;
   final CodeableConcept? anatomicalLocationSite;
+  final LiteralDateTime? onsetDatetime;
   final CodeableConcept? severity;
 
   Diagnosis({

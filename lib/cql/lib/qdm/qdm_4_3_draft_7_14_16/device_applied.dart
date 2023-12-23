@@ -8,12 +8,12 @@ import 'package:cql/engine/types/types.dart';
 /// "removalDatetime" NOT "stopDatetime".
 
 class DeviceApplied {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? removalDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralCode? reason;
   final LiteralCode? anatomialLocationSite;
   final LiteralCode? anatomicalApproachSite;
+  final LiteralCode? negationRationale;
+  final LiteralCode? reason;
+  final LiteralDateTime? removalDatetime;
+  final LiteralDateTime? startDatetime;
 
   DeviceApplied({
     this.startDatetime,

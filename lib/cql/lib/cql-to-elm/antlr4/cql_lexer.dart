@@ -3,13 +3,6 @@
 import 'package:antlr4/antlr4.dart';
 
 class cqlLexer extends Lexer {
-  static final checkVersion =
-      () => RuntimeMetaData.checkVersion('4.13.1', RuntimeMetaData.VERSION);
-
-  static final List<DFA> _decisionToDFA = List.generate(
-      _ATN.numberOfDecisions, (i) => DFA(_ATN.getDecisionState(i), i));
-  static final PredictionContextCache _sharedContextCache =
-      PredictionContextCache();
   static const int TOKEN_T__0 = 1,
       TOKEN_T__1 = 2,
       TOKEN_T__2 = 3,
@@ -178,6 +171,10 @@ class cqlLexer extends Lexer {
       TOKEN_WS = 166,
       TOKEN_COMMENT = 167,
       TOKEN_LINE_COMMENT = 168;
+
+  static final Vocabulary VOCABULARY =
+      VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
   @override
   final List<String> channelNames = ['DEFAULT_TOKEN_CHANNEL', 'HIDDEN'];
 
@@ -362,6 +359,7 @@ class cqlLexer extends Lexer {
     'HEX'
   ];
 
+  static final ATN _ATN = ATNDeserializer().deserialize(_serializedATN);
   static final List<String?> _LITERAL_NAMES = [
     null,
     "'library'",
@@ -521,6 +519,7 @@ class cqlLexer extends Lexer {
     "'Concept'",
     "'%'"
   ];
+
   static final List<String?> _SYMBOLIC_NAMES = [
     null,
     null,
@@ -692,29 +691,9 @@ class cqlLexer extends Lexer {
     "COMMENT",
     "LINE_COMMENT"
   ];
-  static final Vocabulary VOCABULARY =
-      VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
-  @override
-  Vocabulary get vocabulary {
-    return VOCABULARY;
-  }
-
-  cqlLexer(CharStream input) : super(input) {
-    interpreter = LexerATNSimulator(_ATN, _decisionToDFA, _sharedContextCache,
-        recog: this);
-  }
-
-  @override
-  List<int> get serializedATN => _serializedATN;
-
-  @override
-  String get grammarFileName => 'cql.g4';
-
-  @override
-  ATN getATN() {
-    return _ATN;
-  }
+  static final List<DFA> _decisionToDFA = List.generate(
+      _ATN.numberOfDecisions, (i) => DFA(_ATN.getDecisionState(i), i));
 
   static const List<int> _serializedATN = [
     4,
@@ -13127,5 +13106,30 @@ class cqlLexer extends Lexer {
     0
   ];
 
-  static final ATN _ATN = ATNDeserializer().deserialize(_serializedATN);
+  static final PredictionContextCache _sharedContextCache =
+      PredictionContextCache();
+
+  cqlLexer(CharStream input) : super(input) {
+    interpreter = LexerATNSimulator(_ATN, _decisionToDFA, _sharedContextCache,
+        recog: this);
+  }
+
+  @override
+  ATN getATN() {
+    return _ATN;
+  }
+
+  @override
+  String get grammarFileName => 'cql.g4';
+
+  @override
+  List<int> get serializedATN => _serializedATN;
+
+  @override
+  Vocabulary get vocabulary {
+    return VOCABULARY;
+  }
+
+  static final checkVersion =
+      () => RuntimeMetaData.checkVersion('4.13.1', RuntimeMetaData.VERSION);
 }

@@ -3,11 +3,11 @@ import '../../../cql.dart';
 /// The CodeRef expression allows a previously defined code to be referenced
 /// within an expression.
 abstract class Ref extends Expression {
-  /// The name of the code.
-  String? name;
-
   /// The library name.
   String? libraryName;
+
+  /// The name of the code.
+  String? name;
 
   String? type;
 

@@ -14,17 +14,17 @@ import 'qdm_5_0_1_draft_7_13_16.dart';
 ///
 
 class DiagnosticStudyPerformed {
-  final LiteralDateTimeInterval? relevantPeriod;
+  final Component? component;
+  final LiteralCode? facilityLocation;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final LiteralQuantity? radiationDosage;
+  final LiteralQuantity? radiationDuration;
   final LiteralCode? reason;
+  final LiteralDateTimeInterval? relevantPeriod;
   final dynamic result;
   final LiteralDateTime? resultDatetime;
   final LiteralCode? status;
-  final LiteralQuantity? radiationDosage;
-  final LiteralQuantity? radiationDuration;
-  final LiteralCode? method;
-  final LiteralCode? facilityLocation;
-  final LiteralCode? negationRationale;
-  final Component? component;
 
   DiagnosticStudyPerformed({
     this.relevantPeriod,

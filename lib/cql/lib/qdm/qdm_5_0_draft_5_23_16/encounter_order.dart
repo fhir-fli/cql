@@ -11,8 +11,8 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class EncounterOrder {
   final LiteralDateTime? authorDatetime;
-  final CodeableConcept? reason;
   final CodeableConcept? facilityLocation;
+  final CodeableConcept? reason;
 
   EncounterOrder({
     this.authorDatetime,

@@ -6,6 +6,16 @@ import 'base_info.dart';
 class CodeDefinitionInfo extends BaseInfo {
   String? name;
 
+  @override
+  CodeDefinitionContext? getDefinition() {
+    return super.getDefinition() as CodeDefinitionContext?;
+  }
+
+  @override
+  void setDefinition(ParserRuleContext value) {
+    super.setDefinition(value);
+  }
+
   String? getName() {
     return name;
   }
@@ -17,16 +27,6 @@ class CodeDefinitionInfo extends BaseInfo {
   CodeDefinitionInfo withName(String value) {
     setName(value);
     return this;
-  }
-
-  @override
-  CodeDefinitionContext? getDefinition() {
-    return super.getDefinition() as CodeDefinitionContext?;
-  }
-
-  @override
-  void setDefinition(ParserRuleContext value) {
-    super.setDefinition(value);
   }
 
   CodeDefinitionInfo withDefinition(CodeDefinitionContext value) {

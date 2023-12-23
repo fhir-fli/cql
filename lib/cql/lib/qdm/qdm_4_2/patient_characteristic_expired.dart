@@ -12,9 +12,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class PatientCharacteristicExpired {
+  final LiteralConcept? cause;
   final LiteralDate? date;
   final LiteralTime? time;
-  final LiteralConcept? cause;
 
   PatientCharacteristicExpired({
     this.date,

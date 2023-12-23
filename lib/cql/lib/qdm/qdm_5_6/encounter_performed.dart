@@ -11,17 +11,17 @@ import 'qdm_5_6.dart';
 /// patient departed the location (Facility Location Departure time)
 
 class EncounterPerformed {
-  final LiteralDateTime? authorDatetime;
   final LiteralCode admissionSource;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode class_;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? dischargeDisposition;
   final DiagnosisComponent? diagnoses;
+  final LiteralCode? dischargeDisposition;
   final FacilityLocation? facilityLocation;
   final LiteralQuantity? lengthOfStay;
   final QDMEntity? participant;
   final LiteralCode? priority;
   final LiteralString? relatedTo;
+  final LiteralDateTimeInterval? relevantPeriod;
 
   EncounterPerformed({
     this.authorDatetime,

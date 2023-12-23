@@ -6,28 +6,23 @@ class TupleType extends DataType {
 
   TupleType({required this.elements, this.sortedElements}) : super(null);
 
-  Iterable<TupleTypeElement> getElements() {
-    return elements;
-  }
-
-  void addElement(TupleTypeElement element) {
-    elements.add(element);
-    sortedElements = null;
-  }
-
-  void addElements(Iterable<TupleTypeElement> elements) {
-    this.elements.addAll(elements);
-    sortedElements = null;
-  }
-
-  List<TupleTypeElement> getSortedElements() {
-    if (sortedElements == null) {
-      sortedElements = List<TupleTypeElement>.from(elements);
-      sortedElements!
-          .sort((left, right) => left.getName().compareTo(right.getName()));
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+    if (o is TupleType) {
+      TupleType that = o;
+      if (elements.length == that.elements.length) {
+        List<TupleTypeElement> theseElements = getSortedElements();
+        List<TupleTypeElement> thoseElements = that.getSortedElements();
+        for (var i = 0; i < theseElements.length; i++) {
+          if (theseElements[i] != thoseElements[i]) {
+            return false;
+          }
+        }
+        return true;
+      }
     }
-
-    return sortedElements!;
+    return false;
   }
 
   @override
@@ -40,15 +35,50 @@ class TupleType extends DataType {
   }
 
   @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-    if (o is TupleType) {
-      TupleType that = o;
-      if (elements.length == that.elements.length) {
+  DataType instantiate(InstantiationContext context) {
+    if (!isGeneric) {
+      return this;
+    }
+    TupleType result = TupleType(elements: []);
+    for (var i = 0; i < elements.length; i++) {
+      result.addElement(TupleTypeElement(
+          name: elements[i].getName(),
+          type: elements[i].getType().instantiate(context)));
+    }
+    return result;
+  }
+
+  @override
+  bool isCompatibleWith(DataType other) {
+    if (other is ClassType) {
+      ClassType classType = other;
+      return this == classType.getTupleType();
+    }
+    return super.isCompatibleWith(other);
+  }
+
+  @override
+  bool get isGeneric {
+    for (var e in elements) {
+      if (e.getType().isGeneric) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @override
+  bool isInstantiable(DataType callType, InstantiationContext context) {
+    if (callType is TupleType) {
+      TupleType tupleType = callType;
+      if (elements.length == tupleType.elements.length) {
         List<TupleTypeElement> theseElements = getSortedElements();
-        List<TupleTypeElement> thoseElements = that.getSortedElements();
+        List<TupleTypeElement> thoseElements = tupleType.getSortedElements();
         for (var i = 0; i < theseElements.length; i++) {
-          if (theseElements[i] != thoseElements[i]) {
+          if (!(theseElements[i].getName() == thoseElements[i].getName() &&
+              theseElements[i]
+                  .getType()
+                  .isInstantiable(thoseElements[i].getType(), context))) {
             return false;
           }
         }
@@ -95,20 +125,6 @@ class TupleType extends DataType {
   }
 
   @override
-  String toString() {
-    var builder = StringBuffer();
-    builder.write("tuple{");
-    for (var i = 0; i < elements.length; i++) {
-      if (i > 0) {
-        builder.write(",");
-      }
-      builder.write(elements[i].toString());
-    }
-    builder.write("}");
-    return builder.toString();
-  }
-
-  @override
   String toLabel() {
     var builder = StringBuffer();
     builder.write("tuple of ");
@@ -122,56 +138,40 @@ class TupleType extends DataType {
   }
 
   @override
-  bool isCompatibleWith(DataType other) {
-    if (other is ClassType) {
-      ClassType classType = other;
-      return this == classType.getTupleType();
-    }
-    return super.isCompatibleWith(other);
-  }
-
-  @override
-  bool get isGeneric {
-    for (var e in elements) {
-      if (e.getType().isGeneric) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @override
-  bool isInstantiable(DataType callType, InstantiationContext context) {
-    if (callType is TupleType) {
-      TupleType tupleType = callType;
-      if (elements.length == tupleType.elements.length) {
-        List<TupleTypeElement> theseElements = getSortedElements();
-        List<TupleTypeElement> thoseElements = tupleType.getSortedElements();
-        for (var i = 0; i < theseElements.length; i++) {
-          if (!(theseElements[i].getName() == thoseElements[i].getName() &&
-              theseElements[i]
-                  .getType()
-                  .isInstantiable(thoseElements[i].getType(), context))) {
-            return false;
-          }
-        }
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @override
-  DataType instantiate(InstantiationContext context) {
-    if (!isGeneric) {
-      return this;
-    }
-    TupleType result = TupleType(elements: []);
+  String toString() {
+    var builder = StringBuffer();
+    builder.write("tuple{");
     for (var i = 0; i < elements.length; i++) {
-      result.addElement(TupleTypeElement(
-          name: elements[i].getName(),
-          type: elements[i].getType().instantiate(context)));
+      if (i > 0) {
+        builder.write(",");
+      }
+      builder.write(elements[i].toString());
     }
-    return result;
+    builder.write("}");
+    return builder.toString();
+  }
+
+  Iterable<TupleTypeElement> getElements() {
+    return elements;
+  }
+
+  void addElement(TupleTypeElement element) {
+    elements.add(element);
+    sortedElements = null;
+  }
+
+  void addElements(Iterable<TupleTypeElement> elements) {
+    this.elements.addAll(elements);
+    sortedElements = null;
+  }
+
+  List<TupleTypeElement> getSortedElements() {
+    if (sortedElements == null) {
+      sortedElements = List<TupleTypeElement>.from(elements);
+      sortedElements!
+          .sort((left, right) => left.getName().compareTo(right.getName()));
+    }
+
+    return sortedElements!;
   }
 }

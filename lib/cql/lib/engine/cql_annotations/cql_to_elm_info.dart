@@ -1,10 +1,10 @@
 /// Represents the CqlToElmInfo type
 class CqlToElmInfo {
-  /// translatorVersion attribute
-  String? translatorVersion;
-
   /// translatorOptions attribute
   String? translatorOptions;
+
+  /// translatorVersion attribute
+  String? translatorVersion;
 
   CqlToElmInfo({this.translatorVersion, this.translatorOptions});
 
@@ -14,6 +14,7 @@ class CqlToElmInfo {
       translatorOptions: json['translatorOptions'],
     );
   }
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (translatorVersion != null) {

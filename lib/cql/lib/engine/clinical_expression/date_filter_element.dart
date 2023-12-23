@@ -6,12 +6,27 @@ import '../../cql.dart';
 /// that evaluates to a date or time type, an interval of a date or time type,
 /// or a time-valued Quantity.
 class DateFilterElement extends Element {
-  /// An expression that provides the comparison value for the filter. The
-  /// expression is expected to result in a date or time type, an interval of
-  /// a date or time type, or a time-valued quantity. Only the clinical
-  /// statements that match at least one of the specified codes will be
-  /// returned.
-  Expression value;
+  /// The highProperty attribute optionally specifies which property of the
+  /// model contains the high component of the clinically relevant date for the
+  /// clinical statement.
+  /// Note that if the property is specified, the lowProperty and highProperty
+  /// attributes must not be present. And conversely, if the lowProperty and
+  /// highProperty attributes are specified, the property must not be present.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? highProperty;
+
+  /// The lowProperty attribute optionally specifies which property of the model
+  /// contains the low component of the clinically relevant date for the
+  /// clinical statement.
+  /// Note that if the property is specified, the lowProperty and highProperty
+  /// attributes must not be present. And conversely, if the lowProperty and
+  /// highProperty attributes are specified, the property must not be present.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? lowProperty;
 
   /// The dateProperty attribute optionally specifies which property of the
   /// model contains the clinically relevant date for the clinical statement.
@@ -34,31 +49,16 @@ class DateFilterElement extends Element {
   /// grammar provides the formal semantics for this path.
   String? property;
 
-  /// The lowProperty attribute optionally specifies which property of the model
-  /// contains the low component of the clinically relevant date for the
-  /// clinical statement.
-  /// Note that if the property is specified, the lowProperty and highProperty
-  /// attributes must not be present. And conversely, if the lowProperty and
-  /// highProperty attributes are specified, the property must not be present.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? lowProperty;
-
-  /// The highProperty attribute optionally specifies which property of the
-  /// model contains the high component of the clinically relevant date for the
-  /// clinical statement.
-  /// Note that if the property is specified, the lowProperty and highProperty
-  /// attributes must not be present. And conversely, if the lowProperty and
-  /// highProperty attributes are specified, the property must not be present.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? highProperty;
-
   /// The search attribute specifies the name of the search path to use for
   /// searching for values in the date range specified by the dateRange element.
   String? search;
+
+  /// An expression that provides the comparison value for the filter. The
+  /// expression is expected to result in a date or time type, an interval of
+  /// a date or time type, or a time-valued quantity. Only the clinical
+  /// statements that match at least one of the specified codes will be
+  /// returned.
+  Expression value;
 
   DateFilterElement({
     required this.value,

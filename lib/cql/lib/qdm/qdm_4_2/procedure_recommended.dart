@@ -9,14 +9,14 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class ProcedureRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
-  final LiteralConcept? reason;
-  final LiteralConcept? method;
   final LiteralConcept? anatomicalApproachSite;
   final LiteralConcept? anatomicalLocationSite;
+  final LiteralConcept? method;
+  final LiteralConcept? negationRationale;
   final LiteralConcept? ordinality;
+  final LiteralConcept? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   ProcedureRecommended({
     this.startDatetime,

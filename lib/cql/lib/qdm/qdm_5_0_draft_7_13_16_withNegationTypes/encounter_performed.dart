@@ -11,14 +11,14 @@ import 'qdm_5_0_draft_7_13_16_withNegationTypes.dart';
 /// patient departed the location (Facility Location Departure time)
 
 class EncounterPerformed {
-  final LiteralCode admissionSource;
   final LiteralDateTime admissionDatetime;
+  final LiteralCode admissionSource;
+  final Diagnosis? diagnosis;
   final LiteralDateTime dischargeDatetime;
   final LiteralCode? dischargeStatus;
-  final LiteralDateTimeInterval? locationPeriod;
-  final Diagnosis? diagnosis;
-  final Diagnosis? principalDiagnosis;
   final LiteralQuantity? lengthOfStay;
+  final LiteralDateTimeInterval? locationPeriod;
+  final Diagnosis? principalDiagnosis;
 
   EncounterPerformed({
     required this.admissionSource,

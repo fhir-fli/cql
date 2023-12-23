@@ -10,12 +10,12 @@ class CommunicationPerformed {
   final LiteralDateTime? authorDatetime;
   final LiteralCode? category;
   final LiteralCode? medium;
-  final QDMEntity? sender;
-  final QDMEntity? recipient;
-  final LiteralDateTime? sentDatetime;
-  final LiteralDateTime? receivedDatetime;
   final LiteralCode? negationRationale;
+  final LiteralDateTime? receivedDatetime;
+  final QDMEntity? recipient;
   final LiteralString? relatedTo;
+  final QDMEntity? sender;
+  final LiteralDateTime? sentDatetime;
 
   CommunicationPerformed({
     this.authorDatetime,

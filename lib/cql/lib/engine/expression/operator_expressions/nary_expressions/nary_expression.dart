@@ -3,8 +3,6 @@ import '../../../../cql.dart';
 /// Abstract base class for an expression that takes any number of arguments,
 /// including zero.
 abstract class NaryExpression extends OperatorExpression {
-  String get type;
-
   /// List of expressions as operands, can be zero or more.
   List<Expression>? operands;
 
@@ -29,4 +27,6 @@ abstract class NaryExpression extends OperatorExpression {
         if (operands != null)
           'operands': operands!.map((e) => e.toJson()).toList()
       };
+
+  String get type;
 }

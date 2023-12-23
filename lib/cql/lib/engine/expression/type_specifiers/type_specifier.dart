@@ -2,8 +2,6 @@ import '../../../cql.dart';
 
 /// Abstract type for TypeSpecifier.
 abstract class TypeSpecifier extends Expression {
-  String get type;
-
   TypeSpecifier();
 
   factory TypeSpecifier.fromJson(Map<String, dynamic> json) {
@@ -30,4 +28,6 @@ abstract class TypeSpecifier extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {};
+
+  String get type;
 }

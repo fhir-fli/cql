@@ -5,11 +5,11 @@ import '../../cql.dart';
 /// The [SimpleTypeInfo] type represents a simple type, extending [TypeInfo],
 /// containing namespace and name attributes.
 class SimpleTypeInfo extends TypeInfo {
-  /// Namespace of the type.
-  String? namespace;
-
   /// Unqualified name of the type within this model.
   String name;
+
+  /// Namespace of the type.
+  String? namespace;
 
   SimpleTypeInfo({
     required this.name,
@@ -25,8 +25,6 @@ class SimpleTypeInfo extends TypeInfo {
     );
   }
 
-  String get type => 'SimpleTypeInfo';
-
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{'type': type};
@@ -39,4 +37,6 @@ class SimpleTypeInfo extends TypeInfo {
     }
     return data;
   }
+
+  String get type => 'SimpleTypeInfo';
 }

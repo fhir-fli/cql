@@ -2,8 +2,8 @@ import 'package:cql/engine/types/types.dart';
 
 class LaboratoryTestBase {
   final LiteralDateTime? authorTime;
-  final LiteralCode? reason;
   final LiteralCode? method;
+  final LiteralCode? reason;
 
   LaboratoryTestBase({
     this.authorTime,

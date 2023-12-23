@@ -12,13 +12,13 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class PhysicalExamPerformed {
-  final LiteralDateTime? authorDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? reason;
-  final LiteralCode? method;
-  final dynamic result;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
 
   PhysicalExamPerformed({
     this.authorDatetime,

@@ -11,8 +11,8 @@ import 'qdm_5_0_draft.dart';
 /// time frame indicated by the timing relationships.
 
 class Symptom {
-  final LiteralDateTime? onsetDatetime;
   final LiteralDateTime? abatementDatetime;
+  final LiteralDateTime? onsetDatetime;
   final CodeableConcept? severity;
 
   Symptom({

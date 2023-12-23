@@ -1,7 +1,7 @@
 class ModelImporterMapperValue {
-  final String targetSystemClass;
   final ModelRelationship relationship;
   final Map<String, String> targetClassElementMap = <String, String>{};
+  final String targetSystemClass;
 
   ModelImporterMapperValue(this.targetSystemClass, this.relationship);
 

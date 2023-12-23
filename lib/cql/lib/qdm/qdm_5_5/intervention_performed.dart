@@ -9,13 +9,13 @@ import 'qdm_5_5.dart';
 
 class InterventionPerformed {
   final LiteralDateTime? authorDatetime;
-  final LiteralDateTime? relevantDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? reason;
-  final dynamic result;
-  final LiteralCode? status;
   final LiteralCode? negationRationale;
   final QDMEntity? performer;
+  final LiteralCode? reason;
+  final LiteralDateTime? relevantDatetime;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
+  final LiteralCode? status;
 
   InterventionPerformed({
     this.authorDatetime,

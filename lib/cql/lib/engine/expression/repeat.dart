@@ -5,9 +5,9 @@ import '../../cql.dart';
 /// If the source argument is null, the result is null.
 /// If the element argument evaluates to null for some item in the source list, the resulting list will contain a null for that element.
 class Repeat extends Expression {
-  final Expression source;
   final Expression element;
   final String scope;
+  final Expression source;
 
   Repeat({
     required this.source,

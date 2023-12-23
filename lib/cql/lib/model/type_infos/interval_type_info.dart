@@ -5,11 +5,11 @@ import '../../cql.dart';
 /// The [IntervalTypeInfo] type represents an interval type, extending [TypeInfo],
 /// incorporating a pointTypeSpecifier element and pointType attribute.
 class IntervalTypeInfo extends TypeInfo {
-  /// Point type specifier element.
-  TypeSpecifier? pointTypeSpecifier;
-
   /// Point type as a string.
   String? pointType;
+
+  /// Point type specifier element.
+  TypeSpecifier? pointTypeSpecifier;
 
   final String type = 'IntervalTypeInfo';
 

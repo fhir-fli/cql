@@ -12,19 +12,19 @@ import 'qdm_5_6.dart';
 
 class LaboratoryTestPerformed {
   final LiteralDateTime? authorDatetime;
-  final LiteralDateTime? relevantDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? status;
+  final Component? component;
+  final LiteralCode? interpretation;
   final LiteralCode? method;
-  final dynamic result;
-  final LiteralDateTime? resultDatetime;
+  final LiteralCode? negationRationale;
+  final QDMEntity? performer;
   final LiteralCode? reason;
   final LiteralQuantityInterval? referenceRange;
-  final LiteralCode? interpretation;
-  final LiteralCode? negationRationale;
-  final Component? component;
-  final QDMEntity? performer;
   final LiteralString? relatedTo;
+  final LiteralDateTime? relevantDatetime;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
+  final LiteralDateTime? resultDatetime;
+  final LiteralCode? status;
 
   LaboratoryTestPerformed({
     this.authorDatetime,

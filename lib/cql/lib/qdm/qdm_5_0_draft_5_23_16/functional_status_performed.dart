@@ -6,8 +6,8 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class FunctionalStatusPerformed {
   final Interval? interval;
-  final CodeableConcept? reason;
   final CodeableConcept? method;
+  final CodeableConcept? reason;
   final CodeableConcept? result;
 
   FunctionalStatusPerformed({

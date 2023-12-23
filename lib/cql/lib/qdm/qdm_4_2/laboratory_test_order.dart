@@ -13,11 +13,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class LaboratoryTestOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? method;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
-  final LiteralConcept? method;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   LaboratoryTestOrder({
     this.startDatetime,

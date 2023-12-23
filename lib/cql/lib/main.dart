@@ -74,8 +74,8 @@ CqlParsersAndErrors parse(String pathExpression) {
 }
 
 class CqlParsersAndErrors {
-  final cqlParser parser;
   final ElmErrorListener errorListener;
+  final cqlParser parser;
 
   CqlParsersAndErrors(this.parser, this.errorListener);
 }

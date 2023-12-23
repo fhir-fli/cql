@@ -8,15 +8,15 @@ import 'qdm_5_6.dart';
 
 class SubstanceOrder {
   final LiteralDateTime? authorDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? reason;
   final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
   final LiteralCode? frequency;
-  final LiteralInteger? refills;
-  final LiteralCode? route;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
+  final LiteralInteger? refills;
+  final LiteralDateTimeInterval? relevantPeriod;
   final QDMEntity? requester;
+  final LiteralCode? route;
+  final LiteralQuantity? supply;
 
   SubstanceOrder({
     this.authorDatetime,

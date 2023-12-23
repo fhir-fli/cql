@@ -13,8 +13,8 @@ import 'qdm_5_6.dart';
 
 class Symptom {
   final LiteralDateTimeInterval? prevalencePeriod;
-  final LiteralCode? severity;
   final QDMEntity? recorder;
+  final LiteralCode? severity;
 
   Symptom({
     this.prevalencePeriod,

@@ -6,8 +6,8 @@ import 'package:cql/engine/types/types.dart';
 
 class InterventionRecommended {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
 
   InterventionRecommended({
     this.authorDatetime,

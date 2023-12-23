@@ -24,8 +24,6 @@ class TupleTypeInfo extends TypeInfo {
     );
   }
 
-  String get type => 'TupleTypeInfo';
-
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{'type': type};
@@ -37,4 +35,6 @@ class TupleTypeInfo extends TypeInfo {
     }
     return data;
   }
+
+  String get type => 'TupleTypeInfo';
 }

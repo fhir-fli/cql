@@ -9,11 +9,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class LaboratoryTestRecommended {
+  final LiteralConcept? method;
+  final LiteralConcept? negationRationale;
+  final LiteralConcept? reason;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
-  final LiteralConcept? method;
-  final LiteralConcept? reason;
 
   LaboratoryTestRecommended({
     this.startDatetime,

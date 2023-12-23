@@ -12,11 +12,11 @@ import 'qdm_5_6.dart';
 /// Prevalence Period references the time from the onset date to the abatement date.
 
 class Diagnosis {
+  final LiteralCode? anatomicalLocationSite;
   final LiteralDateTime? authorDatetime;
   final LiteralDateTimeInterval? prevalencePeriod;
-  final LiteralCode? anatomicalLocationSite;
-  final LiteralCode? severity;
   final QDMEntity? recorder;
+  final LiteralCode? severity;
 
   Diagnosis({
     this.authorDatetime,

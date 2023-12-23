@@ -1,11 +1,11 @@
 import '../../cql.dart';
 
 class TrackBack {
-  final VersionedIdentifier library;
-  final int startLine;
-  final int startChar;
-  final int endLine;
   final int endChar;
+  final int endLine;
+  final VersionedIdentifier library;
+  final int startChar;
+  final int startLine;
 
   TrackBack(
     this.library,
@@ -14,26 +14,6 @@ class TrackBack {
     this.endLine,
     this.endChar,
   );
-
-  VersionedIdentifier getLibrary() {
-    return library;
-  }
-
-  int getStartLine() {
-    return startLine;
-  }
-
-  int getStartChar() {
-    return startChar;
-  }
-
-  int getEndLine() {
-    return endLine;
-  }
-
-  int getEndChar() {
-    return endChar;
-  }
 
   @override
   bool operator ==(Object o) {
@@ -66,6 +46,26 @@ class TrackBack {
   @override
   String toString() {
     return 'TrackBack{library: $library, startLine: $startLine, startChar: $startChar, endLine: $endLine, endChar: $endChar}';
+  }
+
+  VersionedIdentifier getLibrary() {
+    return library;
+  }
+
+  int getStartLine() {
+    return startLine;
+  }
+
+  int getStartChar() {
+    return startChar;
+  }
+
+  int getEndLine() {
+    return endLine;
+  }
+
+  int getEndChar() {
+    return endChar;
   }
 
   String toLocator() {

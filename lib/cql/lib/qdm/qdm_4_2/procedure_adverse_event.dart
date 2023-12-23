@@ -10,9 +10,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class ProcedureAdverseEvent {
+  final LiteralConcept? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reaction;
 
   ProcedureAdverseEvent({
     this.startDatetime,

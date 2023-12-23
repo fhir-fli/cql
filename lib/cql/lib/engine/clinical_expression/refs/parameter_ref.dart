@@ -9,9 +9,6 @@ class ParameterRef extends Ref {
   }
 
   @override
-  String get type => 'ParameterRef';
-
-  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = {'name': name};
     if (libraryName != null) {
@@ -20,4 +17,7 @@ class ParameterRef extends Ref {
     json['type'] = type;
     return json;
   }
+
+  @override
+  String get type => 'ParameterRef';
 }

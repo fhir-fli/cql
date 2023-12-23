@@ -13,9 +13,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class Diagnosis {
-  final LiteralDateTime? onsetDatetime;
   final LiteralDateTime? abatementDatetime;
   final LiteralConcept? anatomicalLocationSite;
+  final LiteralDateTime? onsetDatetime;
   final LiteralConcept? severity;
 
   Diagnosis({

@@ -4,11 +4,11 @@ import 'qdm.dart';
 
 class QDMBaseType {
   final CodeableConcept code;
-  final LiteralDateTime startDatetime;
-  final LiteralDateTime? stopDatetime;
   final CodeableConcept? negationRationale;
   final CodeableConcept? patientPreference;
   final CodeableConcept? providerPreference;
+  final LiteralDateTime startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   QDMBaseType({
     required this.code,

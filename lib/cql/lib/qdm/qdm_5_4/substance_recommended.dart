@@ -6,12 +6,12 @@ import 'package:cql/engine/types/types.dart';
 
 class SubstanceRecommended {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralQuantity? dosage;
   final LiteralCode? frequency;
+  final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final LiteralInteger? refills;
   final LiteralCode? route;
-  final LiteralCode? negationRationale;
 
   SubstanceRecommended({
     this.authorDatetime,

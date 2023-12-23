@@ -9,13 +9,13 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class ProcedureRecommended {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
-  final LiteralCode? method;
   final LiteralCode? anatomicalApproachSite;
   final LiteralCode? anatomicalLocationSite;
-  final LiteralCode? ordinality;
+  final LiteralDateTime? authorDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
+  final LiteralCode? ordinality;
+  final LiteralCode? reason;
 
   ProcedureRecommended({
     this.authorDatetime,

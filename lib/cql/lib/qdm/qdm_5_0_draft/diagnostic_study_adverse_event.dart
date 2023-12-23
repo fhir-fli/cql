@@ -7,9 +7,9 @@ import 'qdm_5_0_draft.dart';
 class DiagnosticStudyAdverseEvent {
   final Interval? interval;
   final CodeableConcept? negationRationale;
-  final CodeableConcept? reaction;
   final CodeableConcept? radiationDosage;
   final CodeableConcept? radiationDuration;
+  final CodeableConcept? reaction;
 
   DiagnosticStudyAdverseEvent({
     this.interval,

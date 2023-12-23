@@ -11,15 +11,38 @@ enum TypeParameterConstraint {
 }
 
 class TypeParameter extends DataType {
-  String identifier;
   TypeParameterConstraint constraint = TypeParameterConstraint.NONE;
   DataType? constraintType;
+  String identifier;
 
   TypeParameter({
     required this.identifier,
     this.constraint = TypeParameterConstraint.NONE,
     this.constraintType,
   }) : super(null);
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+    return o is TypeParameter && identifier == o.identifier;
+  }
+
+  @override
+  int get hashCode => identifier.hashCode;
+
+  @override
+  DataType instantiate(InstantiationContext context) =>
+      context.instantiate(this);
+
+  @override
+  bool get isGeneric => true;
+
+  @override
+  bool isInstantiable(DataType callType, InstantiationContext context) =>
+      context.isInstantiable(this, callType);
+
+  @override
+  String toString() => identifier;
 
   bool canBind(DataType callType) {
     switch (constraint) {
@@ -40,27 +63,4 @@ class TypeParameter extends DataType {
         return true;
     }
   }
-
-  @override
-  int get hashCode => identifier.hashCode;
-
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-    return o is TypeParameter && identifier == o.identifier;
-  }
-
-  @override
-  String toString() => identifier;
-
-  @override
-  bool get isGeneric => true;
-
-  @override
-  bool isInstantiable(DataType callType, InstantiationContext context) =>
-      context.isInstantiable(this, callType);
-
-  @override
-  DataType instantiate(InstantiationContext context) =>
-      context.instantiate(this);
 }

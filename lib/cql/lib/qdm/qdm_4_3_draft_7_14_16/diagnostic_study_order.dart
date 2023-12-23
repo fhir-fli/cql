@@ -13,13 +13,13 @@ import 'package:cql/engine/types/types.dart';
 /// Document Architecture (QRDA). This corresponds to when the order was signed.
 
 class DiagnosticStudyOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
-  final LiteralCode? reason;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
-  final LiteralCode? method;
+  final LiteralCode? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyOrder({
     this.startDatetime,

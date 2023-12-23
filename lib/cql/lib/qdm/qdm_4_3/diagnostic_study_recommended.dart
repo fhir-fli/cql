@@ -12,12 +12,12 @@ import 'package:cql/engine/types/types.dart';
 /// measures.
 
 class DiagnosticStudyRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
-  final LiteralCode? method;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyRecommended({
     this.startDatetime,

@@ -12,11 +12,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class DiagnosticStudyIntolerance {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reaction;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
+  final LiteralConcept? reaction;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyIntolerance({
     this.startDatetime,

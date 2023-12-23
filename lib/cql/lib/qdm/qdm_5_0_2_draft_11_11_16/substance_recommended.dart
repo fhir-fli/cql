@@ -10,14 +10,14 @@ import 'package:cql/engine/types/types.dart';
 
 class SubstanceRecommended {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
   final LiteralCode? frequency;
   final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final LiteralInteger? refills;
   final LiteralCode? route;
-  final LiteralCode? negationRationale;
+  final LiteralQuantity? supply;
 
   SubstanceRecommended({
     this.authorDatetime,

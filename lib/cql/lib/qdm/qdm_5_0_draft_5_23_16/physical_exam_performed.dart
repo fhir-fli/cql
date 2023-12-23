@@ -5,11 +5,11 @@ import 'qdm_5_0_draft_5_23_16.dart';
 /// corresponding value set.
 
 class PhysicalExamPerformed {
-  final Interval? interval;
-  final CodeableConcept? reason;
-  final CodeableConcept? method;
-  final CodeableConcept? result;
   final CodeableConcept? anatomicalLocationSite;
+  final Interval? interval;
+  final CodeableConcept? method;
+  final CodeableConcept? reason;
+  final CodeableConcept? result;
 
   PhysicalExamPerformed({
     this.interval,

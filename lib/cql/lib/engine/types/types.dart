@@ -44,6 +44,7 @@ class LiteralCode extends Literal {
   String? display;
   String? system;
   String? version;
+
   LiteralCode({required this.code, this.display, this.system, this.version})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Code'));
 
@@ -69,6 +70,7 @@ class LiteralCode extends Literal {
 class LiteralConcept extends Literal {
   List<LiteralCode> codes;
   String? display;
+
   LiteralConcept({required this.codes, this.display})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Concept'));
 
@@ -91,6 +93,7 @@ class LiteralConcept extends Literal {
 /// Represents a date type
 class LiteralDate extends Literal {
   String value;
+
   LiteralDate({required this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Date'));
 
@@ -108,6 +111,7 @@ class LiteralDate extends Literal {
 /// Represents a date-time type
 class LiteralDateTime extends Literal {
   DateTime value;
+
   LiteralDateTime({required this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}DateTime'));
 
@@ -125,6 +129,7 @@ class LiteralDateTime extends Literal {
 /// Represents a decimal type
 class LiteralDecimal extends Literal {
   double value;
+
   LiteralDecimal({required this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Decimal'));
 
@@ -142,6 +147,7 @@ class LiteralDecimal extends Literal {
 /// Represents an integer type
 class LiteralInteger extends Literal {
   int value;
+
   LiteralInteger({required this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Integer'));
 
@@ -159,6 +165,7 @@ class LiteralInteger extends Literal {
 /// Represents an integer type
 class LiteralLongNumber extends Literal {
   BigInt value;
+
   LiteralLongNumber({required this.value})
       : super(
             valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}LongNumber'));
@@ -176,8 +183,9 @@ class LiteralLongNumber extends Literal {
 
 /// Represents a quantity type
 class LiteralQuantity extends Literal {
-  LiteralDecimal value;
   String? unit;
+  LiteralDecimal value;
+
   LiteralQuantity({required this.value, this.unit})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Quantity'));
 
@@ -198,8 +206,9 @@ class LiteralQuantity extends Literal {
 
 /// Represents a ratio type
 class LiteralRatio extends Literal {
-  LiteralQuantity numerator;
   LiteralQuantity denominator;
+  LiteralQuantity numerator;
+
   LiteralRatio({required this.numerator, required this.denominator})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Ratio'));
 
@@ -222,6 +231,7 @@ class LiteralRatio extends Literal {
 /// Represents a string type
 class LiteralStringElement extends Literal {
   String value;
+
   LiteralStringElement({required this.value})
       : super(
             valueType:
@@ -241,6 +251,7 @@ class LiteralStringElement extends Literal {
 /// Represents a time type
 class LiteralTime extends Literal {
   String? value;
+
   LiteralTime({this.value})
       : super(valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Time'));
 

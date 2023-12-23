@@ -9,12 +9,12 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class InterventionPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
   final dynamic result;
+  final LiteralDateTime? startDatetime;
   final LiteralConcept? status;
+  final LiteralDateTime? stopDatetime;
 
   InterventionPerformed({
     this.startDatetime,

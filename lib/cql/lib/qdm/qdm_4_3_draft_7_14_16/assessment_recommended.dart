@@ -12,11 +12,11 @@ import 'package:cql/engine/types/types.dart';
 /// recommendations when evaluating measures.
 
 class AssessmentRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   AssessmentRecommended({
     this.startDatetime,

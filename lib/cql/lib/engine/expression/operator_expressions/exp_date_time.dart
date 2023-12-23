@@ -6,14 +6,14 @@ import '../../../../cql.dart';
 /// For example, hour may be null, but if it is, minute, second, and millisecond must all be null as well.
 /// If timezoneOffset is not specified, it is defaulted to the timezone offset of the evaluation request.
 class ExpDateTime extends OperatorExpression {
-  final Expression year;
-  final Expression? month;
   final Expression? day;
   final Expression? hour;
-  final Expression? minute;
-  final Expression? second;
   final Expression? millisecond;
+  final Expression? minute;
+  final Expression? month;
+  final Expression? second;
   final Expression? timezoneOffset;
+  final Expression year;
 
   ExpDateTime(
     this.year, {

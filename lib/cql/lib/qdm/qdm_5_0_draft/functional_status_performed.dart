@@ -6,9 +6,9 @@ import 'qdm_5_0_draft.dart';
 
 class FunctionalStatusPerformed {
   final Interval? interval;
+  final CodeableConcept? method;
   final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
-  final CodeableConcept? method;
   final CodeableConcept? result;
 
   FunctionalStatusPerformed({

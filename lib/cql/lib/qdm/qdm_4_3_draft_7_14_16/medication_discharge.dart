@@ -6,14 +6,14 @@ import 'package:cql/engine/types/types.dart';
 /// encounter.
 
 class MedicationDischarge {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralInteger? refills;
+  final LiteralQuantity? cumulativeMedicationDuration;
   final LiteralQuantity? dose;
   final LiteralCode? frequency;
+  final LiteralCode? negationRationale;
+  final LiteralInteger? refills;
   final LiteralCode? route;
-  final LiteralQuantity? cumulativeMedicationDuration;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   MedicationDischarge({
     this.startDatetime,

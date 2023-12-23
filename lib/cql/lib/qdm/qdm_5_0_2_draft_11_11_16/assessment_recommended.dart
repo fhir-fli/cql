@@ -9,9 +9,9 @@ import 'package:cql/engine/types/types.dart';
 
 class AssessmentRecommended {
   final LiteralDateTime? authorDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
 
   AssessmentRecommended({
     this.authorDatetime,

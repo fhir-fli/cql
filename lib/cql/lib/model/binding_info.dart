@@ -2,11 +2,11 @@ import 'package:json_annotation/json_annotation.dart';
 
 /// Specifies binding information for an element
 class BindingInfo {
-  // Optional attribute - Formal name for the binding
-  final String? name;
-
   // Optional attribute - User-friendly description of the binding
   final String? description;
+
+  // Optional attribute - Formal name for the binding
+  final String? name;
 
   // Required attribute - Strength of the binding
   final BindingStrength strength;
@@ -31,17 +31,17 @@ class BindingInfo {
     );
   }
 
+  @override
+  String toString() {
+    return 'BindingInfo{name: $name, description: $description, strength: $strength, valueSet: $valueSet}';
+  }
+
   Map<String, dynamic> toJson() => {
         'name': name,
         'description': description,
         'strength': strength.toJson(),
         'valueSet': valueSet.toString(),
       };
-
-  @override
-  String toString() {
-    return 'BindingInfo{name: $name, description: $description, strength: $strength, valueSet: $valueSet}';
-  }
 }
 
 /// The BindingStrength type describes possible strengths of a binding

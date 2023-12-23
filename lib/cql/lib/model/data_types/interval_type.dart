@@ -5,13 +5,6 @@ class IntervalType extends DataType {
 
   IntervalType(this.pointType) : super(null);
 
-  DataType getPointType() {
-    return pointType;
-  }
-
-  @override
-  int get hashCode => 53 * pointType.hashCode;
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -19,33 +12,11 @@ class IntervalType extends DataType {
   }
 
   @override
-  bool isSubTypeOf(DataType other) {
-    if (other is IntervalType) {
-      IntervalType that = other;
-      return pointType.isSubTypeOf(that.pointType);
-    }
-
-    return super.isSubTypeOf(other);
-  }
+  int get hashCode => 53 * pointType.hashCode;
 
   @override
-  bool isSuperTypeOf(DataType other) {
-    if (other is IntervalType) {
-      IntervalType that = other;
-      return pointType.isSuperTypeOf(that.pointType);
-    }
-
-    return super.isSuperTypeOf(other);
-  }
-
-  @override
-  String toString() {
-    return "interval<${pointType.toString()}>";
-  }
-
-  @override
-  String toLabel() {
-    return "Interval of ${pointType.toLabel()}";
+  DataType instantiate(InstantiationContext context) {
+    return IntervalType(pointType.instantiate(context));
   }
 
   @override
@@ -76,7 +47,36 @@ class IntervalType extends DataType {
   }
 
   @override
-  DataType instantiate(InstantiationContext context) {
-    return IntervalType(pointType.instantiate(context));
+  bool isSubTypeOf(DataType other) {
+    if (other is IntervalType) {
+      IntervalType that = other;
+      return pointType.isSubTypeOf(that.pointType);
+    }
+
+    return super.isSubTypeOf(other);
+  }
+
+  @override
+  bool isSuperTypeOf(DataType other) {
+    if (other is IntervalType) {
+      IntervalType that = other;
+      return pointType.isSuperTypeOf(that.pointType);
+    }
+
+    return super.isSuperTypeOf(other);
+  }
+
+  @override
+  String toLabel() {
+    return "Interval of ${pointType.toLabel()}";
+  }
+
+  @override
+  String toString() {
+    return "interval<${pointType.toString()}>";
+  }
+
+  DataType getPointType() {
+    return pointType;
   }
 }

@@ -5,11 +5,11 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class ProcedureRecommended {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? anatomicalLocationSite;
-  final LiteralCode? ordinality;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode? negationRationale;
+  final LiteralCode? ordinality;
+  final LiteralCode? reason;
 
   ProcedureRecommended({
     this.authorDatetime,

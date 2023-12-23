@@ -5,15 +5,15 @@ import 'qdm_5_0_draft.dart';
 /// corresponding value set.
 
 class DiagnosticStudyPerformed {
+  final CodeableConcept? facilityLocation;
   final Interval? interval;
+  final CodeableConcept? method;
   final CodeableConcept? negationRationale;
+  final CodeableConcept? radiationDosage;
+  final CodeableConcept? radiationDuration;
   final CodeableConcept? reason;
   final CodeableConcept? result;
   final CodeableConcept? status;
-  final CodeableConcept? radiationDosage;
-  final CodeableConcept? radiationDuration;
-  final CodeableConcept? method;
-  final CodeableConcept? facilityLocation;
 
   DiagnosticStudyPerformed({
     this.interval,

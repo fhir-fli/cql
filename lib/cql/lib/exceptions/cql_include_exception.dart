@@ -1,7 +1,7 @@
 class CqlIncludeException implements Exception {
-  final String message;
-  final String librarySystem;
   final String libraryId;
+  final String librarySystem;
+  final String message;
   final String versionId;
 
   CqlIncludeException(

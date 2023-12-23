@@ -5,8 +5,8 @@ import 'qdm_5_0_draft_7_13_16_withNegationTypes.dart';
 /// value set.
 
 class AssessmentPerformed {
-  final dynamic result;
   final Component? component;
+  final dynamic result;
 
   AssessmentPerformed({
     this.result,

@@ -3,13 +3,12 @@ import '../../../cql.dart';
 /// Named function definition that can be invoked by any expression in the
 /// artifact.
 class FunctionDef extends ExpressionDef {
-  /// List of operand definitions.
-  List<OperandDef>? operand;
-
   /// Specifies if the function is external.
   bool? external;
 
   bool? fluent;
+  /// List of operand definitions.
+  List<OperandDef>? operand;
 
   FunctionDef({this.operand, this.external}) : super(name: 'FunctionDef');
 
@@ -23,6 +22,7 @@ class FunctionDef extends ExpressionDef {
       external: json['external'] as bool?,
     );
   }
+
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

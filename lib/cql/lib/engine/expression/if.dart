@@ -5,11 +5,11 @@ class If extends Expression {
   /// Condition expression.
   Expression condition;
 
-  /// Then expression.
-  Expression then;
-
   /// Else expression.
   Expression elseExpr;
+
+  /// Then expression.
+  Expression then;
 
   If({required this.condition, required this.then, required this.elseExpr});
 

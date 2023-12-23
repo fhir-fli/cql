@@ -4,9 +4,9 @@ import '../../../../cql.dart';
 /// At least one component must be specified, and no component may be specified at a precision below an unspecified precision.
 /// For example, month may be null, but if it is, day must be null as well.
 class ExpDate extends OperatorExpression {
-  final Expression year;
-  final Expression? month;
   final Expression? day;
+  final Expression? month;
+  final Expression year;
 
   ExpDate(this.year, [this.month, this.day]);
 

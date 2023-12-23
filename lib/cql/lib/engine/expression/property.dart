@@ -8,15 +8,15 @@ import '../../cql.dart';
 /// If a scope is specified, the name is used to resolve the scope in which the path will be resolved.
 /// Property expressions can also be used to access the individual points and closed indicators for interval types using the property names low, high, lowClosed, and highClosed.
 class Property extends Expression {
+  final String path;
+  final String? scope;
+  final Expression? source;
+
   Property({
     required this.path,
     this.source,
     this.scope,
   });
-
-  final String path;
-  final Expression? source;
-  final String? scope;
 
   factory Property.fromJson(Map<String, dynamic> json) => Property(
         path: json['path'],
@@ -25,8 +25,6 @@ class Property extends Expression {
         scope: json['scope'],
       );
 
-  String get type => 'Property';
-
   @override
   Map<String, dynamic> toJson() => {
         'path': path,
@@ -34,4 +32,6 @@ class Property extends Expression {
         if (scope != null) 'scope': scope,
         'type': type,
       };
+
+  String get type => 'Property';
 }

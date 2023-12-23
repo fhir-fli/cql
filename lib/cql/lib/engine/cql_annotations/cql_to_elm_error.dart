@@ -2,20 +2,20 @@ import '../../cql.dart';
 
 /// Represents the CqlToElmError type
 class CqlToElmError extends Locator {
-  /// message attribute
-  String message;
+  /// errorSeverity attribute
+  ErrorSeverity? errorSeverity;
 
   /// errorType attribute
   ErrorType errorType;
 
-  /// errorSeverity attribute
-  ErrorSeverity? errorSeverity;
-
-  ///The namespace uri of the included library
-  String? targetIncludeLibrarySystem;
+  /// message attribute
+  String message;
 
   /// targetIncludeLibraryId attribute
   String? targetIncludeLibraryId;
+
+  ///The namespace uri of the included library
+  String? targetIncludeLibrarySystem;
 
   /// targetIncludeLibraryVersionId attribute
   String? targetIncludeLibraryVersionId;

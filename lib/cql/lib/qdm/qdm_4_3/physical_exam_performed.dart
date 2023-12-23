@@ -5,13 +5,13 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class PhysicalExamPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? anatomicalLocationSite;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
   final dynamic result;
-  final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   PhysicalExamPerformed({
     this.startDatetime,

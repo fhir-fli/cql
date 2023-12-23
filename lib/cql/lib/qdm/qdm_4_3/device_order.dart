@@ -7,10 +7,10 @@ import 'package:cql/engine/types/types.dart';
 /// corresponds to when the order was signed.
 
 class DeviceOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DeviceOrder({
     this.startDatetime,

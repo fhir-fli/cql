@@ -12,11 +12,11 @@ import 'package:cql/engine/types/types.dart';
 
 class SubstanceAdministered {
   final LiteralDateTime? authorDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralQuantity? dosage;
   final LiteralCode? frequency;
-  final LiteralCode? route;
   final LiteralCode? negationRationale;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? route;
 
   SubstanceAdministered({
     this.authorDatetime,

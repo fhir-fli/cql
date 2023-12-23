@@ -9,10 +9,10 @@ import 'qdm_5_5.dart';
 /// for x hours."
 
 class PhysicalExamOrder {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final QDMEntity? requester;
 
   PhysicalExamOrder({

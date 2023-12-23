@@ -5,12 +5,12 @@ import 'package:cql/engine/types/types.dart';
 /// value set.
 
 class AssessmentPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
   final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   AssessmentPerformed({
     this.startDatetime,

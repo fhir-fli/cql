@@ -6,8 +6,8 @@ import 'qdm_5_0_draft.dart';
 
 class LaboratoryTestAdverseEvent {
   final Interval? interval;
-  final CodeableConcept? reaction;
   final LaboratoryTestPerformed laboratoryTestPerformed;
+  final CodeableConcept? reaction;
 
   LaboratoryTestAdverseEvent({
     this.interval,

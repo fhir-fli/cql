@@ -10,12 +10,12 @@ import 'qdm_5_0_draft.dart';
 /// changed to applicationDatetime
 
 class DeviceApplied {
-  final LiteralDateTime? applicationDatetime;
-  final LiteralDateTime? removalDatetime;
-  final CodeableConcept? negationRationale;
-  final CodeableConcept? reason;
   final CodeableConcept? anatomialLocationSite;
   final CodeableConcept? anatomicalApproachSite;
+  final LiteralDateTime? applicationDatetime;
+  final CodeableConcept? negationRationale;
+  final CodeableConcept? reason;
+  final LiteralDateTime? removalDatetime;
 
   DeviceApplied({
     this.applicationDatetime,

@@ -10,15 +10,15 @@ import 'package:cql/engine/types/types.dart';
 /// clinical workflow to capture recommendations when evaluating measures.
 
 class SubstanceRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralCode? reason;
   final LiteralQuantity? dose;
   final LiteralCode? frequency;
   final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final LiteralInteger? refills;
   final LiteralCode? route;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   SubstanceRecommended({
     this.startDatetime,

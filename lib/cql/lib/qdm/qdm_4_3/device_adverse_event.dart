@@ -5,9 +5,9 @@ import 'package:cql/engine/types/types.dart';
 /// its corresponding value set.
 
 class DeviceAdverseEvent {
+  final LiteralCode? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
 
   DeviceAdverseEvent({
     this.startDatetime,

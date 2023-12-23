@@ -10,10 +10,11 @@ import '../../../../cql.dart';
 /// not overlap or meet, returns null. If either argument is null, the
 /// operation is performed as though the argument was an empty list.
 class Union extends NaryExpression {
-  @override
-  final String type = 'Union';
   Expression left;
   Expression right;
+
+  @override
+  final String type = 'Union';
 
   Union({required this.left, required this.right});
 

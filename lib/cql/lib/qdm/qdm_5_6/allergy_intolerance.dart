@@ -10,9 +10,9 @@ import 'qdm_5_6.dart';
 class AllergyIntolerance {
   final LiteralDateTime? authorDatetime;
   final LiteralDateTimeInterval? prevalencePeriod;
-  final LiteralCode? type;
-  final LiteralCode? severity;
   final QDMEntity? recorder;
+  final LiteralCode? severity;
+  final LiteralCode? type;
 
   AllergyIntolerance({
     this.authorDatetime,

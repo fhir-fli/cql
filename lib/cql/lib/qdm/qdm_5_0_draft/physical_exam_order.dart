@@ -11,11 +11,11 @@ import 'qdm_5_0_draft.dart';
 /// Document Architecture (QRDA). This corresponds to when the order was signed.
 
 class PhysicalExamOrder {
+  final CodeableConcept? anatomicalLocationSite;
   final LiteralDateTime? authorDatetime;
+  final CodeableConcept? method;
   final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
-  final CodeableConcept? method;
-  final CodeableConcept? anatomicalLocationSite;
 
   PhysicalExamOrder({
     this.authorDatetime,

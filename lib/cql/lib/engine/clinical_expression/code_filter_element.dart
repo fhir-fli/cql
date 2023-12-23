@@ -4,17 +4,27 @@ import '../../cql.dart';
 /// within a retrieve, specified as either [property] [comparator] [value] or
 /// [search] [comparator] [value].
 class CodeFilterElement extends Element {
-  /// An expression that provides the comparison value for the filter. The
-  /// expression is expected to result in a List&lt;Code&gt; to match against.
-  /// Only the clinical statements that match at least one of the specified
-  /// codes will be returned.
-  Expression value;
+  /// The codeComparator attribute specifies how elements of the code
+  /// property should be matched to the terminology. One of 'in', '=', or '~'.
+  /// Note that 'in' will resolve to the appropriate terminology matching
+  /// operator, resulting in equivalence semantics for value set and code
+  /// system membership testing.
+  String comparator;
 
   /// The property attribute specifies which property the filter applies to.
   /// This property may be specified as a path, including qualifiers and
   /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
   /// grammar provides the formal semantics for this path.
   String? property;
+
+  /// The search attribute specifies the name of a search path for the filter.
+  String? search;
+
+  /// An expression that provides the comparison value for the filter. The
+  /// expression is expected to result in a List&lt;Code&gt; to match against.
+  /// Only the clinical statements that match at least one of the specified
+  /// codes will be returned.
+  Expression value;
 
   /// The valueSetProperty attribute optionally specifies which property of
   /// the model contains a value set identifier that can be used as an
@@ -38,16 +48,6 @@ class CodeFilterElement extends Element {
   /// qualifiers and constant indexers. The &lt;simplePath&gt; production rule
   /// in the CQL grammar provides the formal semantics for this path.
   String? valueSetProperty;
-
-  /// The search attribute specifies the name of a search path for the filter.
-  String? search;
-
-  /// The codeComparator attribute specifies how elements of the code
-  /// property should be matched to the terminology. One of 'in', '=', or '~'.
-  /// Note that 'in' will resolve to the appropriate terminology matching
-  /// operator, resulting in equivalence semantics for value set and code
-  /// system membership testing.
-  String comparator;
 
   CodeFilterElement({
     required this.value,

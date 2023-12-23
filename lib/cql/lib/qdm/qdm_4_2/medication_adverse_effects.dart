@@ -10,9 +10,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class MedicationAdverseEffects {
+  final LiteralConcept? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reaction;
 
   MedicationAdverseEffects({
     this.startDatetime,

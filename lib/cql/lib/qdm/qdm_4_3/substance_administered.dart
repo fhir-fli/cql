@@ -5,12 +5,12 @@ import 'package:cql/engine/types/types.dart';
 /// actually given to the patient.
 
 class SubstanceAdministered {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
   final LiteralQuantity? dose;
   final LiteralCode? frequency;
+  final LiteralCode? negationRationale;
   final LiteralCode? route;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   SubstanceAdministered({
     this.startDatetime,

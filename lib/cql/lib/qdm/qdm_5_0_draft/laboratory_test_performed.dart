@@ -6,13 +6,13 @@ import 'qdm_5_0_draft.dart';
 
 class LaboratoryTestPerformed {
   final Interval? interval;
-  final CodeableConcept? negationRationale;
-  final CodeableConcept? status;
   final CodeableConcept? method;
-  final CodeableConcept? result;
+  final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
   final CodeableConcept? referenceRangeHigh;
   final CodeableConcept? referenceRangeLow;
+  final CodeableConcept? result;
+  final CodeableConcept? status;
 
   LaboratoryTestPerformed({
     this.interval,

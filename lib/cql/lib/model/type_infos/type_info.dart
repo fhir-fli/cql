@@ -5,11 +5,11 @@ import '../../cql.dart';
 /// The [TypeInfo] abstract type serves as a base for other types,
 /// containing a baseTypeSpecifier element and baseType attribute.
 abstract class TypeInfo {
-  /// Base type specifier element.
-  TypeSpecifier? baseTypeSpecifier;
-
   /// Base type as a string.
   String? baseType;
+
+  /// Base type specifier element.
+  TypeSpecifier? baseTypeSpecifier;
 
   TypeInfo({
     this.baseTypeSpecifier,

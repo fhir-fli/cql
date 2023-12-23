@@ -15,11 +15,11 @@ import '../../../cql.dart';
 /// If the severity is Message, the operator is expected to provide the message
 /// as information to the calling environment.
 class Message extends OperatorExpression {
-  final Expression source;
-  final Expression? condition;
   final Expression? code;
-  final Expression? severity;
+  final Expression? condition;
   final Expression? message;
+  final Expression? severity;
+  final Expression source;
 
   Message(this.source,
       {this.condition, this.code, this.severity, this.message});

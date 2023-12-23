@@ -3,20 +3,6 @@ import '../cql.dart';
 class SystemModelInfoProvider implements ModelInfoProvider {
   NamespaceManager? namespaceManager;
 
-  void setNamespaceManager(NamespaceManager namespaceManager) {
-    this.namespaceManager = namespaceManager;
-  }
-
-  bool isSystemModelIdentifier(ModelIdentifier modelIdentifier) {
-    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == 'System' &&
-          (modelIdentifier.system == null ||
-              modelIdentifier.system == 'urn:hl7-org:elm-types:r1');
-    }
-
-    return modelIdentifier.id == 'System';
-  }
-
   @override
   ModelInfo load(ModelIdentifier modelIdentifier) {
     if (isSystemModelIdentifier(modelIdentifier)) {
@@ -30,6 +16,20 @@ class SystemModelInfoProvider implements ModelInfoProvider {
       }
     }
     throw ArgumentError('Unknown model identifier: $modelIdentifier');
+  }
+
+  void setNamespaceManager(NamespaceManager namespaceManager) {
+    this.namespaceManager = namespaceManager;
+  }
+
+  bool isSystemModelIdentifier(ModelIdentifier modelIdentifier) {
+    if (namespaceManager != null && namespaceManager!.hasNamespaces) {
+      return modelIdentifier.id == 'System' &&
+          (modelIdentifier.system == null ||
+              modelIdentifier.system == 'urn:hl7-org:elm-types:r1');
+    }
+
+    return modelIdentifier.id == 'System';
   }
 }
 

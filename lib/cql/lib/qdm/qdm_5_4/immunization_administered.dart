@@ -7,9 +7,9 @@ import 'package:cql/engine/types/types.dart';
 class ImmunizationAdministered {
   final LiteralDateTime? authorDatetime;
   final LiteralQuantity? dosage;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
   final LiteralCode? route;
-  final LiteralCode? negationRationale;
 
   ImmunizationAdministered({
     this.authorDatetime,

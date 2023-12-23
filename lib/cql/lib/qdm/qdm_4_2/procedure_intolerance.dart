@@ -11,10 +11,10 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class ProcedureIntolerance {
+  final LiteralConcept? ordinality;
+  final LiteralConcept? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reaction;
-  final LiteralConcept? ordinality;
 
   ProcedureIntolerance({
     this.startDatetime,

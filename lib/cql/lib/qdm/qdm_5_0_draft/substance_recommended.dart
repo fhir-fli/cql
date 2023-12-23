@@ -7,12 +7,12 @@ import 'qdm_5_0_draft.dart';
 /// corresponding value set.
 
 class SubstanceRecommended {
-  final Interval? interval;
-  final CodeableConcept? negationRationale;
-  final CodeableConcept? reason;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
+  final Interval? interval;
   final CodeableConcept? method;
+  final CodeableConcept? negationRationale;
+  final CodeableConcept? reason;
   final CodeableConcept? refills;
   final CodeableConcept? route;
 

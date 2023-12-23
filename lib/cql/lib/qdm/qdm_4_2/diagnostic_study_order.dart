@@ -28,13 +28,13 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class DiagnosticStudyOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? method;
   final LiteralConcept? negationRationale;
-  final LiteralConcept? reason;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
-  final LiteralConcept? method;
+  final LiteralConcept? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyOrder({
     this.startDatetime,

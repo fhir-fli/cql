@@ -12,14 +12,14 @@ import 'package:cql/engine/types/types.dart';
 class MedicationOrder {
   final LiteralDateTime activeDatetime;
   final LiteralDateTime authorDatetime;
-  final LiteralInteger? refills;
   final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
   final LiteralCode? frequency;
-  final LiteralCode? route;
   final LiteralCode? method;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
+  final LiteralInteger? refills;
+  final LiteralCode? route;
+  final LiteralQuantity? supply;
 
   MedicationOrder({
     required this.activeDatetime,

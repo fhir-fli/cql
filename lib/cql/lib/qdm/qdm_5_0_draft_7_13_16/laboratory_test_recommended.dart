@@ -7,8 +7,8 @@ import 'package:cql/engine/types/types.dart';
 class LaboratoryTestRecommended {
   final LiteralDateTime? authorDatetime;
   final LiteralCode? method;
-  final LiteralCode? reason;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
 
   LaboratoryTestRecommended({
     this.authorDatetime,

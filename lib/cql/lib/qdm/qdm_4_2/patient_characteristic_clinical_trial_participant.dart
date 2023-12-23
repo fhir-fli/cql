@@ -10,9 +10,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class PatientCharacteristicClinicalTrialParticipant {
+  final LiteralConcept? reason;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reason;
 
   PatientCharacteristicClinicalTrialParticipant({
     this.startDatetime,

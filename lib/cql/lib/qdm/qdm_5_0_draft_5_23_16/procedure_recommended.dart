@@ -5,12 +5,12 @@ import 'qdm_5_0_draft_5_23_16.dart';
 /// corresponding value set.
 
 class ProcedureRecommended {
-  final Interval? interval;
-  final CodeableConcept? reason;
-  final CodeableConcept? method;
   final CodeableConcept? anatomicalApproachSite;
   final CodeableConcept? anatomicalLocationSite;
+  final Interval? interval;
+  final CodeableConcept? method;
   final CodeableConcept? ordinality;
+  final CodeableConcept? reason;
 
   ProcedureRecommended({
     this.interval,

@@ -10,15 +10,15 @@ import 'package:cql/engine/types/types.dart';
 /// attestation of “medication taken” may be available.
 
 class MedicationDispensed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralInteger? refills;
+  final LiteralQuantity? cumulativeMedicationDuration;
   final LiteralQuantity? dose;
   final LiteralCode? frequency;
-  final LiteralCode? route;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralQuantity? cumulativeMedicationDuration;
+  final LiteralInteger? refills;
+  final LiteralCode? route;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   MedicationDispensed({
     this.startDatetime,

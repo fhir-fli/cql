@@ -2,13 +2,14 @@ import '../../cql.dart';
 
 /// The Query operator represents a clause-based query.
 class Query extends Expression {
-  final String type = 'Query';
-  List<AliasedQuerySource> source;
   List<LetClause>? let;
   List<RelationshipClause>? relationship;
-  Expression? where;
   ReturnClause? returnClause;
   SortClause? sort;
+  List<AliasedQuerySource> source;
+  final String type = 'Query';
+  Expression? where;
+
   Query({
     required this.source,
     this.let,

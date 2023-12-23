@@ -3,9 +3,9 @@ import 'package:fhir/r4.dart';
 import '../cql.dart';
 
 class QName {
-  final String prefix;
-  final String namespaceURI;
   final String localPart;
+  final String namespaceURI;
+  final String prefix;
 
   QName({
     this.prefix = '',
@@ -13,26 +13,7 @@ class QName {
     required this.localPart,
   });
 
-  static String _nameSpace(String localPart, [String? nameSpaceUri]) =>
-      nameSpaceUri ??
-      (resourceTypeFromStringMap.keys.contains(localPart)
-          ? 'http://hl7.org/fhir'
-          : elmTypes.contains(localPart)
-              ? 'urn:hl7-org:elm-types:r1'
-              : '');
-
   factory QName.empty() => QName(namespaceURI: '', localPart: '', prefix: '');
-
-  factory QName.fromLocalPart(String localPart) => QName(
-        prefix: '',
-        namespaceURI: _nameSpace(localPart),
-        localPart: localPart,
-      );
-
-  factory QName.fromNamespace(String? namespaceURI, String localPart) => QName(
-      namespaceURI: _nameSpace(localPart, namespaceURI),
-      localPart: localPart,
-      prefix: '');
 
   factory QName.fromFull(String? qNameAsString) {
     if (qNameAsString?.isEmpty ?? true) {
@@ -58,7 +39,16 @@ class QName {
 
   factory QName.fromJson(String json) => QName.fromFull(json);
 
-  String toJson() => toString();
+  factory QName.fromLocalPart(String localPart) => QName(
+        prefix: '',
+        namespaceURI: _nameSpace(localPart),
+        localPart: localPart,
+      );
+
+  factory QName.fromNamespace(String? namespaceURI, String localPart) => QName(
+      namespaceURI: _nameSpace(localPart, namespaceURI),
+      localPart: localPart,
+      prefix: '');
 
   @override
   bool operator ==(Object? other) {
@@ -72,14 +62,16 @@ class QName {
     }
   }
 
-  bool equals(Object? other) => this == other;
-
   @override
   int get hashCode => namespaceURI.hashCode ^ localPart.hashCode;
 
   @override
   String toString() =>
       namespaceURI == '' ? localPart : "$prefix{$namespaceURI}$localPart";
+
+  String toJson() => toString();
+
+  bool equals(Object? other) => this == other;
 
   static QName valueOf(String qNameAsString) {
     if (qNameAsString.isEmpty) {
@@ -102,4 +94,12 @@ class QName {
       }
     }
   }
+
+  static String _nameSpace(String localPart, [String? nameSpaceUri]) =>
+      nameSpaceUri ??
+      (resourceTypeFromStringMap.keys.contains(localPart)
+          ? 'http://hl7.org/fhir'
+          : elmTypes.contains(localPart)
+              ? 'urn:hl7-org:elm-types:r1'
+              : '');
 }

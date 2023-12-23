@@ -26,17 +26,17 @@ class ExpressionDefs {
 /// Expression definition with an associated name that can be referenced by any
 /// expression in the artifact.
 class ExpressionDef extends Element {
-  /// Name of the expression.
-  String name;
+  /// Access level, defaults to Public.
+  AccessModifier? accessLevel;
 
   /// Execution context.
   String? context;
 
-  /// Access level, defaults to Public.
-  AccessModifier? accessLevel;
-
   /// Expression associated with the definition.
   Expression? expression;
+
+  /// Name of the expression.
+  String name;
 
   ExpressionDef({
     required this.name,
@@ -44,30 +44,6 @@ class ExpressionDef extends Element {
     this.accessLevel,
     this.expression,
   });
-
-  factory ExpressionDef.public({
-    required String name,
-    String? context,
-    required Expression expression,
-  }) =>
-      ExpressionDef(
-        name: name,
-        context: context,
-        accessLevel: AccessModifier.public,
-        expression: expression,
-      );
-
-  factory ExpressionDef.private({
-    required String name,
-    String? context,
-    required Expression expression,
-  }) =>
-      ExpressionDef(
-        name: name,
-        context: context,
-        accessLevel: AccessModifier.private,
-        expression: expression,
-      );
 
   factory ExpressionDef.context({
     required String name,
@@ -91,6 +67,31 @@ class ExpressionDef extends Element {
           : null,
     );
   }
+
+  factory ExpressionDef.private({
+    required String name,
+    String? context,
+    required Expression expression,
+  }) =>
+      ExpressionDef(
+        name: name,
+        context: context,
+        accessLevel: AccessModifier.private,
+        expression: expression,
+      );
+
+  factory ExpressionDef.public({
+    required String name,
+    String? context,
+    required Expression expression,
+  }) =>
+      ExpressionDef(
+        name: name,
+        context: context,
+        accessLevel: AccessModifier.public,
+        expression: expression,
+      );
+
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

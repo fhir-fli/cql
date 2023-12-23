@@ -6,12 +6,12 @@ import 'package:cql/engine/types/types.dart';
 /// begins; stopTime - the time the procedure is completed
 
 class ProcedurePerformed {
+  final LiteralDateTime? incisionDatetime;
+  final LiteralCode? radiationDosage;
+  final LiteralCode? radiationDuration;
   final LiteralDateTimeInterval? relevantPeriod;
   final dynamic result;
   final LiteralCode? status;
-  final LiteralCode? radiationDuration;
-  final LiteralCode? radiationDosage;
-  final LiteralDateTime? incisionDatetime;
 
   ProcedurePerformed({
     this.relevantPeriod,

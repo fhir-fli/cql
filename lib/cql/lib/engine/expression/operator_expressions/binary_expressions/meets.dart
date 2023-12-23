@@ -8,8 +8,8 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 class Meets extends BinaryExpression {
   final Expression left;
-  final Expression right;
   final DateTimePrecision? precision;
+  final Expression right;
 
   Meets({
     required this.left,

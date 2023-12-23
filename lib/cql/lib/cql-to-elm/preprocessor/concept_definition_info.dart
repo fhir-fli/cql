@@ -6,14 +6,6 @@ import 'base_info.dart';
 class ConceptDefinitionInfo extends BaseInfo {
   String? name;
 
-  String? getName() {
-    return name;
-  }
-
-  void setName(String value) {
-    name = value;
-  }
-
   @override
   ConceptDefinitionContext? getDefinition() {
     return super.getDefinition() as ConceptDefinitionContext?;
@@ -22,6 +14,14 @@ class ConceptDefinitionInfo extends BaseInfo {
   @override
   void setDefinition(ParserRuleContext value) {
     super.setDefinition(value);
+  }
+
+  String? getName() {
+    return name;
+  }
+
+  void setName(String value) {
+    name = value;
   }
 
   ConceptDefinitionInfo withName(String value) {

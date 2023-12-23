@@ -9,8 +9,8 @@ import 'package:cql/engine/types/types.dart';
 
 class AdverseEventIntolerance {
   final LiteralDateTimeInterval? prevalencePeriod;
-  final LiteralCode? substance;
   final LiteralCode? reaction;
+  final LiteralCode? substance;
 
   AdverseEventIntolerance({
     this.prevalencePeriod,

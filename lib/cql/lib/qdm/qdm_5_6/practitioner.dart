@@ -4,9 +4,9 @@ import 'package:cql/engine/types/types.dart';
 /// healthcare or related services
 
 class Practitioner {
+  final LiteralCode? qualification;
   final LiteralCode? role;
   final LiteralCode? specialty;
-  final LiteralCode? qualification;
 
   Practitioner({
     this.role,

@@ -10,12 +10,12 @@ import 'qdm_5_0_draft.dart';
 
 class SubstanceOrder {
   final LiteralDateTime? authorDatetime;
-  final CodeableConcept? negationRationale;
-  final CodeableConcept? reason;
-  final CodeableConcept? reaction;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
   final CodeableConcept? method;
+  final CodeableConcept? negationRationale;
+  final CodeableConcept? reaction;
+  final CodeableConcept? reason;
   final CodeableConcept? refills;
   final CodeableConcept? route;
 

@@ -21,20 +21,20 @@ class CodeDefs extends Element {
 /// reference single codes anywhere within an expression.
 @JsonSerializable()
 class CodeDef extends Element {
-  /// The name of the code used for reference.
-  String name;
-
-  /// The unique identifier of the code.
-  String id;
-
-  /// An optional display string used to describe the code.
-  String? display;
-
   /// Specifies the access level; default is Public.
   AccessModifier accessLevel;
 
   /// The code system that contains the code being referenced.
   CodeSystemRef? codeSystem;
+
+  /// An optional display string used to describe the code.
+  String? display;
+
+  /// The unique identifier of the code.
+  String id;
+
+  /// The name of the code used for reference.
+  String name;
 
   CodeDef({
     required this.name,

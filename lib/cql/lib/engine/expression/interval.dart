@@ -34,27 +34,24 @@ import '../../cql.dart';
 /// interpreted to end at the maximum value of the point type, and computations
 /// involving the high boundary will be performed with that interpretation.
 class IntervalExpression extends Expression {
-  /// Low bound expression of the interval.
-  Expression? low;
-
-  /// Low bound closed expression of the interval.
-  Expression? lowClosedExpression;
-
+  dynamic defaultPointType;
   /// High bound expression of the interval.
   Expression? high;
-
-  /// High bound closed expression of the interval.
-  Expression? highClosedExpression;
-
-  /// Low bound closed status, defaults to true.
-  bool lowClosed = true;
 
   /// High bound closed status, defaults to true.
   bool highClosed = true;
 
-  dynamic defaultPointType;
+  /// High bound closed expression of the interval.
+  Expression? highClosedExpression;
 
-  String get type => 'Interval';
+  /// Low bound expression of the interval.
+  Expression? low;
+
+  /// Low bound closed status, defaults to true.
+  bool lowClosed = true;
+
+  /// Low bound closed expression of the interval.
+  Expression? lowClosedExpression;
 
   IntervalExpression({
     this.lowClosed = true,
@@ -96,4 +93,6 @@ class IntervalExpression extends Expression {
     }
     return json;
   }
+
+  String get type => 'Interval';
 }

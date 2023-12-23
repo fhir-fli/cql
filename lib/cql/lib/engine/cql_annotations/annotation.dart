@@ -1,14 +1,14 @@
 import '../../cql.dart';
 
 class Annotation extends CqlToElmBase {
-  // List of tags associated with the annotation
-  final List<Tag> t;
+  // Optional locator information for the annotation
+  final Locator? locator;
 
   // Optional narrative text for the annotation
   final Narrative? s;
 
-  // Optional locator information for the annotation
-  final Locator? locator;
+  // List of tags associated with the annotation
+  final List<Tag> t;
 
   Annotation({
     List<Tag>? t,
@@ -24,6 +24,9 @@ class Annotation extends CqlToElmBase {
         locator:
             json['locator'] != null ? Locator.fromJson(json['locator']) : null,
       );
+
+  @override
+  String toString() => 'Annotation{t: $t, s: $s, locator: $locator}';
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
@@ -42,7 +45,4 @@ class Annotation extends CqlToElmBase {
   void addTag(Tag tag) {
     t.add(tag);
   }
-
-  @override
-  String toString() => 'Annotation{t: $t, s: $s, locator: $locator}';
 }

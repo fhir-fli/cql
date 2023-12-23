@@ -9,11 +9,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class EncounterRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralConcept? facilityLocation;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
-  final LiteralConcept? facilityLocation;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   EncounterRecommended({
     this.startDatetime,

@@ -9,9 +9,9 @@ import 'package:cql/engine/types/types.dart';
 /// diagnosis for the time frame indicated by the timing relationships.
 
 class Diagnosis {
-  final LiteralDateTime? onsetDatetime;
   final LiteralDateTime? abatementDatetime;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? onsetDatetime;
   final LiteralCode? severity;
 
   Diagnosis({

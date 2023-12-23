@@ -6,14 +6,6 @@ import 'base_info.dart';
 class ParameterDefinitionInfo extends BaseInfo {
   String? name;
 
-  String? getName() {
-    return name;
-  }
-
-  void setName(String value) {
-    name = value;
-  }
-
   @override
   ParameterDefinitionContext? getDefinition() {
     return super.getDefinition() as ParameterDefinitionContext?;
@@ -22,6 +14,14 @@ class ParameterDefinitionInfo extends BaseInfo {
   @override
   void setDefinition(ParserRuleContext value) {
     super.setDefinition(value);
+  }
+
+  String? getName() {
+    return name;
+  }
+
+  void setName(String value) {
+    name = value;
   }
 
   ParameterDefinitionInfo withName(String value) {

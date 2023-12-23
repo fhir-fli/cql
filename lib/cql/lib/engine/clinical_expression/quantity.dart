@@ -4,8 +4,8 @@ import '../../cql.dart';
 /// days or 30 mmHg. The value is a decimal, while the unit is expected to be a
 /// valid UCUM unit.
 class Quantity extends Expression {
-  final double value;
   final String unit;
+  final double value;
 
   Quantity({required this.value, required this.unit});
 

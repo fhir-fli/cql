@@ -6,17 +6,23 @@ abstract class Closeable {
 }
 
 abstract class Writer implements Closeable {
-  Uint16List? writeBuffer;
   static const int WRITE_BUFFER_SIZE = 1024;
-  Object lock;
 
-  static Writer nullWriter() {
-    return NullWriter();
-  }
+  Object lock;
+  Uint16List? writeBuffer;
 
   Writer() : lock = Object();
 
   Writer.withLock(this.lock);
+
+  @override
+  Future<void> close() async {
+    throw UnimplementedError();
+  }
+
+  static Writer nullWriter() {
+    return NullWriter();
+  }
 
   void write(int c) {
     synchronized(lock, () {
@@ -51,11 +57,6 @@ abstract class Writer implements Closeable {
     return this;
   }
 
-  @override
-  Future<void> close() async {
-    throw UnimplementedError();
-  }
-
   Future<void> flush() async {
     throw UnimplementedError();
   }
@@ -63,13 +64,13 @@ abstract class Writer implements Closeable {
 
 class NullWriter extends Writer {
   @override
-  void write(int c) {}
+  Future<void> close() async {}
 
   @override
   Future<void> flush() async {}
 
   @override
-  Future<void> close() async {}
+  void write(int c) {}
 }
 
 typedef void LockFunction();

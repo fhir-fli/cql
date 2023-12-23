@@ -5,9 +5,9 @@ import 'package:cql/engine/types/types.dart';
 /// of the substance indicated by the QDM category and its corresponding value set.
 
 class SubstanceIntolerance {
+  final LiteralCode? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
 
   SubstanceIntolerance({
     this.startDatetime,

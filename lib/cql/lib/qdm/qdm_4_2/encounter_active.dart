@@ -20,11 +20,11 @@ import 'package:cql/engine/types/types.dart';
 class EncounterActive {
   final LiteralDateTime? admissionDatetime;
   final LiteralDateTime? dischargeDatetime;
-  final LiteralQuantity? lengthOfStay;
-  final LiteralConcept? reason;
   final LiteralConcept? facilityLocation;
   final LiteralDateTime? facilityLocationArrivalDatetime;
   final LiteralDateTime? facilityLocationDepartureDatetime;
+  final LiteralQuantity? lengthOfStay;
+  final LiteralConcept? reason;
 
   EncounterActive({
     this.admissionDatetime,

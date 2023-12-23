@@ -7,13 +7,13 @@ import 'qdm_5_5.dart';
 /// value set.
 
 class ProcedureOrder {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? anatomicalLocationSite;
-  final LiteralInteger? rank;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode? negationRationale;
-  final QDMEntity? requester;
   final LiteralCode? priority;
+  final LiteralInteger? rank;
+  final LiteralCode? reason;
+  final QDMEntity? requester;
 
   ProcedureOrder({
     this.authorDatetime,

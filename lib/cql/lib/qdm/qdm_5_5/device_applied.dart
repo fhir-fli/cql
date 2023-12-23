@@ -11,13 +11,13 @@ import 'qdm_5_5.dart';
 /// device is removed or last used
 
 class DeviceApplied {
+  final LiteralCode? anatomicalLocationSite;
   final LiteralDateTime? authorDatetime;
+  final LiteralCode? negationRationale;
+  final QDMEntity? performer;
+  final LiteralCode? reason;
   final LiteralDateTime? relevantDatetime;
   final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? negationRationale;
-  final LiteralCode? reason;
-  final LiteralCode? anatomicalLocationSite;
-  final QDMEntity? performer;
 
   DeviceApplied({
     this.authorDatetime,

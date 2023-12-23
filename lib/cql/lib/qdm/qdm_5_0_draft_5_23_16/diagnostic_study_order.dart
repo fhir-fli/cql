@@ -17,10 +17,10 @@ import 'qdm_5_0_draft_5_23_16.dart';
 
 class DiagnosticStudyOrder {
   final LiteralDateTime? authorDatetime;
-  final CodeableConcept? reason;
+  final CodeableConcept? method;
   final CodeableConcept? radiationDosage;
   final CodeableConcept? radiationDuration;
-  final CodeableConcept? method;
+  final CodeableConcept? reason;
 
   DiagnosticStudyOrder({
     this.authorDatetime,

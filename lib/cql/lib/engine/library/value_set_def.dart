@@ -36,6 +36,9 @@ class ValueSetDefs {
 /// not specify code system versions as part of the definition header.
 @JsonSerializable()
 class ValueSetDef extends Element {
+  /// Specifies the access level; default is Public.
+  AccessModifier accessLevel;
+
   /// The code system that should be used to construct the expansion set. Note
   /// that the recommended approach to statically binding to an expansion set
   /// is to use a value set definition that specifies the version of each code
@@ -44,17 +47,14 @@ class ValueSetDef extends Element {
   /// code system versions as part of the definition header.
   List<CodeSystemRef>? codeSystem;
 
-  /// The name of the value set.
-  String? name;
-
   /// The unique identifier of the value set to be retrieved.
   String? id;
 
+  /// The name of the value set.
+  String? name;
+
   /// The version of the value set to be retrieved. If no version is provided, the most current published version of the value set is assumed.
   String? version;
-
-  /// Specifies the access level; default is Public.
-  AccessModifier accessLevel;
 
   ValueSetDef(
       {this.codeSystem,

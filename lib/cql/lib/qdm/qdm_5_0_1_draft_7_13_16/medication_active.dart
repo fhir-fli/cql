@@ -18,11 +18,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class MedicationActive {
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
   final LiteralCode? frequency;
+  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? route;
+  final LiteralQuantity? supply;
 
   MedicationActive({
     this.relevantPeriod,

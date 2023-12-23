@@ -6,14 +6,6 @@ import 'base_info.dart';
 class CodesystemDefinitionInfo extends BaseInfo {
   String? name;
 
-  String? getName() {
-    return name;
-  }
-
-  void setName(String value) {
-    name = value;
-  }
-
   @override
   CodesystemDefinitionContext? getDefinition() {
     return super.getDefinition() as CodesystemDefinitionContext?;
@@ -22,6 +14,14 @@ class CodesystemDefinitionInfo extends BaseInfo {
   @override
   void setDefinition(ParserRuleContext value) {
     super.setDefinition(value);
+  }
+
+  String? getName() {
+    return name;
+  }
+
+  void setName(String value) {
+    name = value;
   }
 
   CodesystemDefinitionInfo withName(String value) {

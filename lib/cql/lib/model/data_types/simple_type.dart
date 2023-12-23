@@ -7,6 +7,12 @@ class SimpleType extends DataType implements NamedType {
   SimpleType(this.name, [DataType? baseType]) : super(baseType);
 
   @override
+  bool operator ==(Object other) => other is SimpleType && name == other.name;
+
+  @override
+  String getName() => name;
+
+  @override
   String getNamespace() {
     final qualifierIndex = name.indexOf('.');
     return qualifierIndex > 0 ? name.substring(0, qualifierIndex) : '';
@@ -19,13 +25,13 @@ class SimpleType extends DataType implements NamedType {
   }
 
   @override
+  String? getTarget() => target;
+
+  @override
   int get hashCode => name.hashCode;
 
   @override
-  bool operator ==(Object other) => other is SimpleType && name == other.name;
-
-  @override
-  String toString() => name;
+  DataType instantiate(InstantiationContext context) => this;
 
   @override
   bool isCompatibleWith(DataType other) {
@@ -59,11 +65,5 @@ class SimpleType extends DataType implements NamedType {
   }
 
   @override
-  DataType instantiate(InstantiationContext context) => this;
-
-  @override
-  String getName() => name;
-
-  @override
-  String? getTarget() => target;
+  String toString() => name;
 }

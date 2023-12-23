@@ -7,8 +7,8 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 class Overlaps extends BinaryExpression {
   final Expression left;
-  final Expression right;
   final DateTimePrecision? precision;
+  final Expression right;
 
   Overlaps(
       {required this.left,

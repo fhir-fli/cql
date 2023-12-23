@@ -6,18 +6,6 @@ class Element {
   // designer information, or debug symbols.
   List<Annotation>? annotation;
 
-  // The resultTypeSpecifier element describes the type information for this ELM node.
-  // ELM documents are not required to contain result type information, but if they do,
-  // the result type of each node is specified using the resultTypeName attribute for
-  // named types, and this resultTypeSpecifier element for non-named types.
-  TypeSpecifier? resultTypeSpecifier;
-
-  // The resultTypeName attribute is part of type information for an ELM document.
-  // ELM documents are not required to specify result type information, but if they
-  // do, the result type of each node is specified using this attribute for named
-  // types, or the resultTypeSpecifier element for non-named types.
-  String? resultTypeName;
-
   // The localId for an ELM node identifies the location in the source document
   // that produced the ELM. The format is L:C[-L:C], where L is a line number
   // and C is a column number. For locators that span a range, an optional
@@ -31,6 +19,18 @@ class Element {
   // range can be given to an ending line and column number. Line and column
   // numbers are 1-based.
   String? locator;
+
+  // The resultTypeName attribute is part of type information for an ELM document.
+  // ELM documents are not required to specify result type information, but if they
+  // do, the result type of each node is specified using this attribute for named
+  // types, or the resultTypeSpecifier element for non-named types.
+  String? resultTypeName;
+
+  // The resultTypeSpecifier element describes the type information for this ELM node.
+  // ELM documents are not required to contain result type information, but if they do,
+  // the result type of each node is specified using the resultTypeName attribute for
+  // named types, and this resultTypeSpecifier element for non-named types.
+  TypeSpecifier? resultTypeSpecifier;
 
   Element({
     this.annotation,
@@ -52,6 +52,7 @@ class Element {
         localId: json['localId'] as String?,
         locator: json['locator'] as String?,
       );
+
   Map<String, dynamic> toJson() {
     final val = <String, dynamic>{};
 

@@ -10,11 +10,11 @@ class CommunicationPerformed {
   final LiteralDateTime? authorDatetime;
   final LiteralCode? category;
   final LiteralCode? medium;
-  final LiteralCode? sender;
-  final LiteralCode? recipient;
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? negationRationale;
+  final LiteralCode? recipient;
   final Id? relatedTo;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? sender;
 
   CommunicationPerformed({
     this.authorDatetime,

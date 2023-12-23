@@ -7,10 +7,10 @@ import 'qdm_5_6.dart';
 /// corresponding value set.
 
 class PhysicalExamRecommended {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
   final QDMEntity? requester;
 
   PhysicalExamRecommended({

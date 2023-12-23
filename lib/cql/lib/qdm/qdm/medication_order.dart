@@ -4,14 +4,14 @@ import 'qdm.dart';
 
 class MedicationOrder {
   final LiteralDateTime activeDatetime;
-  final LiteralDateTime signedDatetime;
-  final LiteralInteger? refills;
+  final LiteralQuantity? cumulativeMedicationDuration;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
-  final CodeableConcept? route;
   final CodeableConcept? method;
   final CodeableConcept? reason;
-  final LiteralQuantity? cumulativeMedicationDuration;
+  final LiteralInteger? refills;
+  final CodeableConcept? route;
+  final LiteralDateTime signedDatetime;
 
   MedicationOrder({
     required this.activeDatetime,

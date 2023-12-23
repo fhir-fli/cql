@@ -2,10 +2,10 @@ import '../cql.dart';
 
 class ClassTypeElement {
   String name;
-  DataType type;
-  bool prohibited;
   bool oneBased;
+  bool prohibited;
   String target;
+  DataType type;
 
   ClassTypeElement(
       {required this.name,
@@ -20,6 +20,21 @@ class ClassTypeElement {
       this.prohibited = false,
       this.oneBased = false,
       this.target = ''});
+
+  @override
+  int get hashCode {
+    int result = name.hashCode;
+    result = 31 * result + type.hashCode;
+    result = 31 * result + prohibited.hashCode;
+    result = 31 * result + oneBased.hashCode;
+    result = 31 * result + target.hashCode;
+    return result;
+  }
+
+  @override
+  String toString() => '$name:$type${prohibited ? " (prohibited)" : ""}'
+      '${oneBased ? " (one-based)" : ""}'
+      '${target != "" ? " (target: $target)" : ""}';
 
   bool equals(Object o) {
     if (identical(this, o)) {
@@ -50,16 +65,6 @@ class ClassTypeElement {
     return true;
   }
 
-  @override
-  int get hashCode {
-    int result = name.hashCode;
-    result = 31 * result + type.hashCode;
-    result = 31 * result + prohibited.hashCode;
-    result = 31 * result + oneBased.hashCode;
-    result = 31 * result + target.hashCode;
-    return result;
-  }
-
   bool isSubTypeOf(ClassTypeElement that) {
     return name == that.name && type.isSubTypeOf(that.type);
   }
@@ -67,9 +72,4 @@ class ClassTypeElement {
   bool isSuperTypeOf(ClassTypeElement that) {
     return name == that.name && type.isSuperTypeOf(that.type);
   }
-
-  @override
-  String toString() => '$name:$type${prohibited ? " (prohibited)" : ""}'
-      '${oneBased ? " (one-based)" : ""}'
-      '${target != "" ? " (target: $target)" : ""}';
 }

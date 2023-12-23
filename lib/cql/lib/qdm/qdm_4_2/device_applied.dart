@@ -12,12 +12,12 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class DeviceApplied {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? removalDatetime;
-  final LiteralConcept? negationRationale;
-  final LiteralConcept? reason;
   final LiteralConcept? anatomialLocationSite;
   final LiteralConcept? anatomicalApproachSite;
+  final LiteralConcept? negationRationale;
+  final LiteralConcept? reason;
+  final LiteralDateTime? removalDatetime;
+  final LiteralDateTime? startDatetime;
 
   DeviceApplied({
     this.startDatetime,

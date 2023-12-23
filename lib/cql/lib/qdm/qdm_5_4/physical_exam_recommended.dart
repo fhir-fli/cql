@@ -5,10 +5,10 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class PhysicalExamRecommended {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
 
   PhysicalExamRecommended({
     this.authorDatetime,

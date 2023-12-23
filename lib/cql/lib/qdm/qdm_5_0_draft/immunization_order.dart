@@ -12,10 +12,10 @@ import 'qdm_5_0_draft.dart';
 class ImmunizationOrder {
   final LiteralDateTime? activeDatetime;
   final LiteralDateTime? authorDatetime;
+  final LiteralQuantity? dose;
   final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
   final CodeableConcept? route;
-  final LiteralQuantity? dose;
 
   ImmunizationOrder({
     this.activeDatetime,

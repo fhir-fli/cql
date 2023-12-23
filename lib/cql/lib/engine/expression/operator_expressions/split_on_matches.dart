@@ -5,8 +5,8 @@ import '../../../cql.dart';
 /// If the stringToSplit argument does not contain any appearances of the separator pattern,
 /// the result is a list of strings containing one element that is the input value of the stringToSplit argument.
 class SplitOnMatches extends OperatorExpression {
-  final Expression stringToSplit;
   final Expression separatorPattern;
+  final Expression stringToSplit;
 
   SplitOnMatches(this.stringToSplit, this.separatorPattern);
 

@@ -5,10 +5,10 @@ import 'qdm_5_0_draft.dart';
 /// been recommended.
 
 class EncounterRecommended {
+  final CodeableConcept? facilityLocation;
   final Interval? interval;
   final CodeableConcept? negationRationale;
   final CodeableConcept? reason;
-  final CodeableConcept? facilityLocation;
 
   EncounterRecommended({
     this.interval,

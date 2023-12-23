@@ -8,9 +8,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class CommunicationFromPatientToProvider {
+  final LiteralConcept? negationRationale;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
 
   CommunicationFromPatientToProvider({
     this.startDatetime,

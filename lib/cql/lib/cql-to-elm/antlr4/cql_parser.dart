@@ -112,14 +112,7 @@ const int RULE_library = 0,
     RULE_unit = 104;
 
 class cqlParser extends Parser {
-  static final checkVersion =
-      () => RuntimeMetaData.checkVersion('4.13.1', RuntimeMetaData.VERSION);
   static const int TOKEN_EOF = IntStream.EOF;
-
-  static final List<DFA> _decisionToDFA = List.generate(
-      _ATN.numberOfDecisions, (i) => DFA(_ATN.getDecisionState(i), i));
-  static final PredictionContextCache _sharedContextCache =
-      PredictionContextCache();
   static const int TOKEN_T__0 = 1,
       TOKEN_T__1 = 2,
       TOKEN_T__2 = 3,
@@ -289,6 +282,9 @@ class cqlParser extends Parser {
       TOKEN_COMMENT = 167,
       TOKEN_LINE_COMMENT = 168;
 
+  static final Vocabulary VOCABULARY =
+      VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
   @override
   final List<String> ruleNames = [
     'library',
@@ -398,6 +394,7 @@ class cqlParser extends Parser {
     'unit'
   ];
 
+  static final ATN _ATN = ATNDeserializer().deserialize(_serializedATN);
   static final List<String?> _LITERAL_NAMES = [
     null,
     "'library'",
@@ -557,6 +554,7 @@ class cqlParser extends Parser {
     "'Concept'",
     "'%'"
   ];
+
   static final List<String?> _SYMBOLIC_NAMES = [
     null,
     null,
@@ -728,5200 +726,9 @@ class cqlParser extends Parser {
     "COMMENT",
     "LINE_COMMENT"
   ];
-  static final Vocabulary VOCABULARY =
-      VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
-  @override
-  Vocabulary get vocabulary {
-    return VOCABULARY;
-  }
-
-  @override
-  String get grammarFileName => 'cql.g4';
-
-  @override
-  List<int> get serializedATN => _serializedATN;
-
-  @override
-  ATN getATN() {
-    return _ATN;
-  }
-
-  cqlParser(TokenStream input) : super(input) {
-    interpreter =
-        ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
-  }
-
-  LibraryContext library_() {
-    dynamic localctx = LibraryContext(context, state);
-    enterRule(localctx, 0, RULE_library);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 211;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__0) {
-        state = 210;
-        libraryDefinition();
-      }
-
-      state = 216;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while ((((la) & ~0x3f) == 0 && ((1 << la) & 1316312) != 0)) {
-        state = 213;
-        definition();
-        state = 218;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-      state = 222;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while (la == TOKEN_T__26 || la == TOKEN_T__27) {
-        state = 219;
-        statement();
-        state = 224;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-      state = 225;
-      match(TOKEN_EOF);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  DefinitionContext definition() {
-    dynamic localctx = DefinitionContext(context, state);
-    enterRule(localctx, 2, RULE_definition);
-    try {
-      state = 234;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 3, context)) {
-        case 1:
-          enterOuterAlt(localctx, 1);
-          state = 227;
-          usingDefinition();
-          break;
-        case 2:
-          enterOuterAlt(localctx, 2);
-          state = 228;
-          includeDefinition();
-          break;
-        case 3:
-          enterOuterAlt(localctx, 3);
-          state = 229;
-          codesystemDefinition();
-          break;
-        case 4:
-          enterOuterAlt(localctx, 4);
-          state = 230;
-          valuesetDefinition();
-          break;
-        case 5:
-          enterOuterAlt(localctx, 5);
-          state = 231;
-          codeDefinition();
-          break;
-        case 6:
-          enterOuterAlt(localctx, 6);
-          state = 232;
-          conceptDefinition();
-          break;
-        case 7:
-          enterOuterAlt(localctx, 7);
-          state = 233;
-          parameterDefinition();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  LibraryDefinitionContext libraryDefinition() {
-    dynamic localctx = LibraryDefinitionContext(context, state);
-    enterRule(localctx, 4, RULE_libraryDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 236;
-      match(TOKEN_T__0);
-      state = 237;
-      qualifiedIdentifier();
-      state = 240;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__1) {
-        state = 238;
-        match(TOKEN_T__1);
-        state = 239;
-        versionSpecifier();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  UsingDefinitionContext usingDefinition() {
-    dynamic localctx = UsingDefinitionContext(context, state);
-    enterRule(localctx, 6, RULE_usingDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 242;
-      match(TOKEN_T__2);
-      state = 243;
-      modelIdentifier();
-      state = 246;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__1) {
-        state = 244;
-        match(TOKEN_T__1);
-        state = 245;
-        versionSpecifier();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  IncludeDefinitionContext includeDefinition() {
-    dynamic localctx = IncludeDefinitionContext(context, state);
-    enterRule(localctx, 8, RULE_includeDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 248;
-      match(TOKEN_T__3);
-      state = 249;
-      qualifiedIdentifier();
-      state = 252;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__1) {
-        state = 250;
-        match(TOKEN_T__1);
-        state = 251;
-        versionSpecifier();
-      }
-
-      state = 256;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__4) {
-        state = 254;
-        match(TOKEN_T__4);
-        state = 255;
-        localIdentifier();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  LocalIdentifierContext localIdentifier() {
-    dynamic localctx = LocalIdentifierContext(context, state);
-    enterRule(localctx, 10, RULE_localIdentifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 258;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  AccessModifierContext accessModifier() {
-    dynamic localctx = AccessModifierContext(context, state);
-    enterRule(localctx, 12, RULE_accessModifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 260;
-      la = tokenStream.LA(1)!;
-      if (!(la == TOKEN_T__5 || la == TOKEN_T__6)) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ParameterDefinitionContext parameterDefinition() {
-    dynamic localctx = ParameterDefinitionContext(context, state);
-    enterRule(localctx, 14, RULE_parameterDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 263;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
-        state = 262;
-        accessModifier();
-      }
-
-      state = 265;
-      match(TOKEN_T__7);
-      state = 266;
-      identifier();
-      state = 268;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 9, context)) {
-        case 1:
-          state = 267;
-          typeSpecifier();
-          break;
-      }
-      state = 272;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__8) {
-        state = 270;
-        match(TOKEN_T__8);
-        state = 271;
-        expression(0);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodesystemDefinitionContext codesystemDefinition() {
-    dynamic localctx = CodesystemDefinitionContext(context, state);
-    enterRule(localctx, 16, RULE_codesystemDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 275;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
-        state = 274;
-        accessModifier();
-      }
-
-      state = 277;
-      match(TOKEN_T__9);
-      state = 278;
-      identifier();
-      state = 279;
-      match(TOKEN_T__10);
-      state = 280;
-      codesystemId();
-      state = 283;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__1) {
-        state = 281;
-        match(TOKEN_T__1);
-        state = 282;
-        versionSpecifier();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ValuesetDefinitionContext valuesetDefinition() {
-    dynamic localctx = ValuesetDefinitionContext(context, state);
-    enterRule(localctx, 18, RULE_valuesetDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 286;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
-        state = 285;
-        accessModifier();
-      }
-
-      state = 288;
-      match(TOKEN_T__11);
-      state = 289;
-      identifier();
-      state = 290;
-      match(TOKEN_T__10);
-      state = 291;
-      valuesetId();
-      state = 294;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__1) {
-        state = 292;
-        match(TOKEN_T__1);
-        state = 293;
-        versionSpecifier();
-      }
-
-      state = 297;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__12) {
-        state = 296;
-        codesystems();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodesystemsContext codesystems() {
-    dynamic localctx = CodesystemsContext(context, state);
-    enterRule(localctx, 20, RULE_codesystems);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 299;
-      match(TOKEN_T__12);
-      state = 300;
-      match(TOKEN_T__13);
-      state = 301;
-      codesystemIdentifier();
-      state = 306;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while (la == TOKEN_T__14) {
-        state = 302;
-        match(TOKEN_T__14);
-        state = 303;
-        codesystemIdentifier();
-        state = 308;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-      state = 309;
-      match(TOKEN_T__15);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodesystemIdentifierContext codesystemIdentifier() {
-    dynamic localctx = CodesystemIdentifierContext(context, state);
-    enterRule(localctx, 22, RULE_codesystemIdentifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 314;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 17, context)) {
-        case 1:
-          state = 311;
-          libraryIdentifier();
-          state = 312;
-          match(TOKEN_T__16);
-          break;
-      }
-      state = 316;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  LibraryIdentifierContext libraryIdentifier() {
-    dynamic localctx = LibraryIdentifierContext(context, state);
-    enterRule(localctx, 24, RULE_libraryIdentifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 318;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodeDefinitionContext codeDefinition() {
-    dynamic localctx = CodeDefinitionContext(context, state);
-    enterRule(localctx, 26, RULE_codeDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 321;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
-        state = 320;
-        accessModifier();
-      }
-
-      state = 323;
-      match(TOKEN_T__17);
-      state = 324;
-      identifier();
-      state = 325;
-      match(TOKEN_T__10);
-      state = 326;
-      codeId();
-      state = 327;
-      match(TOKEN_T__18);
-      state = 328;
-      codesystemIdentifier();
-      state = 330;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__152) {
-        state = 329;
-        displayClause();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ConceptDefinitionContext conceptDefinition() {
-    dynamic localctx = ConceptDefinitionContext(context, state);
-    enterRule(localctx, 28, RULE_conceptDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 333;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
-        state = 332;
-        accessModifier();
-      }
-
-      state = 335;
-      match(TOKEN_T__19);
-      state = 336;
-      identifier();
-      state = 337;
-      match(TOKEN_T__10);
-      state = 338;
-      match(TOKEN_T__13);
-      state = 339;
-      codeIdentifier();
-      state = 344;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while (la == TOKEN_T__14) {
-        state = 340;
-        match(TOKEN_T__14);
-        state = 341;
-        codeIdentifier();
-        state = 346;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-      state = 347;
-      match(TOKEN_T__15);
-      state = 349;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__152) {
-        state = 348;
-        displayClause();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodeIdentifierContext codeIdentifier() {
-    dynamic localctx = CodeIdentifierContext(context, state);
-    enterRule(localctx, 30, RULE_codeIdentifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 354;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 23, context)) {
-        case 1:
-          state = 351;
-          libraryIdentifier();
-          state = 352;
-          match(TOKEN_T__16);
-          break;
-      }
-      state = 356;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodesystemIdContext codesystemId() {
-    dynamic localctx = CodesystemIdContext(context, state);
-    enterRule(localctx, 32, RULE_codesystemId);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 358;
-      match(TOKEN_STRING);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ValuesetIdContext valuesetId() {
-    dynamic localctx = ValuesetIdContext(context, state);
-    enterRule(localctx, 34, RULE_valuesetId);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 360;
-      match(TOKEN_STRING);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  VersionSpecifierContext versionSpecifier() {
-    dynamic localctx = VersionSpecifierContext(context, state);
-    enterRule(localctx, 36, RULE_versionSpecifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 362;
-      match(TOKEN_STRING);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodeIdContext codeId() {
-    dynamic localctx = CodeIdContext(context, state);
-    enterRule(localctx, 38, RULE_codeId);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 364;
-      match(TOKEN_STRING);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TypeSpecifierContext typeSpecifier() {
-    dynamic localctx = TypeSpecifierContext(context, state);
-    enterRule(localctx, 40, RULE_typeSpecifier);
-    try {
-      state = 371;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__0:
-        case TOKEN_T__1:
-        case TOKEN_T__2:
-        case TOKEN_T__3:
-        case TOKEN_T__4:
-        case TOKEN_T__5:
-        case TOKEN_T__6:
-        case TOKEN_T__7:
-        case TOKEN_T__8:
-        case TOKEN_T__9:
-        case TOKEN_T__11:
-        case TOKEN_T__12:
-        case TOKEN_T__17:
-        case TOKEN_T__19:
-        case TOKEN_T__26:
-        case TOKEN_T__27:
-        case TOKEN_T__28:
-        case TOKEN_T__29:
-        case TOKEN_T__44:
-        case TOKEN_T__49:
-        case TOKEN_T__51:
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-        case TOKEN_T__73:
-        case TOKEN_T__75:
-        case TOKEN_T__76:
-        case TOKEN_T__78:
-        case TOKEN_T__79:
-        case TOKEN_T__80:
-        case TOKEN_T__89:
-        case TOKEN_T__90:
-        case TOKEN_T__91:
-        case TOKEN_T__104:
-        case TOKEN_T__105:
-        case TOKEN_T__107:
-        case TOKEN_T__108:
-        case TOKEN_T__109:
-        case TOKEN_T__117:
-        case TOKEN_T__118:
-        case TOKEN_T__129:
-        case TOKEN_T__130:
-        case TOKEN_T__131:
-        case TOKEN_T__132:
-        case TOKEN_T__139:
-        case TOKEN_T__140:
-        case TOKEN_T__143:
-        case TOKEN_T__147:
-        case TOKEN_T__148:
-        case TOKEN_T__152:
-        case TOKEN_T__153:
-        case TOKEN_T__154:
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-          enterOuterAlt(localctx, 1);
-          state = 366;
-          namedTypeSpecifier();
-          break;
-        case TOKEN_T__20:
-          enterOuterAlt(localctx, 2);
-          state = 367;
-          listTypeSpecifier();
-          break;
-        case TOKEN_T__23:
-          enterOuterAlt(localctx, 3);
-          state = 368;
-          intervalTypeSpecifier();
-          break;
-        case TOKEN_T__24:
-          enterOuterAlt(localctx, 4);
-          state = 369;
-          tupleTypeSpecifier();
-          break;
-        case TOKEN_T__25:
-          enterOuterAlt(localctx, 5);
-          state = 370;
-          choiceTypeSpecifier();
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  NamedTypeSpecifierContext namedTypeSpecifier() {
-    dynamic localctx = NamedTypeSpecifierContext(context, state);
-    enterRule(localctx, 42, RULE_namedTypeSpecifier);
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 378;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 25, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          state = 373;
-          qualifier();
-          state = 374;
-          match(TOKEN_T__16);
-        }
-        state = 380;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 25, context);
-      }
-      state = 381;
-      referentialOrTypeNameIdentifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ModelIdentifierContext modelIdentifier() {
-    dynamic localctx = ModelIdentifierContext(context, state);
-    enterRule(localctx, 44, RULE_modelIdentifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 383;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ListTypeSpecifierContext listTypeSpecifier() {
-    dynamic localctx = ListTypeSpecifierContext(context, state);
-    enterRule(localctx, 46, RULE_listTypeSpecifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 385;
-      match(TOKEN_T__20);
-      state = 386;
-      match(TOKEN_T__21);
-      state = 387;
-      typeSpecifier();
-      state = 388;
-      match(TOKEN_T__22);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  IntervalTypeSpecifierContext intervalTypeSpecifier() {
-    dynamic localctx = IntervalTypeSpecifierContext(context, state);
-    enterRule(localctx, 48, RULE_intervalTypeSpecifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 390;
-      match(TOKEN_T__23);
-      state = 391;
-      match(TOKEN_T__21);
-      state = 392;
-      typeSpecifier();
-      state = 393;
-      match(TOKEN_T__22);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TupleTypeSpecifierContext tupleTypeSpecifier() {
-    dynamic localctx = TupleTypeSpecifierContext(context, state);
-    enterRule(localctx, 50, RULE_tupleTypeSpecifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 395;
-      match(TOKEN_T__24);
-      state = 396;
-      match(TOKEN_T__13);
-      state = 397;
-      tupleElementDefinition();
-      state = 402;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while (la == TOKEN_T__14) {
-        state = 398;
-        match(TOKEN_T__14);
-        state = 399;
-        tupleElementDefinition();
-        state = 404;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-      state = 405;
-      match(TOKEN_T__15);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TupleElementDefinitionContext tupleElementDefinition() {
-    dynamic localctx = TupleElementDefinitionContext(context, state);
-    enterRule(localctx, 52, RULE_tupleElementDefinition);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 407;
-      referentialIdentifier();
-      state = 408;
-      typeSpecifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ChoiceTypeSpecifierContext choiceTypeSpecifier() {
-    dynamic localctx = ChoiceTypeSpecifierContext(context, state);
-    enterRule(localctx, 54, RULE_choiceTypeSpecifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 410;
-      match(TOKEN_T__25);
-      state = 411;
-      match(TOKEN_T__21);
-      state = 412;
-      typeSpecifier();
-      state = 417;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while (la == TOKEN_T__14) {
-        state = 413;
-        match(TOKEN_T__14);
-        state = 414;
-        typeSpecifier();
-        state = 419;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-      state = 420;
-      match(TOKEN_T__22);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  StatementContext statement() {
-    dynamic localctx = StatementContext(context, state);
-    enterRule(localctx, 56, RULE_statement);
-    try {
-      state = 425;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 28, context)) {
-        case 1:
-          enterOuterAlt(localctx, 1);
-          state = 422;
-          expressionDefinition();
-          break;
-        case 2:
-          enterOuterAlt(localctx, 2);
-          state = 423;
-          contextDefinition();
-          break;
-        case 3:
-          enterOuterAlt(localctx, 3);
-          state = 424;
-          functionDefinition();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ExpressionDefinitionContext expressionDefinition() {
-    dynamic localctx = ExpressionDefinitionContext(context, state);
-    enterRule(localctx, 58, RULE_expressionDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 427;
-      match(TOKEN_T__26);
-      state = 429;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
-        state = 428;
-        accessModifier();
-      }
-
-      state = 431;
-      identifier();
-      state = 432;
-      match(TOKEN_T__10);
-      state = 433;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ContextDefinitionContext contextDefinition() {
-    dynamic localctx = ContextDefinitionContext(context, state);
-    enterRule(localctx, 60, RULE_contextDefinition);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 435;
-      match(TOKEN_T__27);
-      state = 439;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 30, context)) {
-        case 1:
-          state = 436;
-          modelIdentifier();
-          state = 437;
-          match(TOKEN_T__16);
-          break;
-      }
-      state = 441;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  FunctionDefinitionContext functionDefinition() {
-    dynamic localctx = FunctionDefinitionContext(context, state);
-    enterRule(localctx, 62, RULE_functionDefinition);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 443;
-      match(TOKEN_T__26);
-      state = 445;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
-        state = 444;
-        accessModifier();
-      }
-
-      state = 448;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__28) {
-        state = 447;
-        match(TOKEN_T__28);
-      }
-
-      state = 450;
-      match(TOKEN_T__29);
-      state = 451;
-      identifierOrFunctionIdentifier();
-      state = 452;
-      match(TOKEN_T__30);
-      state = 461;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if ((((la) & ~0x3f) == 0 && ((1 << la) & 140772674742007806) != 0) ||
-          ((((la - 74)) & ~0x3f) == 0 &&
-              ((1 << (la - 74)) & 1080916813829046509) != 0) ||
-          ((((la - 140)) & ~0x3f) == 0 &&
-              ((1 << (la - 140)) & 12722963) != 0)) {
-        state = 453;
-        operandDefinition();
-        state = 458;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-        while (la == TOKEN_T__14) {
-          state = 454;
-          match(TOKEN_T__14);
-          state = 455;
-          operandDefinition();
-          state = 460;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-        }
-      }
-
-      state = 463;
-      match(TOKEN_T__31);
-      state = 466;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__32) {
-        state = 464;
-        match(TOKEN_T__32);
-        state = 465;
-        typeSpecifier();
-      }
-
-      state = 468;
-      match(TOKEN_T__10);
-      state = 471;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__0:
-        case TOKEN_T__1:
-        case TOKEN_T__2:
-        case TOKEN_T__3:
-        case TOKEN_T__4:
-        case TOKEN_T__5:
-        case TOKEN_T__6:
-        case TOKEN_T__7:
-        case TOKEN_T__8:
-        case TOKEN_T__9:
-        case TOKEN_T__11:
-        case TOKEN_T__12:
-        case TOKEN_T__13:
-        case TOKEN_T__17:
-        case TOKEN_T__18:
-        case TOKEN_T__19:
-        case TOKEN_T__20:
-        case TOKEN_T__23:
-        case TOKEN_T__24:
-        case TOKEN_T__26:
-        case TOKEN_T__27:
-        case TOKEN_T__28:
-        case TOKEN_T__29:
-        case TOKEN_T__30:
-        case TOKEN_T__37:
-        case TOKEN_T__44:
-        case TOKEN_T__47:
-        case TOKEN_T__49:
-        case TOKEN_T__51:
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-        case TOKEN_T__57:
-        case TOKEN_T__58:
-        case TOKEN_T__59:
-        case TOKEN_T__60:
-        case TOKEN_T__62:
-        case TOKEN_T__63:
-        case TOKEN_T__67:
-        case TOKEN_T__68:
-        case TOKEN_T__73:
-        case TOKEN_T__75:
-        case TOKEN_T__76:
-        case TOKEN_T__78:
-        case TOKEN_T__79:
-        case TOKEN_T__80:
-        case TOKEN_T__81:
-        case TOKEN_T__82:
-        case TOKEN_T__83:
-        case TOKEN_T__84:
-        case TOKEN_T__85:
-        case TOKEN_T__86:
-        case TOKEN_T__87:
-        case TOKEN_T__88:
-        case TOKEN_T__89:
-        case TOKEN_T__90:
-        case TOKEN_T__91:
-        case TOKEN_T__92:
-        case TOKEN_T__93:
-        case TOKEN_T__94:
-        case TOKEN_T__95:
-        case TOKEN_T__96:
-        case TOKEN_T__97:
-        case TOKEN_T__98:
-        case TOKEN_T__99:
-        case TOKEN_T__100:
-        case TOKEN_T__102:
-        case TOKEN_T__103:
-        case TOKEN_T__104:
-        case TOKEN_T__105:
-        case TOKEN_T__107:
-        case TOKEN_T__108:
-        case TOKEN_T__109:
-        case TOKEN_T__110:
-        case TOKEN_T__111:
-        case TOKEN_T__112:
-        case TOKEN_T__113:
-        case TOKEN_T__117:
-        case TOKEN_T__118:
-        case TOKEN_T__120:
-        case TOKEN_T__123:
-        case TOKEN_T__124:
-        case TOKEN_T__125:
-        case TOKEN_T__126:
-        case TOKEN_T__129:
-        case TOKEN_T__130:
-        case TOKEN_T__131:
-        case TOKEN_T__132:
-        case TOKEN_T__139:
-        case TOKEN_T__140:
-        case TOKEN_T__143:
-        case TOKEN_T__147:
-        case TOKEN_T__148:
-        case TOKEN_T__149:
-        case TOKEN_T__150:
-        case TOKEN_T__151:
-        case TOKEN_T__152:
-        case TOKEN_T__153:
-        case TOKEN_T__154:
-        case TOKEN_T__155:
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_DATETIME:
-        case TOKEN_LONGNUMBER:
-        case TOKEN_DATE:
-        case TOKEN_TIME:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-        case TOKEN_STRING:
-        case TOKEN_NUMBER:
-          state = 469;
-          functionBody();
-          break;
-        case TOKEN_T__33:
-          state = 470;
-          match(TOKEN_T__33);
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  OperandDefinitionContext operandDefinition() {
-    dynamic localctx = OperandDefinitionContext(context, state);
-    enterRule(localctx, 64, RULE_operandDefinition);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 473;
-      referentialIdentifier();
-      state = 474;
-      typeSpecifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  FunctionBodyContext functionBody() {
-    dynamic localctx = FunctionBodyContext(context, state);
-    enterRule(localctx, 66, RULE_functionBody);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 476;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QuerySourceContext querySource() {
-    dynamic localctx = QuerySourceContext(context, state);
-    enterRule(localctx, 68, RULE_querySource);
-    try {
-      state = 484;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__37:
-          enterOuterAlt(localctx, 1);
-          state = 478;
-          retrieve();
-          break;
-        case TOKEN_T__0:
-        case TOKEN_T__1:
-        case TOKEN_T__2:
-        case TOKEN_T__3:
-        case TOKEN_T__4:
-        case TOKEN_T__5:
-        case TOKEN_T__6:
-        case TOKEN_T__7:
-        case TOKEN_T__8:
-        case TOKEN_T__9:
-        case TOKEN_T__11:
-        case TOKEN_T__12:
-        case TOKEN_T__17:
-        case TOKEN_T__19:
-        case TOKEN_T__26:
-        case TOKEN_T__27:
-        case TOKEN_T__28:
-        case TOKEN_T__29:
-        case TOKEN_T__44:
-        case TOKEN_T__49:
-        case TOKEN_T__51:
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-        case TOKEN_T__73:
-        case TOKEN_T__75:
-        case TOKEN_T__76:
-        case TOKEN_T__78:
-        case TOKEN_T__79:
-        case TOKEN_T__80:
-        case TOKEN_T__89:
-        case TOKEN_T__90:
-        case TOKEN_T__91:
-        case TOKEN_T__104:
-        case TOKEN_T__105:
-        case TOKEN_T__107:
-        case TOKEN_T__108:
-        case TOKEN_T__109:
-        case TOKEN_T__117:
-        case TOKEN_T__118:
-        case TOKEN_T__129:
-        case TOKEN_T__130:
-        case TOKEN_T__131:
-        case TOKEN_T__132:
-        case TOKEN_T__139:
-        case TOKEN_T__140:
-        case TOKEN_T__143:
-        case TOKEN_T__147:
-        case TOKEN_T__148:
-        case TOKEN_T__152:
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-          enterOuterAlt(localctx, 2);
-          state = 479;
-          qualifiedIdentifierExpression();
-          break;
-        case TOKEN_T__30:
-          enterOuterAlt(localctx, 3);
-          state = 480;
-          match(TOKEN_T__30);
-          state = 481;
-          expression(0);
-          state = 482;
-          match(TOKEN_T__31);
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  AliasedQuerySourceContext aliasedQuerySource() {
-    dynamic localctx = AliasedQuerySourceContext(context, state);
-    enterRule(localctx, 70, RULE_aliasedQuerySource);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 486;
-      querySource();
-      state = 487;
-      alias();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  AliasContext alias() {
-    dynamic localctx = AliasContext(context, state);
-    enterRule(localctx, 72, RULE_alias);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 489;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QueryInclusionClauseContext queryInclusionClause() {
-    dynamic localctx = QueryInclusionClauseContext(context, state);
-    enterRule(localctx, 74, RULE_queryInclusionClause);
-    try {
-      state = 493;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__34:
-          enterOuterAlt(localctx, 1);
-          state = 491;
-          withClause();
-          break;
-        case TOKEN_T__36:
-          enterOuterAlt(localctx, 2);
-          state = 492;
-          withoutClause();
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  WithClauseContext withClause() {
-    dynamic localctx = WithClauseContext(context, state);
-    enterRule(localctx, 76, RULE_withClause);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 495;
-      match(TOKEN_T__34);
-      state = 496;
-      aliasedQuerySource();
-      state = 497;
-      match(TOKEN_T__35);
-      state = 498;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  WithoutClauseContext withoutClause() {
-    dynamic localctx = WithoutClauseContext(context, state);
-    enterRule(localctx, 78, RULE_withoutClause);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 500;
-      match(TOKEN_T__36);
-      state = 501;
-      aliasedQuerySource();
-      state = 502;
-      match(TOKEN_T__35);
-      state = 503;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  RetrieveContext retrieve() {
-    dynamic localctx = RetrieveContext(context, state);
-    enterRule(localctx, 80, RULE_retrieve);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 505;
-      match(TOKEN_T__37);
-      state = 509;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 39, context)) {
-        case 1:
-          state = 506;
-          contextIdentifier();
-          state = 507;
-          match(TOKEN_T__38);
-          break;
-      }
-      state = 511;
-      namedTypeSpecifier();
-      state = 519;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__10) {
-        state = 512;
-        match(TOKEN_T__10);
-        state = 516;
-        errorHandler.sync(this);
-        switch (interpreter!.adaptivePredict(tokenStream, 40, context)) {
-          case 1:
-            state = 513;
-            codePath();
-            state = 514;
-            codeComparator();
-            break;
-        }
-        state = 518;
-        terminology();
-      }
-
-      state = 521;
-      match(TOKEN_T__39);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ContextIdentifierContext contextIdentifier() {
-    dynamic localctx = ContextIdentifierContext(context, state);
-    enterRule(localctx, 82, RULE_contextIdentifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 523;
-      qualifiedIdentifierExpression();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodePathContext codePath() {
-    dynamic localctx = CodePathContext(context, state);
-    enterRule(localctx, 84, RULE_codePath);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 525;
-      simplePath(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodeComparatorContext codeComparator() {
-    dynamic localctx = CodeComparatorContext(context, state);
-    enterRule(localctx, 86, RULE_codeComparator);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 527;
-      la = tokenStream.LA(1)!;
-      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 15393162788864) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TerminologyContext terminology() {
-    dynamic localctx = TerminologyContext(context, state);
-    enterRule(localctx, 88, RULE_terminology);
-    try {
-      state = 531;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 42, context)) {
-        case 1:
-          enterOuterAlt(localctx, 1);
-          state = 529;
-          qualifiedIdentifierExpression();
-          break;
-        case 2:
-          enterOuterAlt(localctx, 2);
-          state = 530;
-          expression(0);
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QualifierContext qualifier() {
-    dynamic localctx = QualifierContext(context, state);
-    enterRule(localctx, 90, RULE_qualifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 533;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QueryContext query() {
-    dynamic localctx = QueryContext(context, state);
-    enterRule(localctx, 92, RULE_query);
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 535;
-      sourceClause();
-      state = 537;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 43, context)) {
-        case 1:
-          state = 536;
-          letClause();
-          break;
-      }
-      state = 542;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 44, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          state = 539;
-          queryInclusionClause();
-        }
-        state = 544;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 44, context);
-      }
-      state = 546;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 45, context)) {
-        case 1:
-          state = 545;
-          whereClause();
-          break;
-      }
-      state = 550;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 46, context)) {
-        case 1:
-          state = 548;
-          aggregateClause();
-          break;
-        case 2:
-          state = 549;
-          returnClause();
-          break;
-      }
-      state = 553;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 47, context)) {
-        case 1:
-          state = 552;
-          sortClause();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  SourceClauseContext sourceClause() {
-    dynamic localctx = SourceClauseContext(context, state);
-    enterRule(localctx, 94, RULE_sourceClause);
-    int la;
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 556;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__18) {
-        state = 555;
-        match(TOKEN_T__18);
-      }
-
-      state = 558;
-      aliasedQuerySource();
-      state = 563;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 49, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          state = 559;
-          match(TOKEN_T__14);
-          state = 560;
-          aliasedQuerySource();
-        }
-        state = 565;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 49, context);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  LetClauseContext letClause() {
-    dynamic localctx = LetClauseContext(context, state);
-    enterRule(localctx, 96, RULE_letClause);
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 566;
-      match(TOKEN_T__43);
-      state = 567;
-      letClauseItem();
-      state = 572;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 50, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          state = 568;
-          match(TOKEN_T__14);
-          state = 569;
-          letClauseItem();
-        }
-        state = 574;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 50, context);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  LetClauseItemContext letClauseItem() {
-    dynamic localctx = LetClauseItemContext(context, state);
-    enterRule(localctx, 98, RULE_letClauseItem);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 575;
-      identifier();
-      state = 576;
-      match(TOKEN_T__10);
-      state = 577;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  WhereClauseContext whereClause() {
-    dynamic localctx = WhereClauseContext(context, state);
-    enterRule(localctx, 100, RULE_whereClause);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 579;
-      match(TOKEN_T__44);
-      state = 580;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ReturnClauseContext returnClause() {
-    dynamic localctx = ReturnClauseContext(context, state);
-    enterRule(localctx, 102, RULE_returnClause);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 582;
-      match(TOKEN_T__45);
-      state = 584;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 51, context)) {
-        case 1:
-          state = 583;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__46 || la == TOKEN_T__47)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          break;
-      }
-      state = 586;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  AggregateClauseContext aggregateClause() {
-    dynamic localctx = AggregateClauseContext(context, state);
-    enterRule(localctx, 104, RULE_aggregateClause);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 588;
-      match(TOKEN_T__48);
-      state = 590;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__46 || la == TOKEN_T__47) {
-        state = 589;
-        la = tokenStream.LA(1)!;
-        if (!(la == TOKEN_T__46 || la == TOKEN_T__47)) {
-          errorHandler.recoverInline(this);
-        } else {
-          if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-          errorHandler.reportMatch(this);
-          consume();
-        }
-      }
-
-      state = 592;
-      identifier();
-      state = 594;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__49) {
-        state = 593;
-        startingClause();
-      }
-
-      state = 596;
-      match(TOKEN_T__10);
-      state = 597;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  StartingClauseContext startingClause() {
-    dynamic localctx = StartingClauseContext(context, state);
-    enterRule(localctx, 106, RULE_startingClause);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 599;
-      match(TOKEN_T__49);
-      state = 606;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 54, context)) {
-        case 1:
-          state = 600;
-          simpleLiteral();
-          break;
-        case 2:
-          state = 601;
-          quantity();
-          break;
-        case 3:
-          state = 602;
-          match(TOKEN_T__30);
-          state = 603;
-          expression(0);
-          state = 604;
-          match(TOKEN_T__31);
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  SortClauseContext sortClause() {
-    dynamic localctx = SortClauseContext(context, state);
-    enterRule(localctx, 108, RULE_sortClause);
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 608;
-      match(TOKEN_T__50);
-      state = 619;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-          state = 609;
-          sortDirection();
-          break;
-        case TOKEN_T__51:
-          state = 610;
-          match(TOKEN_T__51);
-          state = 611;
-          sortByItem();
-          state = 616;
-          errorHandler.sync(this);
-          alt = interpreter!.adaptivePredict(tokenStream, 55, context);
-          while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-            if (alt == 1) {
-              state = 612;
-              match(TOKEN_T__14);
-              state = 613;
-              sortByItem();
-            }
-            state = 618;
-            errorHandler.sync(this);
-            alt = interpreter!.adaptivePredict(tokenStream, 55, context);
-          }
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  SortDirectionContext sortDirection() {
-    dynamic localctx = SortDirectionContext(context, state);
-    enterRule(localctx, 110, RULE_sortDirection);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 621;
-      la = tokenStream.LA(1)!;
-      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 135107988821114880) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  SortByItemContext sortByItem() {
-    dynamic localctx = SortByItemContext(context, state);
-    enterRule(localctx, 112, RULE_sortByItem);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 623;
-      expressionTerm(0);
-      state = 625;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 57, context)) {
-        case 1:
-          state = 624;
-          sortDirection();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QualifiedIdentifierContext qualifiedIdentifier() {
-    dynamic localctx = QualifiedIdentifierContext(context, state);
-    enterRule(localctx, 114, RULE_qualifiedIdentifier);
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 632;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 58, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          state = 627;
-          qualifier();
-          state = 628;
-          match(TOKEN_T__16);
-        }
-        state = 634;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 58, context);
-      }
-      state = 635;
-      identifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QualifiedIdentifierExpressionContext qualifiedIdentifierExpression() {
-    dynamic localctx = QualifiedIdentifierExpressionContext(context, state);
-    enterRule(localctx, 116, RULE_qualifiedIdentifierExpression);
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 642;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 59, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          state = 637;
-          qualifierExpression();
-          state = 638;
-          match(TOKEN_T__16);
-        }
-        state = 644;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 59, context);
-      }
-      state = 645;
-      referentialIdentifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QualifierExpressionContext qualifierExpression() {
-    dynamic localctx = QualifierExpressionContext(context, state);
-    enterRule(localctx, 118, RULE_qualifierExpression);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 647;
-      referentialIdentifier();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  SimplePathContext simplePath([int p = 0]) {
-    final parentctx = context;
-    final parentState = state;
-    dynamic localctx = SimplePathContext(context, parentState);
-    var prevctx = localctx;
-    var startState = 120;
-    enterRecursionRule(localctx, 120, RULE_simplePath, p);
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      localctx = SimplePathReferentialIdentifierContext(localctx);
-      context = localctx;
-      prevctx = localctx;
-
-      state = 650;
-      referentialIdentifier();
-      context!.stop = tokenStream.LT(-1);
-      state = 662;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 61, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          if (parseListeners != null) triggerExitRuleEvent();
-          prevctx = localctx;
-          state = 660;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 60, context)) {
-            case 1:
-              localctx = SimplePathQualifiedIdentifierContext(
-                  SimplePathContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_simplePath);
-              state = 652;
-              if (!(precpred(context, 2))) {
-                throw FailedPredicateException(this, "precpred(context, 2)");
-              }
-              state = 653;
-              match(TOKEN_T__16);
-              state = 654;
-              referentialIdentifier();
-              break;
-            case 2:
-              localctx = SimplePathIndexerContext(
-                  SimplePathContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_simplePath);
-              state = 655;
-              if (!(precpred(context, 1))) {
-                throw FailedPredicateException(this, "precpred(context, 1)");
-              }
-              state = 656;
-              match(TOKEN_T__37);
-              state = 657;
-              simpleLiteral();
-              state = 658;
-              match(TOKEN_T__39);
-              break;
-          }
-        }
-        state = 664;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 61, context);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      unrollRecursionContexts(parentctx);
-    }
-    return localctx;
-  }
-
-  SimpleLiteralContext simpleLiteral() {
-    dynamic localctx = SimpleLiteralContext(context, state);
-    enterRule(localctx, 122, RULE_simpleLiteral);
-    try {
-      state = 667;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_STRING:
-          localctx = SimpleStringLiteralContext(localctx);
-          enterOuterAlt(localctx, 1);
-          state = 665;
-          match(TOKEN_STRING);
-          break;
-        case TOKEN_NUMBER:
-          localctx = SimpleNumberLiteralContext(localctx);
-          enterOuterAlt(localctx, 2);
-          state = 666;
-          match(TOKEN_NUMBER);
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ExpressionContext expression([int p = 0]) {
-    final parentctx = context;
-    final parentState = state;
-    dynamic localctx = ExpressionContext(context, parentState);
-    var prevctx = localctx;
-    var startState = 124;
-    enterRecursionRule(localctx, 124, RULE_expression, p);
-    int la;
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 700;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 64, context)) {
-        case 1:
-          localctx = TermExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-
-          state = 670;
-          expressionTerm(0);
-          break;
-        case 2:
-          localctx = RetrieveExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 671;
-          retrieve();
-          break;
-        case 3:
-          localctx = QueryExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 672;
-          query();
-          break;
-        case 4:
-          localctx = CastExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 673;
-          match(TOKEN_T__62);
-          state = 674;
-          expression(0);
-          state = 675;
-          match(TOKEN_T__61);
-          state = 676;
-          typeSpecifier();
-          break;
-        case 5:
-          localctx = NotExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 678;
-          match(TOKEN_T__57);
-          state = 679;
-          expression(13);
-          break;
-        case 6:
-          localctx = ExistenceExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 680;
-          match(TOKEN_T__63);
-          state = 681;
-          expression(12);
-          break;
-        case 7:
-          localctx = DurationBetweenExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 684;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__67) {
-            state = 682;
-            match(TOKEN_T__67);
-            state = 683;
-            match(TOKEN_T__40);
-          }
-
-          state = 686;
-          pluralDateTimePrecision();
-          state = 687;
-          match(TOKEN_T__65);
-          state = 688;
-          expressionTerm(0);
-          state = 689;
-          match(TOKEN_T__66);
-          state = 690;
-          expressionTerm(0);
-          break;
-        case 8:
-          localctx = DifferenceBetweenExpressionContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 692;
-          match(TOKEN_T__68);
-          state = 693;
-          match(TOKEN_T__40);
-          state = 694;
-          pluralDateTimePrecision();
-          state = 695;
-          match(TOKEN_T__65);
-          state = 696;
-          expressionTerm(0);
-          state = 697;
-          match(TOKEN_T__66);
-          state = 698;
-          expressionTerm(0);
-          break;
-      }
-      context!.stop = tokenStream.LT(-1);
-      state = 750;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 69, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          if (parseListeners != null) triggerExitRuleEvent();
-          prevctx = localctx;
-          state = 748;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 68, context)) {
-            case 1:
-              localctx = InequalityExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 702;
-              if (!(precpred(context, 8))) {
-                throw FailedPredicateException(this, "precpred(context, 8)");
-              }
-              state = 703;
-              la = tokenStream.LA(1)!;
-              if (!(((((la - 22)) & ~0x3f) == 0 &&
-                  ((1 << (la - 22)) & 844424930131971) != 0))) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 704;
-              expression(9);
-              break;
-            case 2:
-              localctx = TimingExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 705;
-              if (!(precpred(context, 7))) {
-                throw FailedPredicateException(this, "precpred(context, 7)");
-              }
-              state = 706;
-              intervalOperatorPhrase();
-              state = 707;
-              expression(8);
-              break;
-            case 3:
-              localctx = EqualityExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 709;
-              if (!(precpred(context, 6))) {
-                throw FailedPredicateException(this, "precpred(context, 6)");
-              }
-              state = 710;
-              la = tokenStream.LA(1)!;
-              if (!(((((la - 42)) & ~0x3f) == 0 &&
-                  ((1 << (la - 42)) & 3221225475) != 0))) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 711;
-              expression(7);
-              break;
-            case 4:
-              localctx = MembershipExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 712;
-              if (!(precpred(context, 5))) {
-                throw FailedPredicateException(this, "precpred(context, 5)");
-              }
-              state = 713;
-              la = tokenStream.LA(1)!;
-              if (!(la == TOKEN_T__40 || la == TOKEN_T__73)) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 715;
-              errorHandler.sync(this);
-              switch (interpreter!.adaptivePredict(tokenStream, 65, context)) {
-                case 1:
-                  state = 714;
-                  dateTimePrecisionSpecifier();
-                  break;
-              }
-              state = 717;
-              expression(6);
-              break;
-            case 5:
-              localctx = AndExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 718;
-              if (!(precpred(context, 4))) {
-                throw FailedPredicateException(this, "precpred(context, 4)");
-              }
-              state = 719;
-              match(TOKEN_T__66);
-              state = 720;
-              expression(5);
-              break;
-            case 6:
-              localctx = OrExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 721;
-              if (!(precpred(context, 3))) {
-                throw FailedPredicateException(this, "precpred(context, 3)");
-              }
-              state = 722;
-              la = tokenStream.LA(1)!;
-              if (!(la == TOKEN_T__74 || la == TOKEN_T__75)) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 723;
-              expression(4);
-              break;
-            case 7:
-              localctx = ImpliesExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 724;
-              if (!(precpred(context, 2))) {
-                throw FailedPredicateException(this, "precpred(context, 2)");
-              }
-              state = 725;
-              match(TOKEN_T__76);
-              state = 726;
-              expression(3);
-              break;
-            case 8:
-              localctx = InFixSetExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 727;
-              if (!(precpred(context, 1))) {
-                throw FailedPredicateException(this, "precpred(context, 1)");
-              }
-              state = 728;
-              la = tokenStream.LA(1)!;
-              if (!(((((la - 78)) & ~0x3f) == 0 &&
-                  ((1 << (la - 78)) & 15) != 0))) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 729;
-              expression(2);
-              break;
-            case 9:
-              localctx = BooleanExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 730;
-              if (!(precpred(context, 16))) {
-                throw FailedPredicateException(this, "precpred(context, 16)");
-              }
-              state = 731;
-              match(TOKEN_T__56);
-              state = 733;
-              errorHandler.sync(this);
-              la = tokenStream.LA(1)!;
-              if (la == TOKEN_T__57) {
-                state = 732;
-                match(TOKEN_T__57);
-              }
-
-              state = 735;
-              la = tokenStream.LA(1)!;
-              if (!((((la) & ~0x3f) == 0 &&
-                  ((1 << la) & 4035225266123964416) != 0))) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              break;
-            case 10:
-              localctx = TypeExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 736;
-              if (!(precpred(context, 15))) {
-                throw FailedPredicateException(this, "precpred(context, 15)");
-              }
-              state = 737;
-              la = tokenStream.LA(1)!;
-              if (!(la == TOKEN_T__56 || la == TOKEN_T__61)) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 738;
-              typeSpecifier();
-              break;
-            case 11:
-              localctx = BetweenExpressionContext(
-                  ExpressionContext(parentctx, parentState));
-              pushNewRecursionContext(localctx, startState, RULE_expression);
-              state = 739;
-              if (!(precpred(context, 11))) {
-                throw FailedPredicateException(this, "precpred(context, 11)");
-              }
-              state = 741;
-              errorHandler.sync(this);
-              la = tokenStream.LA(1)!;
-              if (la == TOKEN_T__64) {
-                state = 740;
-                match(TOKEN_T__64);
-              }
-
-              state = 743;
-              match(TOKEN_T__65);
-              state = 744;
-              expressionTerm(0);
-              state = 745;
-              match(TOKEN_T__66);
-              state = 746;
-              expressionTerm(0);
-              break;
-          }
-        }
-        state = 752;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 69, context);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      unrollRecursionContexts(parentctx);
-    }
-    return localctx;
-  }
-
-  DateTimePrecisionContext dateTimePrecision() {
-    dynamic localctx = DateTimePrecisionContext(context, state);
-    enterRule(localctx, 126, RULE_dateTimePrecision);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 753;
-      la = tokenStream.LA(1)!;
-      if (!(((((la - 82)) & ~0x3f) == 0 && ((1 << (la - 82)) & 255) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  DateTimeComponentContext dateTimeComponent() {
-    dynamic localctx = DateTimeComponentContext(context, state);
-    enterRule(localctx, 128, RULE_dateTimeComponent);
-    try {
-      state = 759;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__81:
-        case TOKEN_T__82:
-        case TOKEN_T__83:
-        case TOKEN_T__84:
-        case TOKEN_T__85:
-        case TOKEN_T__86:
-        case TOKEN_T__87:
-        case TOKEN_T__88:
-          enterOuterAlt(localctx, 1);
-          state = 755;
-          dateTimePrecision();
-          break;
-        case TOKEN_T__89:
-          enterOuterAlt(localctx, 2);
-          state = 756;
-          match(TOKEN_T__89);
-          break;
-        case TOKEN_T__90:
-          enterOuterAlt(localctx, 3);
-          state = 757;
-          match(TOKEN_T__90);
-          break;
-        case TOKEN_T__91:
-          enterOuterAlt(localctx, 4);
-          state = 758;
-          match(TOKEN_T__91);
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  PluralDateTimePrecisionContext pluralDateTimePrecision() {
-    dynamic localctx = PluralDateTimePrecisionContext(context, state);
-    enterRule(localctx, 130, RULE_pluralDateTimePrecision);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 761;
-      la = tokenStream.LA(1)!;
-      if (!(((((la - 93)) & ~0x3f) == 0 && ((1 << (la - 93)) & 255) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ExpressionTermContext expressionTerm([int p = 0]) {
-    final parentctx = context;
-    final parentState = state;
-    dynamic localctx = ExpressionTermContext(context, parentState);
-    var prevctx = localctx;
-    var startState = 132;
-    enterRecursionRule(localctx, 132, RULE_expressionTerm, p);
-    int la;
-    try {
-      int alt;
-      enterOuterAlt(localctx, 1);
-      state = 841;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 76, context)) {
-        case 1:
-          localctx = TermExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-
-          state = 764;
-          term();
-          break;
-        case 2:
-          localctx = ConversionExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 765;
-          match(TOKEN_T__100);
-          state = 766;
-          expression(0);
-          state = 767;
-          match(TOKEN_T__101);
-          state = 770;
-          errorHandler.sync(this);
-          switch (tokenStream.LA(1)!) {
-            case TOKEN_T__0:
-            case TOKEN_T__1:
-            case TOKEN_T__2:
-            case TOKEN_T__3:
-            case TOKEN_T__4:
-            case TOKEN_T__5:
-            case TOKEN_T__6:
-            case TOKEN_T__7:
-            case TOKEN_T__8:
-            case TOKEN_T__9:
-            case TOKEN_T__11:
-            case TOKEN_T__12:
-            case TOKEN_T__17:
-            case TOKEN_T__19:
-            case TOKEN_T__20:
-            case TOKEN_T__23:
-            case TOKEN_T__24:
-            case TOKEN_T__25:
-            case TOKEN_T__26:
-            case TOKEN_T__27:
-            case TOKEN_T__28:
-            case TOKEN_T__29:
-            case TOKEN_T__44:
-            case TOKEN_T__49:
-            case TOKEN_T__51:
-            case TOKEN_T__52:
-            case TOKEN_T__53:
-            case TOKEN_T__54:
-            case TOKEN_T__55:
-            case TOKEN_T__73:
-            case TOKEN_T__75:
-            case TOKEN_T__76:
-            case TOKEN_T__78:
-            case TOKEN_T__79:
-            case TOKEN_T__80:
-            case TOKEN_T__89:
-            case TOKEN_T__90:
-            case TOKEN_T__91:
-            case TOKEN_T__104:
-            case TOKEN_T__105:
-            case TOKEN_T__107:
-            case TOKEN_T__108:
-            case TOKEN_T__109:
-            case TOKEN_T__117:
-            case TOKEN_T__118:
-            case TOKEN_T__129:
-            case TOKEN_T__130:
-            case TOKEN_T__131:
-            case TOKEN_T__132:
-            case TOKEN_T__139:
-            case TOKEN_T__140:
-            case TOKEN_T__143:
-            case TOKEN_T__147:
-            case TOKEN_T__148:
-            case TOKEN_T__152:
-            case TOKEN_T__153:
-            case TOKEN_T__154:
-            case TOKEN_QUOTEDIDENTIFIER:
-            case TOKEN_IDENTIFIER:
-            case TOKEN_DELIMITEDIDENTIFIER:
-              state = 768;
-              typeSpecifier();
-              break;
-            case TOKEN_T__81:
-            case TOKEN_T__82:
-            case TOKEN_T__83:
-            case TOKEN_T__84:
-            case TOKEN_T__85:
-            case TOKEN_T__86:
-            case TOKEN_T__87:
-            case TOKEN_T__88:
-            case TOKEN_T__92:
-            case TOKEN_T__93:
-            case TOKEN_T__94:
-            case TOKEN_T__95:
-            case TOKEN_T__96:
-            case TOKEN_T__97:
-            case TOKEN_T__98:
-            case TOKEN_T__99:
-            case TOKEN_STRING:
-              state = 769;
-              unit();
-              break;
-            default:
-              throw NoViableAltException(this);
-          }
-          break;
-        case 3:
-          localctx = PolarityExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 772;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__102 || la == TOKEN_T__103)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          state = 773;
-          expressionTerm(18);
-          break;
-        case 4:
-          localctx = TimeBoundaryExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 774;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          state = 775;
-          match(TOKEN_T__106);
-          state = 776;
-          expressionTerm(17);
-          break;
-        case 5:
-          localctx = TimeUnitExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 777;
-          dateTimeComponent();
-          state = 778;
-          match(TOKEN_T__18);
-          state = 779;
-          expressionTerm(16);
-          break;
-        case 6:
-          localctx = DurationExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 781;
-          match(TOKEN_T__67);
-          state = 782;
-          match(TOKEN_T__40);
-          state = 783;
-          pluralDateTimePrecision();
-          state = 784;
-          match(TOKEN_T__106);
-          state = 785;
-          expressionTerm(15);
-          break;
-        case 7:
-          localctx = DifferenceExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 787;
-          match(TOKEN_T__68);
-          state = 788;
-          match(TOKEN_T__40);
-          state = 789;
-          pluralDateTimePrecision();
-          state = 790;
-          match(TOKEN_T__106);
-          state = 791;
-          expressionTerm(14);
-          break;
-        case 8:
-          localctx = WidthExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 793;
-          match(TOKEN_T__107);
-          state = 794;
-          match(TOKEN_T__106);
-          state = 795;
-          expressionTerm(13);
-          break;
-        case 9:
-          localctx = SuccessorExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 796;
-          match(TOKEN_T__108);
-          state = 797;
-          match(TOKEN_T__106);
-          state = 798;
-          expressionTerm(12);
-          break;
-        case 10:
-          localctx = PredecessorExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 799;
-          match(TOKEN_T__109);
-          state = 800;
-          match(TOKEN_T__106);
-          state = 801;
-          expressionTerm(11);
-          break;
-        case 11:
-          localctx = ElementExtractorExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 802;
-          match(TOKEN_T__110);
-          state = 803;
-          match(TOKEN_T__18);
-          state = 804;
-          expressionTerm(10);
-          break;
-        case 12:
-          localctx = PointExtractorExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 805;
-          match(TOKEN_T__111);
-          state = 806;
-          match(TOKEN_T__18);
-          state = 807;
-          expressionTerm(9);
-          break;
-        case 13:
-          localctx = TypeExtentExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 808;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__112 || la == TOKEN_T__113)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          state = 809;
-          namedTypeSpecifier();
-          break;
-        case 14:
-          localctx = IfThenElseExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 810;
-          match(TOKEN_T__120);
-          state = 811;
-          expression(0);
-          state = 812;
-          match(TOKEN_T__121);
-          state = 813;
-          expression(0);
-          state = 814;
-          match(TOKEN_T__122);
-          state = 815;
-          expression(0);
-          break;
-        case 15:
-          localctx = CaseExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 817;
-          match(TOKEN_T__123);
-          state = 819;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if ((((la) & ~0x3f) == 0 &&
-                  ((1 << la) & -4758861967782021122) != 0) ||
-              ((((la - 64)) & ~0x3f) == 0 &&
-                  ((1 << (la - 64)) & -952520392159808463) != 0) ||
-              ((((la - 130)) & ~0x3f) == 0 &&
-                  ((1 << (la - 130)) & 68719234063) != 0)) {
-            state = 818;
-            expression(0);
-          }
-
-          state = 822;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          do {
-            state = 821;
-            caseExpressionItem();
-            state = 824;
-            errorHandler.sync(this);
-            la = tokenStream.LA(1)!;
-          } while (la == TOKEN_T__128);
-          state = 826;
-          match(TOKEN_T__122);
-          state = 827;
-          expression(0);
-          state = 828;
-          match(TOKEN_T__105);
-          break;
-        case 16:
-          localctx = AggregateExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 830;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__47 || la == TOKEN_T__124)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          state = 831;
-          expression(0);
-          break;
-        case 17:
-          localctx = SetAggregateExpressionTermContext(localctx);
-          context = localctx;
-          prevctx = localctx;
-          state = 832;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__125 || la == TOKEN_T__126)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          state = 833;
-          expression(0);
-          state = 839;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 75, context)) {
-            case 1:
-              state = 834;
-              match(TOKEN_T__127);
-              state = 837;
-              errorHandler.sync(this);
-              switch (interpreter!.adaptivePredict(tokenStream, 74, context)) {
-                case 1:
-                  state = 835;
-                  dateTimePrecision();
-                  break;
-                case 2:
-                  state = 836;
-                  expression(0);
-                  break;
-              }
-              break;
-          }
-          break;
-      }
-      context!.stop = tokenStream.LT(-1);
-      state = 862;
-      errorHandler.sync(this);
-      alt = interpreter!.adaptivePredict(tokenStream, 78, context);
-      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          if (parseListeners != null) triggerExitRuleEvent();
-          prevctx = localctx;
-          state = 860;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 77, context)) {
-            case 1:
-              localctx = PowerExpressionTermContext(
-                  ExpressionTermContext(parentctx, parentState));
-              pushNewRecursionContext(
-                  localctx, startState, RULE_expressionTerm);
-              state = 843;
-              if (!(precpred(context, 7))) {
-                throw FailedPredicateException(this, "precpred(context, 7)");
-              }
-              state = 844;
-              match(TOKEN_T__114);
-              state = 845;
-              expressionTerm(8);
-              break;
-            case 2:
-              localctx = MultiplicationExpressionTermContext(
-                  ExpressionTermContext(parentctx, parentState));
-              pushNewRecursionContext(
-                  localctx, startState, RULE_expressionTerm);
-              state = 846;
-              if (!(precpred(context, 6))) {
-                throw FailedPredicateException(this, "precpred(context, 6)");
-              }
-              state = 847;
-              la = tokenStream.LA(1)!;
-              if (!(((((la - 116)) & ~0x3f) == 0 &&
-                  ((1 << (la - 116)) & 15) != 0))) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 848;
-              expressionTerm(7);
-              break;
-            case 3:
-              localctx = AdditionExpressionTermContext(
-                  ExpressionTermContext(parentctx, parentState));
-              pushNewRecursionContext(
-                  localctx, startState, RULE_expressionTerm);
-              state = 849;
-              if (!(precpred(context, 5))) {
-                throw FailedPredicateException(this, "precpred(context, 5)");
-              }
-              state = 850;
-              la = tokenStream.LA(1)!;
-              if (!(((((la - 103)) & ~0x3f) == 0 &&
-                  ((1 << (la - 103)) & 131075) != 0))) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              state = 851;
-              expressionTerm(6);
-              break;
-            case 4:
-              localctx = InvocationExpressionTermContext(
-                  ExpressionTermContext(parentctx, parentState));
-              pushNewRecursionContext(
-                  localctx, startState, RULE_expressionTerm);
-              state = 852;
-              if (!(precpred(context, 21))) {
-                throw FailedPredicateException(this, "precpred(context, 21)");
-              }
-              state = 853;
-              match(TOKEN_T__16);
-              state = 854;
-              qualifiedInvocation();
-              break;
-            case 5:
-              localctx = IndexedExpressionTermContext(
-                  ExpressionTermContext(parentctx, parentState));
-              pushNewRecursionContext(
-                  localctx, startState, RULE_expressionTerm);
-              state = 855;
-              if (!(precpred(context, 20))) {
-                throw FailedPredicateException(this, "precpred(context, 20)");
-              }
-              state = 856;
-              match(TOKEN_T__37);
-              state = 857;
-              expression(0);
-              state = 858;
-              match(TOKEN_T__39);
-              break;
-          }
-        }
-        state = 864;
-        errorHandler.sync(this);
-        alt = interpreter!.adaptivePredict(tokenStream, 78, context);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      unrollRecursionContexts(parentctx);
-    }
-    return localctx;
-  }
-
-  CaseExpressionItemContext caseExpressionItem() {
-    dynamic localctx = CaseExpressionItemContext(context, state);
-    enterRule(localctx, 134, RULE_caseExpressionItem);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 865;
-      match(TOKEN_T__128);
-      state = 866;
-      expression(0);
-      state = 867;
-      match(TOKEN_T__121);
-      state = 868;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  DateTimePrecisionSpecifierContext dateTimePrecisionSpecifier() {
-    dynamic localctx = DateTimePrecisionSpecifierContext(context, state);
-    enterRule(localctx, 136, RULE_dateTimePrecisionSpecifier);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 870;
-      dateTimePrecision();
-      state = 871;
-      match(TOKEN_T__106);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  RelativeQualifierContext relativeQualifier() {
-    dynamic localctx = RelativeQualifierContext(context, state);
-    enterRule(localctx, 138, RULE_relativeQualifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 873;
-      la = tokenStream.LA(1)!;
-      if (!(la == TOKEN_T__129 || la == TOKEN_T__130)) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  OffsetRelativeQualifierContext offsetRelativeQualifier() {
-    dynamic localctx = OffsetRelativeQualifierContext(context, state);
-    enterRule(localctx, 140, RULE_offsetRelativeQualifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 875;
-      la = tokenStream.LA(1)!;
-      if (!(la == TOKEN_T__131 || la == TOKEN_T__132)) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ExclusiveRelativeQualifierContext exclusiveRelativeQualifier() {
-    dynamic localctx = ExclusiveRelativeQualifierContext(context, state);
-    enterRule(localctx, 142, RULE_exclusiveRelativeQualifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 877;
-      la = tokenStream.LA(1)!;
-      if (!(la == TOKEN_T__133 || la == TOKEN_T__134)) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QuantityOffsetContext quantityOffset() {
-    dynamic localctx = QuantityOffsetContext(context, state);
-    enterRule(localctx, 144, RULE_quantityOffset);
-    int la;
-    try {
-      state = 886;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_NUMBER:
-          enterOuterAlt(localctx, 1);
-          state = 879;
-          quantity();
-          state = 881;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__131 || la == TOKEN_T__132) {
-            state = 880;
-            offsetRelativeQualifier();
-          }
-
-          break;
-        case TOKEN_T__133:
-        case TOKEN_T__134:
-          enterOuterAlt(localctx, 2);
-          state = 883;
-          exclusiveRelativeQualifier();
-          state = 884;
-          quantity();
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TemporalRelationshipContext temporalRelationship() {
-    dynamic localctx = TemporalRelationshipContext(context, state);
-    enterRule(localctx, 146, RULE_temporalRelationship);
-    int la;
-    try {
-      state = 896;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 83, context)) {
-        case 1:
-          enterOuterAlt(localctx, 1);
-          state = 889;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__135) {
-            state = 888;
-            match(TOKEN_T__135);
-          }
-
-          state = 891;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          break;
-        case 2:
-          enterOuterAlt(localctx, 2);
-          state = 892;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          state = 894;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__138) {
-            state = 893;
-            match(TOKEN_T__138);
-          }
-
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  IntervalOperatorPhraseContext intervalOperatorPhrase() {
-    dynamic localctx = IntervalOperatorPhraseContext(context, state);
-    enterRule(localctx, 148, RULE_intervalOperatorPhrase);
-    int la;
-    try {
-      state = 979;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 107, context)) {
-        case 1:
-          localctx = ConcurrentWithIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 1);
-          state = 899;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
-            state = 898;
-            la = tokenStream.LA(1)!;
-            if (!(((((la - 140)) & ~0x3f) == 0 &&
-                ((1 << (la - 140)) & 7) != 0))) {
-              errorHandler.recoverInline(this);
-            } else {
-              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-              errorHandler.reportMatch(this);
-              consume();
-            }
-          }
-
-          state = 901;
-          match(TOKEN_T__142);
-          state = 903;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (((((la - 82)) & ~0x3f) == 0 && ((1 << (la - 82)) & 255) != 0)) {
-            state = 902;
-            dateTimePrecision();
-          }
-
-          state = 907;
-          errorHandler.sync(this);
-          switch (tokenStream.LA(1)!) {
-            case TOKEN_T__129:
-            case TOKEN_T__130:
-              state = 905;
-              relativeQualifier();
-              break;
-            case TOKEN_T__61:
-              state = 906;
-              match(TOKEN_T__61);
-              break;
-            default:
-              throw NoViableAltException(this);
-          }
-          state = 910;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 87, context)) {
-            case 1:
-              state = 909;
-              la = tokenStream.LA(1)!;
-              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              break;
-          }
-          break;
-        case 2:
-          localctx = IncludesIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 2);
-          state = 913;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__64) {
-            state = 912;
-            match(TOKEN_T__64);
-          }
-
-          state = 915;
-          match(TOKEN_T__143);
-          state = 917;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 89, context)) {
-            case 1:
-              state = 916;
-              dateTimePrecisionSpecifier();
-              break;
-          }
-          state = 920;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 90, context)) {
-            case 1:
-              state = 919;
-              la = tokenStream.LA(1)!;
-              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              break;
-          }
-          break;
-        case 3:
-          localctx = IncludedInIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 3);
-          state = 923;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
-            state = 922;
-            la = tokenStream.LA(1)!;
-            if (!(((((la - 140)) & ~0x3f) == 0 &&
-                ((1 << (la - 140)) & 7) != 0))) {
-              errorHandler.recoverInline(this);
-            } else {
-              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-              errorHandler.reportMatch(this);
-              consume();
-            }
-          }
-
-          state = 926;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__64) {
-            state = 925;
-            match(TOKEN_T__64);
-          }
-
-          state = 928;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__144 || la == TOKEN_T__145)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          state = 930;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 93, context)) {
-            case 1:
-              state = 929;
-              dateTimePrecisionSpecifier();
-              break;
-          }
-          break;
-        case 4:
-          localctx = BeforeOrAfterIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 4);
-          state = 933;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
-            state = 932;
-            la = tokenStream.LA(1)!;
-            if (!(((((la - 140)) & ~0x3f) == 0 &&
-                ((1 << (la - 140)) & 7) != 0))) {
-              errorHandler.recoverInline(this);
-            } else {
-              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-              errorHandler.reportMatch(this);
-              consume();
-            }
-          }
-
-          state = 936;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (((((la - 134)) & ~0x3f) == 0 &&
-              ((1 << (la - 134)) & 2147483651) != 0)) {
-            state = 935;
-            quantityOffset();
-          }
-
-          state = 938;
-          temporalRelationship();
-          state = 940;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 96, context)) {
-            case 1:
-              state = 939;
-              dateTimePrecisionSpecifier();
-              break;
-          }
-          state = 943;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 97, context)) {
-            case 1:
-              state = 942;
-              la = tokenStream.LA(1)!;
-              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              break;
-          }
-          break;
-        case 5:
-          localctx = WithinIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 5);
-          state = 946;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
-            state = 945;
-            la = tokenStream.LA(1)!;
-            if (!(((((la - 140)) & ~0x3f) == 0 &&
-                ((1 << (la - 140)) & 7) != 0))) {
-              errorHandler.recoverInline(this);
-            } else {
-              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-              errorHandler.reportMatch(this);
-              consume();
-            }
-          }
-
-          state = 949;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__64) {
-            state = 948;
-            match(TOKEN_T__64);
-          }
-
-          state = 951;
-          match(TOKEN_T__146);
-          state = 952;
-          quantity();
-          state = 953;
-          match(TOKEN_T__106);
-          state = 955;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 100, context)) {
-            case 1:
-              state = 954;
-              la = tokenStream.LA(1)!;
-              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
-                errorHandler.recoverInline(this);
-              } else {
-                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-                errorHandler.reportMatch(this);
-                consume();
-              }
-              break;
-          }
-          break;
-        case 6:
-          localctx = MeetsIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 6);
-          state = 957;
-          match(TOKEN_T__147);
-          state = 959;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__136 || la == TOKEN_T__137) {
-            state = 958;
-            la = tokenStream.LA(1)!;
-            if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
-              errorHandler.recoverInline(this);
-            } else {
-              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-              errorHandler.reportMatch(this);
-              consume();
-            }
-          }
-
-          state = 962;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 102, context)) {
-            case 1:
-              state = 961;
-              dateTimePrecisionSpecifier();
-              break;
-          }
-          break;
-        case 7:
-          localctx = OverlapsIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 7);
-          state = 964;
-          match(TOKEN_T__148);
-          state = 966;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          if (la == TOKEN_T__136 || la == TOKEN_T__137) {
-            state = 965;
-            la = tokenStream.LA(1)!;
-            if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
-              errorHandler.recoverInline(this);
-            } else {
-              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-              errorHandler.reportMatch(this);
-              consume();
-            }
-          }
-
-          state = 969;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 104, context)) {
-            case 1:
-              state = 968;
-              dateTimePrecisionSpecifier();
-              break;
-          }
-          break;
-        case 8:
-          localctx = StartsIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 8);
-          state = 971;
-          match(TOKEN_T__139);
-          state = 973;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 105, context)) {
-            case 1:
-              state = 972;
-              dateTimePrecisionSpecifier();
-              break;
-          }
-          break;
-        case 9:
-          localctx = EndsIntervalOperatorPhraseContext(localctx);
-          enterOuterAlt(localctx, 9);
-          state = 975;
-          match(TOKEN_T__140);
-          state = 977;
-          errorHandler.sync(this);
-          switch (interpreter!.adaptivePredict(tokenStream, 106, context)) {
-            case 1:
-              state = 976;
-              dateTimePrecisionSpecifier();
-              break;
-          }
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TermContext term() {
-    dynamic localctx = TermContext(context, state);
-    enterRule(localctx, 150, RULE_term);
-    try {
-      state = 994;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 108, context)) {
-        case 1:
-          localctx = InvocationTermContext(localctx);
-          enterOuterAlt(localctx, 1);
-          state = 981;
-          invocation();
-          break;
-        case 2:
-          localctx = LiteralTermContext(localctx);
-          enterOuterAlt(localctx, 2);
-          state = 982;
-          literal();
-          break;
-        case 3:
-          localctx = ExternalConstantTermContext(localctx);
-          enterOuterAlt(localctx, 3);
-          state = 983;
-          externalConstant();
-          break;
-        case 4:
-          localctx = IntervalSelectorTermContext(localctx);
-          enterOuterAlt(localctx, 4);
-          state = 984;
-          intervalSelector();
-          break;
-        case 5:
-          localctx = TupleSelectorTermContext(localctx);
-          enterOuterAlt(localctx, 5);
-          state = 985;
-          tupleSelector();
-          break;
-        case 6:
-          localctx = InstanceSelectorTermContext(localctx);
-          enterOuterAlt(localctx, 6);
-          state = 986;
-          instanceSelector();
-          break;
-        case 7:
-          localctx = ListSelectorTermContext(localctx);
-          enterOuterAlt(localctx, 7);
-          state = 987;
-          listSelector();
-          break;
-        case 8:
-          localctx = CodeSelectorTermContext(localctx);
-          enterOuterAlt(localctx, 8);
-          state = 988;
-          codeSelector();
-          break;
-        case 9:
-          localctx = ConceptSelectorTermContext(localctx);
-          enterOuterAlt(localctx, 9);
-          state = 989;
-          conceptSelector();
-          break;
-        case 10:
-          localctx = ParenthesizedTermContext(localctx);
-          enterOuterAlt(localctx, 10);
-          state = 990;
-          match(TOKEN_T__30);
-          state = 991;
-          expression(0);
-          state = 992;
-          match(TOKEN_T__31);
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QualifiedInvocationContext qualifiedInvocation() {
-    dynamic localctx = QualifiedInvocationContext(context, state);
-    enterRule(localctx, 152, RULE_qualifiedInvocation);
-    try {
-      state = 998;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 109, context)) {
-        case 1:
-          localctx = QualifiedMemberInvocationContext(localctx);
-          enterOuterAlt(localctx, 1);
-          state = 996;
-          referentialIdentifier();
-          break;
-        case 2:
-          localctx = QualifiedFunctionInvocationContext(localctx);
-          enterOuterAlt(localctx, 2);
-          state = 997;
-          qualifiedFunction();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QualifiedFunctionContext qualifiedFunction() {
-    dynamic localctx = QualifiedFunctionContext(context, state);
-    enterRule(localctx, 154, RULE_qualifiedFunction);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1000;
-      identifierOrFunctionIdentifier();
-      state = 1001;
-      match(TOKEN_T__30);
-      state = 1003;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if ((((la) & ~0x3f) == 0 && ((1 << la) & -4758861967782021122) != 0) ||
-          ((((la - 64)) & ~0x3f) == 0 &&
-              ((1 << (la - 64)) & -952520392159808463) != 0) ||
-          ((((la - 130)) & ~0x3f) == 0 &&
-              ((1 << (la - 130)) & 68719234063) != 0)) {
-        state = 1002;
-        paramList();
-      }
-
-      state = 1005;
-      match(TOKEN_T__31);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  InvocationContext invocation() {
-    dynamic localctx = InvocationContext(context, state);
-    enterRule(localctx, 156, RULE_invocation);
-    try {
-      state = 1012;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 111, context)) {
-        case 1:
-          localctx = MemberInvocationContext(localctx);
-          enterOuterAlt(localctx, 1);
-          state = 1007;
-          referentialIdentifier();
-          break;
-        case 2:
-          localctx = FunctionInvocationContext(localctx);
-          enterOuterAlt(localctx, 2);
-          state = 1008;
-          function();
-          break;
-        case 3:
-          localctx = ThisInvocationContext(localctx);
-          enterOuterAlt(localctx, 3);
-          state = 1009;
-          match(TOKEN_T__149);
-          break;
-        case 4:
-          localctx = IndexInvocationContext(localctx);
-          enterOuterAlt(localctx, 4);
-          state = 1010;
-          match(TOKEN_T__150);
-          break;
-        case 5:
-          localctx = TotalInvocationContext(localctx);
-          enterOuterAlt(localctx, 5);
-          state = 1011;
-          match(TOKEN_T__151);
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  FunctionContext function() {
-    dynamic localctx = FunctionContext(context, state);
-    enterRule(localctx, 158, RULE_function);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1014;
-      referentialIdentifier();
-      state = 1015;
-      match(TOKEN_T__30);
-      state = 1017;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if ((((la) & ~0x3f) == 0 && ((1 << la) & -4758861967782021122) != 0) ||
-          ((((la - 64)) & ~0x3f) == 0 &&
-              ((1 << (la - 64)) & -952520392159808463) != 0) ||
-          ((((la - 130)) & ~0x3f) == 0 &&
-              ((1 << (la - 130)) & 68719234063) != 0)) {
-        state = 1016;
-        paramList();
-      }
-
-      state = 1019;
-      match(TOKEN_T__31);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  RatioContext ratio() {
-    dynamic localctx = RatioContext(context, state);
-    enterRule(localctx, 160, RULE_ratio);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1021;
-      quantity();
-      state = 1022;
-      match(TOKEN_T__10);
-      state = 1023;
-      quantity();
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  LiteralContext literal() {
-    dynamic localctx = LiteralContext(context, state);
-    enterRule(localctx, 162, RULE_literal);
-    int la;
-    try {
-      state = 1035;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 113, context)) {
-        case 1:
-          localctx = BooleanLiteralContext(localctx);
-          enterOuterAlt(localctx, 1);
-          state = 1025;
-          la = tokenStream.LA(1)!;
-          if (!(la == TOKEN_T__59 || la == TOKEN_T__60)) {
-            errorHandler.recoverInline(this);
-          } else {
-            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-            errorHandler.reportMatch(this);
-            consume();
-          }
-          break;
-        case 2:
-          localctx = NullLiteralContext(localctx);
-          enterOuterAlt(localctx, 2);
-          state = 1026;
-          match(TOKEN_T__58);
-          break;
-        case 3:
-          localctx = StringLiteralContext(localctx);
-          enterOuterAlt(localctx, 3);
-          state = 1027;
-          match(TOKEN_STRING);
-          break;
-        case 4:
-          localctx = NumberLiteralContext(localctx);
-          enterOuterAlt(localctx, 4);
-          state = 1028;
-          match(TOKEN_NUMBER);
-          break;
-        case 5:
-          localctx = LongNumberLiteralContext(localctx);
-          enterOuterAlt(localctx, 5);
-          state = 1029;
-          match(TOKEN_LONGNUMBER);
-          break;
-        case 6:
-          localctx = DateTimeLiteralContext(localctx);
-          enterOuterAlt(localctx, 6);
-          state = 1030;
-          match(TOKEN_DATETIME);
-          break;
-        case 7:
-          localctx = DateLiteralContext(localctx);
-          enterOuterAlt(localctx, 7);
-          state = 1031;
-          match(TOKEN_DATE);
-          break;
-        case 8:
-          localctx = TimeLiteralContext(localctx);
-          enterOuterAlt(localctx, 8);
-          state = 1032;
-          match(TOKEN_TIME);
-          break;
-        case 9:
-          localctx = QuantityLiteralContext(localctx);
-          enterOuterAlt(localctx, 9);
-          state = 1033;
-          quantity();
-          break;
-        case 10:
-          localctx = RatioLiteralContext(localctx);
-          enterOuterAlt(localctx, 10);
-          state = 1034;
-          ratio();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  IntervalSelectorContext intervalSelector() {
-    dynamic localctx = IntervalSelectorContext(context, state);
-    enterRule(localctx, 164, RULE_intervalSelector);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1037;
-      match(TOKEN_T__23);
-      state = 1038;
-      la = tokenStream.LA(1)!;
-      if (!(la == TOKEN_T__30 || la == TOKEN_T__37)) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-      state = 1039;
-      expression(0);
-      state = 1040;
-      match(TOKEN_T__14);
-      state = 1041;
-      expression(0);
-      state = 1042;
-      la = tokenStream.LA(1)!;
-      if (!(la == TOKEN_T__31 || la == TOKEN_T__39)) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TupleSelectorContext tupleSelector() {
-    dynamic localctx = TupleSelectorContext(context, state);
-    enterRule(localctx, 166, RULE_tupleSelector);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1045;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__24) {
-        state = 1044;
-        match(TOKEN_T__24);
-      }
-
-      state = 1047;
-      match(TOKEN_T__13);
-      state = 1057;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__10:
-          state = 1048;
-          match(TOKEN_T__10);
-          break;
-        case TOKEN_T__0:
-        case TOKEN_T__1:
-        case TOKEN_T__2:
-        case TOKEN_T__3:
-        case TOKEN_T__4:
-        case TOKEN_T__5:
-        case TOKEN_T__6:
-        case TOKEN_T__7:
-        case TOKEN_T__8:
-        case TOKEN_T__9:
-        case TOKEN_T__11:
-        case TOKEN_T__12:
-        case TOKEN_T__17:
-        case TOKEN_T__19:
-        case TOKEN_T__26:
-        case TOKEN_T__27:
-        case TOKEN_T__28:
-        case TOKEN_T__29:
-        case TOKEN_T__44:
-        case TOKEN_T__49:
-        case TOKEN_T__51:
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-        case TOKEN_T__73:
-        case TOKEN_T__75:
-        case TOKEN_T__76:
-        case TOKEN_T__78:
-        case TOKEN_T__79:
-        case TOKEN_T__80:
-        case TOKEN_T__89:
-        case TOKEN_T__90:
-        case TOKEN_T__91:
-        case TOKEN_T__104:
-        case TOKEN_T__105:
-        case TOKEN_T__107:
-        case TOKEN_T__108:
-        case TOKEN_T__109:
-        case TOKEN_T__117:
-        case TOKEN_T__118:
-        case TOKEN_T__129:
-        case TOKEN_T__130:
-        case TOKEN_T__131:
-        case TOKEN_T__132:
-        case TOKEN_T__139:
-        case TOKEN_T__140:
-        case TOKEN_T__143:
-        case TOKEN_T__147:
-        case TOKEN_T__148:
-        case TOKEN_T__152:
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-          state = 1049;
-          tupleElementSelector();
-          state = 1054;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          while (la == TOKEN_T__14) {
-            state = 1050;
-            match(TOKEN_T__14);
-            state = 1051;
-            tupleElementSelector();
-            state = 1056;
-            errorHandler.sync(this);
-            la = tokenStream.LA(1)!;
-          }
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-      state = 1059;
-      match(TOKEN_T__15);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TupleElementSelectorContext tupleElementSelector() {
-    dynamic localctx = TupleElementSelectorContext(context, state);
-    enterRule(localctx, 168, RULE_tupleElementSelector);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1061;
-      referentialIdentifier();
-      state = 1062;
-      match(TOKEN_T__10);
-      state = 1063;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  InstanceSelectorContext instanceSelector() {
-    dynamic localctx = InstanceSelectorContext(context, state);
-    enterRule(localctx, 170, RULE_instanceSelector);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1065;
-      namedTypeSpecifier();
-      state = 1066;
-      match(TOKEN_T__13);
-      state = 1076;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__10:
-          state = 1067;
-          match(TOKEN_T__10);
-          break;
-        case TOKEN_T__0:
-        case TOKEN_T__1:
-        case TOKEN_T__2:
-        case TOKEN_T__3:
-        case TOKEN_T__4:
-        case TOKEN_T__5:
-        case TOKEN_T__6:
-        case TOKEN_T__7:
-        case TOKEN_T__8:
-        case TOKEN_T__9:
-        case TOKEN_T__11:
-        case TOKEN_T__12:
-        case TOKEN_T__17:
-        case TOKEN_T__19:
-        case TOKEN_T__26:
-        case TOKEN_T__27:
-        case TOKEN_T__28:
-        case TOKEN_T__29:
-        case TOKEN_T__44:
-        case TOKEN_T__49:
-        case TOKEN_T__51:
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-        case TOKEN_T__73:
-        case TOKEN_T__75:
-        case TOKEN_T__76:
-        case TOKEN_T__78:
-        case TOKEN_T__79:
-        case TOKEN_T__80:
-        case TOKEN_T__89:
-        case TOKEN_T__90:
-        case TOKEN_T__91:
-        case TOKEN_T__104:
-        case TOKEN_T__105:
-        case TOKEN_T__107:
-        case TOKEN_T__108:
-        case TOKEN_T__109:
-        case TOKEN_T__117:
-        case TOKEN_T__118:
-        case TOKEN_T__129:
-        case TOKEN_T__130:
-        case TOKEN_T__131:
-        case TOKEN_T__132:
-        case TOKEN_T__139:
-        case TOKEN_T__140:
-        case TOKEN_T__143:
-        case TOKEN_T__147:
-        case TOKEN_T__148:
-        case TOKEN_T__152:
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-          state = 1068;
-          instanceElementSelector();
-          state = 1073;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-          while (la == TOKEN_T__14) {
-            state = 1069;
-            match(TOKEN_T__14);
-            state = 1070;
-            instanceElementSelector();
-            state = 1075;
-            errorHandler.sync(this);
-            la = tokenStream.LA(1)!;
-          }
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-      state = 1078;
-      match(TOKEN_T__15);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  InstanceElementSelectorContext instanceElementSelector() {
-    dynamic localctx = InstanceElementSelectorContext(context, state);
-    enterRule(localctx, 172, RULE_instanceElementSelector);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1080;
-      referentialIdentifier();
-      state = 1081;
-      match(TOKEN_T__10);
-      state = 1082;
-      expression(0);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ListSelectorContext listSelector() {
-    dynamic localctx = ListSelectorContext(context, state);
-    enterRule(localctx, 174, RULE_listSelector);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1091;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if (la == TOKEN_T__20) {
-        state = 1084;
-        match(TOKEN_T__20);
-        state = 1089;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-        if (la == TOKEN_T__21) {
-          state = 1085;
-          match(TOKEN_T__21);
-          state = 1086;
-          typeSpecifier();
-          state = 1087;
-          match(TOKEN_T__22);
-        }
-      }
-
-      state = 1093;
-      match(TOKEN_T__13);
-      state = 1102;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      if ((((la) & ~0x3f) == 0 && ((1 << la) & -4758861967782021122) != 0) ||
-          ((((la - 64)) & ~0x3f) == 0 &&
-              ((1 << (la - 64)) & -952520392159808463) != 0) ||
-          ((((la - 130)) & ~0x3f) == 0 &&
-              ((1 << (la - 130)) & 68719234063) != 0)) {
-        state = 1094;
-        expression(0);
-        state = 1099;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-        while (la == TOKEN_T__14) {
-          state = 1095;
-          match(TOKEN_T__14);
-          state = 1096;
-          expression(0);
-          state = 1101;
-          errorHandler.sync(this);
-          la = tokenStream.LA(1)!;
-        }
-      }
-
-      state = 1104;
-      match(TOKEN_T__15);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  DisplayClauseContext displayClause() {
-    dynamic localctx = DisplayClauseContext(context, state);
-    enterRule(localctx, 176, RULE_displayClause);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1106;
-      match(TOKEN_T__152);
-      state = 1107;
-      match(TOKEN_STRING);
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  CodeSelectorContext codeSelector() {
-    dynamic localctx = CodeSelectorContext(context, state);
-    enterRule(localctx, 178, RULE_codeSelector);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1109;
-      match(TOKEN_T__153);
-      state = 1110;
-      match(TOKEN_STRING);
-      state = 1111;
-      match(TOKEN_T__18);
-      state = 1112;
-      codesystemIdentifier();
-      state = 1114;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 123, context)) {
-        case 1:
-          state = 1113;
-          displayClause();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ConceptSelectorContext conceptSelector() {
-    dynamic localctx = ConceptSelectorContext(context, state);
-    enterRule(localctx, 180, RULE_conceptSelector);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1116;
-      match(TOKEN_T__154);
-      state = 1117;
-      match(TOKEN_T__13);
-      state = 1118;
-      codeSelector();
-      state = 1123;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while (la == TOKEN_T__14) {
-        state = 1119;
-        match(TOKEN_T__14);
-        state = 1120;
-        codeSelector();
-        state = 1125;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-      state = 1126;
-      match(TOKEN_T__15);
-      state = 1128;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 125, context)) {
-        case 1:
-          state = 1127;
-          displayClause();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  KeywordContext keyword() {
-    dynamic localctx = KeywordContext(context, state);
-    enterRule(localctx, 182, RULE_keyword);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1130;
-      la = tokenStream.LA(1)!;
-      if (!((((la) & ~0x3f) == 0 && ((1 << la) & -15150577076226) != 0) ||
-          ((((la - 64)) & ~0x3f) == 0 &&
-              ((1 << (la - 64)) & -87821842001183681) != 0) ||
-          ((((la - 128)) & ~0x3f) == 0 &&
-              ((1 << (la - 128)) & 239075135) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ReservedWordContext reservedWord() {
-    dynamic localctx = ReservedWordContext(context, state);
-    enterRule(localctx, 184, RULE_reservedWord);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1132;
-      la = tokenStream.LA(1)!;
-      if (!((((la) & ~0x3f) == 0 && ((1 << la) & -140787825319084032) != 0) ||
-          ((((la - 64)) & ~0x3f) == 0 &&
-              ((1 << (la - 64)) & -141994780371711937) != 0) ||
-          ((((la - 128)) & ~0x3f) == 0 &&
-              ((1 << (la - 128)) & 202297091) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  KeywordIdentifierContext keywordIdentifier() {
-    dynamic localctx = KeywordIdentifierContext(context, state);
-    enterRule(localctx, 186, RULE_keywordIdentifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1134;
-      la = tokenStream.LA(1)!;
-      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 140772674742007806) != 0) ||
-          ((((la - 74)) & ~0x3f) == 0 &&
-              ((1 << (la - 74)) & 1080916813829046509) != 0) ||
-          ((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 8979) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ObsoleteIdentifierContext obsoleteIdentifier() {
-    dynamic localctx = ObsoleteIdentifierContext(context, state);
-    enterRule(localctx, 188, RULE_obsoleteIdentifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1136;
-      la = tokenStream.LA(1)!;
-      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 288687772990177284) != 0) ||
-          ((((la - 64)) & ~0x3f) == 0 &&
-              ((1 << (la - 64)) & 6597539529729) != 0) ||
-          ((((la - 153)) & ~0x3f) == 0 && ((1 << (la - 153)) & 7) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  FunctionIdentifierContext functionIdentifier() {
-    dynamic localctx = FunctionIdentifierContext(context, state);
-    enterRule(localctx, 190, RULE_functionIdentifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1138;
-      la = tokenStream.LA(1)!;
-      if (!((((la) & ~0x3f) == 0 && ((1 << la) & -15150577076226) != 0) ||
-          ((((la - 64)) & ~0x3f) == 0 &&
-              ((1 << (la - 64)) & -87821842001183681) != 0) ||
-          ((((la - 128)) & ~0x3f) == 0 &&
-              ((1 << (la - 128)) & 239072831) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  TypeNameIdentifierContext typeNameIdentifier() {
-    dynamic localctx = TypeNameIdentifierContext(context, state);
-    enterRule(localctx, 192, RULE_typeNameIdentifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1140;
-      la = tokenStream.LA(1)!;
-      if (!(la == TOKEN_T__89 ||
-          la == TOKEN_T__90 ||
-          la == TOKEN_T__153 ||
-          la == TOKEN_T__154)) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ReferentialIdentifierContext referentialIdentifier() {
-    dynamic localctx = ReferentialIdentifierContext(context, state);
-    enterRule(localctx, 194, RULE_referentialIdentifier);
-    try {
-      state = 1144;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-          enterOuterAlt(localctx, 1);
-          state = 1142;
-          identifier();
-          break;
-        case TOKEN_T__0:
-        case TOKEN_T__1:
-        case TOKEN_T__2:
-        case TOKEN_T__3:
-        case TOKEN_T__4:
-        case TOKEN_T__5:
-        case TOKEN_T__6:
-        case TOKEN_T__7:
-        case TOKEN_T__8:
-        case TOKEN_T__9:
-        case TOKEN_T__11:
-        case TOKEN_T__12:
-        case TOKEN_T__17:
-        case TOKEN_T__19:
-        case TOKEN_T__26:
-        case TOKEN_T__27:
-        case TOKEN_T__28:
-        case TOKEN_T__29:
-        case TOKEN_T__44:
-        case TOKEN_T__49:
-        case TOKEN_T__51:
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-        case TOKEN_T__73:
-        case TOKEN_T__75:
-        case TOKEN_T__76:
-        case TOKEN_T__78:
-        case TOKEN_T__79:
-        case TOKEN_T__80:
-        case TOKEN_T__89:
-        case TOKEN_T__90:
-        case TOKEN_T__91:
-        case TOKEN_T__104:
-        case TOKEN_T__105:
-        case TOKEN_T__107:
-        case TOKEN_T__108:
-        case TOKEN_T__109:
-        case TOKEN_T__117:
-        case TOKEN_T__118:
-        case TOKEN_T__129:
-        case TOKEN_T__130:
-        case TOKEN_T__131:
-        case TOKEN_T__132:
-        case TOKEN_T__139:
-        case TOKEN_T__140:
-        case TOKEN_T__143:
-        case TOKEN_T__147:
-        case TOKEN_T__148:
-        case TOKEN_T__152:
-          enterOuterAlt(localctx, 2);
-          state = 1143;
-          keywordIdentifier();
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ReferentialOrTypeNameIdentifierContext referentialOrTypeNameIdentifier() {
-    dynamic localctx = ReferentialOrTypeNameIdentifierContext(context, state);
-    enterRule(localctx, 196, RULE_referentialOrTypeNameIdentifier);
-    try {
-      state = 1148;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 127, context)) {
-        case 1:
-          enterOuterAlt(localctx, 1);
-          state = 1146;
-          referentialIdentifier();
-          break;
-        case 2:
-          enterOuterAlt(localctx, 2);
-          state = 1147;
-          typeNameIdentifier();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  IdentifierOrFunctionIdentifierContext identifierOrFunctionIdentifier() {
-    dynamic localctx = IdentifierOrFunctionIdentifierContext(context, state);
-    enterRule(localctx, 198, RULE_identifierOrFunctionIdentifier);
-    try {
-      state = 1152;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-          enterOuterAlt(localctx, 1);
-          state = 1150;
-          identifier();
-          break;
-        case TOKEN_T__0:
-        case TOKEN_T__1:
-        case TOKEN_T__2:
-        case TOKEN_T__3:
-        case TOKEN_T__4:
-        case TOKEN_T__5:
-        case TOKEN_T__6:
-        case TOKEN_T__7:
-        case TOKEN_T__8:
-        case TOKEN_T__9:
-        case TOKEN_T__11:
-        case TOKEN_T__12:
-        case TOKEN_T__17:
-        case TOKEN_T__18:
-        case TOKEN_T__19:
-        case TOKEN_T__20:
-        case TOKEN_T__23:
-        case TOKEN_T__24:
-        case TOKEN_T__26:
-        case TOKEN_T__27:
-        case TOKEN_T__28:
-        case TOKEN_T__29:
-        case TOKEN_T__34:
-        case TOKEN_T__35:
-        case TOKEN_T__36:
-        case TOKEN_T__40:
-        case TOKEN_T__43:
-        case TOKEN_T__44:
-        case TOKEN_T__45:
-        case TOKEN_T__46:
-        case TOKEN_T__47:
-        case TOKEN_T__48:
-        case TOKEN_T__49:
-        case TOKEN_T__50:
-        case TOKEN_T__51:
-        case TOKEN_T__52:
-        case TOKEN_T__53:
-        case TOKEN_T__54:
-        case TOKEN_T__55:
-        case TOKEN_T__56:
-        case TOKEN_T__57:
-        case TOKEN_T__58:
-        case TOKEN_T__59:
-        case TOKEN_T__60:
-        case TOKEN_T__61:
-        case TOKEN_T__62:
-        case TOKEN_T__63:
-        case TOKEN_T__64:
-        case TOKEN_T__65:
-        case TOKEN_T__66:
-        case TOKEN_T__67:
-        case TOKEN_T__68:
-        case TOKEN_T__73:
-        case TOKEN_T__74:
-        case TOKEN_T__75:
-        case TOKEN_T__76:
-        case TOKEN_T__78:
-        case TOKEN_T__79:
-        case TOKEN_T__80:
-        case TOKEN_T__81:
-        case TOKEN_T__82:
-        case TOKEN_T__83:
-        case TOKEN_T__84:
-        case TOKEN_T__85:
-        case TOKEN_T__86:
-        case TOKEN_T__87:
-        case TOKEN_T__88:
-        case TOKEN_T__89:
-        case TOKEN_T__90:
-        case TOKEN_T__91:
-        case TOKEN_T__92:
-        case TOKEN_T__93:
-        case TOKEN_T__94:
-        case TOKEN_T__95:
-        case TOKEN_T__96:
-        case TOKEN_T__97:
-        case TOKEN_T__98:
-        case TOKEN_T__99:
-        case TOKEN_T__100:
-        case TOKEN_T__101:
-        case TOKEN_T__104:
-        case TOKEN_T__105:
-        case TOKEN_T__106:
-        case TOKEN_T__107:
-        case TOKEN_T__108:
-        case TOKEN_T__109:
-        case TOKEN_T__110:
-        case TOKEN_T__111:
-        case TOKEN_T__112:
-        case TOKEN_T__113:
-        case TOKEN_T__117:
-        case TOKEN_T__118:
-        case TOKEN_T__120:
-        case TOKEN_T__121:
-        case TOKEN_T__122:
-        case TOKEN_T__123:
-        case TOKEN_T__124:
-        case TOKEN_T__125:
-        case TOKEN_T__126:
-        case TOKEN_T__127:
-        case TOKEN_T__128:
-        case TOKEN_T__129:
-        case TOKEN_T__130:
-        case TOKEN_T__131:
-        case TOKEN_T__132:
-        case TOKEN_T__136:
-        case TOKEN_T__137:
-        case TOKEN_T__139:
-        case TOKEN_T__140:
-        case TOKEN_T__141:
-        case TOKEN_T__142:
-        case TOKEN_T__143:
-        case TOKEN_T__144:
-        case TOKEN_T__145:
-        case TOKEN_T__146:
-        case TOKEN_T__147:
-        case TOKEN_T__148:
-        case TOKEN_T__152:
-        case TOKEN_T__153:
-        case TOKEN_T__154:
-          enterOuterAlt(localctx, 2);
-          state = 1151;
-          functionIdentifier();
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  IdentifierContext identifier() {
-    dynamic localctx = IdentifierContext(context, state);
-    enterRule(localctx, 200, RULE_identifier);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1154;
-      la = tokenStream.LA(1)!;
-      if (!(((((la - 157)) & ~0x3f) == 0 && ((1 << (la - 157)) & 97) != 0))) {
-        errorHandler.recoverInline(this);
-      } else {
-        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
-        errorHandler.reportMatch(this);
-        consume();
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ExternalConstantContext externalConstant() {
-    dynamic localctx = ExternalConstantContext(context, state);
-    enterRule(localctx, 202, RULE_externalConstant);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1156;
-      match(TOKEN_T__155);
-      state = 1159;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_QUOTEDIDENTIFIER:
-        case TOKEN_IDENTIFIER:
-        case TOKEN_DELIMITEDIDENTIFIER:
-          state = 1157;
-          identifier();
-          break;
-        case TOKEN_STRING:
-          state = 1158;
-          match(TOKEN_STRING);
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  ParamListContext paramList() {
-    dynamic localctx = ParamListContext(context, state);
-    enterRule(localctx, 204, RULE_paramList);
-    int la;
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1161;
-      expression(0);
-      state = 1166;
-      errorHandler.sync(this);
-      la = tokenStream.LA(1)!;
-      while (la == TOKEN_T__14) {
-        state = 1162;
-        match(TOKEN_T__14);
-        state = 1163;
-        expression(0);
-        state = 1168;
-        errorHandler.sync(this);
-        la = tokenStream.LA(1)!;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  QuantityContext quantity() {
-    dynamic localctx = QuantityContext(context, state);
-    enterRule(localctx, 206, RULE_quantity);
-    try {
-      enterOuterAlt(localctx, 1);
-      state = 1169;
-      match(TOKEN_NUMBER);
-      state = 1171;
-      errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 131, context)) {
-        case 1:
-          state = 1170;
-          unit();
-          break;
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  UnitContext unit() {
-    dynamic localctx = UnitContext(context, state);
-    enterRule(localctx, 208, RULE_unit);
-    try {
-      state = 1176;
-      errorHandler.sync(this);
-      switch (tokenStream.LA(1)!) {
-        case TOKEN_T__81:
-        case TOKEN_T__82:
-        case TOKEN_T__83:
-        case TOKEN_T__84:
-        case TOKEN_T__85:
-        case TOKEN_T__86:
-        case TOKEN_T__87:
-        case TOKEN_T__88:
-          enterOuterAlt(localctx, 1);
-          state = 1173;
-          dateTimePrecision();
-          break;
-        case TOKEN_T__92:
-        case TOKEN_T__93:
-        case TOKEN_T__94:
-        case TOKEN_T__95:
-        case TOKEN_T__96:
-        case TOKEN_T__97:
-        case TOKEN_T__98:
-        case TOKEN_T__99:
-          enterOuterAlt(localctx, 2);
-          state = 1174;
-          pluralDateTimePrecision();
-          break;
-        case TOKEN_STRING:
-          enterOuterAlt(localctx, 3);
-          state = 1175;
-          match(TOKEN_STRING);
-          break;
-        default:
-          throw NoViableAltException(this);
-      }
-    } on RecognitionException catch (re) {
-      localctx.exception = re;
-      errorHandler.reportError(this, re);
-      errorHandler.recover(this, re);
-    } finally {
-      exitRule();
-    }
-    return localctx;
-  }
-
-  @override
-  bool sempred(RuleContext? localctx, int ruleIndex, int predIndex) {
-    switch (ruleIndex) {
-      case 60:
-        return _simplePath_sempred(localctx as SimplePathContext?, predIndex);
-      case 62:
-        return _expression_sempred(localctx as ExpressionContext?, predIndex);
-      case 66:
-        return _expressionTerm_sempred(
-            localctx as ExpressionTermContext?, predIndex);
-    }
-    return true;
-  }
-
-  bool _simplePath_sempred(dynamic localctx, int predIndex) {
-    switch (predIndex) {
-      case 0:
-        return precpred(context, 2);
-      case 1:
-        return precpred(context, 1);
-    }
-    return true;
-  }
-
-  bool _expression_sempred(dynamic localctx, int predIndex) {
-    switch (predIndex) {
-      case 2:
-        return precpred(context, 8);
-      case 3:
-        return precpred(context, 7);
-      case 4:
-        return precpred(context, 6);
-      case 5:
-        return precpred(context, 5);
-      case 6:
-        return precpred(context, 4);
-      case 7:
-        return precpred(context, 3);
-      case 8:
-        return precpred(context, 2);
-      case 9:
-        return precpred(context, 1);
-      case 10:
-        return precpred(context, 16);
-      case 11:
-        return precpred(context, 15);
-      case 12:
-        return precpred(context, 11);
-    }
-    return true;
-  }
-
-  bool _expressionTerm_sempred(dynamic localctx, int predIndex) {
-    switch (predIndex) {
-      case 13:
-        return precpred(context, 7);
-      case 14:
-        return precpred(context, 6);
-      case 15:
-        return precpred(context, 5);
-      case 16:
-        return precpred(context, 21);
-      case 17:
-        return precpred(context, 20);
-    }
-    return true;
-  }
+  static final List<DFA> _decisionToDFA = List.generate(
+      _ATN.numberOfDecisions, (i) => DFA(_ATN.getDecisionState(i), i));
 
   static const List<int> _serializedATN = [
     4,
@@ -16685,21 +11492,5209 @@ class cqlParser extends Parser {
     1176
   ];
 
-  static final ATN _ATN = ATNDeserializer().deserialize(_serializedATN);
+  static final PredictionContextCache _sharedContextCache =
+      PredictionContextCache();
+
+  cqlParser(TokenStream input) : super(input) {
+    interpreter =
+        ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
+  }
+
+  @override
+  ATN getATN() {
+    return _ATN;
+  }
+
+  @override
+  String get grammarFileName => 'cql.g4';
+
+  @override
+  bool sempred(RuleContext? localctx, int ruleIndex, int predIndex) {
+    switch (ruleIndex) {
+      case 60:
+        return _simplePath_sempred(localctx as SimplePathContext?, predIndex);
+      case 62:
+        return _expression_sempred(localctx as ExpressionContext?, predIndex);
+      case 66:
+        return _expressionTerm_sempred(
+            localctx as ExpressionTermContext?, predIndex);
+    }
+    return true;
+  }
+
+  @override
+  List<int> get serializedATN => _serializedATN;
+
+  @override
+  Vocabulary get vocabulary {
+    return VOCABULARY;
+  }
+
+  static final checkVersion =
+      () => RuntimeMetaData.checkVersion('4.13.1', RuntimeMetaData.VERSION);
+
+  LibraryContext library_() {
+    dynamic localctx = LibraryContext(context, state);
+    enterRule(localctx, 0, RULE_library);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 211;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__0) {
+        state = 210;
+        libraryDefinition();
+      }
+
+      state = 216;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while ((((la) & ~0x3f) == 0 && ((1 << la) & 1316312) != 0)) {
+        state = 213;
+        definition();
+        state = 218;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+      state = 222;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while (la == TOKEN_T__26 || la == TOKEN_T__27) {
+        state = 219;
+        statement();
+        state = 224;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+      state = 225;
+      match(TOKEN_EOF);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  DefinitionContext definition() {
+    dynamic localctx = DefinitionContext(context, state);
+    enterRule(localctx, 2, RULE_definition);
+    try {
+      state = 234;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 3, context)) {
+        case 1:
+          enterOuterAlt(localctx, 1);
+          state = 227;
+          usingDefinition();
+          break;
+        case 2:
+          enterOuterAlt(localctx, 2);
+          state = 228;
+          includeDefinition();
+          break;
+        case 3:
+          enterOuterAlt(localctx, 3);
+          state = 229;
+          codesystemDefinition();
+          break;
+        case 4:
+          enterOuterAlt(localctx, 4);
+          state = 230;
+          valuesetDefinition();
+          break;
+        case 5:
+          enterOuterAlt(localctx, 5);
+          state = 231;
+          codeDefinition();
+          break;
+        case 6:
+          enterOuterAlt(localctx, 6);
+          state = 232;
+          conceptDefinition();
+          break;
+        case 7:
+          enterOuterAlt(localctx, 7);
+          state = 233;
+          parameterDefinition();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  LibraryDefinitionContext libraryDefinition() {
+    dynamic localctx = LibraryDefinitionContext(context, state);
+    enterRule(localctx, 4, RULE_libraryDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 236;
+      match(TOKEN_T__0);
+      state = 237;
+      qualifiedIdentifier();
+      state = 240;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__1) {
+        state = 238;
+        match(TOKEN_T__1);
+        state = 239;
+        versionSpecifier();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  UsingDefinitionContext usingDefinition() {
+    dynamic localctx = UsingDefinitionContext(context, state);
+    enterRule(localctx, 6, RULE_usingDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 242;
+      match(TOKEN_T__2);
+      state = 243;
+      modelIdentifier();
+      state = 246;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__1) {
+        state = 244;
+        match(TOKEN_T__1);
+        state = 245;
+        versionSpecifier();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  IncludeDefinitionContext includeDefinition() {
+    dynamic localctx = IncludeDefinitionContext(context, state);
+    enterRule(localctx, 8, RULE_includeDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 248;
+      match(TOKEN_T__3);
+      state = 249;
+      qualifiedIdentifier();
+      state = 252;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__1) {
+        state = 250;
+        match(TOKEN_T__1);
+        state = 251;
+        versionSpecifier();
+      }
+
+      state = 256;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__4) {
+        state = 254;
+        match(TOKEN_T__4);
+        state = 255;
+        localIdentifier();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  LocalIdentifierContext localIdentifier() {
+    dynamic localctx = LocalIdentifierContext(context, state);
+    enterRule(localctx, 10, RULE_localIdentifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 258;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  AccessModifierContext accessModifier() {
+    dynamic localctx = AccessModifierContext(context, state);
+    enterRule(localctx, 12, RULE_accessModifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 260;
+      la = tokenStream.LA(1)!;
+      if (!(la == TOKEN_T__5 || la == TOKEN_T__6)) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ParameterDefinitionContext parameterDefinition() {
+    dynamic localctx = ParameterDefinitionContext(context, state);
+    enterRule(localctx, 14, RULE_parameterDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 263;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
+        state = 262;
+        accessModifier();
+      }
+
+      state = 265;
+      match(TOKEN_T__7);
+      state = 266;
+      identifier();
+      state = 268;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 9, context)) {
+        case 1:
+          state = 267;
+          typeSpecifier();
+          break;
+      }
+      state = 272;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__8) {
+        state = 270;
+        match(TOKEN_T__8);
+        state = 271;
+        expression(0);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodesystemDefinitionContext codesystemDefinition() {
+    dynamic localctx = CodesystemDefinitionContext(context, state);
+    enterRule(localctx, 16, RULE_codesystemDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 275;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
+        state = 274;
+        accessModifier();
+      }
+
+      state = 277;
+      match(TOKEN_T__9);
+      state = 278;
+      identifier();
+      state = 279;
+      match(TOKEN_T__10);
+      state = 280;
+      codesystemId();
+      state = 283;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__1) {
+        state = 281;
+        match(TOKEN_T__1);
+        state = 282;
+        versionSpecifier();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ValuesetDefinitionContext valuesetDefinition() {
+    dynamic localctx = ValuesetDefinitionContext(context, state);
+    enterRule(localctx, 18, RULE_valuesetDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 286;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
+        state = 285;
+        accessModifier();
+      }
+
+      state = 288;
+      match(TOKEN_T__11);
+      state = 289;
+      identifier();
+      state = 290;
+      match(TOKEN_T__10);
+      state = 291;
+      valuesetId();
+      state = 294;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__1) {
+        state = 292;
+        match(TOKEN_T__1);
+        state = 293;
+        versionSpecifier();
+      }
+
+      state = 297;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__12) {
+        state = 296;
+        codesystems();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodesystemsContext codesystems() {
+    dynamic localctx = CodesystemsContext(context, state);
+    enterRule(localctx, 20, RULE_codesystems);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 299;
+      match(TOKEN_T__12);
+      state = 300;
+      match(TOKEN_T__13);
+      state = 301;
+      codesystemIdentifier();
+      state = 306;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while (la == TOKEN_T__14) {
+        state = 302;
+        match(TOKEN_T__14);
+        state = 303;
+        codesystemIdentifier();
+        state = 308;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+      state = 309;
+      match(TOKEN_T__15);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodesystemIdentifierContext codesystemIdentifier() {
+    dynamic localctx = CodesystemIdentifierContext(context, state);
+    enterRule(localctx, 22, RULE_codesystemIdentifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 314;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 17, context)) {
+        case 1:
+          state = 311;
+          libraryIdentifier();
+          state = 312;
+          match(TOKEN_T__16);
+          break;
+      }
+      state = 316;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  LibraryIdentifierContext libraryIdentifier() {
+    dynamic localctx = LibraryIdentifierContext(context, state);
+    enterRule(localctx, 24, RULE_libraryIdentifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 318;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodeDefinitionContext codeDefinition() {
+    dynamic localctx = CodeDefinitionContext(context, state);
+    enterRule(localctx, 26, RULE_codeDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 321;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
+        state = 320;
+        accessModifier();
+      }
+
+      state = 323;
+      match(TOKEN_T__17);
+      state = 324;
+      identifier();
+      state = 325;
+      match(TOKEN_T__10);
+      state = 326;
+      codeId();
+      state = 327;
+      match(TOKEN_T__18);
+      state = 328;
+      codesystemIdentifier();
+      state = 330;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__152) {
+        state = 329;
+        displayClause();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ConceptDefinitionContext conceptDefinition() {
+    dynamic localctx = ConceptDefinitionContext(context, state);
+    enterRule(localctx, 28, RULE_conceptDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 333;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
+        state = 332;
+        accessModifier();
+      }
+
+      state = 335;
+      match(TOKEN_T__19);
+      state = 336;
+      identifier();
+      state = 337;
+      match(TOKEN_T__10);
+      state = 338;
+      match(TOKEN_T__13);
+      state = 339;
+      codeIdentifier();
+      state = 344;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while (la == TOKEN_T__14) {
+        state = 340;
+        match(TOKEN_T__14);
+        state = 341;
+        codeIdentifier();
+        state = 346;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+      state = 347;
+      match(TOKEN_T__15);
+      state = 349;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__152) {
+        state = 348;
+        displayClause();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodeIdentifierContext codeIdentifier() {
+    dynamic localctx = CodeIdentifierContext(context, state);
+    enterRule(localctx, 30, RULE_codeIdentifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 354;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 23, context)) {
+        case 1:
+          state = 351;
+          libraryIdentifier();
+          state = 352;
+          match(TOKEN_T__16);
+          break;
+      }
+      state = 356;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodesystemIdContext codesystemId() {
+    dynamic localctx = CodesystemIdContext(context, state);
+    enterRule(localctx, 32, RULE_codesystemId);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 358;
+      match(TOKEN_STRING);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ValuesetIdContext valuesetId() {
+    dynamic localctx = ValuesetIdContext(context, state);
+    enterRule(localctx, 34, RULE_valuesetId);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 360;
+      match(TOKEN_STRING);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  VersionSpecifierContext versionSpecifier() {
+    dynamic localctx = VersionSpecifierContext(context, state);
+    enterRule(localctx, 36, RULE_versionSpecifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 362;
+      match(TOKEN_STRING);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodeIdContext codeId() {
+    dynamic localctx = CodeIdContext(context, state);
+    enterRule(localctx, 38, RULE_codeId);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 364;
+      match(TOKEN_STRING);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TypeSpecifierContext typeSpecifier() {
+    dynamic localctx = TypeSpecifierContext(context, state);
+    enterRule(localctx, 40, RULE_typeSpecifier);
+    try {
+      state = 371;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__0:
+        case TOKEN_T__1:
+        case TOKEN_T__2:
+        case TOKEN_T__3:
+        case TOKEN_T__4:
+        case TOKEN_T__5:
+        case TOKEN_T__6:
+        case TOKEN_T__7:
+        case TOKEN_T__8:
+        case TOKEN_T__9:
+        case TOKEN_T__11:
+        case TOKEN_T__12:
+        case TOKEN_T__17:
+        case TOKEN_T__19:
+        case TOKEN_T__26:
+        case TOKEN_T__27:
+        case TOKEN_T__28:
+        case TOKEN_T__29:
+        case TOKEN_T__44:
+        case TOKEN_T__49:
+        case TOKEN_T__51:
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+        case TOKEN_T__73:
+        case TOKEN_T__75:
+        case TOKEN_T__76:
+        case TOKEN_T__78:
+        case TOKEN_T__79:
+        case TOKEN_T__80:
+        case TOKEN_T__89:
+        case TOKEN_T__90:
+        case TOKEN_T__91:
+        case TOKEN_T__104:
+        case TOKEN_T__105:
+        case TOKEN_T__107:
+        case TOKEN_T__108:
+        case TOKEN_T__109:
+        case TOKEN_T__117:
+        case TOKEN_T__118:
+        case TOKEN_T__129:
+        case TOKEN_T__130:
+        case TOKEN_T__131:
+        case TOKEN_T__132:
+        case TOKEN_T__139:
+        case TOKEN_T__140:
+        case TOKEN_T__143:
+        case TOKEN_T__147:
+        case TOKEN_T__148:
+        case TOKEN_T__152:
+        case TOKEN_T__153:
+        case TOKEN_T__154:
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+          enterOuterAlt(localctx, 1);
+          state = 366;
+          namedTypeSpecifier();
+          break;
+        case TOKEN_T__20:
+          enterOuterAlt(localctx, 2);
+          state = 367;
+          listTypeSpecifier();
+          break;
+        case TOKEN_T__23:
+          enterOuterAlt(localctx, 3);
+          state = 368;
+          intervalTypeSpecifier();
+          break;
+        case TOKEN_T__24:
+          enterOuterAlt(localctx, 4);
+          state = 369;
+          tupleTypeSpecifier();
+          break;
+        case TOKEN_T__25:
+          enterOuterAlt(localctx, 5);
+          state = 370;
+          choiceTypeSpecifier();
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  NamedTypeSpecifierContext namedTypeSpecifier() {
+    dynamic localctx = NamedTypeSpecifierContext(context, state);
+    enterRule(localctx, 42, RULE_namedTypeSpecifier);
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 378;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 25, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          state = 373;
+          qualifier();
+          state = 374;
+          match(TOKEN_T__16);
+        }
+        state = 380;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 25, context);
+      }
+      state = 381;
+      referentialOrTypeNameIdentifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ModelIdentifierContext modelIdentifier() {
+    dynamic localctx = ModelIdentifierContext(context, state);
+    enterRule(localctx, 44, RULE_modelIdentifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 383;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ListTypeSpecifierContext listTypeSpecifier() {
+    dynamic localctx = ListTypeSpecifierContext(context, state);
+    enterRule(localctx, 46, RULE_listTypeSpecifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 385;
+      match(TOKEN_T__20);
+      state = 386;
+      match(TOKEN_T__21);
+      state = 387;
+      typeSpecifier();
+      state = 388;
+      match(TOKEN_T__22);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  IntervalTypeSpecifierContext intervalTypeSpecifier() {
+    dynamic localctx = IntervalTypeSpecifierContext(context, state);
+    enterRule(localctx, 48, RULE_intervalTypeSpecifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 390;
+      match(TOKEN_T__23);
+      state = 391;
+      match(TOKEN_T__21);
+      state = 392;
+      typeSpecifier();
+      state = 393;
+      match(TOKEN_T__22);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TupleTypeSpecifierContext tupleTypeSpecifier() {
+    dynamic localctx = TupleTypeSpecifierContext(context, state);
+    enterRule(localctx, 50, RULE_tupleTypeSpecifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 395;
+      match(TOKEN_T__24);
+      state = 396;
+      match(TOKEN_T__13);
+      state = 397;
+      tupleElementDefinition();
+      state = 402;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while (la == TOKEN_T__14) {
+        state = 398;
+        match(TOKEN_T__14);
+        state = 399;
+        tupleElementDefinition();
+        state = 404;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+      state = 405;
+      match(TOKEN_T__15);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TupleElementDefinitionContext tupleElementDefinition() {
+    dynamic localctx = TupleElementDefinitionContext(context, state);
+    enterRule(localctx, 52, RULE_tupleElementDefinition);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 407;
+      referentialIdentifier();
+      state = 408;
+      typeSpecifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ChoiceTypeSpecifierContext choiceTypeSpecifier() {
+    dynamic localctx = ChoiceTypeSpecifierContext(context, state);
+    enterRule(localctx, 54, RULE_choiceTypeSpecifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 410;
+      match(TOKEN_T__25);
+      state = 411;
+      match(TOKEN_T__21);
+      state = 412;
+      typeSpecifier();
+      state = 417;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while (la == TOKEN_T__14) {
+        state = 413;
+        match(TOKEN_T__14);
+        state = 414;
+        typeSpecifier();
+        state = 419;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+      state = 420;
+      match(TOKEN_T__22);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  StatementContext statement() {
+    dynamic localctx = StatementContext(context, state);
+    enterRule(localctx, 56, RULE_statement);
+    try {
+      state = 425;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 28, context)) {
+        case 1:
+          enterOuterAlt(localctx, 1);
+          state = 422;
+          expressionDefinition();
+          break;
+        case 2:
+          enterOuterAlt(localctx, 2);
+          state = 423;
+          contextDefinition();
+          break;
+        case 3:
+          enterOuterAlt(localctx, 3);
+          state = 424;
+          functionDefinition();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ExpressionDefinitionContext expressionDefinition() {
+    dynamic localctx = ExpressionDefinitionContext(context, state);
+    enterRule(localctx, 58, RULE_expressionDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 427;
+      match(TOKEN_T__26);
+      state = 429;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
+        state = 428;
+        accessModifier();
+      }
+
+      state = 431;
+      identifier();
+      state = 432;
+      match(TOKEN_T__10);
+      state = 433;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ContextDefinitionContext contextDefinition() {
+    dynamic localctx = ContextDefinitionContext(context, state);
+    enterRule(localctx, 60, RULE_contextDefinition);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 435;
+      match(TOKEN_T__27);
+      state = 439;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 30, context)) {
+        case 1:
+          state = 436;
+          modelIdentifier();
+          state = 437;
+          match(TOKEN_T__16);
+          break;
+      }
+      state = 441;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  FunctionDefinitionContext functionDefinition() {
+    dynamic localctx = FunctionDefinitionContext(context, state);
+    enterRule(localctx, 62, RULE_functionDefinition);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 443;
+      match(TOKEN_T__26);
+      state = 445;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__5 || la == TOKEN_T__6) {
+        state = 444;
+        accessModifier();
+      }
+
+      state = 448;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__28) {
+        state = 447;
+        match(TOKEN_T__28);
+      }
+
+      state = 450;
+      match(TOKEN_T__29);
+      state = 451;
+      identifierOrFunctionIdentifier();
+      state = 452;
+      match(TOKEN_T__30);
+      state = 461;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if ((((la) & ~0x3f) == 0 && ((1 << la) & 140772674742007806) != 0) ||
+          ((((la - 74)) & ~0x3f) == 0 &&
+              ((1 << (la - 74)) & 1080916813829046509) != 0) ||
+          ((((la - 140)) & ~0x3f) == 0 &&
+              ((1 << (la - 140)) & 12722963) != 0)) {
+        state = 453;
+        operandDefinition();
+        state = 458;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+        while (la == TOKEN_T__14) {
+          state = 454;
+          match(TOKEN_T__14);
+          state = 455;
+          operandDefinition();
+          state = 460;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+        }
+      }
+
+      state = 463;
+      match(TOKEN_T__31);
+      state = 466;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__32) {
+        state = 464;
+        match(TOKEN_T__32);
+        state = 465;
+        typeSpecifier();
+      }
+
+      state = 468;
+      match(TOKEN_T__10);
+      state = 471;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__0:
+        case TOKEN_T__1:
+        case TOKEN_T__2:
+        case TOKEN_T__3:
+        case TOKEN_T__4:
+        case TOKEN_T__5:
+        case TOKEN_T__6:
+        case TOKEN_T__7:
+        case TOKEN_T__8:
+        case TOKEN_T__9:
+        case TOKEN_T__11:
+        case TOKEN_T__12:
+        case TOKEN_T__13:
+        case TOKEN_T__17:
+        case TOKEN_T__18:
+        case TOKEN_T__19:
+        case TOKEN_T__20:
+        case TOKEN_T__23:
+        case TOKEN_T__24:
+        case TOKEN_T__26:
+        case TOKEN_T__27:
+        case TOKEN_T__28:
+        case TOKEN_T__29:
+        case TOKEN_T__30:
+        case TOKEN_T__37:
+        case TOKEN_T__44:
+        case TOKEN_T__47:
+        case TOKEN_T__49:
+        case TOKEN_T__51:
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+        case TOKEN_T__57:
+        case TOKEN_T__58:
+        case TOKEN_T__59:
+        case TOKEN_T__60:
+        case TOKEN_T__62:
+        case TOKEN_T__63:
+        case TOKEN_T__67:
+        case TOKEN_T__68:
+        case TOKEN_T__73:
+        case TOKEN_T__75:
+        case TOKEN_T__76:
+        case TOKEN_T__78:
+        case TOKEN_T__79:
+        case TOKEN_T__80:
+        case TOKEN_T__81:
+        case TOKEN_T__82:
+        case TOKEN_T__83:
+        case TOKEN_T__84:
+        case TOKEN_T__85:
+        case TOKEN_T__86:
+        case TOKEN_T__87:
+        case TOKEN_T__88:
+        case TOKEN_T__89:
+        case TOKEN_T__90:
+        case TOKEN_T__91:
+        case TOKEN_T__92:
+        case TOKEN_T__93:
+        case TOKEN_T__94:
+        case TOKEN_T__95:
+        case TOKEN_T__96:
+        case TOKEN_T__97:
+        case TOKEN_T__98:
+        case TOKEN_T__99:
+        case TOKEN_T__100:
+        case TOKEN_T__102:
+        case TOKEN_T__103:
+        case TOKEN_T__104:
+        case TOKEN_T__105:
+        case TOKEN_T__107:
+        case TOKEN_T__108:
+        case TOKEN_T__109:
+        case TOKEN_T__110:
+        case TOKEN_T__111:
+        case TOKEN_T__112:
+        case TOKEN_T__113:
+        case TOKEN_T__117:
+        case TOKEN_T__118:
+        case TOKEN_T__120:
+        case TOKEN_T__123:
+        case TOKEN_T__124:
+        case TOKEN_T__125:
+        case TOKEN_T__126:
+        case TOKEN_T__129:
+        case TOKEN_T__130:
+        case TOKEN_T__131:
+        case TOKEN_T__132:
+        case TOKEN_T__139:
+        case TOKEN_T__140:
+        case TOKEN_T__143:
+        case TOKEN_T__147:
+        case TOKEN_T__148:
+        case TOKEN_T__149:
+        case TOKEN_T__150:
+        case TOKEN_T__151:
+        case TOKEN_T__152:
+        case TOKEN_T__153:
+        case TOKEN_T__154:
+        case TOKEN_T__155:
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_DATETIME:
+        case TOKEN_LONGNUMBER:
+        case TOKEN_DATE:
+        case TOKEN_TIME:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+        case TOKEN_STRING:
+        case TOKEN_NUMBER:
+          state = 469;
+          functionBody();
+          break;
+        case TOKEN_T__33:
+          state = 470;
+          match(TOKEN_T__33);
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  OperandDefinitionContext operandDefinition() {
+    dynamic localctx = OperandDefinitionContext(context, state);
+    enterRule(localctx, 64, RULE_operandDefinition);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 473;
+      referentialIdentifier();
+      state = 474;
+      typeSpecifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  FunctionBodyContext functionBody() {
+    dynamic localctx = FunctionBodyContext(context, state);
+    enterRule(localctx, 66, RULE_functionBody);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 476;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QuerySourceContext querySource() {
+    dynamic localctx = QuerySourceContext(context, state);
+    enterRule(localctx, 68, RULE_querySource);
+    try {
+      state = 484;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__37:
+          enterOuterAlt(localctx, 1);
+          state = 478;
+          retrieve();
+          break;
+        case TOKEN_T__0:
+        case TOKEN_T__1:
+        case TOKEN_T__2:
+        case TOKEN_T__3:
+        case TOKEN_T__4:
+        case TOKEN_T__5:
+        case TOKEN_T__6:
+        case TOKEN_T__7:
+        case TOKEN_T__8:
+        case TOKEN_T__9:
+        case TOKEN_T__11:
+        case TOKEN_T__12:
+        case TOKEN_T__17:
+        case TOKEN_T__19:
+        case TOKEN_T__26:
+        case TOKEN_T__27:
+        case TOKEN_T__28:
+        case TOKEN_T__29:
+        case TOKEN_T__44:
+        case TOKEN_T__49:
+        case TOKEN_T__51:
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+        case TOKEN_T__73:
+        case TOKEN_T__75:
+        case TOKEN_T__76:
+        case TOKEN_T__78:
+        case TOKEN_T__79:
+        case TOKEN_T__80:
+        case TOKEN_T__89:
+        case TOKEN_T__90:
+        case TOKEN_T__91:
+        case TOKEN_T__104:
+        case TOKEN_T__105:
+        case TOKEN_T__107:
+        case TOKEN_T__108:
+        case TOKEN_T__109:
+        case TOKEN_T__117:
+        case TOKEN_T__118:
+        case TOKEN_T__129:
+        case TOKEN_T__130:
+        case TOKEN_T__131:
+        case TOKEN_T__132:
+        case TOKEN_T__139:
+        case TOKEN_T__140:
+        case TOKEN_T__143:
+        case TOKEN_T__147:
+        case TOKEN_T__148:
+        case TOKEN_T__152:
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+          enterOuterAlt(localctx, 2);
+          state = 479;
+          qualifiedIdentifierExpression();
+          break;
+        case TOKEN_T__30:
+          enterOuterAlt(localctx, 3);
+          state = 480;
+          match(TOKEN_T__30);
+          state = 481;
+          expression(0);
+          state = 482;
+          match(TOKEN_T__31);
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  AliasedQuerySourceContext aliasedQuerySource() {
+    dynamic localctx = AliasedQuerySourceContext(context, state);
+    enterRule(localctx, 70, RULE_aliasedQuerySource);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 486;
+      querySource();
+      state = 487;
+      alias();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  AliasContext alias() {
+    dynamic localctx = AliasContext(context, state);
+    enterRule(localctx, 72, RULE_alias);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 489;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QueryInclusionClauseContext queryInclusionClause() {
+    dynamic localctx = QueryInclusionClauseContext(context, state);
+    enterRule(localctx, 74, RULE_queryInclusionClause);
+    try {
+      state = 493;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__34:
+          enterOuterAlt(localctx, 1);
+          state = 491;
+          withClause();
+          break;
+        case TOKEN_T__36:
+          enterOuterAlt(localctx, 2);
+          state = 492;
+          withoutClause();
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  WithClauseContext withClause() {
+    dynamic localctx = WithClauseContext(context, state);
+    enterRule(localctx, 76, RULE_withClause);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 495;
+      match(TOKEN_T__34);
+      state = 496;
+      aliasedQuerySource();
+      state = 497;
+      match(TOKEN_T__35);
+      state = 498;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  WithoutClauseContext withoutClause() {
+    dynamic localctx = WithoutClauseContext(context, state);
+    enterRule(localctx, 78, RULE_withoutClause);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 500;
+      match(TOKEN_T__36);
+      state = 501;
+      aliasedQuerySource();
+      state = 502;
+      match(TOKEN_T__35);
+      state = 503;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  RetrieveContext retrieve() {
+    dynamic localctx = RetrieveContext(context, state);
+    enterRule(localctx, 80, RULE_retrieve);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 505;
+      match(TOKEN_T__37);
+      state = 509;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 39, context)) {
+        case 1:
+          state = 506;
+          contextIdentifier();
+          state = 507;
+          match(TOKEN_T__38);
+          break;
+      }
+      state = 511;
+      namedTypeSpecifier();
+      state = 519;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__10) {
+        state = 512;
+        match(TOKEN_T__10);
+        state = 516;
+        errorHandler.sync(this);
+        switch (interpreter!.adaptivePredict(tokenStream, 40, context)) {
+          case 1:
+            state = 513;
+            codePath();
+            state = 514;
+            codeComparator();
+            break;
+        }
+        state = 518;
+        terminology();
+      }
+
+      state = 521;
+      match(TOKEN_T__39);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ContextIdentifierContext contextIdentifier() {
+    dynamic localctx = ContextIdentifierContext(context, state);
+    enterRule(localctx, 82, RULE_contextIdentifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 523;
+      qualifiedIdentifierExpression();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodePathContext codePath() {
+    dynamic localctx = CodePathContext(context, state);
+    enterRule(localctx, 84, RULE_codePath);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 525;
+      simplePath(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodeComparatorContext codeComparator() {
+    dynamic localctx = CodeComparatorContext(context, state);
+    enterRule(localctx, 86, RULE_codeComparator);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 527;
+      la = tokenStream.LA(1)!;
+      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 15393162788864) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TerminologyContext terminology() {
+    dynamic localctx = TerminologyContext(context, state);
+    enterRule(localctx, 88, RULE_terminology);
+    try {
+      state = 531;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 42, context)) {
+        case 1:
+          enterOuterAlt(localctx, 1);
+          state = 529;
+          qualifiedIdentifierExpression();
+          break;
+        case 2:
+          enterOuterAlt(localctx, 2);
+          state = 530;
+          expression(0);
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QualifierContext qualifier() {
+    dynamic localctx = QualifierContext(context, state);
+    enterRule(localctx, 90, RULE_qualifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 533;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QueryContext query() {
+    dynamic localctx = QueryContext(context, state);
+    enterRule(localctx, 92, RULE_query);
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 535;
+      sourceClause();
+      state = 537;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 43, context)) {
+        case 1:
+          state = 536;
+          letClause();
+          break;
+      }
+      state = 542;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 44, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          state = 539;
+          queryInclusionClause();
+        }
+        state = 544;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 44, context);
+      }
+      state = 546;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 45, context)) {
+        case 1:
+          state = 545;
+          whereClause();
+          break;
+      }
+      state = 550;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 46, context)) {
+        case 1:
+          state = 548;
+          aggregateClause();
+          break;
+        case 2:
+          state = 549;
+          returnClause();
+          break;
+      }
+      state = 553;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 47, context)) {
+        case 1:
+          state = 552;
+          sortClause();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  SourceClauseContext sourceClause() {
+    dynamic localctx = SourceClauseContext(context, state);
+    enterRule(localctx, 94, RULE_sourceClause);
+    int la;
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 556;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__18) {
+        state = 555;
+        match(TOKEN_T__18);
+      }
+
+      state = 558;
+      aliasedQuerySource();
+      state = 563;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 49, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          state = 559;
+          match(TOKEN_T__14);
+          state = 560;
+          aliasedQuerySource();
+        }
+        state = 565;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 49, context);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  LetClauseContext letClause() {
+    dynamic localctx = LetClauseContext(context, state);
+    enterRule(localctx, 96, RULE_letClause);
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 566;
+      match(TOKEN_T__43);
+      state = 567;
+      letClauseItem();
+      state = 572;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 50, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          state = 568;
+          match(TOKEN_T__14);
+          state = 569;
+          letClauseItem();
+        }
+        state = 574;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 50, context);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  LetClauseItemContext letClauseItem() {
+    dynamic localctx = LetClauseItemContext(context, state);
+    enterRule(localctx, 98, RULE_letClauseItem);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 575;
+      identifier();
+      state = 576;
+      match(TOKEN_T__10);
+      state = 577;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  WhereClauseContext whereClause() {
+    dynamic localctx = WhereClauseContext(context, state);
+    enterRule(localctx, 100, RULE_whereClause);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 579;
+      match(TOKEN_T__44);
+      state = 580;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ReturnClauseContext returnClause() {
+    dynamic localctx = ReturnClauseContext(context, state);
+    enterRule(localctx, 102, RULE_returnClause);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 582;
+      match(TOKEN_T__45);
+      state = 584;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 51, context)) {
+        case 1:
+          state = 583;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__46 || la == TOKEN_T__47)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          break;
+      }
+      state = 586;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  AggregateClauseContext aggregateClause() {
+    dynamic localctx = AggregateClauseContext(context, state);
+    enterRule(localctx, 104, RULE_aggregateClause);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 588;
+      match(TOKEN_T__48);
+      state = 590;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__46 || la == TOKEN_T__47) {
+        state = 589;
+        la = tokenStream.LA(1)!;
+        if (!(la == TOKEN_T__46 || la == TOKEN_T__47)) {
+          errorHandler.recoverInline(this);
+        } else {
+          if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+          errorHandler.reportMatch(this);
+          consume();
+        }
+      }
+
+      state = 592;
+      identifier();
+      state = 594;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__49) {
+        state = 593;
+        startingClause();
+      }
+
+      state = 596;
+      match(TOKEN_T__10);
+      state = 597;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  StartingClauseContext startingClause() {
+    dynamic localctx = StartingClauseContext(context, state);
+    enterRule(localctx, 106, RULE_startingClause);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 599;
+      match(TOKEN_T__49);
+      state = 606;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 54, context)) {
+        case 1:
+          state = 600;
+          simpleLiteral();
+          break;
+        case 2:
+          state = 601;
+          quantity();
+          break;
+        case 3:
+          state = 602;
+          match(TOKEN_T__30);
+          state = 603;
+          expression(0);
+          state = 604;
+          match(TOKEN_T__31);
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  SortClauseContext sortClause() {
+    dynamic localctx = SortClauseContext(context, state);
+    enterRule(localctx, 108, RULE_sortClause);
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 608;
+      match(TOKEN_T__50);
+      state = 619;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+          state = 609;
+          sortDirection();
+          break;
+        case TOKEN_T__51:
+          state = 610;
+          match(TOKEN_T__51);
+          state = 611;
+          sortByItem();
+          state = 616;
+          errorHandler.sync(this);
+          alt = interpreter!.adaptivePredict(tokenStream, 55, context);
+          while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+            if (alt == 1) {
+              state = 612;
+              match(TOKEN_T__14);
+              state = 613;
+              sortByItem();
+            }
+            state = 618;
+            errorHandler.sync(this);
+            alt = interpreter!.adaptivePredict(tokenStream, 55, context);
+          }
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  SortDirectionContext sortDirection() {
+    dynamic localctx = SortDirectionContext(context, state);
+    enterRule(localctx, 110, RULE_sortDirection);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 621;
+      la = tokenStream.LA(1)!;
+      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 135107988821114880) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  SortByItemContext sortByItem() {
+    dynamic localctx = SortByItemContext(context, state);
+    enterRule(localctx, 112, RULE_sortByItem);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 623;
+      expressionTerm(0);
+      state = 625;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 57, context)) {
+        case 1:
+          state = 624;
+          sortDirection();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QualifiedIdentifierContext qualifiedIdentifier() {
+    dynamic localctx = QualifiedIdentifierContext(context, state);
+    enterRule(localctx, 114, RULE_qualifiedIdentifier);
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 632;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 58, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          state = 627;
+          qualifier();
+          state = 628;
+          match(TOKEN_T__16);
+        }
+        state = 634;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 58, context);
+      }
+      state = 635;
+      identifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QualifiedIdentifierExpressionContext qualifiedIdentifierExpression() {
+    dynamic localctx = QualifiedIdentifierExpressionContext(context, state);
+    enterRule(localctx, 116, RULE_qualifiedIdentifierExpression);
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 642;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 59, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          state = 637;
+          qualifierExpression();
+          state = 638;
+          match(TOKEN_T__16);
+        }
+        state = 644;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 59, context);
+      }
+      state = 645;
+      referentialIdentifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QualifierExpressionContext qualifierExpression() {
+    dynamic localctx = QualifierExpressionContext(context, state);
+    enterRule(localctx, 118, RULE_qualifierExpression);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 647;
+      referentialIdentifier();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  SimplePathContext simplePath([int p = 0]) {
+    final parentctx = context;
+    final parentState = state;
+    dynamic localctx = SimplePathContext(context, parentState);
+    var prevctx = localctx;
+    var startState = 120;
+    enterRecursionRule(localctx, 120, RULE_simplePath, p);
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      localctx = SimplePathReferentialIdentifierContext(localctx);
+      context = localctx;
+      prevctx = localctx;
+
+      state = 650;
+      referentialIdentifier();
+      context!.stop = tokenStream.LT(-1);
+      state = 662;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 61, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          if (parseListeners != null) triggerExitRuleEvent();
+          prevctx = localctx;
+          state = 660;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 60, context)) {
+            case 1:
+              localctx = SimplePathQualifiedIdentifierContext(
+                  SimplePathContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_simplePath);
+              state = 652;
+              if (!(precpred(context, 2))) {
+                throw FailedPredicateException(this, "precpred(context, 2)");
+              }
+              state = 653;
+              match(TOKEN_T__16);
+              state = 654;
+              referentialIdentifier();
+              break;
+            case 2:
+              localctx = SimplePathIndexerContext(
+                  SimplePathContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_simplePath);
+              state = 655;
+              if (!(precpred(context, 1))) {
+                throw FailedPredicateException(this, "precpred(context, 1)");
+              }
+              state = 656;
+              match(TOKEN_T__37);
+              state = 657;
+              simpleLiteral();
+              state = 658;
+              match(TOKEN_T__39);
+              break;
+          }
+        }
+        state = 664;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 61, context);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      unrollRecursionContexts(parentctx);
+    }
+    return localctx;
+  }
+
+  SimpleLiteralContext simpleLiteral() {
+    dynamic localctx = SimpleLiteralContext(context, state);
+    enterRule(localctx, 122, RULE_simpleLiteral);
+    try {
+      state = 667;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_STRING:
+          localctx = SimpleStringLiteralContext(localctx);
+          enterOuterAlt(localctx, 1);
+          state = 665;
+          match(TOKEN_STRING);
+          break;
+        case TOKEN_NUMBER:
+          localctx = SimpleNumberLiteralContext(localctx);
+          enterOuterAlt(localctx, 2);
+          state = 666;
+          match(TOKEN_NUMBER);
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ExpressionContext expression([int p = 0]) {
+    final parentctx = context;
+    final parentState = state;
+    dynamic localctx = ExpressionContext(context, parentState);
+    var prevctx = localctx;
+    var startState = 124;
+    enterRecursionRule(localctx, 124, RULE_expression, p);
+    int la;
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 700;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 64, context)) {
+        case 1:
+          localctx = TermExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+
+          state = 670;
+          expressionTerm(0);
+          break;
+        case 2:
+          localctx = RetrieveExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 671;
+          retrieve();
+          break;
+        case 3:
+          localctx = QueryExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 672;
+          query();
+          break;
+        case 4:
+          localctx = CastExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 673;
+          match(TOKEN_T__62);
+          state = 674;
+          expression(0);
+          state = 675;
+          match(TOKEN_T__61);
+          state = 676;
+          typeSpecifier();
+          break;
+        case 5:
+          localctx = NotExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 678;
+          match(TOKEN_T__57);
+          state = 679;
+          expression(13);
+          break;
+        case 6:
+          localctx = ExistenceExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 680;
+          match(TOKEN_T__63);
+          state = 681;
+          expression(12);
+          break;
+        case 7:
+          localctx = DurationBetweenExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 684;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__67) {
+            state = 682;
+            match(TOKEN_T__67);
+            state = 683;
+            match(TOKEN_T__40);
+          }
+
+          state = 686;
+          pluralDateTimePrecision();
+          state = 687;
+          match(TOKEN_T__65);
+          state = 688;
+          expressionTerm(0);
+          state = 689;
+          match(TOKEN_T__66);
+          state = 690;
+          expressionTerm(0);
+          break;
+        case 8:
+          localctx = DifferenceBetweenExpressionContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 692;
+          match(TOKEN_T__68);
+          state = 693;
+          match(TOKEN_T__40);
+          state = 694;
+          pluralDateTimePrecision();
+          state = 695;
+          match(TOKEN_T__65);
+          state = 696;
+          expressionTerm(0);
+          state = 697;
+          match(TOKEN_T__66);
+          state = 698;
+          expressionTerm(0);
+          break;
+      }
+      context!.stop = tokenStream.LT(-1);
+      state = 750;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 69, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          if (parseListeners != null) triggerExitRuleEvent();
+          prevctx = localctx;
+          state = 748;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 68, context)) {
+            case 1:
+              localctx = InequalityExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 702;
+              if (!(precpred(context, 8))) {
+                throw FailedPredicateException(this, "precpred(context, 8)");
+              }
+              state = 703;
+              la = tokenStream.LA(1)!;
+              if (!(((((la - 22)) & ~0x3f) == 0 &&
+                  ((1 << (la - 22)) & 844424930131971) != 0))) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 704;
+              expression(9);
+              break;
+            case 2:
+              localctx = TimingExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 705;
+              if (!(precpred(context, 7))) {
+                throw FailedPredicateException(this, "precpred(context, 7)");
+              }
+              state = 706;
+              intervalOperatorPhrase();
+              state = 707;
+              expression(8);
+              break;
+            case 3:
+              localctx = EqualityExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 709;
+              if (!(precpred(context, 6))) {
+                throw FailedPredicateException(this, "precpred(context, 6)");
+              }
+              state = 710;
+              la = tokenStream.LA(1)!;
+              if (!(((((la - 42)) & ~0x3f) == 0 &&
+                  ((1 << (la - 42)) & 3221225475) != 0))) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 711;
+              expression(7);
+              break;
+            case 4:
+              localctx = MembershipExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 712;
+              if (!(precpred(context, 5))) {
+                throw FailedPredicateException(this, "precpred(context, 5)");
+              }
+              state = 713;
+              la = tokenStream.LA(1)!;
+              if (!(la == TOKEN_T__40 || la == TOKEN_T__73)) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 715;
+              errorHandler.sync(this);
+              switch (interpreter!.adaptivePredict(tokenStream, 65, context)) {
+                case 1:
+                  state = 714;
+                  dateTimePrecisionSpecifier();
+                  break;
+              }
+              state = 717;
+              expression(6);
+              break;
+            case 5:
+              localctx = AndExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 718;
+              if (!(precpred(context, 4))) {
+                throw FailedPredicateException(this, "precpred(context, 4)");
+              }
+              state = 719;
+              match(TOKEN_T__66);
+              state = 720;
+              expression(5);
+              break;
+            case 6:
+              localctx = OrExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 721;
+              if (!(precpred(context, 3))) {
+                throw FailedPredicateException(this, "precpred(context, 3)");
+              }
+              state = 722;
+              la = tokenStream.LA(1)!;
+              if (!(la == TOKEN_T__74 || la == TOKEN_T__75)) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 723;
+              expression(4);
+              break;
+            case 7:
+              localctx = ImpliesExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 724;
+              if (!(precpred(context, 2))) {
+                throw FailedPredicateException(this, "precpred(context, 2)");
+              }
+              state = 725;
+              match(TOKEN_T__76);
+              state = 726;
+              expression(3);
+              break;
+            case 8:
+              localctx = InFixSetExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 727;
+              if (!(precpred(context, 1))) {
+                throw FailedPredicateException(this, "precpred(context, 1)");
+              }
+              state = 728;
+              la = tokenStream.LA(1)!;
+              if (!(((((la - 78)) & ~0x3f) == 0 &&
+                  ((1 << (la - 78)) & 15) != 0))) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 729;
+              expression(2);
+              break;
+            case 9:
+              localctx = BooleanExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 730;
+              if (!(precpred(context, 16))) {
+                throw FailedPredicateException(this, "precpred(context, 16)");
+              }
+              state = 731;
+              match(TOKEN_T__56);
+              state = 733;
+              errorHandler.sync(this);
+              la = tokenStream.LA(1)!;
+              if (la == TOKEN_T__57) {
+                state = 732;
+                match(TOKEN_T__57);
+              }
+
+              state = 735;
+              la = tokenStream.LA(1)!;
+              if (!((((la) & ~0x3f) == 0 &&
+                  ((1 << la) & 4035225266123964416) != 0))) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              break;
+            case 10:
+              localctx = TypeExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 736;
+              if (!(precpred(context, 15))) {
+                throw FailedPredicateException(this, "precpred(context, 15)");
+              }
+              state = 737;
+              la = tokenStream.LA(1)!;
+              if (!(la == TOKEN_T__56 || la == TOKEN_T__61)) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 738;
+              typeSpecifier();
+              break;
+            case 11:
+              localctx = BetweenExpressionContext(
+                  ExpressionContext(parentctx, parentState));
+              pushNewRecursionContext(localctx, startState, RULE_expression);
+              state = 739;
+              if (!(precpred(context, 11))) {
+                throw FailedPredicateException(this, "precpred(context, 11)");
+              }
+              state = 741;
+              errorHandler.sync(this);
+              la = tokenStream.LA(1)!;
+              if (la == TOKEN_T__64) {
+                state = 740;
+                match(TOKEN_T__64);
+              }
+
+              state = 743;
+              match(TOKEN_T__65);
+              state = 744;
+              expressionTerm(0);
+              state = 745;
+              match(TOKEN_T__66);
+              state = 746;
+              expressionTerm(0);
+              break;
+          }
+        }
+        state = 752;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 69, context);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      unrollRecursionContexts(parentctx);
+    }
+    return localctx;
+  }
+
+  DateTimePrecisionContext dateTimePrecision() {
+    dynamic localctx = DateTimePrecisionContext(context, state);
+    enterRule(localctx, 126, RULE_dateTimePrecision);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 753;
+      la = tokenStream.LA(1)!;
+      if (!(((((la - 82)) & ~0x3f) == 0 && ((1 << (la - 82)) & 255) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  DateTimeComponentContext dateTimeComponent() {
+    dynamic localctx = DateTimeComponentContext(context, state);
+    enterRule(localctx, 128, RULE_dateTimeComponent);
+    try {
+      state = 759;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__81:
+        case TOKEN_T__82:
+        case TOKEN_T__83:
+        case TOKEN_T__84:
+        case TOKEN_T__85:
+        case TOKEN_T__86:
+        case TOKEN_T__87:
+        case TOKEN_T__88:
+          enterOuterAlt(localctx, 1);
+          state = 755;
+          dateTimePrecision();
+          break;
+        case TOKEN_T__89:
+          enterOuterAlt(localctx, 2);
+          state = 756;
+          match(TOKEN_T__89);
+          break;
+        case TOKEN_T__90:
+          enterOuterAlt(localctx, 3);
+          state = 757;
+          match(TOKEN_T__90);
+          break;
+        case TOKEN_T__91:
+          enterOuterAlt(localctx, 4);
+          state = 758;
+          match(TOKEN_T__91);
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  PluralDateTimePrecisionContext pluralDateTimePrecision() {
+    dynamic localctx = PluralDateTimePrecisionContext(context, state);
+    enterRule(localctx, 130, RULE_pluralDateTimePrecision);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 761;
+      la = tokenStream.LA(1)!;
+      if (!(((((la - 93)) & ~0x3f) == 0 && ((1 << (la - 93)) & 255) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ExpressionTermContext expressionTerm([int p = 0]) {
+    final parentctx = context;
+    final parentState = state;
+    dynamic localctx = ExpressionTermContext(context, parentState);
+    var prevctx = localctx;
+    var startState = 132;
+    enterRecursionRule(localctx, 132, RULE_expressionTerm, p);
+    int la;
+    try {
+      int alt;
+      enterOuterAlt(localctx, 1);
+      state = 841;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 76, context)) {
+        case 1:
+          localctx = TermExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+
+          state = 764;
+          term();
+          break;
+        case 2:
+          localctx = ConversionExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 765;
+          match(TOKEN_T__100);
+          state = 766;
+          expression(0);
+          state = 767;
+          match(TOKEN_T__101);
+          state = 770;
+          errorHandler.sync(this);
+          switch (tokenStream.LA(1)!) {
+            case TOKEN_T__0:
+            case TOKEN_T__1:
+            case TOKEN_T__2:
+            case TOKEN_T__3:
+            case TOKEN_T__4:
+            case TOKEN_T__5:
+            case TOKEN_T__6:
+            case TOKEN_T__7:
+            case TOKEN_T__8:
+            case TOKEN_T__9:
+            case TOKEN_T__11:
+            case TOKEN_T__12:
+            case TOKEN_T__17:
+            case TOKEN_T__19:
+            case TOKEN_T__20:
+            case TOKEN_T__23:
+            case TOKEN_T__24:
+            case TOKEN_T__25:
+            case TOKEN_T__26:
+            case TOKEN_T__27:
+            case TOKEN_T__28:
+            case TOKEN_T__29:
+            case TOKEN_T__44:
+            case TOKEN_T__49:
+            case TOKEN_T__51:
+            case TOKEN_T__52:
+            case TOKEN_T__53:
+            case TOKEN_T__54:
+            case TOKEN_T__55:
+            case TOKEN_T__73:
+            case TOKEN_T__75:
+            case TOKEN_T__76:
+            case TOKEN_T__78:
+            case TOKEN_T__79:
+            case TOKEN_T__80:
+            case TOKEN_T__89:
+            case TOKEN_T__90:
+            case TOKEN_T__91:
+            case TOKEN_T__104:
+            case TOKEN_T__105:
+            case TOKEN_T__107:
+            case TOKEN_T__108:
+            case TOKEN_T__109:
+            case TOKEN_T__117:
+            case TOKEN_T__118:
+            case TOKEN_T__129:
+            case TOKEN_T__130:
+            case TOKEN_T__131:
+            case TOKEN_T__132:
+            case TOKEN_T__139:
+            case TOKEN_T__140:
+            case TOKEN_T__143:
+            case TOKEN_T__147:
+            case TOKEN_T__148:
+            case TOKEN_T__152:
+            case TOKEN_T__153:
+            case TOKEN_T__154:
+            case TOKEN_QUOTEDIDENTIFIER:
+            case TOKEN_IDENTIFIER:
+            case TOKEN_DELIMITEDIDENTIFIER:
+              state = 768;
+              typeSpecifier();
+              break;
+            case TOKEN_T__81:
+            case TOKEN_T__82:
+            case TOKEN_T__83:
+            case TOKEN_T__84:
+            case TOKEN_T__85:
+            case TOKEN_T__86:
+            case TOKEN_T__87:
+            case TOKEN_T__88:
+            case TOKEN_T__92:
+            case TOKEN_T__93:
+            case TOKEN_T__94:
+            case TOKEN_T__95:
+            case TOKEN_T__96:
+            case TOKEN_T__97:
+            case TOKEN_T__98:
+            case TOKEN_T__99:
+            case TOKEN_STRING:
+              state = 769;
+              unit();
+              break;
+            default:
+              throw NoViableAltException(this);
+          }
+          break;
+        case 3:
+          localctx = PolarityExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 772;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__102 || la == TOKEN_T__103)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          state = 773;
+          expressionTerm(18);
+          break;
+        case 4:
+          localctx = TimeBoundaryExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 774;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          state = 775;
+          match(TOKEN_T__106);
+          state = 776;
+          expressionTerm(17);
+          break;
+        case 5:
+          localctx = TimeUnitExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 777;
+          dateTimeComponent();
+          state = 778;
+          match(TOKEN_T__18);
+          state = 779;
+          expressionTerm(16);
+          break;
+        case 6:
+          localctx = DurationExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 781;
+          match(TOKEN_T__67);
+          state = 782;
+          match(TOKEN_T__40);
+          state = 783;
+          pluralDateTimePrecision();
+          state = 784;
+          match(TOKEN_T__106);
+          state = 785;
+          expressionTerm(15);
+          break;
+        case 7:
+          localctx = DifferenceExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 787;
+          match(TOKEN_T__68);
+          state = 788;
+          match(TOKEN_T__40);
+          state = 789;
+          pluralDateTimePrecision();
+          state = 790;
+          match(TOKEN_T__106);
+          state = 791;
+          expressionTerm(14);
+          break;
+        case 8:
+          localctx = WidthExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 793;
+          match(TOKEN_T__107);
+          state = 794;
+          match(TOKEN_T__106);
+          state = 795;
+          expressionTerm(13);
+          break;
+        case 9:
+          localctx = SuccessorExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 796;
+          match(TOKEN_T__108);
+          state = 797;
+          match(TOKEN_T__106);
+          state = 798;
+          expressionTerm(12);
+          break;
+        case 10:
+          localctx = PredecessorExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 799;
+          match(TOKEN_T__109);
+          state = 800;
+          match(TOKEN_T__106);
+          state = 801;
+          expressionTerm(11);
+          break;
+        case 11:
+          localctx = ElementExtractorExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 802;
+          match(TOKEN_T__110);
+          state = 803;
+          match(TOKEN_T__18);
+          state = 804;
+          expressionTerm(10);
+          break;
+        case 12:
+          localctx = PointExtractorExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 805;
+          match(TOKEN_T__111);
+          state = 806;
+          match(TOKEN_T__18);
+          state = 807;
+          expressionTerm(9);
+          break;
+        case 13:
+          localctx = TypeExtentExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 808;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__112 || la == TOKEN_T__113)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          state = 809;
+          namedTypeSpecifier();
+          break;
+        case 14:
+          localctx = IfThenElseExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 810;
+          match(TOKEN_T__120);
+          state = 811;
+          expression(0);
+          state = 812;
+          match(TOKEN_T__121);
+          state = 813;
+          expression(0);
+          state = 814;
+          match(TOKEN_T__122);
+          state = 815;
+          expression(0);
+          break;
+        case 15:
+          localctx = CaseExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 817;
+          match(TOKEN_T__123);
+          state = 819;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if ((((la) & ~0x3f) == 0 &&
+                  ((1 << la) & -4758861967782021122) != 0) ||
+              ((((la - 64)) & ~0x3f) == 0 &&
+                  ((1 << (la - 64)) & -952520392159808463) != 0) ||
+              ((((la - 130)) & ~0x3f) == 0 &&
+                  ((1 << (la - 130)) & 68719234063) != 0)) {
+            state = 818;
+            expression(0);
+          }
+
+          state = 822;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          do {
+            state = 821;
+            caseExpressionItem();
+            state = 824;
+            errorHandler.sync(this);
+            la = tokenStream.LA(1)!;
+          } while (la == TOKEN_T__128);
+          state = 826;
+          match(TOKEN_T__122);
+          state = 827;
+          expression(0);
+          state = 828;
+          match(TOKEN_T__105);
+          break;
+        case 16:
+          localctx = AggregateExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 830;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__47 || la == TOKEN_T__124)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          state = 831;
+          expression(0);
+          break;
+        case 17:
+          localctx = SetAggregateExpressionTermContext(localctx);
+          context = localctx;
+          prevctx = localctx;
+          state = 832;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__125 || la == TOKEN_T__126)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          state = 833;
+          expression(0);
+          state = 839;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 75, context)) {
+            case 1:
+              state = 834;
+              match(TOKEN_T__127);
+              state = 837;
+              errorHandler.sync(this);
+              switch (interpreter!.adaptivePredict(tokenStream, 74, context)) {
+                case 1:
+                  state = 835;
+                  dateTimePrecision();
+                  break;
+                case 2:
+                  state = 836;
+                  expression(0);
+                  break;
+              }
+              break;
+          }
+          break;
+      }
+      context!.stop = tokenStream.LT(-1);
+      state = 862;
+      errorHandler.sync(this);
+      alt = interpreter!.adaptivePredict(tokenStream, 78, context);
+      while (alt != 2 && alt != ATN.INVALID_ALT_NUMBER) {
+        if (alt == 1) {
+          if (parseListeners != null) triggerExitRuleEvent();
+          prevctx = localctx;
+          state = 860;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 77, context)) {
+            case 1:
+              localctx = PowerExpressionTermContext(
+                  ExpressionTermContext(parentctx, parentState));
+              pushNewRecursionContext(
+                  localctx, startState, RULE_expressionTerm);
+              state = 843;
+              if (!(precpred(context, 7))) {
+                throw FailedPredicateException(this, "precpred(context, 7)");
+              }
+              state = 844;
+              match(TOKEN_T__114);
+              state = 845;
+              expressionTerm(8);
+              break;
+            case 2:
+              localctx = MultiplicationExpressionTermContext(
+                  ExpressionTermContext(parentctx, parentState));
+              pushNewRecursionContext(
+                  localctx, startState, RULE_expressionTerm);
+              state = 846;
+              if (!(precpred(context, 6))) {
+                throw FailedPredicateException(this, "precpred(context, 6)");
+              }
+              state = 847;
+              la = tokenStream.LA(1)!;
+              if (!(((((la - 116)) & ~0x3f) == 0 &&
+                  ((1 << (la - 116)) & 15) != 0))) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 848;
+              expressionTerm(7);
+              break;
+            case 3:
+              localctx = AdditionExpressionTermContext(
+                  ExpressionTermContext(parentctx, parentState));
+              pushNewRecursionContext(
+                  localctx, startState, RULE_expressionTerm);
+              state = 849;
+              if (!(precpred(context, 5))) {
+                throw FailedPredicateException(this, "precpred(context, 5)");
+              }
+              state = 850;
+              la = tokenStream.LA(1)!;
+              if (!(((((la - 103)) & ~0x3f) == 0 &&
+                  ((1 << (la - 103)) & 131075) != 0))) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              state = 851;
+              expressionTerm(6);
+              break;
+            case 4:
+              localctx = InvocationExpressionTermContext(
+                  ExpressionTermContext(parentctx, parentState));
+              pushNewRecursionContext(
+                  localctx, startState, RULE_expressionTerm);
+              state = 852;
+              if (!(precpred(context, 21))) {
+                throw FailedPredicateException(this, "precpred(context, 21)");
+              }
+              state = 853;
+              match(TOKEN_T__16);
+              state = 854;
+              qualifiedInvocation();
+              break;
+            case 5:
+              localctx = IndexedExpressionTermContext(
+                  ExpressionTermContext(parentctx, parentState));
+              pushNewRecursionContext(
+                  localctx, startState, RULE_expressionTerm);
+              state = 855;
+              if (!(precpred(context, 20))) {
+                throw FailedPredicateException(this, "precpred(context, 20)");
+              }
+              state = 856;
+              match(TOKEN_T__37);
+              state = 857;
+              expression(0);
+              state = 858;
+              match(TOKEN_T__39);
+              break;
+          }
+        }
+        state = 864;
+        errorHandler.sync(this);
+        alt = interpreter!.adaptivePredict(tokenStream, 78, context);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      unrollRecursionContexts(parentctx);
+    }
+    return localctx;
+  }
+
+  CaseExpressionItemContext caseExpressionItem() {
+    dynamic localctx = CaseExpressionItemContext(context, state);
+    enterRule(localctx, 134, RULE_caseExpressionItem);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 865;
+      match(TOKEN_T__128);
+      state = 866;
+      expression(0);
+      state = 867;
+      match(TOKEN_T__121);
+      state = 868;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  DateTimePrecisionSpecifierContext dateTimePrecisionSpecifier() {
+    dynamic localctx = DateTimePrecisionSpecifierContext(context, state);
+    enterRule(localctx, 136, RULE_dateTimePrecisionSpecifier);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 870;
+      dateTimePrecision();
+      state = 871;
+      match(TOKEN_T__106);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  RelativeQualifierContext relativeQualifier() {
+    dynamic localctx = RelativeQualifierContext(context, state);
+    enterRule(localctx, 138, RULE_relativeQualifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 873;
+      la = tokenStream.LA(1)!;
+      if (!(la == TOKEN_T__129 || la == TOKEN_T__130)) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  OffsetRelativeQualifierContext offsetRelativeQualifier() {
+    dynamic localctx = OffsetRelativeQualifierContext(context, state);
+    enterRule(localctx, 140, RULE_offsetRelativeQualifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 875;
+      la = tokenStream.LA(1)!;
+      if (!(la == TOKEN_T__131 || la == TOKEN_T__132)) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ExclusiveRelativeQualifierContext exclusiveRelativeQualifier() {
+    dynamic localctx = ExclusiveRelativeQualifierContext(context, state);
+    enterRule(localctx, 142, RULE_exclusiveRelativeQualifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 877;
+      la = tokenStream.LA(1)!;
+      if (!(la == TOKEN_T__133 || la == TOKEN_T__134)) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QuantityOffsetContext quantityOffset() {
+    dynamic localctx = QuantityOffsetContext(context, state);
+    enterRule(localctx, 144, RULE_quantityOffset);
+    int la;
+    try {
+      state = 886;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_NUMBER:
+          enterOuterAlt(localctx, 1);
+          state = 879;
+          quantity();
+          state = 881;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__131 || la == TOKEN_T__132) {
+            state = 880;
+            offsetRelativeQualifier();
+          }
+
+          break;
+        case TOKEN_T__133:
+        case TOKEN_T__134:
+          enterOuterAlt(localctx, 2);
+          state = 883;
+          exclusiveRelativeQualifier();
+          state = 884;
+          quantity();
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TemporalRelationshipContext temporalRelationship() {
+    dynamic localctx = TemporalRelationshipContext(context, state);
+    enterRule(localctx, 146, RULE_temporalRelationship);
+    int la;
+    try {
+      state = 896;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 83, context)) {
+        case 1:
+          enterOuterAlt(localctx, 1);
+          state = 889;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__135) {
+            state = 888;
+            match(TOKEN_T__135);
+          }
+
+          state = 891;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          break;
+        case 2:
+          enterOuterAlt(localctx, 2);
+          state = 892;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          state = 894;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__138) {
+            state = 893;
+            match(TOKEN_T__138);
+          }
+
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  IntervalOperatorPhraseContext intervalOperatorPhrase() {
+    dynamic localctx = IntervalOperatorPhraseContext(context, state);
+    enterRule(localctx, 148, RULE_intervalOperatorPhrase);
+    int la;
+    try {
+      state = 979;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 107, context)) {
+        case 1:
+          localctx = ConcurrentWithIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 1);
+          state = 899;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
+            state = 898;
+            la = tokenStream.LA(1)!;
+            if (!(((((la - 140)) & ~0x3f) == 0 &&
+                ((1 << (la - 140)) & 7) != 0))) {
+              errorHandler.recoverInline(this);
+            } else {
+              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+              errorHandler.reportMatch(this);
+              consume();
+            }
+          }
+
+          state = 901;
+          match(TOKEN_T__142);
+          state = 903;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (((((la - 82)) & ~0x3f) == 0 && ((1 << (la - 82)) & 255) != 0)) {
+            state = 902;
+            dateTimePrecision();
+          }
+
+          state = 907;
+          errorHandler.sync(this);
+          switch (tokenStream.LA(1)!) {
+            case TOKEN_T__129:
+            case TOKEN_T__130:
+              state = 905;
+              relativeQualifier();
+              break;
+            case TOKEN_T__61:
+              state = 906;
+              match(TOKEN_T__61);
+              break;
+            default:
+              throw NoViableAltException(this);
+          }
+          state = 910;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 87, context)) {
+            case 1:
+              state = 909;
+              la = tokenStream.LA(1)!;
+              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              break;
+          }
+          break;
+        case 2:
+          localctx = IncludesIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 2);
+          state = 913;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__64) {
+            state = 912;
+            match(TOKEN_T__64);
+          }
+
+          state = 915;
+          match(TOKEN_T__143);
+          state = 917;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 89, context)) {
+            case 1:
+              state = 916;
+              dateTimePrecisionSpecifier();
+              break;
+          }
+          state = 920;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 90, context)) {
+            case 1:
+              state = 919;
+              la = tokenStream.LA(1)!;
+              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              break;
+          }
+          break;
+        case 3:
+          localctx = IncludedInIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 3);
+          state = 923;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
+            state = 922;
+            la = tokenStream.LA(1)!;
+            if (!(((((la - 140)) & ~0x3f) == 0 &&
+                ((1 << (la - 140)) & 7) != 0))) {
+              errorHandler.recoverInline(this);
+            } else {
+              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+              errorHandler.reportMatch(this);
+              consume();
+            }
+          }
+
+          state = 926;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__64) {
+            state = 925;
+            match(TOKEN_T__64);
+          }
+
+          state = 928;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__144 || la == TOKEN_T__145)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          state = 930;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 93, context)) {
+            case 1:
+              state = 929;
+              dateTimePrecisionSpecifier();
+              break;
+          }
+          break;
+        case 4:
+          localctx = BeforeOrAfterIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 4);
+          state = 933;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
+            state = 932;
+            la = tokenStream.LA(1)!;
+            if (!(((((la - 140)) & ~0x3f) == 0 &&
+                ((1 << (la - 140)) & 7) != 0))) {
+              errorHandler.recoverInline(this);
+            } else {
+              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+              errorHandler.reportMatch(this);
+              consume();
+            }
+          }
+
+          state = 936;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (((((la - 134)) & ~0x3f) == 0 &&
+              ((1 << (la - 134)) & 2147483651) != 0)) {
+            state = 935;
+            quantityOffset();
+          }
+
+          state = 938;
+          temporalRelationship();
+          state = 940;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 96, context)) {
+            case 1:
+              state = 939;
+              dateTimePrecisionSpecifier();
+              break;
+          }
+          state = 943;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 97, context)) {
+            case 1:
+              state = 942;
+              la = tokenStream.LA(1)!;
+              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              break;
+          }
+          break;
+        case 5:
+          localctx = WithinIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 5);
+          state = 946;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 7) != 0)) {
+            state = 945;
+            la = tokenStream.LA(1)!;
+            if (!(((((la - 140)) & ~0x3f) == 0 &&
+                ((1 << (la - 140)) & 7) != 0))) {
+              errorHandler.recoverInline(this);
+            } else {
+              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+              errorHandler.reportMatch(this);
+              consume();
+            }
+          }
+
+          state = 949;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__64) {
+            state = 948;
+            match(TOKEN_T__64);
+          }
+
+          state = 951;
+          match(TOKEN_T__146);
+          state = 952;
+          quantity();
+          state = 953;
+          match(TOKEN_T__106);
+          state = 955;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 100, context)) {
+            case 1:
+              state = 954;
+              la = tokenStream.LA(1)!;
+              if (!(la == TOKEN_T__104 || la == TOKEN_T__105)) {
+                errorHandler.recoverInline(this);
+              } else {
+                if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+                errorHandler.reportMatch(this);
+                consume();
+              }
+              break;
+          }
+          break;
+        case 6:
+          localctx = MeetsIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 6);
+          state = 957;
+          match(TOKEN_T__147);
+          state = 959;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__136 || la == TOKEN_T__137) {
+            state = 958;
+            la = tokenStream.LA(1)!;
+            if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
+              errorHandler.recoverInline(this);
+            } else {
+              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+              errorHandler.reportMatch(this);
+              consume();
+            }
+          }
+
+          state = 962;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 102, context)) {
+            case 1:
+              state = 961;
+              dateTimePrecisionSpecifier();
+              break;
+          }
+          break;
+        case 7:
+          localctx = OverlapsIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 7);
+          state = 964;
+          match(TOKEN_T__148);
+          state = 966;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          if (la == TOKEN_T__136 || la == TOKEN_T__137) {
+            state = 965;
+            la = tokenStream.LA(1)!;
+            if (!(la == TOKEN_T__136 || la == TOKEN_T__137)) {
+              errorHandler.recoverInline(this);
+            } else {
+              if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+              errorHandler.reportMatch(this);
+              consume();
+            }
+          }
+
+          state = 969;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 104, context)) {
+            case 1:
+              state = 968;
+              dateTimePrecisionSpecifier();
+              break;
+          }
+          break;
+        case 8:
+          localctx = StartsIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 8);
+          state = 971;
+          match(TOKEN_T__139);
+          state = 973;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 105, context)) {
+            case 1:
+              state = 972;
+              dateTimePrecisionSpecifier();
+              break;
+          }
+          break;
+        case 9:
+          localctx = EndsIntervalOperatorPhraseContext(localctx);
+          enterOuterAlt(localctx, 9);
+          state = 975;
+          match(TOKEN_T__140);
+          state = 977;
+          errorHandler.sync(this);
+          switch (interpreter!.adaptivePredict(tokenStream, 106, context)) {
+            case 1:
+              state = 976;
+              dateTimePrecisionSpecifier();
+              break;
+          }
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TermContext term() {
+    dynamic localctx = TermContext(context, state);
+    enterRule(localctx, 150, RULE_term);
+    try {
+      state = 994;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 108, context)) {
+        case 1:
+          localctx = InvocationTermContext(localctx);
+          enterOuterAlt(localctx, 1);
+          state = 981;
+          invocation();
+          break;
+        case 2:
+          localctx = LiteralTermContext(localctx);
+          enterOuterAlt(localctx, 2);
+          state = 982;
+          literal();
+          break;
+        case 3:
+          localctx = ExternalConstantTermContext(localctx);
+          enterOuterAlt(localctx, 3);
+          state = 983;
+          externalConstant();
+          break;
+        case 4:
+          localctx = IntervalSelectorTermContext(localctx);
+          enterOuterAlt(localctx, 4);
+          state = 984;
+          intervalSelector();
+          break;
+        case 5:
+          localctx = TupleSelectorTermContext(localctx);
+          enterOuterAlt(localctx, 5);
+          state = 985;
+          tupleSelector();
+          break;
+        case 6:
+          localctx = InstanceSelectorTermContext(localctx);
+          enterOuterAlt(localctx, 6);
+          state = 986;
+          instanceSelector();
+          break;
+        case 7:
+          localctx = ListSelectorTermContext(localctx);
+          enterOuterAlt(localctx, 7);
+          state = 987;
+          listSelector();
+          break;
+        case 8:
+          localctx = CodeSelectorTermContext(localctx);
+          enterOuterAlt(localctx, 8);
+          state = 988;
+          codeSelector();
+          break;
+        case 9:
+          localctx = ConceptSelectorTermContext(localctx);
+          enterOuterAlt(localctx, 9);
+          state = 989;
+          conceptSelector();
+          break;
+        case 10:
+          localctx = ParenthesizedTermContext(localctx);
+          enterOuterAlt(localctx, 10);
+          state = 990;
+          match(TOKEN_T__30);
+          state = 991;
+          expression(0);
+          state = 992;
+          match(TOKEN_T__31);
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QualifiedInvocationContext qualifiedInvocation() {
+    dynamic localctx = QualifiedInvocationContext(context, state);
+    enterRule(localctx, 152, RULE_qualifiedInvocation);
+    try {
+      state = 998;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 109, context)) {
+        case 1:
+          localctx = QualifiedMemberInvocationContext(localctx);
+          enterOuterAlt(localctx, 1);
+          state = 996;
+          referentialIdentifier();
+          break;
+        case 2:
+          localctx = QualifiedFunctionInvocationContext(localctx);
+          enterOuterAlt(localctx, 2);
+          state = 997;
+          qualifiedFunction();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QualifiedFunctionContext qualifiedFunction() {
+    dynamic localctx = QualifiedFunctionContext(context, state);
+    enterRule(localctx, 154, RULE_qualifiedFunction);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1000;
+      identifierOrFunctionIdentifier();
+      state = 1001;
+      match(TOKEN_T__30);
+      state = 1003;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if ((((la) & ~0x3f) == 0 && ((1 << la) & -4758861967782021122) != 0) ||
+          ((((la - 64)) & ~0x3f) == 0 &&
+              ((1 << (la - 64)) & -952520392159808463) != 0) ||
+          ((((la - 130)) & ~0x3f) == 0 &&
+              ((1 << (la - 130)) & 68719234063) != 0)) {
+        state = 1002;
+        paramList();
+      }
+
+      state = 1005;
+      match(TOKEN_T__31);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  InvocationContext invocation() {
+    dynamic localctx = InvocationContext(context, state);
+    enterRule(localctx, 156, RULE_invocation);
+    try {
+      state = 1012;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 111, context)) {
+        case 1:
+          localctx = MemberInvocationContext(localctx);
+          enterOuterAlt(localctx, 1);
+          state = 1007;
+          referentialIdentifier();
+          break;
+        case 2:
+          localctx = FunctionInvocationContext(localctx);
+          enterOuterAlt(localctx, 2);
+          state = 1008;
+          function();
+          break;
+        case 3:
+          localctx = ThisInvocationContext(localctx);
+          enterOuterAlt(localctx, 3);
+          state = 1009;
+          match(TOKEN_T__149);
+          break;
+        case 4:
+          localctx = IndexInvocationContext(localctx);
+          enterOuterAlt(localctx, 4);
+          state = 1010;
+          match(TOKEN_T__150);
+          break;
+        case 5:
+          localctx = TotalInvocationContext(localctx);
+          enterOuterAlt(localctx, 5);
+          state = 1011;
+          match(TOKEN_T__151);
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  FunctionContext function() {
+    dynamic localctx = FunctionContext(context, state);
+    enterRule(localctx, 158, RULE_function);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1014;
+      referentialIdentifier();
+      state = 1015;
+      match(TOKEN_T__30);
+      state = 1017;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if ((((la) & ~0x3f) == 0 && ((1 << la) & -4758861967782021122) != 0) ||
+          ((((la - 64)) & ~0x3f) == 0 &&
+              ((1 << (la - 64)) & -952520392159808463) != 0) ||
+          ((((la - 130)) & ~0x3f) == 0 &&
+              ((1 << (la - 130)) & 68719234063) != 0)) {
+        state = 1016;
+        paramList();
+      }
+
+      state = 1019;
+      match(TOKEN_T__31);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  RatioContext ratio() {
+    dynamic localctx = RatioContext(context, state);
+    enterRule(localctx, 160, RULE_ratio);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1021;
+      quantity();
+      state = 1022;
+      match(TOKEN_T__10);
+      state = 1023;
+      quantity();
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  LiteralContext literal() {
+    dynamic localctx = LiteralContext(context, state);
+    enterRule(localctx, 162, RULE_literal);
+    int la;
+    try {
+      state = 1035;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 113, context)) {
+        case 1:
+          localctx = BooleanLiteralContext(localctx);
+          enterOuterAlt(localctx, 1);
+          state = 1025;
+          la = tokenStream.LA(1)!;
+          if (!(la == TOKEN_T__59 || la == TOKEN_T__60)) {
+            errorHandler.recoverInline(this);
+          } else {
+            if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+            errorHandler.reportMatch(this);
+            consume();
+          }
+          break;
+        case 2:
+          localctx = NullLiteralContext(localctx);
+          enterOuterAlt(localctx, 2);
+          state = 1026;
+          match(TOKEN_T__58);
+          break;
+        case 3:
+          localctx = StringLiteralContext(localctx);
+          enterOuterAlt(localctx, 3);
+          state = 1027;
+          match(TOKEN_STRING);
+          break;
+        case 4:
+          localctx = NumberLiteralContext(localctx);
+          enterOuterAlt(localctx, 4);
+          state = 1028;
+          match(TOKEN_NUMBER);
+          break;
+        case 5:
+          localctx = LongNumberLiteralContext(localctx);
+          enterOuterAlt(localctx, 5);
+          state = 1029;
+          match(TOKEN_LONGNUMBER);
+          break;
+        case 6:
+          localctx = DateTimeLiteralContext(localctx);
+          enterOuterAlt(localctx, 6);
+          state = 1030;
+          match(TOKEN_DATETIME);
+          break;
+        case 7:
+          localctx = DateLiteralContext(localctx);
+          enterOuterAlt(localctx, 7);
+          state = 1031;
+          match(TOKEN_DATE);
+          break;
+        case 8:
+          localctx = TimeLiteralContext(localctx);
+          enterOuterAlt(localctx, 8);
+          state = 1032;
+          match(TOKEN_TIME);
+          break;
+        case 9:
+          localctx = QuantityLiteralContext(localctx);
+          enterOuterAlt(localctx, 9);
+          state = 1033;
+          quantity();
+          break;
+        case 10:
+          localctx = RatioLiteralContext(localctx);
+          enterOuterAlt(localctx, 10);
+          state = 1034;
+          ratio();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  IntervalSelectorContext intervalSelector() {
+    dynamic localctx = IntervalSelectorContext(context, state);
+    enterRule(localctx, 164, RULE_intervalSelector);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1037;
+      match(TOKEN_T__23);
+      state = 1038;
+      la = tokenStream.LA(1)!;
+      if (!(la == TOKEN_T__30 || la == TOKEN_T__37)) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+      state = 1039;
+      expression(0);
+      state = 1040;
+      match(TOKEN_T__14);
+      state = 1041;
+      expression(0);
+      state = 1042;
+      la = tokenStream.LA(1)!;
+      if (!(la == TOKEN_T__31 || la == TOKEN_T__39)) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TupleSelectorContext tupleSelector() {
+    dynamic localctx = TupleSelectorContext(context, state);
+    enterRule(localctx, 166, RULE_tupleSelector);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1045;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__24) {
+        state = 1044;
+        match(TOKEN_T__24);
+      }
+
+      state = 1047;
+      match(TOKEN_T__13);
+      state = 1057;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__10:
+          state = 1048;
+          match(TOKEN_T__10);
+          break;
+        case TOKEN_T__0:
+        case TOKEN_T__1:
+        case TOKEN_T__2:
+        case TOKEN_T__3:
+        case TOKEN_T__4:
+        case TOKEN_T__5:
+        case TOKEN_T__6:
+        case TOKEN_T__7:
+        case TOKEN_T__8:
+        case TOKEN_T__9:
+        case TOKEN_T__11:
+        case TOKEN_T__12:
+        case TOKEN_T__17:
+        case TOKEN_T__19:
+        case TOKEN_T__26:
+        case TOKEN_T__27:
+        case TOKEN_T__28:
+        case TOKEN_T__29:
+        case TOKEN_T__44:
+        case TOKEN_T__49:
+        case TOKEN_T__51:
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+        case TOKEN_T__73:
+        case TOKEN_T__75:
+        case TOKEN_T__76:
+        case TOKEN_T__78:
+        case TOKEN_T__79:
+        case TOKEN_T__80:
+        case TOKEN_T__89:
+        case TOKEN_T__90:
+        case TOKEN_T__91:
+        case TOKEN_T__104:
+        case TOKEN_T__105:
+        case TOKEN_T__107:
+        case TOKEN_T__108:
+        case TOKEN_T__109:
+        case TOKEN_T__117:
+        case TOKEN_T__118:
+        case TOKEN_T__129:
+        case TOKEN_T__130:
+        case TOKEN_T__131:
+        case TOKEN_T__132:
+        case TOKEN_T__139:
+        case TOKEN_T__140:
+        case TOKEN_T__143:
+        case TOKEN_T__147:
+        case TOKEN_T__148:
+        case TOKEN_T__152:
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+          state = 1049;
+          tupleElementSelector();
+          state = 1054;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          while (la == TOKEN_T__14) {
+            state = 1050;
+            match(TOKEN_T__14);
+            state = 1051;
+            tupleElementSelector();
+            state = 1056;
+            errorHandler.sync(this);
+            la = tokenStream.LA(1)!;
+          }
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+      state = 1059;
+      match(TOKEN_T__15);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TupleElementSelectorContext tupleElementSelector() {
+    dynamic localctx = TupleElementSelectorContext(context, state);
+    enterRule(localctx, 168, RULE_tupleElementSelector);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1061;
+      referentialIdentifier();
+      state = 1062;
+      match(TOKEN_T__10);
+      state = 1063;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  InstanceSelectorContext instanceSelector() {
+    dynamic localctx = InstanceSelectorContext(context, state);
+    enterRule(localctx, 170, RULE_instanceSelector);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1065;
+      namedTypeSpecifier();
+      state = 1066;
+      match(TOKEN_T__13);
+      state = 1076;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__10:
+          state = 1067;
+          match(TOKEN_T__10);
+          break;
+        case TOKEN_T__0:
+        case TOKEN_T__1:
+        case TOKEN_T__2:
+        case TOKEN_T__3:
+        case TOKEN_T__4:
+        case TOKEN_T__5:
+        case TOKEN_T__6:
+        case TOKEN_T__7:
+        case TOKEN_T__8:
+        case TOKEN_T__9:
+        case TOKEN_T__11:
+        case TOKEN_T__12:
+        case TOKEN_T__17:
+        case TOKEN_T__19:
+        case TOKEN_T__26:
+        case TOKEN_T__27:
+        case TOKEN_T__28:
+        case TOKEN_T__29:
+        case TOKEN_T__44:
+        case TOKEN_T__49:
+        case TOKEN_T__51:
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+        case TOKEN_T__73:
+        case TOKEN_T__75:
+        case TOKEN_T__76:
+        case TOKEN_T__78:
+        case TOKEN_T__79:
+        case TOKEN_T__80:
+        case TOKEN_T__89:
+        case TOKEN_T__90:
+        case TOKEN_T__91:
+        case TOKEN_T__104:
+        case TOKEN_T__105:
+        case TOKEN_T__107:
+        case TOKEN_T__108:
+        case TOKEN_T__109:
+        case TOKEN_T__117:
+        case TOKEN_T__118:
+        case TOKEN_T__129:
+        case TOKEN_T__130:
+        case TOKEN_T__131:
+        case TOKEN_T__132:
+        case TOKEN_T__139:
+        case TOKEN_T__140:
+        case TOKEN_T__143:
+        case TOKEN_T__147:
+        case TOKEN_T__148:
+        case TOKEN_T__152:
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+          state = 1068;
+          instanceElementSelector();
+          state = 1073;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+          while (la == TOKEN_T__14) {
+            state = 1069;
+            match(TOKEN_T__14);
+            state = 1070;
+            instanceElementSelector();
+            state = 1075;
+            errorHandler.sync(this);
+            la = tokenStream.LA(1)!;
+          }
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+      state = 1078;
+      match(TOKEN_T__15);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  InstanceElementSelectorContext instanceElementSelector() {
+    dynamic localctx = InstanceElementSelectorContext(context, state);
+    enterRule(localctx, 172, RULE_instanceElementSelector);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1080;
+      referentialIdentifier();
+      state = 1081;
+      match(TOKEN_T__10);
+      state = 1082;
+      expression(0);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ListSelectorContext listSelector() {
+    dynamic localctx = ListSelectorContext(context, state);
+    enterRule(localctx, 174, RULE_listSelector);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1091;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if (la == TOKEN_T__20) {
+        state = 1084;
+        match(TOKEN_T__20);
+        state = 1089;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+        if (la == TOKEN_T__21) {
+          state = 1085;
+          match(TOKEN_T__21);
+          state = 1086;
+          typeSpecifier();
+          state = 1087;
+          match(TOKEN_T__22);
+        }
+      }
+
+      state = 1093;
+      match(TOKEN_T__13);
+      state = 1102;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      if ((((la) & ~0x3f) == 0 && ((1 << la) & -4758861967782021122) != 0) ||
+          ((((la - 64)) & ~0x3f) == 0 &&
+              ((1 << (la - 64)) & -952520392159808463) != 0) ||
+          ((((la - 130)) & ~0x3f) == 0 &&
+              ((1 << (la - 130)) & 68719234063) != 0)) {
+        state = 1094;
+        expression(0);
+        state = 1099;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+        while (la == TOKEN_T__14) {
+          state = 1095;
+          match(TOKEN_T__14);
+          state = 1096;
+          expression(0);
+          state = 1101;
+          errorHandler.sync(this);
+          la = tokenStream.LA(1)!;
+        }
+      }
+
+      state = 1104;
+      match(TOKEN_T__15);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  DisplayClauseContext displayClause() {
+    dynamic localctx = DisplayClauseContext(context, state);
+    enterRule(localctx, 176, RULE_displayClause);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1106;
+      match(TOKEN_T__152);
+      state = 1107;
+      match(TOKEN_STRING);
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  CodeSelectorContext codeSelector() {
+    dynamic localctx = CodeSelectorContext(context, state);
+    enterRule(localctx, 178, RULE_codeSelector);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1109;
+      match(TOKEN_T__153);
+      state = 1110;
+      match(TOKEN_STRING);
+      state = 1111;
+      match(TOKEN_T__18);
+      state = 1112;
+      codesystemIdentifier();
+      state = 1114;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 123, context)) {
+        case 1:
+          state = 1113;
+          displayClause();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ConceptSelectorContext conceptSelector() {
+    dynamic localctx = ConceptSelectorContext(context, state);
+    enterRule(localctx, 180, RULE_conceptSelector);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1116;
+      match(TOKEN_T__154);
+      state = 1117;
+      match(TOKEN_T__13);
+      state = 1118;
+      codeSelector();
+      state = 1123;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while (la == TOKEN_T__14) {
+        state = 1119;
+        match(TOKEN_T__14);
+        state = 1120;
+        codeSelector();
+        state = 1125;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+      state = 1126;
+      match(TOKEN_T__15);
+      state = 1128;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 125, context)) {
+        case 1:
+          state = 1127;
+          displayClause();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  KeywordContext keyword() {
+    dynamic localctx = KeywordContext(context, state);
+    enterRule(localctx, 182, RULE_keyword);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1130;
+      la = tokenStream.LA(1)!;
+      if (!((((la) & ~0x3f) == 0 && ((1 << la) & -15150577076226) != 0) ||
+          ((((la - 64)) & ~0x3f) == 0 &&
+              ((1 << (la - 64)) & -87821842001183681) != 0) ||
+          ((((la - 128)) & ~0x3f) == 0 &&
+              ((1 << (la - 128)) & 239075135) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ReservedWordContext reservedWord() {
+    dynamic localctx = ReservedWordContext(context, state);
+    enterRule(localctx, 184, RULE_reservedWord);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1132;
+      la = tokenStream.LA(1)!;
+      if (!((((la) & ~0x3f) == 0 && ((1 << la) & -140787825319084032) != 0) ||
+          ((((la - 64)) & ~0x3f) == 0 &&
+              ((1 << (la - 64)) & -141994780371711937) != 0) ||
+          ((((la - 128)) & ~0x3f) == 0 &&
+              ((1 << (la - 128)) & 202297091) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  KeywordIdentifierContext keywordIdentifier() {
+    dynamic localctx = KeywordIdentifierContext(context, state);
+    enterRule(localctx, 186, RULE_keywordIdentifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1134;
+      la = tokenStream.LA(1)!;
+      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 140772674742007806) != 0) ||
+          ((((la - 74)) & ~0x3f) == 0 &&
+              ((1 << (la - 74)) & 1080916813829046509) != 0) ||
+          ((((la - 140)) & ~0x3f) == 0 && ((1 << (la - 140)) & 8979) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ObsoleteIdentifierContext obsoleteIdentifier() {
+    dynamic localctx = ObsoleteIdentifierContext(context, state);
+    enterRule(localctx, 188, RULE_obsoleteIdentifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1136;
+      la = tokenStream.LA(1)!;
+      if (!((((la) & ~0x3f) == 0 && ((1 << la) & 288687772990177284) != 0) ||
+          ((((la - 64)) & ~0x3f) == 0 &&
+              ((1 << (la - 64)) & 6597539529729) != 0) ||
+          ((((la - 153)) & ~0x3f) == 0 && ((1 << (la - 153)) & 7) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  FunctionIdentifierContext functionIdentifier() {
+    dynamic localctx = FunctionIdentifierContext(context, state);
+    enterRule(localctx, 190, RULE_functionIdentifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1138;
+      la = tokenStream.LA(1)!;
+      if (!((((la) & ~0x3f) == 0 && ((1 << la) & -15150577076226) != 0) ||
+          ((((la - 64)) & ~0x3f) == 0 &&
+              ((1 << (la - 64)) & -87821842001183681) != 0) ||
+          ((((la - 128)) & ~0x3f) == 0 &&
+              ((1 << (la - 128)) & 239072831) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  TypeNameIdentifierContext typeNameIdentifier() {
+    dynamic localctx = TypeNameIdentifierContext(context, state);
+    enterRule(localctx, 192, RULE_typeNameIdentifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1140;
+      la = tokenStream.LA(1)!;
+      if (!(la == TOKEN_T__89 ||
+          la == TOKEN_T__90 ||
+          la == TOKEN_T__153 ||
+          la == TOKEN_T__154)) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ReferentialIdentifierContext referentialIdentifier() {
+    dynamic localctx = ReferentialIdentifierContext(context, state);
+    enterRule(localctx, 194, RULE_referentialIdentifier);
+    try {
+      state = 1144;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+          enterOuterAlt(localctx, 1);
+          state = 1142;
+          identifier();
+          break;
+        case TOKEN_T__0:
+        case TOKEN_T__1:
+        case TOKEN_T__2:
+        case TOKEN_T__3:
+        case TOKEN_T__4:
+        case TOKEN_T__5:
+        case TOKEN_T__6:
+        case TOKEN_T__7:
+        case TOKEN_T__8:
+        case TOKEN_T__9:
+        case TOKEN_T__11:
+        case TOKEN_T__12:
+        case TOKEN_T__17:
+        case TOKEN_T__19:
+        case TOKEN_T__26:
+        case TOKEN_T__27:
+        case TOKEN_T__28:
+        case TOKEN_T__29:
+        case TOKEN_T__44:
+        case TOKEN_T__49:
+        case TOKEN_T__51:
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+        case TOKEN_T__73:
+        case TOKEN_T__75:
+        case TOKEN_T__76:
+        case TOKEN_T__78:
+        case TOKEN_T__79:
+        case TOKEN_T__80:
+        case TOKEN_T__89:
+        case TOKEN_T__90:
+        case TOKEN_T__91:
+        case TOKEN_T__104:
+        case TOKEN_T__105:
+        case TOKEN_T__107:
+        case TOKEN_T__108:
+        case TOKEN_T__109:
+        case TOKEN_T__117:
+        case TOKEN_T__118:
+        case TOKEN_T__129:
+        case TOKEN_T__130:
+        case TOKEN_T__131:
+        case TOKEN_T__132:
+        case TOKEN_T__139:
+        case TOKEN_T__140:
+        case TOKEN_T__143:
+        case TOKEN_T__147:
+        case TOKEN_T__148:
+        case TOKEN_T__152:
+          enterOuterAlt(localctx, 2);
+          state = 1143;
+          keywordIdentifier();
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ReferentialOrTypeNameIdentifierContext referentialOrTypeNameIdentifier() {
+    dynamic localctx = ReferentialOrTypeNameIdentifierContext(context, state);
+    enterRule(localctx, 196, RULE_referentialOrTypeNameIdentifier);
+    try {
+      state = 1148;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 127, context)) {
+        case 1:
+          enterOuterAlt(localctx, 1);
+          state = 1146;
+          referentialIdentifier();
+          break;
+        case 2:
+          enterOuterAlt(localctx, 2);
+          state = 1147;
+          typeNameIdentifier();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  IdentifierOrFunctionIdentifierContext identifierOrFunctionIdentifier() {
+    dynamic localctx = IdentifierOrFunctionIdentifierContext(context, state);
+    enterRule(localctx, 198, RULE_identifierOrFunctionIdentifier);
+    try {
+      state = 1152;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+          enterOuterAlt(localctx, 1);
+          state = 1150;
+          identifier();
+          break;
+        case TOKEN_T__0:
+        case TOKEN_T__1:
+        case TOKEN_T__2:
+        case TOKEN_T__3:
+        case TOKEN_T__4:
+        case TOKEN_T__5:
+        case TOKEN_T__6:
+        case TOKEN_T__7:
+        case TOKEN_T__8:
+        case TOKEN_T__9:
+        case TOKEN_T__11:
+        case TOKEN_T__12:
+        case TOKEN_T__17:
+        case TOKEN_T__18:
+        case TOKEN_T__19:
+        case TOKEN_T__20:
+        case TOKEN_T__23:
+        case TOKEN_T__24:
+        case TOKEN_T__26:
+        case TOKEN_T__27:
+        case TOKEN_T__28:
+        case TOKEN_T__29:
+        case TOKEN_T__34:
+        case TOKEN_T__35:
+        case TOKEN_T__36:
+        case TOKEN_T__40:
+        case TOKEN_T__43:
+        case TOKEN_T__44:
+        case TOKEN_T__45:
+        case TOKEN_T__46:
+        case TOKEN_T__47:
+        case TOKEN_T__48:
+        case TOKEN_T__49:
+        case TOKEN_T__50:
+        case TOKEN_T__51:
+        case TOKEN_T__52:
+        case TOKEN_T__53:
+        case TOKEN_T__54:
+        case TOKEN_T__55:
+        case TOKEN_T__56:
+        case TOKEN_T__57:
+        case TOKEN_T__58:
+        case TOKEN_T__59:
+        case TOKEN_T__60:
+        case TOKEN_T__61:
+        case TOKEN_T__62:
+        case TOKEN_T__63:
+        case TOKEN_T__64:
+        case TOKEN_T__65:
+        case TOKEN_T__66:
+        case TOKEN_T__67:
+        case TOKEN_T__68:
+        case TOKEN_T__73:
+        case TOKEN_T__74:
+        case TOKEN_T__75:
+        case TOKEN_T__76:
+        case TOKEN_T__78:
+        case TOKEN_T__79:
+        case TOKEN_T__80:
+        case TOKEN_T__81:
+        case TOKEN_T__82:
+        case TOKEN_T__83:
+        case TOKEN_T__84:
+        case TOKEN_T__85:
+        case TOKEN_T__86:
+        case TOKEN_T__87:
+        case TOKEN_T__88:
+        case TOKEN_T__89:
+        case TOKEN_T__90:
+        case TOKEN_T__91:
+        case TOKEN_T__92:
+        case TOKEN_T__93:
+        case TOKEN_T__94:
+        case TOKEN_T__95:
+        case TOKEN_T__96:
+        case TOKEN_T__97:
+        case TOKEN_T__98:
+        case TOKEN_T__99:
+        case TOKEN_T__100:
+        case TOKEN_T__101:
+        case TOKEN_T__104:
+        case TOKEN_T__105:
+        case TOKEN_T__106:
+        case TOKEN_T__107:
+        case TOKEN_T__108:
+        case TOKEN_T__109:
+        case TOKEN_T__110:
+        case TOKEN_T__111:
+        case TOKEN_T__112:
+        case TOKEN_T__113:
+        case TOKEN_T__117:
+        case TOKEN_T__118:
+        case TOKEN_T__120:
+        case TOKEN_T__121:
+        case TOKEN_T__122:
+        case TOKEN_T__123:
+        case TOKEN_T__124:
+        case TOKEN_T__125:
+        case TOKEN_T__126:
+        case TOKEN_T__127:
+        case TOKEN_T__128:
+        case TOKEN_T__129:
+        case TOKEN_T__130:
+        case TOKEN_T__131:
+        case TOKEN_T__132:
+        case TOKEN_T__136:
+        case TOKEN_T__137:
+        case TOKEN_T__139:
+        case TOKEN_T__140:
+        case TOKEN_T__141:
+        case TOKEN_T__142:
+        case TOKEN_T__143:
+        case TOKEN_T__144:
+        case TOKEN_T__145:
+        case TOKEN_T__146:
+        case TOKEN_T__147:
+        case TOKEN_T__148:
+        case TOKEN_T__152:
+        case TOKEN_T__153:
+        case TOKEN_T__154:
+          enterOuterAlt(localctx, 2);
+          state = 1151;
+          functionIdentifier();
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  IdentifierContext identifier() {
+    dynamic localctx = IdentifierContext(context, state);
+    enterRule(localctx, 200, RULE_identifier);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1154;
+      la = tokenStream.LA(1)!;
+      if (!(((((la - 157)) & ~0x3f) == 0 && ((1 << (la - 157)) & 97) != 0))) {
+        errorHandler.recoverInline(this);
+      } else {
+        if (tokenStream.LA(1)! == IntStream.EOF) matchedEOF = true;
+        errorHandler.reportMatch(this);
+        consume();
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ExternalConstantContext externalConstant() {
+    dynamic localctx = ExternalConstantContext(context, state);
+    enterRule(localctx, 202, RULE_externalConstant);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1156;
+      match(TOKEN_T__155);
+      state = 1159;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_QUOTEDIDENTIFIER:
+        case TOKEN_IDENTIFIER:
+        case TOKEN_DELIMITEDIDENTIFIER:
+          state = 1157;
+          identifier();
+          break;
+        case TOKEN_STRING:
+          state = 1158;
+          match(TOKEN_STRING);
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  ParamListContext paramList() {
+    dynamic localctx = ParamListContext(context, state);
+    enterRule(localctx, 204, RULE_paramList);
+    int la;
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1161;
+      expression(0);
+      state = 1166;
+      errorHandler.sync(this);
+      la = tokenStream.LA(1)!;
+      while (la == TOKEN_T__14) {
+        state = 1162;
+        match(TOKEN_T__14);
+        state = 1163;
+        expression(0);
+        state = 1168;
+        errorHandler.sync(this);
+        la = tokenStream.LA(1)!;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  QuantityContext quantity() {
+    dynamic localctx = QuantityContext(context, state);
+    enterRule(localctx, 206, RULE_quantity);
+    try {
+      enterOuterAlt(localctx, 1);
+      state = 1169;
+      match(TOKEN_NUMBER);
+      state = 1171;
+      errorHandler.sync(this);
+      switch (interpreter!.adaptivePredict(tokenStream, 131, context)) {
+        case 1:
+          state = 1170;
+          unit();
+          break;
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  UnitContext unit() {
+    dynamic localctx = UnitContext(context, state);
+    enterRule(localctx, 208, RULE_unit);
+    try {
+      state = 1176;
+      errorHandler.sync(this);
+      switch (tokenStream.LA(1)!) {
+        case TOKEN_T__81:
+        case TOKEN_T__82:
+        case TOKEN_T__83:
+        case TOKEN_T__84:
+        case TOKEN_T__85:
+        case TOKEN_T__86:
+        case TOKEN_T__87:
+        case TOKEN_T__88:
+          enterOuterAlt(localctx, 1);
+          state = 1173;
+          dateTimePrecision();
+          break;
+        case TOKEN_T__92:
+        case TOKEN_T__93:
+        case TOKEN_T__94:
+        case TOKEN_T__95:
+        case TOKEN_T__96:
+        case TOKEN_T__97:
+        case TOKEN_T__98:
+        case TOKEN_T__99:
+          enterOuterAlt(localctx, 2);
+          state = 1174;
+          pluralDateTimePrecision();
+          break;
+        case TOKEN_STRING:
+          enterOuterAlt(localctx, 3);
+          state = 1175;
+          match(TOKEN_STRING);
+          break;
+        default:
+          throw NoViableAltException(this);
+      }
+    } on RecognitionException catch (re) {
+      localctx.exception = re;
+      errorHandler.reportError(this, re);
+      errorHandler.recover(this, re);
+    } finally {
+      exitRule();
+    }
+    return localctx;
+  }
+
+  bool _simplePath_sempred(dynamic localctx, int predIndex) {
+    switch (predIndex) {
+      case 0:
+        return precpred(context, 2);
+      case 1:
+        return precpred(context, 1);
+    }
+    return true;
+  }
+
+  bool _expression_sempred(dynamic localctx, int predIndex) {
+    switch (predIndex) {
+      case 2:
+        return precpred(context, 8);
+      case 3:
+        return precpred(context, 7);
+      case 4:
+        return precpred(context, 6);
+      case 5:
+        return precpred(context, 5);
+      case 6:
+        return precpred(context, 4);
+      case 7:
+        return precpred(context, 3);
+      case 8:
+        return precpred(context, 2);
+      case 9:
+        return precpred(context, 1);
+      case 10:
+        return precpred(context, 16);
+      case 11:
+        return precpred(context, 15);
+      case 12:
+        return precpred(context, 11);
+    }
+    return true;
+  }
+
+  bool _expressionTerm_sempred(dynamic localctx, int predIndex) {
+    switch (predIndex) {
+      case 13:
+        return precpred(context, 7);
+      case 14:
+        return precpred(context, 6);
+      case 15:
+        return precpred(context, 5);
+      case 16:
+        return precpred(context, 21);
+      case 17:
+        return precpred(context, 20);
+    }
+    return true;
+  }
 }
 
 class LibraryContext extends ParserRuleContext {
-  TerminalNode? EOF() => getToken(cqlParser.TOKEN_EOF, 0);
-  LibraryDefinitionContext? libraryDefinition() =>
-      getRuleContext<LibraryDefinitionContext>(0);
-  List<DefinitionContext> definitions() => getRuleContexts<DefinitionContext>();
-  DefinitionContext? definition(int i) => getRuleContext<DefinitionContext>(i);
-  List<StatementContext> statements() => getRuleContexts<StatementContext>();
-  StatementContext? statement(int i) => getRuleContext<StatementContext>(i);
   LibraryContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_library;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16708,27 +16703,28 @@ class LibraryContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_library;
+
+  TerminalNode? EOF() => getToken(cqlParser.TOKEN_EOF, 0);
+
+  LibraryDefinitionContext? libraryDefinition() =>
+      getRuleContext<LibraryDefinitionContext>(0);
+
+  List<DefinitionContext> definitions() => getRuleContexts<DefinitionContext>();
+
+  DefinitionContext? definition(int i) => getRuleContext<DefinitionContext>(i);
+
+  List<StatementContext> statements() => getRuleContexts<StatementContext>();
+
+  StatementContext? statement(int i) => getRuleContext<StatementContext>(i);
 }
 
 class DefinitionContext extends ParserRuleContext {
-  UsingDefinitionContext? usingDefinition() =>
-      getRuleContext<UsingDefinitionContext>(0);
-  IncludeDefinitionContext? includeDefinition() =>
-      getRuleContext<IncludeDefinitionContext>(0);
-  CodesystemDefinitionContext? codesystemDefinition() =>
-      getRuleContext<CodesystemDefinitionContext>(0);
-  ValuesetDefinitionContext? valuesetDefinition() =>
-      getRuleContext<ValuesetDefinitionContext>(0);
-  CodeDefinitionContext? codeDefinition() =>
-      getRuleContext<CodeDefinitionContext>(0);
-  ConceptDefinitionContext? conceptDefinition() =>
-      getRuleContext<ConceptDefinitionContext>(0);
-  ParameterDefinitionContext? parameterDefinition() =>
-      getRuleContext<ParameterDefinitionContext>(0);
   DefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_definition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16737,17 +16733,36 @@ class DefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_definition;
+
+  UsingDefinitionContext? usingDefinition() =>
+      getRuleContext<UsingDefinitionContext>(0);
+
+  IncludeDefinitionContext? includeDefinition() =>
+      getRuleContext<IncludeDefinitionContext>(0);
+
+  CodesystemDefinitionContext? codesystemDefinition() =>
+      getRuleContext<CodesystemDefinitionContext>(0);
+
+  ValuesetDefinitionContext? valuesetDefinition() =>
+      getRuleContext<ValuesetDefinitionContext>(0);
+
+  CodeDefinitionContext? codeDefinition() =>
+      getRuleContext<CodeDefinitionContext>(0);
+
+  ConceptDefinitionContext? conceptDefinition() =>
+      getRuleContext<ConceptDefinitionContext>(0);
+
+  ParameterDefinitionContext? parameterDefinition() =>
+      getRuleContext<ParameterDefinitionContext>(0);
 }
 
 class LibraryDefinitionContext extends ParserRuleContext {
-  QualifiedIdentifierContext? qualifiedIdentifier() =>
-      getRuleContext<QualifiedIdentifierContext>(0);
-  VersionSpecifierContext? versionSpecifier() =>
-      getRuleContext<VersionSpecifierContext>(0);
   LibraryDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_libraryDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16756,17 +16771,21 @@ class LibraryDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_libraryDefinition;
+
+  QualifiedIdentifierContext? qualifiedIdentifier() =>
+      getRuleContext<QualifiedIdentifierContext>(0);
+
+  VersionSpecifierContext? versionSpecifier() =>
+      getRuleContext<VersionSpecifierContext>(0);
 }
 
 class UsingDefinitionContext extends ParserRuleContext {
-  ModelIdentifierContext? modelIdentifier() =>
-      getRuleContext<ModelIdentifierContext>(0);
-  VersionSpecifierContext? versionSpecifier() =>
-      getRuleContext<VersionSpecifierContext>(0);
   UsingDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_usingDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16775,19 +16794,21 @@ class UsingDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_usingDefinition;
+
+  ModelIdentifierContext? modelIdentifier() =>
+      getRuleContext<ModelIdentifierContext>(0);
+
+  VersionSpecifierContext? versionSpecifier() =>
+      getRuleContext<VersionSpecifierContext>(0);
 }
 
 class IncludeDefinitionContext extends ParserRuleContext {
-  QualifiedIdentifierContext? qualifiedIdentifier() =>
-      getRuleContext<QualifiedIdentifierContext>(0);
-  VersionSpecifierContext? versionSpecifier() =>
-      getRuleContext<VersionSpecifierContext>(0);
-  LocalIdentifierContext? localIdentifier() =>
-      getRuleContext<LocalIdentifierContext>(0);
   IncludeDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_includeDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16796,14 +16817,24 @@ class IncludeDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_includeDefinition;
+
+  QualifiedIdentifierContext? qualifiedIdentifier() =>
+      getRuleContext<QualifiedIdentifierContext>(0);
+
+  VersionSpecifierContext? versionSpecifier() =>
+      getRuleContext<VersionSpecifierContext>(0);
+
+  LocalIdentifierContext? localIdentifier() =>
+      getRuleContext<LocalIdentifierContext>(0);
 }
 
 class LocalIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
   LocalIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_localIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16812,13 +16843,17 @@ class LocalIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_localIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
 }
 
 class AccessModifierContext extends ParserRuleContext {
   AccessModifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_accessModifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16827,19 +16862,15 @@ class AccessModifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_accessModifier;
 }
 
 class ParameterDefinitionContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  AccessModifierContext? accessModifier() =>
-      getRuleContext<AccessModifierContext>(0);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   ParameterDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_parameterDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16848,19 +16879,25 @@ class ParameterDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_parameterDefinition;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  AccessModifierContext? accessModifier() =>
+      getRuleContext<AccessModifierContext>(0);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class CodesystemDefinitionContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  CodesystemIdContext? codesystemId() => getRuleContext<CodesystemIdContext>(0);
-  AccessModifierContext? accessModifier() =>
-      getRuleContext<AccessModifierContext>(0);
-  VersionSpecifierContext? versionSpecifier() =>
-      getRuleContext<VersionSpecifierContext>(0);
   CodesystemDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codesystemDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16869,20 +16906,25 @@ class CodesystemDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codesystemDefinition;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  CodesystemIdContext? codesystemId() => getRuleContext<CodesystemIdContext>(0);
+
+  AccessModifierContext? accessModifier() =>
+      getRuleContext<AccessModifierContext>(0);
+
+  VersionSpecifierContext? versionSpecifier() =>
+      getRuleContext<VersionSpecifierContext>(0);
 }
 
 class ValuesetDefinitionContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  ValuesetIdContext? valuesetId() => getRuleContext<ValuesetIdContext>(0);
-  AccessModifierContext? accessModifier() =>
-      getRuleContext<AccessModifierContext>(0);
-  VersionSpecifierContext? versionSpecifier() =>
-      getRuleContext<VersionSpecifierContext>(0);
-  CodesystemsContext? codesystems() => getRuleContext<CodesystemsContext>(0);
   ValuesetDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_valuesetDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16891,17 +16933,27 @@ class ValuesetDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_valuesetDefinition;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  ValuesetIdContext? valuesetId() => getRuleContext<ValuesetIdContext>(0);
+
+  AccessModifierContext? accessModifier() =>
+      getRuleContext<AccessModifierContext>(0);
+
+  VersionSpecifierContext? versionSpecifier() =>
+      getRuleContext<VersionSpecifierContext>(0);
+
+  CodesystemsContext? codesystems() => getRuleContext<CodesystemsContext>(0);
 }
 
 class CodesystemsContext extends ParserRuleContext {
-  List<CodesystemIdentifierContext> codesystemIdentifiers() =>
-      getRuleContexts<CodesystemIdentifierContext>();
-  CodesystemIdentifierContext? codesystemIdentifier(int i) =>
-      getRuleContext<CodesystemIdentifierContext>(i);
   CodesystemsContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codesystems;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16910,16 +16962,21 @@ class CodesystemsContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codesystems;
+
+  List<CodesystemIdentifierContext> codesystemIdentifiers() =>
+      getRuleContexts<CodesystemIdentifierContext>();
+
+  CodesystemIdentifierContext? codesystemIdentifier(int i) =>
+      getRuleContext<CodesystemIdentifierContext>(i);
 }
 
 class CodesystemIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  LibraryIdentifierContext? libraryIdentifier() =>
-      getRuleContext<LibraryIdentifierContext>(0);
   CodesystemIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codesystemIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16928,14 +16985,20 @@ class CodesystemIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codesystemIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  LibraryIdentifierContext? libraryIdentifier() =>
+      getRuleContext<LibraryIdentifierContext>(0);
 }
 
 class LibraryIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
   LibraryIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_libraryIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16944,21 +17007,17 @@ class LibraryIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_libraryIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
 }
 
 class CodeDefinitionContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  CodeIdContext? codeId() => getRuleContext<CodeIdContext>(0);
-  CodesystemIdentifierContext? codesystemIdentifier() =>
-      getRuleContext<CodesystemIdentifierContext>(0);
-  AccessModifierContext? accessModifier() =>
-      getRuleContext<AccessModifierContext>(0);
-  DisplayClauseContext? displayClause() =>
-      getRuleContext<DisplayClauseContext>(0);
   CodeDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codeDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16967,22 +17026,28 @@ class CodeDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codeDefinition;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  CodeIdContext? codeId() => getRuleContext<CodeIdContext>(0);
+
+  CodesystemIdentifierContext? codesystemIdentifier() =>
+      getRuleContext<CodesystemIdentifierContext>(0);
+
+  AccessModifierContext? accessModifier() =>
+      getRuleContext<AccessModifierContext>(0);
+
+  DisplayClauseContext? displayClause() =>
+      getRuleContext<DisplayClauseContext>(0);
 }
 
 class ConceptDefinitionContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  List<CodeIdentifierContext> codeIdentifiers() =>
-      getRuleContexts<CodeIdentifierContext>();
-  CodeIdentifierContext? codeIdentifier(int i) =>
-      getRuleContext<CodeIdentifierContext>(i);
-  AccessModifierContext? accessModifier() =>
-      getRuleContext<AccessModifierContext>(0);
-  DisplayClauseContext? displayClause() =>
-      getRuleContext<DisplayClauseContext>(0);
   ConceptDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_conceptDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -16991,16 +17056,29 @@ class ConceptDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_conceptDefinition;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  List<CodeIdentifierContext> codeIdentifiers() =>
+      getRuleContexts<CodeIdentifierContext>();
+
+  CodeIdentifierContext? codeIdentifier(int i) =>
+      getRuleContext<CodeIdentifierContext>(i);
+
+  AccessModifierContext? accessModifier() =>
+      getRuleContext<AccessModifierContext>(0);
+
+  DisplayClauseContext? displayClause() =>
+      getRuleContext<DisplayClauseContext>(0);
 }
 
 class CodeIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  LibraryIdentifierContext? libraryIdentifier() =>
-      getRuleContext<LibraryIdentifierContext>(0);
   CodeIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codeIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17009,14 +17087,20 @@ class CodeIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codeIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  LibraryIdentifierContext? libraryIdentifier() =>
+      getRuleContext<LibraryIdentifierContext>(0);
 }
 
 class CodesystemIdContext extends ParserRuleContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   CodesystemIdContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codesystemId;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17025,14 +17109,17 @@ class CodesystemIdContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codesystemId;
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class ValuesetIdContext extends ParserRuleContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   ValuesetIdContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_valuesetId;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17041,14 +17128,17 @@ class ValuesetIdContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_valuesetId;
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class VersionSpecifierContext extends ParserRuleContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   VersionSpecifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_versionSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17057,14 +17147,17 @@ class VersionSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_versionSpecifier;
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class CodeIdContext extends ParserRuleContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   CodeIdContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codeId;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17073,23 +17166,17 @@ class CodeIdContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codeId;
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class TypeSpecifierContext extends ParserRuleContext {
-  NamedTypeSpecifierContext? namedTypeSpecifier() =>
-      getRuleContext<NamedTypeSpecifierContext>(0);
-  ListTypeSpecifierContext? listTypeSpecifier() =>
-      getRuleContext<ListTypeSpecifierContext>(0);
-  IntervalTypeSpecifierContext? intervalTypeSpecifier() =>
-      getRuleContext<IntervalTypeSpecifierContext>(0);
-  TupleTypeSpecifierContext? tupleTypeSpecifier() =>
-      getRuleContext<TupleTypeSpecifierContext>(0);
-  ChoiceTypeSpecifierContext? choiceTypeSpecifier() =>
-      getRuleContext<ChoiceTypeSpecifierContext>(0);
   TypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_typeSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17098,17 +17185,30 @@ class TypeSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_typeSpecifier;
+
+  NamedTypeSpecifierContext? namedTypeSpecifier() =>
+      getRuleContext<NamedTypeSpecifierContext>(0);
+
+  ListTypeSpecifierContext? listTypeSpecifier() =>
+      getRuleContext<ListTypeSpecifierContext>(0);
+
+  IntervalTypeSpecifierContext? intervalTypeSpecifier() =>
+      getRuleContext<IntervalTypeSpecifierContext>(0);
+
+  TupleTypeSpecifierContext? tupleTypeSpecifier() =>
+      getRuleContext<TupleTypeSpecifierContext>(0);
+
+  ChoiceTypeSpecifierContext? choiceTypeSpecifier() =>
+      getRuleContext<ChoiceTypeSpecifierContext>(0);
 }
 
 class NamedTypeSpecifierContext extends ParserRuleContext {
-  ReferentialOrTypeNameIdentifierContext? referentialOrTypeNameIdentifier() =>
-      getRuleContext<ReferentialOrTypeNameIdentifierContext>(0);
-  List<QualifierContext> qualifiers() => getRuleContexts<QualifierContext>();
-  QualifierContext? qualifier(int i) => getRuleContext<QualifierContext>(i);
   NamedTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_namedTypeSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17117,14 +17217,22 @@ class NamedTypeSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_namedTypeSpecifier;
+
+  ReferentialOrTypeNameIdentifierContext? referentialOrTypeNameIdentifier() =>
+      getRuleContext<ReferentialOrTypeNameIdentifierContext>(0);
+
+  List<QualifierContext> qualifiers() => getRuleContexts<QualifierContext>();
+
+  QualifierContext? qualifier(int i) => getRuleContext<QualifierContext>(i);
 }
 
 class ModelIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
   ModelIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_modelIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17133,15 +17241,17 @@ class ModelIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_modelIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
 }
 
 class ListTypeSpecifierContext extends ParserRuleContext {
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   ListTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_listTypeSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17150,15 +17260,18 @@ class ListTypeSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_listTypeSpecifier;
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class IntervalTypeSpecifierContext extends ParserRuleContext {
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   IntervalTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_intervalTypeSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17167,17 +17280,18 @@ class IntervalTypeSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_intervalTypeSpecifier;
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class TupleTypeSpecifierContext extends ParserRuleContext {
-  List<TupleElementDefinitionContext> tupleElementDefinitions() =>
-      getRuleContexts<TupleElementDefinitionContext>();
-  TupleElementDefinitionContext? tupleElementDefinition(int i) =>
-      getRuleContext<TupleElementDefinitionContext>(i);
   TupleTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_tupleTypeSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17186,17 +17300,21 @@ class TupleTypeSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_tupleTypeSpecifier;
+
+  List<TupleElementDefinitionContext> tupleElementDefinitions() =>
+      getRuleContexts<TupleElementDefinitionContext>();
+
+  TupleElementDefinitionContext? tupleElementDefinition(int i) =>
+      getRuleContext<TupleElementDefinitionContext>(i);
 }
 
 class TupleElementDefinitionContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   TupleElementDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_tupleElementDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17205,17 +17323,21 @@ class TupleElementDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_tupleElementDefinition;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class ChoiceTypeSpecifierContext extends ParserRuleContext {
-  List<TypeSpecifierContext> typeSpecifiers() =>
-      getRuleContexts<TypeSpecifierContext>();
-  TypeSpecifierContext? typeSpecifier(int i) =>
-      getRuleContext<TypeSpecifierContext>(i);
   ChoiceTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_choiceTypeSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17224,19 +17346,21 @@ class ChoiceTypeSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_choiceTypeSpecifier;
+
+  List<TypeSpecifierContext> typeSpecifiers() =>
+      getRuleContexts<TypeSpecifierContext>();
+
+  TypeSpecifierContext? typeSpecifier(int i) =>
+      getRuleContext<TypeSpecifierContext>(i);
 }
 
 class StatementContext extends ParserRuleContext {
-  ExpressionDefinitionContext? expressionDefinition() =>
-      getRuleContext<ExpressionDefinitionContext>(0);
-  ContextDefinitionContext? contextDefinition() =>
-      getRuleContext<ContextDefinitionContext>(0);
-  FunctionDefinitionContext? functionDefinition() =>
-      getRuleContext<FunctionDefinitionContext>(0);
   StatementContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_statement;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17245,17 +17369,24 @@ class StatementContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_statement;
+
+  ExpressionDefinitionContext? expressionDefinition() =>
+      getRuleContext<ExpressionDefinitionContext>(0);
+
+  ContextDefinitionContext? contextDefinition() =>
+      getRuleContext<ContextDefinitionContext>(0);
+
+  FunctionDefinitionContext? functionDefinition() =>
+      getRuleContext<FunctionDefinitionContext>(0);
 }
 
 class ExpressionDefinitionContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
-  AccessModifierContext? accessModifier() =>
-      getRuleContext<AccessModifierContext>(0);
   ExpressionDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_expressionDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17264,16 +17395,22 @@ class ExpressionDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_expressionDefinition;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
+
+  AccessModifierContext? accessModifier() =>
+      getRuleContext<AccessModifierContext>(0);
 }
 
 class ContextDefinitionContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  ModelIdentifierContext? modelIdentifier() =>
-      getRuleContext<ModelIdentifierContext>(0);
   ContextDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_contextDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17282,24 +17419,20 @@ class ContextDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_contextDefinition;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  ModelIdentifierContext? modelIdentifier() =>
+      getRuleContext<ModelIdentifierContext>(0);
 }
 
 class FunctionDefinitionContext extends ParserRuleContext {
-  IdentifierOrFunctionIdentifierContext? identifierOrFunctionIdentifier() =>
-      getRuleContext<IdentifierOrFunctionIdentifierContext>(0);
-  FunctionBodyContext? functionBody() => getRuleContext<FunctionBodyContext>(0);
-  AccessModifierContext? accessModifier() =>
-      getRuleContext<AccessModifierContext>(0);
-  List<OperandDefinitionContext> operandDefinitions() =>
-      getRuleContexts<OperandDefinitionContext>();
-  OperandDefinitionContext? operandDefinition(int i) =>
-      getRuleContext<OperandDefinitionContext>(i);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   FunctionDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_functionDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17308,17 +17441,32 @@ class FunctionDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_functionDefinition;
+
+  IdentifierOrFunctionIdentifierContext? identifierOrFunctionIdentifier() =>
+      getRuleContext<IdentifierOrFunctionIdentifierContext>(0);
+
+  FunctionBodyContext? functionBody() => getRuleContext<FunctionBodyContext>(0);
+
+  AccessModifierContext? accessModifier() =>
+      getRuleContext<AccessModifierContext>(0);
+
+  List<OperandDefinitionContext> operandDefinitions() =>
+      getRuleContexts<OperandDefinitionContext>();
+
+  OperandDefinitionContext? operandDefinition(int i) =>
+      getRuleContext<OperandDefinitionContext>(i);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class OperandDefinitionContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   OperandDefinitionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_operandDefinition;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17327,14 +17475,21 @@ class OperandDefinitionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_operandDefinition;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class FunctionBodyContext extends ParserRuleContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   FunctionBodyContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_functionBody;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17343,17 +17498,17 @@ class FunctionBodyContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_functionBody;
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class QuerySourceContext extends ParserRuleContext {
-  RetrieveContext? retrieve() => getRuleContext<RetrieveContext>(0);
-  QualifiedIdentifierExpressionContext? qualifiedIdentifierExpression() =>
-      getRuleContext<QualifiedIdentifierExpressionContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   QuerySourceContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_querySource;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17362,15 +17517,22 @@ class QuerySourceContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_querySource;
+
+  RetrieveContext? retrieve() => getRuleContext<RetrieveContext>(0);
+
+  QualifiedIdentifierExpressionContext? qualifiedIdentifierExpression() =>
+      getRuleContext<QualifiedIdentifierExpressionContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class AliasedQuerySourceContext extends ParserRuleContext {
-  QuerySourceContext? querySource() => getRuleContext<QuerySourceContext>(0);
-  AliasContext? alias() => getRuleContext<AliasContext>(0);
   AliasedQuerySourceContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_aliasedQuerySource;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17379,14 +17541,19 @@ class AliasedQuerySourceContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_aliasedQuerySource;
+
+  QuerySourceContext? querySource() => getRuleContext<QuerySourceContext>(0);
+
+  AliasContext? alias() => getRuleContext<AliasContext>(0);
 }
 
 class AliasContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
   AliasContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_alias;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17395,16 +17562,17 @@ class AliasContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_alias;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
 }
 
 class QueryInclusionClauseContext extends ParserRuleContext {
-  WithClauseContext? withClause() => getRuleContext<WithClauseContext>(0);
-  WithoutClauseContext? withoutClause() =>
-      getRuleContext<WithoutClauseContext>(0);
   QueryInclusionClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_queryInclusionClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17413,16 +17581,20 @@ class QueryInclusionClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_queryInclusionClause;
+
+  WithClauseContext? withClause() => getRuleContext<WithClauseContext>(0);
+
+  WithoutClauseContext? withoutClause() =>
+      getRuleContext<WithoutClauseContext>(0);
 }
 
 class WithClauseContext extends ParserRuleContext {
-  AliasedQuerySourceContext? aliasedQuerySource() =>
-      getRuleContext<AliasedQuerySourceContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   WithClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_withClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17431,16 +17603,20 @@ class WithClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_withClause;
+
+  AliasedQuerySourceContext? aliasedQuerySource() =>
+      getRuleContext<AliasedQuerySourceContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class WithoutClauseContext extends ParserRuleContext {
-  AliasedQuerySourceContext? aliasedQuerySource() =>
-      getRuleContext<AliasedQuerySourceContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   WithoutClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_withoutClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17449,21 +17625,20 @@ class WithoutClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_withoutClause;
+
+  AliasedQuerySourceContext? aliasedQuerySource() =>
+      getRuleContext<AliasedQuerySourceContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class RetrieveContext extends ParserRuleContext {
-  NamedTypeSpecifierContext? namedTypeSpecifier() =>
-      getRuleContext<NamedTypeSpecifierContext>(0);
-  ContextIdentifierContext? contextIdentifier() =>
-      getRuleContext<ContextIdentifierContext>(0);
-  TerminologyContext? terminology() => getRuleContext<TerminologyContext>(0);
-  CodePathContext? codePath() => getRuleContext<CodePathContext>(0);
-  CodeComparatorContext? codeComparator() =>
-      getRuleContext<CodeComparatorContext>(0);
   RetrieveContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_retrieve;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17472,15 +17647,28 @@ class RetrieveContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_retrieve;
+
+  NamedTypeSpecifierContext? namedTypeSpecifier() =>
+      getRuleContext<NamedTypeSpecifierContext>(0);
+
+  ContextIdentifierContext? contextIdentifier() =>
+      getRuleContext<ContextIdentifierContext>(0);
+
+  TerminologyContext? terminology() => getRuleContext<TerminologyContext>(0);
+
+  CodePathContext? codePath() => getRuleContext<CodePathContext>(0);
+
+  CodeComparatorContext? codeComparator() =>
+      getRuleContext<CodeComparatorContext>(0);
 }
 
 class ContextIdentifierContext extends ParserRuleContext {
-  QualifiedIdentifierExpressionContext? qualifiedIdentifierExpression() =>
-      getRuleContext<QualifiedIdentifierExpressionContext>(0);
   ContextIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_contextIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17489,14 +17677,18 @@ class ContextIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_contextIdentifier;
+
+  QualifiedIdentifierExpressionContext? qualifiedIdentifierExpression() =>
+      getRuleContext<QualifiedIdentifierExpressionContext>(0);
 }
 
 class CodePathContext extends ParserRuleContext {
-  SimplePathContext? simplePath() => getRuleContext<SimplePathContext>(0);
   CodePathContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codePath;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17505,13 +17697,17 @@ class CodePathContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codePath;
+
+  SimplePathContext? simplePath() => getRuleContext<SimplePathContext>(0);
 }
 
 class CodeComparatorContext extends ParserRuleContext {
   CodeComparatorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codeComparator;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17520,16 +17716,15 @@ class CodeComparatorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codeComparator;
 }
 
 class TerminologyContext extends ParserRuleContext {
-  QualifiedIdentifierExpressionContext? qualifiedIdentifierExpression() =>
-      getRuleContext<QualifiedIdentifierExpressionContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   TerminologyContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_terminology;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17538,14 +17733,20 @@ class TerminologyContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_terminology;
+
+  QualifiedIdentifierExpressionContext? qualifiedIdentifierExpression() =>
+      getRuleContext<QualifiedIdentifierExpressionContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class QualifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
   QualifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_qualifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17554,24 +17755,17 @@ class QualifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_qualifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
 }
 
 class QueryContext extends ParserRuleContext {
-  SourceClauseContext? sourceClause() => getRuleContext<SourceClauseContext>(0);
-  LetClauseContext? letClause() => getRuleContext<LetClauseContext>(0);
-  List<QueryInclusionClauseContext> queryInclusionClauses() =>
-      getRuleContexts<QueryInclusionClauseContext>();
-  QueryInclusionClauseContext? queryInclusionClause(int i) =>
-      getRuleContext<QueryInclusionClauseContext>(i);
-  WhereClauseContext? whereClause() => getRuleContext<WhereClauseContext>(0);
-  AggregateClauseContext? aggregateClause() =>
-      getRuleContext<AggregateClauseContext>(0);
-  ReturnClauseContext? returnClause() => getRuleContext<ReturnClauseContext>(0);
-  SortClauseContext? sortClause() => getRuleContext<SortClauseContext>(0);
   QueryContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_query;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17580,17 +17774,34 @@ class QueryContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_query;
+
+  SourceClauseContext? sourceClause() => getRuleContext<SourceClauseContext>(0);
+
+  LetClauseContext? letClause() => getRuleContext<LetClauseContext>(0);
+
+  List<QueryInclusionClauseContext> queryInclusionClauses() =>
+      getRuleContexts<QueryInclusionClauseContext>();
+
+  QueryInclusionClauseContext? queryInclusionClause(int i) =>
+      getRuleContext<QueryInclusionClauseContext>(i);
+
+  WhereClauseContext? whereClause() => getRuleContext<WhereClauseContext>(0);
+
+  AggregateClauseContext? aggregateClause() =>
+      getRuleContext<AggregateClauseContext>(0);
+
+  ReturnClauseContext? returnClause() => getRuleContext<ReturnClauseContext>(0);
+
+  SortClauseContext? sortClause() => getRuleContext<SortClauseContext>(0);
 }
 
 class SourceClauseContext extends ParserRuleContext {
-  List<AliasedQuerySourceContext> aliasedQuerySources() =>
-      getRuleContexts<AliasedQuerySourceContext>();
-  AliasedQuerySourceContext? aliasedQuerySource(int i) =>
-      getRuleContext<AliasedQuerySourceContext>(i);
   SourceClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_sourceClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17599,17 +17810,21 @@ class SourceClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_sourceClause;
+
+  List<AliasedQuerySourceContext> aliasedQuerySources() =>
+      getRuleContexts<AliasedQuerySourceContext>();
+
+  AliasedQuerySourceContext? aliasedQuerySource(int i) =>
+      getRuleContext<AliasedQuerySourceContext>(i);
 }
 
 class LetClauseContext extends ParserRuleContext {
-  List<LetClauseItemContext> letClauseItems() =>
-      getRuleContexts<LetClauseItemContext>();
-  LetClauseItemContext? letClauseItem(int i) =>
-      getRuleContext<LetClauseItemContext>(i);
   LetClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_letClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17618,15 +17833,21 @@ class LetClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_letClause;
+
+  List<LetClauseItemContext> letClauseItems() =>
+      getRuleContexts<LetClauseItemContext>();
+
+  LetClauseItemContext? letClauseItem(int i) =>
+      getRuleContext<LetClauseItemContext>(i);
 }
 
 class LetClauseItemContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   LetClauseItemContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_letClauseItem;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17635,14 +17856,19 @@ class LetClauseItemContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_letClauseItem;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class WhereClauseContext extends ParserRuleContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   WhereClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_whereClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17651,14 +17877,17 @@ class WhereClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_whereClause;
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class ReturnClauseContext extends ParserRuleContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   ReturnClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_returnClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17667,17 +17896,17 @@ class ReturnClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_returnClause;
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class AggregateClauseContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
-  StartingClauseContext? startingClause() =>
-      getRuleContext<StartingClauseContext>(0);
   AggregateClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_aggregateClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17686,17 +17915,22 @@ class AggregateClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_aggregateClause;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
+
+  StartingClauseContext? startingClause() =>
+      getRuleContext<StartingClauseContext>(0);
 }
 
 class StartingClauseContext extends ParserRuleContext {
-  SimpleLiteralContext? simpleLiteral() =>
-      getRuleContext<SimpleLiteralContext>(0);
-  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   StartingClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_startingClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17705,17 +17939,22 @@ class StartingClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_startingClause;
+
+  SimpleLiteralContext? simpleLiteral() =>
+      getRuleContext<SimpleLiteralContext>(0);
+
+  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class SortClauseContext extends ParserRuleContext {
-  SortDirectionContext? sortDirection() =>
-      getRuleContext<SortDirectionContext>(0);
-  List<SortByItemContext> sortByItems() => getRuleContexts<SortByItemContext>();
-  SortByItemContext? sortByItem(int i) => getRuleContext<SortByItemContext>(i);
   SortClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_sortClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17724,13 +17963,22 @@ class SortClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_sortClause;
+
+  SortDirectionContext? sortDirection() =>
+      getRuleContext<SortDirectionContext>(0);
+
+  List<SortByItemContext> sortByItems() => getRuleContexts<SortByItemContext>();
+
+  SortByItemContext? sortByItem(int i) => getRuleContext<SortByItemContext>(i);
 }
 
 class SortDirectionContext extends ParserRuleContext {
   SortDirectionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_sortDirection;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17739,17 +17987,15 @@ class SortDirectionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_sortDirection;
 }
 
 class SortByItemContext extends ParserRuleContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
-  SortDirectionContext? sortDirection() =>
-      getRuleContext<SortDirectionContext>(0);
   SortByItemContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_sortByItem;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17758,16 +18004,21 @@ class SortByItemContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_sortByItem;
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
+
+  SortDirectionContext? sortDirection() =>
+      getRuleContext<SortDirectionContext>(0);
 }
 
 class QualifiedIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  List<QualifierContext> qualifiers() => getRuleContexts<QualifierContext>();
-  QualifierContext? qualifier(int i) => getRuleContext<QualifierContext>(i);
   QualifiedIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_qualifiedIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17776,20 +18027,22 @@ class QualifiedIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_qualifiedIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  List<QualifierContext> qualifiers() => getRuleContexts<QualifierContext>();
+
+  QualifierContext? qualifier(int i) => getRuleContext<QualifierContext>(i);
 }
 
 class QualifiedIdentifierExpressionContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
-  List<QualifierExpressionContext> qualifierExpressions() =>
-      getRuleContexts<QualifierExpressionContext>();
-  QualifierExpressionContext? qualifierExpression(int i) =>
-      getRuleContext<QualifierExpressionContext>(i);
   QualifiedIdentifierExpressionContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_qualifiedIdentifierExpression;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17798,15 +18051,24 @@ class QualifiedIdentifierExpressionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_qualifiedIdentifierExpression;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
+
+  List<QualifierExpressionContext> qualifierExpressions() =>
+      getRuleContexts<QualifierExpressionContext>();
+
+  QualifierExpressionContext? qualifierExpression(int i) =>
+      getRuleContext<QualifierExpressionContext>(i);
 }
 
 class QualifierExpressionContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
   QualifierExpressionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_qualifierExpression;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17815,11 +18077,18 @@ class QualifierExpressionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_qualifierExpression;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
 }
 
 class SimplePathContext extends ParserRuleContext {
   SimplePathContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_simplePath;
 }
@@ -17827,6 +18096,7 @@ class SimplePathContext extends ParserRuleContext {
 class SimpleLiteralContext extends ParserRuleContext {
   SimpleLiteralContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_simpleLiteral;
 }
@@ -17834,6 +18104,7 @@ class SimpleLiteralContext extends ParserRuleContext {
 class ExpressionContext extends ParserRuleContext {
   ExpressionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_expression;
 }
@@ -17841,8 +18112,7 @@ class ExpressionContext extends ParserRuleContext {
 class DateTimePrecisionContext extends ParserRuleContext {
   DateTimePrecisionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_dateTimePrecision;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17851,15 +18121,15 @@ class DateTimePrecisionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_dateTimePrecision;
 }
 
 class DateTimeComponentContext extends ParserRuleContext {
-  DateTimePrecisionContext? dateTimePrecision() =>
-      getRuleContext<DateTimePrecisionContext>(0);
   DateTimeComponentContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_dateTimeComponent;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17868,14 +18138,19 @@ class DateTimeComponentContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_dateTimeComponent;
+
+  DateTimePrecisionContext? dateTimePrecision() =>
+      getRuleContext<DateTimePrecisionContext>(0);
 }
 
 class PluralDateTimePrecisionContext extends ParserRuleContext {
   PluralDateTimePrecisionContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_pluralDateTimePrecision;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17884,22 +18159,23 @@ class PluralDateTimePrecisionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_pluralDateTimePrecision;
 }
 
 class ExpressionTermContext extends ParserRuleContext {
   ExpressionTermContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_expressionTerm;
 }
 
 class CaseExpressionItemContext extends ParserRuleContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   CaseExpressionItemContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_caseExpressionItem;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17908,16 +18184,20 @@ class CaseExpressionItemContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_caseExpressionItem;
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class DateTimePrecisionSpecifierContext extends ParserRuleContext {
-  DateTimePrecisionContext? dateTimePrecision() =>
-      getRuleContext<DateTimePrecisionContext>(0);
   DateTimePrecisionSpecifierContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_dateTimePrecisionSpecifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17926,13 +18206,18 @@ class DateTimePrecisionSpecifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_dateTimePrecisionSpecifier;
+
+  DateTimePrecisionContext? dateTimePrecision() =>
+      getRuleContext<DateTimePrecisionContext>(0);
 }
 
 class RelativeQualifierContext extends ParserRuleContext {
   RelativeQualifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_relativeQualifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17941,14 +18226,16 @@ class RelativeQualifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_relativeQualifier;
 }
 
 class OffsetRelativeQualifierContext extends ParserRuleContext {
   OffsetRelativeQualifierContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_offsetRelativeQualifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17957,14 +18244,16 @@ class OffsetRelativeQualifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_offsetRelativeQualifier;
 }
 
 class ExclusiveRelativeQualifierContext extends ParserRuleContext {
   ExclusiveRelativeQualifierContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_exclusiveRelativeQualifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17973,18 +18262,15 @@ class ExclusiveRelativeQualifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_exclusiveRelativeQualifier;
 }
 
 class QuantityOffsetContext extends ParserRuleContext {
-  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
-  OffsetRelativeQualifierContext? offsetRelativeQualifier() =>
-      getRuleContext<OffsetRelativeQualifierContext>(0);
-  ExclusiveRelativeQualifierContext? exclusiveRelativeQualifier() =>
-      getRuleContext<ExclusiveRelativeQualifierContext>(0);
   QuantityOffsetContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_quantityOffset;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -17993,13 +18279,23 @@ class QuantityOffsetContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_quantityOffset;
+
+  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
+
+  OffsetRelativeQualifierContext? offsetRelativeQualifier() =>
+      getRuleContext<OffsetRelativeQualifierContext>(0);
+
+  ExclusiveRelativeQualifierContext? exclusiveRelativeQualifier() =>
+      getRuleContext<ExclusiveRelativeQualifierContext>(0);
 }
 
 class TemporalRelationshipContext extends ParserRuleContext {
   TemporalRelationshipContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_temporalRelationship;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18008,11 +18304,15 @@ class TemporalRelationshipContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_temporalRelationship;
 }
 
 class IntervalOperatorPhraseContext extends ParserRuleContext {
   IntervalOperatorPhraseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_intervalOperatorPhrase;
 }
@@ -18020,6 +18320,7 @@ class IntervalOperatorPhraseContext extends ParserRuleContext {
 class TermContext extends ParserRuleContext {
   TermContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_term;
 }
@@ -18027,18 +18328,15 @@ class TermContext extends ParserRuleContext {
 class QualifiedInvocationContext extends ParserRuleContext {
   QualifiedInvocationContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_qualifiedInvocation;
 }
 
 class QualifiedFunctionContext extends ParserRuleContext {
-  IdentifierOrFunctionIdentifierContext? identifierOrFunctionIdentifier() =>
-      getRuleContext<IdentifierOrFunctionIdentifierContext>(0);
-  ParamListContext? paramList() => getRuleContext<ParamListContext>(0);
   QualifiedFunctionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_qualifiedFunction;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18047,23 +18345,28 @@ class QualifiedFunctionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_qualifiedFunction;
+
+  IdentifierOrFunctionIdentifierContext? identifierOrFunctionIdentifier() =>
+      getRuleContext<IdentifierOrFunctionIdentifierContext>(0);
+
+  ParamListContext? paramList() => getRuleContext<ParamListContext>(0);
 }
 
 class InvocationContext extends ParserRuleContext {
   InvocationContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_invocation;
 }
 
 class FunctionContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
-  ParamListContext? paramList() => getRuleContext<ParamListContext>(0);
   FunctionContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_function;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18072,15 +18375,20 @@ class FunctionContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_function;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
+
+  ParamListContext? paramList() => getRuleContext<ParamListContext>(0);
 }
 
 class RatioContext extends ParserRuleContext {
-  List<QuantityContext> quantitys() => getRuleContexts<QuantityContext>();
-  QuantityContext? quantity(int i) => getRuleContext<QuantityContext>(i);
   RatioContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_ratio;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18089,22 +18397,27 @@ class RatioContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_ratio;
+
+  List<QuantityContext> quantitys() => getRuleContexts<QuantityContext>();
+
+  QuantityContext? quantity(int i) => getRuleContext<QuantityContext>(i);
 }
 
 class LiteralContext extends ParserRuleContext {
   LiteralContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
+
   @override
   int get ruleIndex => RULE_literal;
 }
 
 class IntervalSelectorContext extends ParserRuleContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   IntervalSelectorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_intervalSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18113,17 +18426,19 @@ class IntervalSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_intervalSelector;
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class TupleSelectorContext extends ParserRuleContext {
-  List<TupleElementSelectorContext> tupleElementSelectors() =>
-      getRuleContexts<TupleElementSelectorContext>();
-  TupleElementSelectorContext? tupleElementSelector(int i) =>
-      getRuleContext<TupleElementSelectorContext>(i);
   TupleSelectorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_tupleSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18132,16 +18447,21 @@ class TupleSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_tupleSelector;
+
+  List<TupleElementSelectorContext> tupleElementSelectors() =>
+      getRuleContexts<TupleElementSelectorContext>();
+
+  TupleElementSelectorContext? tupleElementSelector(int i) =>
+      getRuleContext<TupleElementSelectorContext>(i);
 }
 
 class TupleElementSelectorContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   TupleElementSelectorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_tupleElementSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18150,19 +18470,20 @@ class TupleElementSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_tupleElementSelector;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class InstanceSelectorContext extends ParserRuleContext {
-  NamedTypeSpecifierContext? namedTypeSpecifier() =>
-      getRuleContext<NamedTypeSpecifierContext>(0);
-  List<InstanceElementSelectorContext> instanceElementSelectors() =>
-      getRuleContexts<InstanceElementSelectorContext>();
-  InstanceElementSelectorContext? instanceElementSelector(int i) =>
-      getRuleContext<InstanceElementSelectorContext>(i);
   InstanceSelectorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_instanceSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18171,17 +18492,25 @@ class InstanceSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_instanceSelector;
+
+  NamedTypeSpecifierContext? namedTypeSpecifier() =>
+      getRuleContext<NamedTypeSpecifierContext>(0);
+
+  List<InstanceElementSelectorContext> instanceElementSelectors() =>
+      getRuleContexts<InstanceElementSelectorContext>();
+
+  InstanceElementSelectorContext? instanceElementSelector(int i) =>
+      getRuleContext<InstanceElementSelectorContext>(i);
 }
 
 class InstanceElementSelectorContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   InstanceElementSelectorContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_instanceElementSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18190,17 +18519,20 @@ class InstanceElementSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_instanceElementSelector;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class ListSelectorContext extends ParserRuleContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   ListSelectorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_listSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18209,14 +18541,22 @@ class ListSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_listSelector;
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class DisplayClauseContext extends ParserRuleContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   DisplayClauseContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_displayClause;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18225,18 +18565,17 @@ class DisplayClauseContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_displayClause;
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class CodeSelectorContext extends ParserRuleContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
-  CodesystemIdentifierContext? codesystemIdentifier() =>
-      getRuleContext<CodesystemIdentifierContext>(0);
-  DisplayClauseContext? displayClause() =>
-      getRuleContext<DisplayClauseContext>(0);
   CodeSelectorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_codeSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18245,19 +18584,23 @@ class CodeSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_codeSelector;
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
+
+  CodesystemIdentifierContext? codesystemIdentifier() =>
+      getRuleContext<CodesystemIdentifierContext>(0);
+
+  DisplayClauseContext? displayClause() =>
+      getRuleContext<DisplayClauseContext>(0);
 }
 
 class ConceptSelectorContext extends ParserRuleContext {
-  List<CodeSelectorContext> codeSelectors() =>
-      getRuleContexts<CodeSelectorContext>();
-  CodeSelectorContext? codeSelector(int i) =>
-      getRuleContext<CodeSelectorContext>(i);
-  DisplayClauseContext? displayClause() =>
-      getRuleContext<DisplayClauseContext>(0);
   ConceptSelectorContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_conceptSelector;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18266,13 +18609,24 @@ class ConceptSelectorContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_conceptSelector;
+
+  List<CodeSelectorContext> codeSelectors() =>
+      getRuleContexts<CodeSelectorContext>();
+
+  CodeSelectorContext? codeSelector(int i) =>
+      getRuleContext<CodeSelectorContext>(i);
+
+  DisplayClauseContext? displayClause() =>
+      getRuleContext<DisplayClauseContext>(0);
 }
 
 class KeywordContext extends ParserRuleContext {
   KeywordContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_keyword;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18281,13 +18635,15 @@ class KeywordContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_keyword;
 }
 
 class ReservedWordContext extends ParserRuleContext {
   ReservedWordContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_reservedWord;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18296,13 +18652,15 @@ class ReservedWordContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_reservedWord;
 }
 
 class KeywordIdentifierContext extends ParserRuleContext {
   KeywordIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_keywordIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18311,13 +18669,15 @@ class KeywordIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_keywordIdentifier;
 }
 
 class ObsoleteIdentifierContext extends ParserRuleContext {
   ObsoleteIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_obsoleteIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18326,13 +18686,15 @@ class ObsoleteIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_obsoleteIdentifier;
 }
 
 class FunctionIdentifierContext extends ParserRuleContext {
   FunctionIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_functionIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18341,13 +18703,15 @@ class FunctionIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_functionIdentifier;
 }
 
 class TypeNameIdentifierContext extends ParserRuleContext {
   TypeNameIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_typeNameIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18356,16 +18720,15 @@ class TypeNameIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_typeNameIdentifier;
 }
 
 class ReferentialIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  KeywordIdentifierContext? keywordIdentifier() =>
-      getRuleContext<KeywordIdentifierContext>(0);
   ReferentialIdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_referentialIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18374,18 +18737,21 @@ class ReferentialIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_referentialIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  KeywordIdentifierContext? keywordIdentifier() =>
+      getRuleContext<KeywordIdentifierContext>(0);
 }
 
 class ReferentialOrTypeNameIdentifierContext extends ParserRuleContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
-  TypeNameIdentifierContext? typeNameIdentifier() =>
-      getRuleContext<TypeNameIdentifierContext>(0);
   ReferentialOrTypeNameIdentifierContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_referentialOrTypeNameIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18394,17 +18760,22 @@ class ReferentialOrTypeNameIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_referentialOrTypeNameIdentifier;
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
+
+  TypeNameIdentifierContext? typeNameIdentifier() =>
+      getRuleContext<TypeNameIdentifierContext>(0);
 }
 
 class IdentifierOrFunctionIdentifierContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  FunctionIdentifierContext? functionIdentifier() =>
-      getRuleContext<FunctionIdentifierContext>(0);
   IdentifierOrFunctionIdentifierContext(
       [ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_identifierOrFunctionIdentifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18413,18 +18784,20 @@ class IdentifierOrFunctionIdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_identifierOrFunctionIdentifier;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  FunctionIdentifierContext? functionIdentifier() =>
+      getRuleContext<FunctionIdentifierContext>(0);
 }
 
 class IdentifierContext extends ParserRuleContext {
-  TerminalNode? IDENTIFIER() => getToken(cqlParser.TOKEN_IDENTIFIER, 0);
-  TerminalNode? DELIMITEDIDENTIFIER() =>
-      getToken(cqlParser.TOKEN_DELIMITEDIDENTIFIER, 0);
-  TerminalNode? QUOTEDIDENTIFIER() =>
-      getToken(cqlParser.TOKEN_QUOTEDIDENTIFIER, 0);
   IdentifierContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_identifier;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18433,15 +18806,23 @@ class IdentifierContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_identifier;
+
+  TerminalNode? IDENTIFIER() => getToken(cqlParser.TOKEN_IDENTIFIER, 0);
+
+  TerminalNode? DELIMITEDIDENTIFIER() =>
+      getToken(cqlParser.TOKEN_DELIMITEDIDENTIFIER, 0);
+
+  TerminalNode? QUOTEDIDENTIFIER() =>
+      getToken(cqlParser.TOKEN_QUOTEDIDENTIFIER, 0);
 }
 
 class ExternalConstantContext extends ParserRuleContext {
-  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   ExternalConstantContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_externalConstant;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18450,15 +18831,19 @@ class ExternalConstantContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_externalConstant;
+
+  IdentifierContext? identifier() => getRuleContext<IdentifierContext>(0);
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class ParamListContext extends ParserRuleContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   ParamListContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_paramList;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18467,15 +18852,19 @@ class ParamListContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_paramList;
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class QuantityContext extends ParserRuleContext {
-  TerminalNode? NUMBER() => getToken(cqlParser.TOKEN_NUMBER, 0);
-  UnitContext? unit() => getRuleContext<UnitContext>(0);
   QuantityContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_quantity;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18484,18 +18873,19 @@ class QuantityContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_quantity;
+
+  TerminalNode? NUMBER() => getToken(cqlParser.TOKEN_NUMBER, 0);
+
+  UnitContext? unit() => getRuleContext<UnitContext>(0);
 }
 
 class UnitContext extends ParserRuleContext {
-  DateTimePrecisionContext? dateTimePrecision() =>
-      getRuleContext<DateTimePrecisionContext>(0);
-  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
-      getRuleContext<PluralDateTimePrecisionContext>(0);
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   UnitContext([ParserRuleContext? parent, int? invokingState])
       : super(parent, invokingState);
-  @override
-  int get ruleIndex => RULE_unit;
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18504,15 +18894,24 @@ class UnitContext extends ParserRuleContext {
       return visitor.visitChildren(this);
     }
   }
+
+  @override
+  int get ruleIndex => RULE_unit;
+
+  DateTimePrecisionContext? dateTimePrecision() =>
+      getRuleContext<DateTimePrecisionContext>(0);
+
+  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
+      getRuleContext<PluralDateTimePrecisionContext>(0);
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class SimplePathIndexerContext extends SimplePathContext {
-  SimplePathContext? simplePath() => getRuleContext<SimplePathContext>(0);
-  SimpleLiteralContext? simpleLiteral() =>
-      getRuleContext<SimpleLiteralContext>(0);
   SimplePathIndexerContext(SimplePathContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18521,15 +18920,18 @@ class SimplePathIndexerContext extends SimplePathContext {
       return visitor.visitChildren(this);
     }
   }
+
+  SimplePathContext? simplePath() => getRuleContext<SimplePathContext>(0);
+
+  SimpleLiteralContext? simpleLiteral() =>
+      getRuleContext<SimpleLiteralContext>(0);
 }
 
 class SimplePathQualifiedIdentifierContext extends SimplePathContext {
-  SimplePathContext? simplePath() => getRuleContext<SimplePathContext>(0);
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
   SimplePathQualifiedIdentifierContext(SimplePathContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18538,14 +18940,18 @@ class SimplePathQualifiedIdentifierContext extends SimplePathContext {
       return visitor.visitChildren(this);
     }
   }
+
+  SimplePathContext? simplePath() => getRuleContext<SimplePathContext>(0);
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
 }
 
 class SimplePathReferentialIdentifierContext extends SimplePathContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
   SimplePathReferentialIdentifierContext(SimplePathContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18554,13 +18960,16 @@ class SimplePathReferentialIdentifierContext extends SimplePathContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
 }
 
 class SimpleNumberLiteralContext extends SimpleLiteralContext {
-  TerminalNode? NUMBER() => getToken(cqlParser.TOKEN_NUMBER, 0);
   SimpleNumberLiteralContext(SimpleLiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18569,13 +18978,15 @@ class SimpleNumberLiteralContext extends SimpleLiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? NUMBER() => getToken(cqlParser.TOKEN_NUMBER, 0);
 }
 
 class SimpleStringLiteralContext extends SimpleLiteralContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   SimpleStringLiteralContext(SimpleLiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18584,18 +18995,15 @@ class SimpleStringLiteralContext extends SimpleLiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class DurationBetweenExpressionContext extends ExpressionContext {
-  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
-      getRuleContext<PluralDateTimePrecisionContext>(0);
-  List<ExpressionTermContext> expressionTerms() =>
-      getRuleContexts<ExpressionTermContext>();
-  ExpressionTermContext? expressionTerm(int i) =>
-      getRuleContext<ExpressionTermContext>(i);
   DurationBetweenExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18604,14 +19012,22 @@ class DurationBetweenExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
+      getRuleContext<PluralDateTimePrecisionContext>(0);
+
+  List<ExpressionTermContext> expressionTerms() =>
+      getRuleContexts<ExpressionTermContext>();
+
+  ExpressionTermContext? expressionTerm(int i) =>
+      getRuleContext<ExpressionTermContext>(i);
 }
 
 class InFixSetExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   InFixSetExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18620,13 +19036,17 @@ class InFixSetExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class RetrieveExpressionContext extends ExpressionContext {
-  RetrieveContext? retrieve() => getRuleContext<RetrieveContext>(0);
   RetrieveExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18635,16 +19055,15 @@ class RetrieveExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  RetrieveContext? retrieve() => getRuleContext<RetrieveContext>(0);
 }
 
 class TimingExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
-  IntervalOperatorPhraseContext? intervalOperatorPhrase() =>
-      getRuleContext<IntervalOperatorPhraseContext>(0);
   TimingExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18653,13 +19072,20 @@ class TimingExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
+
+  IntervalOperatorPhraseContext? intervalOperatorPhrase() =>
+      getRuleContext<IntervalOperatorPhraseContext>(0);
 }
 
 class QueryExpressionContext extends ExpressionContext {
-  QueryContext? query() => getRuleContext<QueryContext>(0);
   QueryExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18668,13 +19094,15 @@ class QueryExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  QueryContext? query() => getRuleContext<QueryContext>(0);
 }
 
 class NotExpressionContext extends ExpressionContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   NotExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18683,13 +19111,15 @@ class NotExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class BooleanExpressionContext extends ExpressionContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   BooleanExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18698,14 +19128,15 @@ class BooleanExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class OrExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   OrExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18714,15 +19145,17 @@ class OrExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class CastExpressionContext extends ExpressionContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   CastExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18731,14 +19164,18 @@ class CastExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class AndExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   AndExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18747,17 +19184,17 @@ class AndExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class BetweenExpressionContext extends ExpressionContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
-  List<ExpressionTermContext> expressionTerms() =>
-      getRuleContexts<ExpressionTermContext>();
-  ExpressionTermContext? expressionTerm(int i) =>
-      getRuleContext<ExpressionTermContext>(i);
   BetweenExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18766,16 +19203,21 @@ class BetweenExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
+
+  List<ExpressionTermContext> expressionTerms() =>
+      getRuleContexts<ExpressionTermContext>();
+
+  ExpressionTermContext? expressionTerm(int i) =>
+      getRuleContext<ExpressionTermContext>(i);
 }
 
 class MembershipExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   MembershipExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18784,18 +19226,20 @@ class MembershipExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class DifferenceBetweenExpressionContext extends ExpressionContext {
-  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
-      getRuleContext<PluralDateTimePrecisionContext>(0);
-  List<ExpressionTermContext> expressionTerms() =>
-      getRuleContexts<ExpressionTermContext>();
-  ExpressionTermContext? expressionTerm(int i) =>
-      getRuleContext<ExpressionTermContext>(i);
   DifferenceBetweenExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18804,14 +19248,22 @@ class DifferenceBetweenExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
+      getRuleContext<PluralDateTimePrecisionContext>(0);
+
+  List<ExpressionTermContext> expressionTerms() =>
+      getRuleContexts<ExpressionTermContext>();
+
+  ExpressionTermContext? expressionTerm(int i) =>
+      getRuleContext<ExpressionTermContext>(i);
 }
 
 class InequalityExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   InequalityExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18820,14 +19272,17 @@ class InequalityExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class EqualityExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   EqualityExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18836,13 +19291,17 @@ class EqualityExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class ExistenceExpressionContext extends ExpressionContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   ExistenceExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18851,14 +19310,15 @@ class ExistenceExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class ImpliesExpressionContext extends ExpressionContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   ImpliesExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18867,14 +19327,17 @@ class ImpliesExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class TermExpressionContext extends ExpressionContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   TermExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18883,15 +19346,16 @@ class TermExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class TypeExpressionContext extends ExpressionContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
   TypeExpressionContext(ExpressionContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18900,16 +19364,18 @@ class TypeExpressionContext extends ExpressionContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
 }
 
 class AdditionExpressionTermContext extends ExpressionTermContext {
-  List<ExpressionTermContext> expressionTerms() =>
-      getRuleContexts<ExpressionTermContext>();
-  ExpressionTermContext? expressionTerm(int i) =>
-      getRuleContext<ExpressionTermContext>(i);
   AdditionExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18918,15 +19384,19 @@ class AdditionExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionTermContext> expressionTerms() =>
+      getRuleContexts<ExpressionTermContext>();
+
+  ExpressionTermContext? expressionTerm(int i) =>
+      getRuleContext<ExpressionTermContext>(i);
 }
 
 class IndexedExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   IndexedExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18935,14 +19405,18 @@ class IndexedExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class WidthExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   WidthExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18951,16 +19425,16 @@ class WidthExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class SetAggregateExpressionTermContext extends ExpressionTermContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
-  DateTimePrecisionContext? dateTimePrecision() =>
-      getRuleContext<DateTimePrecisionContext>(0);
   SetAggregateExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18969,16 +19443,20 @@ class SetAggregateExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
+
+  DateTimePrecisionContext? dateTimePrecision() =>
+      getRuleContext<DateTimePrecisionContext>(0);
 }
 
 class TimeUnitExpressionTermContext extends ExpressionTermContext {
-  DateTimeComponentContext? dateTimeComponent() =>
-      getRuleContext<DateTimeComponentContext>(0);
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   TimeUnitExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -18987,14 +19465,19 @@ class TimeUnitExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  DateTimeComponentContext? dateTimeComponent() =>
+      getRuleContext<DateTimeComponentContext>(0);
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class IfThenElseExpressionTermContext extends ExpressionTermContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
   IfThenElseExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19003,14 +19486,17 @@ class IfThenElseExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
 }
 
 class TimeBoundaryExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   TimeBoundaryExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19019,14 +19505,16 @@ class TimeBoundaryExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class ElementExtractorExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   ElementExtractorExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19035,16 +19523,16 @@ class ElementExtractorExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class ConversionExpressionTermContext extends ExpressionTermContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
-  TypeSpecifierContext? typeSpecifier() =>
-      getRuleContext<TypeSpecifierContext>(0);
-  UnitContext? unit() => getRuleContext<UnitContext>(0);
   ConversionExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19053,14 +19541,20 @@ class ConversionExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
+
+  TypeSpecifierContext? typeSpecifier() =>
+      getRuleContext<TypeSpecifierContext>(0);
+
+  UnitContext? unit() => getRuleContext<UnitContext>(0);
 }
 
 class TypeExtentExpressionTermContext extends ExpressionTermContext {
-  NamedTypeSpecifierContext? namedTypeSpecifier() =>
-      getRuleContext<NamedTypeSpecifierContext>(0);
   TypeExtentExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19069,14 +19563,16 @@ class TypeExtentExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  NamedTypeSpecifierContext? namedTypeSpecifier() =>
+      getRuleContext<NamedTypeSpecifierContext>(0);
 }
 
 class PredecessorExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   PredecessorExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19085,14 +19581,16 @@ class PredecessorExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class PointExtractorExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   PointExtractorExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19101,16 +19599,16 @@ class PointExtractorExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class MultiplicationExpressionTermContext extends ExpressionTermContext {
-  List<ExpressionTermContext> expressionTerms() =>
-      getRuleContexts<ExpressionTermContext>();
-  ExpressionTermContext? expressionTerm(int i) =>
-      getRuleContext<ExpressionTermContext>(i);
   MultiplicationExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19119,13 +19617,19 @@ class MultiplicationExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionTermContext> expressionTerms() =>
+      getRuleContexts<ExpressionTermContext>();
+
+  ExpressionTermContext? expressionTerm(int i) =>
+      getRuleContext<ExpressionTermContext>(i);
 }
 
 class AggregateExpressionTermContext extends ExpressionTermContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   AggregateExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19134,16 +19638,15 @@ class AggregateExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class DurationExpressionTermContext extends ExpressionTermContext {
-  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
-      getRuleContext<PluralDateTimePrecisionContext>(0);
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   DurationExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19152,16 +19655,19 @@ class DurationExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
+      getRuleContext<PluralDateTimePrecisionContext>(0);
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class DifferenceExpressionTermContext extends ExpressionTermContext {
-  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
-      getRuleContext<PluralDateTimePrecisionContext>(0);
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   DifferenceExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19170,18 +19676,19 @@ class DifferenceExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  PluralDateTimePrecisionContext? pluralDateTimePrecision() =>
+      getRuleContext<PluralDateTimePrecisionContext>(0);
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class CaseExpressionTermContext extends ExpressionTermContext {
-  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
-  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
-  List<CaseExpressionItemContext> caseExpressionItems() =>
-      getRuleContexts<CaseExpressionItemContext>();
-  CaseExpressionItemContext? caseExpressionItem(int i) =>
-      getRuleContext<CaseExpressionItemContext>(i);
   CaseExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19190,16 +19697,23 @@ class CaseExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionContext> expressions() => getRuleContexts<ExpressionContext>();
+
+  ExpressionContext? expression(int i) => getRuleContext<ExpressionContext>(i);
+
+  List<CaseExpressionItemContext> caseExpressionItems() =>
+      getRuleContexts<CaseExpressionItemContext>();
+
+  CaseExpressionItemContext? caseExpressionItem(int i) =>
+      getRuleContext<CaseExpressionItemContext>(i);
 }
 
 class PowerExpressionTermContext extends ExpressionTermContext {
-  List<ExpressionTermContext> expressionTerms() =>
-      getRuleContexts<ExpressionTermContext>();
-  ExpressionTermContext? expressionTerm(int i) =>
-      getRuleContext<ExpressionTermContext>(i);
   PowerExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19208,14 +19722,19 @@ class PowerExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  List<ExpressionTermContext> expressionTerms() =>
+      getRuleContexts<ExpressionTermContext>();
+
+  ExpressionTermContext? expressionTerm(int i) =>
+      getRuleContext<ExpressionTermContext>(i);
 }
 
 class SuccessorExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   SuccessorExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19224,14 +19743,16 @@ class SuccessorExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class PolarityExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
   PolarityExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19240,13 +19761,16 @@ class PolarityExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
 }
 
 class TermExpressionTermContext extends ExpressionTermContext {
-  TermContext? term() => getRuleContext<TermContext>(0);
   TermExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19255,16 +19779,15 @@ class TermExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TermContext? term() => getRuleContext<TermContext>(0);
 }
 
 class InvocationExpressionTermContext extends ExpressionTermContext {
-  ExpressionTermContext? expressionTerm() =>
-      getRuleContext<ExpressionTermContext>(0);
-  QualifiedInvocationContext? qualifiedInvocation() =>
-      getRuleContext<QualifiedInvocationContext>(0);
   InvocationExpressionTermContext(ExpressionTermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19273,14 +19796,20 @@ class InvocationExpressionTermContext extends ExpressionTermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionTermContext? expressionTerm() =>
+      getRuleContext<ExpressionTermContext>(0);
+
+  QualifiedInvocationContext? qualifiedInvocation() =>
+      getRuleContext<QualifiedInvocationContext>(0);
 }
 
 class WithinIntervalOperatorPhraseContext
     extends IntervalOperatorPhraseContext {
-  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
   WithinIntervalOperatorPhraseContext(IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19289,15 +19818,16 @@ class WithinIntervalOperatorPhraseContext
       return visitor.visitChildren(this);
     }
   }
+
+  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
 }
 
 class IncludedInIntervalOperatorPhraseContext
     extends IntervalOperatorPhraseContext {
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   IncludedInIntervalOperatorPhraseContext(IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19306,14 +19836,16 @@ class IncludedInIntervalOperatorPhraseContext
       return visitor.visitChildren(this);
     }
   }
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class EndsIntervalOperatorPhraseContext extends IntervalOperatorPhraseContext {
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   EndsIntervalOperatorPhraseContext(IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19322,18 +19854,18 @@ class EndsIntervalOperatorPhraseContext extends IntervalOperatorPhraseContext {
       return visitor.visitChildren(this);
     }
   }
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class ConcurrentWithIntervalOperatorPhraseContext
     extends IntervalOperatorPhraseContext {
-  RelativeQualifierContext? relativeQualifier() =>
-      getRuleContext<RelativeQualifierContext>(0);
-  DateTimePrecisionContext? dateTimePrecision() =>
-      getRuleContext<DateTimePrecisionContext>(0);
   ConcurrentWithIntervalOperatorPhraseContext(
       IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19342,15 +19874,20 @@ class ConcurrentWithIntervalOperatorPhraseContext
       return visitor.visitChildren(this);
     }
   }
+
+  RelativeQualifierContext? relativeQualifier() =>
+      getRuleContext<RelativeQualifierContext>(0);
+
+  DateTimePrecisionContext? dateTimePrecision() =>
+      getRuleContext<DateTimePrecisionContext>(0);
 }
 
 class OverlapsIntervalOperatorPhraseContext
     extends IntervalOperatorPhraseContext {
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   OverlapsIntervalOperatorPhraseContext(IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19359,15 +19896,17 @@ class OverlapsIntervalOperatorPhraseContext
       return visitor.visitChildren(this);
     }
   }
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class IncludesIntervalOperatorPhraseContext
     extends IntervalOperatorPhraseContext {
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   IncludesIntervalOperatorPhraseContext(IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19376,20 +19915,18 @@ class IncludesIntervalOperatorPhraseContext
       return visitor.visitChildren(this);
     }
   }
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class BeforeOrAfterIntervalOperatorPhraseContext
     extends IntervalOperatorPhraseContext {
-  TemporalRelationshipContext? temporalRelationship() =>
-      getRuleContext<TemporalRelationshipContext>(0);
-  QuantityOffsetContext? quantityOffset() =>
-      getRuleContext<QuantityOffsetContext>(0);
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   BeforeOrAfterIntervalOperatorPhraseContext(
       IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19398,14 +19935,22 @@ class BeforeOrAfterIntervalOperatorPhraseContext
       return visitor.visitChildren(this);
     }
   }
+
+  TemporalRelationshipContext? temporalRelationship() =>
+      getRuleContext<TemporalRelationshipContext>(0);
+
+  QuantityOffsetContext? quantityOffset() =>
+      getRuleContext<QuantityOffsetContext>(0);
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class MeetsIntervalOperatorPhraseContext extends IntervalOperatorPhraseContext {
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   MeetsIntervalOperatorPhraseContext(IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19414,15 +19959,17 @@ class MeetsIntervalOperatorPhraseContext extends IntervalOperatorPhraseContext {
       return visitor.visitChildren(this);
     }
   }
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class StartsIntervalOperatorPhraseContext
     extends IntervalOperatorPhraseContext {
-  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
-      getRuleContext<DateTimePrecisionSpecifierContext>(0);
   StartsIntervalOperatorPhraseContext(IntervalOperatorPhraseContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19431,14 +19978,16 @@ class StartsIntervalOperatorPhraseContext
       return visitor.visitChildren(this);
     }
   }
+
+  DateTimePrecisionSpecifierContext? dateTimePrecisionSpecifier() =>
+      getRuleContext<DateTimePrecisionSpecifierContext>(0);
 }
 
 class ExternalConstantTermContext extends TermContext {
-  ExternalConstantContext? externalConstant() =>
-      getRuleContext<ExternalConstantContext>(0);
   ExternalConstantTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19447,14 +19996,16 @@ class ExternalConstantTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExternalConstantContext? externalConstant() =>
+      getRuleContext<ExternalConstantContext>(0);
 }
 
 class TupleSelectorTermContext extends TermContext {
-  TupleSelectorContext? tupleSelector() =>
-      getRuleContext<TupleSelectorContext>(0);
   TupleSelectorTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19463,13 +20014,16 @@ class TupleSelectorTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TupleSelectorContext? tupleSelector() =>
+      getRuleContext<TupleSelectorContext>(0);
 }
 
 class LiteralTermContext extends TermContext {
-  LiteralContext? literal() => getRuleContext<LiteralContext>(0);
   LiteralTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19478,14 +20032,15 @@ class LiteralTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  LiteralContext? literal() => getRuleContext<LiteralContext>(0);
 }
 
 class ConceptSelectorTermContext extends TermContext {
-  ConceptSelectorContext? conceptSelector() =>
-      getRuleContext<ConceptSelectorContext>(0);
   ConceptSelectorTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19494,13 +20049,16 @@ class ConceptSelectorTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ConceptSelectorContext? conceptSelector() =>
+      getRuleContext<ConceptSelectorContext>(0);
 }
 
 class ParenthesizedTermContext extends TermContext {
-  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
   ParenthesizedTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19509,13 +20067,15 @@ class ParenthesizedTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ExpressionContext? expression() => getRuleContext<ExpressionContext>(0);
 }
 
 class CodeSelectorTermContext extends TermContext {
-  CodeSelectorContext? codeSelector() => getRuleContext<CodeSelectorContext>(0);
   CodeSelectorTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19524,13 +20084,15 @@ class CodeSelectorTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  CodeSelectorContext? codeSelector() => getRuleContext<CodeSelectorContext>(0);
 }
 
 class InvocationTermContext extends TermContext {
-  InvocationContext? invocation() => getRuleContext<InvocationContext>(0);
   InvocationTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19539,14 +20101,15 @@ class InvocationTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  InvocationContext? invocation() => getRuleContext<InvocationContext>(0);
 }
 
 class InstanceSelectorTermContext extends TermContext {
-  InstanceSelectorContext? instanceSelector() =>
-      getRuleContext<InstanceSelectorContext>(0);
   InstanceSelectorTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19555,14 +20118,16 @@ class InstanceSelectorTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  InstanceSelectorContext? instanceSelector() =>
+      getRuleContext<InstanceSelectorContext>(0);
 }
 
 class IntervalSelectorTermContext extends TermContext {
-  IntervalSelectorContext? intervalSelector() =>
-      getRuleContext<IntervalSelectorContext>(0);
   IntervalSelectorTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19571,13 +20136,16 @@ class IntervalSelectorTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  IntervalSelectorContext? intervalSelector() =>
+      getRuleContext<IntervalSelectorContext>(0);
 }
 
 class ListSelectorTermContext extends TermContext {
-  ListSelectorContext? listSelector() => getRuleContext<ListSelectorContext>(0);
   ListSelectorTermContext(TermContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19586,14 +20154,15 @@ class ListSelectorTermContext extends TermContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ListSelectorContext? listSelector() => getRuleContext<ListSelectorContext>(0);
 }
 
 class QualifiedFunctionInvocationContext extends QualifiedInvocationContext {
-  QualifiedFunctionContext? qualifiedFunction() =>
-      getRuleContext<QualifiedFunctionContext>(0);
   QualifiedFunctionInvocationContext(QualifiedInvocationContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19602,14 +20171,16 @@ class QualifiedFunctionInvocationContext extends QualifiedInvocationContext {
       return visitor.visitChildren(this);
     }
   }
+
+  QualifiedFunctionContext? qualifiedFunction() =>
+      getRuleContext<QualifiedFunctionContext>(0);
 }
 
 class QualifiedMemberInvocationContext extends QualifiedInvocationContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
   QualifiedMemberInvocationContext(QualifiedInvocationContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19618,12 +20189,16 @@ class QualifiedMemberInvocationContext extends QualifiedInvocationContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
 }
 
 class TotalInvocationContext extends InvocationContext {
   TotalInvocationContext(InvocationContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19638,6 +20213,7 @@ class ThisInvocationContext extends InvocationContext {
   ThisInvocationContext(InvocationContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19652,6 +20228,7 @@ class IndexInvocationContext extends InvocationContext {
   IndexInvocationContext(InvocationContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19663,10 +20240,10 @@ class IndexInvocationContext extends InvocationContext {
 }
 
 class FunctionInvocationContext extends InvocationContext {
-  FunctionContext? function() => getRuleContext<FunctionContext>(0);
   FunctionInvocationContext(InvocationContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19675,14 +20252,15 @@ class FunctionInvocationContext extends InvocationContext {
       return visitor.visitChildren(this);
     }
   }
+
+  FunctionContext? function() => getRuleContext<FunctionContext>(0);
 }
 
 class MemberInvocationContext extends InvocationContext {
-  ReferentialIdentifierContext? referentialIdentifier() =>
-      getRuleContext<ReferentialIdentifierContext>(0);
   MemberInvocationContext(InvocationContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19691,13 +20269,16 @@ class MemberInvocationContext extends InvocationContext {
       return visitor.visitChildren(this);
     }
   }
+
+  ReferentialIdentifierContext? referentialIdentifier() =>
+      getRuleContext<ReferentialIdentifierContext>(0);
 }
 
 class TimeLiteralContext extends LiteralContext {
-  TerminalNode? TIME() => getToken(cqlParser.TOKEN_TIME, 0);
   TimeLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19706,12 +20287,15 @@ class TimeLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? TIME() => getToken(cqlParser.TOKEN_TIME, 0);
 }
 
 class NullLiteralContext extends LiteralContext {
   NullLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19723,10 +20307,10 @@ class NullLiteralContext extends LiteralContext {
 }
 
 class RatioLiteralContext extends LiteralContext {
-  RatioContext? ratio() => getRuleContext<RatioContext>(0);
   RatioLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19735,13 +20319,15 @@ class RatioLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  RatioContext? ratio() => getRuleContext<RatioContext>(0);
 }
 
 class DateTimeLiteralContext extends LiteralContext {
-  TerminalNode? DATETIME() => getToken(cqlParser.TOKEN_DATETIME, 0);
   DateTimeLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19750,13 +20336,15 @@ class DateTimeLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? DATETIME() => getToken(cqlParser.TOKEN_DATETIME, 0);
 }
 
 class StringLiteralContext extends LiteralContext {
-  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
   StringLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19765,13 +20353,15 @@ class StringLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? STRING() => getToken(cqlParser.TOKEN_STRING, 0);
 }
 
 class DateLiteralContext extends LiteralContext {
-  TerminalNode? DATE() => getToken(cqlParser.TOKEN_DATE, 0);
   DateLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19780,12 +20370,15 @@ class DateLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? DATE() => getToken(cqlParser.TOKEN_DATE, 0);
 }
 
 class BooleanLiteralContext extends LiteralContext {
   BooleanLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19797,10 +20390,10 @@ class BooleanLiteralContext extends LiteralContext {
 }
 
 class NumberLiteralContext extends LiteralContext {
-  TerminalNode? NUMBER() => getToken(cqlParser.TOKEN_NUMBER, 0);
   NumberLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19809,13 +20402,15 @@ class NumberLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? NUMBER() => getToken(cqlParser.TOKEN_NUMBER, 0);
 }
 
 class LongNumberLiteralContext extends LiteralContext {
-  TerminalNode? LONGNUMBER() => getToken(cqlParser.TOKEN_LONGNUMBER, 0);
   LongNumberLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19824,13 +20419,15 @@ class LongNumberLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  TerminalNode? LONGNUMBER() => getToken(cqlParser.TOKEN_LONGNUMBER, 0);
 }
 
 class QuantityLiteralContext extends LiteralContext {
-  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
   QuantityLiteralContext(LiteralContext ctx) {
     copyFrom(ctx);
   }
+
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
     if (visitor is CqlVisitor<T>) {
@@ -19839,4 +20436,6 @@ class QuantityLiteralContext extends LiteralContext {
       return visitor.visitChildren(this);
     }
   }
+
+  QuantityContext? quantity() => getRuleContext<QuantityContext>(0);
 }

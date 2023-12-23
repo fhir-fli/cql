@@ -5,11 +5,11 @@ import 'package:cql/engine/types/types.dart';
 /// category and its corresponding value set.
 
 class DiagnosticStudyAdverseEvent {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
+  final LiteralCode? reaction;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyAdverseEvent({
     this.startDatetime,

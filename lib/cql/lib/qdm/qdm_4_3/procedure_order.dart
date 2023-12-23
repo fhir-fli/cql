@@ -8,15 +8,15 @@ import 'package:cql/engine/types/types.dart';
 /// refer to the same point in time.
 
 class ProcedureOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralCode? reason;
-  final LiteralCode? method;
   final LiteralCode? anatomicalApproachSite;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
   final LiteralCode? ordinality;
   final LiteralQuantity? radiationDuration;
+  final LiteralCode? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   ProcedureOrder({
     this.startDatetime,

@@ -7,11 +7,11 @@ import 'qdm_5_6.dart';
 /// corresponding value set.
 
 class ProcedureRecommended {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
   final LiteralCode? anatomicalLocationSite;
-  final LiteralInteger? rank;
+  final LiteralDateTime? authorDatetime;
   final LiteralCode? negationRationale;
+  final LiteralInteger? rank;
+  final LiteralCode? reason;
   final QDMEntity? requester;
 
   ProcedureRecommended({

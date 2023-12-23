@@ -6,11 +6,11 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class DiagnosticStudyIntolerance {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
+  final LiteralCode? reaction;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyIntolerance({
     this.startDatetime,

@@ -5,10 +5,10 @@ import '../../../cql.dart';
 /// The [IntervalTypeSpecifier] type represents an interval type, inheriting from TypeSpecifier,
 /// including a pointTypeSpecifier element and pointType attribute.
 class IntervalTypeSpecifier extends TypeSpecifier {
+  TypeSpecifier? pointType;
+
   @override
   final String type = 'IntervalTypeSpecifier';
-
-  TypeSpecifier? pointType;
 
   IntervalTypeSpecifier({this.pointType});
 

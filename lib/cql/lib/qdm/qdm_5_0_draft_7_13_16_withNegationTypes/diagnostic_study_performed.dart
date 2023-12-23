@@ -8,11 +8,11 @@ import 'qdm_5_0_draft_7_13_16_withNegationTypes.dart';
 /// diagnostic study is initiated stopTime – when the diagnostic study is completed
 
 class DiagnosticStudyPerformed {
+  final Component? component;
+  final LiteralCode? facilityLocation;
   final LiteralDateTimeInterval? relevantPeriod;
   final dynamic result;
   final LiteralCode? status;
-  final LiteralCode? facilityLocation;
-  final Component? component;
 
   DiagnosticStudyPerformed({
     this.relevantPeriod,

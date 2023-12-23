@@ -5,10 +5,9 @@ class ModelSpecifier {
   /// Name of the model.
   String name;
 
+  Uri? url;
   /// Version of the model.
   String? version;
-
-  Uri? url;
 
   ModelSpecifier({
     required this.name,

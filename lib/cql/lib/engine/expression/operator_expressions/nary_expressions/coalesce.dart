@@ -2,10 +2,11 @@ import '../../../../cql.dart';
 
 /// Coalesce operator returning the first non-null result in a list of arguments.
 class Coalesce extends NaryExpression {
-  @override
-  final String type = 'Coalesce';
   Expression left;
   Expression right;
+
+  @override
+  final String type = 'Coalesce';
 
   Coalesce({required this.left, required this.right});
 

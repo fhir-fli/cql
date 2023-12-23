@@ -5,14 +5,14 @@ import '../cql.dart';
 /// The [TypeParameterInfo] type specifies details regarding a generic class parameter,
 /// including its name, constraint, and optional constraint type.
 class TypeParameterInfo {
-  /// Name of the parameter.
-  String name;
-
   /// Parameter constraint (NONE, CLASS, VALUE, TUPLE, INTERVAL, CHOICE, TYPE).
   String constraint;
 
   /// Type this parameter should be assignable from.
   String? constraintType;
+
+  /// Name of the parameter.
+  String name;
 
   /// Type specifier.
   TypeSpecifier? typeSpecifier;

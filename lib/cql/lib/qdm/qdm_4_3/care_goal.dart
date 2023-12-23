@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class CareGoal {
+  final LiteralCode? relatedTo;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? relatedTo;
   final LiteralCode? targetOutcome;
 
   CareGoal({

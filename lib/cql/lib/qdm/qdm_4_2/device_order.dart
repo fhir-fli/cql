@@ -11,10 +11,10 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class DeviceOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DeviceOrder({
     this.startDatetime,

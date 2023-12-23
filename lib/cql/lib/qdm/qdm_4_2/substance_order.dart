@@ -13,16 +13,16 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class SubstanceOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
-  final LiteralConcept? reason;
-  final LiteralConcept? reaction;
   final LiteralQuantity? dose;
   final LiteralConcept? frequency;
   final LiteralConcept? method;
+  final LiteralConcept? negationRationale;
+  final LiteralConcept? reaction;
+  final LiteralConcept? reason;
   final LiteralInteger? refills;
   final LiteralConcept? route;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   SubstanceOrder({
     this.startDatetime,

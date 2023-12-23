@@ -8,56 +8,56 @@ import '../cql.dart';
 @Deprecated(
     'This element is deprecated. New implementations should use the new elementTypeSpecifier element')
 class ClassInfoElement {
-  // Deprecated element
-  final TypeSpecifier? typeSpecifier;
-
-  // Element type specifier
-  final TypeSpecifier? elementTypeSpecifier;
-
   // Binding information
   final BindingInfo? binding;
-
-  // Constraints list
-  final List<ConstraintInfo> constraints = [];
-
-  // Required attribute - Name of the element
-  final String name;
-
-  // Optional attribute - Deprecated type attribute
-  final String? type;
-
-  // Optional attribute - Element type
-  final String? elementType;
-
-  // Optional attribute - Whether the element is prohibited
-  final bool? prohibited;
-
-  // Optional attribute - Whether the list-valued element is one-based
-  final bool? oneBased;
-
-  // Optional attribute - Access path for the element
-  final String? target;
-
-  // Optional attribute - User-friendly label for the element
-  final String? label;
-
-  // Optional attribute - Short description of the element
-  final String? description;
-
-  // Optional attribute - Detailed markdown definition of the element
-  final String? definition;
 
   // Optional attribute - Additional markdown comments on the element
   final String? comment;
 
-  // Optional attribute - Minimum cardinality of the element
-  final int? min;
+  // Constraints list
+  final List<ConstraintInfo> constraints = [];
+
+  // Optional attribute - Detailed markdown definition of the element
+  final String? definition;
+
+  // Optional attribute - Short description of the element
+  final String? description;
+
+  // Optional attribute - Element type
+  final String? elementType;
+
+  // Element type specifier
+  final TypeSpecifier? elementTypeSpecifier;
+
+  // Optional attribute - User-friendly label for the element
+  final String? label;
 
   // Optional attribute - Maximum cardinality of the element
   final String? max;
 
+  // Optional attribute - Minimum cardinality of the element
+  final int? min;
+
   // Optional attribute - Whether the element is relevant for the use case
   final bool? mustSupport;
+
+  // Required attribute - Name of the element
+  final String name;
+
+  // Optional attribute - Whether the list-valued element is one-based
+  final bool? oneBased;
+
+  // Optional attribute - Whether the element is prohibited
+  final bool? prohibited;
+
+  // Optional attribute - Access path for the element
+  final String? target;
+
+  // Optional attribute - Deprecated type attribute
+  final String? type;
+
+  // Deprecated element
+  final TypeSpecifier? typeSpecifier;
 
   ClassInfoElement({
     required this.name,
@@ -137,6 +137,11 @@ class ClassInfoElement {
     );
   }
 
+  @override
+  String toString() {
+    return 'ClassInfoElement{name: $name, typeSpecifier: $typeSpecifier, elementTypeSpecifier: $elementTypeSpecifier, binding: $binding, constraints: $constraints, type: $type, elementType: $elementType, prohibited: $prohibited, oneBased: $oneBased, target: $target, label: $label, description: $description, definition: $definition, comment: $comment, min: $min, max: $max, mustSupport: $mustSupport}';
+  }
+
   Map<String, dynamic> toJson() => {
         'name': name,
         if (typeSpecifier != null) 'typeSpecifier': typeSpecifier!.toJson(),
@@ -159,10 +164,5 @@ class ClassInfoElement {
 
   void addConstraint(ConstraintInfo constraint) {
     constraints.add(constraint);
-  }
-
-  @override
-  String toString() {
-    return 'ClassInfoElement{name: $name, typeSpecifier: $typeSpecifier, elementTypeSpecifier: $elementTypeSpecifier, binding: $binding, constraints: $constraints, type: $type, elementType: $elementType, prohibited: $prohibited, oneBased: $oneBased, target: $target, label: $label, description: $description, definition: $definition, comment: $comment, min: $min, max: $max, mustSupport: $mustSupport}';
   }
 }

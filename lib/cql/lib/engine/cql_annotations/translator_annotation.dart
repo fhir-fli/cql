@@ -1,8 +1,8 @@
 import '../../cql.dart';
 
 class TranslatorAnnotation extends Annotation {
-  final String translatorVersion;
   final String translatorOptions;
+  final String translatorVersion;
   final String type;
 
   TranslatorAnnotation(

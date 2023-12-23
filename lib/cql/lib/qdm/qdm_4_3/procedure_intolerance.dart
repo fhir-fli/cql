@@ -5,10 +5,10 @@ import 'package:cql/engine/types/types.dart';
 /// of the procedure indicated by the QDM category and its corresponding value set.
 
 class ProcedureIntolerance {
+  final LiteralCode? ordinality;
+  final LiteralCode? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
-  final LiteralCode? ordinality;
 
   ProcedureIntolerance({
     this.startDatetime,

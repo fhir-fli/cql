@@ -5,8 +5,8 @@ import '../cql.dart';
 /// The [TupleTypeInfoElement] defines an element within the TupleTypeInfo,
 /// indicating its type and associated attributes.
 class TupleTypeInfoElement {
-  /// Deprecated element.
-  TypeSpecifier? typeSpecifier;
+  /// Element type as a string.
+  String? elementType;
 
   /// Element type specifier.
   TypeSpecifier? elementTypeSpecifier;
@@ -14,17 +14,17 @@ class TupleTypeInfoElement {
   /// Name of the element.
   String name;
 
-  /// Deprecated attribute.
-  String? type;
-
-  /// Element type as a string.
-  String? elementType;
+  /// Indicates if the starting index for a list-valued element is one.
+  bool? oneBased;
 
   /// Specifies whether the element is prohibited.
   bool? prohibited;
 
-  /// Indicates if the starting index for a list-valued element is one.
-  bool? oneBased;
+  /// Deprecated attribute.
+  String? type;
+
+  /// Deprecated element.
+  TypeSpecifier? typeSpecifier;
 
   TupleTypeInfoElement({
     required this.name,

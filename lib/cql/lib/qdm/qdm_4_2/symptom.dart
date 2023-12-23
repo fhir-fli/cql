@@ -19,8 +19,8 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class Symptom {
-  final LiteralDateTime? onsetDatetime;
   final LiteralDateTime? abatementDatetime;
+  final LiteralDateTime? onsetDatetime;
   final LiteralConcept? severity;
 
   Symptom({

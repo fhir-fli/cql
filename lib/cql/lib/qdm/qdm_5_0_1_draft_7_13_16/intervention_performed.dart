@@ -12,11 +12,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class InterventionPerformed {
-  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
+  final LiteralDateTimeInterval? relevantPeriod;
   final dynamic result;
   final LiteralCode? status;
-  final LiteralCode? negationRationale;
 
   InterventionPerformed({
     this.relevantPeriod,

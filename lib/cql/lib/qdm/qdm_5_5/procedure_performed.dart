@@ -8,20 +8,20 @@ import 'qdm_5_5.dart';
 /// begins; stopTime - the time the procedure is completed
 
 class ProcedurePerformed {
-  final LiteralDateTime? authorDatetime;
-  final LiteralDateTime? relevantDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? reason;
-  final LiteralCode? method;
-  final dynamic result;
-  final LiteralCode? status;
   final LiteralCode? anatomicalLocationSite;
-  final LiteralInteger? rank;
-  final LiteralDateTime? incisionDatetime;
-  final LiteralCode? negationRationale;
+  final LiteralDateTime? authorDatetime;
   final Component? component;
+  final LiteralDateTime? incisionDatetime;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
   final QDMEntity? performer;
   final LiteralCode? priority;
+  final LiteralInteger? rank;
+  final LiteralCode? reason;
+  final LiteralDateTime? relevantDatetime;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
+  final LiteralCode? status;
 
   ProcedurePerformed({
     this.authorDatetime,

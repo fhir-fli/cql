@@ -8,10 +8,10 @@ import 'package:cql/engine/types/types.dart';
 /// Stop Datetime refer to the same point in time.
 
 class InterventionOrder {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   InterventionOrder({
     this.startDatetime,

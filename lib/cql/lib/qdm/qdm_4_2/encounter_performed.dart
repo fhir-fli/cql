@@ -11,16 +11,16 @@ import 'package:cql/engine/types/types.dart';
 
 class EncounterPerformed {
   final LiteralDateTime admissionDatetime;
+  final LiteralConcept? diagnosis;
   final LiteralDateTime dischargeDatetime;
-  final LiteralQuantity? lengthOfStay;
   final LiteralConcept? dischargeStatus;
   final LiteralConcept? facilityLocation;
   final LiteralDateTime? facilityLocationArrivalDatetime;
   final LiteralDateTime? facilityLocationDepartureDatetime;
-  final LiteralConcept? reason;
-  final LiteralConcept? diagnosis;
-  final LiteralConcept? principalDiagnosis;
+  final LiteralQuantity? lengthOfStay;
   final LiteralConcept? negationRationale;
+  final LiteralConcept? principalDiagnosis;
+  final LiteralConcept? reason;
 
   EncounterPerformed({
     required this.admissionDatetime,

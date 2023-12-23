@@ -11,8 +11,8 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class CareGoal {
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? relatedTo;
+  final LiteralDateTimeInterval? relevantPeriod;
   final dynamic targetOutcome;
 
   CareGoal({

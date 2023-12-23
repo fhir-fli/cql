@@ -14,13 +14,13 @@ import 'package:cql/engine/types/types.dart';
 
 class ImmunizationOrder {
   final LiteralDateTime? activeDatetime;
-  final LiteralDateTime? signedDatetime;
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralQuantity? dose;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
   final LiteralConcept? route;
-  final LiteralQuantity? dose;
+  final LiteralDateTime? signedDatetime;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   ImmunizationOrder({
     this.activeDatetime,

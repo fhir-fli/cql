@@ -18,6 +18,7 @@ class ParameterTypeSpecifier extends TypeSpecifier {
     final parameterName = json['parameterName'] as String? ?? '';
     return ParameterTypeSpecifier(parameterName: parameterName);
   }
+
   @override
   Map<String, dynamic> toJson() => {
         'parameterName': parameterName.toString(),

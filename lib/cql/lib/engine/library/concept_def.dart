@@ -20,18 +20,18 @@ class ConceptDefs {
 /// reference single concepts anywhere within an expression.
 @JsonSerializable()
 class ConceptDef extends Element {
-  /// The name of the concept used for reference.
-  String name;
-
-  /// An optional display string used to describe the concept.
-  String? display;
-
   /// Specifies the access level; default is Public.
   AccessModifier accessLevel;
 
   /// A code that makes up the concept. All codes within a given concept must
   /// be synonyms.
   List<Ref> code;
+
+  /// An optional display string used to describe the concept.
+  String? display;
+
+  /// The name of the concept used for reference.
+  String name;
 
   ConceptDef({
     required this.name,

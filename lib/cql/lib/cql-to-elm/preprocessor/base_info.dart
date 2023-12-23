@@ -1,9 +1,9 @@
 import 'package:antlr4/antlr4.dart'; // Assuming the ANTLR package is used in Dart
 
 class BaseInfo {
+  ParseTree? definition;
   String? header;
   Interval? headerInterval;
-  ParseTree? definition;
 
   String? getHeader() {
     return header;

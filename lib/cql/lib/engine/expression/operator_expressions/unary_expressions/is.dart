@@ -2,11 +2,11 @@ import '../../../../cql.dart';
 
 /// Is operator allowing testing the type of a result.
 class Is extends UnaryExpression {
-  /// Type specifier for testing.
-  TypeSpecifier? isTypeSpecifier;
-
   /// Type to test against.
   QName? isType;
+
+  /// Type specifier for testing.
+  TypeSpecifier? isTypeSpecifier;
 
   Is({this.isTypeSpecifier, this.isType, required super.operand});
 

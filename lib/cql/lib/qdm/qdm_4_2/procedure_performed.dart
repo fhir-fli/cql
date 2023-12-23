@@ -9,19 +9,19 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class ProcedurePerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
-  final LiteralConcept? reason;
-  final LiteralConcept? method;
-  final dynamic result;
-  final LiteralConcept? status;
   final LiteralConcept? anatomicalApproachSite;
   final LiteralConcept? anatomicalLocationSite;
-  final LiteralConcept? ordinality;
-  final LiteralQuantity? radiationDuration;
-  final LiteralQuantity? radiationDosage;
   final LiteralDateTime? incisionDatetime;
+  final LiteralConcept? method;
+  final LiteralConcept? negationRationale;
+  final LiteralConcept? ordinality;
+  final LiteralQuantity? radiationDosage;
+  final LiteralQuantity? radiationDuration;
+  final LiteralConcept? reason;
+  final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralConcept? status;
+  final LiteralDateTime? stopDatetime;
 
   ProcedurePerformed({
     this.startDatetime,

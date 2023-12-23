@@ -5,9 +5,6 @@ import '../../cql.dart';
 /// The [ProfileInfo] type represents details regarding a profile,
 /// inheriting from ClassInfo.
 class ProfileInfo extends ClassInfo {
-  @override
-  String get type => 'ProfileInfo';
-
   ProfileInfo({
     super.namespace,
     required super.name,
@@ -109,4 +106,7 @@ class ProfileInfo extends ClassInfo {
       if (singleConstraint != null) 'singleConstraint': singleConstraint,
     };
   }
+
+  @override
+  String get type => 'ProfileInfo';
 }

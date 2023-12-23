@@ -5,9 +5,9 @@ import '../../../../cql.dart';
 /// For example, minute may be null, but if it is, second, and millisecond must all be null as well.
 class ExpTime extends OperatorExpression {
   final Expression hour;
+  final Expression? millisecond;
   final Expression? minute;
   final Expression? second;
-  final Expression? millisecond;
 
   ExpTime(
     this.hour, {

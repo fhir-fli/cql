@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 
 class AssessmentPerformed {
   final LiteralDateTime? authorDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? method;
   final dynamic result;
 
   AssessmentPerformed({

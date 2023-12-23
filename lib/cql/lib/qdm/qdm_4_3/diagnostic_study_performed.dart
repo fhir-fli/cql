@@ -5,16 +5,16 @@ import 'package:cql/engine/types/types.dart';
 /// corresponding value set.
 
 class DiagnosticStudyPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? facilityLocation;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
-  final LiteralCode? reason;
-  final dynamic result;
-  final LiteralCode? status;
   final LiteralQuantity? radiationDosage;
   final LiteralQuantity? radiationDuration;
-  final LiteralCode? method;
-  final LiteralCode? facilityLocation;
+  final LiteralCode? reason;
+  final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralCode? status;
+  final LiteralDateTime? stopDatetime;
 
   DiagnosticStudyPerformed({
     this.startDatetime,

@@ -5,9 +5,9 @@ import 'package:cql/engine/types/types.dart';
 /// from one provider to another.
 
 class CommunicationFromProviderToProvider {
+  final LiteralCode? negationRationale;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
 
   CommunicationFromProviderToProvider({
     this.startDatetime,

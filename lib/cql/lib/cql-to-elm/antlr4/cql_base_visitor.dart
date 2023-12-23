@@ -11,136 +11,10 @@ import '../../cql.dart';
 /// [T] is the print(ctx.runtimeType); return type of the visit operation. Use `void` for
 /// operations with no print(ctx.runtimeType); return type.
 class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
-  int nodeNumber = 0;
-  final modelInfoProvider = StandardModelInfoProvider();
-  int getNextNode() {
-    final tempNumber = nodeNumber.toInt();
-    nodeNumber++;
-    return tempNumber;
-  }
-
   Library library = Library();
+  final modelInfoProvider = StandardModelInfoProvider();
+  int nodeNumber = 0;
   final shouldPrint = false;
-  void printIf(ParserRuleContext ctx, [bool should = false]) {
-    if (shouldPrint || should) {
-      print('$nodeNumber    '
-          '${ctx.runtimeType}    '
-          '${ctx.text}    '
-          '${ctx.childCount}    '
-          '${ctx.parent.runtimeType}');
-    }
-  }
-
-  Map<String, dynamic> get result => {'library': library.toJson()};
-
-  /// library: libraryDefinition? definition* statement* EOF;
-  @override
-  void visitLibrary(LibraryContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
-
-  /// This can be usingDefinition, includeDefinition, codesystemDefinition,
-  /// valuesetDefinition, codeDefinition, conceptDefinition, parameterDefinition.
-  @override
-  void visitDefinition(DefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
-
-  /// libraryDefinition:
-  /// 'library' qualifiedIdentifier ('version' versionSpecifier)?;
-  ///  For this we're just pulling out the qualifiedIdentifier and the
-  ///  versionSpecifier if they exist.
-  @override
-  void visitLibraryDefinition(LibraryDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    String? id;
-    String? version;
-
-    for (var child in ctx.children ?? <ParseTree>[]) {
-      if (child is QualifiedIdentifierContext) {
-        id = visitQualifiedIdentifier(child);
-      } else if (child is VersionSpecifierContext) {
-        version = visitVersionSpecifier(child);
-      }
-    }
-    if (id != null || version != null) {
-      library.identifier = VersionedIdentifier(id: id, version: version);
-    }
-  }
-
-  /// usingDefinition:
-  /// 'using' modelIdentifier ('version' versionSpecifier)?;
-  ///  For this we're just pulling out the modelIdentifier and the
-  ///  versionSpecifier if they exist.
-  @override
-  dynamic visitUsingDefinition(UsingDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    String? localIdentifier;
-    String? version;
-
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ModelIdentifierContext) {
-        localIdentifier = visitModelIdentifier(child);
-      } else if (child is VersionSpecifierContext) {
-        version = visitVersionSpecifier(child);
-      }
-    }
-    if (localIdentifier != null || version != null) {
-      library.usings ??= UsingDefs();
-      final modelInfoProvider = StandardModelInfoProvider();
-      final modelInfo = modelInfoProvider
-          .load(ModelIdentifier(id: localIdentifier!, version: version));
-      library.usings!.def.add(UsingDef(
-        localIdentifier: localIdentifier,
-        version: version,
-        uri: modelInfo?.url.toString(),
-      ));
-    }
-  }
-
-  /// includeDefinition:
-  /// 	'include' qualifiedIdentifier ('version' versionSpecifier)? (
-  /// 		'called' localIdentifier
-  /// )?;
-  /// Can have 3 parts to this expression, a qualifiedIdentifier, a
-  /// versionSpecifier, and a localIdentifier.
-  @override
-  void visitIncludeDefinition(IncludeDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    String? localIdentifier;
-    String? path;
-    String? version;
-
-    for (var child in ctx.children ?? <ParseTree>[]) {
-      if (child is QualifiedIdentifierContext) {
-        path = visitQualifiedIdentifier(child);
-      } else if (child is LocalIdentifierContext) {
-        localIdentifier = visitLocalIdentifier(child);
-      } else if (child is VersionSpecifierContext) {
-        version = visitVersionSpecifier(child);
-      }
-    }
-    if (localIdentifier != null || path != null || version != null) {
-      library.includes ??= IncludeDefs();
-      library.includes!.def.add(IncludeDef(
-          localIdentifier: localIdentifier, path: path, version: version));
-    }
-  }
-
-  /// This is just an identifier, that is, just a String.
-  @override
-  String visitLocalIdentifier(LocalIdentifierContext ctx) =>
-      _noQuoteString(ctx.text);
 
   /// accessModifier: 'public' | 'private';
   @override
@@ -156,162 +30,190 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
-  /// parameterDefinition:
-  /// 	accessModifier? 'parameter' identifier (typeSpecifier)? (
-  /// 		'default' expression
-  /// 	)?;
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
   @override
-  void visitParameterDefinition(ParameterDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    String name = '';
-    TypeSpecifier? typeSpecifier;
-    AccessModifier accessLevel = AccessModifier.public;
-    Expression? defaultExpression;
-
-    for (var child in ctx.children ?? <ParseTree>[]) {
-      if (child is IdentifierContext) {
-        name = visitIdentifier(child);
-      } else if (child is TypeSpecifierContext) {
-        typeSpecifier = visitTypeSpecifier(child);
-      } else if (child is AccessModifierContext) {
-        accessLevel = visitAccessModifier(child);
-      } else {
-        final result = byContext(child);
-        if (result is Expression) {
-          defaultExpression = result;
-        }
-      }
-    }
-    if (typeSpecifier != null) {
-      library.parameters ??= ParameterDefs();
-      library.parameters!.def.add(ParameterDef(
-        name: name,
-        parameterTypeSpecifier: typeSpecifier,
-        accessLevel: accessLevel,
-        defaultExpression: defaultExpression,
-      ));
-    }
-  }
-
-  /// codesystemDefinition:
-  /// 	accessModifier? 'codesystem' identifier ':' codesystemId (
-  /// 		'version' versionSpecifier
-  /// 	)?;
-  @override
-  void visitCodesystemDefinition(CodesystemDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    AccessModifier accessLevel = AccessModifier.public;
-    String? name;
-    String? id;
-    String? version;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is AccessModifierContext) {
-        accessLevel = visitAccessModifier(child);
-      } else if (child is IdentifierContext) {
-        name = visitIdentifier(child);
-      } else if (child is CodesystemIdContext) {
-        id = visitCodesystemId(child);
-      } else if (child is VersionSpecifierContext) {
-        version = visitVersionSpecifier(child);
-      }
-    }
-    if (name != null || id != null || version != null) {
-      library.codeSystems ??= CodeSystemDefs();
-      library.codeSystems!.def.add(CodeSystemDef(
-        name: name,
-        id: id,
-        version: version,
-        accessLevel: accessLevel,
-      ));
-    }
-  }
-
-  /// valuesetDefinition:
-  /// 	accessModifier? 'valueset' identifier ':' valuesetId (
-  /// 		'version' versionSpecifier
-  /// 	)? codesystems?;
-  @override
-  void visitValuesetDefinition(ValuesetDefinitionContext ctx) {
-    library.valueSets ??= ValueSetDefs();
-
-    List<CodeSystemRef>? codeSystem;
-    AccessModifier accessModifier = AccessModifier.public;
-    String? name;
-    String? id;
-    String? version;
-
-    final int thisNode = getNextNode();
-    for (var child in ctx.children ?? <ParseTree>[]) {
-      if (child is AccessModifierContext) {
-        accessModifier = visitAccessModifier(child);
-      } else if (child is IdentifierContext) {
-        name = visitIdentifier(child);
-      } else if (child is ValuesetIdContext) {
-        id = visitValuesetId(child);
-      } else if (child is VersionSpecifierContext) {
-        version = visitVersionSpecifier(child);
-      } else if (child is CodesystemsContext) {
-        codeSystem = visitCodesystems(child);
-      }
-    }
-
-    if (name != null || id != null) {
-      library.valueSets!.def.add(ValueSetDef(
-        codeSystem: codeSystem,
-        accessLevel: accessModifier,
-        id: id,
-        name: name,
-        version: version,
-      ));
-    }
-  }
-
-  /// codesystems:
-  /// 	'codesystems' '{' codesystemIdentifier (
-  /// 		',' codesystemIdentifier
-  /// )* '}';
-  @override
-  dynamic visitCodesystems(CodesystemsContext ctx) {
+  dynamic visitAdditionExpressionTerm(AdditionExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
     visitChildren(ctx);
   }
 
-  /// codesystemIdentifier: (libraryIdentifier '.')? identifier;
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
   @override
-  CodeSystemRef visitCodesystemIdentifier(CodesystemIdentifierContext ctx) {
+  dynamic visitAggregateClause(AggregateClauseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
-    String? name;
-    String? libraryName;
-
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is IdentifierContext) {
-        name = visitIdentifier(child);
-      } else if (child is LibraryIdentifierContext) {
-        libraryName = visitLibraryIdentifier(child);
-      }
-    }
-    if (name != null || libraryName != null) {
-      return CodeSystemRef(name: name, libraryName: libraryName);
-    }
-    throw ArgumentError('$thisNode Invalid CodesystemIdentifier');
+    visitChildren(ctx);
   }
 
-  /// libraryIdentifier: identifier;
-  /// Should just be another String identfier, and should be able to return the
-  /// unquoted text.
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
   @override
-  String visitLibraryIdentifier(LibraryIdentifierContext ctx) {
+  dynamic visitAggregateExpressionTerm(AggregateExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitAlias(AliasContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     return _noQuoteString(ctx.text);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitAliasedQuerySource(AliasedQuerySourceContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    String? alias;
+    Expression? expression;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is AliasContext) {
+        alias = visitAlias(child);
+      } else if (child is QuerySourceContext) {
+        final temp = visitQuerySource(child);
+        expression = temp;
+        // visitQuerySource(child);
+      }
+    }
+    if (alias != null && expression != null) {
+      return RelationshipClause(alias: alias, expression: expression);
+    } else {
+      throw ArgumentError('$thisNode: Invalid AliasedQuerySource');
+    }
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  And visitAndExpression(AndExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    List<Expression> operand = [];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
+        if (result is Expression) {
+          operand.add(result);
+        }
+      }
+    }
+    return And(operand: operand);
+  }
+
+  /// ('starts' | 'ends' | 'occurs')? quantityOffset? temporalRelationship
+  ///	dateTimePrecisionSpecifier? ('start' | 'end')?
+  @override
+  dynamic visitBeforeOrAfterIntervalOperatorPhrase(
+      BeforeOrAfterIntervalOperatorPhraseContext ctx) {
+    printIf(ctx, true);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitBetweenExpression(BetweenExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitBooleanExpression(BooleanExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  bool visitBooleanLiteral(BooleanLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
+      return ctx.getChild(0)!.text == 'true';
+    }
+    throw ArgumentError('$thisNode Invalid BooleanLiteral');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitCaseExpressionItem(CaseExpressionItemContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitCaseExpressionTerm(CaseExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitCastExpression(CastExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// choiceTypeSpecifier:
+  /// 'Choice' '<' typeSpecifier (',' typeSpecifier)* '>';
+  @override
+  dynamic visitChoiceTypeSpecifier(ChoiceTypeSpecifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    List<TypeSpecifier> choice = <TypeSpecifier>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TypeSpecifierContext) {
+        final newTypeSpecifier = visitTypeSpecifier(child);
+        if (newTypeSpecifier != null) {
+          choice.add(newTypeSpecifier);
+        }
+      }
+    }
+    if (choice.isNotEmpty) {
+      return ChoiceTypeSpecifier(choice: choice);
+    } else {
+      throw ArgumentError('$thisNode Invalid ChoiceTypeSpecifier');
+    }
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitCodeComparator(CodeComparatorContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
   }
 
   /// codeDefinition:
@@ -354,6 +256,151 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
+  /// codeId: STRING;
+  @override
+  String visitCodeId(CodeIdContext ctx) => _noQuoteString(ctx.text);
+
+  /// codeIdentifier: (libraryIdentifier '.')? identifier;
+  @override
+  IdentifierRef visitCodeIdentifier(CodeIdentifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    String? name;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      }
+    }
+    if (name != null) {
+      return IdentifierRef(name: name);
+    }
+    throw ArgumentError('Invalid CodeIdentifier');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitCodePath(CodePathContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    throw ArgumentError('$thisNode Invalid CodePath');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  Code visitCodeSelector(CodeSelectorContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    String? display;
+    CodeSystemRef? codeSystem;
+    String? code;
+    if (ctx.childCount >= 3 && ctx.getChild(1)?.text != null) {
+      code = _noQuoteString(ctx.getChild(1)!.text!);
+    }
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is CodesystemIdentifierContext) {
+        codeSystem = visitCodesystemIdentifier(child);
+      } else if (child is DisplayClauseContext) {
+        display = visitDisplayClause(child);
+      }
+    }
+    if (code != null && codeSystem != null) {
+      return Code(code: code, system: codeSystem, display: display);
+    }
+
+    throw ArgumentError('$thisNode Invalid CodeSelector');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitCodeSelectorTerm(CodeSelectorTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is CodeSelectorContext) {
+        return visitCodeSelector(child);
+      }
+    }
+
+    throw ArgumentError('$thisNode Invalid CodeSelectorTerm');
+  }
+
+  /// codesystemDefinition:
+  /// 	accessModifier? 'codesystem' identifier ':' codesystemId (
+  /// 		'version' versionSpecifier
+  /// 	)?;
+  @override
+  void visitCodesystemDefinition(CodesystemDefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    AccessModifier accessLevel = AccessModifier.public;
+    String? name;
+    String? id;
+    String? version;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is AccessModifierContext) {
+        accessLevel = visitAccessModifier(child);
+      } else if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is CodesystemIdContext) {
+        id = visitCodesystemId(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
+      }
+    }
+    if (name != null || id != null || version != null) {
+      library.codeSystems ??= CodeSystemDefs();
+      library.codeSystems!.def.add(CodeSystemDef(
+        name: name,
+        id: id,
+        version: version,
+        accessLevel: accessLevel,
+      ));
+    }
+  }
+
+  /// codesystemId: STRING;
+  @override
+  String visitCodesystemId(CodesystemIdContext ctx) => _noQuoteString(ctx.text);
+
+  /// codesystemIdentifier: (libraryIdentifier '.')? identifier;
+  @override
+  CodeSystemRef visitCodesystemIdentifier(CodesystemIdentifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    String? name;
+    String? libraryName;
+
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is LibraryIdentifierContext) {
+        libraryName = visitLibraryIdentifier(child);
+      }
+    }
+    if (name != null || libraryName != null) {
+      return CodeSystemRef(name: name, libraryName: libraryName);
+    }
+    throw ArgumentError('$thisNode Invalid CodesystemIdentifier');
+  }
+
+  /// codesystems:
+  /// 	'codesystems' '{' codesystemIdentifier (
+  /// 		',' codesystemIdentifier
+  /// )* '}';
+  @override
+  dynamic visitCodesystems(CodesystemsContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
 // conceptDefinition:
 // 	accessModifier? 'concept' identifier ':' '{' codeIdentifier (
 // 		',' codeIdentifier
@@ -392,246 +439,48 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
-  /// codeIdentifier: (libraryIdentifier '.')? identifier;
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
   @override
-  IdentifierRef visitCodeIdentifier(CodeIdentifierContext ctx) {
+  dynamic visitConceptSelector(ConceptSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    String? name;
+    String? display;
+    List<Code> code = <Code>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is IdentifierContext) {
-        name = visitIdentifier(child);
+      if (child is DisplayClauseContext) {
+        display = visitDisplayClause(child);
+      } else if (child is CodeSelectorContext) {
+        final newCode = visitCodeSelector(child);
+        code.add(newCode);
       }
     }
-    if (name != null) {
-      return IdentifierRef(name: name);
-    }
-    throw ArgumentError('Invalid CodeIdentifier');
+    return Concept(display: display, code: code);
   }
 
-  /// codesystemId: STRING;
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
   @override
-  String visitCodesystemId(CodesystemIdContext ctx) => _noQuoteString(ctx.text);
-
-  /// valuesetId: STRING;
-  @override
-  String visitValuesetId(ValuesetIdContext ctx) => _noQuoteString(ctx.text);
-
-  /// versionSpecifier: STRING;
-  @override
-  String visitVersionSpecifier(VersionSpecifierContext ctx) =>
-      _noQuoteString(ctx.text);
-
-  /// codeId: STRING;
-  @override
-  String visitCodeId(CodeIdContext ctx) => _noQuoteString(ctx.text);
-
-  ///  typeSpecifier:
-  /// 	namedTypeSpecifier
-  /// 	| listTypeSpecifier
-  /// 	| intervalTypeSpecifier
-  /// 	| tupleTypeSpecifier
-  /// 	| choiceTypeSpecifier;
-  @override
-  TypeSpecifier? visitTypeSpecifier(TypeSpecifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (var child in ctx.children ?? <ParseTree>[]) {
-      if (child is NamedTypeSpecifierContext) {
-        return visitNamedTypeSpecifier(child);
-      } else if (child is ListTypeSpecifierContext) {
-        return visitListTypeSpecifier(child);
-      } else if (child is IntervalTypeSpecifierContext) {
-        return visitIntervalTypeSpecifier(child);
-      } else if (child is TupleTypeSpecifierContext) {
-        return visitTupleTypeSpecifier(child);
-      } else if (child is ChoiceTypeSpecifierContext) {
-        return visitChoiceTypeSpecifier(child);
-      }
-    }
-    return null;
-  }
-
-  /// namedTypeSpecifier: (qualifier '.')* referentialOrTypeNameIdentifier;
-  @override
-  NamedTypeSpecifier? visitNamedTypeSpecifier(NamedTypeSpecifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    String? qualifier;
-    Ref? referentialOrTypeNameIdentifier;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is QualifierContext) {
-        qualifier = visitQualifier(child);
-      }
-      if (child is ReferentialOrTypeNameIdentifierContext) {
-        referentialOrTypeNameIdentifier =
-            visitReferentialOrTypeNameIdentifier(child);
-      }
-    }
-    // TODO(Dokotela): unclear what to do with qualifiers
-    if (referentialOrTypeNameIdentifier?.name != null) {
-      return NamedTypeSpecifier(
-          namespace: QName.fromFull(referentialOrTypeNameIdentifier!.name!));
-    } else {
-      throw ArgumentError('$thisNode Invalid NamedTypeSpecifier');
-    }
-  }
-
-  /// modelIdentifier: identifier;
-  @override
-  String visitModelIdentifier(ModelIdentifierContext ctx) =>
-      _noQuoteString(ctx.text);
-
-  /// listTypeSpecifier: 'List' '<' typeSpecifier '>';
-  @override
-  ListTypeSpecifier visitListTypeSpecifier(ListTypeSpecifierContext ctx) {
+  dynamic visitConceptSelectorTerm(ConceptSelectorTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is TypeSpecifierContext) {
-        return ListTypeSpecifier(
-            elementTypeSpecifier: visitTypeSpecifier(child));
+      if (child is ConceptSelectorContext) {
+        return visitConceptSelector(child);
       }
     }
-    throw ArgumentError('$thisNode Invalid ListTypeSpecifier');
+    throw ArgumentError('$thisNode Invalid ConceptSelectorTerm');
   }
 
-  /// intervalTypeSpecifier: 'Interval' '<' typeSpecifier '>';
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
   @override
-  IntervalTypeSpecifier visitIntervalTypeSpecifier(
-      IntervalTypeSpecifierContext ctx) {
+  dynamic visitConcurrentWithIntervalOperatorPhrase(
+      ConcurrentWithIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    for (var child in ctx.children ?? <ParseTree>[]) {
-      if (child is TypeSpecifierContext) {
-        return IntervalTypeSpecifier(pointType: visitTypeSpecifier(child));
-      }
-    }
-    throw ArgumentError('Invalid IntervalTypeSpecifier');
-  }
 
-  /// tupleTypeSpecifier:
-  /// 'Tuple' '{' tupleElementDefinition (
-  /// 	',' tupleElementDefinition
-  /// )* '}';
-  @override
-  TupleTypeSpecifier visitTupleTypeSpecifier(TupleTypeSpecifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    List<TupleTypeSpecifierElement> element = <TupleTypeSpecifierElement>[];
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is TupleElementDefinitionContext) {
-        element.add(visitTupleElementDefinition(child));
-      }
-    }
-    return TupleTypeSpecifier(element: element.isEmpty ? null : element);
-  }
-
-  /// tupleElementDefinition: referentialIdentifier typeSpecifier;
-  @override
-  TupleTypeSpecifierElement visitTupleElementDefinition(
-      TupleElementDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    Ref? name;
-    TypeSpecifier? typeSpecifier;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ReferentialIdentifierContext) {
-        name = visitReferentialIdentifier(child);
-      } else if (child is TypeSpecifierContext) {
-        typeSpecifier = visitTypeSpecifier(child);
-      }
-    }
-    if (name?.name != null && typeSpecifier != null) {
-      return TupleTypeSpecifierElement(
-          elementType: typeSpecifier, name: name!.name!);
-    } else {
-      throw ArgumentError('$thisNode Invalid TupleElementDefinition');
-    }
-  }
-
-  /// choiceTypeSpecifier:
-  /// 'Choice' '<' typeSpecifier (',' typeSpecifier)* '>';
-  @override
-  dynamic visitChoiceTypeSpecifier(ChoiceTypeSpecifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    List<TypeSpecifier> choice = <TypeSpecifier>[];
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is TypeSpecifierContext) {
-        final newTypeSpecifier = visitTypeSpecifier(child);
-        if (newTypeSpecifier != null) {
-          choice.add(newTypeSpecifier);
-        }
-      }
-    }
-    if (choice.isNotEmpty) {
-      return ChoiceTypeSpecifier(choice: choice);
-    } else {
-      throw ArgumentError('$thisNode Invalid ChoiceTypeSpecifier');
-    }
-  }
-
-  /// statement:
-  // expressionDefinition
-  // | contextDefinition
-  // | functionDefinition;
-  @override
-  void visitStatement(StatementContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    Element? statement;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ExpressionDefinitionContext) {
-        statement = visitExpressionDefinition(child);
-      }
-      if (child is ContextDefinitionContext) {
-        visitContextDefinition(child);
-      } else if (child is FunctionDefinitionContext) {
-        statement = visitFunctionDefinition(child);
-      }
-    }
-    if (statement != null) {
-      library.statements ??= ExpressionDefs();
-      library.statements!.def.add(statement);
-    }
-  }
-
-  /// This should be of the form:
-  /// expressionDefinition:
-  /// 'define' accessModifier? identifier ':' expression;
-  /// It should therefore have at least 4 children, and there may be a term
-  /// between the 'define' TerminalNodeImpl and the identifier.
-  @override
-  ExpressionDef visitExpressionDefinition(ExpressionDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    AccessModifier accessLevel = AccessModifier.public;
-    String? name;
-    Expression? expression;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is AccessModifierContext) {
-        accessLevel = visitAccessModifier(child);
-      } else if (child is IdentifierContext) {
-        name = visitIdentifier(child);
-      } else {
-        final result = byContext(child);
-        if (result is Expression) {
-          expression = result;
-        }
-      }
-    }
-    if (name != null) {
-      return ExpressionDef(
-        name: name,
-        context: library.contexts != null && library.contexts!.def.isNotEmpty
-            ? library.contexts!.def.first.name
-            : 'Patient',
-        expression: expression,
-        accessLevel: accessLevel,
-      );
-    }
-    throw ArgumentError('$thisNode Invalid ExpressionDefinition');
+    visitChildren(ctx);
   }
 
   /// contextDefinition: 'context' (modelIdentifier '.')? identifier;
@@ -687,6 +536,283 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  Ref visitContextIdentifier(ContextIdentifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifiedIdentifierExpressionContext) {
+        return visitQualifiedIdentifierExpression(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid ContextIdentifier');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitConversionExpressionTerm(ConversionExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDateLiteral(DateLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDateTimeComponent(DateTimeComponentContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  DateTime visitDateTimeLiteral(DateTimeLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        return DateTime.parse(child.text!.replaceFirst('@', ''));
+      }
+    }
+    throw ArgumentError('$thisNode Invalid DateTimeLiteral');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDateTimePrecision(DateTimePrecisionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDateTimePrecisionSpecifier(
+      DateTimePrecisionSpecifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// This can be usingDefinition, includeDefinition, codesystemDefinition,
+  /// valuesetDefinition, codeDefinition, conceptDefinition, parameterDefinition.
+  @override
+  void visitDefinition(DefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDifferenceBetweenExpression(
+      DifferenceBetweenExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDifferenceExpressionTerm(DifferenceExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDisplayClause(DisplayClauseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    if (ctx.childCount == 2 &&
+        ctx.children![0] is TerminalNodeImpl &&
+        ctx.children![0].text == 'display') {
+      return _noQuoteString(ctx.children![1].text!);
+    }
+    throw ArgumentError('$thisNode Invalid DisplayClause');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDurationBetweenExpression(DurationBetweenExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitDurationExpressionTerm(DurationExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitElementExtractorExpressionTerm(
+      ElementExtractorExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    throw ArgumentError('$thisNode Invalid ElementExtractorExpressionTerm');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitEndsIntervalOperatorPhrase(
+      EndsIntervalOperatorPhraseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitEqualityExpression(EqualityExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitExclusiveRelativeQualifier(
+      ExclusiveRelativeQualifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitExistenceExpression(ExistenceExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// This should be of the form:
+  /// expressionDefinition:
+  /// 'define' accessModifier? identifier ':' expression;
+  /// It should therefore have at least 4 children, and there may be a term
+  /// between the 'define' TerminalNodeImpl and the identifier.
+  @override
+  ExpressionDef visitExpressionDefinition(ExpressionDefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    AccessModifier accessLevel = AccessModifier.public;
+    String? name;
+    Expression? expression;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is AccessModifierContext) {
+        accessLevel = visitAccessModifier(child);
+      } else if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          expression = result;
+        }
+      }
+    }
+    if (name != null) {
+      return ExpressionDef(
+        name: name,
+        context: library.contexts != null && library.contexts!.def.isNotEmpty
+            ? library.contexts!.def.first.name
+            : 'Patient',
+        expression: expression,
+        accessLevel: accessLevel,
+      );
+    }
+    throw ArgumentError('$thisNode Invalid ExpressionDefinition');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitExternalConstant(ExternalConstantContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitExternalConstantTerm(ExternalConstantTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitFunction(FunctionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// functionBody: expression;
+  @override
+  ExpressionDef visitFunctionBody(FunctionBodyContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ExpressionDefinitionContext) {
+        return visitExpressionDefinition(child);
+      }
+    }
+
+    throw ArgumentError('$thisNode Invalid FunctionBody');
+  }
+
   /// functionDefinition:
   /// 'define' accessModifier? 'fluent'? 'function' identifierOrFunctionIdentifier '(' (
   ///	operandDefinition (',' operandDefinition)*
@@ -731,106 +857,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// operandDefinition: referentialIdentifier typeSpecifier;
-  @override
-  OperandDef visitOperandDefinition(OperandDefinitionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    Ref? referentialIdentifier;
-    TypeSpecifier? typeSpecifier;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ReferentialIdentifierContext) {
-        referentialIdentifier = visitReferentialIdentifier(child);
-      } else if (child is TypeSpecifierContext) {
-        typeSpecifier = visitTypeSpecifier(child);
-      }
-    }
-    if (referentialIdentifier?.name != null && typeSpecifier != null) {
-      return OperandDef(
-        name: referentialIdentifier!.name!,
-        operandTypeSpecifier: typeSpecifier,
-      );
-    }
-    throw ArgumentError('$thisNode Invalid OperandDefinition');
-  }
-
-  /// functionBody: expression;
-  @override
-  ExpressionDef visitFunctionBody(FunctionBodyContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ExpressionDefinitionContext) {
-        return visitExpressionDefinition(child);
-      }
-    }
-
-    throw ArgumentError('$thisNode Invalid FunctionBody');
-  }
-
-  /// querySource:
-  /// retrieve
-  /// | qualifiedIdentifierExpression
-  /// | '(' expression ')';
-  @override
-  Expression visitQuerySource(QuerySourceContext ctx) {
-    printIf(ctx);
-    dynamic retrieve;
-    IdentifierRef? qualifiedIdentifierExpression;
-    Expression? expression;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is RetrieveContext) {
-        return visitRetrieve(child);
-      } else if (child is QualifiedIdentifierExpressionContext) {
-        return visitQualifiedIdentifierExpression(child);
-      } else {
-        final result = byContext(child);
-        if (result is Expression) {
-          return result;
-        }
-      }
-    }
-
-    throw ArgumentError('Invalid QuerySource');
-  }
-
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitAliasedQuerySource(AliasedQuerySourceContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    String? alias;
-    Expression? expression;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is AliasContext) {
-        alias = visitAlias(child);
-      } else if (child is QuerySourceContext) {
-        final temp = visitQuerySource(child);
-        expression = temp;
-        // visitQuerySource(child);
-      }
-    }
-    if (alias != null && expression != null) {
-      return RelationshipClause(alias: alias, expression: expression);
-    } else {
-      throw ArgumentError('$thisNode: Invalid AliasedQuerySource');
-    }
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitAlias(AliasContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    return _noQuoteString(ctx.text);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitQueryInclusionClause(QueryInclusionClauseContext ctx) {
+  dynamic visitFunctionIdentifier(FunctionIdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -840,7 +870,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitWithClause(WithClauseContext ctx) {
+  dynamic visitFunctionInvocation(FunctionInvocationContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// identifier: IDENTIFIER | DELIMITEDIDENTIFIER | QUOTEDIDENTIFIER;
+  @override
+  String visitIdentifier(IdentifierContext ctx) => _noQuoteString(ctx.text);
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitIdentifierOrFunctionIdentifier(
+      IdentifierOrFunctionIdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -850,207 +895,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitWithoutClause(WithoutClauseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  ///	'[' (contextIdentifier '->')? namedTypeSpecifier (
-  ///	':' (codePath codeComparator)? terminology
-  /// )? ']';
-  @override
-  Retrieve visitRetrieve(RetrieveContext ctx) {
-    printIf(ctx);
-
-    /// Defines arguments to the retrieve class
-    Expression? context;
-    NamedTypeSpecifier? name;
-    Expression? codePath;
-    String? codeComparator;
-    Expression? codes;
-
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ContextIdentifierContext) {
-        context = visitContextIdentifier(child);
-      } else if (child is NamedTypeSpecifierContext) {
-        name = visitNamedTypeSpecifier(child);
-      } else if (child is CodePathContext) {
-        codePath = visitCodePath(child);
-      } else if (child is CodeComparatorContext) {
-        codeComparator = visitCodeComparator(child);
-      } else if (child is TerminologyContext) {
-        codes = visitTerminology(child);
-      }
-    }
-    String? templateId;
-    String? codeProperty;
-    if (name != null) {
-      /// This is going to search through the included models to see if the
-      /// model is included. If it is, it will use the url to get the codes.
-      for (final model in library.usings?.def ?? <UsingDef>[]) {
-        if (model.localIdentifier != null) {
-          final modelInfo = modelInfoProvider.load(ModelIdentifier(
-              id: model.localIdentifier!, version: model.version));
-          if (modelInfo != null) {
-            final index = modelInfo.typeInfo.indexWhere((element) =>
-                (element is ClassInfo &&
-                    element.label == name!.namespace.localPart) ||
-                (element is ProfileInfo &&
-                    element.label == name!.namespace.localPart));
-            if (index != -1) {
-              String? localPart;
-              if (modelInfo.typeInfo[index] is ClassInfo) {
-                templateId =
-                    (modelInfo.typeInfo[index] as ClassInfo).identifier;
-                codeProperty =
-                    (modelInfo.typeInfo[index] as ClassInfo).primaryCodePath;
-                localPart = (modelInfo.typeInfo[index] as ClassInfo).name;
-              } else if (modelInfo.typeInfo[index] is ProfileInfo) {
-                templateId =
-                    (modelInfo.typeInfo[index] as ProfileInfo).identifier;
-                codeProperty =
-                    (modelInfo.typeInfo[index] as ProfileInfo).primaryCodePath;
-                localPart = (modelInfo.typeInfo[index] as ProfileInfo).name;
-              }
-              name.namespace = QName.fromNamespace(modelInfo.url.toString(),
-                  localPart ?? templateId ?? name.namespace.localPart);
-              break;
-            }
-          }
-        }
-      }
-
-      return Retrieve(
-        dataType: name.namespace,
-        codes: codes,
-        context: context,
-        codeComparator: codeComparator ?? 'in',
-        templateId: templateId,
-        codeProperty: codeProperty,
-      );
-    } else {
-      throw ArgumentError('Invalid Retrieve');
-    }
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  Ref visitContextIdentifier(ContextIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is QualifiedIdentifierExpressionContext) {
-        return visitQualifiedIdentifierExpression(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid ContextIdentifier');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitCodePath(CodePathContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    throw ArgumentError('$thisNode Invalid CodePath');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitCodeComparator(CodeComparatorContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// terminology: qualifiedIdentifierExpression | expression;
-  @override
-  Expression visitTerminology(TerminologyContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is QualifiedIdentifierExpressionContext) {
-        return visitQualifiedIdentifierExpression(child);
-      } else {
-        final result = byContext(child);
-        if (result is Expression) {
-          return result;
-        }
-      }
-    }
-    throw ArgumentError('$thisNode Invalid Terminology');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  String visitQualifier(QualifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is IdentifierContext) {
-        return visitIdentifier(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid Qualifier');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  Query visitQuery(QueryContext ctx) {
-    printIf(ctx);
-    List<AliasedQuerySource> source = [];
-    List<LetClause>? let;
-    List<RelationshipClause>? relationship;
-    Expression? where;
-    ReturnClause? returnClause;
-    SortClause? sort;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is SourceClauseContext) {
-        final result = visitSourceClause(child);
-        if (result is AliasedQuerySource) {
-          source.add(result);
-        } else if (result is List<AliasedQuerySource>) {
-          source.addAll(result);
-        }
-      } else if (child is WhereClauseContext) {
-        where = visitWhereClause(child);
-      } else if (child is ReturnClauseContext) {
-        returnClause = visitReturnClause(child);
-      } else if (child is SortClauseContext) {
-        sort = visitSortClause(child);
-      } else {
-        byContext(child);
-      }
-    }
-
-    return Query(source: source, where: where, returnClause: returnClause);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSourceClause(SourceClauseContext ctx) {
-    printIf(ctx);
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is AliasedQuerySourceContext) {
-        return visitAliasedQuerySource(child);
-      }
-    }
-    throw ArgumentError('Invalid SourceClause');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitLetClause(LetClauseContext ctx) {
+  dynamic visitIfThenElseExpressionTerm(IfThenElseExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -1060,189 +905,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitLetClauseItem(LetClauseItemContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  Expression visitWhereClause(WhereClauseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is! TerminalNodeImpl) {
-        return byContext(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid WhereClause');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitReturnClause(ReturnClauseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitAggregateClause(AggregateClauseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitStartingClause(StartingClauseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSortClause(SortClauseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSortDirection(SortDirectionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSortByItem(SortByItemContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  String visitQualifiedIdentifier(QualifiedIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is IdentifierContext) {
-        return visitIdentifier(child);
-      }
-    }
-    return '';
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  Ref visitQualifiedIdentifierExpression(
-      QualifiedIdentifierExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    Ref? name;
-    String? libraryName;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is QualifierContext) {
-        libraryName = visitQualifier(child);
-      } else if (child is ReferentialIdentifierContext) {
-        name = visitReferentialIdentifier(child);
-      }
-    }
-    if (name?.name != null) {
-      return _returnRef(name!.name, libraryName);
-    }
-    throw ArgumentError('$thisNode Invalid QualifiedIdentifierExpression');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitQualifierExpression(QualifierExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSimplePathIndexer(SimplePathIndexerContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSimplePathQualifiedIdentifier(
-      SimplePathQualifiedIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSimplePathReferentialIdentifier(
-      SimplePathReferentialIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSimpleStringLiteral(SimpleStringLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSimpleNumberLiteral(SimpleNumberLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDurationBetweenExpression(DurationBetweenExpressionContext ctx) {
+  dynamic visitImpliesExpression(ImpliesExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -1288,609 +951,35 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
-  /// retrieve
+  /// includeDefinition:
+  /// 	'include' qualifiedIdentifier ('version' versionSpecifier)? (
+  /// 		'called' localIdentifier
+  /// )?;
+  /// Can have 3 parts to this expression, a qualifiedIdentifier, a
+  /// versionSpecifier, and a localIdentifier.
   @override
-  Retrieve visitRetrieveExpression(RetrieveExpressionContext ctx) {
+  void visitIncludeDefinition(IncludeDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is RetrieveContext) {
-        return visitRetrieve(child);
+
+    String? localIdentifier;
+    String? path;
+    String? version;
+
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifiedIdentifierContext) {
+        path = visitQualifiedIdentifier(child);
+      } else if (child is LocalIdentifierContext) {
+        localIdentifier = visitLocalIdentifier(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
       }
     }
-    throw ArgumentError('$thisNode Invalid RetrieveExpression');
-  }
-
-  /// expression intervalOperatorPhrase expression # timingExpression
-  @override
-  Expression visitTimingExpression(TimingExpressionContext ctx) {
-    printIf(ctx, true);
-    final int thisNode = getNextNode();
-    if (ctx.childCount == 3) {
-      Expression left =
-          visitTermExpression(ctx.children![0] as TermExpressionContext);
-      Expression right =
-          visitTermExpression(ctx.children![2] as TermExpressionContext);
-      final intervalOperatorPhrase = ctx.children![1];
-      print('intervalOperatorPhrase: ${intervalOperatorPhrase.runtimeType}');
-      if (intervalOperatorPhrase
-          is ConcurrentWithIntervalOperatorPhraseContext) {
-        final result =
-            visitConcurrentWithIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is IncludesIntervalOperatorPhraseContext) {
-        final result =
-            visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is IncludedInIntervalOperatorPhraseContext) {
-        final result =
-            visitIncludedInIntervalOperatorPhrase(intervalOperatorPhrase);
-        result.operand.add(left);
-        result.operand.add(right);
-        return result;
-      } else if (intervalOperatorPhrase
-          is BeforeOrAfterIntervalOperatorPhraseContext) {
-        final result =
-            visitBeforeOrAfterIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is WithinIntervalOperatorPhraseContext) {
-        final result =
-            visitWithinIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase is MeetsIntervalOperatorPhraseContext) {
-        final result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is OverlapsIntervalOperatorPhraseContext) {
-        final result =
-            visitOverlapsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is StartsIntervalOperatorPhraseContext) {
-        final result =
-            visitStartsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase is EndsIntervalOperatorPhraseContext) {
-        final result = visitEndsIntervalOperatorPhrase(intervalOperatorPhrase);
-      }
+    if (localIdentifier != null || path != null || version != null) {
+      library.includes ??= IncludeDefs();
+      library.includes!.def.add(IncludeDef(
+          localIdentifier: localIdentifier, path: path, version: version));
     }
-    throw ArgumentError('$thisNode Invalid TimingExpression');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  Query visitQueryExpression(QueryExpressionContext ctx) {
-    printIf(ctx);
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is QueryContext) {
-        return visitQuery(child);
-      }
-    }
-    throw ArgumentError('Invalid QueryExpression');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitNotExpression(NotExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitBooleanExpression(BooleanExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitOrExpression(OrExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitCastExpression(CastExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  And visitAndExpression(AndExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    List<Expression> operand = [];
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is! TerminalNodeImpl) {
-        final result = byContext(child);
-        if (result is Expression) {
-          operand.add(result);
-        }
-      }
-    }
-    return And(operand: operand);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitBetweenExpression(BetweenExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitMembershipExpression(MembershipExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDifferenceBetweenExpression(
-      DifferenceBetweenExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitInequalityExpression(InequalityExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitEqualityExpression(EqualityExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitExistenceExpression(ExistenceExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitImpliesExpression(ImpliesExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTermExpression(TermExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is! TerminalNodeImpl) {
-        print('TermExpressionContext: ${child.runtimeType}');
-        return byContext(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid TermExpression');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTypeExpression(TypeExpressionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDateTimePrecision(DateTimePrecisionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDateTimeComponent(DateTimeComponentContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitPluralDateTimePrecision(PluralDateTimePrecisionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitAdditionExpressionTerm(AdditionExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitIndexedExpressionTerm(IndexedExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitWidthExpressionTerm(WidthExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSetAggregateExpressionTerm(
-      SetAggregateExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTimeUnitExpressionTerm(TimeUnitExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitIfThenElseExpressionTerm(IfThenElseExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// ('start' | 'end') 'of' expressionTerm	# timeBoundaryExpressionTerm
-  @override
-  dynamic visitTimeBoundaryExpressionTerm(
-      TimeBoundaryExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    if (ctx.childCount == 3) {
-      final Expression expression = byContext(ctx.children![2]);
-      if (ctx.children![0].text == 'start') {
-        return Start(operand: expression);
-      } else if (ctx.children![0].text == 'end') {
-        return End(operand: expression);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid TimeBoundaryExpressionTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitElementExtractorExpressionTerm(
-      ElementExtractorExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    throw ArgumentError('$thisNode Invalid ElementExtractorExpressionTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitConversionExpressionTerm(ConversionExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTypeExtentExpressionTerm(TypeExtentExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitPredecessorExpressionTerm(PredecessorExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitPointExtractorExpressionTerm(
-      PointExtractorExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitMultiplicationExpressionTerm(
-      MultiplicationExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitAggregateExpressionTerm(AggregateExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDurationExpressionTerm(DurationExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDifferenceExpressionTerm(DifferenceExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitCaseExpressionTerm(CaseExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitPowerExpressionTerm(PowerExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitSuccessorExpressionTerm(SuccessorExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitPolarityExpressionTerm(PolarityExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      return byContext(child);
-    }
-    throw ArgumentError('$thisNode Invalid TermExpressionTerm');
-  }
-
-  ///  expressionTerm '.' qualifiedInvocation
-  @override
-  Property visitInvocationExpressionTerm(InvocationExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    dynamic expressionTerm;
-    Ref? qualifiedInvocation;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is TermExpressionTermContext) {
-        expressionTerm = visitTermExpressionTerm(child);
-      } else if (child is QualifiedInvocationContext) {
-        if (child is QualifiedMemberInvocationContext) {
-          qualifiedInvocation = visitQualifiedMemberInvocation(child);
-        } else if (child is QualifiedFunctionInvocationContext) {
-          qualifiedInvocation = visitQualifiedFunctionInvocation(child);
-        }
-      }
-    }
-    if (qualifiedInvocation?.name != null) {
-      return Property(
-          scope: expressionTerm is Ref ? expressionTerm.name : null,
-          path: qualifiedInvocation!.name!);
-    }
-    throw ArgumentError('$thisNode Invalid InvocationExpressionTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitCaseExpressionItem(CaseExpressionItemContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDateTimePrecisionSpecifier(
-      DateTimePrecisionSpecifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitRelativeQualifier(RelativeQualifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitOffsetRelativeQualifier(OffsetRelativeQualifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitExclusiveRelativeQualifier(
-      ExclusiveRelativeQualifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitQuantityOffset(QuantityOffsetContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTemporalRelationship(TemporalRelationshipContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitConcurrentWithIntervalOperatorPhrase(
-      ConcurrentWithIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitIncludesIntervalOperatorPhrase(
-      IncludesIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
   }
 
   /// ('starts' | 'ends' | 'occurs')?
@@ -1925,300 +1014,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return IncludedIn(operand: []);
   }
 
-  /// ('starts' | 'ends' | 'occurs')? quantityOffset? temporalRelationship
-  ///	dateTimePrecisionSpecifier? ('start' | 'end')?
-  @override
-  dynamic visitBeforeOrAfterIntervalOperatorPhrase(
-      BeforeOrAfterIntervalOperatorPhraseContext ctx) {
-    printIf(ctx, true);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitWithinIntervalOperatorPhrase(
-      WithinIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitMeetsIntervalOperatorPhrase(
-      MeetsIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitOverlapsIntervalOperatorPhrase(
-      OverlapsIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitStartsIntervalOperatorPhrase(
-      StartsIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitEndsIntervalOperatorPhrase(
-      EndsIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitInvocationTerm(InvocationTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is MemberInvocationContext) {
-        return visitMemberInvocation(child);
-      } else if (child is FunctionInvocationContext) {
-        return visitFunctionInvocation(child);
-      } else if (child is ThisInvocationContext) {
-        return visitThisInvocation(child);
-      } else if (child is IndexInvocationContext) {
-        return visitIndexInvocation(child);
-      } else if (child is TotalInvocationContext) {
-        return visitTotalInvocation(child);
-      } else if (child is QualifiedFunctionInvocationContext) {
-        return visitQualifiedFunctionInvocation(child);
-      } else if (child is QualifiedMemberInvocationContext) {
-        return visitQualifiedMemberInvocation(child);
-      } else if (child is QualifiedFunctionContext) {
-        return visitQualifiedFunction(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid InvocationTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitLiteralTerm(LiteralTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    const String namespaceURI = 'urn:hl7-org:elm-types:r1';
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is BooleanLiteralContext) {
-        return LiteralBoolean(value: visitBooleanLiteral(child));
-      } else if (child is NullLiteralContext) {
-        return NullExpression();
-      } else if (child is StringLiteralContext) {
-        return LiteralString(value: visitStringLiteral(child));
-      } else if (child is NumberLiteralContext) {
-        final number = visitNumberLiteral(child);
-        if (number is int) {
-          return LiteralInteger(value: number);
-        } else if (number is double) {
-          return LiteralDecimal(value: number);
-        } else if (number is BigInt) {
-          return LiteralLongNumber(value: number as BigInt);
-        }
-      } else if (child is LongNumberLiteralContext) {
-        return LiteralLongNumber(value: visitLongNumberLiteral(child));
-      } else if (child is DateTimeLiteralContext) {
-        return LiteralDateTime(value: visitDateTimeLiteral(child));
-      } else if (child is DateLiteralContext) {
-        return LiteralDate(value: visitDateLiteral(child));
-      } else if (child is TimeLiteralContext) {
-        return LiteralTime(value: visitTimeLiteral(child));
-      } else if (child is QuantityLiteralContext) {
-        return LiteralQuantity(value: visitQuantityLiteral(child));
-      } else if (child is RatioLiteralContext) {}
-    }
-    throw ArgumentError('$thisNode Invalid LiteralTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitExternalConstantTerm(ExternalConstantTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  IntervalExpression visitIntervalSelectorTerm(
-      IntervalSelectorTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is IntervalSelectorContext) {
-        return visitIntervalSelector(child);
-      }
-    }
-
-    throw ArgumentError('$thisNode Invalid IntervalSelectorTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTupleSelectorTerm(TupleSelectorTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitInstanceSelectorTerm(InstanceSelectorTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is InstanceSelectorContext) {
-        return visitInstanceSelector(child);
-      }
-    }
-
-    throw ArgumentError('$thisNode Invalid InstanceSelectorTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitListSelectorTerm(ListSelectorTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ListSelectorContext) {
-        final element = visitListSelector(child);
-        if (element is List<Element>) {
-          return ListTypeSpecifier(element: element);
-        }
-      }
-    }
-
-    throw ArgumentError('$thisNode Invalid ListSelectorTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitCodeSelectorTerm(CodeSelectorTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is CodeSelectorContext) {
-        return visitCodeSelector(child);
-      }
-    }
-
-    throw ArgumentError('$thisNode Invalid CodeSelectorTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitConceptSelectorTerm(ConceptSelectorTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ConceptSelectorContext) {
-        return visitConceptSelector(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid ConceptSelectorTerm');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitParenthesizedTerm(ParenthesizedTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  Ref visitQualifiedMemberInvocation(QualifiedMemberInvocationContext ctx) =>
-      _returnRef(ctx.text, null);
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitQualifiedFunctionInvocation(
-      QualifiedFunctionInvocationContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitQualifiedFunction(QualifiedFunctionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// referentialIdentifier	# memberInvocation
-  @override
-  Ref visitMemberInvocation(MemberInvocationContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ReferentialIdentifierContext) {
-        return visitReferentialIdentifier(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid MemberInvocation');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitFunctionInvocation(FunctionInvocationContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitThisInvocation(ThisInvocationContext ctx) {
+  dynamic visitIncludesIntervalOperatorPhrase(
+      IncludesIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -2238,7 +1038,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitTotalInvocation(TotalInvocationContext ctx) {
+  dynamic visitIndexedExpressionTerm(IndexedExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -2248,7 +1048,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitFunction(FunctionContext ctx) {
+  dynamic visitInequalityExpression(InequalityExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -2258,123 +1058,69 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitRatio(RatioContext ctx) {
+  dynamic visitInstanceElementSelector(InstanceElementSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  bool visitBooleanLiteral(BooleanLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
-      return ctx.getChild(0)!.text == 'true';
+    Ref? name;
+    Expression? value;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ReferentialIdentifierContext) {
+        name = visitReferentialIdentifier(child);
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          value = result;
+        }
+      }
     }
-    throw ArgumentError('$thisNode Invalid BooleanLiteral');
-  }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitNullLiteral(NullLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  String visitStringLiteral(StringLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
-      return _noQuoteString(ctx.getChild(0)!.text!);
+    if (name?.name != null && value != null) {
+      return InstanceElement(name: name!.name!, value: value);
     }
-    throw ArgumentError('$thisNode Invalid StringLiteral');
+
+    throw ArgumentError('$thisNode Invalid InstanceElementSelector');
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  num visitNumberLiteral(NumberLiteralContext ctx) {
+  dynamic visitInstanceSelector(InstanceSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
-      return num.parse(ctx.getChild(0)!.text!);
+    QName? classType;
+    List<InstanceElement> element = <InstanceElement>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is NamedTypeSpecifierContext) {
+        classType = visitNamedTypeSpecifier(child)?.namespace;
+      } else if (child is InstanceElementSelectorContext) {
+        final newElement = visitInstanceElementSelector(child);
+        if (newElement is InstanceElement) {
+          element.add(newElement);
+        }
+      }
     }
-    throw ArgumentError('$thisNode Invalid NumberLiteral');
+
+    if (classType != null) {
+      return Instance(
+          classType: classType, element: element.isEmpty ? null : element);
+    }
+
+    throw ArgumentError('$thisNode Invalid InstanceSelector');
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  BigInt visitLongNumberLiteral(LongNumberLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
-      return BigInt.parse(ctx.getChild(0)!.text!);
-    }
-    throw ArgumentError('$thisNode Invalid LongNumberLiteral');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  DateTime visitDateTimeLiteral(DateTimeLiteralContext ctx) {
+  dynamic visitInstanceSelectorTerm(InstanceSelectorTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is TerminalNodeImpl) {
-        return DateTime.parse(child.text!.replaceFirst('@', ''));
+      if (child is InstanceSelectorContext) {
+        return visitInstanceSelector(child);
       }
     }
-    throw ArgumentError('$thisNode Invalid DateTimeLiteral');
-  }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitDateLiteral(DateLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitTimeLiteral(TimeLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitQuantityLiteral(QuantityLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitRatioLiteral(RatioLiteralContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    throw ArgumentError('$thisNode Invalid InstanceSelectorTerm');
   }
 
   /// The default implementation returns the result of calling
@@ -2475,7 +1221,91 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitTupleSelector(TupleSelectorContext ctx) {
+  IntervalExpression visitIntervalSelectorTerm(
+      IntervalSelectorTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IntervalSelectorContext) {
+        return visitIntervalSelector(child);
+      }
+    }
+
+    throw ArgumentError('$thisNode Invalid IntervalSelectorTerm');
+  }
+
+  /// intervalTypeSpecifier: 'Interval' '<' typeSpecifier '>';
+  @override
+  IntervalTypeSpecifier visitIntervalTypeSpecifier(
+      IntervalTypeSpecifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is TypeSpecifierContext) {
+        return IntervalTypeSpecifier(pointType: visitTypeSpecifier(child));
+      }
+    }
+    throw ArgumentError('Invalid IntervalTypeSpecifier');
+  }
+
+  ///  expressionTerm '.' qualifiedInvocation
+  @override
+  Property visitInvocationExpressionTerm(InvocationExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    dynamic expressionTerm;
+    Ref? qualifiedInvocation;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TermExpressionTermContext) {
+        expressionTerm = visitTermExpressionTerm(child);
+      } else if (child is QualifiedInvocationContext) {
+        if (child is QualifiedMemberInvocationContext) {
+          qualifiedInvocation = visitQualifiedMemberInvocation(child);
+        } else if (child is QualifiedFunctionInvocationContext) {
+          qualifiedInvocation = visitQualifiedFunctionInvocation(child);
+        }
+      }
+    }
+    if (qualifiedInvocation?.name != null) {
+      return Property(
+          scope: expressionTerm is Ref ? expressionTerm.name : null,
+          path: qualifiedInvocation!.name!);
+    }
+    throw ArgumentError('$thisNode Invalid InvocationExpressionTerm');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitInvocationTerm(InvocationTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is MemberInvocationContext) {
+        return visitMemberInvocation(child);
+      } else if (child is FunctionInvocationContext) {
+        return visitFunctionInvocation(child);
+      } else if (child is ThisInvocationContext) {
+        return visitThisInvocation(child);
+      } else if (child is IndexInvocationContext) {
+        return visitIndexInvocation(child);
+      } else if (child is TotalInvocationContext) {
+        return visitTotalInvocation(child);
+      } else if (child is QualifiedFunctionInvocationContext) {
+        return visitQualifiedFunctionInvocation(child);
+      } else if (child is QualifiedMemberInvocationContext) {
+        return visitQualifiedMemberInvocation(child);
+      } else if (child is QualifiedFunctionContext) {
+        return visitQualifiedFunction(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid InvocationTerm');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitKeyword(KeywordContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -2485,7 +1315,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitTupleElementSelector(TupleElementSelectorContext ctx) {
+  dynamic visitKeywordIdentifier(KeywordIdentifierContext ctx) =>
+      _noQuoteString(ctx.text);
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitLetClause(LetClauseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -2495,54 +1331,53 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitInstanceSelector(InstanceSelectorContext ctx) {
+  dynamic visitLetClauseItem(LetClauseItemContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    QName? classType;
-    List<InstanceElement> element = <InstanceElement>[];
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is NamedTypeSpecifierContext) {
-        classType = visitNamedTypeSpecifier(child)?.namespace;
-      } else if (child is InstanceElementSelectorContext) {
-        final newElement = visitInstanceElementSelector(child);
-        if (newElement is InstanceElement) {
-          element.add(newElement);
-        }
-      }
-    }
 
-    if (classType != null) {
-      return Instance(
-          classType: classType, element: element.isEmpty ? null : element);
-    }
-
-    throw ArgumentError('$thisNode Invalid InstanceSelector');
+    visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// library: libraryDefinition? definition* statement* EOF;
   @override
-  dynamic visitInstanceElementSelector(InstanceElementSelectorContext ctx) {
+  void visitLibrary(LibraryContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Ref? name;
-    Expression? value;
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ReferentialIdentifierContext) {
-        name = visitReferentialIdentifier(child);
-      } else {
-        final result = byContext(child);
-        if (result is Expression) {
-          value = result;
-        }
+    visitChildren(ctx);
+  }
+
+  /// libraryDefinition:
+  /// 'library' qualifiedIdentifier ('version' versionSpecifier)?;
+  ///  For this we're just pulling out the qualifiedIdentifier and the
+  ///  versionSpecifier if they exist.
+  @override
+  void visitLibraryDefinition(LibraryDefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    String? id;
+    String? version;
+
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifiedIdentifierContext) {
+        id = visitQualifiedIdentifier(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
       }
     }
-
-    if (name?.name != null && value != null) {
-      return InstanceElement(name: name!.name!, value: value);
+    if (id != null || version != null) {
+      library.identifier = VersionedIdentifier(id: id, version: version);
     }
+  }
 
-    throw ArgumentError('$thisNode Invalid InstanceElementSelector');
+  /// libraryIdentifier: identifier;
+  /// Should just be another String identfier, and should be able to return the
+  /// unquoted text.
+  @override
+  String visitLibraryIdentifier(LibraryIdentifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    return _noQuoteString(ctx.text);
   }
 
   /// So best I can tell this should return a list of Expressions. However, in
@@ -2577,87 +1412,196 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitDisplayClause(DisplayClauseContext ctx) {
+  dynamic visitListSelectorTerm(ListSelectorTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    if (ctx.childCount == 2 &&
-        ctx.children![0] is TerminalNodeImpl &&
-        ctx.children![0].text == 'display') {
-      return _noQuoteString(ctx.children![1].text!);
-    }
-    throw ArgumentError('$thisNode Invalid DisplayClause');
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  Code visitCodeSelector(CodeSelectorContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    String? display;
-    CodeSystemRef? codeSystem;
-    String? code;
-    if (ctx.childCount >= 3 && ctx.getChild(1)?.text != null) {
-      code = _noQuoteString(ctx.getChild(1)!.text!);
-    }
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is CodesystemIdentifierContext) {
-        codeSystem = visitCodesystemIdentifier(child);
-      } else if (child is DisplayClauseContext) {
-        display = visitDisplayClause(child);
+      if (child is ListSelectorContext) {
+        final element = visitListSelector(child);
+        if (element is List<Element>) {
+          return ListTypeSpecifier(element: element);
+        }
       }
     }
-    if (code != null && codeSystem != null) {
-      return Code(code: code, system: codeSystem, display: display);
-    }
 
-    throw ArgumentError('$thisNode Invalid CodeSelector');
+    throw ArgumentError('$thisNode Invalid ListSelectorTerm');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// listTypeSpecifier: 'List' '<' typeSpecifier '>';
   @override
-  dynamic visitConceptSelector(ConceptSelectorContext ctx) {
+  ListTypeSpecifier visitListTypeSpecifier(ListTypeSpecifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    String? display;
-    List<Code> code = <Code>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is DisplayClauseContext) {
-        display = visitDisplayClause(child);
-      } else if (child is CodeSelectorContext) {
-        final newCode = visitCodeSelector(child);
-        code.add(newCode);
+      if (child is TypeSpecifierContext) {
+        return ListTypeSpecifier(
+            elementTypeSpecifier: visitTypeSpecifier(child));
       }
     }
-    return Concept(display: display, code: code);
+    throw ArgumentError('$thisNode Invalid ListTypeSpecifier');
   }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitKeyword(KeywordContext ctx) {
+  dynamic visitLiteralTerm(LiteralTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    const String namespaceURI = 'urn:hl7-org:elm-types:r1';
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is BooleanLiteralContext) {
+        return LiteralBoolean(value: visitBooleanLiteral(child));
+      } else if (child is NullLiteralContext) {
+        return NullExpression();
+      } else if (child is StringLiteralContext) {
+        return LiteralString(value: visitStringLiteral(child));
+      } else if (child is NumberLiteralContext) {
+        final number = visitNumberLiteral(child);
+        if (number is int) {
+          return LiteralInteger(value: number);
+        } else if (number is double) {
+          return LiteralDecimal(value: number);
+        } else if (number is BigInt) {
+          return LiteralLongNumber(value: number as BigInt);
+        }
+      } else if (child is LongNumberLiteralContext) {
+        return LiteralLongNumber(value: visitLongNumberLiteral(child));
+      } else if (child is DateTimeLiteralContext) {
+        return LiteralDateTime(value: visitDateTimeLiteral(child));
+      } else if (child is DateLiteralContext) {
+        return LiteralDate(value: visitDateLiteral(child));
+      } else if (child is TimeLiteralContext) {
+        return LiteralTime(value: visitTimeLiteral(child));
+      } else if (child is QuantityLiteralContext) {
+        return LiteralQuantity(value: visitQuantityLiteral(child));
+      } else if (child is RatioLiteralContext) {}
+    }
+    throw ArgumentError('$thisNode Invalid LiteralTerm');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// This is just an identifier, that is, just a String.
   @override
-  dynamic visitReservedWord(ReservedWordContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitKeywordIdentifier(KeywordIdentifierContext ctx) =>
+  String visitLocalIdentifier(LocalIdentifierContext ctx) =>
       _noQuoteString(ctx.text);
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  BigInt visitLongNumberLiteral(LongNumberLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
+      return BigInt.parse(ctx.getChild(0)!.text!);
+    }
+    throw ArgumentError('$thisNode Invalid LongNumberLiteral');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitMeetsIntervalOperatorPhrase(
+      MeetsIntervalOperatorPhraseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// referentialIdentifier	# memberInvocation
+  @override
+  Ref visitMemberInvocation(MemberInvocationContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ReferentialIdentifierContext) {
+        return visitReferentialIdentifier(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid MemberInvocation');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitMembershipExpression(MembershipExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// modelIdentifier: identifier;
+  @override
+  String visitModelIdentifier(ModelIdentifierContext ctx) =>
+      _noQuoteString(ctx.text);
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitMultiplicationExpressionTerm(
+      MultiplicationExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// namedTypeSpecifier: (qualifier '.')* referentialOrTypeNameIdentifier;
+  @override
+  NamedTypeSpecifier? visitNamedTypeSpecifier(NamedTypeSpecifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    String? qualifier;
+    Ref? referentialOrTypeNameIdentifier;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifierContext) {
+        qualifier = visitQualifier(child);
+      }
+      if (child is ReferentialOrTypeNameIdentifierContext) {
+        referentialOrTypeNameIdentifier =
+            visitReferentialOrTypeNameIdentifier(child);
+      }
+    }
+    // TODO(Dokotela): unclear what to do with qualifiers
+    if (referentialOrTypeNameIdentifier?.name != null) {
+      return NamedTypeSpecifier(
+          namespace: QName.fromFull(referentialOrTypeNameIdentifier!.name!));
+    } else {
+      throw ArgumentError('$thisNode Invalid NamedTypeSpecifier');
+    }
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitNotExpression(NotExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitNullLiteral(NullLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  num visitNumberLiteral(NumberLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
+      return num.parse(ctx.getChild(0)!.text!);
+    }
+    throw ArgumentError('$thisNode Invalid NumberLiteral');
+  }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
@@ -2672,18 +1616,385 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitFunctionIdentifier(FunctionIdentifierContext ctx) {
+  dynamic visitOffsetRelativeQualifier(OffsetRelativeQualifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
     visitChildren(ctx);
   }
 
-  /// Reserved words that are also type names
-  /// typeNameIdentifier: 'Code' | 'Concept' | 'date' | 'time';
+  /// operandDefinition: referentialIdentifier typeSpecifier;
   @override
-  dynamic visitTypeNameIdentifier(TypeNameIdentifierContext ctx) =>
-      _noQuoteString(ctx.text);
+  OperandDef visitOperandDefinition(OperandDefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    Ref? referentialIdentifier;
+    TypeSpecifier? typeSpecifier;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ReferentialIdentifierContext) {
+        referentialIdentifier = visitReferentialIdentifier(child);
+      } else if (child is TypeSpecifierContext) {
+        typeSpecifier = visitTypeSpecifier(child);
+      }
+    }
+    if (referentialIdentifier?.name != null && typeSpecifier != null) {
+      return OperandDef(
+        name: referentialIdentifier!.name!,
+        operandTypeSpecifier: typeSpecifier,
+      );
+    }
+    throw ArgumentError('$thisNode Invalid OperandDefinition');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitOrExpression(OrExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitOverlapsIntervalOperatorPhrase(
+      OverlapsIntervalOperatorPhraseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitParamList(ParamListContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// parameterDefinition:
+  /// 	accessModifier? 'parameter' identifier (typeSpecifier)? (
+  /// 		'default' expression
+  /// 	)?;
+  @override
+  void visitParameterDefinition(ParameterDefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    String name = '';
+    TypeSpecifier? typeSpecifier;
+    AccessModifier accessLevel = AccessModifier.public;
+    Expression? defaultExpression;
+
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is TypeSpecifierContext) {
+        typeSpecifier = visitTypeSpecifier(child);
+      } else if (child is AccessModifierContext) {
+        accessLevel = visitAccessModifier(child);
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          defaultExpression = result;
+        }
+      }
+    }
+    if (typeSpecifier != null) {
+      library.parameters ??= ParameterDefs();
+      library.parameters!.def.add(ParameterDef(
+        name: name,
+        parameterTypeSpecifier: typeSpecifier,
+        accessLevel: accessLevel,
+        defaultExpression: defaultExpression,
+      ));
+    }
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitParenthesizedTerm(ParenthesizedTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitPluralDateTimePrecision(PluralDateTimePrecisionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitPointExtractorExpressionTerm(
+      PointExtractorExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitPolarityExpressionTerm(PolarityExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitPowerExpressionTerm(PowerExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitPredecessorExpressionTerm(PredecessorExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitQualifiedFunction(QualifiedFunctionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitQualifiedFunctionInvocation(
+      QualifiedFunctionInvocationContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  String visitQualifiedIdentifier(QualifiedIdentifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        return visitIdentifier(child);
+      }
+    }
+    return '';
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  Ref visitQualifiedIdentifierExpression(
+      QualifiedIdentifierExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    Ref? name;
+    String? libraryName;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifierContext) {
+        libraryName = visitQualifier(child);
+      } else if (child is ReferentialIdentifierContext) {
+        name = visitReferentialIdentifier(child);
+      }
+    }
+    if (name?.name != null) {
+      return _returnRef(name!.name, libraryName);
+    }
+    throw ArgumentError('$thisNode Invalid QualifiedIdentifierExpression');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  Ref visitQualifiedMemberInvocation(QualifiedMemberInvocationContext ctx) =>
+      _returnRef(ctx.text, null);
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  String visitQualifier(QualifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is IdentifierContext) {
+        return visitIdentifier(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid Qualifier');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitQualifierExpression(QualifierExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitQuantity(QuantityContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitQuantityLiteral(QuantityLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitQuantityOffset(QuantityOffsetContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  Query visitQuery(QueryContext ctx) {
+    printIf(ctx);
+    List<AliasedQuerySource> source = [];
+    List<LetClause>? let;
+    List<RelationshipClause>? relationship;
+    Expression? where;
+    ReturnClause? returnClause;
+    SortClause? sort;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is SourceClauseContext) {
+        final result = visitSourceClause(child);
+        if (result is AliasedQuerySource) {
+          source.add(result);
+        } else if (result is List<AliasedQuerySource>) {
+          source.addAll(result);
+        }
+      } else if (child is WhereClauseContext) {
+        where = visitWhereClause(child);
+      } else if (child is ReturnClauseContext) {
+        returnClause = visitReturnClause(child);
+      } else if (child is SortClauseContext) {
+        sort = visitSortClause(child);
+      } else {
+        byContext(child);
+      }
+    }
+
+    return Query(source: source, where: where, returnClause: returnClause);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  Query visitQueryExpression(QueryExpressionContext ctx) {
+    printIf(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is QueryContext) {
+        return visitQuery(child);
+      }
+    }
+    throw ArgumentError('Invalid QueryExpression');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitQueryInclusionClause(QueryInclusionClauseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// querySource:
+  /// retrieve
+  /// | qualifiedIdentifierExpression
+  /// | '(' expression ')';
+  @override
+  Expression visitQuerySource(QuerySourceContext ctx) {
+    printIf(ctx);
+    dynamic retrieve;
+    IdentifierRef? qualifiedIdentifierExpression;
+    Expression? expression;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is RetrieveContext) {
+        return visitRetrieve(child);
+      } else if (child is QualifiedIdentifierExpressionContext) {
+        return visitQualifiedIdentifierExpression(child);
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          return result;
+        }
+      }
+    }
+
+    throw ArgumentError('Invalid QuerySource');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitRatio(RatioContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitRatioLiteral(RatioLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
 
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
@@ -2722,22 +2033,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitIdentifierOrFunctionIdentifier(
-      IdentifierOrFunctionIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-
-    visitChildren(ctx);
-  }
-
-  /// identifier: IDENTIFIER | DELIMITEDIDENTIFIER | QUOTEDIDENTIFIER;
-  @override
-  String visitIdentifier(IdentifierContext ctx) => _noQuoteString(ctx.text);
-
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
-  @override
-  dynamic visitExternalConstant(ExternalConstantContext ctx) {
+  dynamic visitRelativeQualifier(RelativeQualifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -2747,7 +2043,108 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitParamList(ParamListContext ctx) {
+  dynamic visitReservedWord(ReservedWordContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  ///	'[' (contextIdentifier '->')? namedTypeSpecifier (
+  ///	':' (codePath codeComparator)? terminology
+  /// )? ']';
+  @override
+  Retrieve visitRetrieve(RetrieveContext ctx) {
+    printIf(ctx);
+
+    /// Defines arguments to the retrieve class
+    Expression? context;
+    NamedTypeSpecifier? name;
+    Expression? codePath;
+    String? codeComparator;
+    Expression? codes;
+
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ContextIdentifierContext) {
+        context = visitContextIdentifier(child);
+      } else if (child is NamedTypeSpecifierContext) {
+        name = visitNamedTypeSpecifier(child);
+      } else if (child is CodePathContext) {
+        codePath = visitCodePath(child);
+      } else if (child is CodeComparatorContext) {
+        codeComparator = visitCodeComparator(child);
+      } else if (child is TerminologyContext) {
+        codes = visitTerminology(child);
+      }
+    }
+    String? templateId;
+    String? codeProperty;
+    if (name != null) {
+      /// This is going to search through the included models to see if the
+      /// model is included. If it is, it will use the url to get the codes.
+      for (final model in library.usings?.def ?? <UsingDef>[]) {
+        if (model.localIdentifier != null) {
+          final modelInfo = modelInfoProvider.load(ModelIdentifier(
+              id: model.localIdentifier!, version: model.version));
+          if (modelInfo != null) {
+            final index = modelInfo.typeInfo.indexWhere((element) =>
+                (element is ClassInfo &&
+                    element.label == name!.namespace.localPart) ||
+                (element is ProfileInfo &&
+                    element.label == name!.namespace.localPart));
+            if (index != -1) {
+              String? localPart;
+              if (modelInfo.typeInfo[index] is ClassInfo) {
+                templateId =
+                    (modelInfo.typeInfo[index] as ClassInfo).identifier;
+                codeProperty =
+                    (modelInfo.typeInfo[index] as ClassInfo).primaryCodePath;
+                localPart = (modelInfo.typeInfo[index] as ClassInfo).name;
+              } else if (modelInfo.typeInfo[index] is ProfileInfo) {
+                templateId =
+                    (modelInfo.typeInfo[index] as ProfileInfo).identifier;
+                codeProperty =
+                    (modelInfo.typeInfo[index] as ProfileInfo).primaryCodePath;
+                localPart = (modelInfo.typeInfo[index] as ProfileInfo).name;
+              }
+              name.namespace = QName.fromNamespace(modelInfo.url.toString(),
+                  localPart ?? templateId ?? name.namespace.localPart);
+              break;
+            }
+          }
+        }
+      }
+
+      return Retrieve(
+        dataType: name.namespace,
+        codes: codes,
+        context: context,
+        codeComparator: codeComparator ?? 'in',
+        templateId: templateId,
+        codeProperty: codeProperty,
+      );
+    } else {
+      throw ArgumentError('Invalid Retrieve');
+    }
+  }
+
+  /// retrieve
+  @override
+  Retrieve visitRetrieveExpression(RetrieveExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is RetrieveContext) {
+        return visitRetrieve(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid RetrieveExpression');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitReturnClause(ReturnClauseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
@@ -2757,11 +2154,461 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitQuantity(QuantityContext ctx) {
+  dynamic visitSetAggregateExpressionTerm(
+      SetAggregateExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
 
     visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSimpleNumberLiteral(SimpleNumberLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSimplePathIndexer(SimplePathIndexerContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSimplePathQualifiedIdentifier(
+      SimplePathQualifiedIdentifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSimplePathReferentialIdentifier(
+      SimplePathReferentialIdentifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSimpleStringLiteral(SimpleStringLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSortByItem(SortByItemContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSortClause(SortClauseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSortDirection(SortDirectionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSourceClause(SourceClauseContext ctx) {
+    printIf(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is AliasedQuerySourceContext) {
+        return visitAliasedQuerySource(child);
+      }
+    }
+    throw ArgumentError('Invalid SourceClause');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitStartingClause(StartingClauseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitStartsIntervalOperatorPhrase(
+      StartsIntervalOperatorPhraseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// statement:
+  // expressionDefinition
+  // | contextDefinition
+  // | functionDefinition;
+  @override
+  void visitStatement(StatementContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    Element? statement;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ExpressionDefinitionContext) {
+        statement = visitExpressionDefinition(child);
+      }
+      if (child is ContextDefinitionContext) {
+        visitContextDefinition(child);
+      } else if (child is FunctionDefinitionContext) {
+        statement = visitFunctionDefinition(child);
+      }
+    }
+    if (statement != null) {
+      library.statements ??= ExpressionDefs();
+      library.statements!.def.add(statement);
+    }
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  String visitStringLiteral(StringLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
+      return _noQuoteString(ctx.getChild(0)!.text!);
+    }
+    throw ArgumentError('$thisNode Invalid StringLiteral');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitSuccessorExpressionTerm(SuccessorExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTemporalRelationship(TemporalRelationshipContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTermExpression(TermExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        print('TermExpressionContext: ${child.runtimeType}');
+        return byContext(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid TermExpression');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      return byContext(child);
+    }
+    throw ArgumentError('$thisNode Invalid TermExpressionTerm');
+  }
+
+  /// terminology: qualifiedIdentifierExpression | expression;
+  @override
+  Expression visitTerminology(TerminologyContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is QualifiedIdentifierExpressionContext) {
+        return visitQualifiedIdentifierExpression(child);
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          return result;
+        }
+      }
+    }
+    throw ArgumentError('$thisNode Invalid Terminology');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitThisInvocation(ThisInvocationContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// ('start' | 'end') 'of' expressionTerm	# timeBoundaryExpressionTerm
+  @override
+  dynamic visitTimeBoundaryExpressionTerm(
+      TimeBoundaryExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    if (ctx.childCount == 3) {
+      final Expression expression = byContext(ctx.children![2]);
+      if (ctx.children![0].text == 'start') {
+        return Start(operand: expression);
+      } else if (ctx.children![0].text == 'end') {
+        return End(operand: expression);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid TimeBoundaryExpressionTerm');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTimeLiteral(TimeLiteralContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTimeUnitExpressionTerm(TimeUnitExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// expression intervalOperatorPhrase expression # timingExpression
+  @override
+  Expression visitTimingExpression(TimingExpressionContext ctx) {
+    printIf(ctx, true);
+    final int thisNode = getNextNode();
+    if (ctx.childCount == 3) {
+      Expression left =
+          visitTermExpression(ctx.children![0] as TermExpressionContext);
+      Expression right =
+          visitTermExpression(ctx.children![2] as TermExpressionContext);
+      final intervalOperatorPhrase = ctx.children![1];
+      print('intervalOperatorPhrase: ${intervalOperatorPhrase.runtimeType}');
+      if (intervalOperatorPhrase
+          is ConcurrentWithIntervalOperatorPhraseContext) {
+        final result =
+            visitConcurrentWithIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is IncludesIntervalOperatorPhraseContext) {
+        final result =
+            visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is IncludedInIntervalOperatorPhraseContext) {
+        final result =
+            visitIncludedInIntervalOperatorPhrase(intervalOperatorPhrase);
+        result.operand.add(left);
+        result.operand.add(right);
+        return result;
+      } else if (intervalOperatorPhrase
+          is BeforeOrAfterIntervalOperatorPhraseContext) {
+        final result =
+            visitBeforeOrAfterIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is WithinIntervalOperatorPhraseContext) {
+        final result =
+            visitWithinIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase is MeetsIntervalOperatorPhraseContext) {
+        final result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is OverlapsIntervalOperatorPhraseContext) {
+        final result =
+            visitOverlapsIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase
+          is StartsIntervalOperatorPhraseContext) {
+        final result =
+            visitStartsIntervalOperatorPhrase(intervalOperatorPhrase);
+      } else if (intervalOperatorPhrase is EndsIntervalOperatorPhraseContext) {
+        final result = visitEndsIntervalOperatorPhrase(intervalOperatorPhrase);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid TimingExpression');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTotalInvocation(TotalInvocationContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// tupleElementDefinition: referentialIdentifier typeSpecifier;
+  @override
+  TupleTypeSpecifierElement visitTupleElementDefinition(
+      TupleElementDefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    Ref? name;
+    TypeSpecifier? typeSpecifier;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ReferentialIdentifierContext) {
+        name = visitReferentialIdentifier(child);
+      } else if (child is TypeSpecifierContext) {
+        typeSpecifier = visitTypeSpecifier(child);
+      }
+    }
+    if (name?.name != null && typeSpecifier != null) {
+      return TupleTypeSpecifierElement(
+          elementType: typeSpecifier, name: name!.name!);
+    } else {
+      throw ArgumentError('$thisNode Invalid TupleElementDefinition');
+    }
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTupleElementSelector(TupleElementSelectorContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTupleSelector(TupleSelectorContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTupleSelectorTerm(TupleSelectorTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// tupleTypeSpecifier:
+  /// 'Tuple' '{' tupleElementDefinition (
+  /// 	',' tupleElementDefinition
+  /// )* '}';
+  @override
+  TupleTypeSpecifier visitTupleTypeSpecifier(TupleTypeSpecifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    List<TupleTypeSpecifierElement> element = <TupleTypeSpecifierElement>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TupleElementDefinitionContext) {
+        element.add(visitTupleElementDefinition(child));
+      }
+    }
+    return TupleTypeSpecifier(element: element.isEmpty ? null : element);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTypeExpression(TypeExpressionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitTypeExtentExpressionTerm(TypeExtentExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// Reserved words that are also type names
+  /// typeNameIdentifier: 'Code' | 'Concept' | 'date' | 'time';
+  @override
+  dynamic visitTypeNameIdentifier(TypeNameIdentifierContext ctx) =>
+      _noQuoteString(ctx.text);
+
+  ///  typeSpecifier:
+  /// 	namedTypeSpecifier
+  /// 	| listTypeSpecifier
+  /// 	| intervalTypeSpecifier
+  /// 	| tupleTypeSpecifier
+  /// 	| choiceTypeSpecifier;
+  @override
+  TypeSpecifier? visitTypeSpecifier(TypeSpecifierContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is NamedTypeSpecifierContext) {
+        return visitNamedTypeSpecifier(child);
+      } else if (child is ListTypeSpecifierContext) {
+        return visitListTypeSpecifier(child);
+      } else if (child is IntervalTypeSpecifierContext) {
+        return visitIntervalTypeSpecifier(child);
+      } else if (child is TupleTypeSpecifierContext) {
+        return visitTupleTypeSpecifier(child);
+      } else if (child is ChoiceTypeSpecifierContext) {
+        return visitChoiceTypeSpecifier(child);
+      }
+    }
+    return null;
   }
 
   /// The default implementation returns the result of calling
@@ -2774,59 +2621,159 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  String _noQuoteString(String string) {
-    if (string.isNotEmpty) {
-      if (string[0] == '"' || string[0] == "'") {
-        string = string.substring(1, string.length - 1);
-      }
-      if (string.isNotEmpty &&
-          (string[string.length - 1] == '"' ||
-              string[string.length - 1] == "'")) {
-        string = string.substring(0, string.length - 2);
+  /// usingDefinition:
+  /// 'using' modelIdentifier ('version' versionSpecifier)?;
+  ///  For this we're just pulling out the modelIdentifier and the
+  ///  versionSpecifier if they exist.
+  @override
+  dynamic visitUsingDefinition(UsingDefinitionContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    String? localIdentifier;
+    String? version;
+
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ModelIdentifierContext) {
+        localIdentifier = visitModelIdentifier(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
       }
     }
-    return string;
-  }
-
-  Ref _returnRef(String? name, String? libraryName) {
-    int? codeSystemIndex;
-    int? valueSetIndex;
-    int? codeIndex;
-    int? conceptIndex;
-    int? parameterIndex;
-
-    codeSystemIndex =
-        library.codeSystems?.def.indexWhere((element) => element.name == name);
-    if (codeSystemIndex != null && codeSystemIndex != -1) {
-      return CodeSystemRef(libraryName: libraryName, name: name);
-    } else {
-      valueSetIndex =
-          library.valueSets?.def.indexWhere((element) => element.name == name);
-      if (valueSetIndex != null && valueSetIndex != -1) {
-        return ValueSetRef(libraryName: libraryName, name: name);
-      } else {
-        codeIndex =
-            library.codes?.def.indexWhere((element) => element.name == name);
-        if (codeIndex != null && codeIndex != -1) {
-          return CodeRef(libraryName: libraryName, name: name);
-        } else {
-          conceptIndex = library.concepts?.def
-              .indexWhere((element) => element.name == name);
-          if (conceptIndex != null && conceptIndex != -1) {
-            return ConceptRef(libraryName: libraryName, name: name);
-          } else {
-            parameterIndex = library.parameters?.def
-                .indexWhere((element) => element.name == name);
-            if (parameterIndex != null && parameterIndex != -1) {
-              return ParameterRef(libraryName: libraryName, name: name);
-            } else {
-              return IdentifierRef(name: name, libraryName: libraryName);
-            }
-          }
-        }
-      }
+    if (localIdentifier != null || version != null) {
+      library.usings ??= UsingDefs();
+      final modelInfoProvider = StandardModelInfoProvider();
+      final modelInfo = modelInfoProvider
+          .load(ModelIdentifier(id: localIdentifier!, version: version));
+      library.usings!.def.add(UsingDef(
+        localIdentifier: localIdentifier,
+        version: version,
+        uri: modelInfo?.url.toString(),
+      ));
     }
   }
+
+  /// valuesetDefinition:
+  /// 	accessModifier? 'valueset' identifier ':' valuesetId (
+  /// 		'version' versionSpecifier
+  /// 	)? codesystems?;
+  @override
+  void visitValuesetDefinition(ValuesetDefinitionContext ctx) {
+    library.valueSets ??= ValueSetDefs();
+
+    List<CodeSystemRef>? codeSystem;
+    AccessModifier accessModifier = AccessModifier.public;
+    String? name;
+    String? id;
+    String? version;
+
+    final int thisNode = getNextNode();
+    for (var child in ctx.children ?? <ParseTree>[]) {
+      if (child is AccessModifierContext) {
+        accessModifier = visitAccessModifier(child);
+      } else if (child is IdentifierContext) {
+        name = visitIdentifier(child);
+      } else if (child is ValuesetIdContext) {
+        id = visitValuesetId(child);
+      } else if (child is VersionSpecifierContext) {
+        version = visitVersionSpecifier(child);
+      } else if (child is CodesystemsContext) {
+        codeSystem = visitCodesystems(child);
+      }
+    }
+
+    if (name != null || id != null) {
+      library.valueSets!.def.add(ValueSetDef(
+        codeSystem: codeSystem,
+        accessLevel: accessModifier,
+        id: id,
+        name: name,
+        version: version,
+      ));
+    }
+  }
+
+  /// valuesetId: STRING;
+  @override
+  String visitValuesetId(ValuesetIdContext ctx) => _noQuoteString(ctx.text);
+
+  /// versionSpecifier: STRING;
+  @override
+  String visitVersionSpecifier(VersionSpecifierContext ctx) =>
+      _noQuoteString(ctx.text);
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  Expression visitWhereClause(WhereClauseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        return byContext(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid WhereClause');
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitWidthExpressionTerm(WidthExpressionTermContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitWithClause(WithClauseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitWithinIntervalOperatorPhrase(
+      WithinIntervalOperatorPhraseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  /// The default implementation returns the result of calling
+  /// [visitChildren] on [ctx].
+  @override
+  dynamic visitWithoutClause(WithoutClauseContext ctx) {
+    printIf(ctx);
+    final int thisNode = getNextNode();
+
+    visitChildren(ctx);
+  }
+
+  int getNextNode() {
+    final tempNumber = nodeNumber.toInt();
+    nodeNumber++;
+    return tempNumber;
+  }
+
+  void printIf(ParserRuleContext ctx, [bool should = false]) {
+    if (shouldPrint || should) {
+      print('$nodeNumber    '
+          '${ctx.runtimeType}    '
+          '${ctx.text}    '
+          '${ctx.childCount}    '
+          '${ctx.parent.runtimeType}');
+    }
+  }
+
+  Map<String, dynamic> get result => {'library': library.toJson()};
 
   dynamic byContext(ParseTree ctx) {
     if (ctx is LibraryContext) {
@@ -3187,6 +3134,60 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       return visitUnit(ctx);
     } else {
       return null;
+    }
+  }
+
+  String _noQuoteString(String string) {
+    if (string.isNotEmpty) {
+      if (string[0] == '"' || string[0] == "'") {
+        string = string.substring(1, string.length - 1);
+      }
+      if (string.isNotEmpty &&
+          (string[string.length - 1] == '"' ||
+              string[string.length - 1] == "'")) {
+        string = string.substring(0, string.length - 2);
+      }
+    }
+    return string;
+  }
+
+  Ref _returnRef(String? name, String? libraryName) {
+    int? codeSystemIndex;
+    int? valueSetIndex;
+    int? codeIndex;
+    int? conceptIndex;
+    int? parameterIndex;
+
+    codeSystemIndex =
+        library.codeSystems?.def.indexWhere((element) => element.name == name);
+    if (codeSystemIndex != null && codeSystemIndex != -1) {
+      return CodeSystemRef(libraryName: libraryName, name: name);
+    } else {
+      valueSetIndex =
+          library.valueSets?.def.indexWhere((element) => element.name == name);
+      if (valueSetIndex != null && valueSetIndex != -1) {
+        return ValueSetRef(libraryName: libraryName, name: name);
+      } else {
+        codeIndex =
+            library.codes?.def.indexWhere((element) => element.name == name);
+        if (codeIndex != null && codeIndex != -1) {
+          return CodeRef(libraryName: libraryName, name: name);
+        } else {
+          conceptIndex = library.concepts?.def
+              .indexWhere((element) => element.name == name);
+          if (conceptIndex != null && conceptIndex != -1) {
+            return ConceptRef(libraryName: libraryName, name: name);
+          } else {
+            parameterIndex = library.parameters?.def
+                .indexWhere((element) => element.name == name);
+            if (parameterIndex != null && parameterIndex != -1) {
+              return ParameterRef(libraryName: libraryName, name: name);
+            } else {
+              return IdentifierRef(name: name, libraryName: libraryName);
+            }
+          }
+        }
+      }
     }
   }
 }

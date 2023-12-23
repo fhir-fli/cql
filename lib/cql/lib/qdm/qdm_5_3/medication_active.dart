@@ -10,11 +10,11 @@ import 'package:cql/engine/types/types.dart';
 /// (generally the time discontinuation is recorded on the medication list)
 
 class MedicationActive {
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
   final LiteralCode? frequency;
+  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? route;
+  final LiteralQuantity? supply;
 
   MedicationActive({
     this.relevantPeriod,

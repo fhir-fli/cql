@@ -10,11 +10,11 @@ import 'package:cql/engine/types/types.dart';
 /// to capture recommendations when evaluating measures.
 
 class EncounterRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralCode? facilityLocation;
   final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralCode? facilityLocation;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   EncounterRecommended({
     this.startDatetime,

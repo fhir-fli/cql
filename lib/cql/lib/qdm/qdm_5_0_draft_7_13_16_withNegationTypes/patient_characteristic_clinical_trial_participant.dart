@@ -7,8 +7,8 @@ import 'package:cql/engine/types/types.dart';
 /// clinical trial ended
 
 class PatientCharacteristicClinicalTrialParticipant {
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? reason;
+  final LiteralDateTimeInterval? relevantPeriod;
 
   PatientCharacteristicClinicalTrialParticipant({
     this.relevantPeriod,

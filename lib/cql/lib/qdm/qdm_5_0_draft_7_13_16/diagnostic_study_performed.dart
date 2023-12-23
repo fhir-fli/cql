@@ -6,16 +6,16 @@ import 'package:cql/engine/types/types.dart';
 /// diagnostic study is initiated stopTime – when the diagnostic study is completed
 
 class DiagnosticStudyPerformed {
-  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? facilityLocation;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
+  final LiteralQuantity? radiationDosage;
+  final LiteralQuantity? radiationDuration;
   final LiteralCode? reason;
+  final LiteralDateTimeInterval? relevantPeriod;
   final dynamic result;
   final LiteralDateTime? resultDatetime;
   final LiteralCode? status;
-  final LiteralQuantity? radiationDosage;
-  final LiteralQuantity? radiationDuration;
-  final LiteralCode? method;
-  final LiteralCode? facilityLocation;
-  final LiteralCode? negationRationale;
 
   DiagnosticStudyPerformed({
     this.relevantPeriod,

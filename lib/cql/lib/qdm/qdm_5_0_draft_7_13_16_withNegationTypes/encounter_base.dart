@@ -2,8 +2,8 @@ import 'package:cql/engine/types/types.dart';
 
 class EncounterBase {
   final LiteralDateTime? authorTime;
-  final LiteralCode? reason;
   final LiteralCode? facilityLocation;
+  final LiteralCode? reason;
 
   EncounterBase({
     this.authorTime,

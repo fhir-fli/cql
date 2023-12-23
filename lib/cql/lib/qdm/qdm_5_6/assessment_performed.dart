@@ -8,16 +8,16 @@ import 'qdm_5_6.dart';
 
 class AssessmentPerformed {
   final LiteralDateTime? authorDatetime;
-  final LiteralCode? negationRationale;
-  final LiteralCode? reason;
-  final LiteralCode? method;
-  final dynamic result;
-  final LiteralCode? interpretation;
   final Component? component;
-  final LiteralString? relatedTo;
+  final LiteralCode? interpretation;
+  final LiteralCode? method;
+  final LiteralCode? negationRationale;
   final QDMEntity? performer;
+  final LiteralCode? reason;
+  final LiteralString? relatedTo;
   final LiteralDateTime? relevantDatetime;
   final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
 
   AssessmentPerformed({
     this.authorDatetime,

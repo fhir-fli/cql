@@ -9,10 +9,10 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class DeviceRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
   final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   DeviceRecommended({
     this.startDatetime,

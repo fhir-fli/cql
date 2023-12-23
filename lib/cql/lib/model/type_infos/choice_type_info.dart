@@ -5,11 +5,11 @@ import '../../cql.dart';
 /// The [ChoiceTypeInfo] type represents a choice type, extending TypeInfo,
 /// including type and choice elements.
 class ChoiceTypeInfo extends TypeInfo {
-  /// Deprecated type element.
-  List<TypeSpecifier>? type;
-
   /// Choice type elements.
   List<TypeSpecifier>? choice;
+
+  /// Deprecated type element.
+  List<TypeSpecifier>? type;
 
   ChoiceTypeInfo({
     this.type,

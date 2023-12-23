@@ -3,22 +3,21 @@ import 'package:antlr4/antlr4.dart' as antlr;
 import '../../cql.dart';
 
 class LibraryInfo extends BaseInfo {
-  String? namespaceName;
-  String? libraryName;
-  String? version;
-
-  UsingDefinitionInfo? preferredUsingDefinition;
-  Map<String, UsingDefinitionInfo> usingDefinitions = {};
-  Map<String, IncludeDefinitionInfo> includeDefinitions = {};
-  Map<String, CodesystemDefinitionInfo> codesystemDefinitions = {};
-  Map<String, ValuesetDefinitionInfo> valuesetDefinitions = {};
   Map<String, CodeDefinitionInfo> codeDefinitions = {};
+  Map<String, CodesystemDefinitionInfo> codesystemDefinitions = {};
   Map<String, ConceptDefinitionInfo> conceptDefinitions = {};
-  Map<String, ParameterDefinitionInfo> parameterDefinitions = {};
-  Map<String, ExpressionDefinitionInfo> expressionDefinitions = {};
-  Map<String, List<FunctionDefinitionInfo>> functionDefinitions = {};
   List<ContextDefinitionInfo> contextDefinitions = [];
   Map<antlr.Interval, BaseInfo> definitions = {};
+  Map<String, ExpressionDefinitionInfo> expressionDefinitions = {};
+  Map<String, List<FunctionDefinitionInfo>> functionDefinitions = {};
+  Map<String, IncludeDefinitionInfo> includeDefinitions = {};
+  String? libraryName;
+  String? namespaceName;
+  Map<String, ParameterDefinitionInfo> parameterDefinitions = {};
+  UsingDefinitionInfo? preferredUsingDefinition;
+  Map<String, UsingDefinitionInfo> usingDefinitions = {};
+  Map<String, ValuesetDefinitionInfo> valuesetDefinitions = {};
+  String? version;
 
   LibraryInfo() {
     usingDefinitions = {};
@@ -32,6 +31,17 @@ class LibraryInfo extends BaseInfo {
     functionDefinitions = {};
     contextDefinitions = [];
     definitions = {};
+  }
+
+  @override
+  LibraryDefinitionContext getDefinition() {
+    return super.getDefinition() as LibraryDefinitionContext;
+  }
+
+  @override
+  void setDefinition(antlr.ParserRuleContext value) {
+    super.setDefinition(value);
+    addDefinition(this);
   }
 
   String? getNamespaceName() {
@@ -71,17 +81,6 @@ class LibraryInfo extends BaseInfo {
         definitions[sourceInterval] = definition;
       }
     }
-  }
-
-  @override
-  LibraryDefinitionContext getDefinition() {
-    return super.getDefinition() as LibraryDefinitionContext;
-  }
-
-  @override
-  void setDefinition(antlr.ParserRuleContext value) {
-    super.setDefinition(value);
-    addDefinition(this);
   }
 
   LibraryInfo withDefinition(LibraryDefinitionContext value) {

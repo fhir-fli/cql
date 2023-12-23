@@ -9,11 +9,11 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class PhysicalExamRecommended {
-  final LiteralDateTime? authorDatetime;
-  final LiteralCode? reason;
-  final LiteralCode? method;
   final LiteralCode? anatomicalLocationSite;
+  final LiteralDateTime? authorDatetime;
+  final LiteralCode? method;
   final LiteralCode? negationRationale;
+  final LiteralCode? reason;
 
   PhysicalExamRecommended({
     this.authorDatetime,

@@ -6,9 +6,9 @@ import '../../../cql.dart';
 /// If the endIndex is null, the slice continues to the last element of the list.
 /// If the startIndex or endIndex is less than 0, or if the endIndex is less than the startIndex, the result is an empty list.
 class Slice extends OperatorExpression {
+  final Expression endIndex;
   final Expression source;
   final Expression startIndex;
-  final Expression endIndex;
 
   Slice({
     required this.source,

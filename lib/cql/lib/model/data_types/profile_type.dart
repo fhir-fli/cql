@@ -11,10 +11,10 @@ class ProfileType extends ClassType {
 
   factory ProfileType.empty() => ProfileType(name: '');
 
-  factory ProfileType.withName(String name) => ProfileType(name: name);
-
   factory ProfileType.withBaseType(String name, DataType baseType) =>
       ProfileType(name: name, baseType: baseType);
+
+  factory ProfileType.withName(String name) => ProfileType(name: name);
 
   @override
   bool operator ==(Object other) {

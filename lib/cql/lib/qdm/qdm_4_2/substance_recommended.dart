@@ -9,15 +9,15 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class SubstanceRecommended {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
-  final LiteralConcept? reason;
   final LiteralQuantity? dose;
   final LiteralConcept? frequency;
   final LiteralConcept? method;
+  final LiteralConcept? negationRationale;
+  final LiteralConcept? reason;
   final LiteralInteger? refills;
   final LiteralConcept? route;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   SubstanceRecommended({
     this.startDatetime,

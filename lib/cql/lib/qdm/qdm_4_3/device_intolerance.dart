@@ -6,9 +6,9 @@ import 'package:cql/engine/types/types.dart';
 /// value set.
 
 class DeviceIntolerance {
+  final LiteralCode? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralCode? reaction;
 
   DeviceIntolerance({
     this.startDatetime,

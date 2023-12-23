@@ -9,15 +9,15 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class LaboratoryTestPerformed {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralConcept? negationRationale;
-  final LiteralConcept? status;
   final LiteralConcept? method;
-  final dynamic result;
+  final LiteralConcept? negationRationale;
   final LiteralConcept? reason;
   final LiteralQuantity? referenceRangeHigh;
   final LiteralQuantity? referenceRangeLow;
+  final dynamic result;
+  final LiteralDateTime? startDatetime;
+  final LiteralConcept? status;
+  final LiteralDateTime? stopDatetime;
 
   LaboratoryTestPerformed({
     this.startDatetime,

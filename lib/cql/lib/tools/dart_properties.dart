@@ -6,12 +6,11 @@ import 'dart:io';
 class DartProperties {
   static const int serialVersionUID = 4112578634029874840;
 
+  final Map<String, String> data = {};
   // static final Unsafe unsafe =
   //     Unsafe.getUnsafe(); // Replace with your platform-specific implementation
 
   DartProperties? defaults; // Use final to ensure initialization later
-
-  final Map<String, String> data = {};
 
   // Check if a property exists
   bool containsKey(String key) => data.containsKey(key);
@@ -50,37 +49,6 @@ class DartProperties {
     sink.add(_buildPropertiesString());
   }
 
-  // Helper function to parse properties from string
-  String? _parseProperties(String contents) {
-    try {
-      final lines = contents.split('\n');
-      for (final line in lines) {
-        final trimmedLine = line.trim();
-        if (trimmedLine.isNotEmpty && !trimmedLine.startsWith('#')) {
-          final parts = trimmedLine.split('=');
-          if (parts.length == 2) {
-            data[parts[0].trim()] = parts[1].trim();
-          } else {
-            print('Invalid property format: $line');
-          }
-        }
-      }
-      return null;
-    } on FormatException catch (e) {
-      print('Error parsing properties: $e');
-      return null;
-    }
-  }
-
-  // Helper function to build a string representation of properties
-  String _buildPropertiesString() {
-    final buffer = StringBuffer();
-    for (final entry in data.entries) {
-      buffer.writeln('${entry.key}=${entry.value}');
-    }
-    return buffer.toString();
-  }
-
   String? getProperty(String key) {
     return data[key];
   }
@@ -100,50 +68,6 @@ class DartProperties {
         _load0(value);
       }
     });
-  }
-
-  Future<void> _load0(String inString) async {
-    if (inString.isEmpty) {
-      return;
-    }
-
-    int valueStart = inString.length;
-    bool hasSeparator = false;
-    bool precedingBackslash = false;
-
-    for (int i = 0; i < inString.length; ++i) {
-      final String c = inString[i];
-      if ((c == '=' || c == ':') && !precedingBackslash) {
-        valueStart = i + 1;
-        hasSeparator = true;
-        break;
-      } else if ((c == ' ' || c == '\t' || c == '\f') && !precedingBackslash) {
-        valueStart = i + 1;
-        break;
-      } else if (c == '\\') {
-        precedingBackslash = !precedingBackslash;
-      } else {
-        precedingBackslash = false;
-      }
-    }
-
-    for (int i = valueStart; i < inString.length; ++i) {
-      final String c = inString[i];
-      if (c != ' ' && c != '\t' && c != '\f') {
-        if (hasSeparator || c != '=' && c != ':') {
-          break;
-        }
-        hasSeparator = true;
-      }
-    }
-
-    final int keyLen = inString.length;
-    final List<int> inputBytes = inString.codeUnits;
-
-    final key = loadConvert(inputBytes, 0, keyLen);
-    final value =
-        loadConvert(inputBytes, valueStart, inString.length - valueStart);
-    put(key, value);
   }
 
   String loadConvert(List<int> input, int offset, int length) {
@@ -283,5 +207,80 @@ class DartProperties {
       entries.add(MapEntry<Object, Object>(entry.key, entry));
     }
     return entries;
+  }
+
+  // Helper function to parse properties from string
+  String? _parseProperties(String contents) {
+    try {
+      final lines = contents.split('\n');
+      for (final line in lines) {
+        final trimmedLine = line.trim();
+        if (trimmedLine.isNotEmpty && !trimmedLine.startsWith('#')) {
+          final parts = trimmedLine.split('=');
+          if (parts.length == 2) {
+            data[parts[0].trim()] = parts[1].trim();
+          } else {
+            print('Invalid property format: $line');
+          }
+        }
+      }
+      return null;
+    } on FormatException catch (e) {
+      print('Error parsing properties: $e');
+      return null;
+    }
+  }
+
+  // Helper function to build a string representation of properties
+  String _buildPropertiesString() {
+    final buffer = StringBuffer();
+    for (final entry in data.entries) {
+      buffer.writeln('${entry.key}=${entry.value}');
+    }
+    return buffer.toString();
+  }
+
+  Future<void> _load0(String inString) async {
+    if (inString.isEmpty) {
+      return;
+    }
+
+    int valueStart = inString.length;
+    bool hasSeparator = false;
+    bool precedingBackslash = false;
+
+    for (int i = 0; i < inString.length; ++i) {
+      final String c = inString[i];
+      if ((c == '=' || c == ':') && !precedingBackslash) {
+        valueStart = i + 1;
+        hasSeparator = true;
+        break;
+      } else if ((c == ' ' || c == '\t' || c == '\f') && !precedingBackslash) {
+        valueStart = i + 1;
+        break;
+      } else if (c == '\\') {
+        precedingBackslash = !precedingBackslash;
+      } else {
+        precedingBackslash = false;
+      }
+    }
+
+    for (int i = valueStart; i < inString.length; ++i) {
+      final String c = inString[i];
+      if (c != ' ' && c != '\t' && c != '\f') {
+        if (hasSeparator || c != '=' && c != ':') {
+          break;
+        }
+        hasSeparator = true;
+      }
+    }
+
+    final int keyLen = inString.length;
+    final List<int> inputBytes = inString.codeUnits;
+
+    final key = loadConvert(inputBytes, 0, keyLen);
+    final value =
+        loadConvert(inputBytes, valueStart, inString.length - valueStart);
+    put(key, value);
   }
 }

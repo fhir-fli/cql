@@ -3,9 +3,9 @@ import '../../cql.dart';
 class DataType {
   static final SimpleType ANY = SimpleType('System.Any');
 
-  DataType(this.baseType);
-
   final DataType? baseType;
+
+  DataType(this.baseType);
 
   DataType? getBaseType() {
     return baseType;

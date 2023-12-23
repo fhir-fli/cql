@@ -11,12 +11,12 @@ import 'qdm_5_0_draft_7_13_16_withNegationTypes.dart';
 /// attribute than the time of the study (specimen collection)
 
 class LaboratoryTestPerformed {
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralCode? status;
-  final dynamic result;
+  final Component? component;
   final LiteralCode? referenceRangeHigh;
   final LiteralCode? referenceRangeLow;
-  final Component? component;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final dynamic result;
+  final LiteralCode? status;
 
   LaboratoryTestPerformed({
     this.relevantPeriod,

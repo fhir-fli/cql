@@ -15,12 +15,12 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class MedicationActive {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
+  final LiteralQuantity? cumulativeMedicationDuration;
   final LiteralQuantity? dose;
   final LiteralConcept? frequency;
   final LiteralConcept? route;
-  final LiteralQuantity? cumulativeMedicationDuration;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   MedicationActive({
     this.startDatetime,

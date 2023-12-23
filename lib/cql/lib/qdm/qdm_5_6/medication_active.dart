@@ -12,12 +12,12 @@ import 'qdm_5_6.dart';
 /// (generally the time discontinuation is recorded on the medication list)
 
 class MedicationActive {
-  final LiteralDateTime? relevantDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralQuantity? dosage;
   final LiteralCode? frequency;
-  final LiteralCode? route;
   final QDMEntity? recorder;
+  final LiteralDateTime? relevantDatetime;
+  final LiteralDateTimeInterval? relevantPeriod;
+  final LiteralCode? route;
 
   MedicationActive({
     this.relevantDatetime,

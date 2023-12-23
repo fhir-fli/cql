@@ -8,17 +8,17 @@ import 'qdm_5_4.dart';
 
 class MedicationOrder {
   final LiteralDateTime authorDatetime;
-  final LiteralDateTimeInterval? relevantPeriod;
-  final LiteralInteger? refills;
-  final LiteralQuantity? dosage;
-  final LiteralQuantity? supply;
-  final LiteralCode? frequency;
   final LiteralInteger? daysSupplied;
+  final LiteralQuantity? dosage;
+  final LiteralCode? frequency;
+  final LiteralCode? negationRationale;
+  final Id? prescriberId;
+  final LiteralCode? reason;
+  final LiteralInteger? refills;
+  final LiteralDateTimeInterval? relevantPeriod;
   final LiteralCode? route;
   final LiteralCode? setting;
-  final LiteralCode? reason;
-  final Id? prescriberId;
-  final LiteralCode? negationRationale;
+  final LiteralQuantity? supply;
 
   MedicationOrder({
     required this.authorDatetime,

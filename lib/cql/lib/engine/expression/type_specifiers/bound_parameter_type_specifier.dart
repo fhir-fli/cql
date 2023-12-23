@@ -5,14 +5,14 @@ import '../../../cql.dart';
 /// The [BoundParameterTypeSpecifier] type defines a type replacing a class parameter,
 /// including the parameter name, bound type, and elementTypeSpecifier.
 class BoundParameterTypeSpecifier extends TypeSpecifier {
-  /// Name of the parameter bound to a valid type.
-  String parameterName;
-
   /// Type bound to the parameter.
   String boundType;
 
   /// Element type specifier.
   TypeSpecifier? elementTypeSpecifier;
+
+  /// Name of the parameter bound to a valid type.
+  String parameterName;
 
   @override
   final String type = 'BoundParameterTypeSpecifier';

@@ -8,9 +8,9 @@ import 'package:cql/engine/types/types.dart';
 ///
 
 class DeviceAdverseEvent {
+  final LiteralConcept? reaction;
   final LiteralDateTime? startDatetime;
   final LiteralDateTime? stopDatetime;
-  final LiteralConcept? reaction;
 
   DeviceAdverseEvent({
     this.startDatetime,

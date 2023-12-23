@@ -15,25 +15,12 @@ import '../../cql.dart';
 /// and allows the implementation engine freedom to cache intermediate
 /// results in order to improve performance.
 class Retrieve extends Expression {
-  /// The id element optionally specifies an expression that results in a
-  /// value that can be used to filter the retrieve to a specific id.
-  Expression? id;
-
-  /// The dateRange element optionally specifies an expression that results
-  /// in an Interval&lt;DateTime&gt; to match against. Only those clinical
-  /// statements whose date falls within the specified date range will be
-  /// returned.
-  Expression? dateRange;
-
-  /// If specified, the context element references an expression that, when
-  /// evaluated, provides the context for the retrieve. The expression
-  /// evaluates to the instance id that will be used as the context for the
-  /// retrieve.
-  Expression? context;
-
-  /// Specifies a related data type to be included in the result as part of
-  /// the retrieve.
-  List<IncludeElement>? include;
+  /// The codeComparator attribute specifies how elements of the code
+  /// property should be matched to the terminology. One of 'in', '=', or '~'.
+  /// Note that 'in' will resolve to the appropriate terminology matching
+  /// operator, resulting in equivalence semantics for value set and code
+  /// system membership testing.
+  String? codeComparator;
 
   /// Specifies a terminology filter to be applied as part of the retrieve.
   /// Each codeFilter is specified as
@@ -44,64 +31,6 @@ class Retrieve extends Expression {
   /// as any additional filtering criteria as determined by optimization
   /// strategies.
   List<CodeFilterElement>? codeFilter;
-
-  /// Specifies a date filter to be applied as part of the retrieve. Each
-  /// dateFilter is specifies as a
-  /// [property], or a [lowProperty]-[highProperty], or a [search], and a [value]
-  /// that is an expression that evaluates to an interval of a date or time
-  /// value. When multiple dateFilters are present, they are all applied
-  /// (i.e. ANDed). For simplicity, if this element is specified at all, it
-  /// will include the date filter established by the attributes of the
-  /// retrieve, as well as any additional filtering criteria as determined
-  /// by optimization strategies.
-  List<DateFilterElement>? dateFilter;
-
-  /// Specifies other, non-id, -context, -terminology, or -date valued filter
-  /// criteria to be applied as part of the retrieve. Each other Filter is
-  /// specified as
-  /// [property] [comparator] [value] or [search] [comparator] [value].
-  /// When multiple otherFilters are present, they are all applied (i.e. ANDed).
-  /// This element is included to allow for additional filtering criteria as
-  /// determined by optimization strategies.
-  List<OtherFilterElement>? otherFilter;
-
-  /// The dataType attribute specifies the type of data being requested.
-  QName dataType;
-
-  /// The templateId attribute specifies an optional template to be used. If
-  /// specified, the retrieve is defined to return only objects that conform
-  /// to the template.
-  String? templateId;
-
-  /// The idProperty attribute specifies which property of the model contains
-  /// the Id for the clinical statement.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? idProperty;
-
-  /// The idSearch attribute specifies the name of the search path to use for
-  /// searching for the values in the id element.
-  String? idSearch;
-
-  /// The contextProperty attribute optionally specifies which property of
-  /// the model contains the context value. Note that implementers could also
-  /// specify this information elsewhere as part of an implementation catalog,
-  /// rather than on each Retrieve expression, but allowing it to be specified
-  /// in the retrieve expression gives the most flexibility. Note also that
-  /// even in the case of an implementation catalog, implementations would
-  /// still ned to respect contextProperty values in the ELM due to the
-  /// possibility of the retrieve specifying alternate context paths. From
-  /// the persepctive of ELM, the specification ensures that ELM can be
-  /// processed without reference to the model information.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? contextProperty;
-
-  /// The contextSearch attribute specifies the name of the search path to
-  /// use for searching for the context values.
-  String? contextSearch;
 
   /// The codeProperty attribute optionally specifies which property of the
   /// model contains the Code or Codes for the clinical statement.
@@ -123,36 +52,73 @@ class Retrieve extends Expression {
   /// for searching for the values in the code element.
   String? codeSearch;
 
-  /// The codeComparator attribute specifies how elements of the code
-  /// property should be matched to the terminology. One of 'in', '=', or '~'.
-  /// Note that 'in' will resolve to the appropriate terminology matching
-  /// operator, resulting in equivalence semantics for value set and code
-  /// system membership testing.
-  String? codeComparator;
+  /// The codes element optionally specifies an expression that results in a
+  /// List<Code> to match against. Only the clinical statements that match at
+  /// least one of the specified codes will be returned.
+  Expression? codes;
 
-  /// The valueSetProperty attribute optionally specifies which property of
-  /// the model contains a value set identifier that can be used as an
-  /// alternative mechanism for matching the value set of the retrieve, in
-  /// the case when no code is specified in the source data.
-  /// This attribute is intended to address the case where systems
-  /// representing negation rationale for an activity not performed do so by
-  /// indicating a valueset identifier rather than a code. For example, when
-  /// indicating that a medication was not administered, the set identifier
-  /// for the expected medication is used, rather than indicating a specific
-  /// medication that was not administered. In this case, the valueSetProperty
-  /// attribute allows the retrieve to specify where to look for the value set
-  /// identifier without needing to change the conceptual data model or the
-  /// CQL logic describing the negated activity.
-  /// Note that implementers could also specify this information elsewhere as
-  /// part of an implementation catalog, rather than on each Retrieve
-  /// expression, but allowing it to be specified in the retrieve expression
-  /// gives the most flexibility. From the perspective of ELM, the
-  /// specification ensures that ELM can be processed without reference to
-  /// the model information.
+  /// If specified, the context element references an expression that, when
+  /// evaluated, provides the context for the retrieve. The expression
+  /// evaluates to the instance id that will be used as the context for the
+  /// retrieve.
+  Expression? context;
+
+  /// The contextProperty attribute optionally specifies which property of
+  /// the model contains the context value. Note that implementers could also
+  /// specify this information elsewhere as part of an implementation catalog,
+  /// rather than on each Retrieve expression, but allowing it to be specified
+  /// in the retrieve expression gives the most flexibility. Note also that
+  /// even in the case of an implementation catalog, implementations would
+  /// still ned to respect contextProperty values in the ELM due to the
+  /// possibility of the retrieve specifying alternate context paths. From
+  /// the persepctive of ELM, the specification ensures that ELM can be
+  /// processed without reference to the model information.
   /// This property may be specified as a path, including qualifiers and
   /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
   /// grammar provides the formal semantics for this path.
-  String? valueSetProperty;
+  String? contextProperty;
+
+  /// The contextSearch attribute specifies the name of the search path to
+  /// use for searching for the context values.
+  String? contextSearch;
+
+  /// The dataType attribute specifies the type of data being requested.
+  QName dataType;
+
+  /// Specifies a date filter to be applied as part of the retrieve. Each
+  /// dateFilter is specifies as a
+  /// [property], or a [lowProperty]-[highProperty], or a [search], and a [value]
+  /// that is an expression that evaluates to an interval of a date or time
+  /// value. When multiple dateFilters are present, they are all applied
+  /// (i.e. ANDed). For simplicity, if this element is specified at all, it
+  /// will include the date filter established by the attributes of the
+  /// retrieve, as well as any additional filtering criteria as determined
+  /// by optimization strategies.
+  List<DateFilterElement>? dateFilter;
+
+  /// The dateHighProperty attribute optionally specifies which property of
+  /// the model contains the high component of the clinically relevant date
+  /// for the clinical statement.
+  /// Note that if the dateProperty is specified, the dateLowProperty and
+  /// dateHighProperty attributes must not be present. And conversely, if the
+  /// dateLowProperty and dateHighProperty attributes are specified, the
+  /// dateProperty must not be present.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? dateHighProperty;
+
+  /// The dateLowProperty attribute optionally specifies which property of
+  /// the model contains the low component of the clinically relevant date
+  /// for the clinical statement.
+  /// Note that if the dateProperty is specified, the dateLowProperty and
+  /// dateHighProperty attributes must not be present. And conversely, if
+  /// the dateLowProperty and dateHighProperty attributes are specified, the
+  /// dateProperty must not be present.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? dateLowProperty;
 
   /// The dateProperty attribute optionally specifies which property of the
   /// model contains the clinically relevant date for the clinical statement.
@@ -177,46 +143,78 @@ class Retrieve extends Expression {
   /// grammar provides the formal semantics for this path.
   String? dateProperty;
 
-  /// The dateLowProperty attribute optionally specifies which property of
-  /// the model contains the low component of the clinically relevant date
-  /// for the clinical statement.
-  /// Note that if the dateProperty is specified, the dateLowProperty and
-  /// dateHighProperty attributes must not be present. And conversely, if
-  /// the dateLowProperty and dateHighProperty attributes are specified, the
-  /// dateProperty must not be present.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? dateLowProperty;
-
-  /// The dateHighProperty attribute optionally specifies which property of
-  /// the model contains the high component of the clinically relevant date
-  /// for the clinical statement.
-  /// Note that if the dateProperty is specified, the dateLowProperty and
-  /// dateHighProperty attributes must not be present. And conversely, if the
-  /// dateLowProperty and dateHighProperty attributes are specified, the
-  /// dateProperty must not be present.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? dateHighProperty;
+  /// The dateRange element optionally specifies an expression that results
+  /// in an Interval&lt;DateTime&gt; to match against. Only those clinical
+  /// statements whose date falls within the specified date range will be
+  /// returned.
+  Expression? dateRange;
 
   /// The dateSearch attribute specifies the name of the search path to use
   /// for searching for values in the date range specified by the dateRange
   /// element.
   String? dateSearch;
 
+  /// The id element optionally specifies an expression that results in a
+  /// value that can be used to filter the retrieve to a specific id.
+  Expression? id;
+
+  /// The idProperty attribute specifies which property of the model contains
+  /// the Id for the clinical statement.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? idProperty;
+
+  /// The idSearch attribute specifies the name of the search path to use for
+  /// searching for the values in the id element.
+  String? idSearch;
+
+  /// Specifies a related data type to be included in the result as part of
+  /// the retrieve.
+  List<IncludeElement>? include;
+
   /// The localId of another Retrieve that includes the data for this
   /// retrieve. The target Retrieve will have an includeElement referencing
   /// this retrieve.
   String? includedIn;
 
-  String get type => 'Retrieve';
+  /// Specifies other, non-id, -context, -terminology, or -date valued filter
+  /// criteria to be applied as part of the retrieve. Each other Filter is
+  /// specified as
+  /// [property] [comparator] [value] or [search] [comparator] [value].
+  /// When multiple otherFilters are present, they are all applied (i.e. ANDed).
+  /// This element is included to allow for additional filtering criteria as
+  /// determined by optimization strategies.
+  List<OtherFilterElement>? otherFilter;
 
-  /// The codes element optionally specifies an expression that results in a
-  /// List<Code> to match against. Only the clinical statements that match at
-  /// least one of the specified codes will be returned.
-  Expression? codes;
+  /// The templateId attribute specifies an optional template to be used. If
+  /// specified, the retrieve is defined to return only objects that conform
+  /// to the template.
+  String? templateId;
+
+  /// The valueSetProperty attribute optionally specifies which property of
+  /// the model contains a value set identifier that can be used as an
+  /// alternative mechanism for matching the value set of the retrieve, in
+  /// the case when no code is specified in the source data.
+  /// This attribute is intended to address the case where systems
+  /// representing negation rationale for an activity not performed do so by
+  /// indicating a valueset identifier rather than a code. For example, when
+  /// indicating that a medication was not administered, the set identifier
+  /// for the expected medication is used, rather than indicating a specific
+  /// medication that was not administered. In this case, the valueSetProperty
+  /// attribute allows the retrieve to specify where to look for the value set
+  /// identifier without needing to change the conceptual data model or the
+  /// CQL logic describing the negated activity.
+  /// Note that implementers could also specify this information elsewhere as
+  /// part of an implementation catalog, rather than on each Retrieve
+  /// expression, but allowing it to be specified in the retrieve expression
+  /// gives the most flexibility. From the perspective of ELM, the
+  /// specification ensures that ELM can be processed without reference to
+  /// the model information.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? valueSetProperty;
 
   Retrieve({
     this.id,
@@ -331,4 +329,6 @@ class Retrieve extends Expression {
 
   @override
   String toString() => jsonEncode(toJson());
+
+  String get type => 'Retrieve';
 }

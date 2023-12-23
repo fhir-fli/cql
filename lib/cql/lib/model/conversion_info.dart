@@ -5,20 +5,20 @@ import '../cql.dart';
 /// The [ConversionInfo] type includes specifications for data conversions,
 /// such as source and target types, and the conversion function name.
 class ConversionInfo {
-  // Required attribute - Name of the function for conversion
-  final String functionName;
+  // Optional attribute - Source type as string
+  final String? fromType;
 
   // Optional element - Type specifier for the source type
   final TypeSpecifier? fromTypeSpecifier;
 
-  // Optional element - Type specifier for the target type
-  final TypeSpecifier? toTypeSpecifier;
-
-  // Optional attribute - Source type as string
-  final String? fromType;
+  // Required attribute - Name of the function for conversion
+  final String functionName;
 
   // Optional attribute - Target type as string
   final String? toType;
+
+  // Optional element - Type specifier for the target type
+  final TypeSpecifier? toTypeSpecifier;
 
   ConversionInfo({
     required this.functionName,
@@ -42,6 +42,11 @@ class ConversionInfo {
     );
   }
 
+  @override
+  String toString() {
+    return 'ConversionInfo{functionName: $functionName, fromTypeSpecifier: $fromTypeSpecifier, toTypeSpecifier: $toTypeSpecifier, fromType: $fromType, toType: $toType}';
+  }
+
   Map<String, dynamic> toJson() => {
         'functionName': functionName,
         if (fromTypeSpecifier != null)
@@ -51,8 +56,4 @@ class ConversionInfo {
         if (fromType != null) 'fromType': fromType,
         if (toType != null) 'toType': toType,
       };
-  @override
-  String toString() {
-    return 'ConversionInfo{functionName: $functionName, fromTypeSpecifier: $fromTypeSpecifier, toTypeSpecifier: $toTypeSpecifier, fromType: $fromType, toType: $toType}';
-  }
 }

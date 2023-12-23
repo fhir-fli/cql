@@ -13,11 +13,11 @@ import '../../../../cql.dart';
 /// Conversion between String and Date/DateTime/Time is performed using the
 /// ISO-8601 standard format: YYYY-MM-DDThh:mm:ss(+|-)hh:mm.
 class Convert extends UnaryExpression {
-  /// Type specifier for the target type.
-  TypeSpecifier? toTypeSpecifier;
-
   /// Target type to convert to.
   QName? toType;
+
+  /// Type specifier for the target type.
+  TypeSpecifier? toTypeSpecifier;
 
   Convert({this.toTypeSpecifier, this.toType, required super.operand});
 

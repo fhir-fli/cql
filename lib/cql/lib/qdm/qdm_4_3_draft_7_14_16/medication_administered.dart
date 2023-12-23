@@ -5,14 +5,14 @@ import 'package:cql/engine/types/types.dart';
 /// was actually administered to the patient.
 
 class MedicationAdministered {
-  final LiteralDateTime? startDatetime;
-  final LiteralDateTime? stopDatetime;
-  final LiteralCode? negationRationale;
+  final LiteralQuantity? cumulativeMedicationDuration;
   final LiteralQuantity? dose;
   final LiteralCode? frequency;
-  final LiteralCode? route;
+  final LiteralCode? negationRationale;
   final LiteralCode? reason;
-  final LiteralQuantity? cumulativeMedicationDuration;
+  final LiteralCode? route;
+  final LiteralDateTime? startDatetime;
+  final LiteralDateTime? stopDatetime;
 
   MedicationAdministered({
     this.startDatetime,

@@ -11,11 +11,11 @@ class Start extends UnaryExpression {
         operand: Expression.fromJson(json['operand']),
       );
 
-  String get type => 'Start';
-
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
         'operand': operand.toJson(),
       };
+
+  String get type => 'Start';
 }

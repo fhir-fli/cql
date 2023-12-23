@@ -13,12 +13,12 @@ import 'qdm_5_0_draft_5_23_16.dart';
 class MedicationOrder {
   final LiteralDateTime activeDatetime;
   final LiteralDateTime authorDatetime;
-  final LiteralInteger? refills;
   final LiteralQuantity? dose;
   final CodeableConcept? frequency;
-  final CodeableConcept? route;
   final CodeableConcept? method;
   final CodeableConcept? reason;
+  final LiteralInteger? refills;
+  final CodeableConcept? route;
 
   MedicationOrder({
     required this.activeDatetime,
