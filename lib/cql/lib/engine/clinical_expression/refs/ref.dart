@@ -3,15 +3,13 @@ import '../../../cql.dart';
 /// The CodeRef expression allows a previously defined code to be referenced
 /// within an expression.
 abstract class Ref extends Expression {
+  /// The name of the code.
+  String name;
+
   /// The library name.
   String? libraryName;
 
-  /// The name of the code.
-  String? name;
-
-  String? type;
-
-  Ref({this.name, this.libraryName, this.type});
+  Ref({required this.name, this.libraryName});
 
   factory Ref.fromJson(Map<String, dynamic> json) {
     switch (json['type']) {
@@ -34,9 +32,12 @@ abstract class Ref extends Expression {
     if (libraryName != null) {
       json['libraryName'] = libraryName;
     }
-    if (type != null) {
-      json['type'] = type;
-    }
+    json['type'] = type;
     return json;
   }
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type;
 }

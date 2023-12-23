@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 
 import 'cql-to-elm/cql_to_elm.dart';
 
+const bool print = true;
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -54,7 +56,9 @@ void parseFile(BuildContext context) async {
           .toList();
       visitor.library.annotation ??= [];
       visitor.library.annotation!.addAll(errors);
-      log(jsonEncode(visitor.result));
+      if (print) {
+        log(jsonEncode(visitor.result));
+      }
     } catch (e, s) {
       log(e.toString());
       log(s.toString());

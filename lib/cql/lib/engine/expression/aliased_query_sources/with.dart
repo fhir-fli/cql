@@ -21,6 +21,7 @@ class With extends RelationshipClause {
   Map<String, dynamic> toJson() {
     final map = {
       'alias': alias,
+      'type': type,
       'expression': expression.toJson(),
     };
     if (suchThat != null) {
@@ -28,4 +29,10 @@ class With extends RelationshipClause {
     }
     return map;
   }
+
+  @override
+  String toString() => 'With(alias: $alias, expression: $expression, '
+      'suchThat: $suchThat)';
+
+  String get type => 'With';
 }

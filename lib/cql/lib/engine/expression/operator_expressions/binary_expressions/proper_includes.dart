@@ -24,4 +24,7 @@ class ProperIncludes extends BinaryExpression {
         'precision': precision?.toJson(),
         'operand': operand.map((e) => e.toJson()).toList(),
       };
+
+  @override
+  String toString() => toJson().toString();
 }

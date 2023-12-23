@@ -8,28 +8,32 @@ class FunctionRef extends ExpressionRef {
   /// Declared signature of the function being called.
   List<TypeSpecifier>? signature;
 
-  FunctionRef({this.signature, this.operand, required super.name});
+  FunctionRef(
+      {this.operand, this.signature, required super.name, super.libraryName});
 
   factory FunctionRef.fromJson(Map<String, dynamic> json) => FunctionRef(
-        signature: json['signature'] != null
-            ? List<TypeSpecifier>.from(
-                json['signature'].map((x) => TypeSpecifier.fromJson(x)))
-            : null,
         operand: json['operand'] != null
             ? List<Expression>.from(
                 json['operand'].map((x) => Expression.fromJson(x)))
             : null,
+        signature: json['signature'] != null
+            ? List<TypeSpecifier>.from(
+                json['signature'].map((x) => TypeSpecifier.fromJson(x)))
+            : null,
         name: json['name']!,
+        libraryName: json['libraryName'],
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'signature': signature != null
-            ? List<dynamic>.from(signature!.map((x) => x.toJson()))
-            : null,
-        'operand': operand != null
-            ? List<dynamic>.from(operand!.map((x) => x.toJson()))
-            : null,
+        if (signature != null)
+          'signature': List<dynamic>.from(signature!.map((x) => x.toJson())),
+        if (operand != null)
+          'operand': List<dynamic>.from(operand!.map((x) => x.toJson())),
         'name': name,
+        if (libraryName != null) 'libraryName': libraryName,
       };
+
+  @override
+  String get type => 'FunctionRef';
 }

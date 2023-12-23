@@ -6,25 +6,32 @@ import '../../../cql.dart';
 class ValueSetRef extends Ref {
   bool preserve;
 
-  ValueSetRef({required super.name, super.libraryName, this.preserve = true})
-      : super(type: 'ValueSetRef');
+  ValueSetRef({required super.name, super.libraryName, this.preserve = true});
 
-  factory ValueSetRef.fromJson(Map<String, dynamic> json) => ValueSetRef(
-        name: json['name'] as String,
-        libraryName: json['libraryName'] as String?,
-        preserve: json['preserve'] as bool? ?? true,
-      );
+  factory ValueSetRef.fromJson(Map<String, dynamic> json) {
+    final name = json['name'];
+    if (name == null) {
+      throw ArgumentError("JSON name cannot be null");
+    }
+
+    return ValueSetRef(
+      name: name,
+      libraryName: json['libraryName'],
+      preserve: json['preserve'] ?? true,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = <String, dynamic>{
-      'name': name,
-      'preserve': preserve,
-      'type': type,
-    };
+    final json = <String, dynamic>{'name': name};
     if (libraryName != null) {
       json['libraryName'] = libraryName;
     }
+    json['preserve'] = preserve;
+    json['type'] = type;
     return json;
   }
+
+  @override
+  String get type => 'ValueSetRef';
 }

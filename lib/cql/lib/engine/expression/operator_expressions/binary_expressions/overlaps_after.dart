@@ -6,20 +6,11 @@ import '../../../../cql.dart';
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class OverlapsAfter extends BinaryExpression {
-  final Expression left;
   final DateTimePrecision? precision;
-  final Expression right;
 
-  OverlapsAfter({
-    required this.left,
-    required this.right,
-    this.precision,
-    required super.operand,
-  });
+  OverlapsAfter({this.precision, required super.operand});
 
   factory OverlapsAfter.fromJson(Map<String, dynamic> json) => OverlapsAfter(
-        left: Expression.fromJson(json['left']),
-        right: Expression.fromJson(json['right']),
         precision: json['precision'] != null
             ? DateTimePrecisionJson.fromJson(json['precision'])
             : null,
@@ -30,8 +21,10 @@ class OverlapsAfter extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'left': left.toJson(),
-        'right': right.toJson(),
-        'precision': precision?.toJson(),
+        'type': type,
+        if (precision != null) 'precision': precision!.toJson(),
+        'operand': operand.map((e) => e.toJson()).toList(),
       };
+
+  String get type => 'OverlapsAfter';
 }

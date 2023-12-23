@@ -24,4 +24,7 @@ class ParameterTypeSpecifier extends TypeSpecifier {
         'parameterName': parameterName.toString(),
         'type': type,
       };
+
+  @override
+  String toString() => toJson().toString();
 }

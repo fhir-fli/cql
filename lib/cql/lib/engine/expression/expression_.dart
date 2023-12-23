@@ -1,7 +1,6 @@
 export 'aggregate_expressions/aggregate_expressions.dart';
 export 'aliased_query_sources/aliased_query_sources.dart';
 export 'expression_defs/expression_defs.dart';
-export 'expression_refs/expression_refs.dart';
 export 'operator_expressions/operator_expressions.dart';
 export '../clinical_expression/refs/refs.dart';
 export 'sort_by_items/sort_by_items.dart';

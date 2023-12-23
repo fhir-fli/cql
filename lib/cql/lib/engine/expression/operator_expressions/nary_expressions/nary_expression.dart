@@ -4,9 +4,9 @@ import '../../../../cql.dart';
 /// including zero.
 abstract class NaryExpression extends OperatorExpression {
   /// List of expressions as operands, can be zero or more.
-  List<Expression>? operands;
+  List<Expression>? operand;
 
-  NaryExpression({this.operands});
+  NaryExpression({this.operand});
 
   factory NaryExpression.fromJson(Map<String, dynamic> json) =>
       json['type'] == 'Concatenate'
@@ -24,8 +24,7 @@ abstract class NaryExpression extends OperatorExpression {
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        if (operands != null)
-          'operands': operands!.map((e) => e.toJson()).toList()
+        if (operand != null) 'operand': operand!.map((e) => e.toJson()).toList()
       };
 
   String get type;

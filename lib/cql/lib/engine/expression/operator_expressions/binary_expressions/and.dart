@@ -14,4 +14,7 @@ class And extends BinaryExpression {
       };
 
   String get type => 'And';
+
+  @override
+  String toString() => 'And(operand: $operand)';
 }

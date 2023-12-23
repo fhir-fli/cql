@@ -29,4 +29,7 @@ class RelationshipClause extends AliasedQuerySource {
     }
     return map;
   }
+
+  @override
+  String toString() => toJson().toString();
 }

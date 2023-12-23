@@ -6,18 +6,13 @@ import '../../../../cql.dart';
 /// For the interval overload, returns the interval that defines the overlapping portion of both arguments. If the arguments do not overlap, returns null.
 /// If either argument is null, the result is null.
 class Intersect extends NaryExpression {
-  Expression left;
-  Expression right;
-
-  @override
-  final String type = 'Intersect';
-
-  Intersect({required this.left, required this.right});
+  Intersect({super.operand});
 
   factory Intersect.fromJson(Map<String, dynamic> json) => Intersect(
-      left: Expression.fromJson(json['left']),
-      right: Expression.fromJson(json['right']));
+      operand: (json['operand'] as List)
+          .map((e) => Expression.fromJson(e))
+          .toList());
 
   @override
-  Map<String, dynamic> toJson() => {'type': type, 'left': left, 'right': right};
+  String get type => 'Intersect';
 }

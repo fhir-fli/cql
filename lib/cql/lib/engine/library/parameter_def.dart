@@ -48,4 +48,7 @@ class ParameterDef extends Element {
 
   @override
   Map<String, dynamic> toJson() => _$ParameterDefToJson(this);
+
+  @override
+  String toString() => toJson().toString();
 }

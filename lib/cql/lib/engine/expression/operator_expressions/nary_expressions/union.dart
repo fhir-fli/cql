@@ -10,21 +10,13 @@ import '../../../../cql.dart';
 /// not overlap or meet, returns null. If either argument is null, the
 /// operation is performed as though the argument was an empty list.
 class Union extends NaryExpression {
-  Expression left;
-  Expression right;
-
-  @override
-  final String type = 'Union';
-
-  Union({required this.left, required this.right});
+  Union({super.operand});
 
   factory Union.fromJson(Map<String, dynamic> json) => Union(
-      left: Expression.fromJson(json['left']),
-      right: Expression.fromJson(json['right']));
+      operand: (json['operand'] as List)
+          .map((e) => Expression.fromJson(e))
+          .toList());
 
   @override
-  Map<String, dynamic> toJson() => {'type': type, 'left': left, 'right': right};
-
-  @override
-  String toString() => 'Union(${left.toString()}, ${right.toString()})';
+  String get type => 'Union';
 }

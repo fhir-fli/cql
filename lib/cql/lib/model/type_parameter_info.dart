@@ -47,4 +47,7 @@ class TypeParameterInfo {
     }
     return data;
   }
+
+  @override
+  String toString() => toJson().toString();
 }

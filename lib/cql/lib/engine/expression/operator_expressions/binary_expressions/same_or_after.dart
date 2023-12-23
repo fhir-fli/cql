@@ -26,5 +26,8 @@ class SameOrAfter extends BinaryExpression {
         'operand': operand.map((e) => e.toJson()).toList(),
       };
 
+  @override
+  String toString() => toJson().toString();
+
   String get type => 'SameOrAfter';
 }

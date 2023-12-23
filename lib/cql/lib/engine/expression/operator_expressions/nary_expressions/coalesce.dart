@@ -2,18 +2,13 @@ import '../../../../cql.dart';
 
 /// Coalesce operator returning the first non-null result in a list of arguments.
 class Coalesce extends NaryExpression {
-  Expression left;
-  Expression right;
-
-  @override
-  final String type = 'Coalesce';
-
-  Coalesce({required this.left, required this.right});
+  Coalesce({super.operand});
 
   factory Coalesce.fromJson(Map<String, dynamic> json) => Coalesce(
-      left: Expression.fromJson(json['left']),
-      right: Expression.fromJson(json['right']));
+      operand: (json['operand'] as List)
+          .map((e) => Expression.fromJson(e))
+          .toList());
 
   @override
-  Map<String, dynamic> toJson() => {'type': type, 'left': left, 'right': right};
+  String get type => 'Coalesce';
 }

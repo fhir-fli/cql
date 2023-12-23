@@ -41,4 +41,7 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
           'elementTypeSpecifier': elementTypeSpecifier!.toJson(),
         'type': type,
       };
+
+  @override
+  String toString() => toJson().toString();
 }

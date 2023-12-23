@@ -5,17 +5,15 @@ class ParameterRef extends Ref {
   ParameterRef({required super.name, super.libraryName});
 
   factory ParameterRef.fromJson(Map<String, dynamic> json) {
-    return ParameterRef(name: json['name'], libraryName: json['libraryName']);
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'name': name};
-    if (libraryName != null) {
-      json['libraryName'] = libraryName;
+    final name = json['name'];
+    if (name == null) {
+      throw ArgumentError("JSON name cannot be null");
     }
-    json['type'] = type;
-    return json;
+
+    return ParameterRef(
+      name: name,
+      libraryName: json['libraryName'],
+    );
   }
 
   @override

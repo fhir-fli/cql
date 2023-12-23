@@ -24,5 +24,8 @@ class IncludedIn extends BinaryExpression {
         'operand': operand,
       };
 
+  @override
+  String toString() => toJson().toString();
+
   String get type => 'IncludedIn';
 }
