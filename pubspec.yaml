@@ -10,7 +10,7 @@ environment:
 dependencies:
   antlr4: ^4.13.1
   fhir:
-    path: ../fhir/fhir
+    path: ../../fhir/fhir
   freezed_annotation: ^2.4.1
   http: ^1.1.2
   json_annotation: ^4.8.1

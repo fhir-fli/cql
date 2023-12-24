@@ -6,6 +6,7 @@ abstract class CqlToElmBase {
   CqlToElmBase();
 
   factory CqlToElmBase.fromJson(Map<String, dynamic> json) {
+    print(json);
     switch (json['type'] as String?) {
       case 'Annotation':
         return Annotation.fromJson(json);

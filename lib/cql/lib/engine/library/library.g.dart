@@ -45,15 +45,15 @@ Library _$LibraryFromJson(Map<String, dynamic> json) => Library(
           : ExpressionDefs.fromJson(json['statements'] as Map<String, dynamic>),
     )
       ..annotation = (json['annotation'] as List<dynamic>?)
-          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
           .toList()
+      ..localId = json['localId'] as String?
+      ..locator = json['locator'] as String?
+      ..resultTypeName = json['resultTypeName'] as String?
       ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
           ? null
           : TypeSpecifier.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
-      ..resultTypeName = json['resultTypeName'] as String?
-      ..localId = json['localId'] as String?
-      ..locator = json['locator'] as String?;
+              json['resultTypeSpecifier'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$LibraryToJson(Library instance) {
   final val = <String, dynamic>{};
@@ -66,20 +66,20 @@ Map<String, dynamic> _$LibraryToJson(Library instance) {
 
   writeNotNull(
       'annotation', instance.annotation?.map((e) => e.toJson()).toList());
-  writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
-  writeNotNull('resultTypeName', instance.resultTypeName);
   writeNotNull('localId', instance.localId);
   writeNotNull('locator', instance.locator);
+  writeNotNull('resultTypeName', instance.resultTypeName);
+  writeNotNull('resultTypeSpecifier', instance.resultTypeSpecifier?.toJson());
+  writeNotNull('codeSystems', instance.codeSystems?.toJson());
+  writeNotNull('codes', instance.codes?.toJson());
+  writeNotNull('concepts', instance.concepts?.toJson());
+  writeNotNull('contexts', instance.contexts?.toJson());
   writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('schemaIdentifier', instance.schemaIdentifier?.toJson());
-  writeNotNull('usings', instance.usings?.toJson());
   writeNotNull('includes', instance.includes?.toJson());
   writeNotNull('parameters', instance.parameters?.toJson());
-  writeNotNull('codeSystems', instance.codeSystems?.toJson());
-  writeNotNull('valueSets', instance.valueSets?.toJson());
-  writeNotNull('codes', instance.codes?.toJson());
-  writeNotNull('contexts', instance.contexts?.toJson());
-  writeNotNull('concepts', instance.concepts?.toJson());
+  writeNotNull('schemaIdentifier', instance.schemaIdentifier?.toJson());
   writeNotNull('statements', instance.statements?.toJson());
+  writeNotNull('usings', instance.usings?.toJson());
+  writeNotNull('valueSets', instance.valueSets?.toJson());
   return val;
 }

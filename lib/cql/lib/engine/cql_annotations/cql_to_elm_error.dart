@@ -27,31 +27,18 @@ class CqlToElmError extends Locator {
     this.targetIncludeLibrarySystem,
     this.targetIncludeLibraryId,
     this.targetIncludeLibraryVersionId,
-    int? startLine,
-    int? startChar,
-    int? endLine,
-    int? endChar,
-  }) : super(
-          startLine: startLine,
-          startChar: startChar,
-          endLine: endLine,
-          endChar: endChar,
-        );
+    super.startLine,
+    super.startChar,
+    super.endLine,
+    super.endChar,
+  });
 
   factory CqlToElmError.fromJson(Map<String, dynamic> json) {
     return CqlToElmError(
       message: json['message'],
-      errorType: ErrorType.values.firstWhere(
-        (type) => type.toString() == json['errorType'],
-        orElse: () =>
-            throw FormatException('Invalid error type: ${json['errorType']}'),
-      ),
+      errorType: ErrorTypeExtension.fromJson(json['errorType']),
       errorSeverity: json['errorSeverity'] != null
-          ? ErrorSeverity.values.firstWhere(
-              (severity) => severity.toString() == json['errorSeverity'],
-              orElse: () => throw FormatException(
-                  'Invalid error severity: ${json['errorSeverity']}'),
-            )
+          ? ErrorSeverityExtension.fromJson(json['errorSeverity'])
           : null,
       targetIncludeLibrarySystem: json['targetIncludeLibrarySystem'],
       targetIncludeLibraryId: json['targetIncludeLibraryId'],
@@ -63,6 +50,7 @@ class CqlToElmError extends Locator {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
       'message': message,

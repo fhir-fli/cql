@@ -14,7 +14,6 @@ Future<void> main() async {
         final pathExpression = jsonDecode(await file.readAsString());
         if (pathExpression['library'] != null) {
           final library = Library.fromJson(pathExpression['library']);
-          print(library.annotation);
           final newFileString = jsonPrettyPrint({'library': library.toJson()});
           await File(file.path.replaceAll('.json', '_2.json'))
               .writeAsString(newFileString);
