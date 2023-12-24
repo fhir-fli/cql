@@ -8,8 +8,6 @@ class Concept extends Expression {
   /// An optional display string for the concept.
   String? display;
 
-  final String type = 'Concept';
-
   Concept({required this.code, this.display});
 
   factory Concept.fromJson(Map<String, dynamic> json) {
@@ -28,4 +26,6 @@ class Concept extends Expression {
     json['code'] = code.map((e) => e.toJson()).toList();
     return json;
   }
+
+  String get type => 'Concept';
 }

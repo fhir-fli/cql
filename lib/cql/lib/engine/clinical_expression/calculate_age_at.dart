@@ -23,7 +23,13 @@ class CalculateAgeAt extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'precision': precision,
         'operand': operand,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'CalculateAgeAt';
 }

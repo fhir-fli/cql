@@ -8,4 +8,3 @@ export 'error_type.dart';
 export 'locator.dart';
 export 'narrative.dart';
 export 'tag.dart';
-export 'translator_annotation.dart';

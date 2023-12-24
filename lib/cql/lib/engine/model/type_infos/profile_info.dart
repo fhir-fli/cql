@@ -1,4 +1,4 @@
-import '../../cql.dart';
+import '../../../cql.dart';
 
 /// Represents information related to a profile, extending [ClassInfo].
 ///

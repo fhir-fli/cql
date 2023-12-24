@@ -1,12 +1,17 @@
+import '../../cql.dart';
+
 /// Represents the CqlToElmInfo type
-class CqlToElmInfo {
+class CqlToElmInfo extends CqlToElmBase {
   /// translatorOptions attribute
-  String? translatorOptions;
+  String translatorOptions;
 
   /// translatorVersion attribute
-  String? translatorVersion;
+  String translatorVersion;
 
-  CqlToElmInfo({this.translatorVersion, this.translatorOptions});
+  CqlToElmInfo({
+    this.translatorVersion = '2.11.0', //'0.0.0-dev1
+    this.translatorOptions = '',
+  });
 
   factory CqlToElmInfo.fromJson(Map<String, dynamic> json) {
     return CqlToElmInfo(
@@ -15,14 +20,11 @@ class CqlToElmInfo {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    if (translatorVersion != null) {
-      data['translatorVersion'] = translatorVersion;
-    }
-    if (translatorOptions != null) {
-      data['translatorOptions'] = translatorOptions;
-    }
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        'translatorVersion': translatorVersion,
+        'translatorOptions': translatorOptions,
+        'type': type,
+      };
+
+  String get type => 'CqlToElmInfo';
 }

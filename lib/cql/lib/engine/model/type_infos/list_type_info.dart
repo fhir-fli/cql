@@ -1,4 +1,4 @@
-import '../../cql.dart';
+import '../../../cql.dart';
 
 /// Represents a list type, extending [TypeInfo].
 ///

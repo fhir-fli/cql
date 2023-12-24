@@ -1,4 +1,4 @@
-import '../cql.dart';
+import '../../../../../cql.dart';
 
 /// Element within ClassInfoElement type, deprecated.
 ///

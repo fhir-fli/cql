@@ -10,12 +10,15 @@ Future<void> main() async {
   for (final file in librariesAndDefinitionsFiles) {
     if (file is File) {
       print(file.path);
-      final pathExpression = jsonDecode(await file.readAsString());
-      if (pathExpression['library'] != null) {
-        final newFileString = jsonPrettyPrint(
-            {'library': Library.fromJson(pathExpression['library']).toJson()});
-        await File(file.path.replaceAll('.json', '2.json'))
-            .writeAsString(newFileString);
+      if (!file.path.endsWith('_2.json')) {
+        final pathExpression = jsonDecode(await file.readAsString());
+        if (pathExpression['library'] != null) {
+          final library = Library.fromJson(pathExpression['library']);
+          print(library.annotation);
+          final newFileString = jsonPrettyPrint({'library': library.toJson()});
+          await File(file.path.replaceAll('.json', '_2.json'))
+              .writeAsString(newFileString);
+        }
       }
     }
   }

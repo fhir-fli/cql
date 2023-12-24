@@ -1,4 +1,4 @@
-import '../../cql.dart';
+import '../../../cql.dart';
 
 class ClassInfo extends TypeInfo {
   final String? comment;

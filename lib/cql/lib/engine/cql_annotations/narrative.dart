@@ -1,7 +1,5 @@
-import '../../cql.dart';
-
 /// Represents the Narrative type with mixed content
-class Narrative extends CqlToElmBase {
+class Narrative {
   /// r attribute
   String? r;
 

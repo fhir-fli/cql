@@ -16,5 +16,6 @@ export 'other_filter_element.dart';
 export 'quantity.dart';
 export 'ratio.dart';
 export 'retrieve.dart';
+export 'search.dart';
 export 'subsumed_by.dart';
 export 'subsumes.dart';

@@ -1,19 +1,23 @@
-import 'package:fhir/r4.dart';
-
 import '../cql.dart';
 
 class QName {
-  final String localPart;
   final String namespaceURI;
+  final String localPart;
   final String prefix;
 
   QName({
-    this.prefix = '',
-    required this.namespaceURI,
+    this.namespaceURI = '',
     required this.localPart,
+    this.prefix = '',
   });
 
   factory QName.empty() => QName(namespaceURI: '', localPart: '', prefix: '');
+
+  factory QName.local(String localPart) => QName(
+        namespaceURI: '',
+        localPart: localPart,
+        prefix: '',
+      );
 
   factory QName.fromFull(String? qNameAsString) {
     if (qNameAsString?.isEmpty ?? true) {
@@ -31,9 +35,7 @@ class QName {
           prefix: qNameAsString.substring(0, beginningOfNamespaceURI));
     } else {
       return QName(
-          namespaceURI: _nameSpace(qNameAsString),
-          localPart: qNameAsString,
-          prefix: '');
+          namespaceURI: qNameAsString, localPart: qNameAsString, prefix: '');
     }
   }
 
@@ -41,14 +43,12 @@ class QName {
 
   factory QName.fromLocalPart(String localPart) => QName(
         prefix: '',
-        namespaceURI: _nameSpace(localPart),
+        namespaceURI: localPart,
         localPart: localPart,
       );
 
-  factory QName.fromNamespace(String? namespaceURI, String localPart) => QName(
-      namespaceURI: _nameSpace(localPart, namespaceURI),
-      localPart: localPart,
-      prefix: '');
+  factory QName.fromNamespace(String? namespaceURI, String localPart) =>
+      QName(namespaceURI: namespaceURI ?? '', localPart: localPart, prefix: '');
 
   @override
   bool operator ==(Object? other) {
@@ -73,8 +73,10 @@ class QName {
 
   bool equals(Object? other) => this == other;
 
-  static QName valueOf(String qNameAsString) {
-    if (qNameAsString.isEmpty) {
+  static QName valueOf(String? qNameAsString) {
+    if (qNameAsString == null) {
+      throw ArgumentError("cannot create QName from null or empty string");
+    } else if (qNameAsString.isEmpty) {
       throw ArgumentError("cannot create QName from \"null\" or \"\" String");
     } else if (qNameAsString[0] != '{') {
       return QName(namespaceURI: "", localPart: qNameAsString, prefix: "");
@@ -94,12 +96,4 @@ class QName {
       }
     }
   }
-
-  static String _nameSpace(String localPart, [String? nameSpaceUri]) =>
-      nameSpaceUri ??
-      (resourceTypeFromStringMap.keys.contains(localPart)
-          ? 'http://hl7.org/fhir'
-          : elmTypes.contains(localPart)
-              ? 'urn:hl7-org:elm-types:r1'
-              : '');
 }

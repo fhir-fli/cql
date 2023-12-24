@@ -1,4 +1,4 @@
-import '../cql.dart';
+import '../../../../../cql.dart';
 
 /// Defines metadata associated with a specific model for use by the CQL translator.
 ///

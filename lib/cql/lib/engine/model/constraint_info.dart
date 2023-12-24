@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../cql.dart';
+import '../../../../../cql.dart';
 
 class ConstraintInfo {
   // Optional attribute - Description of the constraint

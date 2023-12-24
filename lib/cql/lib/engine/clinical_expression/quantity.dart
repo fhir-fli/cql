@@ -20,7 +20,13 @@ class Quantity extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'value': value,
         'unit': unit,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'Quantity';
 }

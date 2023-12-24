@@ -1,4 +1,4 @@
-import '../../cql.dart';
+import '../../../cql.dart';
 
 /// An abstract type containing a base type specifier element.
 ///

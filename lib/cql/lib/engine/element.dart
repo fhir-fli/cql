@@ -4,7 +4,7 @@ class Element {
   // The annotation element provides a mechanism for decorating expressions
   // with application-specific information such as translation hints, visual
   // designer information, or debug symbols.
-  List<Annotation>? annotation;
+  List<CqlToElmBase>? annotation;
 
   // The localId for an ELM node identifies the location in the source document
   // that produced the ELM. The format is L:C[-L:C], where L is a line number
@@ -42,7 +42,7 @@ class Element {
 
   factory Element.fromJson(Map<String, dynamic> json) => Element(
         annotation: (json['annotation'] as List<dynamic>?)
-            ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
             .toList(),
         resultTypeSpecifier: json['resultTypeSpecifier'] == null
             ? null

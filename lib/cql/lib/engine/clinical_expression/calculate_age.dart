@@ -23,7 +23,13 @@ class CalculateAge extends UnaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'precision': precision,
         'operand': operand.toJson(),
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'CalculateAge';
 }

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import '../../cql.dart';
 
 /// The Expression type defines the abstract base type for all expressions used in the ELM expression language.
@@ -438,49 +436,16 @@ class Expression extends Element {
           return Without.fromJson(json);
         case 'Xor':
           return Xor.fromJson(json);
-        case 'String':
-          return LiteralString.fromJson(json);
-        case 'Boolean':
-          return LiteralBoolean.fromJson(json);
-        // case 'Code':
-        //   return LiteralCode.fromJson(json);
-        // case 'Concept':
-        //   return LiteralConcept.fromJson(json);
-        case 'Date':
-          return LiteralDate.fromJson(json);
-        case 'DateTime':
-          return LiteralDateTime.fromJson(json);
-        case 'Decimal':
-          return LiteralDecimal.fromJson(json);
-        case 'Integer':
-          return LiteralInteger.fromJson(json);
-        case 'LongNumber':
-          return LiteralLongNumber.fromJson(json);
-        // case 'Quantity':
-        //   return LiteralQuantity.fromJson(json);
-        // case 'Ratio':
-        //   return LiteralRatio.fromJson(json);
-        case 'StringElement':
-          return LiteralStringElement.fromJson(json);
-        case 'Time':
-          return LiteralTime.fromJson(json);
-        // case 'Interval':
-        //   return IntervalExpression.fromJson(json);
-        case 'IntegerInterval':
-          return LiteralIntegerInterval.fromJson(json);
-        case 'DecimalInterval':
-          return LiteralDecimalInterval.fromJson(json);
-        case 'QuantityInterval':
-          return LiteralQuantityInterval.fromJson(json);
-        case 'DateInterval':
-          return LiteralDateInterval.fromJson(json);
-        case 'DateTimeInterval':
-          return LiteralDateTimeInterval.fromJson(json);
-        case 'TimeInterval':
-          return LiteralTimeInterval.fromJson(json);
       }
     }
+    if (json.isEmpty) {
+      return Expression();
+    }
+    return Expression();
     throw ArgumentError.value(
         json.toString(), 'json', 'Could not parse unknown Expression type');
   }
+
+  @override
+  Map<String, dynamic> toJson() => {};
 }

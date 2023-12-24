@@ -1,4 +1,4 @@
-import '../cql.dart';
+import '../../../../../cql.dart';
 
 /// Defines an available context type for the model.
 ///

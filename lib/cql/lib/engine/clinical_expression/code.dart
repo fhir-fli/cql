@@ -11,8 +11,6 @@ class Code extends Expression {
   /// The system of the code.
   CodeSystemRef system;
 
-  final String type = 'Code';
-
   Code({
     required this.code,
     this.display,
@@ -38,4 +36,6 @@ class Code extends Expression {
     json['system'] = system.toJson();
     return json;
   }
+
+  String get type => 'Code';
 }

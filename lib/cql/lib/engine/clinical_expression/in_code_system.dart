@@ -25,5 +25,11 @@ class InCodeSystem extends OperatorExpression {
   Map<String, dynamic> toJson() => {
         'code': code.toJson(),
         'codesystem': codesystem.toJson(),
+        'type': type,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'InCodeSystem';
 }

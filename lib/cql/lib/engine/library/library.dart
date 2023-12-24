@@ -11,10 +11,12 @@ class Library extends Element {
   CodeSystemDefs? codeSystems;
 
   CodeDefs? codes;
+
   /// The concepts defined within this library.
   ConceptDefs? concepts;
 
   ContextDefs? contexts;
+
   /// A Library is an instance of a CQL-ELM library.
 
   /// It contains various elements such as identifier, schemaIdentifier, usings, includes, parameters, codeSystems, valueSets, codes, concepts, and statements.
@@ -59,7 +61,7 @@ class Library extends Element {
           ..def = [
             UsingDef(localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
           ],
-        super(annotation: [TranslatorAnnotation()]);
+        super(annotation: [CqlToElmInfo()]);
 
   factory Library.fromJson(Map<String, dynamic> json) =>
       _$LibraryFromJson(json);

@@ -1,4 +1,4 @@
-import '../cql.dart';
+import '../../../../../cql.dart';
 
 class SearchInfo {
   final String? comment;

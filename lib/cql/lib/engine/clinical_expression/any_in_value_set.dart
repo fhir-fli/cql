@@ -24,5 +24,11 @@ class AnyInValueSet extends OperatorExpression {
   Map<String, dynamic> toJson() => {
         'codes': codes.toJson(),
         'valueset': valueset.toJson(),
+        'type': type,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'AnyInValueSet';
 }

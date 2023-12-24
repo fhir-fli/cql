@@ -16,7 +16,13 @@ class Ratio extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'numerator': numerator.toJson(),
         'denominator': denominator.toJson(),
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'Ratio';
 }

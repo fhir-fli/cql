@@ -17,6 +17,12 @@ class Subsumes extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operand': operand,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'Subsumes';
 }

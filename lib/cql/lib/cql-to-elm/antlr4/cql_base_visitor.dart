@@ -148,17 +148,21 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       final rightOperand = before
           ? Subtract(operand: [
               if (right != null) right,
-              if (quantityOffset != null) quantityOffset
+              if (quantityOffset != null) Literal.fromType(quantityOffset)
             ])
           : after
               ? Add(operand: [
                   if (right != null) right,
-                  if (quantityOffset != null) quantityOffset
+                  if (quantityOffset != null) Literal.fromType(quantityOffset)
                 ])
               : null;
       final same = temporalRelationship.contains('on or') ||
-          temporalRelationship.contains('or on') ||
-          (quantityOffset?.offset?.contains('more') ?? false);
+              temporalRelationship.contains('or on')
+          // TODO(Dokotela): come back and fix this
+          // ||
+          // (quantityOffset?.offset?.contains('more') ?? false
+          // )
+          ;
       if (before) {
         if (same) {
           return SameOrBefore(
@@ -1159,8 +1163,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   IntervalExpression visitIntervalSelector(IntervalSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Expression? low;
-    Expression? high;
+    LiteralType? low;
+    LiteralType? high;
     bool lowClosed = true;
     bool highClosed = true;
     bool recordHigh = false;
@@ -1177,70 +1181,16 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         high = byContext(child5);
       }
       if (low.runtimeType == high.runtimeType) {
-        if (low is LiteralInteger) {
-          return LiteralIntegerInterval(
-            low: lowClosed ? null : low,
-            high: highClosed ? null : high as LiteralInteger?,
-            highClosedExpression: highClosed ? high as LiteralInteger? : null,
-            lowClosedExpression: lowClosed ? low : null,
-            lowClosed: lowClosed,
-            highClosed: highClosed,
-          );
-        } else if (low is LiteralDecimal) {
-          return LiteralDecimalInterval(
-            low: lowClosed ? null : low,
-            high: highClosed ? null : high as LiteralDecimal?,
-            highClosedExpression: highClosed ? high as LiteralDecimal? : null,
-            lowClosedExpression: lowClosed ? low : null,
-            lowClosed: lowClosed,
-            highClosed: highClosed,
-          );
-        } else if (low is LiteralQuantity) {
-          return LiteralQuantityInterval(
-            low: lowClosed ? null : low,
-            high: highClosed ? null : high as LiteralQuantity?,
-            highClosedExpression: highClosed ? high as LiteralQuantity? : null,
-            lowClosedExpression: lowClosed ? low : null,
-            lowClosed: lowClosed,
-            highClosed: highClosed,
-          );
-        } else if (low is LiteralDateTime) {
-          return LiteralDateTimeInterval(
-            low: lowClosed ? null : low,
-            high: highClosed ? null : high as LiteralDateTime?,
-            highClosedExpression: highClosed ? high as LiteralDateTime? : null,
-            lowClosedExpression: lowClosed ? low : null,
-            lowClosed: lowClosed,
-            highClosed: highClosed,
-          );
-        } else if (low is LiteralDate) {
-          return LiteralDateInterval(
-            low: lowClosed ? null : low,
-            high: highClosed ? null : high as LiteralDate?,
-            highClosedExpression: highClosed ? high as LiteralDate? : null,
-            lowClosedExpression: lowClosed ? low : null,
-            lowClosed: lowClosed,
-            highClosed: highClosed,
-          );
-        } else if (low is LiteralTime) {
-          return LiteralTimeInterval(
-            low: lowClosed ? null : low,
-            high: highClosed ? null : high as LiteralTime?,
-            highClosedExpression: highClosed ? high as LiteralTime? : null,
-            lowClosedExpression: lowClosed ? low : null,
-            lowClosed: lowClosed,
-            highClosed: highClosed,
-          );
-        } else {
-          return IntervalExpression(
-            low: lowClosed ? null : low,
-            high: highClosed ? null : high,
-            highClosedExpression: highClosed ? high : null,
-            lowClosedExpression: lowClosed ? low : null,
-            lowClosed: lowClosed,
-            highClosed: highClosed,
-          );
-        }
+        return IntervalExpression(
+          low: lowClosed || low == null ? null : Literal.fromType(low),
+          high: highClosed || high == null ? null : Literal.fromType(high),
+          highClosedExpression:
+              highClosed && high != null ? Literal.fromType(high) : null,
+          lowClosedExpression:
+              lowClosed && low != null ? Literal.fromType(low) : null,
+          lowClosed: lowClosed,
+          highClosed: highClosed,
+        );
       }
       throw ArgumentError('$thisNode Invalid IntervalSelector');
     } else {
@@ -1470,37 +1420,41 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitLiteralTerm(LiteralTermContext ctx) {
+  Literal visitLiteralTerm(LiteralTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    const String namespaceURI = 'urn:hl7-org:elm-types:r1';
+    LiteralType? type;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is BooleanLiteralContext) {
-        return LiteralBoolean(value: visitBooleanLiteral(child));
+        type = LiteralBoolean(value: visitBooleanLiteral(child));
       } else if (child is NullLiteralContext) {
         return NullExpression();
       } else if (child is StringLiteralContext) {
-        return LiteralString(value: visitStringLiteral(child));
+        type = LiteralString(value: visitStringLiteral(child));
       } else if (child is NumberLiteralContext) {
         final number = visitNumberLiteral(child);
         if (number is int) {
-          return LiteralInteger(value: number);
+          type = LiteralInteger(value: number);
         } else if (number is double) {
-          return LiteralDecimal(value: number);
+          type = LiteralDecimal(value: number);
         } else if (number is BigInt) {
-          return LiteralLongNumber(value: number as BigInt);
+          type = LiteralLong(value: number as BigInt);
         }
       } else if (child is LongNumberLiteralContext) {
-        return LiteralLongNumber(value: visitLongNumberLiteral(child));
+        type = LiteralLong(value: visitLongNumberLiteral(child));
       } else if (child is DateTimeLiteralContext) {
-        return LiteralDateTime(value: visitDateTimeLiteral(child));
+        type = LiteralDateTime(
+            value: visitDateTimeLiteral(child).toIso8601String());
       } else if (child is DateLiteralContext) {
-        return LiteralDate(value: visitDateLiteral(child));
+        type = LiteralDate(value: visitDateLiteral(child));
       } else if (child is TimeLiteralContext) {
-        return LiteralTime(value: visitTimeLiteral(child));
+        type = LiteralTime(value: visitTimeLiteral(child));
       } else if (child is QuantityLiteralContext) {
-        return LiteralQuantity(value: visitQuantityLiteral(child));
+        type = LiteralQuantity(value: visitQuantityLiteral(child));
       } else if (child is RatioLiteralContext) {}
+    }
+    if (type != null) {
+      return Literal.fromType(type);
     }
     throw ArgumentError('$thisNode Invalid LiteralTerm');
   }
@@ -1935,9 +1889,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
     if (quantity != null) {
       return LiteralQuantity(
-          value: quantity.value,
-          unit: quantity.unit,
-          offset: relativeQualifier);
+        value: quantity.value,
+        unit: quantity.unit,
+      );
     }
     throw ArgumentError('$thisNode Invalid QuantityOffset');
   }
