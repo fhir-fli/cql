@@ -3,15 +3,15 @@ import 'package:json_annotation/json_annotation.dart';
 import '../../../cql.dart';
 
 class ExpressionDefs {
-  List<Element> def = <Element>[];
+  List<ExpressionDef> def = <ExpressionDef>[];
 
   ExpressionDefs();
 
   factory ExpressionDefs.fromJson(Map<String, dynamic> json) {
     return ExpressionDefs()
       ..def = json['def'] != null
-          ? (json['def'] as List).map((i) => Element.fromJson(i)).toList()
-          : <Element>[];
+          ? (json['def'] as List).map((i) => ExpressionDef.fromJson(i)).toList()
+          : <ExpressionDef>[];
   }
 
   Map<String, dynamic> toJson() {

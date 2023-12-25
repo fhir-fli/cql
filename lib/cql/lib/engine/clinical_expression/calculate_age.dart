@@ -18,8 +18,10 @@ class CalculateAge extends UnaryExpression {
 
   CalculateAge({required this.precision, required super.operand});
 
-  factory CalculateAge.fromJson(Map<String, dynamic> json) =>
-      CalculateAge(precision: json['precision'], operand: json['operand']!);
+  factory CalculateAge.fromJson(Map<String, dynamic> json) => CalculateAge(
+        precision: DateTimePrecisionExtension.fromJson(json['precision']),
+        operand: Expression.fromJson(json['operand']!),
+      );
 
   @override
   Map<String, dynamic> toJson() => {

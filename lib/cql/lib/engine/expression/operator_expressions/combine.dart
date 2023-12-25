@@ -7,11 +7,13 @@ class Combine extends OperatorExpression {
   final Expression? separator;
   final Expression source;
 
-  Combine(this.source, [this.separator]);
+  Combine({required this.source, this.separator});
 
   factory Combine.fromJson(Map<String, dynamic> json) => Combine(
-        json['source']!,
-        json['separator'],
+        source: Expression.fromJson(json['source']!),
+        separator: json['separator'] == null
+            ? null
+            : Expression.fromJson(json['separator']),
       );
 
   @override

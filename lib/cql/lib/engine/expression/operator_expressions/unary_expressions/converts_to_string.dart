@@ -7,7 +7,7 @@ class ConvertsToString extends UnaryExpression {
   ConvertsToString({required super.operand});
 
   factory ConvertsToString.fromJson(Map<String, dynamic> json) =>
-      ConvertsToString(operand: json['operand']!);
+      ConvertsToString(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -247,9 +247,9 @@ abstract class OperatorExpression extends Expression {
       case 'Descendents':
         return Descendents.fromJson(json);
       case 'ExpDateTime':
-        return ExpDateTime.fromJson(json);
+        return DateTimeExpression.fromJson(json);
       case 'ExpDate':
-        return ExpDate.fromJson(json);
+        return DateExpression.fromJson(json);
       case 'ExpTime':
         return ExpTime.fromJson(json);
       case 'First':
@@ -278,6 +278,8 @@ abstract class OperatorExpression extends Expression {
         return Split.fromJson(json);
       case 'Substring':
         return Substring.fromJson(json);
+      case 'TimeExpression':
+        return TimeExpression.fromJson(json);
       case 'TimeOfDay':
         return TimeOfDay.fromJson(json);
       case 'Today':

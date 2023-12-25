@@ -16,8 +16,8 @@ class AnyInValueSet extends OperatorExpression {
   AnyInValueSet({required this.codes, required this.valueset});
 
   factory AnyInValueSet.fromJson(Map<String, dynamic> json) => AnyInValueSet(
-        codes: json['codes']!,
-        valueset: json['valueset']!,
+        codes: Expression.fromJson(json['codes']!),
+        valueset: ValueSetRef.fromJson(json['valueset']!),
       );
 
   @override

@@ -2,7 +2,16 @@
 enum ErrorSeverity { info, warning, error }
 
 extension ErrorSeverityExtension on ErrorSeverity {
-  String toJson() => toString();
+  String toJson() {
+    switch (this) {
+      case ErrorSeverity.info:
+        return 'info';
+      case ErrorSeverity.warning:
+        return 'warning';
+      case ErrorSeverity.error:
+        return 'error';
+    }
+  }
 
   static ErrorSeverity fromJson(String json) {
     switch (json) {

@@ -6,7 +6,7 @@ class Flatten extends UnaryExpression {
   Flatten({required super.operand});
 
   factory Flatten.fromJson(Map<String, dynamic> json) => Flatten(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

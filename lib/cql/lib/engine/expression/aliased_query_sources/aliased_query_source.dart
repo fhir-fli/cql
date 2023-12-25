@@ -12,12 +12,7 @@ abstract class AliasedQuerySource extends Expression {
   });
 
   factory AliasedQuerySource.fromJson(Map<String, dynamic> json) {
-    switch (json['type']) {
-      case 'RelationshipClause':
-        return RelationshipClause.fromJson(json);
-      default:
-        throw ArgumentError('Unknown AliasedQuerySource type: ${json['type']}');
-    }
+    return RelationshipClause.fromJson(json);
   }
 
   @override

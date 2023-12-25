@@ -9,8 +9,12 @@ class After extends BinaryExpression {
 
   After({this.precision, required super.operand});
 
-  factory After.fromJson(Map<String, dynamic> json) =>
-      After(precision: json['precision'], operand: json['operand']!);
+  factory After.fromJson(Map<String, dynamic> json) => After(
+      precision: json['precision'] == null
+          ? null
+          : DateTimePrecisionExtension.fromJson(json['precision']),
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

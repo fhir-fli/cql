@@ -8,7 +8,7 @@ class ConvertsToDate extends UnaryExpression {
   ConvertsToDate({required super.operand});
 
   factory ConvertsToDate.fromJson(Map<String, dynamic> json) =>
-      ConvertsToDate(operand: json['operand']!);
+      ConvertsToDate(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

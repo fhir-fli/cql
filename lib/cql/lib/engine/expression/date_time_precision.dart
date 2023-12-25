@@ -20,7 +20,7 @@ enum DateTimePrecision {
   millisecond,
 }
 
-extension DateTimePrecisionJson on DateTimePrecision {
+extension DateTimePrecisionExtension on DateTimePrecision {
   static const _jsonValues = {
     DateTimePrecision.year: 'Year',
     DateTimePrecision.month: 'Month',

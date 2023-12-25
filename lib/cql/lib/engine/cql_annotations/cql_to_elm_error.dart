@@ -21,6 +21,9 @@ class CqlToElmError extends Locator {
   String? targetIncludeLibraryVersionId;
 
   CqlToElmError({
+    super.librarySystem,
+    super.libraryId,
+    super.libraryVersion,
     required this.message,
     required this.errorType,
     this.errorSeverity,
@@ -35,6 +38,13 @@ class CqlToElmError extends Locator {
 
   factory CqlToElmError.fromJson(Map<String, dynamic> json) {
     return CqlToElmError(
+      librarySystem: json['librarySystem'],
+      libraryId: json['libraryId'],
+      libraryVersion: json['libraryVersion'],
+      startLine: json['startLine'],
+      startChar: json['startChar'],
+      endLine: json['endLine'],
+      endChar: json['endChar'],
       message: json['message'],
       errorType: ErrorTypeExtension.fromJson(json['errorType']),
       errorSeverity: json['errorSeverity'] != null
@@ -43,43 +53,32 @@ class CqlToElmError extends Locator {
       targetIncludeLibrarySystem: json['targetIncludeLibrarySystem'],
       targetIncludeLibraryId: json['targetIncludeLibraryId'],
       targetIncludeLibraryVersionId: json['targetIncludeLibraryVersionId'],
-      startLine: json['startLine'],
-      startChar: json['startChar'],
-      endLine: json['endLine'],
-      endChar: json['endChar'],
     );
   }
 
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
+      if (librarySystem != null) 'librarySystem': librarySystem,
+      if (libraryId != null) 'libraryId': libraryId,
+      if (libraryVersion != null) 'libraryVersion': libraryVersion,
+      if (startLine != null) 'startLine': startLine,
+      if (startChar != null) 'startChar': startChar,
+      if (endLine != null) 'endLine': endLine,
+      if (endChar != null) 'endChar': endChar,
+      if (targetIncludeLibrarySystem != null)
+        'targetIncludeLibrarySystem': targetIncludeLibrarySystem,
+      if (targetIncludeLibraryId != null)
+        'targetIncludeLibraryId': targetIncludeLibraryId,
+      if (targetIncludeLibraryVersionId != null)
+        'targetIncludeLibraryVersionId': targetIncludeLibraryVersionId,
       'message': message,
       'errorType': errorType.toJson(),
+      if (errorSeverity != null) 'errorSeverity': errorSeverity!.toJson(),
+      'type': type,
     };
-    if (errorSeverity != null) {
-      data['errorSeverity'] = errorSeverity!.toJson();
-    }
-    if (targetIncludeLibrarySystem != null) {
-      data['targetIncludeLibrarySystem'] = targetIncludeLibrarySystem;
-    }
-    if (targetIncludeLibraryId != null) {
-      data['targetIncludeLibraryId'] = targetIncludeLibraryId;
-    }
-    if (targetIncludeLibraryVersionId != null) {
-      data['targetIncludeLibraryVersionId'] = targetIncludeLibraryVersionId;
-    }
-    if (startLine != null) {
-      data['startLine'] = startLine;
-    }
-    if (startChar != null) {
-      data['startChar'] = startChar;
-    }
-    if (endLine != null) {
-      data['endLine'] = endLine;
-    }
-    if (endChar != null) {
-      data['endChar'] = endChar;
-    }
     return data;
   }
+
+  String get type => 'CqlToElmError';
 }

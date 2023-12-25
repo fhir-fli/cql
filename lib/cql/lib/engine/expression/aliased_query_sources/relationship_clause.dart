@@ -15,7 +15,9 @@ class RelationshipClause extends AliasedQuerySource {
       RelationshipClause(
         alias: json['alias'],
         expression: Expression.fromJson(json['expression']),
-        suchThat: Expression.fromJson(json['suchThat']),
+        suchThat: json['suchThat'] == null
+            ? null
+            : Expression.fromJson(json['suchThat']),
       );
 
   @override

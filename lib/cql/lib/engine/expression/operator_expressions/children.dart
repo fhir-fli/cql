@@ -8,7 +8,7 @@ class Children extends OperatorExpression {
   Children({required this.source});
 
   factory Children.fromJson(Map<String, dynamic> json) => Children(
-        source: json['source']!,
+        source: Expression.fromJson(json['source']!),
       );
 
   @override

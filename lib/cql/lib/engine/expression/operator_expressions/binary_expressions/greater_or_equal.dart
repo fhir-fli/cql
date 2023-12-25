@@ -10,7 +10,8 @@ class GreaterOrEqual extends BinaryExpression {
   GreaterOrEqual({required super.operand});
 
   factory GreaterOrEqual.fromJson(Map<String, dynamic> json) => GreaterOrEqual(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

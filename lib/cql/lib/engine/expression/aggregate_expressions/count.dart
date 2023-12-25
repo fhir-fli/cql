@@ -6,18 +6,18 @@ import '../../../cql.dart';
 /// If the list is null, the result is 0.
 class Count extends AggregateExpression {
   Count({
-    required Expression source,
-    List<TypeSpecifier>? signature,
-    String? path,
-  }) : super(
-          signature: signature,
-          source: source,
-          path: path,
-        );
+    required super.source,
+    super.signature,
+    super.path,
+  });
 
   factory Count.fromJson(Map<String, dynamic> json) => Count(
-        source: json['source']!,
-        signature: json['signature'],
+        source: Expression.fromJson(json['source']!),
+        signature: json['signature'] == null
+            ? null
+            : (json['signature'] as List)
+                .map((e) => TypeSpecifier.fromJson(e))
+                .toList(),
         path: json['path'],
       );
 

@@ -6,16 +6,16 @@ import '../../../../cql.dart';
 /// If the list contains more than one element, a run-time error is thrown.
 /// If the source list is null, the result is null.
 class SingletonFrom extends UnaryExpression {
-  final String type = 'SingletonFrom';
-
   SingletonFrom({required super.operand});
 
   factory SingletonFrom.fromJson(Map<String, dynamic> json) =>
-      SingletonFrom(operand: json['operand'] as Expression);
+      SingletonFrom(operand: Expression.fromJson(json['operand']));
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': 'SingletonFrom',
+        'type': type,
         'operand': operand.toJson(),
       };
+
+  String get type => 'SingletonFrom';
 }

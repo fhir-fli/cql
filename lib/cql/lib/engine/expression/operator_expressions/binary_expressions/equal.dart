@@ -8,7 +8,8 @@ class Equal extends BinaryExpression {
   Equal({required super.operand});
 
   factory Equal.fromJson(Map<String, dynamic> json) =>
-      Equal(operand: json['operand']!);
+      Equal(operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

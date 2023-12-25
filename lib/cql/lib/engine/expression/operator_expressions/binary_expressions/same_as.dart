@@ -14,7 +14,7 @@ class SameAs extends BinaryExpression {
 
   factory SameAs.fromJson(Map<String, dynamic> json) => SameAs(
         precision: json['precision'] != null
-            ? DateTimePrecisionJson.fromJson(json['precision'])
+            ? DateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))

@@ -7,7 +7,8 @@ class Log extends BinaryExpression {
   Log({required super.operand});
 
   factory Log.fromJson(Map<String, dynamic> json) => Log(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

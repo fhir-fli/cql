@@ -17,8 +17,8 @@ class InCodeSystem extends OperatorExpression {
   InCodeSystem({required this.code, required this.codesystem});
 
   factory InCodeSystem.fromJson(Map<String, dynamic> json) => InCodeSystem(
-        code: json['code']!,
-        codesystem: json['codesystem']!,
+        code: Expression.fromJson(json['code']!),
+        codesystem: CodeSystemRef.fromJson(json['codesystem']!),
       );
 
   @override

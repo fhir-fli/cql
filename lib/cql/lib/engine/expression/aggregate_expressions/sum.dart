@@ -6,22 +6,18 @@ import '../../../cql.dart';
 /// If the list is null, the result is null.
 class Sum extends AggregateExpression {
   Sum({
-    required Expression source,
-    List<TypeSpecifier>? signature,
-    String? path,
-  }) : super(
-          signature: signature,
-          source: source,
-          path: path,
-        );
+    required super.source,
+    super.signature,
+    super.path,
+  });
 
   factory Sum.fromJson(Map<String, dynamic> json) => Sum(
-        source: Expression.fromJson(json['source']),
-        signature: json['signature'] != null
-            ? (json['signature'] as List)
+        source: Expression.fromJson(json['source']!),
+        signature: json['signature'] == null
+            ? null
+            : (json['signature'] as List)
                 .map((e) => TypeSpecifier.fromJson(e))
-                .toList()
-            : null,
+                .toList(),
         path: json['path'],
       );
 

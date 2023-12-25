@@ -8,7 +8,7 @@ class Descendents extends OperatorExpression {
   Descendents({required this.source});
 
   factory Descendents.fromJson(Map<String, dynamic> json) => Descendents(
-        source: json['source']!,
+        source: Expression.fromJson(json['source']!),
       );
 
   @override

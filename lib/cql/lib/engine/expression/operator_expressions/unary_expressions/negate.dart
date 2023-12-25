@@ -8,7 +8,7 @@ class Negate extends UnaryExpression {
   Negate({required super.operand});
 
   factory Negate.fromJson(Map<String, dynamic> json) => Negate(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

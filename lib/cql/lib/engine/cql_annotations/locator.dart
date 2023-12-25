@@ -34,6 +34,7 @@ class Locator extends CqlToElmBase {
     return 'Locator{librarySystem: $librarySystem, libraryId: $libraryId, libraryVersion: $libraryVersion, startLine: $startLine, startChar: $startChar, endLine: $endLine, endChar: $endChar}';
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (librarySystem != null) {

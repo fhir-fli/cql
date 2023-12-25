@@ -7,7 +7,6 @@ class Query extends Expression {
   ReturnClause? returnClause;
   SortClause? sort;
   List<AliasedQuerySource> source;
-  final String type = 'Query';
   Expression? where;
 
   Query({
@@ -39,15 +38,28 @@ class Query extends Expression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'source': List<dynamic>.from(source.map((x) => x.toJson())),
-        if (let != null) 'let': List<dynamic>.from(let!.map((x) => x.toJson())),
-        'relationship': relationship == null
-            ? []
-            : List<dynamic>.from(relationship!.map((x) => x.toJson())),
-        if (where != null) 'where': where!.toJson(),
-        if (returnClause != null) 'return': returnClause!.toJson(),
-        if (sort != null) 'sort': sort!.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'type': type,
+      'source': source.map((x) => x.toJson()).toList(),
+    };
+    if (let != null) {
+      data['let'] = let!.map((x) => x.toJson()).toList();
+    }
+    if (relationship != null) {
+      data['relationship'] = relationship!.map((x) => x.toJson()).toList();
+    }
+    if (where != null) {
+      data['where'] = where!.toJson();
+    }
+    if (returnClause != null) {
+      data['return'] = returnClause!.toJson();
+    }
+    if (sort != null) {
+      data['sort'] = sort!.toJson();
+    }
+    return data;
+  }
+
+  String get type => 'Query';
 }

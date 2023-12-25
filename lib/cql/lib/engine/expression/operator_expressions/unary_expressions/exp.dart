@@ -7,7 +7,7 @@ class Exp extends UnaryExpression {
   Exp({required super.operand});
 
   factory Exp.fromJson(Map<String, dynamic> json) =>
-      Exp(operand: json['operand']!);
+      Exp(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

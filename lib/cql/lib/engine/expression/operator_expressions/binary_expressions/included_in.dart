@@ -12,9 +12,10 @@ class IncludedIn extends BinaryExpression {
 
   factory IncludedIn.fromJson(Map<String, dynamic> json) => IncludedIn(
         precision: json['precision'] != null
-            ? DateTimePrecisionJson.fromJson(json['precision'])
+            ? DateTimePrecisionExtension.fromJson(json['precision'])
             : null,
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

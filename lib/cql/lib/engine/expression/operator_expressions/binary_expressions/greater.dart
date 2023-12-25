@@ -10,7 +10,8 @@ class Greater extends BinaryExpression {
   Greater({required super.operand});
 
   factory Greater.fromJson(Map<String, dynamic> json) => Greater(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

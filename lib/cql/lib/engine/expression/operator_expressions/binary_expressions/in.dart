@@ -11,11 +11,11 @@ class In extends BinaryExpression {
   In({this.precision, required super.operand});
 
   factory In.fromJson(Map<String, dynamic> json) => In(
-        precision: json['precision'] != null
-            ? DateTimePrecisionJson.fromJson(json['precision'])
-            : null,
-        operand: json['operand']!,
-      );
+      precision: json['precision'] != null
+          ? DateTimePrecisionExtension.fromJson(json['precision'])
+          : null,
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

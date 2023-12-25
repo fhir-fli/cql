@@ -11,8 +11,8 @@ class CaseItem extends Element {
   CaseItem({required this.when, required this.then});
 
   factory CaseItem.fromJson(Map<String, dynamic> json) => CaseItem(
-        when: json['when']!,
-        then: json['then']!,
+        when: Expression.fromJson(json['when']!),
+        then: Expression.fromJson(json['then']!),
       );
 
   @override

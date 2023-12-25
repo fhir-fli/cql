@@ -6,7 +6,7 @@ class DateFrom extends UnaryExpression {
   DateFrom({required super.operand});
 
   factory DateFrom.fromJson(Map<String, dynamic> json) =>
-      DateFrom(operand: json['operand']!);
+      DateFrom(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

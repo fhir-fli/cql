@@ -24,7 +24,7 @@ class Convert extends UnaryExpression {
   factory Convert.fromJson(Map<String, dynamic> json) => Convert(
       toTypeSpecifier: json['toTypeSpecifier'],
       toType: json['toType'],
-      operand: json['operand']!);
+      operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

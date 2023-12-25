@@ -18,8 +18,10 @@ class CalculateAgeAt extends BinaryExpression {
 
   CalculateAgeAt({required this.precision, required super.operand});
 
-  factory CalculateAgeAt.fromJson(Map<String, dynamic> json) =>
-      CalculateAgeAt(precision: json['precision'], operand: json['operand']!);
+  factory CalculateAgeAt.fromJson(Map<String, dynamic> json) => CalculateAgeAt(
+      precision: DateTimePrecisionExtension.fromJson(json['precision']),
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

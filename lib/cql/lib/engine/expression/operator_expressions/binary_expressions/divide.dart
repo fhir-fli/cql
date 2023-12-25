@@ -9,8 +9,9 @@ import '../../../../cql.dart';
 class Divide extends BinaryExpression {
   Divide({required super.operand});
 
-  factory Divide.fromJson(Map<String, dynamic> json) =>
-      Divide(operand: json['operand']!);
+  factory Divide.fromJson(Map<String, dynamic> json) => Divide(
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

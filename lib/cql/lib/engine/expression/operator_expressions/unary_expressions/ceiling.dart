@@ -6,7 +6,7 @@ class Ceiling extends UnaryExpression {
   Ceiling({required super.operand});
 
   factory Ceiling.fromJson(Map<String, dynamic> json) =>
-      Ceiling(operand: json['operand']!);
+      Ceiling(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

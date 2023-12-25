@@ -12,7 +12,7 @@ class OverlapsAfter extends BinaryExpression {
 
   factory OverlapsAfter.fromJson(Map<String, dynamic> json) => OverlapsAfter(
         precision: json['precision'] != null
-            ? DateTimePrecisionJson.fromJson(json['precision'])
+            ? DateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))

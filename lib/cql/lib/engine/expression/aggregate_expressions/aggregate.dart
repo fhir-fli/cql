@@ -9,21 +9,21 @@ class Aggregate extends AggregateExpression {
 
   Aggregate({
     required this.iteration,
-    required Expression source,
+    required super.source,
     required this.initialValue,
-    List<TypeSpecifier>? signature,
-    String? path,
-  }) : super(
-          signature: signature,
-          source: source,
-          path: path,
-        );
+    super.signature,
+    super.path,
+  });
 
   factory Aggregate.fromJson(Map<String, dynamic> json) => Aggregate(
-        iteration: json['iteration']!,
-        source: json['source']!,
-        initialValue: json['initialValue'],
-        signature: json['signature'],
+        iteration: Expression.fromJson(json['iteration']!),
+        source: Expression.fromJson(json['source']!),
+        initialValue: Expression.fromJson(json['initialValue']),
+        signature: json['signature'] == null
+            ? null
+            : (json['signature'] as List)
+                .map((e) => TypeSpecifier.fromJson(e))
+                .toList(),
         path: json['path'],
       );
 

@@ -1,11 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'library.g.dart';
-
 /// Library represents a serialized library of CQL-Expression Logic Model.
-@JsonSerializable()
 class Library extends Element {
   /// The code systems defined within this library.
   CodeSystemDefs? codeSystems;
@@ -57,15 +52,91 @@ class Library extends Element {
               id: 'urn:hl7-org:elm',
               version: 'r1',
             ),
-        usings = usings ?? UsingDefs()
-          ..def = [
-            UsingDef(localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
-          ],
+        usings = usings ??
+            (UsingDefs()
+              ..def = [
+                UsingDef(
+                    localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
+              ]),
         super(annotation: [CqlToElmInfo()]);
 
-  factory Library.fromJson(Map<String, dynamic> json) =>
-      _$LibraryFromJson(json);
+  factory Library.fromJson(Map<String, dynamic> json) => Library(
+        identifier: json['identifier'] == null
+            ? null
+            : VersionedIdentifier.fromJson(
+                json['identifier'] as Map<String, dynamic>),
+        schemaIdentifier: json['schemaIdentifier'] == null
+            ? null
+            : VersionedIdentifier.fromJson(
+                json['schemaIdentifier'] as Map<String, dynamic>),
+        usings: json['usings'] == null
+            ? null
+            : UsingDefs.fromJson(json['usings'] as Map<String, dynamic>),
+        includes: json['includes'] == null
+            ? null
+            : IncludeDefs.fromJson(json['includes'] as Map<String, dynamic>),
+        parameters: json['parameters'] == null
+            ? null
+            : ParameterDefs.fromJson(
+                json['parameters'] as Map<String, dynamic>),
+        codeSystems: json['codeSystems'] == null
+            ? null
+            : CodeSystemDefs.fromJson(
+                json['codeSystems'] as Map<String, dynamic>),
+        valueSets: json['valueSets'] == null
+            ? null
+            : ValueSetDefs.fromJson(json['valueSets'] as Map<String, dynamic>),
+        codes: json['codes'] == null
+            ? null
+            : CodeDefs.fromJson(json['codes'] as Map<String, dynamic>),
+        contexts: json['contexts'] == null
+            ? null
+            : ContextDefs.fromJson(json['contexts'] as Map<String, dynamic>),
+        concepts: json['concepts'] == null
+            ? null
+            : ConceptDefs.fromJson(json['concepts'] as Map<String, dynamic>),
+        statements: json['statements'] == null
+            ? null
+            : ExpressionDefs.fromJson(
+                json['statements'] as Map<String, dynamic>),
+      )
+        ..annotation = (json['annotation'] as List<dynamic>?)
+            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
+            .toList()
+        ..localId = json['localId'] as String?
+        ..locator = json['locator'] as String?
+        ..resultTypeName = json['resultTypeName'] as String?
+        ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>);
 
   @override
-  Map<String, dynamic> toJson() => _$LibraryToJson(this);
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('identifier', identifier?.toJson());
+    writeNotNull('schemaIdentifier', schemaIdentifier?.toJson());
+    writeNotNull('usings', usings?.toJson());
+    writeNotNull('includes', includes?.toJson());
+    writeNotNull('codeSystems', codeSystems?.toJson());
+    writeNotNull('valueSets', valueSets?.toJson());
+    writeNotNull('codes', codes?.toJson());
+    writeNotNull('concepts', concepts?.toJson());
+    writeNotNull('parameters', parameters?.toJson());
+    writeNotNull('contexts', contexts?.toJson());
+    writeNotNull('statements', statements?.toJson());
+    return val;
+  }
 }

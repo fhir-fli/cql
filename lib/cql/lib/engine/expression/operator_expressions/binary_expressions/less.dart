@@ -10,7 +10,8 @@ class Less extends BinaryExpression {
   Less({required super.operand});
 
   factory Less.fromJson(Map<String, dynamic> json) => Less(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

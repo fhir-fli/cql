@@ -18,8 +18,8 @@ class AnyInCodeSystem extends OperatorExpression {
 
   factory AnyInCodeSystem.fromJson(Map<String, dynamic> json) =>
       AnyInCodeSystem(
-        codes: json['codes']!,
-        codesystem: json['codesystem']!,
+        codes: Expression.fromJson(json['codes']!),
+        codesystem: CodeSystemRef.fromJson(json['codesystem']!),
       );
 
   @override

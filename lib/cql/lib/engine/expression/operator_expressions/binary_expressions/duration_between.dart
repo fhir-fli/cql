@@ -10,7 +10,10 @@ class DurationBetween extends BinaryExpression {
   DurationBetween({required this.precision, required super.operand});
 
   factory DurationBetween.fromJson(Map<String, dynamic> json) =>
-      DurationBetween(precision: json['precision'], operand: json['operand']!);
+      DurationBetween(
+          precision: DateTimePrecisionExtension.fromJson(json['precision']),
+          operand: List<Expression>.from(
+              json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

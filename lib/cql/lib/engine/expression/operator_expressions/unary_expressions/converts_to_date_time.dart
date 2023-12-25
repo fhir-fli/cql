@@ -9,7 +9,7 @@ class ConvertsToDateTime extends UnaryExpression {
   ConvertsToDateTime({required super.operand});
 
   factory ConvertsToDateTime.fromJson(Map<String, dynamic> json) =>
-      ConvertsToDateTime(operand: json['operand']!);
+      ConvertsToDateTime(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -681,7 +681,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 1 && ctx.getChild(0) is TerminalNodeImpl) {
-      return DateTimePrecisionJson.fromJson(ctx.getChild(0)!.text);
+      return DateTimePrecisionExtension.fromJson(ctx.getChild(0)!.text);
     }
     throw ArgumentError('$thisNode Invalid DateTimePrecisionSpecifier');
   }
@@ -1371,8 +1371,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       if (result is Element) {
         element.add(result);
       } else if (result is String) {
-        final index = library.statements?.def.indexWhere(
-            (element) => element is ExpressionDef && element.name == result);
+        final index = library.statements?.def
+            .indexWhere((element) => element.name == result);
         if (index != null && index >= 0) {
           element.add(ExpressionRef(name: result));
         }
@@ -2296,7 +2296,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   void visitStatement(StatementContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Element? statement;
+    ExpressionDef? statement;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionDefinitionContext) {
         statement = visitExpressionDefinition(child);
@@ -3190,8 +3190,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             if (parameterIndex != null && parameterIndex != -1) {
               return ParameterRef(name: name, libraryName: libraryName);
             } else {
-              expressionIndex = library.statements?.def.indexWhere((element) =>
-                  element is ExpressionDef && element.name == name);
+              expressionIndex = library.statements?.def
+                  .indexWhere((element) => element.name == name);
               if (expressionIndex != null && expressionIndex != -1) {
                 return ExpressionRef(name: name, libraryName: libraryName);
               } else {

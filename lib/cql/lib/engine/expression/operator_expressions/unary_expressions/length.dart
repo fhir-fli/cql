@@ -8,7 +8,7 @@ class Length extends UnaryExpression {
   Length({required super.operand});
 
   factory Length.fromJson(Map<String, dynamic> json) => Length(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

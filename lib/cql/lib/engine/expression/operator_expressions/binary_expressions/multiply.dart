@@ -9,7 +9,8 @@ class Multiply extends BinaryExpression {
   Multiply({required super.operand});
 
   factory Multiply.fromJson(Map<String, dynamic> json) => Multiply(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

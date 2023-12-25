@@ -13,7 +13,7 @@ class ProperIncludedIn extends BinaryExpression {
   factory ProperIncludedIn.fromJson(Map<String, dynamic> json) =>
       ProperIncludedIn(
         precision: json['precision'] != null
-            ? DateTimePrecisionJson.fromJson(json['precision'])
+            ? DateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))

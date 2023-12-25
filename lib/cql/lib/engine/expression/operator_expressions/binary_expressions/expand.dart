@@ -10,8 +10,9 @@ import '../../../../cql.dart';
 class Expand extends BinaryExpression {
   Expand({required super.operand});
 
-  factory Expand.fromJson(Map<String, dynamic> json) =>
-      Expand(operand: json['operand']!);
+  factory Expand.fromJson(Map<String, dynamic> json) => Expand(
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

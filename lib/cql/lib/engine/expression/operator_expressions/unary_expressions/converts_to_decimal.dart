@@ -8,7 +8,7 @@ class ConvertsToDecimal extends UnaryExpression {
   ConvertsToDecimal({required super.operand});
 
   factory ConvertsToDecimal.fromJson(Map<String, dynamic> json) =>
-      ConvertsToDecimal(operand: json['operand']!);
+      ConvertsToDecimal(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -8,7 +8,8 @@ class Equivalent extends BinaryExpression {
   Equivalent({required super.operand});
 
   factory Equivalent.fromJson(Map<String, dynamic> json) =>
-      Equivalent(operand: json['operand']!);
+      Equivalent(operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

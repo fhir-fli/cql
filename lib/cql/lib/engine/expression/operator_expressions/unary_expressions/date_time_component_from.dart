@@ -10,7 +10,8 @@ class DateTimeComponentFrom extends UnaryExpression {
 
   factory DateTimeComponentFrom.fromJson(Map<String, dynamic> json) =>
       DateTimeComponentFrom(
-          precision: json['precision'], operand: json['operand']!);
+          precision: json['precision'],
+          operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

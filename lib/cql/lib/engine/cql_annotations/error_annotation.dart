@@ -42,6 +42,7 @@ class ErrorAnnotation extends Annotation {
         type: json['type'] as String? ?? 'CqlToElmError',
       );
 
+  @override
   Map<String, dynamic> toJson() {
     final val = <String, dynamic>{};
 

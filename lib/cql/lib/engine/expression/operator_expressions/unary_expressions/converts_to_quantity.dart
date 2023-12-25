@@ -13,7 +13,7 @@ class ConvertsToQuantity extends UnaryExpression {
   ConvertsToQuantity({required super.operand});
 
   factory ConvertsToQuantity.fromJson(Map<String, dynamic> json) =>
-      ConvertsToQuantity(operand: json['operand']!);
+      ConvertsToQuantity(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

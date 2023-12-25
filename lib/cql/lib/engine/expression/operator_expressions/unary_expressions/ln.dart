@@ -7,7 +7,7 @@ class Ln extends UnaryExpression {
   Ln({required super.operand});
 
   factory Ln.fromJson(Map<String, dynamic> json) => Ln(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

@@ -13,7 +13,7 @@ class First extends OperatorExpression {
   });
 
   factory First.fromJson(Map<String, dynamic> json) => First(
-        source: json['source']!,
+        source: Expression.fromJson(json['source']!),
         orderBy: json['orderBy']!,
       );
 

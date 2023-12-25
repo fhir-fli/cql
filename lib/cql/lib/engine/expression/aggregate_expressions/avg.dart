@@ -6,18 +6,18 @@ import '../../../cql.dart';
 /// If the source is null, the result is null.
 class Avg extends AggregateExpression {
   Avg({
-    required Expression source,
-    List<TypeSpecifier>? signature,
-    String? path,
-  }) : super(
-          signature: signature,
-          source: source,
-          path: path,
-        );
+    required super.source,
+    super.signature,
+    super.path,
+  });
 
   factory Avg.fromJson(Map<String, dynamic> json) => Avg(
-        source: json['source']!,
-        signature: json['signature'],
+        source: Expression.fromJson(json['source']!),
+        signature: json['signature'] == null
+            ? null
+            : (json['signature'] as List)
+                .map((e) => TypeSpecifier.fromJson(e))
+                .toList(),
         path: json['path'],
       );
 

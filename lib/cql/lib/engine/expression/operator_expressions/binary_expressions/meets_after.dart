@@ -19,8 +19,11 @@ class MeetsAfter extends BinaryExpression {
   factory MeetsAfter.fromJson(Map<String, dynamic> json) => MeetsAfter(
         left: json['left']!,
         right: json['right']!,
-        precision: json['precision']!,
-        operand: json['operand']!,
+        precision: json['precision'] == null
+            ? null
+            : DateTimePrecisionExtension.fromJson(json['precision']),
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

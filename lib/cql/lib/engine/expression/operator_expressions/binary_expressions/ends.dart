@@ -12,7 +12,7 @@ class Ends extends BinaryExpression {
 
   factory Ends.fromJson(Map<String, dynamic> json) => Ends(
       precision: json['precision'] != null
-          ? DateTimePrecisionJson.fromJson(json['precision'])
+          ? DateTimePrecisionExtension.fromJson(json['precision'])
           : null,
       operand: json['operand'] != null
           ? json['operand'] is List

@@ -28,6 +28,7 @@ class Annotation extends CqlToElmBase {
   @override
   String toString() => 'Annotation{t: $t, s: $s, locator: $locator}';
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (t.isNotEmpty) {

@@ -8,7 +8,8 @@ class Indexer extends BinaryExpression {
   Indexer({required super.operand});
 
   factory Indexer.fromJson(Map<String, dynamic> json) => Indexer(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

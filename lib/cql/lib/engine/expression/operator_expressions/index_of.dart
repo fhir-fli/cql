@@ -14,8 +14,8 @@ class IndexOf extends OperatorExpression {
   });
 
   factory IndexOf.fromJson(Map<String, dynamic> json) => IndexOf(
-        source: json['source']!,
-        element: json['element']!,
+        source: Expression.fromJson(json['source']!),
+        element: Expression.fromJson(json['element']!),
       );
 
   @override

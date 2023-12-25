@@ -6,8 +6,9 @@ import '../../../../cql.dart';
 class EndsWith extends BinaryExpression {
   EndsWith({required super.operand});
 
-  factory EndsWith.fromJson(Map<String, dynamic> json) =>
-      EndsWith(operand: json['operand']!);
+  factory EndsWith.fromJson(Map<String, dynamic> json) => EndsWith(
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -15,7 +15,7 @@ class Is extends UnaryExpression {
             ? TypeSpecifier.fromJson(json['isTypeSpecifier'])
             : null,
         isType: json['isType'] != null ? QName.fromJson(json['isType']) : null,
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

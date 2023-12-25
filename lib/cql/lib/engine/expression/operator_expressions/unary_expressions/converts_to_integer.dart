@@ -9,7 +9,7 @@ class ConvertsToInteger extends UnaryExpression {
   ConvertsToInteger({required super.operand});
 
   factory ConvertsToInteger.fromJson(Map<String, dynamic> json) =>
-      ConvertsToInteger(operand: json['operand']!);
+      ConvertsToInteger(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -11,7 +11,9 @@ class DifferenceBetween extends BinaryExpression {
 
   factory DifferenceBetween.fromJson(Map<String, dynamic> json) =>
       DifferenceBetween(
-          precision: json['precision'], operand: json['operand']!);
+          precision: DateTimePrecisionExtension.fromJson(json['precision']),
+          operand: List<Expression>.from(
+              json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

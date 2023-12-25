@@ -7,7 +7,8 @@ class HighBoundary extends BinaryExpression {
   HighBoundary({required super.operand});
 
   factory HighBoundary.fromJson(Map<String, dynamic> json) => HighBoundary(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

@@ -5,7 +5,7 @@ class IsNull extends UnaryExpression {
   IsNull({required super.operand});
 
   factory IsNull.fromJson(Map<String, dynamic> json) => IsNull(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

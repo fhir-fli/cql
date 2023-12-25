@@ -5,7 +5,8 @@ class Implies extends BinaryExpression {
   Implies({required super.operand});
 
   factory Implies.fromJson(Map<String, dynamic> json) => Implies(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

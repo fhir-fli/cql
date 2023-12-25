@@ -10,7 +10,7 @@ class ConvertsToRatio extends UnaryExpression {
   ConvertsToRatio({required super.operand});
 
   factory ConvertsToRatio.fromJson(Map<String, dynamic> json) =>
-      ConvertsToRatio(operand: json['operand']!);
+      ConvertsToRatio(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -6,7 +6,7 @@ class ToChars extends UnaryExpression {
   ToChars({required super.operand});
 
   factory ToChars.fromJson(Map<String, dynamic> json) => ToChars(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

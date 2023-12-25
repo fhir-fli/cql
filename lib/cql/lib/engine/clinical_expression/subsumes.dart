@@ -12,7 +12,9 @@ class Subsumes extends BinaryExpression {
   Subsumes({required super.operand});
 
   factory Subsumes.fromJson(Map<String, dynamic> json) => Subsumes(
-        operand: json['operand']!,
+        operand: (json['operand']! as List)
+            .map((e) => Expression.fromJson(e))
+            .toList(),
       );
 
   @override

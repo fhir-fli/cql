@@ -8,7 +8,7 @@ class ConvertsToBoolean extends UnaryExpression {
   ConvertsToBoolean({required super.operand});
 
   factory ConvertsToBoolean.fromJson(Map<String, dynamic> json) =>
-      ConvertsToBoolean(operand: json['operand']!);
+      ConvertsToBoolean(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -9,7 +9,7 @@ class ConvertsToTime extends UnaryExpression {
   ConvertsToTime({required super.operand});
 
   factory ConvertsToTime.fromJson(Map<String, dynamic> json) =>
-      ConvertsToTime(operand: json['operand']!);
+      ConvertsToTime(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

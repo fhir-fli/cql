@@ -6,7 +6,7 @@ class Lower extends UnaryExpression {
   Lower({required super.operand});
 
   factory Lower.fromJson(Map<String, dynamic> json) => Lower(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

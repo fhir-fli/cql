@@ -5,7 +5,7 @@ class IsFalse extends UnaryExpression {
   IsFalse({required super.operand});
 
   factory IsFalse.fromJson(Map<String, dynamic> json) => IsFalse(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

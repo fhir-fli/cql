@@ -6,7 +6,7 @@ class Floor extends UnaryExpression {
   Floor({required super.operand});
 
   factory Floor.fromJson(Map<String, dynamic> json) => Floor(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       );
 
   @override

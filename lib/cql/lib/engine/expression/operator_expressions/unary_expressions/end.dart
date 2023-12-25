@@ -8,7 +8,7 @@ class End extends UnaryExpression {
   End({required super.operand});
 
   factory End.fromJson(Map<String, dynamic> json) =>
-      End(operand: json['operand']!);
+      End(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

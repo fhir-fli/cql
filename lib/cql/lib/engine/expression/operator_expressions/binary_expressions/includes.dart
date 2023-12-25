@@ -11,9 +11,10 @@ class Includes extends BinaryExpression {
 
   factory Includes.fromJson(Map<String, dynamic> json) => Includes(
         precision: json['precision'] != null
-            ? DateTimePrecisionJson.fromJson(json['precision'])
+            ? DateTimePrecisionExtension.fromJson(json['precision'])
             : null,
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

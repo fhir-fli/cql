@@ -9,8 +9,12 @@ class Before extends BinaryExpression {
 
   Before({this.precision, required super.operand});
 
-  factory Before.fromJson(Map<String, dynamic> json) =>
-      Before(precision: json['precision'], operand: json['operand']!);
+  factory Before.fromJson(Map<String, dynamic> json) => Before(
+      precision: json['precision'] == null
+          ? null
+          : DateTimePrecisionExtension.fromJson(json['precision']),
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

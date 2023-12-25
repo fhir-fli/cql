@@ -14,7 +14,10 @@ class Collapse extends BinaryExpression {
   Collapse({required this.left, required this.right, required super.operand});
 
   factory Collapse.fromJson(Map<String, dynamic> json) => Collapse(
-      left: json['left']!, right: json['right']!, operand: json['operand']!);
+      left: json['left']!,
+      right: json['right']!,
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

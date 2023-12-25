@@ -7,7 +7,8 @@ class LowBoundary extends BinaryExpression {
   LowBoundary({required super.operand});
 
   factory LowBoundary.fromJson(Map<String, dynamic> json) => LowBoundary(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

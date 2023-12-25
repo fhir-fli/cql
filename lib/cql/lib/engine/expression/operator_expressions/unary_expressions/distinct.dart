@@ -8,7 +8,7 @@ class Distinct extends UnaryExpression {
   Distinct({required super.operand});
 
   factory Distinct.fromJson(Map<String, dynamic> json) =>
-      Distinct(operand: json['operand']!);
+      Distinct(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

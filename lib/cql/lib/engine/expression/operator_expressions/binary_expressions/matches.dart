@@ -7,7 +7,8 @@ class Matches extends BinaryExpression {
   Matches({required super.operand});
 
   factory Matches.fromJson(Map<String, dynamic> json) => Matches(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

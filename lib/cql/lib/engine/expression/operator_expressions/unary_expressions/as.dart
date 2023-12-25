@@ -14,7 +14,7 @@ class As extends UnaryExpression {
   As({required super.operand});
 
   factory As.fromJson(Map<String, dynamic> json) => As(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       )
         ..asTypeSpecifier = json['asTypeSpecifier']
         ..asType = json['asType']

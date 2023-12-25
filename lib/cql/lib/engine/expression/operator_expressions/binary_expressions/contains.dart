@@ -10,8 +10,12 @@ class Contains extends BinaryExpression {
 
   Contains({this.precision, required super.operand});
 
-  factory Contains.fromJson(Map<String, dynamic> json) =>
-      Contains(precision: json['precision'], operand: json['operand']!);
+  factory Contains.fromJson(Map<String, dynamic> json) => Contains(
+      precision: json['precision'] == null
+          ? null
+          : DateTimePrecisionExtension.fromJson(json['precision']),
+      operand: List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

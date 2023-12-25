@@ -7,7 +7,9 @@ class CanConvertQuantity extends BinaryExpression {
   CanConvertQuantity({required super.operand});
 
   factory CanConvertQuantity.fromJson(Map<String, dynamic> json) =>
-      CanConvertQuantity(operand: json['operand']!);
+      CanConvertQuantity(
+          operand: List<Expression>.from(
+              json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {

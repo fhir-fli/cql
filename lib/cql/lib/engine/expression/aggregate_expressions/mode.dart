@@ -6,22 +6,19 @@ import '../../../cql.dart';
 /// If the source is null, the result is null.
 class Mode extends AggregateExpression {
   Mode({
-    required Expression source,
-    List<TypeSpecifier>? signature,
-    String? path,
-  }) : super(
-          signature: signature,
-          source: source,
-          path: path,
-        );
+    required super.source,
+    super.signature,
+    super.path,
+  });
 
   factory Mode.fromJson(Map<String, dynamic> json) => Mode(
-        source: json['source']!,
-        signature: json['signature'] != null
-            ? List<TypeSpecifier>.from(
-                json['signature'].map((x) => TypeSpecifier.fromJson(x)))
-            : null,
-        path: json['path']!,
+        source: Expression.fromJson(json['source']!),
+        signature: json['signature'] == null
+            ? null
+            : (json['signature'] as List)
+                .map((e) => TypeSpecifier.fromJson(e))
+                .toList(),
+        path: json['path'],
       );
 
   @override

@@ -6,7 +6,7 @@ class Exists extends UnaryExpression {
   Exists({required super.operand});
 
   factory Exists.fromJson(Map<String, dynamic> json) =>
-      Exists(operand: json['operand']!);
+      Exists(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

@@ -13,7 +13,7 @@ class Last extends OperatorExpression {
   });
 
   factory Last.fromJson(Map<String, dynamic> json) => Last(
-        source: json['source']!,
+        source: Expression.fromJson(json['source']!),
         orderBy: json['orderBy']!,
       );
 

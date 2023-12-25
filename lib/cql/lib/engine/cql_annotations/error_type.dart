@@ -8,7 +8,20 @@ enum ErrorType {
 }
 
 extension ErrorTypeExtension on ErrorType {
-  String toJson() => toString();
+  String toJson() {
+    switch (this) {
+      case ErrorType.environment:
+        return 'environment';
+      case ErrorType.syntax:
+        return 'syntax';
+      case ErrorType.include:
+        return 'include';
+      case ErrorType.semantic:
+        return 'semantic';
+      case ErrorType.internal:
+        return 'internal';
+    }
+  }
 
   static ErrorType fromJson(String json) {
     switch (json) {

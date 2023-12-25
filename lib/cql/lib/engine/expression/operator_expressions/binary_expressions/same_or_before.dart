@@ -12,7 +12,7 @@ class SameOrBefore extends BinaryExpression {
 
   factory SameOrBefore.fromJson(Map<String, dynamic> json) => SameOrBefore(
         precision: json['precision'] != null
-            ? DateTimePrecisionJson.fromJson(json['precision'])
+            ? DateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: (json['operand'] as List)
             .map((e) => Expression.fromJson(e))

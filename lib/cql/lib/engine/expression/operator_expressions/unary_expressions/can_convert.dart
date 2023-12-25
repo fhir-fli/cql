@@ -19,7 +19,7 @@ class CanConvert extends UnaryExpression {
   CanConvert({this.toTypeSpecifier, this.toType, required super.operand});
 
   factory CanConvert.fromJson(Map<String, dynamic> json) => CanConvert(
-        operand: json['operand']!,
+        operand: Expression.fromJson(json['operand']!),
       )
         ..toTypeSpecifier = json['toTypeSpecifier']
         ..toType = json['toType'];

@@ -14,9 +14,13 @@ class Case extends Expression {
   Case({this.comparand, required this.caseItem, required this.elseExpr});
 
   factory Case.fromJson(Map<String, dynamic> json) => Case(
-        comparand: json['comparand'],
-        caseItem: json['caseItem']!,
-        elseExpr: json['else']!,
+        comparand: json['comparand'] == null
+            ? null
+            : Expression.fromJson(json['comparand']),
+        caseItem: (json['caseItem']! as List)
+            .map((e) => CaseItem.fromJson(e))
+            .toList(),
+        elseExpr: Expression.fromJson(json['else']!),
       );
 
   @override

@@ -7,7 +7,8 @@ class NotEqual extends BinaryExpression {
   NotEqual({required super.operand});
 
   factory NotEqual.fromJson(Map<String, dynamic> json) => NotEqual(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

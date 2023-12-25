@@ -13,7 +13,9 @@ class SubsumedBy extends BinaryExpression {
   SubsumedBy({required super.operand});
 
   factory SubsumedBy.fromJson(Map<String, dynamic> json) => SubsumedBy(
-        operand: json['operand']!,
+        operand: (json['operand']! as List)
+            .map((e) => Expression.fromJson(e))
+            .toList(),
       );
 
   @override

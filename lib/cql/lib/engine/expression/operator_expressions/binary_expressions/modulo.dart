@@ -8,7 +8,8 @@ class Modulo extends BinaryExpression {
   Modulo({required super.operand});
 
   factory Modulo.fromJson(Map<String, dynamic> json) => Modulo(
-        operand: json['operand']!,
+        operand: List<Expression>.from(
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override

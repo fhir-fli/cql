@@ -8,7 +8,7 @@ class Abs extends UnaryExpression {
   Abs({required super.operand});
 
   factory Abs.fromJson(Map<String, dynamic> json) =>
-      Abs(operand: json['operand']!);
+      Abs(operand: Expression.fromJson(json['operand']!));
 
   @override
   Map<String, dynamic> toJson() => {

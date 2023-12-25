@@ -1,29 +1,26 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'parameter_def.g.dart';
-
-@JsonSerializable()
 class ParameterDefs {
   List<ParameterDef> def = <ParameterDef>[];
 
   ParameterDefs();
 
-  factory ParameterDefs.fromJson(Map<String, dynamic> json) =>
-      _$ParameterDefsFromJson(json);
+  factory ParameterDefs.fromJson(Map<String, dynamic> json) => ParameterDefs()
+    ..def = (json['def'] as List<dynamic>)
+        .map((e) => ParameterDef.fromJson(e as Map<String, dynamic>))
+        .toList();
 
-  Map<String, dynamic> toJson() => _$ParameterDefsToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'def': def.map((e) => e.toJson()).toList(),
+      };
 }
 
 /// Definition of a parameter that can be referenced by name within an expression.
-@JsonSerializable()
 class ParameterDef extends Element {
   /// Access level, defaults to Public.
   AccessModifier accessLevel;
 
   /// Default value expression for the parameter.
-  @JsonKey(name: 'default')
   Expression? defaultExpression;
 
   /// Name of the parameter.
@@ -43,11 +40,60 @@ class ParameterDef extends Element {
     this.parameterType,
   });
 
-  factory ParameterDef.fromJson(Map<String, dynamic> json) =>
-      _$ParameterDefFromJson(json);
+  factory ParameterDef.fromJson(Map<String, dynamic> json) => ParameterDef(
+        name: json['name'] as String,
+        accessLevel: json['accessLevel'] == 'private'
+            ? AccessModifier.private
+            : AccessModifier.public,
+        defaultExpression: json['default'] == null
+            ? null
+            : Expression.fromJson(json['default'] as Map<String, dynamic>),
+        parameterTypeSpecifier: json['parameterTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(
+                json['parameterTypeSpecifier'] as Map<String, dynamic>),
+        parameterType: json['parameterType'] == null
+            ? null
+            : QName.fromJson(json['parameterType'] as String),
+      )
+        ..annotation = (json['annotation'] as List<dynamic>?)
+            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
+            .toList()
+        ..localId = json['localId'] as String?
+        ..locator = json['locator'] as String?
+        ..resultTypeName = json['resultTypeName'] as String?
+        ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>);
 
   @override
-  Map<String, dynamic> toJson() => _$ParameterDefToJson(this);
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    val['name'] = name;
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+    writeNotNull('default', defaultExpression?.toJson());
+    writeNotNull('parameterType', parameterType?.toJson());
+    writeNotNull('parameterTypeSpecifier', parameterTypeSpecifier?.toJson());
+    return val;
+  }
+
+  static const _$AccessModifierEnumMap = {
+    AccessModifier.public: 'Public',
+    AccessModifier.private: 'Private',
+  };
 
   @override
   String toString() => toJson().toString();
