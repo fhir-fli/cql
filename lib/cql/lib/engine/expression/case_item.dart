@@ -6,18 +6,21 @@ class CaseItem extends Element {
   final Expression then;
 
   /// Condition to evaluate.
-  final Expression when;
+  final Expression when_;
 
-  CaseItem({required this.when, required this.then});
+  CaseItem({required this.when_, required this.then});
 
   factory CaseItem.fromJson(Map<String, dynamic> json) => CaseItem(
-        when: Expression.fromJson(json['when']!),
+        when_: Expression.fromJson(json['when']!),
         then: Expression.fromJson(json['then']!),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'when': when,
-        'then': then,
+        'type': type,
+        'when': when_.toJson(),
+        'then': then.toJson(),
       };
+
+  String get type => 'CaseItem';
 }

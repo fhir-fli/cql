@@ -26,11 +26,13 @@ class As extends UnaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        'operand': operand,
-        'asTypeSpecifier': asTypeSpecifier,
-        'asType': asType,
+        'operand': operand.toJson(),
+        if (asTypeSpecifier != null)
+          'asTypeSpecifier': asTypeSpecifier!.toJson(),
+        if (asType != null) 'asType': asType!.toJson(),
         'strict': strict,
       };
 
+  @override
   String get type => 'As';
 }

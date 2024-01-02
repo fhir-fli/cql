@@ -29,5 +29,6 @@ class OverlapsBefore extends BinaryExpression {
   @override
   String toString() => operand.join(' ${type.toUpperCase()} ');
 
+  @override
   String get type => 'OverlapsBefore';
 }

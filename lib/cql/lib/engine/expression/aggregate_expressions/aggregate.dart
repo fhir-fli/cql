@@ -29,10 +29,15 @@ class Aggregate extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'iteration': iteration,
-        'source': source,
-        'initialValue': initialValue,
-        'signature': signature,
+        'type': type,
+        'iteration': iteration.toJson(),
+        'source': source.toJson(),
+        if (initialValue != null) 'initialValue': initialValue!.toJson(),
+        if (signature != null)
+          'signature': signature!.map((e) => e.toJson()).toList(),
         'path': path,
       };
+
+  @override
+  String get type => 'Aggregate';
 }

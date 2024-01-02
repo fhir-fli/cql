@@ -23,6 +23,7 @@ class RelationshipClause extends AliasedQuerySource {
   @override
   Map<String, dynamic> toJson() {
     final map = {
+      'type': type,
       'alias': alias,
       'expression': expression.toJson(),
     };
@@ -34,4 +35,7 @@ class RelationshipClause extends AliasedQuerySource {
 
   @override
   String toString() => toJson().toString();
+
+  @override
+  String get type => 'RelationshipClause';
 }

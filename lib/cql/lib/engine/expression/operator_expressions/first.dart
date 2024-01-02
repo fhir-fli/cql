@@ -19,7 +19,11 @@ class First extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source.toJson(),
         'orderBy': orderBy,
       };
+
+  @override
+  String get type => 'First';
 }

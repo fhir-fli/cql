@@ -26,5 +26,6 @@ class Overlaps extends BinaryExpression {
         'operand': operand.map((e) => e.toJson()).toList(),
       };
 
+  @override
   String get type => 'Overlaps';
 }

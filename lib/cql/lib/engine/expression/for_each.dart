@@ -23,8 +23,12 @@ class ForEach extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source.toJson(),
         'element': element.toJson(),
         'scope': scope,
       };
+
+  @override
+  String get type => 'ForEach';
 }

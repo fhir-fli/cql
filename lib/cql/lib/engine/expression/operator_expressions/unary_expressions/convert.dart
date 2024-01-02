@@ -28,8 +28,13 @@ class Convert extends UnaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'toTypeSpecifier': toTypeSpecifier,
-        'toType': toType,
-        'operand': operand,
+        'type': type,
+        'operand': operand.toJson(),
+        if (toTypeSpecifier != null)
+          'toTypeSpecifier': toTypeSpecifier!.toJson(),
+        if (toType != null) 'toType': toType!.toJson(),
       };
+
+  @override
+  String get type => 'Convert';
 }

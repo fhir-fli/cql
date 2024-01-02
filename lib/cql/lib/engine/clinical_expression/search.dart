@@ -12,10 +12,10 @@ class Search extends Property {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'path': path,
         if (source != null) 'source': source!.toJson(),
         if (scope != null) 'scope': scope,
-        'type': type,
       };
 
   @override

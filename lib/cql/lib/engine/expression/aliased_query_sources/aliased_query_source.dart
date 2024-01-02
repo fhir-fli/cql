@@ -17,7 +17,14 @@ abstract class AliasedQuerySource extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'alias': alias,
         'expression': expression,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'AliasedQuerySource';
 }

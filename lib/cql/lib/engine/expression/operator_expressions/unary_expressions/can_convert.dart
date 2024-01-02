@@ -26,8 +26,13 @@ class CanConvert extends UnaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'operand': operand,
-        'toTypeSpecifier': toTypeSpecifier,
-        'toType': toType,
+        'type': type,
+        'operand': operand.toJson(),
+        if (toTypeSpecifier != null)
+          'toTypeSpecifier': toTypeSpecifier!.toJson(),
+        if (toType != null) 'toType': toType!.toJson(),
       };
+
+  @override
+  String get type => 'CanConvert';
 }

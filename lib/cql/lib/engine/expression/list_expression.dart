@@ -22,9 +22,13 @@ class ListExpression extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'typeSpecifier': typeSpecifier?.toJson(),
         'element': element != null
             ? List<dynamic>.from(element!.map((x) => x.toJson()))
             : null,
       };
+
+  @override
+  String get type => 'List';
 }

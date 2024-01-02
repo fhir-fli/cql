@@ -17,10 +17,13 @@ class Tuple extends Expression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {};
+    final Map<String, dynamic> json = {'type': type};
     if (element != null) {
       json['element'] = element!.map((e) => e.toJson()).toList();
     }
     return json;
   }
+
+  @override
+  String get type => 'Tuple';
 }

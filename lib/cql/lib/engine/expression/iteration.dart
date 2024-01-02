@@ -12,6 +12,13 @@ class Iteration extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'scope': scope,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'Iteration';
 }

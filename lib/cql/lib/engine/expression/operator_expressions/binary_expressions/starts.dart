@@ -28,5 +28,6 @@ class Starts extends BinaryExpression {
             : operand.first.toJson(),
       };
 
+  @override
   String get type => 'Starts';
 }

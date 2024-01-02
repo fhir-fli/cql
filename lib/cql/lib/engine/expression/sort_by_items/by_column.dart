@@ -17,7 +17,11 @@ class ByColumn extends SortByItem {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'direction': direction.toJson(),
         'path': path,
       };
+
+  @override
+  String get type => 'ByColumn';
 }

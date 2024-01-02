@@ -8,8 +8,6 @@ class Instance extends Expression {
   /// List of instance elements specifying values for the elements of the class instance.
   List<InstanceElement>? element;
 
-  final String type = 'Instance';
-
   Instance({required this.classType, this.element});
 
   factory Instance.fromJson(Map<String, dynamic> json) => Instance(
@@ -22,8 +20,14 @@ class Instance extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'classType': classType.toJson(),
         'type': type,
+        'classType': classType.toJson(),
         if (element != null) 'element': element!.map((e) => e.toJson()).toList()
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'Instance';
 }

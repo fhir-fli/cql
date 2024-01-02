@@ -17,7 +17,10 @@ class ReturnClause extends Element {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'expression': expression.toJson(),
         'distinct': distinct,
       };
+
+  String get type => 'ReturnClause';
 }

@@ -20,7 +20,13 @@ class InstanceElement {
       );
 
   Map<String, dynamic> toJson() => {
+        'type': type,
         'name': name,
         'value': value.toJson(),
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'InstanceElement';
 }

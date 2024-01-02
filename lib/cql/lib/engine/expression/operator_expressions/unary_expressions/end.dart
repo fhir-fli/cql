@@ -11,10 +11,5 @@ class End extends UnaryExpression {
       End(operand: Expression.fromJson(json['operand']!));
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'operand': operand,
-      };
-
   String get type => 'End';
 }

@@ -20,6 +20,7 @@ class Without extends RelationshipClause {
   @override
   Map<String, dynamic> toJson() {
     final map = {
+      'type': type,
       'alias': alias,
       'expression': expression.toJson(),
     };
@@ -28,4 +29,11 @@ class Without extends RelationshipClause {
     }
     return map;
   }
+
+  @override
+  String toString() => 'Without(alias: $alias, expression: $expression, '
+      'suchThat: $suchThat)';
+
+  @override
+  String get type => 'Without';
 }

@@ -9,11 +9,15 @@ class Indexer extends BinaryExpression {
 
   factory Indexer.fromJson(Map<String, dynamic> json) => Indexer(
         operand: List<Expression>.from(
-          json['operand'].map((x) => Expression.fromJson(x))),
+            json['operand'].map((x) => Expression.fromJson(x))),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'operand': operand,
+        'type': type,
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
+
+  @override
+  String get type => 'Indexer';
 }

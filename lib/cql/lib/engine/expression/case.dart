@@ -25,8 +25,12 @@ class Case extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'comparand': comparand,
-        'caseItem': caseItem,
-        'else': elseExpr,
+        'type': type,
+        if (comparand != null) 'comparand': comparand!.toJson(),
+        'caseItem': caseItem.map((e) => e.toJson()).toList(),
+        'else': elseExpr.toJson(),
       };
+
+  @override
+  String get type => 'Case';
 }

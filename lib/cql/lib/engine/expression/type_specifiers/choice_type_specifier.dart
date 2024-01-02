@@ -8,9 +8,6 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
   /// Choice elements.
   List<TypeSpecifier>? choice;
 
-  @override
-  final String type = 'ChoiceTypeSpecifier';
-
   ChoiceTypeSpecifier({this.choice});
 
   factory ChoiceTypeSpecifier.fromJson(Map<String, dynamic> json) {
@@ -28,4 +25,10 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
         'type': type,
         'choice': choice?.map((v) => v.toJson()).toList(),
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'ChoiceTypeSpecifier';
 }

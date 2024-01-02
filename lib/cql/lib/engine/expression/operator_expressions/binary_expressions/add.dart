@@ -16,8 +16,9 @@ class Add extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        'operand': operand,
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
 
+  @override
   String get type => 'Add';
 }

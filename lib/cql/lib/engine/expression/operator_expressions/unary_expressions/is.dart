@@ -20,8 +20,13 @@ class Is extends UnaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'isTypeSpecifier': isTypeSpecifier?.toJson(),
-        'isType': isType?.toJson(),
+        'type': type,
         'operand': operand.toJson(),
+        if (isTypeSpecifier != null)
+          'toTypeSpecifier': isTypeSpecifier!.toJson(),
+        if (isType != null) 'toType': isType!.toJson(),
       };
+
+  @override
+  String get type => 'Is';
 }

@@ -23,8 +23,12 @@ class Avg extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source,
         'signature': signature,
         'path': path,
       };
+
+  @override
+  String get type => 'Avg';
 }

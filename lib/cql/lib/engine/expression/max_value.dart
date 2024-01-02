@@ -15,6 +15,13 @@ class MaxValue extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'valueType': valueType,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'MaxValue';
 }

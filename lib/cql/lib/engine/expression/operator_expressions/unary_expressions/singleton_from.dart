@@ -12,10 +12,5 @@ class SingletonFrom extends UnaryExpression {
       SingletonFrom(operand: Expression.fromJson(json['operand']));
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type,
-        'operand': operand.toJson(),
-      };
-
   String get type => 'SingletonFrom';
 }

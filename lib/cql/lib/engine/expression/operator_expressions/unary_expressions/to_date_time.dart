@@ -14,7 +14,5 @@ class ToDateTime extends UnaryExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'operand': operand.toJson(),
-      };
+  String get type => 'ToDateTime';
 }

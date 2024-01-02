@@ -29,5 +29,6 @@ abstract class TypeSpecifier extends Expression {
   @override
   Map<String, dynamic> toJson() => {};
 
+  @override
   String get type;
 }

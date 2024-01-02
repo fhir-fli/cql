@@ -19,7 +19,11 @@ class Round extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operand': operand.toJson(),
-        'precision': precision?.toJson(),
+        if (precision != null) 'precision': precision!.toJson(),
       };
+
+  @override
+  String get type => 'Round';
 }

@@ -25,9 +25,13 @@ class TimeExpression extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'hour': hour,
-        'minute': minute,
-        'second': second,
-        'millisecond': millisecond,
+        'type': type,
+        'hour': hour.toJson(),
+        if (minute != null) 'minute': minute!.toJson(),
+        if (second != null) 'second': second!.toJson(),
+        if (millisecond != null) 'millisecond': millisecond!.toJson(),
       };
+
+  @override
+  String get type => 'TimeExpression';
 }

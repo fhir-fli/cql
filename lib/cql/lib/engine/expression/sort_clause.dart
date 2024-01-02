@@ -13,6 +13,9 @@ class SortClause extends Element {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'by': List<dynamic>.from(by.map((x) => x.toJson())),
       };
+
+  String get type => 'SortClause';
 }

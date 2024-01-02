@@ -18,8 +18,12 @@ class Substring extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'stringToSub': stringToSub.toJson(),
         'startIndex': startIndex.toJson(),
-        'length': length?.toJson(),
+        if (length != null) 'length': length!.toJson(),
       };
+
+  @override
+  String get type => 'Substring';
 }

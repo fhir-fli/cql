@@ -19,7 +19,12 @@ abstract class SortByItem extends Element {
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': runtimeType.toString(),
+        'type': type,
         'direction': direction.toJson(),
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'SortByItem';
 }

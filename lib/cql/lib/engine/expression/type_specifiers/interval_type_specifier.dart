@@ -7,9 +7,6 @@ import '../../../cql.dart';
 class IntervalTypeSpecifier extends TypeSpecifier {
   TypeSpecifier? pointType;
 
-  @override
-  final String type = 'IntervalTypeSpecifier';
-
   IntervalTypeSpecifier({this.pointType});
 
   factory IntervalTypeSpecifier.fromJson(Map<String, dynamic> json) {
@@ -24,7 +21,7 @@ class IntervalTypeSpecifier extends TypeSpecifier {
 
   @override
   Map<String, dynamic> toJson() {
-    final val = <String, dynamic>{'type': 'IntervalTypeSpecifier'};
+    final val = <String, dynamic>{'type': type};
 
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
@@ -35,4 +32,10 @@ class IntervalTypeSpecifier extends TypeSpecifier {
     writeNotNull('pointType', pointType?.toJson());
     return val;
   }
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'IntervalTypeSpecifier';
 }

@@ -20,5 +20,6 @@ class DateTimeComponentFrom extends UnaryExpression {
         'operand': operand.toJson(),
       };
 
+  @override
   String get type => 'DateTimeComponentFrom';
 }

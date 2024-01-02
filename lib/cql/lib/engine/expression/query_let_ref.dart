@@ -11,7 +11,10 @@ class QueryLetRef extends Expression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'name': name};
+    final Map<String, dynamic> json = {
+      'type': type,
+      'name': name,
+    };
     return json;
   }
 
@@ -19,4 +22,7 @@ class QueryLetRef extends Expression {
   String toString() {
     return 'QueryLetRef{name: $name}';
   }
+
+  @override
+  String get type => 'QueryLetRef';
 }

@@ -23,5 +23,6 @@ class Before extends BinaryExpression {
         'operand': operand.map((x) => x.toJson()).toList(),
       };
 
+  @override
   String get type => 'Before';
 }

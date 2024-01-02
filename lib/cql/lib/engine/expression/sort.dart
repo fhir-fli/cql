@@ -20,7 +20,11 @@ class Sort extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source.toJson(),
         'by': List<dynamic>.from(by.map((x) => x.toJson())),
       };
+
+  @override
+  String get type => 'Sort';
 }

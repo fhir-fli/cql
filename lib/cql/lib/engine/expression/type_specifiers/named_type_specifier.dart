@@ -12,9 +12,6 @@ class NamedTypeSpecifier extends TypeSpecifier {
   /// Namespace of the type.
   QName namespace;
 
-  @override
-  final String type = 'NamedTypeSpecifier';
-
   NamedTypeSpecifier({required this.namespace});
 
   factory NamedTypeSpecifier.fromFull(String full) => NamedTypeSpecifier(
@@ -31,11 +28,14 @@ class NamedTypeSpecifier extends TypeSpecifier {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type,
         if (modelName != null) 'modelName': modelName,
         'name': namespace.toJson(),
-        'type': type,
       };
 
   @override
   String toString() => namespace.toString();
+
+  @override
+  String get type => 'NamedTypeSpecifier';
 }

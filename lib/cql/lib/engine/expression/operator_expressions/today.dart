@@ -7,5 +7,10 @@ class Today extends OperatorExpression {
   factory Today.fromJson(Map<String, dynamic> json) => Today();
 
   @override
-  Map<String, dynamic> toJson() => {};
+  Map<String, dynamic> toJson() => {
+        'type': type,
+      };
+
+  @override
+  String get type => 'Today';
 }

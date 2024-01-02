@@ -14,15 +14,22 @@ class If extends Expression {
   If({required this.condition, required this.then, required this.elseExpr});
 
   factory If.fromJson(Map<String, dynamic> json) => If(
-        condition: json['condition']!,
-        then: json['then']!,
-        elseExpr: json['else']!,
+        condition: Expression.fromJson(json['condition']!),
+        then: Expression.fromJson(json['then']!),
+        elseExpr: Expression.fromJson(json['else']!),
       );
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'condition': condition.toJson(),
         'then': then.toJson(),
         'else': elseExpr.toJson(),
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'If';
 }

@@ -17,7 +17,11 @@ class SplitOnMatches extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'stringToSplit': stringToSplit.toJson(),
         'separatorPattern': separatorPattern.toJson(),
       };
+
+  @override
+  String get type => 'SplitOnMatches';
 }

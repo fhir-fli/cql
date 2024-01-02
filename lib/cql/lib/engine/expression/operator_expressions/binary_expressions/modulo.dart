@@ -14,6 +14,10 @@ class Modulo extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'operand': operand,
+        'type': type,
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
+
+  @override
+  String get type => 'Modulo';
 }

@@ -24,8 +24,12 @@ class Slice extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source.toJson(),
         'startIndex': startIndex.toJson(),
         'endIndex': endIndex.toJson(),
       };
+
+  @override
+  String get type => 'Slice';
 }

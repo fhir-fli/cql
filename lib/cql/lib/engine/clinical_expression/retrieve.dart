@@ -323,7 +323,6 @@ class Retrieve extends Expression {
     writeNotNull('dateHighProperty', dateHighProperty);
     writeNotNull('dateSearch', dateSearch);
     writeNotNull('includedIn', includedIn);
-    val['type'] = type;
     return val;
   }
 

@@ -44,10 +44,14 @@ class Message extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source.toJson(),
-        'condition': condition?.toJson(),
-        'code': code?.toJson(),
-        'severity': severity?.toJson(),
-        'message': message?.toJson(),
+        if (condition != null) 'condition': condition!.toJson(),
+        if (code != null) 'code': code!.toJson(),
+        if (severity != null) 'severity': severity!.toJson(),
+        if (message != null) 'message': message!.toJson(),
       };
+
+  @override
+  String get type => 'Message';
 }

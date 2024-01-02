@@ -11,7 +11,5 @@ class Distinct extends UnaryExpression {
       Distinct(operand: Expression.fromJson(json['operand']!));
 
   @override
-  Map<String, dynamic> toJson() => {
-        'operand': operand,
-      };
+  String get type => 'Distinct';
 }

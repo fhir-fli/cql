@@ -35,6 +35,7 @@ import '../../cql.dart';
 /// involving the high boundary will be performed with that interpretation.
 class IntervalExpression extends Expression {
   dynamic defaultPointType;
+
   /// High bound expression of the interval.
   Expression? high;
 
@@ -94,5 +95,6 @@ class IntervalExpression extends Expression {
     return json;
   }
 
+  @override
   String get type => 'Interval';
 }

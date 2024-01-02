@@ -29,5 +29,6 @@ class ProperIncludes extends BinaryExpression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'ProperIncludes';
 }

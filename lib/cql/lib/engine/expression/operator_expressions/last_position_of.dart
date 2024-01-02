@@ -16,7 +16,11 @@ class LastPositionOf extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'pattern': pattern.toJson(),
         'string': string.toJson(),
       };
+
+  @override
+  String get type => 'LastPositionOf';
 }

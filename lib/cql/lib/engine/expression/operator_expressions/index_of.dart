@@ -20,7 +20,11 @@ class IndexOf extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source.toJson(),
         'element': element.toJson(),
       };
+
+  @override
+  String get type => 'IndexOf';
 }

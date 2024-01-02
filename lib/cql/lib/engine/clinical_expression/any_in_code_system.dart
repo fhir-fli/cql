@@ -24,9 +24,9 @@ class AnyInCodeSystem extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'codes': codes.toJson(),
         'codesystem': codesystem.toJson(),
-        'type': type,
       };
 
   @override

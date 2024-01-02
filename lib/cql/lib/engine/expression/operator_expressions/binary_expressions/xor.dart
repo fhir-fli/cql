@@ -12,6 +12,10 @@ class Xor extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operand': operand.map((e) => e.toJson()).toList(),
       };
+
+  @override
+  String get type => 'Xor';
 }

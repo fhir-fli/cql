@@ -22,9 +22,9 @@ class InValueSet extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'code': code.toJson(),
         'valueset': valueset.toJson(),
-        'type': type,
       };
 
   @override

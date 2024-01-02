@@ -54,4 +54,7 @@ abstract class AggregateExpression extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {};
+
+  @override
+  String get type => 'AggregateExpression';
 }

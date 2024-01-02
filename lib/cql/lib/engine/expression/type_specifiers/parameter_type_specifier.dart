@@ -8,9 +8,6 @@ class ParameterTypeSpecifier extends TypeSpecifier {
   /// Name of the parameter.
   QName parameterName;
 
-  @override
-  final String type = 'ParameterTypeSpecifier';
-
   ParameterTypeSpecifier({required String parameterName})
       : parameterName = QName.fromFull(parameterName);
 
@@ -21,10 +18,13 @@ class ParameterTypeSpecifier extends TypeSpecifier {
 
   @override
   Map<String, dynamic> toJson() => {
-        'parameterName': parameterName.toString(),
         'type': type,
+        'parameterName': parameterName.toString(),
       };
 
   @override
   String toString() => toJson().toString();
+
+  @override
+  String get type => 'ParameterTypeSpecifier';
 }

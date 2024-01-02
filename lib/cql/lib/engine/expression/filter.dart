@@ -21,8 +21,12 @@ class Filter extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'source': source,
-        'condition': condition,
+        'type': type,
+        'source': source.toJson(),
+        'condition': condition.toJson(),
         'scope': scope,
       };
+
+  @override
+  String get type => 'Filter';
 }

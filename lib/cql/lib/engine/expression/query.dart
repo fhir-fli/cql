@@ -61,5 +61,6 @@ class Query extends Expression {
     return data;
   }
 
+  @override
   String get type => 'Query';
 }

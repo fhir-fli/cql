@@ -18,7 +18,13 @@ class LetClause extends Element {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'expression': expression.toJson(),
         'identifier': identifier,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'LetClause';
 }

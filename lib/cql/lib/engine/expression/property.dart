@@ -38,5 +38,6 @@ class Property extends Expression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'Property';
 }

@@ -286,7 +286,4 @@ abstract class OperatorExpression extends Expression {
         throw StateError('Invalid type for OperatorExpression');
     }
   }
-
-  @override
-  Map<String, dynamic> toJson();
 }

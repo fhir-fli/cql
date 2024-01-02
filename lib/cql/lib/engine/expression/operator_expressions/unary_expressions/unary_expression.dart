@@ -122,4 +122,10 @@ abstract class UnaryExpression extends OperatorExpression {
         throw ArgumentError('Unknown type: $type');
     }
   }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'operand': operand.toJson(),
+      };
 }

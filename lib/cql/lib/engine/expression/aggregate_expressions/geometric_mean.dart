@@ -23,10 +23,14 @@ class GeometricMean extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'source': source.toJson(),
         'signature': signature != null
             ? List<dynamic>.from(signature!.map((x) => x.toJson()))
             : null,
         'path': path,
       };
+
+  @override
+  String get type => 'GeometricMean';
 }

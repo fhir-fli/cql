@@ -7,12 +7,16 @@ import '../../../../cql.dart';
 class Equivalent extends BinaryExpression {
   Equivalent({required super.operand});
 
-  factory Equivalent.fromJson(Map<String, dynamic> json) =>
-      Equivalent(operand: List<Expression>.from(
+  factory Equivalent.fromJson(Map<String, dynamic> json) => Equivalent(
+      operand: List<Expression>.from(
           json['operand'].map((x) => Expression.fromJson(x))));
 
   @override
   Map<String, dynamic> toJson() => {
-        'operand': operand,
+        'type': type,
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
+
+  @override
+  String get type => 'Equivalent';
 }

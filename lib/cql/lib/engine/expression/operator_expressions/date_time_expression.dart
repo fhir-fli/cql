@@ -46,14 +46,35 @@ class DateTimeExpression extends OperatorExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'year': year,
-        'month': month,
-        'day': day,
-        'hour': hour,
-        'minute': minute,
-        'second': second,
-        'millisecond': millisecond,
-        'timezoneOffset': timezoneOffset,
-      };
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{
+      'type': type,
+      'year': year.toJson(),
+    };
+    if (month != null) {
+      json['month'] = month!.toJson();
+      if (day != null) {
+        json['day'] = day!.toJson();
+        if (hour != null) {
+          json['hour'] = hour!.toJson();
+          if (minute != null) {
+            json['minute'] = minute!.toJson();
+            if (second != null) {
+              json['second'] = second!.toJson();
+              if (millisecond != null) {
+                json['millisecond'] = millisecond!.toJson();
+                if (timezoneOffset != null) {
+                  json['timezoneOffset'] = timezoneOffset!.toJson();
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return json;
+  }
+
+  @override
+  String get type => 'DateTime';
 }

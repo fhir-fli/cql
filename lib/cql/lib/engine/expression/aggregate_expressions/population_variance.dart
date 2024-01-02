@@ -25,6 +25,7 @@ class PopulationVariance extends AggregateExpression {
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = {
+      'type': type,
       'source': source.toJson(),
     };
     if (signature != null) {
@@ -35,4 +36,7 @@ class PopulationVariance extends AggregateExpression {
     }
     return json;
   }
+
+  @override
+  String get type => 'PopulationVariance';
 }

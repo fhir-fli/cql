@@ -13,6 +13,10 @@ class Descendents extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'source': source,
+        'type': type,
+        'source': source.toJson(),
       };
+
+  @override
+  String get type => 'Descendents';
 }

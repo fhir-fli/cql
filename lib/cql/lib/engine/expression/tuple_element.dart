@@ -16,7 +16,13 @@ class TupleElement {
       );
 
   Map<String, dynamic> toJson() => {
+        'type': type,
         'value': value.toJson(),
         'name': name,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  String get type => 'TupleElement';
 }

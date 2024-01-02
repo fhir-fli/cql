@@ -14,9 +14,6 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
   /// Name of the parameter bound to a valid type.
   String parameterName;
 
-  @override
-  final String type = 'BoundParameterTypeSpecifier';
-
   BoundParameterTypeSpecifier({
     required this.parameterName,
     required this.boundType,
@@ -35,13 +32,16 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'parameterName': parameterName,
         'boundType': boundType,
         if (elementTypeSpecifier != null)
           'elementTypeSpecifier': elementTypeSpecifier!.toJson(),
-        'type': type,
       };
 
   @override
   String toString() => toJson().toString();
+
+  @override
+  String get type => 'BoundParameterTypeSpecifier';
 }

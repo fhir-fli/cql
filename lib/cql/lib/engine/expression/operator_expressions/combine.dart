@@ -18,7 +18,11 @@ class Combine extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'source': source,
-        'separator': separator,
+        'type': type,
+        'source': source.toJson(),
+        if (separator != null) 'separator': separator!.toJson(),
       };
+
+  @override
+  String get type => 'Combine';
 }

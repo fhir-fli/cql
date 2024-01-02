@@ -19,7 +19,11 @@ class Split extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'stringToSplit': stringToSplit.toJson(),
-        'separator': separator?.toJson(),
+        if (separator != null) 'separator': separator!.toJson(),
       };
+
+  @override
+  String get type => 'Split';
 }

@@ -7,11 +7,9 @@ import '../../../cql.dart';
 
 class ListTypeSpecifier extends TypeSpecifier {
   List<Element>? element;
+
   /// Element type specifier.
   TypeSpecifier? elementTypeSpecifier;
-
-  @override
-  final String type = 'ListTypeSpecifier';
 
   ListTypeSpecifier({this.elementTypeSpecifier, this.element});
 
@@ -38,4 +36,10 @@ class ListTypeSpecifier extends TypeSpecifier {
     }
     return json;
   }
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'ListTypeSpecifier';
 }

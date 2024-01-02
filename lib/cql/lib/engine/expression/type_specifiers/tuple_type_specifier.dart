@@ -7,9 +7,6 @@ class TupleTypeSpecifier extends TypeSpecifier {
   /// Elements within TupleTypeSpecifier.
   List<TupleTypeSpecifierElement>? element;
 
-  @override
-  String type = 'TupleTypeSpecifier';
-
   TupleTypeSpecifier({
     this.element,
   });
@@ -29,4 +26,10 @@ class TupleTypeSpecifier extends TypeSpecifier {
         'type': type,
         'element': element?.map((v) => v.toJson()).toList(),
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'TupleTypeSpecifier';
 }

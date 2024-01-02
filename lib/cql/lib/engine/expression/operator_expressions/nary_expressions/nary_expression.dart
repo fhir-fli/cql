@@ -27,5 +27,6 @@ abstract class NaryExpression extends OperatorExpression {
         if (operand != null) 'operand': operand!.map((e) => e.toJson()).toList()
       };
 
+  @override
   String get type;
 }

@@ -11,6 +11,13 @@ class AliasRef extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'name': name,
       };
+
+  @override
+  String toString() => toJson().toString();
+
+  @override
+  String get type => 'AliasRef';
 }

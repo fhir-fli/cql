@@ -450,4 +450,6 @@ class Expression extends Element {
 
   @override
   Map<String, dynamic> toJson() => {};
+
+  String get type => throw 'Unknown Expression type';
 }

@@ -26,5 +26,6 @@ class Last extends OperatorExpression {
         if (orderBy != null) 'orderBy': orderBy,
       };
 
+  @override
   String get type => 'Last';
 }

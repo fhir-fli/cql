@@ -19,8 +19,12 @@ class DateExpression extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'year': year,
-        'month': month,
-        'day': day,
+        'type': type,
+        'year': year.toJson(),
+        if (month != null) 'month': month!.toJson(),
+        if (month != null && day != null) 'day': day!.toJson(),
       };
+
+  @override
+  String get type => 'Date';
 }

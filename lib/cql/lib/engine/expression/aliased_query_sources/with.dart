@@ -34,5 +34,6 @@ class With extends RelationshipClause {
   String toString() => 'With(alias: $alias, expression: $expression, '
       'suchThat: $suchThat)';
 
+  @override
   String get type => 'With';
 }

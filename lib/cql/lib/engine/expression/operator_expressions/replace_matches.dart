@@ -17,6 +17,10 @@ class ReplaceMatches extends TernaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operands': operands.map((e) => e.toJson()).toList(),
       };
+
+  @override
+  String get type => 'ReplaceMatches';
 }

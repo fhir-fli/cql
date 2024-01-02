@@ -12,7 +12,5 @@ class ConvertsToDateTime extends UnaryExpression {
       ConvertsToDateTime(operand: Expression.fromJson(json['operand']!));
 
   @override
-  Map<String, dynamic> toJson() => {
-        'operand': operand,
-      };
+  String get type => 'ConvertsToDateTime';
 }

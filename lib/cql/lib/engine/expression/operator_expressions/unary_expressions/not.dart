@@ -8,7 +8,5 @@ class Not extends UnaryExpression {
       Not(operand: Expression.fromJson(json['operand']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        'operand': operand.toJson(),
-      };
+  String get type => 'Not';
 }
