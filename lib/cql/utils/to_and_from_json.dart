@@ -14,9 +14,15 @@ Future<void> main() async {
         final pathExpression = jsonDecode(await file.readAsString());
         if (pathExpression['library'] != null) {
           final library = Library.fromJson(pathExpression['library']);
-          // final newFileString = jsonPrettyPrint({'library': library.toJson()});
-          // await File(file.path.replaceAll('.json', '_2.json'))
-          //     .writeAsString(newFileString);
+          try {
+            final newFileString =
+                jsonPrettyPrint({'library': library.toJson()});
+            await File(file.path.replaceAll('.json', '_2.json'))
+                .writeAsString(newFileString);
+          } catch (e, s) {
+            print(e);
+            print(s);
+          }
         }
       }
     }

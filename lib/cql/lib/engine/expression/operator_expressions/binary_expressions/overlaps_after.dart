@@ -23,7 +23,7 @@ class OverlapsAfter extends BinaryExpression {
   Map<String, dynamic> toJson() => {
         'type': type,
         if (precision != null) 'precision': precision!.toJson(),
-        'operand': operand.map((e) => e.toJson()).toList(),
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
 
   String get type => 'OverlapsAfter';

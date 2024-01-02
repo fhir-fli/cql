@@ -6,19 +6,11 @@ import '../../../../cql.dart';
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class MeetsBefore extends BinaryExpression {
-  final Expression left;
   final DateTimePrecision? precision;
-  final Expression right;
 
-  MeetsBefore(
-      {required this.left,
-      required this.right,
-      this.precision,
-      required super.operand});
+  MeetsBefore({this.precision, required super.operand});
 
   factory MeetsBefore.fromJson(Map<String, dynamic> json) => MeetsBefore(
-        left: json['left']!,
-        right: json['right']!,
         precision: json['precision'] == null
             ? null
             : DateTimePrecisionExtension.fromJson(json['precision']),
@@ -28,9 +20,10 @@ class MeetsBefore extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'left': left.toJson(),
-        'right': right.toJson(),
-        'precision': precision,
-        'operand': operand,
+        'type': type,
+        if (precision != null) 'precision': precision!.toJson(),
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
+
+  String get type => 'MeetsBefore';
 }

@@ -26,7 +26,7 @@ class CalculateAge extends UnaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        'precision': precision,
+        'precision': precision.toJson(),
         'operand': operand.toJson(),
       };
 

@@ -19,7 +19,10 @@ class In extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'precision': precision?.toJson(),
-        'operand': operand,
+        'type': type,
+        if (precision != null) 'precision': precision!.toJson(),
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
+
+  String get type => 'In';
 }

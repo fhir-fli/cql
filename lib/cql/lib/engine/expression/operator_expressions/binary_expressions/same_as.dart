@@ -23,10 +23,13 @@ class SameAs extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'precision': precision?.toJson(),
+        'type': type,
+        if (precision != null) 'precision': precision!.toJson(),
         'operand': operand.map((e) => e.toJson()).toList(),
       };
 
   @override
   String toString() => toJson().toString();
+
+  String get type => 'SameAs';
 }

@@ -6,7 +6,6 @@ export 'combine.dart';
 export 'date_expression.dart';
 export 'date_time_expression.dart';
 export 'descendents.dart';
-export 'exp_time.dart';
 export 'first.dart';
 export 'index_of.dart';
 export 'last_position_of.dart';

@@ -26,8 +26,8 @@ class CalculateAgeAt extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        'precision': precision,
-        'operand': operand,
+        'precision': precision.toJson(),
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
 
   @override

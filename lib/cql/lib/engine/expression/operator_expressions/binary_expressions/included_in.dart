@@ -22,7 +22,7 @@ class IncludedIn extends BinaryExpression {
   Map<String, dynamic> toJson() => {
         'type': type,
         if (precision != null) 'precision': precision!.toJson(),
-        'operand': operand,
+        'operand': operand.map((x) => x.toJson()).toList(),
       };
 
   @override

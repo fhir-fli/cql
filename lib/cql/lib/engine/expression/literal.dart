@@ -13,6 +13,12 @@ class Literal extends Expression {
     final String valueType = json['valueType'];
     LiteralType? value;
     switch (valueType) {
+      case 'Null':
+      case '{urn:hl7-org:elm-types:r1}Null':
+        value = json['value'] == null
+            ? null
+            : LiteralBoolean.fromJson(json['value']);
+        break;
       case '{urn:hl7-org:elm-types:r1}Boolean':
         value = json['value'] == null
             ? null
@@ -228,9 +234,9 @@ class Literal extends Expression {
   @override
   Map<String, dynamic> toJson() {
     return {
-      'type': type,
       'valueType': valueType.toJson(),
-      if (value != null) 'value': value?.toJson(),
+      if (value != null) 'value': value!.toJson(),
+      'type': type,
     };
   }
 

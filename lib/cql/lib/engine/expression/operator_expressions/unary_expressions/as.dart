@@ -16,15 +16,21 @@ class As extends UnaryExpression {
   factory As.fromJson(Map<String, dynamic> json) => As(
         operand: Expression.fromJson(json['operand']!),
       )
-        ..asTypeSpecifier = json['asTypeSpecifier']
-        ..asType = json['asType']
-        ..strict = json['strict'];
+        ..asTypeSpecifier = json['asTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(json['asTypeSpecifier'])
+        ..asType =
+            json['asType'] == null ? null : QName.fromFull(json['asType'])
+        ..strict = json['strict'] ?? false;
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operand': operand,
         'asTypeSpecifier': asTypeSpecifier,
         'asType': asType,
         'strict': strict,
       };
+
+  String get type => 'As';
 }

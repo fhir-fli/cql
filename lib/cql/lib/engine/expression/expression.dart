@@ -138,16 +138,16 @@ class Expression extends Element {
           return Expand.fromJson(json);
         case 'ExpandValueSet':
           return ExpandValueSet.fromJson(json);
-        case 'ExpDate':
-          return ExpDate.fromJson(json);
-        case 'ExpDateTime':
-          return ExpDateTime.fromJson(json);
+        case 'DateTime':
+          return DateTimeExpression.fromJson(json);
+        case 'Date':
+          return DateExpression.fromJson(json);
         case 'Expression':
           return Expression.fromJson(json);
         case 'ExpressionRef':
           return ExpressionRef.fromJson(json);
-        case 'ExpTime':
-          return ExpTime.fromJson(json);
+        case 'Time':
+          return TimeExpression.fromJson(json);
         case 'Filter':
           return Filter.fromJson(json);
         case 'First':
@@ -200,6 +200,8 @@ class Expression extends Element {
           return Is.fromJson(json);
         case 'IsFalse':
           return IsFalse.fromJson(json);
+        case 'Null':
+          return NullExpression.fromJson(json);
         case 'IsNull':
           return IsNull.fromJson(json);
         case 'IsTrue':

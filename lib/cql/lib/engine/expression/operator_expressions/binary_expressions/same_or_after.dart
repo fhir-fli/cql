@@ -22,7 +22,7 @@ class SameOrAfter extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        if (precision != null) 'precision': precision?.toJson(),
+        if (precision != null) 'precision': precision!.toJson(),
         'operand': operand.map((e) => e.toJson()).toList(),
       };
 

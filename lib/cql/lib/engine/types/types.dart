@@ -1,7 +1,7 @@
 import 'package:fhir/primitive_types/time.dart' as fhirtime;
 
 abstract class LiteralType {
-  Map<String, dynamic> toJson();
+  dynamic toJson();
 }
 
 class LiteralBoolean extends LiteralType {
@@ -27,11 +27,7 @@ class LiteralBoolean extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-    };
-  }
+  String toJson() => value.toString();
 }
 
 class LiteralCode extends LiteralType {
@@ -139,7 +135,6 @@ class LiteralValueSet extends LiteralVocabularyType {
   }
 
   @override
-  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = {'id': id};
     if (version != null) {
@@ -170,7 +165,6 @@ class LiteralCodeSystem extends LiteralVocabularyType {
     );
   }
 
-  @override
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = {'id': id};
@@ -204,11 +198,7 @@ class LiteralDate extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-    };
-  }
+  String toJson() => value;
 }
 
 class LiteralDateTime extends LiteralType {
@@ -233,11 +223,7 @@ class LiteralDateTime extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-    };
-  }
+  String toJson() => value;
 }
 
 class LiteralDecimal extends LiteralType {
@@ -270,11 +256,7 @@ class LiteralDecimal extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-    };
-  }
+  String toJson() => value.toString();
 }
 
 class LiteralInteger extends LiteralType {
@@ -307,11 +289,7 @@ class LiteralInteger extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-    };
-  }
+  String toJson() => value.toString();
 }
 
 class LiteralLong extends LiteralType {
@@ -344,11 +322,7 @@ class LiteralLong extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value.toString(),
-    };
-  }
+  String toJson() => value.toString();
 }
 
 class LiteralQuantity extends LiteralType {
@@ -416,11 +390,7 @@ class LiteralString extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-    };
-  }
+  String toJson() => value;
 }
 
 class LiteralTime extends LiteralType {
@@ -444,11 +414,7 @@ class LiteralTime extends LiteralType {
   }
 
   @override
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-    };
-  }
+  String toJson() => value;
 }
 
 abstract class LiteralIntervalType extends LiteralType {
@@ -500,7 +466,6 @@ class LiteralIntegerInterval extends LiteralIntervalType {
   }
 
   @override
-  @override
   Map<String, dynamic> toJson() {
     return {
       if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
@@ -531,7 +496,6 @@ class LiteralDecimalInterval extends LiteralIntervalType {
     );
   }
 
-  @override
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -564,7 +528,6 @@ class LiteralQuantityInterval extends LiteralIntervalType {
   }
 
   @override
-  @override
   Map<String, dynamic> toJson() {
     return {
       if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
@@ -595,7 +558,6 @@ class LiteralDateInterval extends LiteralIntervalType {
     );
   }
 
-  @override
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -628,7 +590,6 @@ class LiteralDateTimeInterval extends LiteralIntervalType {
   }
 
   @override
-  @override
   Map<String, dynamic> toJson() {
     return {
       if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
@@ -659,7 +620,6 @@ class LiteralTimeInterval extends LiteralIntervalType {
     );
   }
 
-  @override
   @override
   Map<String, dynamic> toJson() {
     return {

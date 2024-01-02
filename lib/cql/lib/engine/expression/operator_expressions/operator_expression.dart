@@ -246,12 +246,10 @@ abstract class OperatorExpression extends Expression {
         return Combine.fromJson(json);
       case 'Descendents':
         return Descendents.fromJson(json);
-      case 'ExpDateTime':
+      case 'DateTime':
         return DateTimeExpression.fromJson(json);
-      case 'ExpDate':
+      case 'Date':
         return DateExpression.fromJson(json);
-      case 'ExpTime':
-        return ExpTime.fromJson(json);
       case 'First':
         return First.fromJson(json);
       case 'IndexOf':

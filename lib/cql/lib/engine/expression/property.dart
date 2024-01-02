@@ -18,19 +18,21 @@ class Property extends Expression {
     this.scope,
   });
 
-  factory Property.fromJson(Map<String, dynamic> json) => Property(
-        path: json['path'],
-        source:
-            json['source'] != null ? Expression.fromJson(json['source']) : null,
-        scope: json['scope'],
-      );
+  factory Property.fromJson(Map<String, dynamic> json) {
+    return Property(
+      path: json['path'],
+      source:
+          json['source'] != null ? Expression.fromJson(json['source']) : null,
+      scope: json['scope'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'path': path,
         if (source != null) 'source': source!.toJson(),
         if (scope != null) 'scope': scope,
-        'type': type,
       };
 
   @override

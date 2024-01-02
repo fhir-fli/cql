@@ -1428,7 +1428,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       if (child is BooleanLiteralContext) {
         type = LiteralBoolean(value: visitBooleanLiteral(child));
       } else if (child is NullLiteralContext) {
-        return NullExpression();
+        return NullExpression(valueType: QName.empty());
       } else if (child is StringLiteralContext) {
         type = LiteralString(value: visitStringLiteral(child));
       } else if (child is NumberLiteralContext) {
