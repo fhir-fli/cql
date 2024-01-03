@@ -17,8 +17,8 @@ class DifferenceBetween extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': type,
         'precision': precision.toJson(),
+        'type': type,
         'operand': operand.map((x) => x.toJson()).toList(),
       };
 

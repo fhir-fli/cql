@@ -7,21 +7,27 @@ class With extends RelationshipClause {
     required super.alias,
     required super.expression,
     super.suchThat,
+    super.type,
   });
 
-  factory With.fromJson(Map<String, dynamic> json) => With(
-        alias: json['alias'],
-        expression: Expression.fromJson(json['expression']),
-        suchThat: json['suchThat'] == null
-            ? null
-            : Expression.fromJson(json['suchThat']),
-      );
+  factory With.fromJson(Map<String, dynamic> json) {
+    print('with from json');
+    return With(
+      alias: json['alias'],
+      expression: Expression.fromJson(json['expression']),
+      suchThat: json['suchThat'] == null
+          ? null
+          : Expression.fromJson(json['suchThat']),
+      type: json['type'] ?? '',
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
+    print('what to json');
     final map = {
       'alias': alias,
-      'type': type,
+      if (type != '') 'type': type,
       'expression': expression.toJson(),
     };
     if (suchThat != null) {
@@ -33,7 +39,4 @@ class With extends RelationshipClause {
   @override
   String toString() => 'With(alias: $alias, expression: $expression, '
       'suchThat: $suchThat)';
-
-  @override
-  String get type => 'With';
 }

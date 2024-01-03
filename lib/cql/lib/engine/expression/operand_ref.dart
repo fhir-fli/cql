@@ -13,8 +13,8 @@ class OperandRef extends Expression {
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': type,
         'name': name,
+        'type': type,
       };
 
   @override

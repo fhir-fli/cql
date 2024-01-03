@@ -4,11 +4,14 @@ import '../../../cql.dart';
 /// Note that the elements referenced by the relationship clause can only be accessed within the suchThat condition, and that elements of the related source are not included in the query scope.
 class RelationshipClause extends AliasedQuerySource {
   final Expression? suchThat;
+  @override
+  final String type;
 
   RelationshipClause({
     required super.alias,
     required super.expression,
     this.suchThat,
+    this.type = '',
   });
 
   factory RelationshipClause.fromJson(Map<String, dynamic> json) =>
@@ -18,24 +21,17 @@ class RelationshipClause extends AliasedQuerySource {
         suchThat: json['suchThat'] == null
             ? null
             : Expression.fromJson(json['suchThat']),
+        type: json['type'] ?? '',
       );
 
   @override
-  Map<String, dynamic> toJson() {
-    final map = {
-      'type': type,
-      'alias': alias,
-      'expression': expression.toJson(),
-    };
-    if (suchThat != null) {
-      map['suchThat'] = suchThat!.toJson();
-    }
-    return map;
-  }
+  Map<String, dynamic> toJson() => {
+        'alias': alias,
+        if (type != '') 'type': type,
+        'expression': expression.toJson(),
+        if (suchThat != null) 'suchThat': suchThat!.toJson(),
+      };
 
   @override
   String toString() => toJson().toString();
-
-  @override
-  String get type => 'RelationshipClause';
 }

@@ -21,5 +21,11 @@ class CodeSystemRef extends Ref {
   }
 
   @override
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        if (libraryName != null) 'libraryName': libraryName,
+      };
+
+  @override
   String get type => 'CodeSystemRef';
 }

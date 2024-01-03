@@ -7,6 +7,7 @@ class FunctionDef extends ExpressionDef {
   bool? external;
 
   bool? fluent;
+
   /// List of operand definitions.
   List<OperandDef>? operand;
 

@@ -7,6 +7,7 @@ class Without extends RelationshipClause {
     required super.alias,
     required super.expression,
     super.suchThat,
+    super.type,
   });
 
   factory Without.fromJson(Map<String, dynamic> json) => Without(
@@ -15,12 +16,13 @@ class Without extends RelationshipClause {
         suchThat: json['suchThat'] == null
             ? null
             : Expression.fromJson(json['suchThat']),
+        type: json['type'] ?? '',
       );
 
   @override
   Map<String, dynamic> toJson() {
     final map = {
-      'type': type,
+      if (type != '') 'type': type,
       'alias': alias,
       'expression': expression.toJson(),
     };
@@ -33,7 +35,4 @@ class Without extends RelationshipClause {
   @override
   String toString() => 'Without(alias: $alias, expression: $expression, '
       'suchThat: $suchThat)';
-
-  @override
-  String get type => 'Without';
 }

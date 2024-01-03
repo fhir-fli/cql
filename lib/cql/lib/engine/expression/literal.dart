@@ -234,9 +234,9 @@ class Literal extends Expression {
   @override
   Map<String, dynamic> toJson() {
     return {
-      'type': type,
       'valueType': valueType.toJson(),
       if (value != null) 'value': value!.toJson(),
+      'type': type,
     };
   }
 

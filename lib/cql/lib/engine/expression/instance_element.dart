@@ -19,11 +19,12 @@ class InstanceElement {
         value: Expression.fromJson(json['value']),
       );
 
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'name': name,
-        'value': value.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'value': value.toJson(),
+    };
+  }
 
   @override
   String toString() => toJson().toString();

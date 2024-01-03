@@ -5,28 +5,29 @@ import '../../cql.dart';
 /// valid UCUM unit.
 class Quantity extends Expression {
   final String unit;
-  final double value;
+  final num value;
 
   Quantity({required this.value, required this.unit});
 
   factory Quantity.fromJson(Map<String, dynamic> json) => Quantity(
         value: json['value'] is String
-            ? double.parse(json['value'])
+            ? num.parse(json['value'])
             : json['value'] is num
-                ? (json['value'] as num).toDouble()
+                ? json['value']
                 : throw ArgumentError('Quantity value must be a number'),
         unit: json['unit']!,
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': type,
         'value': value,
         'unit': unit,
+        'type': type,
       };
 
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'Quantity';
 }

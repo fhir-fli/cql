@@ -130,11 +130,11 @@ class Library extends Element {
     writeNotNull('schemaIdentifier', schemaIdentifier?.toJson());
     writeNotNull('usings', usings?.toJson());
     writeNotNull('includes', includes?.toJson());
+    writeNotNull('parameters', parameters?.toJson());
     writeNotNull('codeSystems', codeSystems?.toJson());
     writeNotNull('valueSets', valueSets?.toJson());
     writeNotNull('codes', codes?.toJson());
     writeNotNull('concepts', concepts?.toJson());
-    writeNotNull('parameters', parameters?.toJson());
     writeNotNull('contexts', contexts?.toJson());
     writeNotNull('statements', statements?.toJson());
     return val;
