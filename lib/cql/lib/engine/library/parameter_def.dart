@@ -17,14 +17,14 @@ class ParameterDefs {
 
 /// Definition of a parameter that can be referenced by name within an expression.
 class ParameterDef extends Element {
+  /// Name of the parameter.
+  String name;
+
   /// Access level, defaults to Public.
   AccessModifier accessLevel;
 
   /// Default value expression for the parameter.
   Expression? defaultExpression;
-
-  /// Name of the parameter.
-  String name;
 
   /// Qualified name of the parameter type, optional.
   QName? parameterType;
@@ -35,9 +35,9 @@ class ParameterDef extends Element {
   ParameterDef({
     required this.name,
     this.accessLevel = AccessModifier.public,
+    this.parameterType,
     this.defaultExpression,
     this.parameterTypeSpecifier,
-    this.parameterType,
   });
 
   factory ParameterDef.fromJson(Map<String, dynamic> json) => ParameterDef(
@@ -77,13 +77,14 @@ class ParameterDef extends Element {
       }
     }
 
+    val['name'] = name;
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
     writeNotNull('resultTypeName', resultTypeName);
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
-    val['name'] = name;
-    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+
     writeNotNull('default', defaultExpression?.toJson());
     writeNotNull('parameterType', parameterType?.toJson());
     writeNotNull('parameterTypeSpecifier', parameterTypeSpecifier?.toJson());

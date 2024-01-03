@@ -18,18 +18,18 @@ class ConceptDefs {
 /// The ConceptDef type defines a concept identifier that can then be used to
 /// reference single concepts anywhere within an expression.
 class ConceptDef extends Element {
+  /// The name of the concept used for reference.
+  String name;
+
+  /// An optional display string used to describe the concept.
+  String? display;
+
   /// Specifies the access level; default is Public.
   AccessModifier accessLevel;
 
   /// A code that makes up the concept. All codes within a given concept must
   /// be synonyms.
   List<CodeRef> code;
-
-  /// An optional display string used to describe the concept.
-  String? display;
-
-  /// The name of the concept used for reference.
-  String name;
 
   ConceptDef({
     required this.name,
@@ -69,15 +69,15 @@ class ConceptDef extends Element {
       }
     }
 
+    val['name'] = name;
+    writeNotNull('display', display);
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+    val['code'] = code.map((e) => e.toJson()).toList();
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     writeNotNull('resultTypeName', resultTypeName);
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
-    val['name'] = name;
-    writeNotNull('display', display);
-    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
-    val['code'] = code.map((e) => e.toJson()).toList();
     return val;
   }
 

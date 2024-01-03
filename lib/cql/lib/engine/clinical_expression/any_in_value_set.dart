@@ -11,24 +11,33 @@ import '../../cql.dart';
 /// the target environment as a service call to a terminology server, if desired.
 class AnyInValueSet extends OperatorExpression {
   final Expression codes;
-  final ValueSetRef valueset;
+  final ValueSetRef? valueset;
+  final Expression? valuesetExpression;
 
-  AnyInValueSet({required this.codes, required this.valueset});
+  AnyInValueSet({required this.codes, this.valueset, this.valuesetExpression});
 
   factory AnyInValueSet.fromJson(Map<String, dynamic> json) => AnyInValueSet(
         codes: Expression.fromJson(json['codes']!),
-        valueset: ValueSetRef.fromJson(json['valueset']!),
+        valueset: json['valueset'] == null
+            ? null
+            : ValueSetRef.fromJson(json['valueset']!),
+        valuesetExpression: json['valuesetExpression'] == null
+            ? null
+            : Expression.fromJson(json['valuesetExpression']!),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
         'codes': codes.toJson(),
-        'valueset': valueset.toJson(),
+        if (valueset != null) 'valueset': valueset!.toJson(),
+        if (valuesetExpression != null)
+          'valuesetExpression': valuesetExpression!.toJson(),
       };
 
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'AnyInValueSet';
 }

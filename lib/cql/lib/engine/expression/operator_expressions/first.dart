@@ -4,7 +4,7 @@ import '../../../cql.dart';
 /// If the order by attribute is specified, the list is sorted by that ordering prior to returning the first element.
 /// If the argument is null, the result is null.
 class First extends OperatorExpression {
-  final String orderBy;
+  final String? orderBy;
   final Expression source;
 
   First({
@@ -14,7 +14,7 @@ class First extends OperatorExpression {
 
   factory First.fromJson(Map<String, dynamic> json) => First(
         source: Expression.fromJson(json['source']!),
-        orderBy: json['orderBy']!,
+        orderBy: json['orderBy'],
       );
 
   @override

@@ -9,18 +9,22 @@ class TimeExpression extends OperatorExpression {
   final Expression? minute;
   final Expression? second;
 
-  TimeExpression(
-    this.hour, {
+  TimeExpression({
+    required this.hour,
     this.minute,
     this.second,
     this.millisecond,
   });
 
   factory TimeExpression.fromJson(Map<String, dynamic> json) => TimeExpression(
-        json['hour'],
-        minute: json['minute'],
-        second: json['second'],
-        millisecond: json['millisecond'],
+        hour: Expression.fromJson(json['hour']),
+        minute:
+            json['minute'] == null ? null : Expression.fromJson(json['minute']),
+        second:
+            json['second'] == null ? null : Expression.fromJson(json['second']),
+        millisecond: json['millisecond'] == null
+            ? null
+            : Expression.fromJson(json['millisecond']),
       );
 
   @override

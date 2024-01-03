@@ -10,7 +10,7 @@ Future<void> main() async {
   for (final file in librariesAndDefinitionsFiles) {
     if (file is File) {
       print(file.path);
-      if (!file.path.endsWith('_2.json')) {
+      if (!file.path.endsWith('_2.json') && !file.path.endsWith('dart')) {
         final pathExpression = jsonDecode(await file.readAsString());
         if (pathExpression['library'] != null) {
           final library = Library.fromJson(pathExpression['library']);

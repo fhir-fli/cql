@@ -10,7 +10,7 @@ class MinValue extends Expression {
   MinValue(this.valueType);
 
   factory MinValue.fromJson(Map<String, dynamic> json) => MinValue(
-        json['valueType']!,
+        QName.fromFull(json['valueType']!),
       );
 
   @override

@@ -10,6 +10,8 @@ abstract class SortByItem extends Element {
     switch (json['type']) {
       case 'ByColumn':
         return ByColumn.fromJson(json);
+      case 'ByDirection':
+        return ByDirection.fromJson(json);
       case 'ByExpression':
         return ByExpression.fromJson(json);
       default:

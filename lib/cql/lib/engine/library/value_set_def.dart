@@ -1,19 +1,18 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'value_set_def.g.dart';
-
-@JsonSerializable()
 class ValueSetDefs {
   List<ValueSetDef> def = [];
 
   ValueSetDefs();
 
-  factory ValueSetDefs.fromJson(Map<String, dynamic> json) =>
-      _$ValueSetDefsFromJson(json);
+  factory ValueSetDefs.fromJson(Map<String, dynamic> json) => ValueSetDefs()
+    ..def = (json['def'] as List<dynamic>)
+        .map((e) => ValueSetDef.fromJson(e as Map<String, dynamic>))
+        .toList();
 
-  Map<String, dynamic> toJson() => _$ValueSetDefsToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'def': def.map((e) => e.toJson()).toList(),
+      };
 }
 
 /// The ValueSetDef type defines a value set identifier that can be referenced
@@ -34,10 +33,18 @@ class ValueSetDefs {
 /// code system used. The codeSystemVersions attribute is provided only to
 /// ensure static binding can be achieved when the value set definition does
 /// not specify code system versions as part of the definition header.
-@JsonSerializable()
 class ValueSetDef extends Element {
+  /// The name of the value set.
+  String? name;
+
+  /// The unique identifier of the value set to be retrieved.
+  String? id;
+
   /// Specifies the access level; default is Public.
   AccessModifier accessLevel;
+
+  /// The version of the value set to be retrieved. If no version is provided, the most current published version of the value set is assumed.
+  String? version;
 
   /// The code system that should be used to construct the expansion set. Note
   /// that the recommended approach to statically binding to an expansion set
@@ -47,25 +54,61 @@ class ValueSetDef extends Element {
   /// code system versions as part of the definition header.
   List<CodeSystemRef>? codeSystem;
 
-  /// The unique identifier of the value set to be retrieved.
-  String? id;
+  ValueSetDef({
+    this.name,
+    this.id,
+    this.accessLevel = AccessModifier.public,
+    this.version,
+    this.codeSystem,
+  });
 
-  /// The name of the value set.
-  String? name;
-
-  /// The version of the value set to be retrieved. If no version is provided, the most current published version of the value set is assumed.
-  String? version;
-
-  ValueSetDef(
-      {this.codeSystem,
-      this.name,
-      this.id,
-      this.version,
-      this.accessLevel = AccessModifier.public});
-
-  factory ValueSetDef.fromJson(Map<String, dynamic> json) =>
-      _$ValueSetDefFromJson(json);
+  factory ValueSetDef.fromJson(Map<String, dynamic> json) => ValueSetDef(
+        name: json['name'] as String?,
+        id: json['id'] as String?,
+        accessLevel: json['accessLevel'] == 'Private'
+            ? AccessModifier.private
+            : AccessModifier.public,
+        version: json['version'] as String?,
+        codeSystem: (json['codeSystem'] as List<dynamic>?)
+            ?.map((e) => CodeSystemRef.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      )
+        ..annotation = (json['annotation'] as List<dynamic>?)
+            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
+            .toList()
+        ..localId = json['localId'] as String?
+        ..locator = json['locator'] as String?
+        ..resultTypeName = json['resultTypeName'] as String?
+        ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>);
 
   @override
-  Map<String, dynamic> toJson() => _$ValueSetDefToJson(this);
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('name', name);
+    writeNotNull('id', id);
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+    writeNotNull('version', version);
+    writeNotNull('codeSystem', codeSystem?.map((e) => e.toJson()).toList());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
+
+  static const _$AccessModifierEnumMap = {
+    AccessModifier.public: 'Public',
+    AccessModifier.private: 'Private',
+  };
 }

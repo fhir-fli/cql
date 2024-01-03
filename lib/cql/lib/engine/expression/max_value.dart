@@ -10,7 +10,7 @@ class MaxValue extends Expression {
   MaxValue(this.valueType);
 
   factory MaxValue.fromJson(Map<String, dynamic> json) => MaxValue(
-        json['valueType']!,
+        QName.fromFull(json['valueType']!),
       );
 
   @override
