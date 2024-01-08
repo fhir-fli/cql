@@ -30,9 +30,9 @@ class Property extends Expression {
   @override
   Map<String, dynamic> toJson() => {
         'path': path,
-        if (source != null) 'source': source!.toJson(),
         if (scope != null) 'scope': scope,
         'type': type,
+        if (source != null) 'source': source!.toJson(),
       };
 
   @override

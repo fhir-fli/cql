@@ -51,11 +51,10 @@ class OperandDef extends Element {
 
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
+    final data = <String, dynamic>{'name': name};
     if (operandTypeSpecifier != null) {
       data['operandTypeSpecifier'] = operandTypeSpecifier!.toJson();
     }
-    data['name'] = name;
     if (operandType != null) {
       data['operandType'] = operandType!.toJson();
     }

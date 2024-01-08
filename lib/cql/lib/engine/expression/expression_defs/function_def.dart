@@ -11,10 +11,27 @@ class FunctionDef extends ExpressionDef {
   /// List of operand definitions.
   List<OperandDef>? operand;
 
-  FunctionDef({this.operand, this.external}) : super(name: 'FunctionDef');
+  FunctionDef({
+    String? name,
+    super.context,
+    super.accessLevel,
+    super.expression,
+    this.operand,
+    this.external,
+  }) : super(name: name ?? type);
 
   factory FunctionDef.fromJson(Map<String, dynamic> json) {
     return FunctionDef(
+      name: json['name'] as String?,
+      context: json['context'] as String?,
+      accessLevel: json['accessLevel'] == 'Private'
+          ? AccessModifier.private
+          : json['accessLevel'] == 'Public'
+              ? AccessModifier.public
+              : null,
+      expression: json['expression'] != null
+          ? Expression.fromJson(json['expression'])
+          : null,
       operand: json['operand'] != null
           ? (json['operand'] as List)
               .map((i) => OperandDef.fromJson(i))
@@ -27,12 +44,30 @@ class FunctionDef extends ExpressionDef {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    if (operand != null) {
-      data['operand'] = operand!.map((v) => v.toJson()).toList();
+    data['name'] = name;
+    if (context != null) {
+      data['context'] = context;
     }
+    if (accessLevel != null) {
+      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
+    }
+    data['type'] = type;
     if (external != null) {
       data['external'] = external;
     }
+    if (expression != null) {
+      data['expression'] = expression!.toJson();
+    }
+    if (operand != null) {
+      data['operand'] = operand!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
+
+  static String get type => 'FunctionDef';
+
+  static const _$AccessModifierEnumMap = {
+    AccessModifier.public: 'Public',
+    AccessModifier.private: 'Private',
+  };
 }

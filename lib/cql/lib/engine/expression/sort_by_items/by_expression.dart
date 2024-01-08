@@ -17,8 +17,8 @@ class ByExpression extends SortByItem {
 
   @override
   Map<String, dynamic> toJson() => {
-        'type': type,
         'direction': direction.toJson(),
+        'type': type,
         'expression': expression.toJson(),
       };
 

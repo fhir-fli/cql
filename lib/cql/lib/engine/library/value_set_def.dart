@@ -96,8 +96,8 @@ class ValueSetDef extends Element {
 
     writeNotNull('name', name);
     writeNotNull('id', id);
-    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
     writeNotNull('version', version);
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
     writeNotNull('codeSystem', codeSystem?.map((e) => e.toJson()).toList());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);

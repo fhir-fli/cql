@@ -14,6 +14,10 @@ class ToList extends UnaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        'type': type,
         'operand': operand.toJson(),
       };
+
+  @override
+  String get type => 'ToList';
 }

@@ -29,13 +29,23 @@ class InValueSet extends OperatorExpression {
   }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'code': code.toJson(),
-        if (valueset != null) 'valueset': valueset!.toJson(),
-        if (valuesetExpression != null)
-          'valuesetExpression': valuesetExpression!.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = <String, dynamic>{
+      'type': type,
+      'code': code.toJson(),
+      if (valueset != null) 'valueset': valueset!.toJson(),
+    };
+    if (valueset != null) {
+      final valueSet = valueset!.toJson();
+      valueSet.remove('type');
+      json['valueset'] = valueSet;
+    }
+    if (valuesetExpression != null) {
+      json['valuesetExpression'] = valuesetExpression!.toJson();
+    }
+
+    return json;
+  }
 
   @override
   String toString() => toJson().toString();

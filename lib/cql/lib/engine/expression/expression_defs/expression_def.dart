@@ -1,5 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../../cql.dart';
 
 class ExpressionDefs {
@@ -57,15 +55,22 @@ class ExpressionDef extends Element {
       );
 
   factory ExpressionDef.fromJson(Map<String, dynamic> json) {
-    return ExpressionDef(
-      name: json['name'] as String,
-      context: json['context'] as String?,
-      accessLevel:
-          $enumDecodeNullable(_$AccessModifierEnumMap, json['accessLevel']),
-      expression: json['expression'] != null
-          ? Expression.fromJson(json['expression'])
-          : null,
-    );
+    if (json['type'] == 'FunctionDef') {
+      return FunctionDef.fromJson(json);
+    } else {
+      return ExpressionDef(
+        name: json['name'] as String,
+        context: json['context'] as String?,
+        accessLevel: json['accessLevel'] == 'Private'
+            ? AccessModifier.private
+            : json['accessLevel'] == 'Public'
+                ? AccessModifier.public
+                : null,
+        expression: json['expression'] != null
+            ? Expression.fromJson(json['expression'])
+            : null,
+      );
+    }
   }
 
   factory ExpressionDef.private({
@@ -107,9 +112,9 @@ class ExpressionDef extends Element {
     }
     return data;
   }
-}
 
-const _$AccessModifierEnumMap = {
-  AccessModifier.public: 'Public',
-  AccessModifier.private: 'Private',
-};
+  static const _$AccessModifierEnumMap = {
+    AccessModifier.public: 'Public',
+    AccessModifier.private: 'Private',
+  };
+}

@@ -20,11 +20,11 @@ class Is extends UnaryExpression {
 
   @override
   Map<String, dynamic> toJson() => {
+        if (isType != null) 'isType': isType!.toJson(),
         'type': type,
         'operand': operand.toJson(),
         if (isTypeSpecifier != null)
           'toTypeSpecifier': isTypeSpecifier!.toJson(),
-        if (isType != null) 'toType': isType!.toJson(),
       };
 
   @override
