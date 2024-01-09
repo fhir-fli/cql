@@ -218,7 +218,7 @@ class Expression extends Element {
           return Less.fromJson(json);
         case 'LessOrEqual':
           return LessOrEqual.fromJson(json);
-        case 'ListExpression':
+        case 'List':
           return ListExpression.fromJson(json);
         case 'ListTypeSpecifier':
           return ListTypeSpecifier.fromJson(json);

@@ -10,20 +10,22 @@ class ListExpression extends Expression {
 
   ListExpression({this.typeSpecifier, this.element});
 
-  factory ListExpression.fromJson(Map<String, dynamic> json) => ListExpression(
-        typeSpecifier: json['typeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['typeSpecifier'])
-            : null,
-        element: json['element'] != null
-            ? List<Expression>.from(
-                json['element'].map((x) => Expression.fromJson(x)))
-            : null,
-      );
+  factory ListExpression.fromJson(Map<String, dynamic> json) {
+    return ListExpression(
+      typeSpecifier: json['typeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['typeSpecifier'])
+          : null,
+      element: json['element'] != null
+          ? List<Expression>.from(
+              json['element'].map((x) => Expression.fromJson(x)))
+          : null,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        'typeSpecifier': typeSpecifier?.toJson(),
+        if (typeSpecifier != null) 'typeSpecifier': typeSpecifier!.toJson(),
         'element': element != null
             ? List<dynamic>.from(element!.map((x) => x.toJson()))
             : null,

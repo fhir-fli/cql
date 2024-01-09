@@ -19,7 +19,6 @@ class Collapse extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() => {
         'type': type,
-        'isList': isList,
         'operand': operand.map((x) => x.toJson()).toList(),
       };
 
