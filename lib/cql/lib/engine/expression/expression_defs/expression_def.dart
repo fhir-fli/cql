@@ -1,6 +1,6 @@
 import '../../../cql.dart';
 
-class ExpressionDefs {
+class ExpressionDefs extends Expression {
   List<ExpressionDef> def = <ExpressionDef>[];
 
   ExpressionDefs();
@@ -12,6 +12,7 @@ class ExpressionDefs {
           : <ExpressionDef>[];
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (def.isNotEmpty) {

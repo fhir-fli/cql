@@ -3,28 +3,33 @@ import '../../cql.dart';
 /// Represents the CqlToElmInfo type
 class CqlToElmInfo extends CqlToElmBase {
   /// translatorOptions attribute
-  String translatorOptions;
+  String? translatorOptions;
 
   /// translatorVersion attribute
-  String translatorVersion;
+  String? translatorVersion;
+
+  String? signatureLevel;
 
   CqlToElmInfo({
     this.translatorVersion = '2.11.0', //'0.0.0-dev1
-    this.translatorOptions = '',
+    this.translatorOptions,
+    this.signatureLevel,
   });
 
   factory CqlToElmInfo.fromJson(Map<String, dynamic> json) {
     return CqlToElmInfo(
       translatorVersion: json['translatorVersion'],
       translatorOptions: json['translatorOptions'],
+      signatureLevel: json['signatureLevel'],
     );
   }
 
   @override
   Map<String, dynamic> toJson() => {
-        'translatorVersion': translatorVersion,
-        'translatorOptions': translatorOptions,
+        if (translatorOptions != null) 'translatorOptions': translatorOptions,
         'type': type,
+        if (translatorVersion != null) 'translatorVersion': translatorVersion,
+        if (signatureLevel != null) 'signatureLevel': signatureLevel,
       };
 
   String get type => 'CqlToElmInfo';

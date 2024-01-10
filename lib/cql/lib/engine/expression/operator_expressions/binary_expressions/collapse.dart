@@ -11,9 +11,14 @@ class Collapse extends BinaryExpression {
   Collapse({required super.operand, super.isList = true});
 
   factory Collapse.fromJson(Map<String, dynamic> json) {
-    return Collapse(
-        operand: List<Expression>.from(
-            json['operand'].map((x) => Expression.fromJson(x))));
+    List<Expression> operand = [];
+    if (json['operand'] is List) {
+      operand = List<Expression>.from(
+          json['operand'].map((x) => Expression.fromJson(x)));
+    } else if (json['operand'] is Map) {
+      operand = [Expression.fromJson(json['operand'])];
+    }
+    return Collapse(operand: operand);
   }
 
   @override

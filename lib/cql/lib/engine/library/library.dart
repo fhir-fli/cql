@@ -47,6 +47,7 @@ class Library extends Element {
     this.contexts,
     this.concepts,
     this.statements,
+    List<CqlToElmBase>? annotation,
   })  : schemaIdentifier = schemaIdentifier ??
             VersionedIdentifier(
               id: 'urn:hl7-org:elm',
@@ -58,9 +59,10 @@ class Library extends Element {
                 UsingDef(
                     localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
               ]),
-        super(annotation: [CqlToElmInfo()]);
+        super(annotation: annotation ?? [CqlToElmInfo()]);
 
-  factory Library.fromJson(Map<String, dynamic> json) => Library(
+  factory Library.fromJson(Map<String, dynamic> json) {
+    return Library(
         identifier: json['identifier'] == null
             ? null
             : VersionedIdentifier.fromJson(
@@ -99,17 +101,17 @@ class Library extends Element {
             ? null
             : ExpressionDefs.fromJson(
                 json['statements'] as Map<String, dynamic>),
-      )
-        ..annotation = (json['annotation'] as List<dynamic>?)
+        annotation: (json['annotation'] as List<dynamic>?)
             ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
-            .toList()
-        ..localId = json['localId'] as String?
-        ..locator = json['locator'] as String?
-        ..resultTypeName = json['resultTypeName'] as String?
-        ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
-            ? null
-            : TypeSpecifier.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>);
+            .toList())
+      ..localId = json['localId'] as String?
+      ..locator = json['locator'] as String?
+      ..resultTypeName = json['resultTypeName'] as String?
+      ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+          ? null
+          : TypeSpecifier.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>);
+  }
 
   @override
   Map<String, dynamic> toJson() {

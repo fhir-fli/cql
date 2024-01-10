@@ -329,5 +329,6 @@ class Retrieve extends Expression {
   @override
   String toString() => jsonEncode(toJson());
 
+  @override
   String get type => 'Retrieve';
 }

@@ -22,8 +22,8 @@ class Convert extends UnaryExpression {
   Convert({this.toTypeSpecifier, this.toType, required super.operand});
 
   factory Convert.fromJson(Map<String, dynamic> json) => Convert(
-      toTypeSpecifier: json['toTypeSpecifier'],
-      toType: json['toType'],
+      toTypeSpecifier: TypeSpecifier.fromJson(json['toTypeSpecifier']),
+      toType: QName.fromFull(json['toType']),
       operand: Expression.fromJson(json['operand']!));
 
   @override

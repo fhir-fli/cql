@@ -11,18 +11,19 @@ Future<void> main() async {
     if (file is File) {
       print(file.path);
       if (!file.path.endsWith('_2.json') && !file.path.endsWith('dart')) {
-        final pathExpression = jsonDecode(await file.readAsString());
-        if (pathExpression['library'] != null) {
-          final library = Library.fromJson(pathExpression['library']);
-          try {
+        try {
+          final pathExpression = jsonDecode(await file.readAsString());
+          if (pathExpression['library'] != null) {
+            final library = Library.fromJson(pathExpression['library']);
+
             final newFileString =
                 jsonPrettyPrint({'library': library.toJson()});
             await File(file.path.replaceAll('.json', '_2.json'))
                 .writeAsString(newFileString);
-          } catch (e, s) {
-            print(e);
-            print(s);
           }
+        } catch (e, s) {
+          print(e);
+          print(s);
         }
       }
     }
