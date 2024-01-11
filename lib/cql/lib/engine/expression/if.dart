@@ -11,7 +11,16 @@ class If extends Expression {
   /// Then expression.
   Expression then;
 
-  If({required this.condition, required this.then, required this.elseExpr});
+  If({
+    required this.condition,
+    required this.then,
+    required this.elseExpr,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory If.fromJson(Map<String, dynamic> json) => If(
         condition: Expression.fromJson(json['condition']!),

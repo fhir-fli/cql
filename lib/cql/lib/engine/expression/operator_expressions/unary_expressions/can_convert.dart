@@ -16,7 +16,16 @@ class CanConvert extends UnaryExpression {
   /// Type specifier for the target type.
   TypeSpecifier? toTypeSpecifier;
 
-  CanConvert({this.toTypeSpecifier, this.toType, required super.operand});
+  CanConvert({
+    this.toTypeSpecifier,
+    this.toType,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory CanConvert.fromJson(Map<String, dynamic> json) => CanConvert(
         operand: Expression.fromJson(json['operand']!),

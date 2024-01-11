@@ -14,6 +14,11 @@ class Slice extends OperatorExpression {
     required this.source,
     required this.startIndex,
     required this.endIndex,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Slice.fromJson(Map<String, dynamic> json) => Slice(

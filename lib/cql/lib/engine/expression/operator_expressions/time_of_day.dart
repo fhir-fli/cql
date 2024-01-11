@@ -2,7 +2,13 @@ import '../../../cql.dart';
 
 /// Operator to return the time-of-day of the start timestamp associated with the evaluation request.
 class TimeOfDay extends OperatorExpression {
-  TimeOfDay();
+  TimeOfDay({
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory TimeOfDay.fromJson(Map<String, dynamic> json) => TimeOfDay();
 

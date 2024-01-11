@@ -8,7 +8,15 @@ class CaseItem extends Element {
   /// Condition to evaluate.
   final Expression when_;
 
-  CaseItem({required this.when_, required this.then});
+  CaseItem({
+    required this.when_,
+    required this.then,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory CaseItem.fromJson(Map<String, dynamic> json) => CaseItem(
         when_: Expression.fromJson(json['when']!),

@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 /// If the result of the modulo cannot be represented, or the right argument is 0, the result is null.
 class Modulo extends BinaryExpression {
-  Modulo({required super.operand});
+  Modulo({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Modulo.fromJson(Map<String, dynamic> json) => Modulo(
         operand: List<Expression>.from(

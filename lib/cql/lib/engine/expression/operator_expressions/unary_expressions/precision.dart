@@ -4,7 +4,14 @@ import '../../../../cql.dart';
 /// The operator can be used with Decimal, Date, DateTime, and Time values.
 /// If the argument is null, the result is null.
 class Precision extends UnaryExpression {
-  Precision({required super.operand});
+  Precision({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Precision.fromJson(Map<String, dynamic> json) => Precision(
         operand: Expression.fromJson(json['operand']),

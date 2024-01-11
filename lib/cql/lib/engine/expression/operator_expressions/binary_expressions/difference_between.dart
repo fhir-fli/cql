@@ -7,7 +7,15 @@ import '../../../../cql.dart';
 class DifferenceBetween extends BinaryExpression {
   final DateTimePrecision precision;
 
-  DifferenceBetween({required this.precision, required super.operand});
+  DifferenceBetween({
+    required this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory DifferenceBetween.fromJson(Map<String, dynamic> json) =>
       DifferenceBetween(

@@ -240,6 +240,11 @@ class Retrieve extends Expression {
     this.dateHighProperty,
     this.dateSearch,
     this.includedIn,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Retrieve.fromJson(Map<String, dynamic> json) {

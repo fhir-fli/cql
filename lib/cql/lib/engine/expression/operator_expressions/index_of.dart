@@ -11,6 +11,11 @@ class IndexOf extends OperatorExpression {
   IndexOf({
     required this.source,
     required this.element,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory IndexOf.fromJson(Map<String, dynamic> json) => IndexOf(

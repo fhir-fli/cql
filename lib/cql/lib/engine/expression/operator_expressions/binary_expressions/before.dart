@@ -7,7 +7,15 @@ import '../../../../cql.dart';
 class Before extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  Before({this.precision, required super.operand});
+  Before({
+    this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Before.fromJson(Map<String, dynamic> json) => Before(
       precision: json['precision'] == null

@@ -8,12 +8,22 @@ class Substring extends OperatorExpression {
   final Expression startIndex;
   final Expression stringToSub;
 
-  Substring(this.stringToSub, this.startIndex, [this.length]);
+  Substring({
+    required this.stringToSub,
+    required this.startIndex,
+    this.length,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Substring.fromJson(Map<String, dynamic> json) => Substring(
-        Expression.fromJson(json['stringToSub']),
-        Expression.fromJson(json['startIndex']),
-        json['length'] != null ? Expression.fromJson(json['length']) : null,
+        stringToSub: Expression.fromJson(json['stringToSub']),
+        startIndex: Expression.fromJson(json['startIndex']),
+        length:
+            json['length'] != null ? Expression.fromJson(json['length']) : null,
       );
 
   @override

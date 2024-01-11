@@ -7,11 +7,19 @@ class LastPositionOf extends OperatorExpression {
   final Expression pattern;
   final Expression string;
 
-  LastPositionOf(this.pattern, this.string);
+  LastPositionOf({
+    required this.pattern,
+    required this.string,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory LastPositionOf.fromJson(Map<String, dynamic> json) => LastPositionOf(
-        Expression.fromJson(json['pattern']!),
-        Expression.fromJson(json['string']!),
+        pattern: Expression.fromJson(json['pattern']!),
+        string: Expression.fromJson(json['string']!),
       );
 
   @override

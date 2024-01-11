@@ -11,7 +11,14 @@ class As extends UnaryExpression {
   /// Determines if strict type checking should be enforced.
   bool strict = false;
 
-  As({required super.operand});
+  As({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory As.fromJson(Map<String, dynamic> json) => As(
         operand: Expression.fromJson(json['operand']!),

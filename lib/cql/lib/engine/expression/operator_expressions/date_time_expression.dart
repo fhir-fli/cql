@@ -24,6 +24,11 @@ class DateTimeExpression extends OperatorExpression {
     this.second,
     this.millisecond,
     this.timezoneOffset,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory DateTimeExpression.fromJson(Map<String, dynamic> json) =>

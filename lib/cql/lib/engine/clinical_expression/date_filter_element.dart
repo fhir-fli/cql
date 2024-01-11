@@ -66,6 +66,11 @@ class DateFilterElement extends Element {
     this.lowProperty,
     this.highProperty,
     this.search,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory DateFilterElement.fromJson(Map<String, dynamic> json) {

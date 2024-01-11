@@ -8,10 +8,14 @@ class With extends RelationshipClause {
     required super.expression,
     super.suchThat,
     super.type,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory With.fromJson(Map<String, dynamic> json) {
-    print('with from json');
     return With(
       alias: json['alias'],
       expression: Expression.fromJson(json['expression']),

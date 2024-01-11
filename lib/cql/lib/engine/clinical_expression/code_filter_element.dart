@@ -55,6 +55,11 @@ class CodeFilterElement extends Element {
     this.valueSetProperty,
     this.search,
     required this.comparator,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory CodeFilterElement.fromJson(Map<String, dynamic> json) =>

@@ -6,7 +6,14 @@ import '../../../../cql.dart';
 /// If the input string is not formatted correctly or cannot be interpreted as a valid Integer value, the result is false.
 /// If the argument is null, the result is null.
 class ConvertsToInteger extends UnaryExpression {
-  ConvertsToInteger({required super.operand});
+  ConvertsToInteger({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ConvertsToInteger.fromJson(Map<String, dynamic> json) =>
       ConvertsToInteger(operand: Expression.fromJson(json['operand']!));

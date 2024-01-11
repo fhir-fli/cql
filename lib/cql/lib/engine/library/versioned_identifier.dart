@@ -23,7 +23,26 @@ class VersionedIdentifier {
   VersionedIdentifier({this.id, this.system, this.version});
 
   factory VersionedIdentifier.fromJson(Map<String, dynamic> json) =>
-      _$VersionedIdentifierFromJson(json);
+      VersionedIdentifier(
+        id: json['id'] as String?,
+        system: json['system'] as String?,
+        version: json['version'] as String?,
+      );
 
-  Map<String, dynamic> toJson() => _$VersionedIdentifierToJson(this);
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{'type': type};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('id', id);
+    writeNotNull('system', system);
+    writeNotNull('version', version);
+    return val;
+  }
+
+  String get type => 'VersionedIdentifier';
 }

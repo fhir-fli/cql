@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// Instance element used within an Instance expression.
-class InstanceElement {
+class InstanceElement extends Element {
   /// Required name of the instance element.
   String name;
 
@@ -11,6 +11,11 @@ class InstanceElement {
   InstanceElement({
     required this.name,
     required this.value,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory InstanceElement.fromJson(Map<String, dynamic> json) =>
@@ -19,6 +24,7 @@ class InstanceElement {
         value: Expression.fromJson(json['value']),
       );
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'name': name,

@@ -7,11 +7,19 @@ class PositionOf extends OperatorExpression {
   final Expression pattern;
   final Expression string;
 
-  PositionOf(this.pattern, this.string);
+  PositionOf({
+    required this.pattern,
+    required this.string,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory PositionOf.fromJson(Map<String, dynamic> json) => PositionOf(
-        Expression.fromJson(json['pattern']),
-        Expression.fromJson(json['string']),
+        pattern: Expression.fromJson(json['pattern']),
+        string: Expression.fromJson(json['string']),
       );
 
   @override

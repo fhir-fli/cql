@@ -10,7 +10,14 @@ import '../../cql.dart';
 ///
 /// If either or both arguments are null, the result is null.
 class SubsumedBy extends BinaryExpression {
-  SubsumedBy({required super.operand});
+  SubsumedBy({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory SubsumedBy.fromJson(Map<String, dynamic> json) => SubsumedBy(
         operand: (json['operand']! as List)
@@ -27,5 +34,6 @@ class SubsumedBy extends BinaryExpression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'SubsumedBy';
 }

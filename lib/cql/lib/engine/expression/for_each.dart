@@ -13,6 +13,11 @@ class ForEach extends Expression {
     required this.source,
     required this.element,
     required this.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ForEach.fromJson(Map<String, dynamic> json) => ForEach(

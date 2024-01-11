@@ -2,6 +2,8 @@ import '../../cql.dart';
 
 /// Library represents a serialized library of CQL-Expression Logic Model.
 class Library extends Element {
+  String? type;
+
   /// The code systems defined within this library.
   CodeSystemDefs? codeSystems;
 
@@ -36,6 +38,7 @@ class Library extends Element {
   ValueSetDefs? valueSets;
 
   Library({
+    this.type,
     this.identifier,
     VersionedIdentifier? schemaIdentifier,
     UsingDefs? usings,
@@ -48,6 +51,10 @@ class Library extends Element {
     this.concepts,
     this.statements,
     List<CqlToElmBase>? annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   })  : schemaIdentifier = schemaIdentifier ??
             VersionedIdentifier(
               id: 'urn:hl7-org:elm',
@@ -63,6 +70,7 @@ class Library extends Element {
 
   factory Library.fromJson(Map<String, dynamic> json) {
     return Library(
+        type: json['type'] as String?,
         identifier: json['identifier'] == null
             ? null
             : VersionedIdentifier.fromJson(
@@ -123,11 +131,9 @@ class Library extends Element {
       }
     }
 
+    writeNotNull('type', type);
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
-    writeNotNull('resultTypeName', resultTypeName);
-    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
-    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('identifier', identifier?.toJson());
     writeNotNull('schemaIdentifier', schemaIdentifier?.toJson());
     writeNotNull('usings', usings?.toJson());
@@ -139,6 +145,9 @@ class Library extends Element {
     writeNotNull('concepts', concepts?.toJson());
     writeNotNull('contexts', contexts?.toJson());
     writeNotNull('statements', statements?.toJson());
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     return val;
   }
 }

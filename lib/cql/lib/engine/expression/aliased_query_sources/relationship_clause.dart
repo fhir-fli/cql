@@ -12,6 +12,11 @@ class RelationshipClause extends AliasedQuerySource {
     required super.expression,
     this.suchThat,
     this.type = '',
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory RelationshipClause.fromJson(Map<String, dynamic> json) =>

@@ -12,7 +12,14 @@ import '../../../../cql.dart';
 /// Ratio: <quantity>:<quantity>
 /// If the argument is null, the result is null.
 class ToString extends UnaryExpression {
-  ToString({required super.operand});
+  ToString({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToString.fromJson(Map<String, dynamic> json) => ToString(
         operand: Expression.fromJson(json['operand']),

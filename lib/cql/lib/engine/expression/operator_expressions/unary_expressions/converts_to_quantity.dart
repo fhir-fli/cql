@@ -10,7 +10,14 @@ import '../../../../cql.dart';
 /// For Integer, Decimal, and Ratio values, the operator simply returns true.
 /// If the argument is null, the result is null.
 class ConvertsToQuantity extends UnaryExpression {
-  ConvertsToQuantity({required super.operand});
+  ConvertsToQuantity({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ConvertsToQuantity.fromJson(Map<String, dynamic> json) =>
       ConvertsToQuantity(operand: Expression.fromJson(json['operand']!));

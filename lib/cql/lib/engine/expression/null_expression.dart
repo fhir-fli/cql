@@ -3,7 +3,15 @@ import '../../cql.dart';
 /// Null operator returning a null or missing information marker.
 class NullExpression extends Literal {
   final QName? resultType;
-  NullExpression({required super.valueType, this.resultType});
+  NullExpression({
+    required super.valueType,
+    this.resultType,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory NullExpression.fromJson(Map<String, dynamic> json) => NullExpression(
         valueType: json['valueType'] != null

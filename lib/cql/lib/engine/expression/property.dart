@@ -16,6 +16,11 @@ class Property extends Expression {
     required this.path,
     this.source,
     this.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Property.fromJson(Map<String, dynamic> json) {

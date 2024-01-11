@@ -1,20 +1,24 @@
 import '../../../cql.dart';
 
-class ExpressionDefs extends Expression {
+class ExpressionDefs {
+  String? type;
   List<ExpressionDef> def = <ExpressionDef>[];
 
   ExpressionDefs();
 
   factory ExpressionDefs.fromJson(Map<String, dynamic> json) {
     return ExpressionDefs()
+      ..type = json['type'] as String?
       ..def = json['def'] != null
           ? (json['def'] as List).map((i) => ExpressionDef.fromJson(i)).toList()
           : <ExpressionDef>[];
   }
 
-  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
+    if (type != null) {
+      data['type'] = type;
+    }
     if (def.isNotEmpty) {
       data['def'] = def.map((v) => v.toJson()).toList();
     }
@@ -25,6 +29,8 @@ class ExpressionDefs extends Expression {
 /// Expression definition with an associated name that can be referenced by any
 /// expression in the artifact.
 class ExpressionDef extends Element {
+  String? type;
+
   /// Access level, defaults to Public.
   AccessModifier? accessLevel;
 
@@ -38,18 +44,28 @@ class ExpressionDef extends Element {
   String name;
 
   ExpressionDef({
+    this.type,
+    this.expression,
     required this.name,
     this.context,
     this.accessLevel,
-    this.expression,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ExpressionDef.context({
+    String? type,
+    String? locator,
     required String name,
     String? context,
     required Expression expression,
   }) =>
       ExpressionDef(
+        type: type,
+        locator: locator,
         name: name,
         context: context,
         expression: expression,
@@ -60,6 +76,8 @@ class ExpressionDef extends Element {
       return FunctionDef.fromJson(json);
     } else {
       return ExpressionDef(
+        type: json['type'] as String?,
+        locator: json['locator'] as String?,
         name: json['name'] as String,
         context: json['context'] as String?,
         accessLevel: json['accessLevel'] == 'Private'
@@ -75,11 +93,15 @@ class ExpressionDef extends Element {
   }
 
   factory ExpressionDef.private({
+    String? type,
+    String? locator,
     required String name,
     String? context,
     required Expression expression,
   }) =>
       ExpressionDef(
+        type: type,
+        locator: locator,
         name: name,
         context: context,
         accessLevel: AccessModifier.private,
@@ -87,11 +109,15 @@ class ExpressionDef extends Element {
       );
 
   factory ExpressionDef.public({
+    String? type,
+    String? locator,
     required String name,
     String? context,
     required Expression expression,
   }) =>
       ExpressionDef(
+        type: type,
+        locator: locator,
         name: name,
         context: context,
         accessLevel: AccessModifier.public,
@@ -101,6 +127,15 @@ class ExpressionDef extends Element {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
+    if (type != null) {
+      data['type'] = type;
+    }
+    if (expression != null) {
+      data['expression'] = expression!.toJson();
+    }
+    if (locator != null) {
+      data['locator'] = locator;
+    }
     data['name'] = name;
     if (context != null) {
       data['context'] = context;
@@ -108,9 +143,7 @@ class ExpressionDef extends Element {
     if (accessLevel != null) {
       data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     }
-    if (expression != null) {
-      data['expression'] = expression!.toJson();
-    }
+
     return data;
   }
 

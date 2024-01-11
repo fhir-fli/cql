@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// If the input cannot be interpreted as a valid Boolean value, the result is false.
 /// If the argument is null, the result is null.
 class ConvertsToBoolean extends UnaryExpression {
-  ConvertsToBoolean({required super.operand});
+  ConvertsToBoolean({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ConvertsToBoolean.fromJson(Map<String, dynamic> json) =>
       ConvertsToBoolean(operand: Expression.fromJson(json['operand']!));

@@ -7,7 +7,15 @@ class Literal extends Expression {
 
   LiteralType? value;
 
-  Literal({required this.valueType, this.value});
+  Literal({
+    required this.valueType,
+    this.value,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Literal.fromJson(Map<String, dynamic> json) {
     final String valueType = json['valueType'];

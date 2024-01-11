@@ -4,7 +4,14 @@ import '../../../../cql.dart';
 /// If the prefix is the empty string, the result is true.
 /// If either argument is null, the result is null.
 class StartsWith extends BinaryExpression {
-  StartsWith({required super.operand});
+  StartsWith({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory StartsWith.fromJson(Map<String, dynamic> json) => StartsWith(
         operand: (json['operand'] as List)

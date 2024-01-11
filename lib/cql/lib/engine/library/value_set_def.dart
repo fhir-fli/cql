@@ -60,6 +60,11 @@ class ValueSetDef extends Element {
     this.accessLevel = AccessModifier.public,
     this.version,
     this.codeSystem,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ValueSetDef.fromJson(Map<String, dynamic> json) => ValueSetDef(

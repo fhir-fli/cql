@@ -11,6 +11,11 @@ class Filter extends Expression {
     required this.source,
     required this.condition,
     required this.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Filter.fromJson(Map<String, dynamic> json) => Filter(

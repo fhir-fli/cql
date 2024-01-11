@@ -16,6 +16,11 @@ class Query extends Expression {
     this.where,
     this.returnClause,
     this.sort,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Query.fromJson(Map<String, dynamic> json) => Query(

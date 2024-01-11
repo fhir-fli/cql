@@ -2,7 +2,14 @@ import '../../../../cql.dart';
 
 /// And operator returning the logical conjunction of its arguments.
 class And extends BinaryExpression {
-  And({required super.operand});
+  And({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory And.fromJson(Map<String, dynamic> json) => And(
       operand: List<Expression>.from(

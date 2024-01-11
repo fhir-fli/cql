@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// If the input string is not formatted correctly or cannot be interpreted as a valid Decimal value, the result is null.
 /// If the argument is null, the result is null.
 class ToDecimal extends UnaryExpression {
-  ToDecimal({required super.operand});
+  ToDecimal({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToDecimal.fromJson(Map<String, dynamic> json) => ToDecimal(
         operand: Expression.fromJson(json['operand']),

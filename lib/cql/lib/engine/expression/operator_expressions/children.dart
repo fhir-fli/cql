@@ -5,7 +5,14 @@ import '../../../cql.dart';
 class Children extends OperatorExpression {
   final Expression source;
 
-  Children({required this.source});
+  Children({
+    required this.source,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Children.fromJson(Map<String, dynamic> json) => Children(
         source: Expression.fromJson(json['source']!),

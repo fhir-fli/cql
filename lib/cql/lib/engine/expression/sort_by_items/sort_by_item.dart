@@ -4,7 +4,14 @@ import '../../../cql.dart';
 abstract class SortByItem extends Element {
   final SortDirection direction;
 
-  SortByItem({required this.direction});
+  SortByItem({
+    required this.direction,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory SortByItem.fromJson(Map<String, dynamic> json) {
     switch (json['type']) {

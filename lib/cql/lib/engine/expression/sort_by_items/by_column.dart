@@ -8,6 +8,11 @@ class ByColumn extends SortByItem {
   ByColumn({
     required super.direction,
     required this.path,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ByColumn.fromJson(Map<String, dynamic> json) => ByColumn(

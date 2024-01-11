@@ -36,6 +36,11 @@ class CodeSystemDef extends Element {
     this.id,
     this.version,
     this.accessLevel = AccessModifier.public,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory CodeSystemDef.fromJson(Map<String, dynamic> json) => CodeSystemDef(

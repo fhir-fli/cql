@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
 class Predecessor extends UnaryExpression {
-  Predecessor({required super.operand});
+  Predecessor({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Predecessor.fromJson(Map<String, dynamic> json) => Predecessor(
         operand: Expression.fromJson(json['operand']),

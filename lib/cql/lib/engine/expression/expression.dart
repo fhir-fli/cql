@@ -2,7 +2,13 @@ import '../../cql.dart';
 
 /// The Expression type defines the abstract base type for all expressions used in the ELM expression language.
 class Expression extends Element {
-  Expression();
+  Expression({
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Expression.fromJson(Map<String, dynamic> json) {
     final type = json['type'];
@@ -218,8 +224,6 @@ class Expression extends Element {
           return Less.fromJson(json);
         case 'LessOrEqual':
           return LessOrEqual.fromJson(json);
-        case r'Library$Statements':
-          return ExpressionDefs.fromJson(json);
         case 'List':
           return ListExpression.fromJson(json);
         case 'ListTypeSpecifier':
@@ -453,5 +457,5 @@ class Expression extends Element {
   @override
   Map<String, dynamic> toJson() => {};
 
-  String get type => throw 'Unknown Expression type';
+  String? get type => throw 'Unknown Expression type';
 }

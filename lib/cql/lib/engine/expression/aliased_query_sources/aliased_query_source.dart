@@ -9,6 +9,11 @@ abstract class AliasedQuerySource extends Expression {
   AliasedQuerySource({
     required this.alias,
     required this.expression,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory AliasedQuerySource.fromJson(Map<String, dynamic> json) {

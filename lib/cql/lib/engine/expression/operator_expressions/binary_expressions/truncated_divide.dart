@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// If the result of the operation cannot be represented, or the right argument is 0, the result is null.
 /// The TruncatedDivide operator is defined for the Integer and Decimal types.
 class TruncatedDivide extends BinaryExpression {
-  TruncatedDivide({required super.operand});
+  TruncatedDivide({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory TruncatedDivide.fromJson(Map<String, dynamic> json) =>
       TruncatedDivide(

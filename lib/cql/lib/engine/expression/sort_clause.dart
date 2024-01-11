@@ -4,7 +4,14 @@ import '../../cql.dart';
 class SortClause extends Element {
   final List<SortByItem> by;
 
-  SortClause({required this.by});
+  SortClause({
+    required this.by,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory SortClause.fromJson(Map<String, dynamic> json) => SortClause(
         by: List<SortByItem>.from(

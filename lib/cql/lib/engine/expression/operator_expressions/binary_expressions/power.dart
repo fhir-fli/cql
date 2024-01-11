@@ -4,7 +4,14 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
 class Power extends BinaryExpression {
-  Power({required super.operand});
+  Power({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Power.fromJson(Map<String, dynamic> json) => Power(
         operand: (json['operand'] as List)

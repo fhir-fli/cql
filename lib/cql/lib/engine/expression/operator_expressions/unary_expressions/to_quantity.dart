@@ -11,7 +11,14 @@ import '../../../../cql.dart';
 /// For Ratio values, the operation is equivalent to the result of dividing the numerator of the ratio by the denominator.
 /// If the argument is null, the result is null.
 class ToQuantity extends UnaryExpression {
-  ToQuantity({required super.operand});
+  ToQuantity({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToQuantity.fromJson(Map<String, dynamic> json) => ToQuantity(
         operand: Expression.fromJson(json['operand']),

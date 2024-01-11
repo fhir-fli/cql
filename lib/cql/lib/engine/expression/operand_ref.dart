@@ -5,7 +5,14 @@ class OperandRef extends Expression {
   /// Name of the referenced operand.
   String name;
 
-  OperandRef({required this.name});
+  OperandRef({
+    required this.name,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory OperandRef.fromJson(Map<String, dynamic> json) => OperandRef(
         name: json['name']!,

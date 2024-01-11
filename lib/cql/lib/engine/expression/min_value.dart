@@ -7,10 +7,17 @@ import '../../cql.dart';
 class MinValue extends Expression {
   final QName valueType;
 
-  MinValue(this.valueType);
+  MinValue({
+    required this.valueType,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory MinValue.fromJson(Map<String, dynamic> json) => MinValue(
-        QName.fromFull(json['valueType']!),
+        valueType: QName.fromFull(json['valueType']!),
       );
 
   @override

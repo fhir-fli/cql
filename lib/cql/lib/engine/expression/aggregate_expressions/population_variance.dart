@@ -9,6 +9,11 @@ class PopulationVariance extends AggregateExpression {
     required super.source,
     super.signature,
     super.path,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory PopulationVariance.fromJson(Map<String, dynamic> json) =>

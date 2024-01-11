@@ -8,7 +8,14 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
   /// Choice elements.
   List<TypeSpecifier>? choice;
 
-  ChoiceTypeSpecifier({this.choice});
+  ChoiceTypeSpecifier({
+    this.choice,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ChoiceTypeSpecifier.fromJson(Map<String, dynamic> json) {
     return ChoiceTypeSpecifier(

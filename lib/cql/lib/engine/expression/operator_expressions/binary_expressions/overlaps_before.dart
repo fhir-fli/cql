@@ -8,7 +8,15 @@ import '../../../../cql.dart';
 class OverlapsBefore extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  OverlapsBefore({this.precision, required super.operand});
+  OverlapsBefore({
+    this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory OverlapsBefore.fromJson(Map<String, dynamic> json) => OverlapsBefore(
         precision: json['precision'] != null

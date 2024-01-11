@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// If the input string is not formatted correctly or does not represent a valid date value, the result is false.
 /// If the argument is null, the result is null.
 class ConvertsToDate extends UnaryExpression {
-  ConvertsToDate({required super.operand});
+  ConvertsToDate({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ConvertsToDate.fromJson(Map<String, dynamic> json) =>
       ConvertsToDate(operand: Expression.fromJson(json['operand']!));

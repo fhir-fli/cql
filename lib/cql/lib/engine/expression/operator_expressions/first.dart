@@ -10,6 +10,11 @@ class First extends OperatorExpression {
   First({
     required this.source,
     required this.orderBy,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory First.fromJson(Map<String, dynamic> json) => First(

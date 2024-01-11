@@ -4,7 +4,14 @@ import '../../cql.dart';
 class AliasRef extends Expression {
   final String name;
 
-  AliasRef({required this.name});
+  AliasRef({
+    required this.name,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory AliasRef.fromJson(Map<String, dynamic> json) =>
       AliasRef(name: json['name']!);

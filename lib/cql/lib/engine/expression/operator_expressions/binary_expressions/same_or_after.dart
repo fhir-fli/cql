@@ -8,7 +8,15 @@ import '../../../../cql.dart';
 class SameOrAfter extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  SameOrAfter({this.precision, required super.operand});
+  SameOrAfter({
+    this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory SameOrAfter.fromJson(Map<String, dynamic> json) => SameOrAfter(
         precision: json['precision'] != null

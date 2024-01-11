@@ -16,7 +16,15 @@ import '../../cql.dart';
 class CalculateAgeAt extends BinaryExpression {
   final DateTimePrecision precision;
 
-  CalculateAgeAt({required this.precision, required super.operand});
+  CalculateAgeAt({
+    required this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory CalculateAgeAt.fromJson(Map<String, dynamic> json) => CalculateAgeAt(
       precision: DateTimePrecisionExtension.fromJson(json['precision']),

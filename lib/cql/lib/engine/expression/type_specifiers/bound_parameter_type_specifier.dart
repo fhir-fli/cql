@@ -18,6 +18,11 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
     required this.parameterName,
     required this.boundType,
     this.elementTypeSpecifier,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory BoundParameterTypeSpecifier.fromJson(Map<String, dynamic> json) {

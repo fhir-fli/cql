@@ -7,7 +7,14 @@ import '../../../../cql.dart';
 /// The LessOrEqual operator is defined for the Integer, Decimal, String, Date, DateTime, Time, and Quantity types.
 /// Note that relative ratio comparisons are not directly supported due to healthcare variance.
 class LessOrEqual extends BinaryExpression {
-  LessOrEqual({required super.operand});
+  LessOrEqual({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory LessOrEqual.fromJson(Map<String, dynamic> json) => LessOrEqual(
         operand: List<Expression>.from(

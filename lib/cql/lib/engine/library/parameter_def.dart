@@ -38,6 +38,11 @@ class ParameterDef extends Element {
     this.parameterType,
     this.defaultExpression,
     this.parameterTypeSpecifier,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ParameterDef.fromJson(Map<String, dynamic> json) => ParameterDef(

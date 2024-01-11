@@ -6,7 +6,14 @@ import '../../../../cql.dart';
 /// The operator is effectively shorthand for "if operand is null then { } else { operand }".
 /// The operator is used to implement list promotion efficiently.
 class ToList extends UnaryExpression {
-  ToList({required super.operand});
+  ToList({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToList.fromJson(Map<String, dynamic> json) => ToList(
         operand: Expression.fromJson(json['operand']),

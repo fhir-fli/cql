@@ -8,7 +8,16 @@ class DateExpression extends OperatorExpression {
   final Expression? month;
   final Expression year;
 
-  DateExpression({required this.year, this.month, this.day});
+  DateExpression({
+    required this.year,
+    this.month,
+    this.day,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory DateExpression.fromJson(Map<String, dynamic> json) => DateExpression(
         year: Expression.fromJson(json['year']),

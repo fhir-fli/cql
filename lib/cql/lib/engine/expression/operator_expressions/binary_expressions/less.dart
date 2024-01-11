@@ -7,7 +7,14 @@ import '../../../../cql.dart';
 /// The Less operator is defined for the Integer, Decimal, String, Date, DateTime, Time, and Quantity types.
 /// Note that relative ratio comparisons are not directly supported due to healthcare variance.
 class Less extends BinaryExpression {
-  Less({required super.operand});
+  Less({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Less.fromJson(Map<String, dynamic> json) => Less(
         operand: List<Expression>.from(

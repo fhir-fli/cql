@@ -20,7 +20,14 @@ class ContextDefs {
 class ContextDef extends Element {
   final String name;
 
-  ContextDef({required this.name});
+  ContextDef({
+    required this.name,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ContextDef.fromJson(Map<String, dynamic> json) =>
       _$ContextDefFromJson(json);

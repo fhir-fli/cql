@@ -19,7 +19,16 @@ class Convert extends UnaryExpression {
   /// Type specifier for the target type.
   TypeSpecifier? toTypeSpecifier;
 
-  Convert({this.toTypeSpecifier, this.toType, required super.operand});
+  Convert({
+    this.toTypeSpecifier,
+    this.toType,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Convert.fromJson(Map<String, dynamic> json) => Convert(
       toTypeSpecifier: TypeSpecifier.fromJson(json['toTypeSpecifier']),

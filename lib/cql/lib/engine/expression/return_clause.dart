@@ -8,6 +8,11 @@ class ReturnClause extends Element {
   ReturnClause({
     required this.expression,
     this.distinct,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ReturnClause.fromJson(Map<String, dynamic> json) => ReturnClause(

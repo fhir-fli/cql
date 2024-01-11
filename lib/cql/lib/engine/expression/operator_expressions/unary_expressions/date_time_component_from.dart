@@ -6,7 +6,15 @@ import '../../../../cql.dart';
 class DateTimeComponentFrom extends UnaryExpression {
   final DateTimePrecision precision;
 
-  DateTimeComponentFrom({required this.precision, required super.operand});
+  DateTimeComponentFrom({
+    required this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory DateTimeComponentFrom.fromJson(Map<String, dynamic> json) =>
       DateTimeComponentFrom(

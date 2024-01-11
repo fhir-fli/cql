@@ -24,6 +24,11 @@ class OtherFilterElement extends Element {
     this.property,
     this.search,
     required this.comparator,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory OtherFilterElement.fromJson(Map<String, dynamic> json) {

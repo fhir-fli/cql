@@ -10,6 +10,11 @@ class Sort extends Expression {
   Sort({
     required this.source,
     required this.by,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Sort.fromJson(Map<String, dynamic> json) => Sort(

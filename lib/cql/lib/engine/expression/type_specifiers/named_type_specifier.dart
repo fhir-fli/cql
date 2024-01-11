@@ -12,7 +12,14 @@ class NamedTypeSpecifier extends TypeSpecifier {
   /// Namespace of the type.
   QName namespace;
 
-  NamedTypeSpecifier({required this.namespace});
+  NamedTypeSpecifier({
+    required this.namespace,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory NamedTypeSpecifier.fromFull(String full) => NamedTypeSpecifier(
         namespace: QName.fromFull(full),

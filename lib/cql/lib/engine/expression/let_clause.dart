@@ -9,6 +9,11 @@ class LetClause extends Element {
   LetClause({
     required this.expression,
     required this.identifier,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory LetClause.fromJson(Map<String, dynamic> json) => LetClause(

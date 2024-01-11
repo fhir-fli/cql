@@ -15,6 +15,11 @@ class Code extends Expression {
     required this.code,
     this.display,
     required this.system,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Code.fromJson(Map<String, dynamic> json) {
@@ -37,5 +42,6 @@ class Code extends Expression {
     return json;
   }
 
+  @override
   String get type => 'Code';
 }

@@ -5,7 +5,14 @@ import '../../cql.dart';
 class Current extends Expression {
   final String scope;
 
-  Current({required this.scope});
+  Current({
+    required this.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Current.fromJson(Map<String, dynamic> json) =>
       Current(scope: json['scope']!);

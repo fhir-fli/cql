@@ -6,7 +6,14 @@ import '../../../../cql.dart';
 /// DateTime values may be specified to any precision. If no timezone offset is supplied, the timezone offset of the evaluation request timestamp is assumed.
 /// If the argument is null, the result is null.
 class ConvertsToDateTime extends UnaryExpression {
-  ConvertsToDateTime({required super.operand});
+  ConvertsToDateTime({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ConvertsToDateTime.fromJson(Map<String, dynamic> json) =>
       ConvertsToDateTime(operand: Expression.fromJson(json['operand']!));

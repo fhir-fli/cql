@@ -10,11 +10,7 @@ class Annotation extends CqlToElmBase {
   // List of tags associated with the annotation
   final List<Tag> t;
 
-  Annotation({
-    List<Tag>? t,
-    this.s,
-    this.locator,
-  }) : t = t ?? [];
+  Annotation({List<Tag>? t, this.s, this.locator}) : t = t ?? [];
 
   factory Annotation.fromJson(Map<String, dynamic> json) => Annotation(
         t: json['t'] != null
@@ -30,7 +26,7 @@ class Annotation extends CqlToElmBase {
 
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
+    final data = <String, dynamic>{'type': type};
     if (t.isNotEmpty) {
       data['t'] = t.map((v) => v.toJson()).toList();
     }
@@ -42,6 +38,8 @@ class Annotation extends CqlToElmBase {
     }
     return data;
   }
+
+  String get type => 'Annotation';
 
   void addTag(Tag tag) {
     t.add(tag);

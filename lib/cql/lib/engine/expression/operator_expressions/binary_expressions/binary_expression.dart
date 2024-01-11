@@ -8,7 +8,15 @@ abstract class BinaryExpression extends OperatorExpression {
   /// List of expressions as operand.
   List<Expression> operand;
 
-  BinaryExpression({required this.operand, this.isList = true});
+  BinaryExpression({
+    required this.operand,
+    this.isList = true,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory BinaryExpression.fromJson(Map<String, dynamic> json) {
     final type = json['type'];

@@ -2,7 +2,14 @@ import '../../../../cql.dart';
 
 /// Not operator returning the logical negation of its argument.
 class Not extends UnaryExpression {
-  Not({required super.operand});
+  Not({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Not.fromJson(Map<String, dynamic> json) =>
       Not(operand: Expression.fromJson(json['operand']));

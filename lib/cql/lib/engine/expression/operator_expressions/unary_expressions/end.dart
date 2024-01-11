@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// If the high boundary of the interval is closed and the high value of the interval is not null, this operator returns the high value of the interval. Otherwise, the result is the maximum value of the point type of the interval.
 /// If the argument is null, the result is null.
 class End extends UnaryExpression {
-  End({required super.operand});
+  End({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory End.fromJson(Map<String, dynamic> json) =>
       End(operand: Expression.fromJson(json['operand']!));

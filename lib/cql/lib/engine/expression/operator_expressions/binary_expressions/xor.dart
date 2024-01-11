@@ -2,7 +2,14 @@ import '../../../../cql.dart';
 
 /// Xor operator returning the exclusive or of its arguments.
 class Xor extends BinaryExpression {
-  Xor({required super.operand});
+  Xor({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Xor.fromJson(Map<String, dynamic> json) => Xor(
         operand: (json['operand'] as List)

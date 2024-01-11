@@ -5,7 +5,14 @@ import '../../../cql.dart';
 class Descendents extends OperatorExpression {
   final Expression source;
 
-  Descendents({required this.source});
+  Descendents({
+    required this.source,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Descendents.fromJson(Map<String, dynamic> json) => Descendents(
         source: Expression.fromJson(json['source']!),

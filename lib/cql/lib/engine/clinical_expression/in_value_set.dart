@@ -14,7 +14,16 @@ class InValueSet extends OperatorExpression {
   final ValueSetRef? valueset;
   final Expression? valuesetExpression;
 
-  InValueSet({required this.code, this.valueset, this.valuesetExpression});
+  InValueSet({
+    required this.code,
+    this.valueset,
+    this.valuesetExpression,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory InValueSet.fromJson(Map<String, dynamic> json) {
     return InValueSet(

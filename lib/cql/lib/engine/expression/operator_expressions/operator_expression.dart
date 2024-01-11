@@ -6,7 +6,14 @@ abstract class OperatorExpression extends Expression {
   /// Declared signature of the operator or function being called.
   List<TypeSpecifier>? signature;
 
-  OperatorExpression({this.signature});
+  OperatorExpression({
+    this.signature,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory OperatorExpression.fromJson(Map<String, dynamic> json) {
     final type = json['type'];

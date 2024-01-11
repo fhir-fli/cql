@@ -8,8 +8,17 @@ class FunctionRef extends ExpressionRef {
   /// Declared signature of the function being called.
   List<TypeSpecifier>? signature;
 
-  FunctionRef(
-      {this.operand, this.signature, required super.name, super.libraryName});
+  FunctionRef({
+    this.operand,
+    this.signature,
+    required super.name,
+    super.libraryName,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory FunctionRef.fromJson(Map<String, dynamic> json) => FunctionRef(
         operand: json['operand'] != null

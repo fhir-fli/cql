@@ -8,7 +8,15 @@ class Concept extends Expression {
   /// An optional display string for the concept.
   String? display;
 
-  Concept({required this.code, this.display});
+  Concept({
+    required this.code,
+    this.display,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Concept.fromJson(Map<String, dynamic> json) {
     return Concept(
@@ -27,5 +35,6 @@ class Concept extends Expression {
     return json;
   }
 
+  @override
   String get type => 'Concept';
 }

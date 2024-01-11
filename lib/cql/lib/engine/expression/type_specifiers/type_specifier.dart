@@ -2,7 +2,13 @@ import '../../../cql.dart';
 
 /// Abstract type for TypeSpecifier.
 abstract class TypeSpecifier extends Expression {
-  TypeSpecifier();
+  TypeSpecifier({
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory TypeSpecifier.fromJson(Map<String, dynamic> json) {
     switch (json['type']) {

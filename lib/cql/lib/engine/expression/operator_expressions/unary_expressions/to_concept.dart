@@ -4,7 +4,14 @@ import '../../../../cql.dart';
 /// If the Code has a display value, the resulting Concept will have the same display value.
 /// If the argument is null, the result is null.
 class ToConcept extends UnaryExpression {
-  ToConcept({required super.operand});
+  ToConcept({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToConcept.fromJson(Map<String, dynamic> json) => ToConcept(
         operand: Expression.fromJson(json['operand']),

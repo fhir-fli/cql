@@ -7,7 +7,15 @@ import '../../../../cql.dart';
 class DurationBetween extends BinaryExpression {
   final DateTimePrecision precision;
 
-  DurationBetween({required this.precision, required super.operand});
+  DurationBetween({
+    required this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory DurationBetween.fromJson(Map<String, dynamic> json) =>
       DurationBetween(

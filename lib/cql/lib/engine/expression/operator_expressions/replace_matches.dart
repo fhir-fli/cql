@@ -5,7 +5,14 @@ import '../../../cql.dart';
 /// If any argument is null, the result is null.
 /// Platforms will typically use native regular expression implementations.
 class ReplaceMatches extends TernaryExpression {
-  ReplaceMatches({required super.operands});
+  ReplaceMatches({
+    required super.operands,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ReplaceMatches.fromJson(Map<String, dynamic> json) => ReplaceMatches(
         operands: json['operands'] != null

@@ -14,7 +14,16 @@ class AnyInValueSet extends OperatorExpression {
   final ValueSetRef? valueset;
   final Expression? valuesetExpression;
 
-  AnyInValueSet({required this.codes, this.valueset, this.valuesetExpression});
+  AnyInValueSet({
+    required this.codes,
+    this.valueset,
+    this.valuesetExpression,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory AnyInValueSet.fromJson(Map<String, dynamic> json) => AnyInValueSet(
         codes: Expression.fromJson(json['codes']!),

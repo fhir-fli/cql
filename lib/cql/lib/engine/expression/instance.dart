@@ -8,7 +8,15 @@ class Instance extends Expression {
   /// List of instance elements specifying values for the elements of the class instance.
   List<InstanceElement>? element;
 
-  Instance({required this.classType, this.element});
+  Instance({
+    required this.classType,
+    this.element,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Instance.fromJson(Map<String, dynamic> json) {
     return Instance(

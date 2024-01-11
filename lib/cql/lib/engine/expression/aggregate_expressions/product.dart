@@ -9,6 +9,11 @@ class Product extends AggregateExpression {
     required super.source,
     super.signature,
     super.path,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(

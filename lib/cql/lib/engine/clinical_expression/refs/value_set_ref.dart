@@ -6,7 +6,16 @@ import '../../../cql.dart';
 class ValueSetRef extends Ref {
   bool preserve;
 
-  ValueSetRef({required super.name, super.libraryName, this.preserve = true});
+  ValueSetRef({
+    required super.name,
+    super.libraryName,
+    this.preserve = true,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ValueSetRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];

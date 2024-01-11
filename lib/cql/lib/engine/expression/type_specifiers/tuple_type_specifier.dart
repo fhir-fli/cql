@@ -9,6 +9,11 @@ class TupleTypeSpecifier extends TypeSpecifier {
 
   TupleTypeSpecifier({
     this.element,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory TupleTypeSpecifier.fromJson(Map<String, dynamic> json) {

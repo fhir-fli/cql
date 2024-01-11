@@ -8,7 +8,14 @@ import '../../../../cql.dart';
 /// For DateTime values, the result is the same as extracting the Time component from the DateTime value.
 /// If the argument is null, the result is null.
 class ToTime extends UnaryExpression {
-  ToTime({required super.operand});
+  ToTime({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToTime.fromJson(Map<String, dynamic> json) => ToTime(
         operand: Expression.fromJson(json['operand']),

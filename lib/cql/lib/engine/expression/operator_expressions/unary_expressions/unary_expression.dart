@@ -5,7 +5,14 @@ abstract class UnaryExpression extends OperatorExpression {
   /// Expression as the operand.
   Expression operand;
 
-  UnaryExpression({required this.operand});
+  UnaryExpression({
+    required this.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory UnaryExpression.fromJson(Map<String, dynamic> json) {
     final type = json['type'];

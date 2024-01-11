@@ -8,8 +8,14 @@ class ParameterTypeSpecifier extends TypeSpecifier {
   /// Name of the parameter.
   QName parameterName;
 
-  ParameterTypeSpecifier({required String parameterName})
-      : parameterName = QName.fromFull(parameterName);
+  ParameterTypeSpecifier({
+    required String parameterName,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  }) : parameterName = QName.fromFull(parameterName);
 
   factory ParameterTypeSpecifier.fromJson(Map<String, dynamic> json) {
     final parameterName = json['parameterName'] as String? ?? '';

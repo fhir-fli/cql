@@ -4,7 +4,14 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
 class Log extends BinaryExpression {
-  Log({required super.operand});
+  Log({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Log.fromJson(Map<String, dynamic> json) => Log(
         operand: List<Expression>.from(

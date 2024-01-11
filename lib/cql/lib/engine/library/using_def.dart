@@ -1,22 +1,27 @@
 import '../../cql.dart';
 
 class UsingDefs {
+  String? type;
   List<UsingDef> def = [];
 
   UsingDefs();
 
   factory UsingDefs.fromJson(Map<String, dynamic> json) => UsingDefs()
+    ..type = json['type'] as String?
     ..def = (json['def'] as List<dynamic>)
         .map((e) => UsingDef.fromJson(e as Map<String, dynamic>))
         .toList();
 
   Map<String, dynamic> toJson() => <String, dynamic>{
+        if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
 }
 
 /// Defines a data model that is available within the artifact.
 class UsingDef extends Element {
+  String? type;
+
   /// A unique name within this artifact for the library reference.
   ///
   /// This name is used within this artifact to reference components of this library.
@@ -30,9 +35,20 @@ class UsingDef extends Element {
   /// Optionally defines the required version number of the referenced library.
   String? version;
 
-  UsingDef({this.localIdentifier, this.uri, this.version});
+  UsingDef({
+    this.type,
+    this.localIdentifier,
+    this.uri,
+    this.version,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory UsingDef.fromJson(Map<String, dynamic> json) => UsingDef(
+        type: json['type'] as String?,
         localIdentifier: json['localIdentifier'] as String?,
         uri: json['uri'] as String?,
         version: json['version'] as String?,
@@ -58,14 +74,15 @@ class UsingDef extends Element {
       }
     }
 
-    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('type', type);
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
-    writeNotNull('resultTypeName', resultTypeName);
-    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     writeNotNull('localIdentifier', localIdentifier);
     writeNotNull('uri', uri);
     writeNotNull('version', version);
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     return val;
   }
 }

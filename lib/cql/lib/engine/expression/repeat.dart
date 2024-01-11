@@ -13,6 +13,11 @@ class Repeat extends Expression {
     required this.source,
     required this.element,
     required this.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Repeat.fromJson(Map<String, dynamic> json) => Repeat(

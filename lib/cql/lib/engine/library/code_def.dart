@@ -40,6 +40,11 @@ class CodeDef extends Element {
     this.display,
     this.accessLevel = AccessModifier.public,
     this.codeSystem,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory CodeDef.fromJson(Map<String, dynamic> json) => CodeDef(

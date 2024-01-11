@@ -61,6 +61,11 @@ class IntervalExpression extends Expression {
     this.lowClosedExpression,
     this.high,
     this.highClosedExpression,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory IntervalExpression.fromJson(Map<String, dynamic> json) =>

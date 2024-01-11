@@ -36,6 +36,11 @@ class ConceptDef extends Element {
     this.display,
     this.accessLevel = AccessModifier.public,
     required this.code,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ConceptDef.fromJson(Map<String, dynamic> json) => ConceptDef(

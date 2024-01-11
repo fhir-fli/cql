@@ -8,6 +8,11 @@ class Without extends RelationshipClause {
     required super.expression,
     super.suchThat,
     super.type,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Without.fromJson(Map<String, dynamic> json) => Without(

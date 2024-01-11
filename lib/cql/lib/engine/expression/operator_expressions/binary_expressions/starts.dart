@@ -8,7 +8,16 @@ import '../../../../cql.dart';
 class Starts extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  Starts({this.precision, required super.operand, super.isList = false});
+  Starts({
+    this.precision,
+    required super.operand,
+    super.isList = false,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Starts.fromJson(Map<String, dynamic> json) => Starts(
         precision: json['precision'] != null

@@ -5,7 +5,14 @@ import '../../../../cql.dart';
 /// Nulls are considered equal for the purposes of distinct determination.
 /// If the source argument is null, the result is null.
 class Distinct extends UnaryExpression {
-  Distinct({required super.operand});
+  Distinct({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Distinct.fromJson(Map<String, dynamic> json) =>
       Distinct(operand: Expression.fromJson(json['operand']!));

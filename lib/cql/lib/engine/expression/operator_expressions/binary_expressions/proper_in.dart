@@ -7,7 +7,15 @@ import '../../../../cql.dart';
 class ProperIn extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  ProperIn({this.precision, required super.operand});
+  ProperIn({
+    this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ProperIn.fromJson(Map<String, dynamic> json) => ProperIn(
         precision: json['precision'] != null

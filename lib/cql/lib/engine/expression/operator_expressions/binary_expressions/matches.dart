@@ -4,7 +4,14 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 /// Platforms will typically use native regular expression implementations.
 class Matches extends BinaryExpression {
-  Matches({required super.operand});
+  Matches({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Matches.fromJson(Map<String, dynamic> json) => Matches(
         operand: List<Expression>.from(

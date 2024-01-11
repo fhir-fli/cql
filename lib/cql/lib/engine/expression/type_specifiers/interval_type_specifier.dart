@@ -7,7 +7,14 @@ import '../../../cql.dart';
 class IntervalTypeSpecifier extends TypeSpecifier {
   TypeSpecifier? pointType;
 
-  IntervalTypeSpecifier({this.pointType});
+  IntervalTypeSpecifier({
+    this.pointType,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory IntervalTypeSpecifier.fromJson(Map<String, dynamic> json) {
     return IntervalTypeSpecifier(

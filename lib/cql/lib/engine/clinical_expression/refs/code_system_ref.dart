@@ -6,7 +6,15 @@ import '../../../cql.dart';
 /// almost never be performed in practice. Code system references are allowed in
 /// order to allow for testing of code membership in a particular code system.
 class CodeSystemRef extends Ref {
-  CodeSystemRef({required super.name, super.libraryName});
+  CodeSystemRef({
+    required super.name,
+    super.libraryName,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory CodeSystemRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];

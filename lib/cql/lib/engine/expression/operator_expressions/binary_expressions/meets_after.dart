@@ -8,7 +8,15 @@ import '../../../../cql.dart';
 class MeetsAfter extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  MeetsAfter({this.precision, required super.operand});
+  MeetsAfter({
+    this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory MeetsAfter.fromJson(Map<String, dynamic> json) => MeetsAfter(
         precision: json['precision'] == null

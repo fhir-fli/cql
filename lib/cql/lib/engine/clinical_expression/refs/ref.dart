@@ -9,10 +9,17 @@ abstract class Ref extends Expression {
   /// The library name.
   String? libraryName;
 
-  Ref({required this.name, this.libraryName});
+  Ref({
+    required this.name,
+    this.libraryName,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Ref.fromJson(Map<String, dynamic> json) {
-    print(json);
     switch (json['type']) {
       case 'CodeRef':
         return CodeRef.fromJson(json);
@@ -48,5 +55,6 @@ abstract class Ref extends Expression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type;
 }

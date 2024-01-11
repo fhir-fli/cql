@@ -7,7 +7,15 @@ class Ratio extends Expression {
   final Quantity denominator;
   final Quantity numerator;
 
-  Ratio({required this.numerator, required this.denominator});
+  Ratio({
+    required this.numerator,
+    required this.denominator,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Ratio.fromJson(Map<String, dynamic> json) => Ratio(
         numerator: Quantity.fromJson(json['numerator']!),
@@ -24,5 +32,6 @@ class Ratio extends Expression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'Ratio';
 }

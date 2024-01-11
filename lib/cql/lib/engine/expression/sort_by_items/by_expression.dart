@@ -8,6 +8,11 @@ class ByExpression extends SortByItem {
   ByExpression({
     required super.direction,
     required this.expression,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory ByExpression.fromJson(Map<String, dynamic> json) => ByExpression(

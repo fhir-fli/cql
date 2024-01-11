@@ -21,12 +21,18 @@ class Message extends OperatorExpression {
   final Expression? severity;
   final Expression source;
 
-  Message(
-      {required this.source,
-      this.condition,
-      this.code,
-      this.severity,
-      this.message});
+  Message({
+    required this.source,
+    this.condition,
+    this.code,
+    this.severity,
+    this.message,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Message.fromJson(Map<String, dynamic> json) => Message(
         source: Expression.fromJson(json['source']!),

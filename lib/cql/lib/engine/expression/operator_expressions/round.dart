@@ -8,10 +8,18 @@ class Round extends OperatorExpression {
   final Expression operand;
   final Expression? precision;
 
-  Round(this.operand, {this.precision});
+  Round({
+    required this.operand,
+    this.precision,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Round.fromJson(Map<String, dynamic> json) => Round(
-        Expression.fromJson(json['operand']),
+        operand: Expression.fromJson(json['operand']),
         precision: json['precision'] != null
             ? Expression.fromJson(json['precision'])
             : null,

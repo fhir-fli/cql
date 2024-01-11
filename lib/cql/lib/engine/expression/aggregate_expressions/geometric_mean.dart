@@ -9,6 +9,11 @@ class GeometricMean extends AggregateExpression {
     required super.source,
     super.signature,
     super.path,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory GeometricMean.fromJson(Map<String, dynamic> json) => GeometricMean(

@@ -8,7 +8,16 @@ class Is extends UnaryExpression {
   /// Type specifier for testing.
   TypeSpecifier? isTypeSpecifier;
 
-  Is({this.isTypeSpecifier, this.isType, required super.operand});
+  Is({
+    this.isTypeSpecifier,
+    this.isType,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Is.fromJson(Map<String, dynamic> json) => Is(
         isTypeSpecifier: json['isTypeSpecifier'] != null

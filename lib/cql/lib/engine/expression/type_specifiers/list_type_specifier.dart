@@ -11,7 +11,15 @@ class ListTypeSpecifier extends TypeSpecifier {
   /// Element type specifier.
   TypeSpecifier? elementTypeSpecifier;
 
-  ListTypeSpecifier({this.elementTypeSpecifier, this.element});
+  ListTypeSpecifier({
+    this.elementTypeSpecifier,
+    this.element,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ListTypeSpecifier.fromJson(Map<String, dynamic> json) =>
       ListTypeSpecifier(

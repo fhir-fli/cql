@@ -7,7 +7,14 @@ import '../../../../cql.dart';
 /// If the argument is null, the result is null.
 /// For Date values, the result is a DateTime with the time components unspecified, except the timezone offset, which is set to the timezone offset of the evaluation request timestamp.
 class ToDateTime extends UnaryExpression {
-  ToDateTime({required super.operand});
+  ToDateTime({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToDateTime.fromJson(Map<String, dynamic> json) => ToDateTime(
         operand: Expression.fromJson(json['operand']),

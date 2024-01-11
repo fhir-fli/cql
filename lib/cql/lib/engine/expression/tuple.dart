@@ -5,7 +5,14 @@ class Tuple extends Expression {
   /// List of tuple elements specifying values for the elements of the tuple.
   List<TupleElement>? element;
 
-  Tuple({this.element});
+  Tuple({
+    this.element,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Tuple.fromJson(Map<String, dynamic> json) => Tuple(
         element: json['element'] != null

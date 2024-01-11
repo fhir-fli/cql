@@ -4,7 +4,14 @@ import '../../../../cql.dart';
 /// Note: This operator is not defined for intervals of type Date, DateTime, and Time.
 /// If the argument is null, the result is null.
 class Size extends UnaryExpression {
-  Size({required super.operand});
+  Size({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Size.fromJson(Map<String, dynamic> json) => Size(
         operand: Expression.fromJson(json['operand']),

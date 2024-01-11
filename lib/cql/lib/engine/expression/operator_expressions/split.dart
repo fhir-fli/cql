@@ -8,11 +8,19 @@ class Split extends OperatorExpression {
   final Expression? separator;
   final Expression stringToSplit;
 
-  Split(this.stringToSplit, [this.separator]);
+  Split({
+    required this.stringToSplit,
+    this.separator,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Split.fromJson(Map<String, dynamic> json) => Split(
-        Expression.fromJson(json['stringToSplit']),
-        json['separator'] != null
+        stringToSplit: Expression.fromJson(json['stringToSplit']),
+        separator: json['separator'] != null
             ? Expression.fromJson(json['separator'])
             : null,
       );

@@ -34,6 +34,11 @@ class IncludeElement extends Element {
     this.relatedProperty,
     this.relatedSearch,
     this.isReverse,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory IncludeElement.fromJson(Map<String, dynamic> json) => IncludeElement(

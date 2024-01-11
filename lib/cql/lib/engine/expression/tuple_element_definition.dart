@@ -15,6 +15,11 @@ class TupleElementDefinition extends Element {
     this.type,
     this.elementType,
     this.name,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory TupleElementDefinition.fromJson(Map<String, dynamic> json) =>

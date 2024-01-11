@@ -10,6 +10,11 @@ abstract class AggregateExpression extends Expression {
     required this.signature,
     required this.source,
     required this.path,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory AggregateExpression.fromJson(Map<String, dynamic> json) {

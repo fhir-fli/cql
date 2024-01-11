@@ -8,11 +8,19 @@ class SplitOnMatches extends OperatorExpression {
   final Expression separatorPattern;
   final Expression stringToSplit;
 
-  SplitOnMatches(this.stringToSplit, this.separatorPattern);
+  SplitOnMatches({
+    required this.stringToSplit,
+    required this.separatorPattern,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory SplitOnMatches.fromJson(Map<String, dynamic> json) => SplitOnMatches(
-        Expression.fromJson(json['stringToSplit']),
-        Expression.fromJson(json['separatorPattern']),
+        stringToSplit: Expression.fromJson(json['stringToSplit']),
+        separatorPattern: Expression.fromJson(json['separatorPattern']),
       );
 
   @override

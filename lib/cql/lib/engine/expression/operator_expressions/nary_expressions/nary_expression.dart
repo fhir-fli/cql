@@ -6,7 +6,14 @@ abstract class NaryExpression extends OperatorExpression {
   /// List of expressions as operands, can be zero or more.
   List<Expression>? operand;
 
-  NaryExpression({this.operand});
+  NaryExpression({
+    this.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory NaryExpression.fromJson(Map<String, dynamic> json) =>
       json['type'] == 'Concatenate'

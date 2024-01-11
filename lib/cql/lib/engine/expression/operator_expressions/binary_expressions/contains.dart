@@ -8,7 +8,15 @@ import '../../../../cql.dart';
 class Contains extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  Contains({this.precision, required super.operand});
+  Contains({
+    this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Contains.fromJson(Map<String, dynamic> json) => Contains(
       precision: json['precision'] == null

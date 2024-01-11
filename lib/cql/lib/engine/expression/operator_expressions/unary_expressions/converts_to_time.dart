@@ -6,7 +6,14 @@ import '../../../../cql.dart';
 /// As with time-of-day literals, time-of-day values may be specified to any precision.
 /// If the argument is null, the result is null.
 class ConvertsToTime extends UnaryExpression {
-  ConvertsToTime({required super.operand});
+  ConvertsToTime({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ConvertsToTime.fromJson(Map<String, dynamic> json) =>
       ConvertsToTime(operand: Expression.fromJson(json['operand']!));

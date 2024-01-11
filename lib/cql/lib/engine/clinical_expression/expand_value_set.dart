@@ -7,7 +7,14 @@ import '../../cql.dart';
 /// If the argument is null, the result is null.
 
 class ExpandValueSet extends UnaryExpression {
-  ExpandValueSet({required super.operand});
+  ExpandValueSet({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ExpandValueSet.fromJson(Map<String, dynamic> json) =>
       ExpandValueSet(operand: Expression.fromJson(json['operand']));
@@ -21,5 +28,6 @@ class ExpandValueSet extends UnaryExpression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'ExpandValueSet';
 }

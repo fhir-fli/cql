@@ -7,7 +7,14 @@ import '../../../../cql.dart';
 /// If the input string is not formatted correctly or cannot be interpreted as a valid Ratio value, the result is null.
 /// If the argument is null, the result is null.
 class ToRatio extends UnaryExpression {
-  ToRatio({required super.operand});
+  ToRatio({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ToRatio.fromJson(Map<String, dynamic> json) => ToRatio(
         operand: Expression.fromJson(json['operand']),

@@ -4,7 +4,14 @@ import '../../cql.dart';
 class Total extends Expression {
   final String scope;
 
-  Total({required this.scope});
+  Total({
+    required this.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Total.fromJson(Map<String, dynamic> json) => Total(
         scope: json['scope'],

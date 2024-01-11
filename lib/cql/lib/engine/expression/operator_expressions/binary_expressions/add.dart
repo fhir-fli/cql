@@ -7,7 +7,14 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 /// If the result of the addition cannot be represented (i.e., arithmetic overflow), the result is null.
 class Add extends BinaryExpression {
-  Add({required super.operand});
+  Add({
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Add.fromJson(Map<String, dynamic> json) => Add(
       operand: List<Expression>.from(

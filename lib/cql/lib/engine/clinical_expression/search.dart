@@ -1,7 +1,16 @@
 import '../../cql.dart';
 
 class Search extends Property {
-  Search({required super.path, super.source, super.scope});
+  Search({
+    required super.path,
+    super.source,
+    super.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Search.fromJson(Map<String, dynamic> json) => Search(
         path: json['path'],

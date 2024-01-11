@@ -16,7 +16,15 @@ import '../../cql.dart';
 class CalculateAge extends UnaryExpression {
   final DateTimePrecision precision;
 
-  CalculateAge({required this.precision, required super.operand});
+  CalculateAge({
+    required this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory CalculateAge.fromJson(Map<String, dynamic> json) => CalculateAge(
         precision: DateTimePrecisionExtension.fromJson(json['precision']),
@@ -33,5 +41,6 @@ class CalculateAge extends UnaryExpression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'CalculateAge';
 }

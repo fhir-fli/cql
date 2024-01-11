@@ -18,7 +18,12 @@ class FunctionDef extends ExpressionDef {
     super.expression,
     this.operand,
     this.external,
-  }) : super(name: name ?? type);
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  }) : super(name: name ?? 'FunctionDef');
 
   factory FunctionDef.fromJson(Map<String, dynamic> json) {
     return FunctionDef(
@@ -64,7 +69,8 @@ class FunctionDef extends ExpressionDef {
     return data;
   }
 
-  static String get type => 'FunctionDef';
+  @override
+  String get type => 'FunctionDef';
 
   static const _$AccessModifierEnumMap = {
     AccessModifier.public: 'Public',

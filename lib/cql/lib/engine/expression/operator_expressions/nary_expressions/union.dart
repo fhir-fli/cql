@@ -10,7 +10,14 @@ import '../../../../cql.dart';
 /// not overlap or meet, returns null. If either argument is null, the
 /// operation is performed as though the argument was an empty list.
 class Union extends NaryExpression {
-  Union({super.operand});
+  Union({
+    super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Union.fromJson(Map<String, dynamic> json) => Union(
       operand: (json['operand'] as List)

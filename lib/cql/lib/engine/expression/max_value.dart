@@ -7,10 +7,17 @@ import '../../cql.dart';
 class MaxValue extends Expression {
   final QName valueType;
 
-  MaxValue(this.valueType);
+  MaxValue({
+    required this.valueType,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory MaxValue.fromJson(Map<String, dynamic> json) => MaxValue(
-        QName.fromFull(json['valueType']!),
+        valueType: QName.fromFull(json['valueType']!),
       );
 
   @override

@@ -11,7 +11,6 @@ class ErrorAnnotation extends Annotation {
   final String? message;
   final int? startChar;
   final int? startLine;
-  final String? type;
 
   ErrorAnnotation({
     this.librarySystem,
@@ -24,7 +23,6 @@ class ErrorAnnotation extends Annotation {
     this.message,
     this.errorType,
     this.errorSeverity,
-    this.type = 'CqlToElmError',
   });
 
   factory ErrorAnnotation.fromJson(Map<String, dynamic> json) =>
@@ -39,7 +37,6 @@ class ErrorAnnotation extends Annotation {
         message: json['message'] as String?,
         errorType: json['errorType'] as String?,
         errorSeverity: json['errorSeverity'] as String?,
-        type: json['type'] as String? ?? 'CqlToElmError',
       );
 
   @override
@@ -90,7 +87,9 @@ class ErrorAnnotation extends Annotation {
       message: message ?? this.message,
       errorType: errorType ?? this.errorType,
       errorSeverity: errorSeverity ?? this.errorSeverity,
-      type: type ?? this.type,
     );
   }
+
+  @override
+  String get type => 'CqlToElmError';
 }

@@ -2,7 +2,15 @@ import '../../../cql.dart';
 
 /// Expression allowing the value of a parameter to be referenced within an expression.
 class ParameterRef extends Ref {
-  ParameterRef({required super.name, super.libraryName});
+  ParameterRef({
+    required super.name,
+    super.libraryName,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ParameterRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];

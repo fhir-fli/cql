@@ -14,6 +14,11 @@ class TimeExpression extends OperatorExpression {
     this.minute,
     this.second,
     this.millisecond,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory TimeExpression.fromJson(Map<String, dynamic> json) => TimeExpression(

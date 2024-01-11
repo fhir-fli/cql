@@ -4,7 +4,14 @@ import '../../cql.dart';
 class Iteration extends Expression {
   final String scope;
 
-  Iteration({required this.scope});
+  Iteration({
+    required this.scope,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Iteration.fromJson(Map<String, dynamic> json) => Iteration(
         scope: json['scope']!,

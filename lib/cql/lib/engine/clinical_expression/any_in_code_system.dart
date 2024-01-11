@@ -14,7 +14,15 @@ class AnyInCodeSystem extends OperatorExpression {
   final Expression codes;
   final CodeSystemRef codesystem;
 
-  AnyInCodeSystem({required this.codes, required this.codesystem});
+  AnyInCodeSystem({
+    required this.codes,
+    required this.codesystem,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory AnyInCodeSystem.fromJson(Map<String, dynamic> json) =>
       AnyInCodeSystem(
@@ -32,5 +40,6 @@ class AnyInCodeSystem extends OperatorExpression {
   @override
   String toString() => toJson().toString();
 
+  @override
   String get type => 'AnyInCodeSystem';
 }

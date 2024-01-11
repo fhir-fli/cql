@@ -13,6 +13,11 @@ class Aggregate extends AggregateExpression {
     required this.initialValue,
     super.signature,
     super.path,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Aggregate.fromJson(Map<String, dynamic> json) => Aggregate(

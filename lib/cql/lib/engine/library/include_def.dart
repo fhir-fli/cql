@@ -34,7 +34,17 @@ class IncludeDef extends Element {
   /// Optionally defines the required version number of the referenced library.
   String? version;
 
-  IncludeDef({this.localIdentifier, this.mediaType, this.path, this.version});
+  IncludeDef({
+    this.localIdentifier,
+    this.mediaType,
+    this.path,
+    this.version,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory IncludeDef.fromJson(Map<String, dynamic> json) =>
       _$IncludeDefFromJson(json);

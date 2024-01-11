@@ -7,7 +7,15 @@ class Quantity extends Expression {
   final String unit;
   final num value;
 
-  Quantity({required this.value, required this.unit});
+  Quantity({
+    required this.value,
+    required this.unit,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Quantity.fromJson(Map<String, dynamic> json) => Quantity(
         value: json['value'] is String

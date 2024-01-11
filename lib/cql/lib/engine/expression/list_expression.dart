@@ -8,7 +8,15 @@ class ListExpression extends Expression {
   /// Type specifier for the list, if provided.
   TypeSpecifier? typeSpecifier;
 
-  ListExpression({this.typeSpecifier, this.element});
+  ListExpression({
+    this.typeSpecifier,
+    this.element,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ListExpression.fromJson(Map<String, dynamic> json) {
     return ListExpression(

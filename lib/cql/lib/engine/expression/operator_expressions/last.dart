@@ -10,6 +10,11 @@ class Last extends OperatorExpression {
   Last({
     required this.source,
     required this.orderBy,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
   });
 
   factory Last.fromJson(Map<String, dynamic> json) {

@@ -11,7 +11,16 @@ class Case extends Expression {
   /// Action to perform if none of the conditions are met.
   final Expression elseExpr;
 
-  Case({this.comparand, required this.caseItem, required this.elseExpr});
+  Case({
+    this.comparand,
+    required this.caseItem,
+    required this.elseExpr,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory Case.fromJson(Map<String, dynamic> json) => Case(
         comparand: json['comparand'] == null

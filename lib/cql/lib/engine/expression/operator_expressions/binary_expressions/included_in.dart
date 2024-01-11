@@ -8,7 +8,15 @@ import '../../../../cql.dart';
 class IncludedIn extends BinaryExpression {
   final DateTimePrecision? precision;
 
-  IncludedIn({this.precision, required super.operand});
+  IncludedIn({
+    this.precision,
+    required super.operand,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory IncludedIn.fromJson(Map<String, dynamic> json) => IncludedIn(
         precision: json['precision'] != null
