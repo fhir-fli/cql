@@ -449,7 +449,6 @@ class Expression extends Element {
     if (json.isEmpty) {
       return Expression();
     }
-    return Expression();
     throw ArgumentError.value(
         json.toString(), 'json', 'Could not parse unknown Expression type');
   }

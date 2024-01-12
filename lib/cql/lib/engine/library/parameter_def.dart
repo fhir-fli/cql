@@ -1,16 +1,19 @@
 import '../../cql.dart';
 
 class ParameterDefs {
+  String? type;
   List<ParameterDef> def = <ParameterDef>[];
 
   ParameterDefs();
 
   factory ParameterDefs.fromJson(Map<String, dynamic> json) => ParameterDefs()
+    ..type = json['type'] as String?
     ..def = (json['def'] as List<dynamic>)
         .map((e) => ParameterDef.fromJson(e as Map<String, dynamic>))
         .toList();
 
   Map<String, dynamic> toJson() => <String, dynamic>{
+        if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
 }

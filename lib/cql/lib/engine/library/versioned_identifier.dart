@@ -1,9 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'versioned_identifier.g.dart';
-
 /// This file defines the root library type and element.
-@JsonSerializable()
 class VersionedIdentifier {
   /// VersionedIdentifier is composed of three parts:
   /// (1) an optional system, or namespace, which provides a globally unique, stable scope for the identifier,

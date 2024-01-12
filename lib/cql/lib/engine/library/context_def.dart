@@ -1,22 +1,23 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'context_def.g.dart';
-
-@JsonSerializable()
 class ContextDefs {
+  String? type;
   List<ContextDef> def = <ContextDef>[];
 
   ContextDefs();
 
-  factory ContextDefs.fromJson(Map<String, dynamic> json) =>
-      _$ContextDefsFromJson(json);
+  factory ContextDefs.fromJson(Map<String, dynamic> json) => ContextDefs()
+    ..type = json['type'] as String?
+    ..def = (json['def'] as List<dynamic>)
+        .map((e) => ContextDef.fromJson(e as Map<String, dynamic>))
+        .toList();
 
-  Map<String, dynamic> toJson() => _$ContextDefsToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        if (type != null) 'type': type,
+        'def': def.map((e) => e.toJson()).toList(),
+      };
 }
 
-@JsonSerializable()
 class ContextDef extends Element {
   final String name;
 
@@ -29,9 +30,36 @@ class ContextDef extends Element {
     super.resultTypeSpecifier,
   });
 
-  factory ContextDef.fromJson(Map<String, dynamic> json) =>
-      _$ContextDefFromJson(json);
+  factory ContextDef.fromJson(Map<String, dynamic> json) => ContextDef(
+        name: json['name'] as String,
+      )
+        ..annotation = (json['annotation'] as List<dynamic>?)
+            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
+            .toList()
+        ..localId = json['localId'] as String?
+        ..locator = json['locator'] as String?
+        ..resultTypeName = json['resultTypeName'] as String?
+        ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>);
 
   @override
-  Map<String, dynamic> toJson() => _$ContextDefToJson(this);
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    val['name'] = name;
+    return val;
+  }
 }

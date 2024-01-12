@@ -8,9 +8,7 @@ Future<void> main() async {
   final modelInfo =
       modelInfoProvider.load(ModelIdentifier(id: 'QDM', version: '5.6'));
 
-  print('ModelInfo JSON:');
   if (modelInfo != null) {
-    // print(jsonPrettyPrint(modelInfo.toJson()));
     File('qdm/temp1.json')
         .writeAsStringSync(jsonPrettyPrint(modelInfo.toJson()));
   } else {

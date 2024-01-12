@@ -1,17 +1,20 @@
 import '../../cql.dart';
 
 class CodeDefs extends Element {
+  String? type;
   List<CodeDef> def = <CodeDef>[];
 
   CodeDefs();
 
   factory CodeDefs.fromJson(Map<String, dynamic> json) => CodeDefs()
+    ..type = json['type'] as String?
     ..def = (json['def'] as List<dynamic>)
         .map((e) => CodeDef.fromJson(e as Map<String, dynamic>))
         .toList();
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
 }

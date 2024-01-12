@@ -1,5 +1,3 @@
-import '../cql.dart';
-
 class QName {
   final String namespaceURI;
   final String localPart;

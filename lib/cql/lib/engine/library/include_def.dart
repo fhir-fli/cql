@@ -1,23 +1,24 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../cql.dart';
 
-part 'include_def.g.dart';
-
-@JsonSerializable()
 class IncludeDefs {
+  String? type;
   List<IncludeDef> def = [];
 
   IncludeDefs();
 
-  factory IncludeDefs.fromJson(Map<String, dynamic> json) =>
-      _$IncludeDefsFromJson(json);
+  factory IncludeDefs.fromJson(Map<String, dynamic> json) => IncludeDefs()
+    ..type = json['type'] as String?
+    ..def = (json['def'] as List<dynamic>)
+        .map((e) => IncludeDef.fromJson(e as Map<String, dynamic>))
+        .toList();
 
-  Map<String, dynamic> toJson() => _$IncludeDefsToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        if (type != null) 'type': type,
+        'def': def.map((e) => e.toJson()).toList(),
+      };
 }
 
 /// Includes a library for use within the artifact.
-@JsonSerializable()
 class IncludeDef extends Element {
   /// A unique name within this artifact for the library reference.
   ///
@@ -46,9 +47,42 @@ class IncludeDef extends Element {
     super.resultTypeSpecifier,
   });
 
-  factory IncludeDef.fromJson(Map<String, dynamic> json) =>
-      _$IncludeDefFromJson(json);
+  factory IncludeDef.fromJson(Map<String, dynamic> json) => IncludeDef(
+        localIdentifier: json['localIdentifier'] as String?,
+        mediaType: json['mediaType'] as String?,
+        path: json['path'] as String?,
+        version: json['version'] as String?,
+      )
+        ..annotation = (json['annotation'] as List<dynamic>?)
+            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
+            .toList()
+        ..localId = json['localId'] as String?
+        ..locator = json['locator'] as String?
+        ..resultTypeName = json['resultTypeName'] as String?
+        ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+            ? null
+            : TypeSpecifier.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>);
 
   @override
-  Map<String, dynamic> toJson() => _$IncludeDefToJson(this);
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    writeNotNull('localIdentifier', localIdentifier);
+    writeNotNull('mediaType', mediaType);
+    writeNotNull('path', path);
+    writeNotNull('version', version);
+    return val;
+  }
 }

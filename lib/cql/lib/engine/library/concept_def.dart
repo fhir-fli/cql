@@ -1,16 +1,19 @@
 import '../../cql.dart';
 
 class ConceptDefs {
+  String? type;
   List<ConceptDef> def = <ConceptDef>[];
 
   ConceptDefs();
 
   factory ConceptDefs.fromJson(Map<String, dynamic> json) => ConceptDefs()
+    ..type = json['type'] as String?
     ..def = (json['def'] as List<dynamic>)
         .map((e) => ConceptDef.fromJson(e as Map<String, dynamic>))
         .toList();
 
   Map<String, dynamic> toJson() => <String, dynamic>{
+        if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
 }
