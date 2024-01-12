@@ -37,10 +37,22 @@ class InstanceElement extends Element {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
+    final Map<String, dynamic> val = {
       'name': name,
       'value': value.toJson(),
     };
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
   }
 
   @override

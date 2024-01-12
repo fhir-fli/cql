@@ -42,13 +42,24 @@ class ListExpression extends Expression {
   }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        if (typeSpecifier != null) 'typeSpecifier': typeSpecifier!.toJson(),
-        'element': element != null
-            ? List<dynamic>.from(element!.map((x) => x.toJson()))
-            : null,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = <String, dynamic>{'type': type};
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('typeSpecifier', typeSpecifier?.toJson());
+    writeNotNull(
+        'element', List<dynamic>.from(element!.map((x) => x.toJson())));
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
 
   @override
   String get type => 'List';

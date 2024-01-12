@@ -95,20 +95,27 @@ class IntervalExpression extends Expression {
 
   @override
   Map<String, dynamic> toJson() {
-    final json = <String, dynamic>{
+    final val = <String, dynamic>{
       'lowClosed': lowClosed,
       'highClosed': highClosed,
       'type': type,
     };
-    if (low != null) json['low'] = low!.toJson();
-    if (lowClosedExpression != null) {
-      json['lowClosedExpression'] = lowClosedExpression!.toJson();
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
     }
-    if (high != null) json['high'] = high!.toJson();
-    if (highClosedExpression != null) {
-      json['highClosedExpression'] = highClosedExpression!.toJson();
-    }
-    return json;
+
+    writeNotNull('low', low?.toJson());
+    writeNotNull('lowClosedExpression', lowClosedExpression?.toJson());
+    writeNotNull('high', high?.toJson());
+    writeNotNull('highClosedExpression', highClosedExpression?.toJson());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
   }
 
   @override

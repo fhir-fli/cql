@@ -44,12 +44,26 @@ class Property extends Expression {
   }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'path': path,
-        if (scope != null) 'scope': scope,
-        'type': type,
-        if (source != null) 'source': source!.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = {};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('path', path);
+    writeNotNull('scope', scope);
+    writeNotNull('type', type);
+    writeNotNull('source', source?.toJson());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
 
   @override
   String toString() => toJson().toString();

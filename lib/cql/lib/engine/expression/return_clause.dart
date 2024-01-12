@@ -32,10 +32,23 @@ class ReturnClause extends Element {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        if (distinct != null) 'distinct': distinct,
-        'expression': expression.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = {};
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('distinct', distinct);
+    writeNotNull('expression', expression.toJson());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
 
   String get type => 'ReturnClause';
 }

@@ -35,16 +35,7 @@ class OperandDef extends Element {
   /// Type specifier for the operand.
   TypeSpecifier? operandTypeSpecifier;
 
-  OperandDef({
-    this.operandTypeSpecifier,
-    required this.name,
-    this.operandType,
-    super.annotation,
-    super.localId,
-    super.locator,
-    super.resultTypeName,
-    super.resultTypeSpecifier,
-  });
+  OperandDef({this.operandTypeSpecifier, required this.name, this.operandType});
 
   factory OperandDef.fromJson(Map<String, dynamic> json) {
     return OperandDef(

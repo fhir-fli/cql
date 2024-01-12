@@ -55,26 +55,27 @@ class Query extends Expression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
+    final Map<String, dynamic> val = {
       'type': type,
       'source': source.map((x) => x.toJson()).toList(),
     };
-    if (let != null) {
-      data['let'] = let!.map((x) => x.toJson()).toList();
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
     }
-    if (relationship != null) {
-      data['relationship'] = relationship!.map((x) => x.toJson()).toList();
-    }
-    if (where != null) {
-      data['where'] = where!.toJson();
-    }
-    if (returnClause != null) {
-      data['return'] = returnClause!.toJson();
-    }
-    if (sort != null) {
-      data['sort'] = sort!.toJson();
-    }
-    return data;
+
+    writeNotNull('let', let?.map((e) => e.toJson()).toList());
+    writeNotNull('relationship', relationship?.map((e) => e.toJson()).toList());
+    writeNotNull('where', where?.toJson());
+    writeNotNull('return', returnClause?.toJson());
+    writeNotNull('sort', sort?.toJson());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
   }
 
   @override

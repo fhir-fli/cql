@@ -38,12 +38,26 @@ class ForEach extends Expression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'source': source.toJson(),
-        'element': element.toJson(),
-        'scope': scope,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = {
+      'type': type,
+      'source': source.toJson(),
+      'element': element.toJson(),
+      'scope': scope,
+    };
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
 
   @override
   String get type => 'ForEach';

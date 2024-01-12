@@ -29,10 +29,24 @@ class Iteration extends Expression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'scope': scope,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = {
+      'type': type,
+      'scope': scope,
+    };
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
 
   @override
   String toString() => toJson().toString();
