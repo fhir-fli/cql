@@ -27,6 +27,17 @@ class Code extends Expression {
       code: json['code'] as String,
       display: json['display'] as String?,
       system: CodeSystemRef.fromJson(json['system'] as Map<String, dynamic>),
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
     );
   }
 

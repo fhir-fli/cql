@@ -16,7 +16,20 @@ class ConvertsToInteger extends UnaryExpression {
   });
 
   factory ConvertsToInteger.fromJson(Map<String, dynamic> json) =>
-      ConvertsToInteger(operand: Expression.fromJson(json['operand']!));
+      ConvertsToInteger(
+        operand: Expression.fromJson(json['operand']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
+      );
 
   @override
   String get type => 'ConvertsToInteger';

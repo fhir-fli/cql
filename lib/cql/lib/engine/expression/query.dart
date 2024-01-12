@@ -40,6 +40,17 @@ class Query extends Expression {
             ? null
             : ReturnClause.fromJson(json['return']),
         sort: json['sort'] == null ? null : SortClause.fromJson(json['sort']),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

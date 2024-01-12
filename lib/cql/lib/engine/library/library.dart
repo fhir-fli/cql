@@ -134,6 +134,7 @@ class Library extends Element {
     writeNotNull('type', type);
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('identifier', identifier?.toJson());
     writeNotNull('schemaIdentifier', schemaIdentifier?.toJson());
     writeNotNull('usings', usings?.toJson());
@@ -147,7 +148,6 @@ class Library extends Element {
     writeNotNull('statements', statements?.toJson());
     writeNotNull('resultTypeName', resultTypeName);
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
-    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     return val;
   }
 }

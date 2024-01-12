@@ -291,6 +291,17 @@ class Retrieve extends Expression {
       dateHighProperty: json['dateHighProperty'],
       dateSearch: json['dateSearch'],
       includedIn: json['includedIn'],
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
     );
   }
 

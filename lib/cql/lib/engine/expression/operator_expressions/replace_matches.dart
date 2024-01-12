@@ -20,6 +20,17 @@ class ReplaceMatches extends TernaryExpression {
                 .map((e) => Expression.fromJson(e))
                 .toList()
             : [],
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

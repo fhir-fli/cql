@@ -20,15 +20,36 @@ class Tuple extends Expression {
                 .map((e) => TupleElement.fromJson(e))
                 .toList()
             : null,
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'type': type};
-    if (element != null) {
-      json['element'] = element!.map((e) => e.toJson()).toList();
+    final Map<String, dynamic> val = {'type': type};
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
     }
-    return json;
+
+    writeNotNull('element', element?.map((e) => e.toJson()).toList());
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+
+    return val;
   }
 
   @override

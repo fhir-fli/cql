@@ -20,8 +20,20 @@ class Concept extends Expression {
 
   factory Concept.fromJson(Map<String, dynamic> json) {
     return Concept(
-        code: (json['code'] as List).map((e) => Code.fromJson(e)).toList(),
-        display: json['display']);
+      code: (json['code'] as List).map((e) => Code.fromJson(e)).toList(),
+      display: json['display'],
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
+    );
   }
 
   @override

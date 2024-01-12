@@ -25,6 +25,17 @@ class Slice extends OperatorExpression {
         source: Expression.fromJson(json['source']),
         startIndex: Expression.fromJson(json['startIndex']),
         endIndex: Expression.fromJson(json['endIndex']),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

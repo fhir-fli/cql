@@ -29,6 +29,17 @@ class CanConvert extends UnaryExpression {
 
   factory CanConvert.fromJson(Map<String, dynamic> json) => CanConvert(
         operand: Expression.fromJson(json['operand']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       )
         ..toTypeSpecifier = json['toTypeSpecifier']
         ..toType = json['toType'];

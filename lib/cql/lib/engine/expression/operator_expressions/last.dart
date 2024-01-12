@@ -21,6 +21,17 @@ class Last extends OperatorExpression {
     return Last(
       source: Expression.fromJson(json['source']!),
       orderBy: json['orderBy'],
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
     );
   }
 

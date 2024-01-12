@@ -18,6 +18,17 @@ class MinValue extends Expression {
 
   factory MinValue.fromJson(Map<String, dynamic> json) => MinValue(
         valueType: QName.fromFull(json['valueType']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

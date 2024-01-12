@@ -20,6 +20,17 @@ class Ratio extends Expression {
   factory Ratio.fromJson(Map<String, dynamic> json) => Ratio(
         numerator: Quantity.fromJson(json['numerator']!),
         denominator: Quantity.fromJson(json['denominator']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

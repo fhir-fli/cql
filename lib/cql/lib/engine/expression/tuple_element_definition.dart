@@ -30,20 +30,37 @@ class TupleElementDefinition extends Element {
             ? TypeSpecifier.fromJson(json['elementType'])
             : null,
         name: json['name'],
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {};
-    if (type != null) {
-      json['type'] = type!.toJson();
+    final Map<String, dynamic> val = {};
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
     }
-    if (elementType != null) {
-      json['elementType'] = elementType!.toJson();
-    }
-    if (name != null) {
-      json['name'] = name;
-    }
-    return json;
+
+    writeNotNull('type', type?.toJson());
+    writeNotNull('elementType', elementType?.toJson());
+    writeNotNull('name', name);
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+
+    return val;
   }
 }

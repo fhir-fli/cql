@@ -85,6 +85,17 @@ class DateFilterElement extends Element {
       lowProperty: json['lowProperty'],
       highProperty: json['highProperty'],
       search: json['search'],
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
     );
   }
 

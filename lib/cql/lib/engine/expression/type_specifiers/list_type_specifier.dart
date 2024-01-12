@@ -29,6 +29,17 @@ class ListTypeSpecifier extends TypeSpecifier {
         element: json['element'] != null
             ? (json['element'] as List).map((i) => Element.fromJson(i)).toList()
             : null,
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

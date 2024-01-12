@@ -21,6 +21,17 @@ class CaseItem extends Element {
   factory CaseItem.fromJson(Map<String, dynamic> json) => CaseItem(
         when_: Expression.fromJson(json['when']!),
         then: Expression.fromJson(json['then']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

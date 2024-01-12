@@ -18,6 +18,17 @@ class ByExpression extends SortByItem {
   factory ByExpression.fromJson(Map<String, dynamic> json) => ByExpression(
         direction: SortDirectionExtension.fromJson(json['direction']),
         expression: Expression.fromJson(json['expression']),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

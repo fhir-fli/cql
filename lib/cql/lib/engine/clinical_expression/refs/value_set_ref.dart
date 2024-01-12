@@ -27,6 +27,17 @@ class ValueSetRef extends Ref {
       name: name,
       libraryName: json['libraryName'],
       preserve: json['preserve'] ?? true,
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
     );
   }
 
@@ -36,7 +47,7 @@ class ValueSetRef extends Ref {
     if (libraryName != null) {
       json['libraryName'] = libraryName;
     }
-    json['preserve'] = preserve;
+    // json['preserve'] = preserve;
     json['type'] = type;
     return json;
   }

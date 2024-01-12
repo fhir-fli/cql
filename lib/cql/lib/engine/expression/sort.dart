@@ -21,14 +21,39 @@ class Sort extends Expression {
         source: Expression.fromJson(json['source']),
         by: List<SortByItem>.from(
             json['by'].map((x) => SortByItem.fromJson(x))),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'source': source.toJson(),
-        'by': List<dynamic>.from(by.map((x) => x.toJson())),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = {
+      'type': type,
+      'source': source.toJson(),
+      'by': List<dynamic>.from(by.map((x) => x.toJson())),
+    };
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
 
   @override
   String get type => 'Sort';

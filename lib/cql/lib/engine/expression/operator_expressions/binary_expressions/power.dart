@@ -14,9 +14,22 @@ class Power extends BinaryExpression {
   });
 
   factory Power.fromJson(Map<String, dynamic> json) => Power(
-        operand: (json['operand'] as List)
-            .map((e) => Expression.fromJson(e))
-            .toList(),
+        operand: List<Expression>.from(
+          json['operand'].map(
+            (x) => Expression.fromJson(x),
+          ),
+        ),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

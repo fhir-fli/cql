@@ -17,7 +17,21 @@ class Multiply extends BinaryExpression {
 
   factory Multiply.fromJson(Map<String, dynamic> json) => Multiply(
         operand: List<Expression>.from(
-            json['operand'].map((x) => Expression.fromJson(x))),
+          json['operand'].map(
+            (x) => Expression.fromJson(x),
+          ),
+        ),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

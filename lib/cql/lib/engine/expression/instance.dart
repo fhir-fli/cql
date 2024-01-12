@@ -20,12 +20,24 @@ class Instance extends Expression {
 
   factory Instance.fromJson(Map<String, dynamic> json) {
     return Instance(
-        classType: QName.fromJson(json['classType']),
-        element: json['element'] != null
-            ? (json['element'] as List)
-                .map((e) => InstanceElement.fromJson(e))
-                .toList()
-            : null);
+      classType: QName.fromJson(json['classType']),
+      element: json['element'] != null
+          ? (json['element'] as List)
+              .map((e) => InstanceElement.fromJson(e))
+              .toList()
+          : null,
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
+    );
   }
 
   @override

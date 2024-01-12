@@ -21,13 +21,38 @@ class TupleElement extends Element {
   factory TupleElement.fromJson(Map<String, dynamic> json) => TupleElement(
         value: Expression.fromJson(json['value']),
         name: json['name'],
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'value': value.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = {
+      'name': name,
+      'value': value.toJson(),
+    };
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    return val;
+  }
 
   @override
   String toString() => toJson().toString();

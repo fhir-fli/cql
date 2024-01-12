@@ -15,7 +15,20 @@ class ConvertsToBoolean extends UnaryExpression {
   });
 
   factory ConvertsToBoolean.fromJson(Map<String, dynamic> json) =>
-      ConvertsToBoolean(operand: Expression.fromJson(json['operand']!));
+      ConvertsToBoolean(
+        operand: Expression.fromJson(json['operand']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
+      );
 
   @override
   String get type => 'ConvertsToBoolean';

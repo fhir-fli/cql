@@ -11,7 +11,19 @@ class Now extends OperatorExpression {
     super.resultTypeSpecifier,
   });
 
-  factory Now.fromJson(Map<String, dynamic> json) => Now();
+  factory Now.fromJson(Map<String, dynamic> json) => Now(
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
+      );
 
   @override
   Map<String, dynamic> toJson() => {

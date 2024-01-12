@@ -20,6 +20,17 @@ class LastPositionOf extends OperatorExpression {
   factory LastPositionOf.fromJson(Map<String, dynamic> json) => LastPositionOf(
         pattern: Expression.fromJson(json['pattern']!),
         string: Expression.fromJson(json['string']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

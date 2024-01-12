@@ -20,17 +20,29 @@ class Ends extends BinaryExpression {
   });
 
   factory Ends.fromJson(Map<String, dynamic> json) => Ends(
-      precision: json['precision'] != null
-          ? DateTimePrecisionExtension.fromJson(json['precision'])
-          : null,
-      operand: json['operand'] != null
-          ? json['operand'] is List
-              ? (json['operand'] as List)
-                  .map((e) => Expression.fromJson(e as Map<String, dynamic>))
-                  .toList()
-              : [Expression.fromJson(json['operand'] as Map<String, dynamic>)]
-          : <Expression>[],
-      isList: json['operand'] == null ? false : json['operand'] is List);
+        precision: json['precision'] != null
+            ? DateTimePrecisionExtension.fromJson(json['precision'])
+            : null,
+        operand: json['operand'] != null
+            ? json['operand'] is List
+                ? (json['operand'] as List)
+                    .map((e) => Expression.fromJson(e as Map<String, dynamic>))
+                    .toList()
+                : [Expression.fromJson(json['operand'] as Map<String, dynamic>)]
+            : <Expression>[],
+        isList: json['operand'] == null ? false : json['operand'] is List,
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
+      );
 
   @override
   Map<String, dynamic> toJson() => {

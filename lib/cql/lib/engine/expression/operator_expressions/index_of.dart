@@ -21,6 +21,17 @@ class IndexOf extends OperatorExpression {
   factory IndexOf.fromJson(Map<String, dynamic> json) => IndexOf(
         source: Expression.fromJson(json['source']!),
         element: Expression.fromJson(json['element']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
 
   @override

@@ -31,9 +31,21 @@ class Convert extends UnaryExpression {
   });
 
   factory Convert.fromJson(Map<String, dynamic> json) => Convert(
-      toTypeSpecifier: TypeSpecifier.fromJson(json['toTypeSpecifier']),
-      toType: QName.fromFull(json['toType']),
-      operand: Expression.fromJson(json['operand']!));
+        toTypeSpecifier: TypeSpecifier.fromJson(json['toTypeSpecifier']),
+        toType: QName.fromFull(json['toType']),
+        operand: Expression.fromJson(json['operand']!),
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
+      );
 
   @override
   Map<String, dynamic> toJson() => {
