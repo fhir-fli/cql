@@ -130,20 +130,31 @@ class ExpressionDef extends Element {
     if (type != null) {
       data['type'] = type;
     }
+    if (accessLevel != null) {
+      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
+    }
+    if (context != null) {
+      data['context'] = context;
+    }
     if (expression != null) {
       data['expression'] = expression!.toJson();
+    }
+    data['name'] = name;
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+    if (localId != null) {
+      data['localId'] = localId;
     }
     if (locator != null) {
       data['locator'] = locator;
     }
-    data['name'] = name;
-    if (context != null) {
-      data['context'] = context;
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
     }
-    if (accessLevel != null) {
-      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
-
     return data;
   }
 

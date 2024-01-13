@@ -41,17 +41,59 @@ class As extends UnaryExpression {
             json['asType'] == null ? null : QName.fromFull(json['asType'])
         ..strict = json['strict'] ?? false;
 
-  @override
-  Map<String, dynamic> toJson() {
-    return {
-      if (operand is! NullExpression && operand is! Property) 'strict': strict,
-      if (asType != null) 'asType': asType!.toJson(),
-      'type': type,
-      'operand': operand.toJson(),
-      if (asTypeSpecifier != null) 'asTypeSpecifier': asTypeSpecifier!.toJson(),
-    };
-  }
+  //     if (asType != null) 'asType': asType!.toJson(),
+  //     'type': type,
+  //     'operand': operand.toJson(),
+  //     if (asTypeSpecifier != null) 'asTypeSpecifier': asTypeSpecifier!.toJson(),
+  //   };
+  // }
 
   @override
   String get type => 'As';
+
+  @override
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'type': type,
+      'operand': operand.toJson(),
+    };
+    if (operand is! NullExpression && operand is! Property) {
+      data['strict'] = strict;
+    }
+    if (asType != null) {
+      data['asType'] = asType!.toJson();
+    }
+
+    if (asTypeSpecifier != null) {
+      data['asTypeSpecifier'] = asTypeSpecifier!.toJson();
+    }
+
+    data['strict'] = strict;
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    if (asTypeSpecifier != null) {
+      data['asTypeSpecifier'] = asTypeSpecifier!.toJson();
+    }
+
+    return data;
+  }
 }

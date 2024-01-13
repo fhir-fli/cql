@@ -48,13 +48,42 @@ class Convert extends UnaryExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'operand': operand.toJson(),
-        if (toTypeSpecifier != null)
-          'toTypeSpecifier': toTypeSpecifier!.toJson(),
-        if (toType != null) 'toType': toType!.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'type': type,
+      'operand': operand.toJson(),
+    };
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    if (toTypeSpecifier != null) {
+      data['toTypeSpecifier'] = toTypeSpecifier!.toJson();
+    }
+
+    if (toType != null) {
+      data['toType'] = toType!.toJson();
+    }
+
+    return data;
+  }
 
   @override
   String get type => 'Convert';

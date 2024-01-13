@@ -42,13 +42,30 @@ class Starts extends BinaryExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'precision': precision,
-        'type': type,
-        'operand': isList
-            ? operand.map((e) => e.toJson()).toList()
-            : operand.first.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['type'] = type;
+    data['precision'] = precision?.toJson();
+    data['operand'] = isList
+        ? operand.map((e) => e.toJson()).toList()
+        : operand.first.toJson();
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+    return data;
+  }
 
   @override
   String get type => 'Starts';

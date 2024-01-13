@@ -20,10 +20,49 @@ class Union extends NaryExpression {
   });
 
   factory Union.fromJson(Map<String, dynamic> json) => Union(
-      operand: (json['operand'] as List)
-          .map((e) => Expression.fromJson(e))
-          .toList());
+        operand: json['operand'] != null
+            ? (json['operand'] as List)
+                .map((e) => Expression.fromJson(e))
+                .toList()
+            : null,
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
+      );
 
   @override
   String get type => 'Union';
+
+  @override
+  Map<String, dynamic> toJson() {
+    final data = super.toJson();
+    data['type'] = type;
+    if (operand != null) {
+      data['operand'] = operand!.map((e) => e.toJson()).toList();
+    }
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+    return data;
+  }
 }
