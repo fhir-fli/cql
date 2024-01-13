@@ -39,14 +39,28 @@ class With extends RelationshipClause {
 
   @override
   Map<String, dynamic> toJson() {
-    print('what to json');
-    final map = {
+    final Map<String, dynamic> map = {
       'alias': alias,
-      if (type != '') 'type': type,
+      if (type.isNotEmpty) 'type': type,
       'expression': expression.toJson(),
     };
     if (suchThat != null) {
       map['suchThat'] = suchThat!.toJson();
+    }
+    if (annotation != null) {
+      map['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+    if (localId != null) {
+      map['localId'] = localId;
+    }
+    if (locator != null) {
+      map['locator'] = locator;
+    }
+    if (resultTypeName != null) {
+      map['resultTypeName'] = resultTypeName;
+    }
+    if (resultTypeSpecifier != null) {
+      map['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
     return map;
   }

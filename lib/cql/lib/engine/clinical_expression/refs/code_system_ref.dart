@@ -40,10 +40,10 @@ class CodeSystemRef extends Ref {
   }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        if (libraryName != null) 'libraryName': libraryName,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = super.toJson();
+    return val;
+  }
 
   @override
   String get type => 'CodeSystemRef';

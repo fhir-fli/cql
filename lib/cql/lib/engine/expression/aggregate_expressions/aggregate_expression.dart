@@ -58,7 +58,36 @@ abstract class AggregateExpression extends Expression {
   }
 
   @override
-  Map<String, dynamic> toJson() => {};
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'type': type,
+      'path': path,
+      'signature': signature?.map((s) => s.toJson()).toList(),
+      'source': source.toJson(),
+    };
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((a) => a.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return json;
+  }
 
   @override
   String get type => 'AggregateExpression';

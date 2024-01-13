@@ -43,13 +43,35 @@ class Code extends Expression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {};
-    json['code'] = code;
+    final Map<String, dynamic> json = {
+      'code': code,
+      'system': system.toJson(),
+    };
+
     if (display != null) {
       json['display'] = display;
     }
-    json['type'] = type;
-    json['system'] = system.toJson();
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
     return json;
   }
 

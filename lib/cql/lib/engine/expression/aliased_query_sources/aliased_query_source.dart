@@ -23,7 +23,14 @@ abstract class AliasedQuerySource extends Expression {
   @override
   Map<String, dynamic> toJson() => {
         'alias': alias,
-        'expression': expression,
+        'expression': expression.toJson(),
+        if (annotation != null)
+          'annotation': annotation!.map((e) => e.toJson()).toList(),
+        if (localId != null) 'localId': localId,
+        if (locator != null) 'locator': locator,
+        if (resultTypeName != null) 'resultTypeName': resultTypeName,
+        if (resultTypeSpecifier != null)
+          'resultTypeSpecifier': resultTypeSpecifier!.toJson(),
       };
 
   @override

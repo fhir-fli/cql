@@ -41,11 +41,35 @@ class InCodeSystem extends OperatorExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'code': code.toJson(),
-        'codesystem': codesystem.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'type': type,
+      'code': code.toJson(),
+      'codesystem': codesystem.toJson(),
+    };
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return json;
+  }
 
   @override
   String toString() => toJson().toString();

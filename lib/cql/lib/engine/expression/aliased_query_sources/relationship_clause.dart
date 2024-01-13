@@ -41,12 +41,34 @@ class RelationshipClause extends AliasedQuerySource {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'alias': alias,
-        if (type != '') 'type': type,
-        'expression': expression.toJson(),
-        if (suchThat != null) 'suchThat': suchThat!.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'alias': alias,
+      'expression': expression.toJson(),
+    };
+    if (suchThat != null) {
+      json['suchThat'] = suchThat!.toJson();
+    }
+    if (type.isNotEmpty) {
+      json['type'] = type;
+    }
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+    return json;
+  }
 
   @override
   String toString() => toJson().toString();

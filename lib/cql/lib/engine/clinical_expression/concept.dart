@@ -38,12 +38,35 @@ class Concept extends Expression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {};
+    final Map<String, dynamic> json = {
+      'type': type,
+      'code': code.map((e) => e.toJson()).toList(),
+    };
+
     if (display != null) {
       json['display'] = display;
     }
-    json['type'] = type;
-    json['code'] = code.map((e) => e.toJson()).toList();
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
     return json;
   }
 

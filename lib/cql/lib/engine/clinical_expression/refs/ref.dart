@@ -44,11 +44,19 @@ abstract class Ref extends Expression {
 
   @override
   Map<String, dynamic> toJson() {
-    final json = <String, dynamic>{'name': name};
-    if (libraryName != null) {
-      json['libraryName'] = libraryName;
-    }
-    json['type'] = type;
+    final Map<String, dynamic> json = {
+      'name': name,
+      if (libraryName != null) 'libraryName': libraryName,
+      if (annotation != null)
+        'annotation': annotation!.map((x) => x.toJson()).toList(),
+      if (localId != null) 'localId': localId,
+      if (locator != null) 'locator': locator,
+      if (resultTypeName != null) 'resultTypeName': resultTypeName,
+      if (resultTypeSpecifier != null)
+        'resultTypeSpecifier': resultTypeSpecifier!.toJson(),
+      'type': type,
+    };
+
     return json;
   }
 

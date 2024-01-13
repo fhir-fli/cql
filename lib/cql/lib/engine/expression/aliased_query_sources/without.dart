@@ -37,13 +37,28 @@ class Without extends RelationshipClause {
 
   @override
   Map<String, dynamic> toJson() {
-    final map = {
-      if (type != '') 'type': type,
+    final Map<String, dynamic> map = {
+      if (type.isNotEmpty) 'type': type,
       'alias': alias,
       'expression': expression.toJson(),
     };
     if (suchThat != null) {
       map['suchThat'] = suchThat!.toJson();
+    }
+    if (annotation != null) {
+      map['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+    if (localId != null) {
+      map['localId'] = localId;
+    }
+    if (locator != null) {
+      map['locator'] = locator;
+    }
+    if (resultTypeName != null) {
+      map['resultTypeName'] = resultTypeName;
+    }
+    if (resultTypeSpecifier != null) {
+      map['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
     return map;
   }

@@ -38,12 +38,42 @@ class Count extends AggregateExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'source': source,
-        'signature': signature,
-        'path': path,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'type': type,
+      'source': source.toJson(),
+    };
+
+    if (signature != null) {
+      json['signature'] = signature!.map((s) => s.toJson()).toList();
+    }
+
+    if (path != null) {
+      json['path'] = path;
+    }
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((a) => a.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return json;
+  }
 
   @override
   String get type => 'Count';

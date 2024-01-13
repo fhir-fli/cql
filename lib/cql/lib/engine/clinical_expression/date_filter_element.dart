@@ -100,11 +100,47 @@ class DateFilterElement extends Element {
   }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'value': value.toJson(),
-        'property': property,
-        'lowProperty': lowProperty,
-        'highProperty': highProperty,
-        'search': search,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'value': value.toJson(),
+    };
+
+    if (property != null) {
+      json['property'] = property;
+    }
+
+    if (lowProperty != null) {
+      json['lowProperty'] = lowProperty;
+    }
+
+    if (highProperty != null) {
+      json['highProperty'] = highProperty;
+    }
+
+    if (search != null) {
+      json['search'] = search;
+    }
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return json;
+  }
 }

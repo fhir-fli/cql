@@ -50,18 +50,37 @@ class InValueSet extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = <String, dynamic>{
+    final Map<String, dynamic> json = {
       'type': type,
       'code': code.toJson(),
-      if (valueset != null) 'valueset': valueset!.toJson(),
     };
+
     if (valueset != null) {
-      final valueSet = valueset!.toJson();
-      valueSet.remove('type');
-      json['valueset'] = valueSet;
+      json['valueset'] = valueset!.toJson();
     }
+
     if (valuesetExpression != null) {
       json['valuesetExpression'] = valuesetExpression!.toJson();
+    }
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
 
     return json;

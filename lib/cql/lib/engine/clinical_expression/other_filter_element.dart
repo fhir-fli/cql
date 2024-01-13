@@ -57,10 +57,17 @@ class OtherFilterElement extends Element {
   }
 
   @override
-  Map<String, dynamic> toJson() => {
-        'value': value.toJson(),
-        'property': property,
-        'search': search,
-        'comparator': comparator,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'comparator': comparator,
+      'value': value.toJson(),
+    };
+    if (property != null) {
+      json['property'] = property;
+    }
+    if (search != null) {
+      json['search'] = search;
+    }
+    return json;
+  }
 }

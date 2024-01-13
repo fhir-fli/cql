@@ -37,4 +37,10 @@ class ExpressionRef extends Ref {
 
   @override
   String get type => 'ExpressionRef';
+
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = super.toJson();
+    return val;
+  }
 }

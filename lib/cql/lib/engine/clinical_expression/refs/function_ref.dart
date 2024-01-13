@@ -45,15 +45,20 @@ class FunctionRef extends ExpressionRef {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        if (libraryName != null) 'libraryName': libraryName,
-        'type': type,
-        if (signature != null)
-          'signature': List<dynamic>.from(signature!.map((x) => x.toJson())),
-        if (operand != null)
-          'operand': List<dynamic>.from(operand!.map((x) => x.toJson())),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {'type': type};
+
+    if (signature != null) {
+      json['signature'] = signature!.map((x) => x.toJson()).toList();
+    }
+
+    if (operand != null) {
+      json['operand'] = operand!.map((x) => x.toJson()).toList();
+    }
+
+    json.addAll(super.toJson());
+    return json;
+  }
 
   @override
   String get type => 'FunctionRef';

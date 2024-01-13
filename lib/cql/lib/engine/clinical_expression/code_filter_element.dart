@@ -83,11 +83,44 @@ class CodeFilterElement extends Element {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'value': value.toJson(),
-        'property': property,
-        'valueSetProperty': valueSetProperty,
-        'search': search,
-        'comparator': comparator,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'value': value.toJson(),
+      'comparator': comparator,
+    };
+
+    if (property != null) {
+      json['property'] = property;
+    }
+
+    if (valueSetProperty != null) {
+      json['valueSetProperty'] = valueSetProperty;
+    }
+
+    if (search != null) {
+      json['search'] = search;
+    }
+
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((x) => x.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return json;
+  }
 }

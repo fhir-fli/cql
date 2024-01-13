@@ -75,6 +75,11 @@ class IncludeElement extends Element {
     writeNotNull('relatedProperty', relatedProperty);
     writeNotNull('relatedSearch', relatedSearch);
     writeNotNull('isReverse', isReverse);
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     return val;
   }
 }

@@ -39,14 +39,43 @@ class Min extends AggregateExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'source': source.toJson(),
-        'signature': signature != null
-            ? List<dynamic>.from(signature!.map((x) => x.toJson()))
-            : null,
-        'path': path,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {
+      'type': type,
+      'source': source.toJson(),
+    };
+
+    if (signature != null) {
+      json['signature'] = List<dynamic>.from(signature!.map((x) => x.toJson()));
+    }
+
+    if (path != null) {
+      json['path'] = path;
+    }
+
+    if (annotation != null) {
+      json['annotation'] =
+          List<dynamic>.from(annotation!.map((x) => x.toJson()));
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return json;
+  }
 
   @override
   String get type => 'Min';

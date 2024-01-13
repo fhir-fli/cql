@@ -37,4 +37,10 @@ class IdentifierRef extends Ref {
 
   @override
   String get type => 'IdentifierRef';
+
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = super.toJson();
+    return val;
+  }
 }

@@ -37,4 +37,10 @@ class ParameterRef extends Ref {
 
   @override
   String get type => 'ParameterRef';
+
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> val = super.toJson();
+    return val;
+  }
 }
