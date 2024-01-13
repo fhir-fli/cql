@@ -79,6 +79,10 @@ class CodeDef extends Element {
 
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
+        if (key == 'codeSystem') {
+          (value as Map<String, dynamic>).removeWhere(
+              (key, value) => key == 'type' && value == 'CodeSystemRef');
+        }
         val[key] = value;
       }
     }

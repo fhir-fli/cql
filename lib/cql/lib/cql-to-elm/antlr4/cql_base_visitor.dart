@@ -1410,8 +1410,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TypeSpecifierContext) {
-        return ListTypeSpecifier(
-            elementTypeSpecifier: visitTypeSpecifier(child));
+        return ListTypeSpecifier(elementType: visitTypeSpecifier(child));
       }
     }
     throw ArgumentError('$thisNode Invalid ListTypeSpecifier');

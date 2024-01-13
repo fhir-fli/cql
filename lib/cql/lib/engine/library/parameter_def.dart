@@ -50,7 +50,8 @@ class ParameterDef extends Element {
 
   factory ParameterDef.fromJson(Map<String, dynamic> json) => ParameterDef(
         name: json['name'] as String,
-        accessLevel: json['accessLevel'] == 'private'
+        accessLevel: json['accessLevel'] is String &&
+                (json['accessLevel'] as String).toLowerCase() == 'private'
             ? AccessModifier.private
             : AccessModifier.public,
         defaultExpression: json['default'] == null

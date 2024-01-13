@@ -80,7 +80,11 @@ class ConceptDef extends Element {
     val['name'] = name;
     writeNotNull('display', display);
     val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
-    val['code'] = code.map((e) => e.toJson()).toList();
+    val['code'] = code.map((e) {
+      final map = e.toJson();
+      map.removeWhere((key, value) => key == 'type' && value == 'CodeRef');
+      return map;
+    }).toList();
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     writeNotNull('resultTypeName', resultTypeName);

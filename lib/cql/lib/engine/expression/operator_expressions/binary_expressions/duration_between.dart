@@ -41,8 +41,8 @@ class DurationBetween extends BinaryExpression {
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = {
-      'type': type,
       'precision': precision.toJson(),
+      'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
     if (annotation != null) {

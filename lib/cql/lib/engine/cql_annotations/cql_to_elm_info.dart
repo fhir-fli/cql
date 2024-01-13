@@ -26,9 +26,9 @@ class CqlToElmInfo extends CqlToElmBase {
 
   @override
   Map<String, dynamic> toJson() => {
+        if (translatorVersion != null) 'translatorVersion': translatorVersion,
         if (translatorOptions != null) 'translatorOptions': translatorOptions,
         'type': type,
-        if (translatorVersion != null) 'translatorVersion': translatorVersion,
         if (signatureLevel != null) 'signatureLevel': signatureLevel,
       };
 

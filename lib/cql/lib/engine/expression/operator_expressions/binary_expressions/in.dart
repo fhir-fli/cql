@@ -42,13 +42,15 @@ class In extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
-      'type': type,
-      'operand': operand.map((x) => x.toJson()).toList(),
-    };
+    final Map<String, dynamic> json = {};
     if (precision != null) {
       json['precision'] = precision!.toJson();
     }
+
+    json['type'] = type;
+
+    json['operand'] = operand.map((x) => x.toJson()).toList();
+
     if (annotation != null) {
       json['annotation'] = annotation!.map((e) => e.toJson()).toList();
     }

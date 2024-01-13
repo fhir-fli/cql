@@ -127,19 +127,21 @@ class ExpressionDef extends Element {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
+    data['name'] = name;
+    if (context != null) {
+      data['context'] = context;
+    }
     if (type != null) {
       data['type'] = type;
     }
     if (accessLevel != null) {
       data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     }
-    if (context != null) {
-      data['context'] = context;
-    }
+
     if (expression != null) {
       data['expression'] = expression!.toJson();
     }
-    data['name'] = name;
+
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
     }

@@ -56,7 +56,10 @@ class InValueSet extends OperatorExpression {
     };
 
     if (valueset != null) {
-      json['valueset'] = valueset!.toJson();
+      final valueSetMap = valueset!.toJson();
+      valueSetMap
+          .removeWhere((key, value) => key == 'type' && value == 'ValueSetRef');
+      json['valueset'] = valueSetMap;
     }
 
     if (valuesetExpression != null) {

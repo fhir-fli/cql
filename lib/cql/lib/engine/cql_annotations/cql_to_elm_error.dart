@@ -66,15 +66,15 @@ class CqlToElmError extends Locator {
       if (startChar != null) 'startChar': startChar,
       if (endLine != null) 'endLine': endLine,
       if (endChar != null) 'endChar': endChar,
-      if (targetIncludeLibrarySystem != null)
-        'targetIncludeLibrarySystem': targetIncludeLibrarySystem,
-      if (targetIncludeLibraryId != null)
-        'targetIncludeLibraryId': targetIncludeLibraryId,
-      if (targetIncludeLibraryVersionId != null)
-        'targetIncludeLibraryVersionId': targetIncludeLibraryVersionId,
       'message': message,
       'errorType': errorType.toJson(),
       if (errorSeverity != null) 'errorSeverity': errorSeverity!.toJson(),
+      if (targetIncludeLibraryId != null)
+        'targetIncludeLibraryId': targetIncludeLibraryId,
+      if (targetIncludeLibrarySystem != null)
+        'targetIncludeLibrarySystem': targetIncludeLibrarySystem,
+      if (targetIncludeLibraryVersionId != null)
+        'targetIncludeLibraryVersionId': targetIncludeLibraryVersionId,
       'type': type,
     };
     return data;

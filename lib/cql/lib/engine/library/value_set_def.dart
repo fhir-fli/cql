@@ -98,6 +98,12 @@ class ValueSetDef extends Element {
 
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
+        if (key == 'codeSystem') {
+          (value as List<Map<String, dynamic>>)
+              .map((e) => e.removeWhere(
+                  (key, value) => key == 'type' && value == 'CodeSystemRef'))
+              .toList();
+        }
         val[key] = value;
       }
     }

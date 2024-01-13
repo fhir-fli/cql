@@ -46,7 +46,15 @@ class FunctionRef extends ExpressionRef {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'type': type};
+    final Map<String, dynamic> json = {
+      'name': name,
+    };
+
+    if (libraryName != null) {
+      json['libraryName'] = libraryName;
+    }
+
+    json['type'] = type;
 
     if (signature != null) {
       json['signature'] = signature!.map((x) => x.toJson()).toList();
@@ -56,7 +64,26 @@ class FunctionRef extends ExpressionRef {
       json['operand'] = operand!.map((x) => x.toJson()).toList();
     }
 
-    json.addAll(super.toJson());
+    if (annotation != null) {
+      json['annotation'] = annotation!.map((x) => x.toJson()).toList();
+    }
+
+    if (localId != null) {
+      json['localId'] = localId;
+    }
+
+    if (locator != null) {
+      json['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      json['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
     return json;
   }
 

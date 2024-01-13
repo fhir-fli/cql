@@ -3,16 +3,16 @@ import '../../../cql.dart';
 /// Represents a list type specifier, extending [TypeSpecifier].
 ///
 /// The [ListTypeSpecifier] type represents a list type, inheriting from TypeSpecifier,
-/// including an elementTypeSpecifier element and elementType attribute.
+/// including an elementType element and elementType attribute.
 
 class ListTypeSpecifier extends TypeSpecifier {
   List<Element>? element;
 
   /// Element type specifier.
-  TypeSpecifier? elementTypeSpecifier;
+  TypeSpecifier? elementType;
 
   ListTypeSpecifier({
-    this.elementTypeSpecifier,
+    this.elementType,
     this.element,
     super.annotation,
     super.localId,
@@ -21,26 +21,28 @@ class ListTypeSpecifier extends TypeSpecifier {
     super.resultTypeSpecifier,
   });
 
-  factory ListTypeSpecifier.fromJson(Map<String, dynamic> json) =>
-      ListTypeSpecifier(
-        elementTypeSpecifier: json['elementTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
-            : null,
-        element: json['element'] != null
-            ? (json['element'] as List).map((i) => Element.fromJson(i)).toList()
-            : null,
-        annotation: json['annotation'] != null
-            ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
-                .toList()
-            : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
-        resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
-            : null,
-      );
+  factory ListTypeSpecifier.fromJson(Map<String, dynamic> json) {
+    print(json);
+    return ListTypeSpecifier(
+      elementType: json['elementType'] != null
+          ? TypeSpecifier.fromJson(json['elementType'])
+          : null,
+      element: json['element'] != null
+          ? (json['element'] as List).map((i) => Element.fromJson(i)).toList()
+          : null,
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          : null,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -48,8 +50,8 @@ class ListTypeSpecifier extends TypeSpecifier {
       'type': type,
     };
 
-    if (elementTypeSpecifier != null) {
-      data['elementTypeSpecifier'] = elementTypeSpecifier!.toJson();
+    if (elementType != null) {
+      data['elementType'] = elementType!.toJson();
     }
 
     if (element != null) {

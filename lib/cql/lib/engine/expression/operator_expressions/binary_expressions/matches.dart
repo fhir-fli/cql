@@ -33,6 +33,9 @@ class Matches extends BinaryExpression {
       );
 
   @override
+  String get type => 'Matches';
+
+  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = {
       'type': type,

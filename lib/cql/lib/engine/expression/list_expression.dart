@@ -51,8 +51,7 @@ class ListExpression extends Expression {
     }
 
     writeNotNull('typeSpecifier', typeSpecifier?.toJson());
-    writeNotNull(
-        'element', List<dynamic>.from(element!.map((x) => x.toJson())));
+    writeNotNull('element', element?.map((x) => x.toJson()).toList());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);

@@ -98,6 +98,8 @@ class Expression extends Element {
           return ConvertsToDecimal.fromJson(json);
         case 'ConvertsToInteger':
           return ConvertsToInteger.fromJson(json);
+        case 'ConvertsToLong':
+          return ConvertsToLong.fromJson(json);
         case 'ConvertsToQuantity':
           return ConvertsToQuantity.fromJson(json);
         case 'ConvertsToRatio':
@@ -404,6 +406,8 @@ class Expression extends Element {
           return ToDecimal.fromJson(json);
         case 'ToInteger':
           return ToInteger.fromJson(json);
+        case 'ToLong':
+          return ToLong.fromJson(json);
         case 'ToList':
           return ToList.fromJson(json);
         case 'ToQuantity':
@@ -480,5 +484,5 @@ class Expression extends Element {
     return data;
   }
 
-  String? get type => throw 'Unknown Expression type';
+  String? get type => throw 'Unknown Expression type: $runtimeType';
 }

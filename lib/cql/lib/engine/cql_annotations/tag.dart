@@ -15,7 +15,7 @@ class Tag extends CqlToElmBase {
 
   @override
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'value': value,
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
       };
 }
