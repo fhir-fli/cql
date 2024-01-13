@@ -44,13 +44,46 @@ class TimeExpression extends OperatorExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'hour': hour.toJson(),
-        if (minute != null) 'minute': minute!.toJson(),
-        if (second != null) 'second': second!.toJson(),
-        if (millisecond != null) 'millisecond': millisecond!.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'type': type,
+      'hour': hour.toJson(),
+    };
+
+    if (minute != null) {
+      data['minute'] = minute!.toJson();
+    }
+
+    if (second != null) {
+      data['second'] = second!.toJson();
+    }
+
+    if (millisecond != null) {
+      data['millisecond'] = millisecond!.toJson();
+    }
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return data;
+  }
 
   @override
   String get type => 'TimeExpression';

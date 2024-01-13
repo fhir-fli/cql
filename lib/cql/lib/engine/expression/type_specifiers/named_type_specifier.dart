@@ -45,11 +45,38 @@ class NamedTypeSpecifier extends TypeSpecifier {
   }
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        if (modelName != null) 'modelName': modelName,
-        'name': namespace.toJson(),
-        'type': type,
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'type': type,
+      'name': namespace.toString(),
+    };
+
+    if (modelName != null) {
+      data['modelName'] = modelName;
+    }
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return data;
+  }
 
   @override
   String toString() => namespace.toString();

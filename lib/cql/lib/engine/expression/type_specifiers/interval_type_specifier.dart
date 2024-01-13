@@ -39,16 +39,35 @@ class IntervalTypeSpecifier extends TypeSpecifier {
 
   @override
   Map<String, dynamic> toJson() {
-    final val = <String, dynamic>{'type': type};
+    final data = <String, dynamic>{
+      'type': type,
+    };
 
-    void writeNotNull(String key, dynamic value) {
-      if (value != null) {
-        val[key] = value;
-      }
+    if (pointType != null) {
+      data['pointType'] = pointType!.toJson();
     }
 
-    writeNotNull('pointType', pointType?.toJson());
-    return val;
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return data;
   }
 
   @override

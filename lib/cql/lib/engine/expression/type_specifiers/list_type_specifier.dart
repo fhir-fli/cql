@@ -44,16 +44,31 @@ class ListTypeSpecifier extends TypeSpecifier {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final data = <String, dynamic>{
       'type': type,
     };
+
     if (elementTypeSpecifier != null) {
-      json['elementTypeSpecifier'] = elementTypeSpecifier?.toJson();
+      data['elementTypeSpecifier'] = elementTypeSpecifier!.toJson();
     }
+
     if (element != null) {
-      json['element'] = element?.map((i) => i.toJson()).toList();
+      data['element'] = element!.map((e) => e.toJson()).toList();
     }
-    return json;
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    return data;
   }
 
   @override

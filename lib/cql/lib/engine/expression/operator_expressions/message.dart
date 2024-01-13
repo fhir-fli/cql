@@ -60,14 +60,50 @@ class Message extends OperatorExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'source': source.toJson(),
-        if (condition != null) 'condition': condition!.toJson(),
-        if (code != null) 'code': code!.toJson(),
-        if (severity != null) 'severity': severity!.toJson(),
-        if (message != null) 'message': message!.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'type': type,
+      'source': source.toJson(),
+    };
+
+    if (condition != null) {
+      data['condition'] = condition!.toJson();
+    }
+
+    if (code != null) {
+      data['code'] = code!.toJson();
+    }
+
+    if (severity != null) {
+      data['severity'] = severity!.toJson();
+    }
+
+    if (message != null) {
+      data['message'] = message!.toJson();
+    }
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return data;
+  }
 
   @override
   String get type => 'Message';

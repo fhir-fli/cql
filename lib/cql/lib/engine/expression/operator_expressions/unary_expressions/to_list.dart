@@ -16,7 +16,8 @@ class ToList extends UnaryExpression {
   });
 
   factory ToList.fromJson(Map<String, dynamic> json) => ToList(
-        operand: Expression.fromJson(json['operand']),annotation: json['annotation'] != null
+        operand: Expression.fromJson(json['operand']),
+        annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))
                 .toList()
@@ -30,11 +31,34 @@ class ToList extends UnaryExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'operand': operand.toJson(),
-      };
-
-  @override
   String get type => 'ToList';
+  @override
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'type': type,
+      'operand': operand.toJson(),
+    };
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return data;
+  }
 }

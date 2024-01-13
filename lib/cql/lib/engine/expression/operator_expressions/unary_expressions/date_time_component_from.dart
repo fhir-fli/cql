@@ -34,11 +34,35 @@ class DateTimeComponentFrom extends UnaryExpression {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'precision': precision.toJson(),
-        'operand': operand.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'type': type,
+      'precision': precision.toJson(),
+      'operand': operand.toJson(),
+    };
+
+    if (annotation != null) {
+      data['annotation'] = annotation!.map((e) => e.toJson()).toList();
+    }
+
+    if (localId != null) {
+      data['localId'] = localId;
+    }
+
+    if (locator != null) {
+      data['locator'] = locator;
+    }
+
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
+
+    return data;
+  }
 
   @override
   String get type => 'DateTimeComponentFrom';
