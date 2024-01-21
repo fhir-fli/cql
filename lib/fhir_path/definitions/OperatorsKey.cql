@@ -1,2 +1,0 @@
-
-// # String Equality and Equivalence

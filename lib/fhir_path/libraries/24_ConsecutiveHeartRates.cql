@@ -1,1 +1,0 @@
-library Test145 version '6.0.0'

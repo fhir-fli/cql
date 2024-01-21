@@ -1,1 +1,0 @@
-library CMS53 version '4.0.0'

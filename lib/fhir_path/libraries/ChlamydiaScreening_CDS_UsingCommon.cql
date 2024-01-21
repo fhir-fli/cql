@@ -1,1 +1,0 @@
-library ChlamydiaScreening_CDS_UsingCommon version '2'

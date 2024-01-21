@@ -1,1 +1,0 @@
-library Example.Timing version '0.1.000'

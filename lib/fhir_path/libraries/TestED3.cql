@@ -1,1 +1,0 @@
-library MedianTimefromEDArrivaltoEDDepartureforDischargedEDPatients version '7.2.004'

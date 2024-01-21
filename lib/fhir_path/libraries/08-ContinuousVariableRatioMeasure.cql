@@ -1,1 +1,0 @@
-library ContinuousVariableRatioMeasure version '1'

@@ -1,1 +1,0 @@
-library Adult_Outpatient_Encounters version '1.3.000'

@@ -1,1 +1,0 @@
-library PatientBasedProportionMeasure version '1'

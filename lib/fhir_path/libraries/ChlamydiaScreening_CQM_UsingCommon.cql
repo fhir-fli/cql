@@ -1,1 +1,0 @@
-library ChlamydiaScreening_CQM_UsingCommon version '2'

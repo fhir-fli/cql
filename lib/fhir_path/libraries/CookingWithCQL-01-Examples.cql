@@ -1,1 +1,0 @@
-library CookingWithCQL_01 version '1'

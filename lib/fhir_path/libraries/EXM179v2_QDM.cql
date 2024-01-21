@@ -1,1 +1,0 @@
-library EXM179_QDM version '2'

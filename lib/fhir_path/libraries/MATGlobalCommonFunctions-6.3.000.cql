@@ -1,1 +1,0 @@
-library MATGlobalCommonFunctions version '6.3.000'

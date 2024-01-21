@@ -1,1 +1,0 @@
-library ColorectalCancerElements version '0.1.0'

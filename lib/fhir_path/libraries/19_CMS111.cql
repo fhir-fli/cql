@@ -1,1 +1,0 @@
-library CMS111 version '5.0.0'

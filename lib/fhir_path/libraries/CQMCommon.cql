@@ -1,1 +1,0 @@
-library CQMCommon version '2.0.000'

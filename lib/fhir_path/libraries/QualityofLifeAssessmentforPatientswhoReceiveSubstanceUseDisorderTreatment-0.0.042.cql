@@ -1,1 +1,0 @@
-library QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment version '0.0.042'
