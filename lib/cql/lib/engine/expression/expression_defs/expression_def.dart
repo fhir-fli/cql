@@ -88,6 +88,16 @@ class ExpressionDef extends Element {
         expression: json['expression'] != null
             ? Expression.fromJson(json['expression'])
             : null,
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            : null,
       );
     }
   }
@@ -127,17 +137,9 @@ class ExpressionDef extends Element {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['name'] = name;
-    if (context != null) {
-      data['context'] = context;
-    }
     if (type != null) {
       data['type'] = type;
     }
-    if (accessLevel != null) {
-      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
-    }
-
     if (expression != null) {
       data['expression'] = expression!.toJson();
     }
@@ -145,17 +147,24 @@ class ExpressionDef extends Element {
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
     }
+    if (resultTypeSpecifier != null) {
+      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    }
     if (localId != null) {
       data['localId'] = localId;
     }
     if (locator != null) {
       data['locator'] = locator;
     }
+    data['name'] = name;
+    if (context != null) {
+      data['context'] = context;
+    }
     if (resultTypeName != null) {
       data['resultTypeName'] = resultTypeName;
     }
-    if (resultTypeSpecifier != null) {
-      data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
+    if (accessLevel != null) {
+      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     }
     return data;
   }

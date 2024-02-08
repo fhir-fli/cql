@@ -4,12 +4,12 @@ import '../../../cql.dart';
 /// referenced within an expression. Conceptually, referencing a value set
 /// returns the expansion set for the value set as a list of codes.
 class ValueSetRef extends Ref {
-  bool preserve;
+  bool? preserve;
 
   ValueSetRef({
     required super.name,
     super.libraryName,
-    this.preserve = true,
+    this.preserve,
     super.annotation,
     super.localId,
     super.locator,
@@ -26,7 +26,7 @@ class ValueSetRef extends Ref {
     return ValueSetRef(
       name: name,
       libraryName: json['libraryName'],
-      preserve: json['preserve'] ?? true,
+      preserve: json['preserve'],
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
               .map((e) => CqlToElmBase.fromJson(e))
@@ -46,7 +46,7 @@ class ValueSetRef extends Ref {
     final Map<String, dynamic> json = {
       'name': name,
       if (libraryName != null) 'libraryName': libraryName,
-      'preserve': preserve,
+      if (preserve != null) 'preserve': preserve,
       if (annotation != null)
         'annotation': annotation!.map((x) => x.toJson()).toList(),
       if (localId != null) 'localId': localId,

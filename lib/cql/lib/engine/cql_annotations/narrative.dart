@@ -19,11 +19,11 @@ class Narrative {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    if (r != null) {
-      data['r'] = r;
-    }
     if (s != null) {
       data['s'] = s!.map((v) => v.toJson()).toList();
+    }
+    if (r != null) {
+      data['r'] = r;
     }
     return data;
   }

@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 
 import 'cql-to-elm/cql_to_elm.dart';
 
-const bool print = true;
+const bool print = false;
 
 void main() => runApp(const MyApp());
 

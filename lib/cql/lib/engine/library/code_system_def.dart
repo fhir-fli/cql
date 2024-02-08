@@ -21,6 +21,8 @@ class CodeSystemDefs {
 /// The CodeSystemDef type defines a code system identifier that can then be
 /// used to identify code systems involved in value set definitions.
 class CodeSystemDef extends Element {
+  String? type;
+
   /// The name of the code system used for reference.
   String? name;
 
@@ -35,6 +37,7 @@ class CodeSystemDef extends Element {
   AccessModifier accessLevel;
 
   CodeSystemDef({
+    this.type,
     this.name,
     this.id,
     this.version,
@@ -47,6 +50,7 @@ class CodeSystemDef extends Element {
   });
 
   factory CodeSystemDef.fromJson(Map<String, dynamic> json) => CodeSystemDef(
+      type: json['type'] as String?,
       name: json['name'] as String?,
       id: json['id'] as String?,
       version: json['version'] as String?,
@@ -74,15 +78,16 @@ class CodeSystemDef extends Element {
       }
     }
 
+    writeNotNull('type', type);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
     writeNotNull('name', name);
     writeNotNull('id', id);
     writeNotNull('version', version);
     val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
-    writeNotNull('localId', localId);
-    writeNotNull('locator', locator);
     writeNotNull('resultTypeName', resultTypeName);
-    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     return val;
   }
 

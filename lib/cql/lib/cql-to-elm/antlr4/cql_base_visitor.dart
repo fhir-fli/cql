@@ -214,13 +214,51 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// expression 'is' 'not'? ('null' | 'true' | 'false')
   @override
   dynamic visitBooleanExpression(BooleanExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    bool not = false;
+    bool null_ = false;
+    bool true_ = false;
+    bool false_ = false;
+    Expression? operand;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        if (child.text == 'not') {
+          not = true;
+        } else if (child.text == 'null') {
+          null_ = true;
+        } else if (child.text == 'true') {
+          true_ = true;
+        } else if (child.text == 'false') {
+          false_ = true;
+        }
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          operand = result;
+        }
+      }
+    }
+    if (operand != null) {
+      if (null_) {
+        return not
+            ? Not(operand: IsNull(operand: operand))
+            : IsNull(operand: operand);
+      } else if (true_) {
+        return not
+            ? Not(operand: IsTrue(operand: operand))
+            : IsTrue(operand: operand);
+      } else if (false_) {
+        return not
+            ? Not(operand: IsFalse(operand: operand))
+            : IsFalse(operand: operand);
+      }
+    }
+
+    throw ArgumentError('$thisNode Invalid BooleanExpression');
   }
 
   /// The default implementation returns the result of calling
@@ -782,13 +820,20 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           ExclusiveRelativeQualifierContext ctx) =>
       _noQuoteString(ctx.text);
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'exists' expression
   @override
-  dynamic visitExistenceExpression(ExistenceExpressionContext ctx) {
+  Exists visitExistenceExpression(ExistenceExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
+        if (result is Expression) {
+          return Exists(operand: result);
+        }
+      }
+    }
+    throw ArgumentError('$thisNode Invalid ExistenceExpression');
   }
 
   /// This should be of the form:
@@ -852,7 +897,30 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitFunction(FunctionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    List<TypeSpecifier> signature = [];
+    List<Expression> operand = [];
+    String? name;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
+        if (result is TypeSpecifier) {
+          signature.add(result);
+          // TODO(Dokotela) placeholder
+        } else if (result is Ref) {
+          name = result.name;
+        } else if (result is Expression) {
+          operand.add(result);
+        }
+      }
+    }
+    if (name != null) {
+      return FunctionRef(
+        name: name,
+        signature: signature.isEmpty ? null : signature,
+        operand: operand.isEmpty ? null : operand,
+      );
+    }
+    throw ArgumentError('$thisNode Invalid Function');
   }
 
   /// functionBody: expression;
@@ -928,7 +996,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitFunctionInvocation(FunctionInvocationContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
+        if (result is Expression) {
+          return result;
+        }
+      }
+    }
+    throw ArgumentError('$thisNode Invalid FunctionInvocation');
   }
 
   /// identifier: IDENTIFIER | DELIMITEDIDENTIFIER | QUOTEDIDENTIFIER;
@@ -1086,7 +1162,41 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitInequalityExpression(InequalityExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    String? inequality;
+    final List<Expression> operand = <Expression>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        if (child.text == '!=' ||
+            child.text == '<>' ||
+            child.text == '<' ||
+            child.text == '>' ||
+            child.text == '<=' ||
+            child.text == '>=') {
+          inequality = child.text;
+        }
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          operand.add(result);
+        }
+      }
+    }
+    if (inequality != null && operand.length == 2) {
+      if (inequality == '!=') {
+        return NotEqual(operand: operand);
+      } else if (inequality == '<>') {
+        return NotEqual(operand: operand);
+      } else if (inequality == '<') {
+        return Less(operand: operand);
+      } else if (inequality == '>') {
+        return Greater(operand: operand);
+      } else if (inequality == '<=') {
+        return LessOrEqual(operand: operand);
+      } else if (inequality == '>=') {
+        return GreaterOrEqual(operand: operand);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid InequalityExpression');
   }
 
   /// The default implementation returns the result of calling
@@ -1449,7 +1559,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       } else if (child is TimeLiteralContext) {
         type = LiteralTime(value: visitTimeLiteral(child));
       } else if (child is QuantityLiteralContext) {
-        type = LiteralQuantity(value: visitQuantityLiteral(child));
+        type = visitQuantityLiteral(child);
       } else if (child is RatioLiteralContext) {}
     }
     if (type != null) {
@@ -1498,13 +1608,35 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid MemberInvocation');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// expression ('in' | 'contains') dateTimePrecisionSpecifier? expression
   @override
   dynamic visitMembershipExpression(MembershipExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    bool inContains = true;
+    DateTimePrecision? dateTimePrecisionSpecifier;
+    final List<Expression> operand = <Expression>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        inContains = child.text == 'in' ? true : false;
+      } else if (child is DateTimePrecisionSpecifierContext) {
+        dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
+      } else {
+        final result = byContext(child);
+        if (result is Expression) {
+          operand.add(result);
+        }
+      }
+    }
+    if (operand.length == 2) {
+      if (inContains) {
+        return In(operand: operand, precision: dateTimePrecisionSpecifier);
+      } else {
+        return Contains(
+            operand: operand, precision: dateTimePrecisionSpecifier);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid MembershipExpression');
   }
 
   /// modelIdentifier: identifier;
@@ -1618,17 +1750,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitOrExpression(OrExpressionContext ctx) {
+  Or visitOrExpression(OrExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    final List<Expression> operand = <Expression>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      final result = byContext(child);
+      if (result is Expression) {
+        operand.add(result);
+      }
+    }
+    if (operand.isNotEmpty) {
+      return Or(operand: operand);
+    }
+    throw ArgumentError('$thisNode Invalid OrExpression');
   }
 
   /// 'overlaps' ('before' | 'after')? dateTimePrecisionSpecifier?
   @override
   dynamic visitOverlapsIntervalOperatorPhrase(
       OverlapsIntervalOperatorPhraseContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     bool? before;
     DateTimePrecision? dateTimePrecisionSpecifier;
@@ -1705,7 +1847,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitParenthesizedTerm(ParenthesizedTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        return byContext(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid ParenthesizedTerm');
   }
 
   /// The default implementation returns the result of calling
@@ -1863,10 +2010,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitQuantityLiteral(QuantityLiteralContext ctx) {
+  LiteralQuantity visitQuantityLiteral(QuantityLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is QuantityContext) {
+        return visitQuantity(child);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid QuantityLiteral');
   }
 
   /// quantityOffset: (quantity offsetRelativeQualifier?)
@@ -1911,7 +2063,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     ReturnClause? returnClause;
     SortClause? sort;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('child: ${child.runtimeType} ${child.text}');
       if (child is SourceClauseContext) {
         source.addAll(visitSourceClause(child));
       } else if (child is LetClauseContext) {
@@ -1928,13 +2079,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         sort = visitSortClause(child);
       }
     }
-    print('Query:\n'
-        'source: $source\n'
-        'let: $let\n'
-        'relationship: $relationship\n'
-        'where: $where\n'
-        'returnClause: $returnClause\n'
-        'sort: $sort');
+    // print('Query:\n'
+    //     'source: $source\n'
+    //     'let: $let\n'
+    //     'relationship: $relationship\n'
+    //     'where: $where\n'
+    //     'returnClause: $returnClause\n'
+    //     'sort: $sort');
 
     return Query(
       source: source,
@@ -2430,7 +2581,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// expression intervalOperatorPhrase expression # timingExpression
   @override
   Expression visitTimingExpression(TimingExpressionContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 3) {
       Expression left =
@@ -2696,6 +2847,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
         return byContext(child);
       }
     }
@@ -2714,14 +2866,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// withClause: 'with' aliasedQuerySource 'such that' expression;
   @override
   With visitWithClause(WithClauseContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.getChild(1) is AliasedQuerySourceContext) {
       final RelationshipClause source =
           visitAliasedQuerySource(ctx.getChild(1) as AliasedQuerySourceContext);
       final suchThat =
           ctx.getChild(3) == null ? null : byContext(ctx.getChild(3)!);
-      print('suchThat: $suchThat');
       return With(
           alias: source.alias,
           expression: source.expression,
@@ -2744,7 +2895,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   Without visitWithoutClause(WithoutClauseContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.getChild(1) is AliasedQuerySourceContext) {
       final RelationshipClause source =

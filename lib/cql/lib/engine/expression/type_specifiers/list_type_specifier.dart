@@ -22,7 +22,6 @@ class ListTypeSpecifier extends TypeSpecifier {
   });
 
   factory ListTypeSpecifier.fromJson(Map<String, dynamic> json) {
-    print(json);
     return ListTypeSpecifier(
       elementType: json['elementType'] != null
           ? TypeSpecifier.fromJson(json['elementType'])

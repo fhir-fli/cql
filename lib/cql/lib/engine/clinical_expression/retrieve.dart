@@ -316,11 +316,11 @@ class Retrieve extends Expression {
     }
 
     writeNotNull('id', id?.toJson());
-    val['dataType'] = dataType.toJson();
     writeNotNull('templateId', templateId);
     writeNotNull('codeProperty', codeProperty);
     writeNotNull('codeComparator', codeComparator);
     val['type'] = type;
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     writeNotNull('codes', codes?.toJson());
     writeNotNull('dateRange', dateRange?.toJson());
     writeNotNull('context', context?.toJson());
@@ -339,6 +339,11 @@ class Retrieve extends Expression {
     writeNotNull('dateHighProperty', dateHighProperty);
     writeNotNull('dateSearch', dateSearch);
     writeNotNull('includedIn', includedIn);
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    val['dataType'] = dataType.toJson();
+    writeNotNull('resultTypeName', resultTypeName);
     return val;
   }
 

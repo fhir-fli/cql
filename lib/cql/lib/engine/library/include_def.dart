@@ -20,6 +20,8 @@ class IncludeDefs {
 
 /// Includes a library for use within the artifact.
 class IncludeDef extends Element {
+  String? type;
+
   /// A unique name within this artifact for the library reference.
   ///
   /// This name is used within this artifact to reference components of this library.
@@ -36,6 +38,7 @@ class IncludeDef extends Element {
   String? version;
 
   IncludeDef({
+    this.type,
     this.localIdentifier,
     this.mediaType,
     this.path,
@@ -48,6 +51,7 @@ class IncludeDef extends Element {
   });
 
   factory IncludeDef.fromJson(Map<String, dynamic> json) => IncludeDef(
+        type: json['type'] as String?,
         localIdentifier: json['localIdentifier'] as String?,
         mediaType: json['mediaType'] as String?,
         path: json['path'] as String?,
@@ -74,6 +78,7 @@ class IncludeDef extends Element {
       }
     }
 
+    writeNotNull('type', type);
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
