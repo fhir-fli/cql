@@ -137,6 +137,16 @@ class ExpressionDef extends Element {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
+    data['name'] = name;
+    if (context != null) {
+      data['context'] = context;
+    }
+    if (resultTypeName != null) {
+      data['resultTypeName'] = resultTypeName;
+    }
+    if (accessLevel != null) {
+      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
+    }
     if (type != null) {
       data['type'] = type;
     }
@@ -155,16 +165,6 @@ class ExpressionDef extends Element {
     }
     if (locator != null) {
       data['locator'] = locator;
-    }
-    data['name'] = name;
-    if (context != null) {
-      data['context'] = context;
-    }
-    if (resultTypeName != null) {
-      data['resultTypeName'] = resultTypeName;
-    }
-    if (accessLevel != null) {
-      data['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     }
     return data;
   }

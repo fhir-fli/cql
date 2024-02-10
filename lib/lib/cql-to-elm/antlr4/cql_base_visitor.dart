@@ -34,9 +34,21 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitAdditionExpressionTerm(AdditionExpressionTermContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    final List<Expression> operand = <Expression>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
+        if (result is Expression) {
+          operand.add(result);
+        }
+      }
+    }
+    if (operand.length == 2) {
+      return Add(operand: operand);
+    }
+    throw ArgumentError('$thisNode Invalid AdditionExpressionTerm');
   }
 
   /// The default implementation returns the result of calling
@@ -843,7 +855,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// between the 'define' TerminalNodeImpl and the identifier.
   @override
   ExpressionDef visitExpressionDefinition(ExpressionDefinitionContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     AccessModifier accessLevel = AccessModifier.public;
     String? name;
@@ -865,7 +877,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         name: name,
         context: library.contexts != null && library.contexts!.def.isNotEmpty
             ? library.contexts!.def.first.name
-            : 'Patient',
+            : 'Unfiltered',
         expression: expression,
         accessLevel: accessLevel,
       );
@@ -2444,7 +2456,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   // | functionDefinition;
   @override
   void visitStatement(StatementContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     ExpressionDef? statement;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -2494,7 +2506,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTermExpression(TermExpressionContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
