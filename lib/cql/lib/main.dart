@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'cql-to-elm/cql_to_elm.dart';
 
 const bool print = false;
-int i = 1;
+int stop = 10;
 
 void main() => runApp(const MyApp());
 
@@ -43,9 +43,10 @@ void parseFile(BuildContext context) async {
   manifestMap
       .removeWhere((key, value) => !key.contains('libraries_and_definitions/'));
 
+  int i = 0;
   for (final file in manifestMap.keys) {
     i++;
-    if (i > 10) {
+    if (i > stop) {
       break;
     }
     final pathExpression = await rootBundle.loadString(file);
