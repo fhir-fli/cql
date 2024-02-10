@@ -1,6 +1,8 @@
 
 
- /// Provides the base implementation for an ElmClinicalVisitor
+ import '../../cql.dart';
+
+/// Provides the base implementation for an ElmClinicalVisitor
 ///
  /// @param <T> The return type of the visit operation. Use {@link Void} for
  /// @param <C> The type of context passed to each visit method
@@ -8,17 +10,18 @@
  ///
 abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> implements ElmClinicalVisitor<T, C> {
 
-    @Override
+    @override
     T visitElement(Element elm, C context) {
-        if (elm instanceof ExpressionDef) return visitExpressionDef((ExpressionDef) elm, context);
-        else if (elm instanceof CodeDef) return visitCodeDef((CodeDef) elm, context);
-        else if (elm instanceof CodeSystemDef) return visitCodeSystemDef((CodeSystemDef) elm, context);
-        else if (elm instanceof ValueSetDef) return visitValueSetDef((ValueSetDef) elm, context);
-        else if (elm instanceof ConceptDef) return visitConceptDef((ConceptDef) elm, context);
-        else if (elm instanceof CodeFilterElement) return visitCodeFilterElement((CodeFilterElement) elm, context);
-        else if (elm instanceof DateFilterElement) return visitDateFilterElement((DateFilterElement) elm, context);
-        else if (elm instanceof OtherFilterElement) return visitOtherFilterElement((OtherFilterElement) elm, context);
-        else if (elm instanceof IncludeElement) return visitIncludeElement((IncludeElement) elm, context);
+        if (elm is ExpressionDef) {
+          return visitExpressionDef(elm, context);
+        } else if (elm is CodeDef) return visitCodeDef(elm, context);
+        else if (elm is CodeSystemDef) return visitCodeSystemDef(elm, context);
+        else if (elm is ValueSetDef) return visitValueSetDef(elm, context);
+        else if (elm is ConceptDef) return visitConceptDef(elm, context);
+        else if (elm is CodeFilterElement) return visitCodeFilterElement(elm, context);
+        else if (elm is DateFilterElement) return visitDateFilterElement(elm, context);
+        else if (elm is OtherFilterElement) return visitOtherFilterElement(elm, context);
+        else if (elm is IncludeElement) return visitIncludeElement(elm, context);
         return super.visitElement(elm, context);
     }
 
@@ -30,19 +33,20 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    @Override
+    @override
     T visitExpression(Expression elm, C context) {
-        if (elm instanceof FunctionRef) return visitFunctionRef((FunctionRef) elm, context);
-        else if (elm instanceof ExpressionRef) return visitExpressionRef((ExpressionRef) elm, context);
-        else if (elm instanceof CodeSystemRef) return visitCodeSystemRef((CodeSystemRef) elm, context);
-        else if (elm instanceof ValueSetRef) return visitValueSetRef((ValueSetRef) elm, context);
-        else if (elm instanceof CodeRef) return visitCodeRef((CodeRef) elm, context);
-        else if (elm instanceof ConceptRef) return visitConceptRef((ConceptRef) elm, context);
-        else if (elm instanceof Code) return visitCode((Code) elm, context);
-        else if (elm instanceof Concept) return visitConcept((Concept) elm, context);
-        else if (elm instanceof Quantity) return visitQuantity((Quantity) elm, context);
-        else if (elm instanceof Ratio) return visitRatio((Ratio) elm, context);
-        else if (elm instanceof Retrieve) return visitRetrieve((Retrieve) elm, context);
+        if (elm is FunctionRef) {
+          return visitFunctionRef(elm, context);
+        } else if (elm is ExpressionRef) return visitExpressionRef(elm, context);
+        else if (elm is CodeSystemRef) return visitCodeSystemRef(elm, context);
+        else if (elm is ValueSetRef) return visitValueSetRef(elm, context);
+        else if (elm is CodeRef) return visitCodeRef(elm, context);
+        else if (elm is ConceptRef) return visitConceptRef(elm, context);
+        else if (elm is Code) return visitCode(elm, context);
+        else if (elm is Concept) return visitConcept(elm, context);
+        else if (elm is Quantity) return visitQuantity(elm, context);
+        else if (elm is Ratio) return visitRatio(elm, context);
+        else if (elm is Retrieve) return visitRetrieve(elm, context);
         else return super.visitExpression(elm, context);
     }
 
@@ -54,12 +58,13 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    @Override
+    @override
     T visitOperatorExpression(OperatorExpression elm, C context) {
-        if (elm instanceof InCodeSystem) return visitInCodeSystem((InCodeSystem) elm, context);
-        else if (elm instanceof AnyInCodeSystem) return visitAnyInCodeSystem((AnyInCodeSystem) elm, context);
-        else if (elm instanceof InValueSet) return visitInValueSet((InValueSet) elm, context);
-        else if (elm instanceof AnyInValueSet) return visitAnyInValueSet((AnyInValueSet) elm, context);
+        if (elm is InCodeSystem) {
+          return visitInCodeSystem(elm, context);
+        } else if (elm is AnyInCodeSystem) return visitAnyInCodeSystem(elm, context);
+        else if (elm is InValueSet) return visitInValueSet(elm, context);
+        else if (elm is AnyInValueSet) return visitAnyInValueSet(elm, context);
         else return super.visitOperatorExpression(elm, context);
     }
 
@@ -71,11 +76,14 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    @Override
+    @override
     T visitUnaryExpression(UnaryExpression elm, C context) {
-        if (elm instanceof ExpandValueSet) return visitExpandValueSet((ExpandValueSet) elm, context);
-        if (elm instanceof CalculateAge) return visitCalculateAge((CalculateAge) elm, context);
-        else return super.visitUnaryExpression(elm, context);
+        if (elm is ExpandValueSet) return visitExpandValueSet(elm, context);
+        if (elm is CalculateAge) {
+          return visitCalculateAge(elm, context);
+        } else {
+          return super.visitUnaryExpression(elm, context);
+        }
     }
 
     
@@ -86,11 +94,12 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    @Override
+    @override
     T visitBinaryExpression(BinaryExpression elm, C context) {
-        if (elm instanceof CalculateAgeAt) return visitCalculateAgeAt((CalculateAgeAt) elm, context);
-        else if (elm instanceof Subsumes) return visitSubsumes((Subsumes) elm, context);
-        else if (elm instanceof SubsumedBy) return visitSubsumedBy((SubsumedBy) elm, context);
+        if (elm is CalculateAgeAt) {
+          return visitCalculateAgeAt(elm, context);
+        } else if (elm is Subsumes) return visitSubsumes(elm, context);
+        else if (elm is SubsumedBy) return visitSubsumedBy(elm, context);
         else return super.visitBinaryExpression(elm, context);
     }
 
@@ -114,7 +123,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCodeFilterElement(CodeFilterElement elm, C context) {
+    @override
+  T visitCodeFilterElement(CodeFilterElement elm, C context) {
         T result = visitFields(elm, context);
         if (elm.getValue() != null) {
             T childResult = visitExpression(elm.getValue(), context);
@@ -132,7 +142,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitDateFilterElement(DateFilterElement elm, C context) {
+    @override
+  T visitDateFilterElement(DateFilterElement elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getValue() != null) {
@@ -151,7 +162,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitOtherFilterElement(OtherFilterElement elm, C context) {
+    @override
+  T visitOtherFilterElement(OtherFilterElement elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getValue() != null) {
@@ -170,7 +182,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitIncludeElement(IncludeElement elm, C context) {
+    @override
+  T visitIncludeElement(IncludeElement elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -182,7 +195,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitRetrieve(Retrieve elm, C context) {
+    @override
+  T visitRetrieve(Retrieve elm, C context) {
         T result = visitFields(elm, context);
 
         for (var cfe : elm.getCodeFilter()) {
@@ -233,10 +247,10 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    @Override
+    @override
     T visitProperty(Property elm, C context) {
-        if (elm instanceof Search) {
-            return visitSearch((Search) elm, context);
+        if (elm is Search) {
+            return visitSearch(elm, context);
         }
         return super.visitProperty(elm, context);
     }
@@ -249,7 +263,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitSearch(Search elm, C context) {
+    @override
+  T visitSearch(Search elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getSource() != null) {
@@ -268,7 +283,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCodeSystemDef(CodeSystemDef elm, C context) {
+    @override
+  T visitCodeSystemDef(CodeSystemDef elm, C context) {
         T result = visitFields(elm, context);
         if (elm.getAccessLevel() != null) {
             T childResult = visitAccessModifier(elm.getAccessLevel(), context);
@@ -286,7 +302,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitValueSetDef(ValueSetDef elm, C context) {
+    @override
+  T visitValueSetDef(ValueSetDef elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getAccessLevel() != null) {
@@ -309,7 +326,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCodeDef(CodeDef elm, C context) {
+    @override
+  T visitCodeDef(CodeDef elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getAccessLevel() != null) {
@@ -332,7 +350,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitConceptDef(ConceptDef elm, C context) {
+    @override
+  T visitConceptDef(ConceptDef elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getAccessLevel() != null) {
@@ -355,7 +374,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCodeSystemRef(CodeSystemRef elm, C context) {
+    @override
+  T visitCodeSystemRef(CodeSystemRef elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -367,7 +387,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitValueSetRef(ValueSetRef elm, C context) {
+    @override
+  T visitValueSetRef(ValueSetRef elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -379,7 +400,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCodeRef(CodeRef elm, C context) {
+    @override
+  T visitCodeRef(CodeRef elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -391,7 +413,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitConceptRef(ConceptRef elm, C context) {
+    @override
+  T visitConceptRef(ConceptRef elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -403,7 +426,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCode(Code elm, C context) {
+    @override
+  T visitCode(Code elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getSystem() != null) {
@@ -422,7 +446,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitConcept(Concept elm, C context) {
+    @override
+  T visitConcept(Concept elm, C context) {
         T result = visitFields(elm, context);
 
         for (Code c : elm.getCode()) {
@@ -441,7 +466,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitInCodeSystem(InCodeSystem elm, C context) {
+    @override
+  T visitInCodeSystem(InCodeSystem elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getCode() != null) {
@@ -468,7 +494,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitAnyInCodeSystem(AnyInCodeSystem elm, C context) {
+    @override
+  T visitAnyInCodeSystem(AnyInCodeSystem elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getCodes() != null) {
@@ -495,7 +522,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitInValueSet(InValueSet elm, C context) {
+    @override
+  T visitInValueSet(InValueSet elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getCode() != null) {
@@ -522,7 +550,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitAnyInValueSet(AnyInValueSet elm, C context) {
+    @override
+  T visitAnyInValueSet(AnyInValueSet elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getCodes() != null) {
@@ -549,7 +578,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitSubsumes(Subsumes elm, C context) {
+    @override
+  T visitSubsumes(Subsumes elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -561,7 +591,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitSubsumedBy(SubsumedBy elm, C context) {
+    @override
+  T visitSubsumedBy(SubsumedBy elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -573,7 +604,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitQuantity(Quantity elm, C context) {
+    @override
+  T visitQuantity(Quantity elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -585,7 +617,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitRatio(Ratio elm, C context) {
+    @override
+  T visitRatio(Ratio elm, C context) {
         T result = visitFields(elm, context);
 
         if (elm.getDenominator() != null) {
@@ -608,7 +641,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCalculateAge(CalculateAge elm, C context) {
+    @override
+  T visitCalculateAge(CalculateAge elm, C context) {
         return visitFields(elm, context);
     }
 
@@ -620,7 +654,8 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C> impleme
      /// @param context the context passed to the visitor
      /// @return the visitor result
      ///
-    T visitCalculateAgeAt(CalculateAgeAt elm, C context) {
+    @override
+  T visitCalculateAgeAt(CalculateAgeAt elm, C context) {
         return visitFields(elm, context);
     }
 }

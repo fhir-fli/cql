@@ -27,7 +27,7 @@ class ClassInfoElement {
   final String? elementType;
 
   // Element type specifier
-  final TypeSpecifier? elementTypeSpecifier;
+  final TypeSpecifierModel? elementTypeSpecifier;
 
   // Optional attribute - User-friendly label for the element
   final String? label;
@@ -57,7 +57,7 @@ class ClassInfoElement {
   final String? type;
 
   // Deprecated element
-  final TypeSpecifier? typeSpecifier;
+  final TypeSpecifierModel? typeSpecifier;
 
   ClassInfoElement({
     required this.name,
@@ -81,10 +81,10 @@ class ClassInfoElement {
   factory ClassInfoElement.fromJson(Map<String, dynamic> json) {
     final name = json['name'] as String;
     final typeSpecifier = json['typeSpecifier'] != null
-        ? TypeSpecifier.fromJson(json['typeSpecifier'])
+        ? TypeSpecifierModel.fromJson(json['typeSpecifier'])
         : null;
     final elementTypeSpecifier = json['elementTypeSpecifier'] != null
-        ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
+        ? TypeSpecifierModel.fromJson(json['elementTypeSpecifier'])
         : null;
     final binding =
         json['binding'] != null ? BindingInfo.fromJson(json['binding']) : null;

@@ -5,7 +5,7 @@ import '../cql.dart';
 class FunctionHeader {
   final FunctionDef functionDef;
   bool isCompiled = false;
-  final TypeSpecifier? resultType;
+  final TypeSpecifierModel? resultType;
 
   FunctionHeader(this.functionDef, this.resultType);
 
@@ -30,7 +30,7 @@ class FunctionHeader {
   }
 
   static FunctionHeader withReturnType(
-      FunctionDef functionDef, TypeSpecifier resultType) {
+      FunctionDef functionDef, TypeSpecifierModel resultType) {
     return FunctionHeader(functionDef, resultType);
   }
 

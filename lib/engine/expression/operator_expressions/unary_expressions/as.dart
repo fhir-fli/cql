@@ -6,7 +6,7 @@ class As extends UnaryExpression {
   QName? asType;
 
   /// Type specifier for casting.
-  TypeSpecifier? asTypeSpecifier;
+  TypeSpecifierExpression? asTypeSpecifier;
 
   /// Determines if strict type checking should be enforced.
   bool strict = false;
@@ -31,12 +31,12 @@ class As extends UnaryExpression {
         locator: json['locator'],
         resultTypeName: json['resultTypeName'],
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       )
         ..asTypeSpecifier = json['asTypeSpecifier'] == null
             ? null
-            : TypeSpecifier.fromJson(json['asTypeSpecifier'])
+            : TypeSpecifierExpression.fromJson(json['asTypeSpecifier'])
         ..asType =
             json['asType'] == null ? null : QName.fromFull(json['asType'])
         ..strict = json['strict'] ?? false;

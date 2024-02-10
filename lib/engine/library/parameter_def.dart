@@ -33,7 +33,7 @@ class ParameterDef extends Element {
   QName? parameterType;
 
   /// Type specifier for the parameter.
-  TypeSpecifier? parameterTypeSpecifier;
+  TypeSpecifierExpression? parameterTypeSpecifier;
 
   ParameterDef({
     required this.name,
@@ -59,7 +59,7 @@ class ParameterDef extends Element {
             : Expression.fromJson(json['default'] as Map<String, dynamic>),
         parameterTypeSpecifier: json['parameterTypeSpecifier'] == null
             ? null
-            : TypeSpecifier.fromJson(
+            : TypeSpecifierExpression.fromJson(
                 json['parameterTypeSpecifier'] as Map<String, dynamic>),
         parameterType: json['parameterType'] == null
             ? null
@@ -73,7 +73,7 @@ class ParameterDef extends Element {
         ..resultTypeName = json['resultTypeName'] as String?
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
-            : TypeSpecifier.fromJson(
+            : TypeSpecifierExpression.fromJson(
                 json['resultTypeSpecifier'] as Map<String, dynamic>);
 
   @override

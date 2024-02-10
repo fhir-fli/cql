@@ -65,7 +65,7 @@ class CodeSystemDef extends Element {
     ..resultTypeName = json['resultTypeName'] as String?
     ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
         ? null
-        : TypeSpecifier.fromJson(
+        : TypeSpecifierExpression.fromJson(
             json['resultTypeSpecifier'] as Map<String, dynamic>);
 
   @override

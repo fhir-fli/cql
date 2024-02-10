@@ -17,7 +17,7 @@ class Convert extends UnaryExpression {
   QName? toType;
 
   /// Type specifier for the target type.
-  TypeSpecifier? toTypeSpecifier;
+  TypeSpecifierExpression? toTypeSpecifier;
 
   Convert({
     this.toTypeSpecifier,
@@ -31,7 +31,8 @@ class Convert extends UnaryExpression {
   });
 
   factory Convert.fromJson(Map<String, dynamic> json) => Convert(
-        toTypeSpecifier: TypeSpecifier.fromJson(json['toTypeSpecifier']),
+        toTypeSpecifier:
+            TypeSpecifierExpression.fromJson(json['toTypeSpecifier']),
         toType: QName.fromFull(json['toType']),
         operand: Expression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
@@ -43,7 +44,7 @@ class Convert extends UnaryExpression {
         locator: json['locator'],
         resultTypeName: json['resultTypeName'],
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
 

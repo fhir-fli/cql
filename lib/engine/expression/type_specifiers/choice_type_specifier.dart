@@ -4,9 +4,9 @@ import '../../../cql.dart';
 ///
 /// The [ChoiceTypeSpecifier] type represents a choice type,
 /// extending TypeInfo and including choice elements.
-class ChoiceTypeSpecifier extends TypeSpecifier {
+class ChoiceTypeSpecifier extends TypeSpecifierExpression {
   /// Choice elements.
-  List<TypeSpecifier>? choice;
+  List<TypeSpecifierExpression>? choice;
 
   ChoiceTypeSpecifier({
     this.choice,
@@ -21,7 +21,7 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
     return ChoiceTypeSpecifier(
       choice: json['choice'] != null
           ? (json['choice'] as List)
-              .map((i) => TypeSpecifier.fromJson(i))
+              .map((i) => TypeSpecifierExpression.fromJson(i))
               .toList()
           : null,
       annotation: json['annotation'] != null
@@ -33,7 +33,7 @@ class ChoiceTypeSpecifier extends TypeSpecifier {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

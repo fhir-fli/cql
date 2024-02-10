@@ -3,7 +3,7 @@ import '../../../cql.dart';
 /// Abstract base class for Aggregate expressions performing operations on lists of data.
 abstract class AggregateExpression extends Expression {
   final String? path;
-  final List<TypeSpecifier>? signature;
+  final List<TypeSpecifierExpression>? signature;
   final Expression source;
 
   AggregateExpression({

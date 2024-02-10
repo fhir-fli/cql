@@ -9,7 +9,7 @@ class ListTypeInfo extends TypeInfo {
   String? elementType;
 
   /// Element type specifier element.
-  TypeSpecifier? elementTypeSpecifier;
+  TypeSpecifierModel? elementTypeSpecifier;
 
   final String type = 'ListTypeInfo';
 
@@ -22,7 +22,7 @@ class ListTypeInfo extends TypeInfo {
   factory ListTypeInfo.fromJson(Map<String, dynamic> json) {
     return ListTypeInfo(
       elementTypeSpecifier: json['elementTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
+          ? TypeSpecifierModel.fromJson(json['elementTypeSpecifier'])
           : null,
       elementType: json['elementType'] as String?,
       baseType: json['baseType'] as String?,

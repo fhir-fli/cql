@@ -4,7 +4,7 @@ import '../../../cql.dart';
 ///
 /// The [NamedTypeSpecifier] type represents a named type, inheriting from TypeSpecifier,
 /// defining modelName, namespace, and name attributes.
-class NamedTypeSpecifier extends TypeSpecifier {
+class NamedTypeSpecifier extends TypeSpecifierExpression {
   /// Deprecated model name attribute.
   @Deprecated('Use namespace instead')
   String? modelName;
@@ -39,7 +39,7 @@ class NamedTypeSpecifier extends TypeSpecifier {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     )..modelName = modelName;
   }

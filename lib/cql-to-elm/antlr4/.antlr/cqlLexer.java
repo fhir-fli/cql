@@ -1,4 +1,4 @@
-// Generated from /home/grey/dev/cql/cql/lib/cql/lib/cql-to-elm/antlr4/cql.g4 by ANTLR 4.13.1
+// Generated from /home/grey/dev/cql/cql/lib/cql-to-elm/antlr4/cql.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

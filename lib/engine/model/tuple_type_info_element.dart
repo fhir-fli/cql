@@ -9,7 +9,7 @@ class TupleTypeInfoElement {
   String? elementType;
 
   /// Element type specifier.
-  TypeSpecifier? elementTypeSpecifier;
+  TypeSpecifierModel? elementTypeSpecifier;
 
   /// Name of the element.
   String name;
@@ -24,7 +24,7 @@ class TupleTypeInfoElement {
   String? type;
 
   /// Deprecated element.
-  TypeSpecifier? typeSpecifier;
+  TypeSpecifierModel? typeSpecifier;
 
   TupleTypeInfoElement({
     required this.name,
@@ -40,10 +40,10 @@ class TupleTypeInfoElement {
     return TupleTypeInfoElement(
       name: json['name'] as String,
       typeSpecifier: json['typeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['typeSpecifier'])
+          ? TypeSpecifierModel.fromJson(json['typeSpecifier'])
           : null,
       elementTypeSpecifier: json['elementTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
+          ? TypeSpecifierModel.fromJson(json['elementTypeSpecifier'])
           : null,
       type: json['type'] as String?,
       elementType: json['elementType'] as String?,

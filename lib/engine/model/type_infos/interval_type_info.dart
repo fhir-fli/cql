@@ -9,7 +9,7 @@ class IntervalTypeInfo extends TypeInfo {
   String? pointType;
 
   /// Point type specifier element.
-  TypeSpecifier? pointTypeSpecifier;
+  TypeSpecifierModel? pointTypeSpecifier;
 
   final String type = 'IntervalTypeInfo';
 
@@ -22,7 +22,7 @@ class IntervalTypeInfo extends TypeInfo {
   factory IntervalTypeInfo.fromJson(Map<String, dynamic> json) {
     return IntervalTypeInfo(
       pointTypeSpecifier: json['pointTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['pointTypeSpecifier'])
+          ? TypeSpecifierModel.fromJson(json['pointTypeSpecifier'])
           : null,
       pointType: json['pointType'] as String?,
       baseType: json['baseType'] as String?,

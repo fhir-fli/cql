@@ -9,7 +9,7 @@ abstract class TypeInfo {
   String? baseType;
 
   /// Base type specifier element.
-  TypeSpecifier? baseTypeSpecifier;
+  TypeSpecifierModel? baseTypeSpecifier;
 
   TypeInfo({
     this.baseTypeSpecifier,

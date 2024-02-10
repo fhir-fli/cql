@@ -4,8 +4,8 @@ import '../../../cql.dart';
 ///
 /// The [IntervalTypeSpecifier] type represents an interval type, inheriting from TypeSpecifier,
 /// including a pointTypeSpecifier element and pointType attribute.
-class IntervalTypeSpecifier extends TypeSpecifier {
-  TypeSpecifier? pointType;
+class IntervalTypeSpecifier extends TypeSpecifierExpression {
+  TypeSpecifierExpression? pointType;
 
   IntervalTypeSpecifier({
     this.pointType,
@@ -21,7 +21,7 @@ class IntervalTypeSpecifier extends TypeSpecifier {
       pointType: json['pointType'] == null
           ? null
           : json['pointType'] is Map<String, dynamic>
-              ? TypeSpecifier.fromJson(json['pointType'])
+              ? TypeSpecifierExpression.fromJson(json['pointType'])
               : null,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
@@ -32,7 +32,7 @@ class IntervalTypeSpecifier extends TypeSpecifier {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

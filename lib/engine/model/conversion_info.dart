@@ -1,4 +1,4 @@
-import '../cql.dart';
+import '../../cql.dart';
 
 /// Contains information regarding data conversions.
 ///
@@ -9,7 +9,7 @@ class ConversionInfo {
   final String? fromType;
 
   // Optional element - Type specifier for the source type
-  final TypeSpecifier? fromTypeSpecifier;
+  final TypeSpecifierModel? fromTypeSpecifier;
 
   // Required attribute - Name of the function for conversion
   final String functionName;
@@ -18,7 +18,7 @@ class ConversionInfo {
   final String? toType;
 
   // Optional element - Type specifier for the target type
-  final TypeSpecifier? toTypeSpecifier;
+  final TypeSpecifierModel? toTypeSpecifier;
 
   ConversionInfo({
     required this.functionName,
@@ -33,10 +33,10 @@ class ConversionInfo {
       functionName: json['functionName'],
       fromTypeSpecifier: json['fromTypeSpecifier'] == null
           ? null
-          : TypeSpecifier.fromJson(json['fromTypeSpecifier']),
+          : TypeSpecifierModel.fromJson(json['fromTypeSpecifier']),
       toTypeSpecifier: json['toTypeSpecifier'] == null
           ? null
-          : TypeSpecifier.fromJson(json['toTypeSpecifier']),
+          : TypeSpecifierModel.fromJson(json['toTypeSpecifier']),
       fromType: json['fromType'],
       toType: json['toType'],
     );

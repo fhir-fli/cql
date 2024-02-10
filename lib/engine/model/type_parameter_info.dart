@@ -15,7 +15,7 @@ class TypeParameterInfo {
   String name;
 
   /// Type specifier.
-  TypeSpecifier? typeSpecifier;
+  TypeSpecifierModel? typeSpecifier;
 
   TypeParameterInfo({
     required this.name,
@@ -30,7 +30,7 @@ class TypeParameterInfo {
       constraint: json['constraint'] as String,
       constraintType: json['constraintType'] as String?,
       typeSpecifier: json['typeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['typeSpecifier'])
+          ? TypeSpecifierModel.fromJson(json['typeSpecifier'])
           : null,
     );
   }

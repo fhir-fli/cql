@@ -4,7 +4,7 @@ import '../../../cql.dart';
 ///
 /// The [ParameterTypeSpecifier] type specifies a generic class parameter,
 /// including its parameter name.
-class ParameterTypeSpecifier extends TypeSpecifier {
+class ParameterTypeSpecifier extends TypeSpecifierExpression {
   /// Name of the parameter.
   QName parameterName;
 
@@ -30,7 +30,7 @@ class ParameterTypeSpecifier extends TypeSpecifier {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

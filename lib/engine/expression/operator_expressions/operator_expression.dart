@@ -4,7 +4,7 @@ import '../../../cql.dart';
 /// language.
 abstract class OperatorExpression extends Expression {
   /// Declared signature of the operator or function being called.
-  List<TypeSpecifier>? signature;
+  List<TypeSpecifierExpression>? signature;
 
   OperatorExpression({
     this.signature,

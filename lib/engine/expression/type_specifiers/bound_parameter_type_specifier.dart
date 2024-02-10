@@ -4,12 +4,12 @@ import '../../../cql.dart';
 ///
 /// The [BoundParameterTypeSpecifier] type defines a type replacing a class parameter,
 /// including the parameter name, bound type, and elementTypeSpecifier.
-class BoundParameterTypeSpecifier extends TypeSpecifier {
+class BoundParameterTypeSpecifier extends TypeSpecifierExpression {
   /// Type bound to the parameter.
   String boundType;
 
   /// Element type specifier.
-  TypeSpecifier? elementTypeSpecifier;
+  TypeSpecifierExpression? elementTypeSpecifier;
 
   /// Name of the parameter bound to a valid type.
   String parameterName;
@@ -30,7 +30,7 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
       parameterName: json['parameterName'] as String,
       boundType: json['boundType'] as String,
       elementTypeSpecifier: json['elementTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['elementTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['elementTypeSpecifier'])
           : null,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
@@ -41,7 +41,7 @@ class BoundParameterTypeSpecifier extends TypeSpecifier {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

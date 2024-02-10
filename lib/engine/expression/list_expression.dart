@@ -6,7 +6,7 @@ class ListExpression extends Expression {
   List<Expression>? element;
 
   /// Type specifier for the list, if provided.
-  TypeSpecifier? typeSpecifier;
+  TypeSpecifierExpression? typeSpecifier;
 
   ListExpression({
     this.typeSpecifier,
@@ -21,7 +21,7 @@ class ListExpression extends Expression {
   factory ListExpression.fromJson(Map<String, dynamic> json) {
     return ListExpression(
       typeSpecifier: json['typeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['typeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['typeSpecifier'])
           : null,
       element: json['element'] != null
           ? List<Expression>.from(
@@ -36,7 +36,7 @@ class ListExpression extends Expression {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

@@ -6,7 +6,7 @@ class Is extends UnaryExpression {
   QName? isType;
 
   /// Type specifier for testing.
-  TypeSpecifier? isTypeSpecifier;
+  TypeSpecifierExpression? isTypeSpecifier;
 
   Is({
     this.isTypeSpecifier,
@@ -21,7 +21,7 @@ class Is extends UnaryExpression {
 
   factory Is.fromJson(Map<String, dynamic> json) => Is(
         isTypeSpecifier: json['isTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['isTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['isTypeSpecifier'])
             : null,
         isType: json['isType'] != null ? QName.fromJson(json['isType']) : null,
         operand: Expression.fromJson(json['operand']!),
@@ -34,7 +34,7 @@ class Is extends UnaryExpression {
         locator: json['locator'],
         resultTypeName: json['resultTypeName'],
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
 

@@ -6,10 +6,10 @@ import '../../../cql.dart';
 /// including type and choice elements.
 class ChoiceTypeInfo extends TypeInfo {
   /// Choice type elements.
-  List<TypeSpecifier>? choice;
+  List<TypeSpecifierModel>? choice;
 
   /// Deprecated type element.
-  List<TypeSpecifier>? type;
+  List<TypeSpecifierModel>? type;
 
   ChoiceTypeInfo({
     this.type,
@@ -21,12 +21,12 @@ class ChoiceTypeInfo extends TypeInfo {
     return ChoiceTypeInfo(
       type: json['type'] != null
           ? (json['type'] as List)
-              .map((i) => TypeSpecifier.fromJson(i))
+              .map((i) => TypeSpecifierModel.fromJson(i))
               .toList()
           : null,
       choice: json['choice'] != null
           ? (json['choice'] as List)
-              .map((i) => TypeSpecifier.fromJson(i))
+              .map((i) => TypeSpecifierModel.fromJson(i))
               .toList()
           : null,
       baseType: json['baseType'] as String?,

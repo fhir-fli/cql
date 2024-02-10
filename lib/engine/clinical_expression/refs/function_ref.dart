@@ -6,7 +6,7 @@ class FunctionRef extends ExpressionRef {
   List<Expression>? operand;
 
   /// Declared signature of the function being called.
-  List<TypeSpecifier>? signature;
+  List<TypeSpecifierExpression>? signature;
 
   FunctionRef({
     this.operand,
@@ -26,8 +26,8 @@ class FunctionRef extends ExpressionRef {
                 json['operand'].map((x) => Expression.fromJson(x)))
             : null,
         signature: json['signature'] != null
-            ? List<TypeSpecifier>.from(
-                json['signature'].map((x) => TypeSpecifier.fromJson(x)))
+            ? List<TypeSpecifierExpression>.from(json['signature']
+                .map((x) => TypeSpecifierExpression.fromJson(x)))
             : null,
         name: json['name']!,
         libraryName: json['libraryName'],
@@ -40,7 +40,7 @@ class FunctionRef extends ExpressionRef {
         locator: json['locator'],
         resultTypeName: json['resultTypeName'],
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
 

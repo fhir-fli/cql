@@ -34,7 +34,7 @@ class Union extends NaryExpression {
         locator: json['locator'] as String?,
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
 

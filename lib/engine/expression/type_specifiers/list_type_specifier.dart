@@ -5,11 +5,11 @@ import '../../../cql.dart';
 /// The [ListTypeSpecifier] type represents a list type, inheriting from TypeSpecifier,
 /// including an elementType element and elementType attribute.
 
-class ListTypeSpecifier extends TypeSpecifier {
+class ListTypeSpecifier extends TypeSpecifierExpression {
   List<Element>? element;
 
   /// Element type specifier.
-  TypeSpecifier? elementType;
+  TypeSpecifierExpression? elementType;
 
   ListTypeSpecifier({
     this.elementType,
@@ -24,7 +24,7 @@ class ListTypeSpecifier extends TypeSpecifier {
   factory ListTypeSpecifier.fromJson(Map<String, dynamic> json) {
     return ListTypeSpecifier(
       elementType: json['elementType'] != null
-          ? TypeSpecifier.fromJson(json['elementType'])
+          ? TypeSpecifierExpression.fromJson(json['elementType'])
           : null,
       element: json['element'] != null
           ? (json['element'] as List).map((i) => Element.fromJson(i)).toList()
@@ -38,7 +38,7 @@ class ListTypeSpecifier extends TypeSpecifier {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

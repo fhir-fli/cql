@@ -33,14 +33,14 @@ class OperandDef extends Element {
   QName? operandType;
 
   /// Type specifier for the operand.
-  TypeSpecifier? operandTypeSpecifier;
+  TypeSpecifierExpression? operandTypeSpecifier;
 
   OperandDef({this.operandTypeSpecifier, required this.name, this.operandType});
 
   factory OperandDef.fromJson(Map<String, dynamic> json) {
     return OperandDef(
       operandTypeSpecifier: json['operandTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['operandTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['operandTypeSpecifier'])
           : null,
       name: json['name'] as String,
       operandType: json['operandType'] != null

@@ -3,13 +3,13 @@ import '../../cql.dart';
 /// TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
 class TupleElementDefinition extends Element {
   /// The type of the tuple element.
-  TypeSpecifier? elementType;
+  TypeSpecifierExpression? elementType;
 
   /// The name of the tuple element.
   String? name;
 
   /// This element is deprecated. New implementations should use the new elementType element.
-  TypeSpecifier? type;
+  TypeSpecifierExpression? type;
 
   TupleElementDefinition({
     this.type,
@@ -24,10 +24,11 @@ class TupleElementDefinition extends Element {
 
   factory TupleElementDefinition.fromJson(Map<String, dynamic> json) =>
       TupleElementDefinition(
-        type:
-            json['type'] != null ? TypeSpecifier.fromJson(json['type']) : null,
+        type: json['type'] != null
+            ? TypeSpecifierExpression.fromJson(json['type'])
+            : null,
         elementType: json['elementType'] != null
-            ? TypeSpecifier.fromJson(json['elementType'])
+            ? TypeSpecifierExpression.fromJson(json['elementType'])
             : null,
         name: json['name'],
         annotation: json['annotation'] != null
@@ -39,7 +40,7 @@ class TupleElementDefinition extends Element {
         locator: json['locator'],
         resultTypeName: json['resultTypeName'],
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
 

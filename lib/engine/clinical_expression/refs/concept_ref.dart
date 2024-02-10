@@ -10,7 +10,7 @@ class ConceptRef extends Ref {
     String? localId,
     String? locator,
     String? resultTypeName,
-    TypeSpecifier? resultTypeSpecifier,
+    TypeSpecifierExpression? resultTypeSpecifier,
   }) : super(
           name: name,
           libraryName: libraryName,
@@ -39,7 +39,7 @@ class ConceptRef extends Ref {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

@@ -30,7 +30,7 @@ class Element {
   // ELM documents are not required to contain result type information, but if they do,
   // the result type of each node is specified using the resultTypeName attribute for
   // named types, and this resultTypeSpecifier element for non-named types.
-  TypeSpecifier? resultTypeSpecifier;
+  TypeSpecifierExpression? resultTypeSpecifier;
 
   Element({
     this.annotation,
@@ -46,7 +46,7 @@ class Element {
             .toList(),
         resultTypeSpecifier: json['resultTypeSpecifier'] == null
             ? null
-            : TypeSpecifier.fromJson(
+            : TypeSpecifierExpression.fromJson(
                 json['resultTypeSpecifier'] as Map<String, dynamic>),
         resultTypeName: json['resultTypeName'] as String?,
         localId: json['localId'] as String?,

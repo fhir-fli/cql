@@ -96,7 +96,7 @@ class ExpressionDef extends Element {
         localId: json['localId'] as String?,
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
     }

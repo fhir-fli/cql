@@ -14,7 +14,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitElement(Element elm, C context);
+  T? visitElement(Element elm, C context);
 
   ///  Visit a TypeSpecifier. This method will be called for every
   ///  node in the tree that is a descendant of the TypeSpecifier type.
@@ -23,7 +23,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTypeSpecifier(TypeSpecifier elm, C context);
+  T? visitTypeSpecifier(TypeSpecifier elm, C context);
 
   ///  Visit a NamedTypeSpecifier. This method will be called for
   ///  every node in the tree that is a NamedTypeSpecifier.
@@ -32,7 +32,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitNamedTypeSpecifier(NamedTypeSpecifier elm, C context);
+  T? visitNamedTypeSpecifier(NamedTypeSpecifier elm, C context);
 
   ///  Visit a IntervalTypeSpecifier. This method will be called for
   ///  every node in the tree that is a IntervalTypeSpecifier.
@@ -41,7 +41,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIntervalTypeSpecifier(IntervalTypeSpecifier elm, C context);
+  T? visitIntervalTypeSpecifier(IntervalTypeSpecifier elm, C context);
 
   ///  Visit a ListTypeSpecifier. This method will be called for
   ///  every node in the tree that is a ListTypeSpecifier.
@@ -50,7 +50,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitListTypeSpecifier(ListTypeSpecifier elm, C context);
+  T? visitListTypeSpecifier(ListTypeSpecifier elm, C context);
 
   ///  Visit a TupleElementDefinition. This method will be called for
   ///  every node in the tree that is a TupleElementDefinition.
@@ -59,7 +59,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTupleElementDefinition(TupleElementDefinition elm, C context);
+  T? visitTupleElementDefinition(TupleElementDefinition elm, C context);
 
   ///  Visit a TupleTypeSpecifier. This method will be called for
   ///  every node in the tree that is a TupleTypeSpecifier.

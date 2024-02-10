@@ -3,9 +3,9 @@ import '../../../cql.dart';
 /// Represents a tuple type specifier.
 ///
 /// The [TupleTypeSpecifier] type defines the possible elements of a tuple.
-class TupleTypeSpecifier extends TypeSpecifier {
+class TupleTypeSpecifier extends TypeSpecifierExpression {
   /// Elements within TupleTypeSpecifier.
-  List<TupleTypeSpecifierElement>? element;
+  List<TupleElementDefinition>? element;
 
   TupleTypeSpecifier({
     this.element,
@@ -20,7 +20,7 @@ class TupleTypeSpecifier extends TypeSpecifier {
     return TupleTypeSpecifier(
       element: json['element'] != null
           ? (json['element'] as List)
-              .map((i) => TupleTypeSpecifierElement.fromJson(i))
+              .map((i) => TupleElementDefinition.fromJson(i))
               .toList()
           : null,
       annotation: json['annotation'] != null
@@ -32,7 +32,7 @@ class TupleTypeSpecifier extends TypeSpecifier {
       locator: json['locator'],
       resultTypeName: json['resultTypeName'],
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
           : null,
     );
   }

@@ -1,8 +1,8 @@
 import '../../../cql.dart';
 
 /// Abstract type for TypeSpecifier.
-abstract class TypeSpecifier extends Expression {
-  TypeSpecifier({
+abstract class TypeSpecifierExpression extends Expression {
+  TypeSpecifierExpression({
     super.annotation,
     super.localId,
     super.locator,
@@ -10,7 +10,7 @@ abstract class TypeSpecifier extends Expression {
     super.resultTypeSpecifier,
   });
 
-  factory TypeSpecifier.fromJson(Map<String, dynamic> json) {
+  factory TypeSpecifierExpression.fromJson(Map<String, dynamic> json) {
     switch (json['type']) {
       case 'BoundParameterTypeSpecifier':
         return BoundParameterTypeSpecifier.fromJson(json);
@@ -28,7 +28,7 @@ abstract class TypeSpecifier extends Expression {
         return TupleTypeSpecifier.fromJson(json);
       default:
         throw ArgumentError.value(
-            json['type'], 'json', 'Invalid TypeSpecifier type');
+            json['type'], 'json', 'Invalid  TypeSpecifierExpression type');
     }
   }
 

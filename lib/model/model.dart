@@ -1,7 +1,6 @@
 export 'data_types/data_types.dart';
 export 'serializing/serializing.dart';
 export 'class_type_element.dart';
-export 'conversion_info.dart';
 export 'instantiation_context.dart';
 export 'invalid_redeclaration_info.dart';
 export 'model_context.dart';

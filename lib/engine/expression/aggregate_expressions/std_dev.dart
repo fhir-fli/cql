@@ -21,7 +21,7 @@ class StdDev extends AggregateExpression {
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)
-                .map((e) => TypeSpecifier.fromJson(e))
+                .map((e) => TypeSpecifierExpression.fromJson(e))
                 .toList(),
         path: json['path'],
         annotation: json['annotation'] != null
@@ -33,7 +33,7 @@ class StdDev extends AggregateExpression {
         locator: json['locator'],
         resultTypeName: json['resultTypeName'],
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
 

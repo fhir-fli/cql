@@ -429,7 +429,7 @@ class Expression extends Element {
         case 'TupleTypeSpecifier':
           return TupleTypeSpecifier.fromJson(json);
         case 'TypeSpecifier':
-          return TypeSpecifier.fromJson(json);
+          return TypeSpecifierExpression.fromJson(json);
         case 'UnaryExpression':
           return UnaryExpression.fromJson(json);
         case 'Union':

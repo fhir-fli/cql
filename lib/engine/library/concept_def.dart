@@ -61,7 +61,7 @@ class ConceptDef extends Element {
             .toList()
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
-            : TypeSpecifier.fromJson(
+            : TypeSpecifierExpression.fromJson(
                 json['resultTypeSpecifier'] as Map<String, dynamic>)
         ..resultTypeName = json['resultTypeName'] as String?
         ..localId = json['localId'] as String?

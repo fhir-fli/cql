@@ -8,7 +8,7 @@ class SearchInfo {
   final String name;
   final String path;
   final String? type;
-  final TypeSpecifier? typeSpecifier;
+  final TypeSpecifierModel? typeSpecifier;
 
   SearchInfo({
     this.typeSpecifier,
@@ -24,7 +24,7 @@ class SearchInfo {
   factory SearchInfo.fromJson(Map<String, dynamic> json) {
     return SearchInfo(
       typeSpecifier: json['typeSpecifier'] != null
-          ? TypeSpecifier.fromJson(json['typeSpecifier'])
+          ? TypeSpecifierModel.fromJson(json['typeSpecifier'])
           : null,
       name: json['name'],
       path: json['path'],

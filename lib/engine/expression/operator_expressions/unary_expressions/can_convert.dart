@@ -14,7 +14,7 @@ class CanConvert extends UnaryExpression {
   QName? toType;
 
   /// Type specifier for the target type.
-  TypeSpecifier? toTypeSpecifier;
+  TypeSpecifierExpression? toTypeSpecifier;
 
   CanConvert({
     this.toTypeSpecifier,
@@ -38,7 +38,7 @@ class CanConvert extends UnaryExpression {
         locator: json['locator'],
         resultTypeName: json['resultTypeName'],
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifier.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       )
         ..toTypeSpecifier = json['toTypeSpecifier']
