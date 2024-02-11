@@ -6,6 +6,7 @@ class Query extends Expression {
   List<RelationshipClause>? relationship;
   ReturnClause? returnClause;
   SortClause? sort;
+  AggregateClause? aggregate;
   List<AliasedQuerySource> source;
   Expression? where;
 
@@ -16,6 +17,7 @@ class Query extends Expression {
     this.where,
     this.returnClause,
     this.sort,
+    this.aggregate,
     super.annotation,
     super.localId,
     super.locator,
@@ -40,6 +42,9 @@ class Query extends Expression {
             ? null
             : ReturnClause.fromJson(json['return']),
         sort: json['sort'] == null ? null : SortClause.fromJson(json['sort']),
+        aggregate: json['aggregate'] == null
+            ? null
+            : AggregateClause.fromJson(json['aggregate']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))
@@ -70,6 +75,7 @@ class Query extends Expression {
     writeNotNull('where', where?.toJson());
     writeNotNull('return', returnClause?.toJson());
     writeNotNull('sort', sort?.toJson());
+    writeNotNull('aggregate', aggregate?.toJson());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);

@@ -4,6 +4,7 @@ export 'expression_defs/expression_defs.dart';
 export 'operator_expressions/operator_expressions.dart';
 export 'sort_by_items/sort_by_items.dart';
 export 'type_specifiers/type_specifiers.dart';
+export 'aggregate_clause.dart';
 export 'alias_ref.dart';
 export 'case_item.dart';
 export 'case.dart';

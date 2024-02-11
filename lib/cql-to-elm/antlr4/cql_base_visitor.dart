@@ -318,7 +318,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitChoiceTypeSpecifier(ChoiceTypeSpecifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    List<TypeSpecifier> choice = <TypeSpecifier>[];
+    List<TypeSpecifierExpression> choice = <TypeSpecifierExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TypeSpecifierContext) {
         final newTypeSpecifier = visitTypeSpecifier(child);
@@ -909,13 +909,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitFunction(FunctionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    List<TypeSpecifier> signature = [];
+    List<TypeSpecifierExpression> signature = [];
     List<Expression> operand = [];
     String? name;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);
-        if (result is TypeSpecifier) {
+        if (result is TypeSpecifierExpression) {
           signature.add(result);
           // TODO(Dokotela) placeholder
         } else if (result is Ref) {
@@ -964,7 +964,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     AccessModifier accessLevel = AccessModifier.public;
     String? name;
     List<OperandDef>? operand;
-    TypeSpecifier? returnType;
+    TypeSpecifierExpression? returnType;
     Element? expression;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is AccessModifierContext) {
@@ -1742,7 +1742,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     Ref? referentialIdentifier;
-    TypeSpecifier? typeSpecifier;
+    TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
         referentialIdentifier = visitReferentialIdentifier(child);
@@ -1824,7 +1824,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     String name = '';
-    TypeSpecifier? typeSpecifier;
+    TypeSpecifierExpression? typeSpecifier;
     AccessModifier accessLevel = AccessModifier.public;
     Expression? defaultExpression;
 
@@ -2651,12 +2651,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// tupleElementDefinition: referentialIdentifier typeSpecifier;
   @override
-  TupleTypeSpecifierElement visitTupleElementDefinition(
+  TupleElementDefinition visitTupleElementDefinition(
       TupleElementDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     Ref? name;
-    TypeSpecifier? typeSpecifier;
+    TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
         name = visitReferentialIdentifier(child);
@@ -2665,7 +2665,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (name?.name != null && typeSpecifier != null) {
-      return TupleTypeSpecifierElement(
+      return TupleElementDefinition(
           elementType: typeSpecifier, name: name!.name);
     } else {
       throw ArgumentError('$thisNode Invalid TupleElementDefinition');
@@ -2707,7 +2707,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   TupleTypeSpecifier visitTupleTypeSpecifier(TupleTypeSpecifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    List<TupleTypeSpecifierElement> element = <TupleTypeSpecifierElement>[];
+    List<TupleElementDefinition> element = <TupleElementDefinition>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TupleElementDefinitionContext) {
         element.add(visitTupleElementDefinition(child));
@@ -2747,7 +2747,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// 	| tupleTypeSpecifier
   /// 	| choiceTypeSpecifier;
   @override
-  TypeSpecifier? visitTypeSpecifier(TypeSpecifierContext ctx) {
+  TypeSpecifierExpression? visitTypeSpecifier(TypeSpecifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (var child in ctx.children ?? <ParseTree>[]) {

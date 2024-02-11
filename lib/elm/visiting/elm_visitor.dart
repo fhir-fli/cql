@@ -23,7 +23,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T? visitTypeSpecifier(TypeSpecifier elm, C context);
+  T? visitTypeSpecifier(TypeSpecifierExpression elm, C context);
 
   ///  Visit a NamedTypeSpecifier. This method will be called for
   ///  every node in the tree that is a NamedTypeSpecifier.
@@ -68,7 +68,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTupleTypeSpecifier(TupleTypeSpecifier elm, C context);
+  T? visitTupleTypeSpecifier(TupleTypeSpecifier elm, C context);
 
   ///  Visit a ChoiceTypeSpecifier. This method will be called for
   ///  every node in the tree that is a ChoiceTypeSpecifier.
@@ -77,7 +77,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitChoiceTypeSpecifier(ChoiceTypeSpecifier elm, C context);
+  T? visitChoiceTypeSpecifier(ChoiceTypeSpecifier elm, C context);
 
   ///  Visit an Expression. This method will be called for
   ///  every node in the tree that is an Expression.
@@ -86,7 +86,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitExpression(Expression elm, C context);
+  T? visitExpression(Expression elm, C context);
 
   ///  Visit a UnaryExpression. This method will be called for
   ///  every node in the tree that is a UnaryExpression.
@@ -95,7 +95,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitUnaryExpression(UnaryExpression elm, C context);
+  T? visitUnaryExpression(UnaryExpression elm, C context);
 
   ///  Visit an OperatorExpression. This method will be called for
   ///  every node in the tree that is an OperatorExpression.
@@ -104,7 +104,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitOperatorExpression(OperatorExpression elm, C context);
+  T? visitOperatorExpression(OperatorExpression elm, C context);
 
   ///  Visit a BinaryExpression. This method will be called for
   ///  every node in the tree that is a BinaryExpression.
@@ -113,7 +113,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitBinaryExpression(BinaryExpression elm, C context);
+  T? visitBinaryExpression(BinaryExpression elm, C context);
 
   ///  Visit a TernaryExpression. This method will be called for
   ///  every node in the tree that is a TernaryExpression.
@@ -122,7 +122,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTernaryExpression(TernaryExpression elm, C context);
+  T? visitTernaryExpression(TernaryExpression elm, C context);
 
   ///  Visit a NaryExpression. This method will be called for
   ///  every node in the tree that is a NaryExpression.
@@ -131,7 +131,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitNaryExpression(NaryExpression elm, C context);
+  T? visitNaryExpression(NaryExpression elm, C context);
 
   ///  Visit a ExpressionDef. This method will be called for
   ///  every node in the tree that is a ExpressionDef.
@@ -140,7 +140,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitExpressionDef(ExpressionDef elm, C context);
+  T? visitExpressionDef(ExpressionDef elm, C context);
 
   ///  Visit a FunctionDef. This method will be called for
   ///  every node in the tree that is a FunctionDef.
@@ -149,7 +149,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitFunctionDef(FunctionDef elm, C context);
+  T? visitFunctionDef(FunctionDef elm, C context);
 
   ///  Visit a ExpressionRef. This method will be called for
   ///  every node in the tree that is a ExpressionRef.
@@ -158,7 +158,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitExpressionRef(ExpressionRef elm, C context);
+  T? visitExpressionRef(ExpressionRef elm, C context);
 
   ///  Visit a FunctionRef. This method will be called for
   ///  every node in the tree that is a FunctionRef.
@@ -167,7 +167,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitFunctionRef(FunctionRef elm, C context);
+  T? visitFunctionRef(FunctionRef elm, C context);
 
   ///  Visit a ParameterDef. This method will be called for
   ///  every node in the tree that is a ParameterDef.
@@ -176,7 +176,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitParameterDef(ParameterDef elm, C context);
+  T? visitParameterDef(ParameterDef elm, C context);
 
   ///  Visit a ParameterRef. This method will be called for
   ///  every node in the tree that is a ParameterRef.
@@ -185,7 +185,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitParameterRef(ParameterRef elm, C context);
+  T? visitParameterRef(ParameterRef elm, C context);
 
   ///  Visit a OperandDef. This method will be called for
   ///  every node in the tree that is a OperandDef.
@@ -194,7 +194,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitOperandDef(OperandDef elm, C context);
+  T? visitOperandDef(OperandDef elm, C context);
 
   ///  Visit a OperandRef. This method will be called for
   ///  every node in the tree that is a OperandRef.
@@ -203,7 +203,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitOperandRef(OperandRef elm, C context);
+  T? visitOperandRef(OperandRef elm, C context);
 
   ///  Visit a IdentifierRef. This method will be called for
   ///  every node in the tree that is a IdentifierRef.
@@ -212,7 +212,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIdentifierRef(IdentifierRef elm, C context);
+  T? visitIdentifierRef(IdentifierRef elm, C context);
 
   ///  Visit a Literal. This method will be called for
   ///  every node in the tree that is a Literal.
@@ -221,7 +221,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLiteral(Literal elm, C context);
+  T? visitLiteral(Literal elm, C context);
 
   ///  Visit a TupleElement. This method will be called for
   ///  every node in the tree that is a TupleElement.
@@ -230,7 +230,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTupleElement(TupleElement elm, C context);
+  T? visitTupleElement(TupleElement elm, C context);
 
   ///  Visit a Tuple. This method will be called for
   ///  every node in the tree that is a Tuple.
@@ -239,7 +239,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTuple(Tuple elm, C context);
+  T? visitTuple(Tuple elm, C context);
 
   ///  Visit a InstanceElement. This method will be called for
   ///  every node in the tree that is a InstanceElement.
@@ -248,7 +248,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitInstanceElement(InstanceElement elm, C context);
+  T? visitInstanceElement(InstanceElement elm, C context);
 
   ///  Visit a Instance. This method will be called for
   ///  every node in the tree that is a Instance.
@@ -257,7 +257,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitInstance(Instance elm, C context);
+  T? visitInstance(Instance elm, C context);
 
   ///  Visit a Interval. This method will be called for
   ///  every node in the tree that is a Interval.
@@ -266,7 +266,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitInterval(Interval elm, C context);
+  T? visitInterval(IntervalExpression elm, C context);
 
   ///  Visit a List. This method will be called for
   ///  every node in the tree that is a List.
@@ -275,7 +275,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitList(List elm, C context);
+  T? visitList(ListExpression elm, C context);
 
   ///  Visit a And. This method will be called for
   ///  every node in the tree that is a And.
@@ -284,7 +284,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAnd(And elm, C context);
+  T? visitAnd(And elm, C context);
 
   ///  Visit a Or. This method will be called for
   ///  every node in the tree that is a Or.
@@ -293,7 +293,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitOr(Or elm, C context);
+  T? visitOr(Or elm, C context);
 
   ///  Visit a Xor. This method will be called for
   ///  every node in the tree that is a Xor.
@@ -302,7 +302,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitXor(Xor elm, C context);
+  T? visitXor(Xor elm, C context);
 
   ///  Visit a Implies. This method will be called for
   ///  every node in the tree that is a Implies.
@@ -311,7 +311,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitImplies(Implies elm, C context);
+  T? visitImplies(Implies elm, C context);
 
   ///  Visit a Not. This method will be called for
   ///  every node in the tree that is a Not.
@@ -320,7 +320,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitNot(Not elm, C context);
+  T? visitNot(Not elm, C context);
 
   ///  Visit a If. This method will be called for
   ///  every node in the tree that is a If.
@@ -329,7 +329,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIf(If elm, C context);
+  T? visitIf(If elm, C context);
 
   ///  Visit a CaseItem. This method will be called for
   ///  every node in the tree that is a CaseItem.
@@ -338,7 +338,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCaseItem(CaseItem elm, C context);
+  T? visitCaseItem(CaseItem elm, C context);
 
   ///  Visit a Case. This method will be called for
   ///  every node in the tree that is a Case.
@@ -347,7 +347,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCase(Case elm, C context);
+  T? visitCase(Case elm, C context);
 
   ///  Visit a Null. This method will be called for
   ///  every node in the tree that is a Null.
@@ -356,7 +356,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitNull(void elm, C context);
+  T? visitNull(void elm, C context);
 
   ///  Visit a IsNull. This method will be called for
   ///  every node in the tree that is a IsNull.
@@ -365,7 +365,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIsNull(IsNull elm, C context);
+  T? visitIsNull(IsNull elm, C context);
 
   ///  Visit a IsTrue. This method will be called for
   ///  every node in the tree that is a IsTrue.
@@ -374,7 +374,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIsTrue(IsTrue elm, C context);
+  T? visitIsTrue(IsTrue elm, C context);
 
   ///  Visit a IsFalse. This method will be called for
   ///  every node in the tree that is a IsFalse.
@@ -383,7 +383,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIsFalse(IsFalse elm, C context);
+  T? visitIsFalse(IsFalse elm, C context);
 
   ///  Visit a Coalesce. This method will be called for
   ///  every node in the tree that is a Coalesce.
@@ -392,7 +392,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCoalesce(Coalesce elm, C context);
+  T? visitCoalesce(Coalesce elm, C context);
 
   ///  Visit a Is. This method will be called for
   ///  every node in the tree that is a Is.
@@ -401,7 +401,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIs(Is elm, C context);
+  T? visitIs(Is elm, C context);
 
   ///  Visit a As. This method will be called for
   ///  every node in the tree that is a As.
@@ -410,7 +410,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAs(As elm, C context);
+  T? visitAs(As elm, C context);
 
   ///  Visit a Convert. This method will be called for
   ///  every node in the tree that is a Convert.
@@ -419,7 +419,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvert(Convert elm, C context);
+  T? visitConvert(Convert elm, C context);
 
   ///  Visit a CanConvert. This method will be called for
   ///  every node in the tree that is a CanConvert.
@@ -428,7 +428,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCanConvert(CanConvert elm, C context);
+  T? visitCanConvert(CanConvert elm, C context);
 
   ///  Visit a ConvertsToBoolean. This method will be called for
   ///  every node in the tree that is a ConvertsToBoolean.
@@ -437,7 +437,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToBoolean(ConvertsToBoolean elm, C context);
+  T? visitConvertsToBoolean(ConvertsToBoolean elm, C context);
 
   ///  Visit a ToBoolean. This method will be called for
   ///  every node in the tree that is a ToBoolean.
@@ -446,7 +446,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToBoolean(ToBoolean elm, C context);
+  T? visitToBoolean(ToBoolean elm, C context);
 
   ///  Visit a ToChars. This method will be called for
   ///  every node in the tree that is a ToChars.
@@ -455,7 +455,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToChars(ToChars elm, C context);
+  T? visitToChars(ToChars elm, C context);
 
   ///  Visit a ToConcept. This method will be called for
   ///  every node in the tree that is a ToConcept.
@@ -464,7 +464,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToConcept(ToConcept elm, C context);
+  T? visitToConcept(ToConcept elm, C context);
 
   ///  Visit a ConvertsToDate. This method will be called for
   ///  every node in the tree that is a ConvertsToDate.
@@ -473,7 +473,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToDate(ConvertsToDate elm, C context);
+  T? visitConvertsToDate(ConvertsToDate elm, C context);
 
   ///  Visit a ToDate. This method will be called for
   ///  every node in the tree that is a ToDate.
@@ -482,7 +482,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToDate(ToDate elm, C context);
+  T? visitToDate(ToDate elm, C context);
 
   ///  Visit a ConvertsToDateTime. This method will be called for
   ///  every node in the tree that is a ConvertsToDateTime.
@@ -491,7 +491,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToDateTime(ConvertsToDateTime elm, C context);
+  T? visitConvertsToDateTime(ConvertsToDateTime elm, C context);
 
   ///  Visit a ToDateTime. This method will be called for
   ///  every node in the tree that is a ToDateTime.
@@ -500,7 +500,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToDateTime(ToDateTime elm, C context);
+  T? visitToDateTime(ToDateTime elm, C context);
 
   ///  Visit a ConvertsToLong. This method will be called for
   ///  every node in the tree that is a ConvertsToLong.
@@ -509,7 +509,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToLong(ConvertsToLong elm, C context);
+  T? visitConvertsToLong(ConvertsToLong elm, C context);
 
   ///  Visit a ToLong. This method will be called for
   ///  every node in the tree that is a ToLong.
@@ -518,7 +518,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToLong(ToLong elm, C context);
+  T? visitToLong(ToLong elm, C context);
 
   ///  Visit a ConvertsToDecimal. This method will be called for
   ///  every node in the tree that is a ConvertsToDecimal.
@@ -527,7 +527,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToDecimal(ConvertsToDecimal elm, C context);
+  T? visitConvertsToDecimal(ConvertsToDecimal elm, C context);
 
   ///  Visit a ToDecimal. This method will be called for
   ///  every node in the tree that is a ToDecimal.
@@ -536,7 +536,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToDecimal(ToDecimal elm, C context);
+  T? visitToDecimal(ToDecimal elm, C context);
 
   ///  Visit a ConvertsToInteger. This method will be called for
   ///  every node in the tree that is a ConvertsToInteger.
@@ -545,7 +545,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToInteger(ConvertsToInteger elm, C context);
+  T? visitConvertsToInteger(ConvertsToInteger elm, C context);
 
   ///  Visit a ToInteger. This method will be called for
   ///  every node in the tree that is a ToInteger.
@@ -554,7 +554,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToInteger(ToInteger elm, C context);
+  T? visitToInteger(ToInteger elm, C context);
 
   ///  Visit a ToList. This method will be called for
   ///  every node in the tree that is a ToList.
@@ -563,7 +563,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToList(ToList elm, C context);
+  T? visitToList(ToList elm, C context);
 
   ///  Visit a ConvertQuantity. This method will be called for
   ///  every node in the tree that is a ConvertQuantity.
@@ -572,7 +572,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertQuantity(ConvertQuantity elm, C context);
+  T? visitConvertQuantity(ConvertQuantity elm, C context);
 
   ///  Visit a CanConvertQuantity. This method will be called for
   ///  every node in the tree that is a CanConvertQuantity.
@@ -581,7 +581,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCanConvertQuantity(CanConvertQuantity elm, C context);
+  T? visitCanConvertQuantity(CanConvertQuantity elm, C context);
 
   ///  Visit a ConvertsToQuantity. This method will be called for
   ///  every node in the tree that is a ConvertsToQuantity.
@@ -590,7 +590,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToQuantity(ConvertsToQuantity elm, C context);
+  T? visitConvertsToQuantity(ConvertsToQuantity elm, C context);
 
   ///  Visit a ToQuantity. This method will be called for
   ///  every node in the tree that is a ToQuantity.
@@ -599,7 +599,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToQuantity(ToQuantity elm, C context);
+  T? visitToQuantity(ToQuantity elm, C context);
 
   ///  Visit a ConvertsToRatio. This method will be called for
   ///  every node in the tree that is a ConvertsToRatio.
@@ -608,7 +608,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToRatio(ConvertsToRatio elm, C context);
+  T? visitConvertsToRatio(ConvertsToRatio elm, C context);
 
   ///  Visit a Ratio. This method will be called for
   ///  every node in the tree that is a Ratio.
@@ -617,7 +617,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToRatio(ToRatio elm, C context);
+  T? visitToRatio(ToRatio elm, C context);
 
   ///  Visit a ConvertsToString. This method will be called for
   ///  every node in the tree that is a ConvertsToString.
@@ -626,7 +626,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToString(ConvertsToString elm, C context);
+  T? visitConvertsToString(ConvertsToString elm, C context);
 
   ///  Visit a ToString. This method will be called for
   ///  every node in the tree that is a ToString.
@@ -635,7 +635,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToString(ToString elm, C context);
+  T? visitToString(ToString elm, C context);
 
   ///  Visit a ConvertsToTime. This method will be called for
   ///  every node in the tree that is a ConvertsToTime.
@@ -644,7 +644,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConvertsToTime(ConvertsToTime elm, C context);
+  T? visitConvertsToTime(ConvertsToTime elm, C context);
 
   ///  Visit a ToTime. This method will be called for
   ///  every node in the tree that is a ToTime.
@@ -653,7 +653,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToTime(ToTime elm, C context);
+  T? visitToTime(ToTime elm, C context);
 
   ///  Visit a Equal. This method will be called for
   ///  every node in the tree that is a Equal.
@@ -662,7 +662,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitEqual(Equal elm, C context);
+  T? visitEqual(Equal elm, C context);
 
   ///  Visit a Equivalent. This method will be called for
   ///  every node in the tree that is a Equivalent.
@@ -671,7 +671,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitEquivalent(Equivalent elm, C context);
+  T? visitEquivalent(Equivalent elm, C context);
 
   ///  Visit a NotEqual. This method will be called for
   ///  every node in the tree that is a NotEqual.
@@ -680,7 +680,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitNotEqual(NotEqual elm, C context);
+  T? visitNotEqual(NotEqual elm, C context);
 
   ///  Visit a Less. This method will be called for
   ///  every node in the tree that is a Less.
@@ -689,7 +689,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLess(Less elm, C context);
+  T? visitLess(Less elm, C context);
 
   ///  Visit a Greater. This method will be called for
   ///  every node in the tree that is a Greater.
@@ -698,7 +698,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitGreater(Greater elm, C context);
+  T? visitGreater(Greater elm, C context);
 
   ///  Visit a LessOrEqual. This method will be called for
   ///  every node in the tree that is a LessOrEqual.
@@ -707,7 +707,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLessOrEqual(LessOrEqual elm, C context);
+  T? visitLessOrEqual(LessOrEqual elm, C context);
 
   ///  Visit a GreaterOrEqual. This method will be called for
   ///  every node in the tree that is a GreaterOrEqual.
@@ -716,7 +716,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitGreaterOrEqual(GreaterOrEqual elm, C context);
+  T? visitGreaterOrEqual(GreaterOrEqual elm, C context);
 
   ///  Visit a Add. This method will be called for
   ///  every node in the tree that is a Add.
@@ -725,7 +725,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAdd(Add elm, C context);
+  T? visitAdd(Add elm, C context);
 
   ///  Visit a Subtract. This method will be called for
   ///  every node in the tree that is a Subtract.
@@ -734,7 +734,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSubtract(Subtract elm, C context);
+  T? visitSubtract(Subtract elm, C context);
 
   ///  Visit a Multiply. This method will be called for
   ///  every node in the tree that is a Multiply.
@@ -743,7 +743,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMultiply(Multiply elm, C context);
+  T? visitMultiply(Multiply elm, C context);
 
   ///  Visit a Divide. This method will be called for
   ///  every node in the tree that is a Divide.
@@ -752,7 +752,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDivide(Divide elm, C context);
+  T? visitDivide(Divide elm, C context);
 
   ///  Visit a TruncatedDivide. This method will be called for
   ///  every node in the tree that is a TruncatedDivide.
@@ -761,7 +761,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTruncatedDivide(TruncatedDivide elm, C context);
+  T? visitTruncatedDivide(TruncatedDivide elm, C context);
 
   ///  Visit a Modulo. This method will be called for
   ///  every node in the tree that is a Modulo.
@@ -770,7 +770,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitModulo(Modulo elm, C context);
+  T? visitModulo(Modulo elm, C context);
 
   ///  Visit a Ceiling. This method will be called for
   ///  every node in the tree that is a Ceiling.
@@ -779,7 +779,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCeiling(Ceiling elm, C context);
+  T? visitCeiling(Ceiling elm, C context);
 
   ///  Visit a Floor. This method will be called for
   ///  every node in the tree that is a Floor.
@@ -788,7 +788,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitFloor(Floor elm, C context);
+  T? visitFloor(Floor elm, C context);
 
   ///  Visit a Truncate. This method will be called for
   ///  every node in the tree that is a Truncate.
@@ -797,7 +797,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTruncate(Truncate elm, C context);
+  T? visitTruncate(Truncate elm, C context);
 
   ///  Visit a Abs. This method will be called for
   ///  every node in the tree that is a Abs.
@@ -806,7 +806,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAbs(Abs elm, C context);
+  T? visitAbs(Abs elm, C context);
 
   ///  Visit a Negate. This method will be called for
   ///  every node in the tree that is a Negate.
@@ -815,7 +815,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitNegate(Negate elm, C context);
+  T? visitNegate(Negate elm, C context);
 
   ///  Visit a Round. This method will be called for
   ///  every node in the tree that is a Round.
@@ -824,7 +824,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitRound(Round elm, C context);
+  T? visitRound(Round elm, C context);
 
   ///  Visit a Ln. This method will be called for
   ///  every node in the tree that is a Ln.
@@ -833,7 +833,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLn(Ln elm, C context);
+  T? visitLn(Ln elm, C context);
 
   ///  Visit a Exp. This method will be called for
   ///  every node in the tree that is a Exp.
@@ -842,7 +842,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitExp(Exp elm, C context);
+  T? visitExp(Exp elm, C context);
 
   ///  Visit a Log. This method will be called for
   ///  every node in the tree that is a Log.
@@ -851,7 +851,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLog(Log elm, C context);
+  T? visitLog(Log elm, C context);
 
   ///  Visit a Power. This method will be called for
   ///  every node in the tree that is a Power.
@@ -860,7 +860,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitPower(Power elm, C context);
+  T? visitPower(Power elm, C context);
 
   ///  Visit a Successor. This method will be called for
   ///  every node in the tree that is a Successor.
@@ -869,7 +869,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSuccessor(Successor elm, C context);
+  T? visitSuccessor(Successor elm, C context);
 
   ///  Visit a Predecessor. This method will be called for
   ///  every node in the tree that is a Predecessor.
@@ -878,7 +878,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitPredecessor(Predecessor elm, C context);
+  T? visitPredecessor(Predecessor elm, C context);
 
   ///  Visit a MinValue. This method will be called for
   ///  every node in the tree that is a MinValue.
@@ -887,7 +887,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMinValue(MinValue elm, C context);
+  T? visitMinValue(MinValue elm, C context);
 
   ///  Visit a MaxValue. This method will be called for
   ///  every node in the tree that is a MaxValue.
@@ -896,7 +896,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMaxValue(MaxValue elm, C context);
+  T? visitMaxValue(MaxValue elm, C context);
 
   ///  Visit a Precision. This method will be called for
   ///  every node in the tree that is a Precision.
@@ -905,7 +905,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitPrecision(Precision elm, C context);
+  T? visitPrecision(Precision elm, C context);
 
   ///  Visit a LowBoundary. This method will be called for
   ///  every node in the tree that is a LowBoundary.
@@ -914,7 +914,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLowBoundary(LowBoundary elm, C context);
+  T? visitLowBoundary(LowBoundary elm, C context);
 
   ///  Visit a HighBoundary. This method will be called for
   ///  every node in the tree that is a HighBoundary.
@@ -923,7 +923,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitHighBoundary(HighBoundary elm, C context);
+  T? visitHighBoundary(HighBoundary elm, C context);
 
   ///  Visit a Concatenate. This method will be called for
   ///  every node in the tree that is a Concatenate.
@@ -932,7 +932,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitConcatenate(Concatenate elm, C context);
+  T? visitConcatenate(Concatenate elm, C context);
 
   ///  Visit a Combine. This method will be called for
   ///  every node in the tree that is a Combine.
@@ -941,7 +941,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCombine(Combine elm, C context);
+  T? visitCombine(Combine elm, C context);
 
   ///  Visit a Split. This method will be called for
   ///  every node in the tree that is a Split.
@@ -950,7 +950,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSplit(Split elm, C context);
+  T? visitSplit(Split elm, C context);
 
   ///  Visit a SplitOnMatches. This method will be called for
   ///  every node in the tree that is a SplitOnMatches.
@@ -959,7 +959,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSplitOnMatches(SplitOnMatches elm, C context);
+  T? visitSplitOnMatches(SplitOnMatches elm, C context);
 
   ///  Visit a Length. This method will be called for
   ///  every node in the tree that is a Length.
@@ -968,7 +968,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLength(Length elm, C context);
+  T? visitLength(Length elm, C context);
 
   ///  Visit a Upper. This method will be called for
   ///  every node in the tree that is a Upper.
@@ -977,7 +977,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitUpper(Upper elm, C context);
+  T? visitUpper(Upper elm, C context);
 
   ///  Visit a Lower. This method will be called for
   ///  every node in the tree that is a Lower.
@@ -986,7 +986,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLower(Lower elm, C context);
+  T? visitLower(Lower elm, C context);
 
   ///  Visit a Indexer. This method will be called for
   ///  every node in the tree that is a Indexer.
@@ -995,7 +995,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIndexer(Indexer elm, C context);
+  T? visitIndexer(Indexer elm, C context);
 
   ///  Visit a PositionOf. This method will be called for
   ///  every node in the tree that is a PositionOf.
@@ -1004,7 +1004,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitPositionOf(PositionOf elm, C context);
+  T? visitPositionOf(PositionOf elm, C context);
 
   ///  Visit a LastPositionOf. This method will be called for
   ///  every node in the tree that is a LastPositionOf.
@@ -1013,7 +1013,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLastPositionOf(LastPositionOf elm, C context);
+  T? visitLastPositionOf(LastPositionOf elm, C context);
 
   ///  Visit a Substring. This method will be called for
   ///  every node in the tree that is a Substring.
@@ -1022,7 +1022,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSubstring(Substring elm, C context);
+  T? visitSubstring(Substring elm, C context);
 
   ///  Visit a StartsWith. This method will be called for
   ///  every node in the tree that is a StartsWith.
@@ -1031,7 +1031,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitStartsWith(StartsWith elm, C context);
+  T? visitStartsWith(StartsWith elm, C context);
 
   ///  Visit a EndsWith. This method will be called for
   ///  every node in the tree that is a EndsWith.
@@ -1040,7 +1040,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitEndsWith(EndsWith elm, C context);
+  T? visitEndsWith(EndsWith elm, C context);
 
   ///  Visit a Matches. This method will be called for
   ///  every node in the tree that is a Matches.
@@ -1049,7 +1049,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMatches(Matches elm, C context);
+  T? visitMatches(Matches elm, C context);
 
   ///  Visit a ReplaceMatches. This method will be called for
   ///  every node in the tree that is a ReplaceMatches.
@@ -1058,7 +1058,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitReplaceMatches(ReplaceMatches elm, C context);
+  T? visitReplaceMatches(ReplaceMatches elm, C context);
 
   ///  Visit a DurationBetween. This method will be called for
   ///  every node in the tree that is a DurationBetween.
@@ -1067,7 +1067,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDurationBetween(DurationBetween elm, C context);
+  T? visitDurationBetween(DurationBetween elm, C context);
 
   ///  Visit a DifferenceBetween. This method will be called for
   ///  every node in the tree that is a DifferenceBetween.
@@ -1076,7 +1076,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDifferenceBetween(DifferenceBetween elm, C context);
+  T? visitDifferenceBetween(DifferenceBetween elm, C context);
 
   ///  Visit a DateFrom. This method will be called for
   ///  every node in the tree that is a DateFrom.
@@ -1085,7 +1085,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDateFrom(DateFrom elm, C context);
+  T? visitDateFrom(DateFrom elm, C context);
 
   ///  Visit a TimeFrom. This method will be called for
   ///  every node in the tree that is a TimeFrom.
@@ -1094,7 +1094,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTimeFrom(TimeFrom elm, C context);
+  T? visitTimeFrom(TimeFrom elm, C context);
 
   ///  Visit a TimezoneFrom. This method will be called for
   ///  every node in the tree that is a TimezoneFrom.
@@ -1103,7 +1103,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTimezoneFrom(TimezoneFrom elm, C context);
+  T? visitTimezoneFrom(TimezoneOffsetFrom elm, C context);
 
   ///  Visit a TimezoneOffsetFrom. This method will be called for
   ///  every node in the tree that is a TimezoneOffsetFrom.
@@ -1112,7 +1112,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTimezoneOffsetFrom(TimezoneOffsetFrom elm, C context);
+  T? visitTimezoneOffsetFrom(TimezoneOffsetFrom elm, C context);
 
   ///  Visit a DateTimeComponentFrom. This method will be called for
   ///  every node in the tree that is a DateTimeComponentFrom.
@@ -1121,7 +1121,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDateTimeComponentFrom(DateTimeComponentFrom elm, C context);
+  T? visitDateTimeComponentFrom(DateTimeComponentFrom elm, C context);
 
   ///  Visit a TimeOfDay. This method will be called for
   ///  every node in the tree that is a TimeOfDay.
@@ -1130,7 +1130,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTimeOfDay(TimeOfDay elm, C context);
+  T? visitTimeOfDay(TimeOfDay elm, C context);
 
   ///  Visit a Today. This method will be called for
   ///  every node in the tree that is a Today.
@@ -1139,7 +1139,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitToday(Today elm, C context);
+  T? visitToday(Today elm, C context);
 
   ///  Visit a Now. This method will be called for
   ///  every node in the tree that is a Now.
@@ -1148,7 +1148,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitNow(Now elm, C context);
+  T? visitNow(Now elm, C context);
 
   ///  Visit a DateTime. This method will be called for
   ///  every node in the tree that is a DateTime.
@@ -1157,7 +1157,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDateTime(DateTime elm, C context);
+  T? visitDateTime(DateTimeExpression elm, C context);
 
   ///  Visit a Date. This method will be called for
   ///  every node in the tree that is a Date.
@@ -1166,7 +1166,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDate(Date elm, C context);
+  T? visitDate(DateExpression elm, C context);
 
   ///  Visit a Time. This method will be called for
   ///  every node in the tree that is a Time.
@@ -1175,7 +1175,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTime(Time elm, C context);
+  T? visitTime(TimeExpression elm, C context);
 
   ///  Visit a SameAs. This method will be called for
   ///  every node in the tree that is a SameAs.
@@ -1184,7 +1184,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSameAs(SameAs elm, C context);
+  T? visitSameAs(SameAs elm, C context);
 
   ///  Visit a SameOrBefore. This method will be called for
   ///  every node in the tree that is a SameOrBefore.
@@ -1193,7 +1193,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSameOrBefore(SameOrBefore elm, C context);
+  T? visitSameOrBefore(SameOrBefore elm, C context);
 
   ///  Visit a SameOrAfter. This method will be called for
   ///  every node in the tree that is a SameOrAfter.
@@ -1202,7 +1202,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSameOrAfter(SameOrAfter elm, C context);
+  T? visitSameOrAfter(SameOrAfter elm, C context);
 
   ///  Visit a Width. This method will be called for
   ///  every node in the tree that is a Width.
@@ -1211,7 +1211,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitWidth(Width elm, C context);
+  T? visitWidth(Width elm, C context);
 
   ///  Visit a Size. This method will be called for
   ///  every node in the tree that is a Size.
@@ -1220,7 +1220,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSize(Size elm, C context);
+  T? visitSize(Size elm, C context);
 
   ///  Visit a PointFrom. This method will be called for
   ///  every node in the tree that is a PointFrom.
@@ -1229,7 +1229,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitPointFrom(PointFrom elm, C context);
+  T? visitPointFrom(PointFrom elm, C context);
 
   ///  Visit a Start. This method will be called for
   ///  every node in the tree that is a Start.
@@ -1238,7 +1238,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitStart(Start elm, C context);
+  T? visitStart(Start elm, C context);
 
   ///  Visit a End. This method will be called for
   ///  every node in the tree that is a End.
@@ -1247,7 +1247,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitEnd(End elm, C context);
+  T? visitEnd(End elm, C context);
 
   ///  Visit a Contains. This method will be called for
   ///  every node in the tree that is a Contains.
@@ -1256,7 +1256,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitContains(Contains elm, C context);
+  T? visitContains(Contains elm, C context);
 
   ///  Visit a ProperContains. This method will be called for
   ///  every node in the tree that is a ProperContains.
@@ -1265,7 +1265,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitProperContains(ProperContains elm, C context);
+  T? visitProperContains(ProperContains elm, C context);
 
   ///  Visit a In. This method will be called for
   ///  every node in the tree that is a In.
@@ -1274,7 +1274,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIn(In elm, C context);
+  T? visitIn(In elm, C context);
 
   ///  Visit a ProperIn. This method will be called for
   ///  every node in the tree that is a ProperIn.
@@ -1283,7 +1283,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitProperIn(ProperIn elm, C context);
+  T? visitProperIn(ProperIn elm, C context);
 
   ///  Visit a Includes. This method will be called for
   ///  every node in the tree that is a Includes.
@@ -1292,7 +1292,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIncludes(Includes elm, C context);
+  T? visitIncludes(Includes elm, C context);
 
   ///  Visit a IncludedIn. This method will be called for
   ///  every node in the tree that is a IncludedIn.
@@ -1301,7 +1301,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIncludedIn(IncludedIn elm, C context);
+  T? visitIncludedIn(IncludedIn elm, C context);
 
   ///  Visit a ProperIncludes. This method will be called for
   ///  every node in the tree that is a ProperIncludes.
@@ -1310,7 +1310,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitProperIncludes(ProperIncludes elm, C context);
+  T? visitProperIncludes(ProperIncludes elm, C context);
 
   ///  Visit a ProperIncludedIn. This method will be called for
   ///  every node in the tree that is a ProperIncludedIn.
@@ -1319,7 +1319,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitProperIncludedIn(ProperIncludedIn elm, C context);
+  T? visitProperIncludedIn(ProperIncludedIn elm, C context);
 
   ///  Visit a Before. This method will be called for
   ///  every node in the tree that is a Before.
@@ -1328,7 +1328,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitBefore(Before elm, C context);
+  T? visitBefore(Before elm, C context);
 
   ///  Visit a After. This method will be called for
   ///  every node in the tree that is a After.
@@ -1337,7 +1337,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAfter(After elm, C context);
+  T? visitAfter(After elm, C context);
 
   ///  Visit a Meets. This method will be called for
   ///  every node in the tree that is a Meets.
@@ -1346,7 +1346,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMeets(Meets elm, C context);
+  T? visitMeets(Meets elm, C context);
 
   ///  Visit a MeetsBefore. This method will be called for
   ///  every node in the tree that is a MeetsBefore.
@@ -1355,7 +1355,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMeetsBefore(MeetsBefore elm, C context);
+  T? visitMeetsBefore(MeetsBefore elm, C context);
 
   ///  Visit a MeetsAfter. This method will be called for
   ///  every node in the tree that is a MeetsAfter.
@@ -1364,7 +1364,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMeetsAfter(MeetsAfter elm, C context);
+  T? visitMeetsAfter(MeetsAfter elm, C context);
 
   ///  Visit a Overlaps. This method will be called for
   ///  every node in the tree that is a Overlaps.
@@ -1373,7 +1373,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitOverlaps(Overlaps elm, C context);
+  T? visitOverlaps(Overlaps elm, C context);
 
   ///  Visit a OverlapsBefore. This method will be called for
   ///  every node in the tree that is a OverlapsBefore.
@@ -1382,7 +1382,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitOverlapsBefore(OverlapsBefore elm, C context);
+  T? visitOverlapsBefore(OverlapsBefore elm, C context);
 
   ///  Visit a OverlapsAfter. This method will be called for
   ///  every node in the tree that is a OverlapsAfter.
@@ -1391,7 +1391,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitOverlapsAfter(OverlapsAfter elm, C context);
+  T? visitOverlapsAfter(OverlapsAfter elm, C context);
 
   ///  Visit a Starts. This method will be called for
   ///  every node in the tree that is a Starts.
@@ -1400,7 +1400,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitStarts(Starts elm, C context);
+  T? visitStarts(Starts elm, C context);
 
   ///  Visit a Ends. This method will be called for
   ///  every node in the tree that is a Ends.
@@ -1409,7 +1409,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitEnds(Ends elm, C context);
+  T? visitEnds(Ends elm, C context);
 
   ///  Visit a Collapse. This method will be called for
   ///  every node in the tree that is a Collapse.
@@ -1418,7 +1418,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCollapse(Collapse elm, C context);
+  T? visitCollapse(Collapse elm, C context);
 
   ///  Visit a Expand. This method will be called for
   ///  every node in the tree that is a Expand.
@@ -1427,7 +1427,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitExpand(Expand elm, C context);
+  T? visitExpand(Expand elm, C context);
 
   ///  Visit a Union. This method will be called for
   ///  every node in the tree that is a Union.
@@ -1436,7 +1436,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitUnion(Union elm, C context);
+  T? visitUnion(Union elm, C context);
 
   ///  Visit a Intersect. This method will be called for
   ///  every node in the tree that is a Intersect.
@@ -1445,7 +1445,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIntersect(Intersect elm, C context);
+  T? visitIntersect(Intersect elm, C context);
 
   ///  Visit a Except. This method will be called for
   ///  every node in the tree that is a Except.
@@ -1454,7 +1454,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitExcept(Except elm, C context);
+  T? visitExcept(Except elm, C context);
 
   ///  Visit a Literal. This method will be called for
   ///  every node in the tree that is a Literal.
@@ -1463,7 +1463,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitExists(Exists elm, C context);
+  T? visitExists(Exists elm, C context);
 
   ///  Visit a Times. This method will be called for
   ///  every node in the tree that is a Times.
@@ -1472,7 +1472,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTimes(Times elm, C context);
+  T? visitTimes(Times elm, C context);
 
   ///  Visit a Filter. This method will be called for
   ///  every node in the tree that is a Filter.
@@ -1481,7 +1481,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitFilter(Filter elm, C context);
+  T? visitFilter(Filter elm, C context);
 
   ///  Visit a First. This method will be called for
   ///  every node in the tree that is a First.
@@ -1490,7 +1490,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitFirst(First elm, C context);
+  T? visitFirst(First elm, C context);
 
   ///  Visit a Last. This method will be called for
   ///  every node in the tree that is a Last.
@@ -1499,7 +1499,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLast(Last elm, C context);
+  T? visitLast(Last elm, C context);
 
   ///  Visit a Slice. This method will be called for
   ///  every node in the tree that is a Slice.
@@ -1508,7 +1508,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSlice(Slice elm, C context);
+  T? visitSlice(Slice elm, C context);
 
   ///  Visit a Children. This method will be called for
   ///  every node in the tree that is a Children.
@@ -1517,7 +1517,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitChildren(Children elm, C context);
+  T? visitChildren(Children elm, C context);
 
   ///  Visit a Descendents. This method will be called for
   ///  every node in the tree that is a Descendents.
@@ -1526,7 +1526,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDescendents(Descendents elm, C context);
+  T? visitDescendents(Descendents elm, C context);
 
   ///  Visit a Message. This method will be called for
   ///  every node in the tree that is a Message.
@@ -1535,7 +1535,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMessage(Message elm, C context);
+  T? visitMessage(Message elm, C context);
 
   ///  Visit a IndexOf. This method will be called for
   ///  every node in the tree that is a IndexOf.
@@ -1544,7 +1544,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIndexOf(IndexOf elm, C context);
+  T? visitIndexOf(IndexOf elm, C context);
 
   ///  Visit a Flatten. This method will be called for
   ///  every node in the tree that is a Flatten.
@@ -1553,7 +1553,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitFlatten(Flatten elm, C context);
+  T? visitFlatten(Flatten elm, C context);
 
   ///  Visit a Sort. This method will be called for
   ///  every node in the tree that is a Sort.
@@ -1562,7 +1562,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSort(Sort elm, C context);
+  T? visitSort(Sort elm, C context);
 
   ///  Visit a ForEach. This method will be called for
   ///  every node in the tree that is a ForEach.
@@ -1571,7 +1571,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitForEach(ForEach elm, C context);
+  T? visitForEach(ForEach elm, C context);
 
   ///  Visit a Repeat. This method will be called for
   ///  every node in the tree that is a Repeat.
@@ -1580,7 +1580,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitRepeat(Repeat elm, C context);
+  T? visitRepeat(Repeat elm, C context);
 
   ///  Visit a Distinct. This method will be called for
   ///  every node in the tree that is a Distinct.
@@ -1589,7 +1589,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitDistinct(Distinct elm, C context);
+  T? visitDistinct(Distinct elm, C context);
 
   ///  Visit a Current. This method will be called for
   ///  every node in the tree that is a Current.
@@ -1598,7 +1598,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCurrent(Current elm, C context);
+  T? visitCurrent(Current elm, C context);
 
   ///  Visit an Iteration. This method will be called for
   ///  every node in the tree that is an Iteration.
@@ -1607,7 +1607,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitIteration(Iteration elm, C context);
+  T? visitIteration(Iteration elm, C context);
 
   ///  Visit a Total. This method will be called for
   ///  every node in the tree that is a Total.
@@ -1616,7 +1616,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitTotal(Total elm, C context);
+  T? visitTotal(Total elm, C context);
 
   ///  Visit a SingletonFrom. This method will be called for
   ///  every node in the tree that is a SingletonFrom.
@@ -1625,7 +1625,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSingletonFrom(SingletonFrom elm, C context);
+  T? visitSingletonFrom(SingletonFrom elm, C context);
 
   ///  Visit a AggregateExpression. This method will be called for
   ///  every node in the tree that is a AggregateExpression.
@@ -1634,7 +1634,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAggregateExpression(AggregateExpression elm, C context);
+  T? visitAggregateExpression(AggregateExpression elm, C context);
 
   ///  Visit an Aggregate. This method will be called for
   ///  every node in the tree that is an Aggregate.
@@ -1643,7 +1643,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAggregate(Aggregate elm, C context);
+  T? visitAggregate(Aggregate elm, C context);
 
   ///  Visit a Count. This method will be called for
   ///  every node in the tree that is a Count.
@@ -1652,7 +1652,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitCount(Count elm, C context);
+  T? visitCount(Count elm, C context);
 
   ///  Visit a Sum. This method will be called for
   ///  every node in the tree that is a Sum.
@@ -1661,7 +1661,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSum(Sum elm, C context);
+  T? visitSum(Sum elm, C context);
 
   ///  Visit a Product. This method will be called for
   ///  every node in the tree that is a Product.
@@ -1670,7 +1670,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitProduct(Product elm, C context);
+  T? visitProduct(Product elm, C context);
 
   ///  Visit a GeometricMean. This method will be called for
   ///  every node in the tree that is a GeometricMean.
@@ -1679,7 +1679,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitGeometricMean(GeometricMean elm, C context);
+  T? visitGeometricMean(GeometricMean elm, C context);
 
   ///  Visit a Min. This method will be called for
   ///  every node in the tree that is a Min.
@@ -1688,7 +1688,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMin(Min elm, C context);
+  T? visitMin(Min elm, C context);
 
   ///  Visit a Max. This method will be called for
   ///  every node in the tree that is a Max.
@@ -1697,7 +1697,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMax(Max elm, C context);
+  T? visitMax(Max elm, C context);
 
   ///  Visit a Avg. This method will be called for
   ///  every node in the tree that is a Avg.
@@ -1706,7 +1706,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAvg(Avg elm, C context);
+  T? visitAvg(Avg elm, C context);
 
   ///  Visit a Median. This method will be called for
   ///  every node in the tree that is a Median.
@@ -1715,7 +1715,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMedian(Median elm, C context);
+  T? visitMedian(Median elm, C context);
 
   ///  Visit a Mode. This method will be called for
   ///  every node in the tree that is a Mode.
@@ -1724,7 +1724,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitMode(Mode elm, C context);
+  T? visitMode(Mode elm, C context);
 
   ///  Visit a Variance. This method will be called for
   ///  every node in the tree that is a Variance.
@@ -1733,7 +1733,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitVariance(Variance elm, C context);
+  T? visitVariance(Variance elm, C context);
 
   ///  Visit a PopulationVariance. This method will be called for
   ///  every node in the tree that is a PopulationVariance.
@@ -1742,7 +1742,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitPopulationVariance(PopulationVariance elm, C context);
+  T? visitPopulationVariance(PopulationVariance elm, C context);
 
   ///  Visit a StdDev. This method will be called for
   ///  every node in the tree that is a StdDev.
@@ -1751,7 +1751,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitStdDev(StdDev elm, C context);
+  T? visitStdDev(StdDev elm, C context);
 
   ///  Visit a PopulationStdDev. This method will be called for
   ///  every node in the tree that is a PopulationStdDev.
@@ -1760,7 +1760,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitPopulationStdDev(PopulationStdDev elm, C context);
+  T? visitPopulationStdDev(PopulationStdDev elm, C context);
 
   ///  Visit a AllTrue. This method will be called for
   ///  every node in the tree that is a AllTrue.
@@ -1769,7 +1769,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAllTrue(AllTrue elm, C context);
+  T? visitAllTrue(AllTrue elm, C context);
 
   ///  Visit a AnyTrue. This method will be called for
   ///  every node in the tree that is a AnyTrue.
@@ -1778,7 +1778,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAnyTrue(AnyTrue elm, C context);
+  T? visitAnyTrue(AnyTrue elm, C context);
 
   ///  Visit a Property. This method will be called for
   ///  every node in the tree that is a Property.
@@ -1787,7 +1787,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitProperty(Property elm, C context);
+  T? visitProperty(Property elm, C context);
 
   ///  Visit a AliasedQuerySource. This method will be called for
   ///  every node in the tree that is a AliasedQuerySource.
@@ -1796,7 +1796,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAliasedQuerySource(AliasedQuerySource elm, C context);
+  T? visitAliasedQuerySource(AliasedQuerySource elm, C context);
 
   ///  Visit a LetClause. This method will be called for
   ///  every node in the tree that is a LetClause.
@@ -1805,7 +1805,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitLetClause(LetClause elm, C context);
+  T? visitLetClause(LetClause elm, C context);
 
   ///  Visit a RelationshipClause. This method will be called for
   ///  every node in the tree that is a RelationshipClause.
@@ -1814,7 +1814,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitRelationshipClause(RelationshipClause elm, C context);
+  T? visitRelationshipClause(RelationshipClause elm, C context);
 
   ///  Visit a With. This method will be called for
   ///  every node in the tree that is a With.
@@ -1823,7 +1823,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitWith(With elm, C context);
+  T? visitWith(With elm, C context);
 
   ///  Visit a Without. This method will be called for
   ///  every node in the tree that is a Without.
@@ -1832,7 +1832,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitWithout(Without elm, C context);
+  T? visitWithout(Without elm, C context);
 
   ///  Visit a SortByItem. This method will be called for
   ///  every node in the tree that is a SortByItem.
@@ -1841,7 +1841,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSortByItem(SortByItem elm, C context);
+  T? visitSortByItem(SortByItem elm, C context);
 
   ///  Visit a ByDirection. This method will be called for
   ///  every node in the tree that is a ByDirection.
@@ -1850,7 +1850,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitByDirection(ByDirection elm, C context);
+  T? visitByDirection(ByDirection elm, C context);
 
   ///  Visit a ByColumn. This method will be called for
   ///  every node in the tree that is a ByColumn.
@@ -1859,7 +1859,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitByColumn(ByColumn elm, C context);
+  T? visitByColumn(ByColumn elm, C context);
 
   ///  Visit a ByExpression. This method will be called for
   ///  every node in the tree that is a ByExpression.
@@ -1868,7 +1868,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitByExpression(ByExpression elm, C context);
+  T? visitByExpression(ByExpression elm, C context);
 
   ///  Visit a SortClause. This method will be called for
   ///  every node in the tree that is a SortClause.
@@ -1877,7 +1877,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitSortClause(SortClause elm, C context);
+  T? visitSortClause(SortClause elm, C context);
 
   ///  Visit a AggregateClause. This method will be called for
   ///  every node in the tree that is an AggregateClause.
@@ -1886,7 +1886,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAggregateClause(AggregateClause elm, C context);
+  T? visitAggregateClause(AggregateClause elm, C context);
 
   ///  Visit a ReturnClause. This method will be called for
   ///  every node in the tree that is a ReturnClause.
@@ -1895,7 +1895,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitReturnClause(ReturnClause elm, C context);
+  T? visitReturnClause(ReturnClause elm, C context);
 
   ///  Visit a Query. This method will be called for
   ///  every node in the tree that is a Query.
@@ -1904,7 +1904,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitQuery(Query elm, C context);
+  T? visitQuery(Query elm, C context);
 
   ///  Visit a AliasRef. This method will be called for
   ///  every node in the tree that is a AliasRef.
@@ -1913,7 +1913,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitAliasRef(AliasRef elm, C context);
+  T? visitAliasRef(AliasRef elm, C context);
 
   ///  Visit a QueryLetRef. This method will be called for
   ///  every node in the tree that is a QueryLetRef.
@@ -1922,5 +1922,5 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T visitQueryLetRef(QueryLetRef elm, C context);
+  T? visitQueryLetRef(QueryLetRef elm, C context);
 }
