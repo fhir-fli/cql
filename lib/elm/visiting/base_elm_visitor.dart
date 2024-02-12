@@ -54,7 +54,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
   ///
   @override
   T? visitElement(Element elm, C context) {
-    if (elm is Expression) {
+    if (elm is CqlExpression) {
       return visitExpression(elm, context);
     } else if (elm is CaseItem) {
       return visitCaseItem(elm, context);
@@ -240,7 +240,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
   /// @return the visitor result
   ///
   @override
-  T? visitExpression(Expression elm, C context) {
+  T? visitExpression(CqlExpression elm, C context) {
     if (elm is AliasRef) {
       return visitAliasRef(elm, context);
     } else if (elm is Case) {
@@ -724,7 +724,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
   T? visitFunctionRef(FunctionRef elm, C context) {
     T? result = visitFields(elm, context);
 
-    for (var element in elm.operand ?? <Expression>[]) {
+    for (var element in elm.operand ?? <CqlExpression>[]) {
       T? childResult = visitExpression(element, context);
       result = aggregateResult(result, childResult);
     }
@@ -947,7 +947,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
       result = aggregateResult(result, childResult);
     }
 
-    for (Expression element in elm.element ?? <Expression>[]) {
+    for (CqlExpression element in elm.element ?? <CqlExpression>[]) {
       T? childResult = visitExpression(element, context);
       result = aggregateResult(result, childResult);
     }
@@ -3577,7 +3577,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
       return visitFieldsBinaryExpression(elm, context);
     } else if (elm is AliasedQuerySource) {
       return visitFieldsAliasedQuerySource(elm, context);
-    } else if (elm is Expression) {
+    } else if (elm is CqlExpression) {
       return visitFieldsExpression(elm, context);
     } else {
       return visitFieldsElement(elm, context);
@@ -3596,7 +3596,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
     return result;
   }
 
-  T? visitFieldsExpression(Expression elm, C context) {
+  T? visitFieldsExpression(CqlExpression elm, C context) {
     return visitFields(elm, context);
   }
 
@@ -3675,7 +3675,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
   T? visitFieldsNaryExpression(NaryExpression elm, C context) {
     T? result = visitFields(elm, context);
 
-    for (Expression e in elm.operand ?? <Expression>[]) {
+    for (CqlExpression e in elm.operand ?? <CqlExpression>[]) {
       T? childResult = visitExpression(e, context);
       result = aggregateResult(result, childResult);
     }
@@ -3726,7 +3726,7 @@ abstract class BaseElmVisitor<T, C> implements ElmVisitor<T, C> {
   T? visitFieldsBinaryExpression(BinaryExpression elm, C context) {
     T? result = visitFields(elm, context);
 
-    for (Expression e in elm.operand) {
+    for (CqlExpression e in elm.operand) {
       T? childResult = visitExpression(e, context);
       result = aggregateResult(result, childResult);
     }

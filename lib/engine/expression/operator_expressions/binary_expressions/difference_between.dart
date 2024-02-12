@@ -20,9 +20,9 @@ class DifferenceBetween extends BinaryExpression {
   factory DifferenceBetween.fromJson(Map<String, dynamic> json) =>
       DifferenceBetween(
         precision: DateTimePrecisionExtension.fromJson(json['precision']),
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

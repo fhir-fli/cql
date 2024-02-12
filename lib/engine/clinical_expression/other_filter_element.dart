@@ -17,7 +17,7 @@ class OtherFilterElement extends Element {
   String? search;
 
   /// An expression that provides the comparison value for the filter.
-  Expression value;
+  CqlExpression value;
 
   OtherFilterElement({
     required this.value,
@@ -38,7 +38,7 @@ class OtherFilterElement extends Element {
     }
 
     return OtherFilterElement(
-      value: Expression.fromJson(valueJson),
+      value: CqlExpression.fromJson(valueJson),
       property: json['property'],
       search: json['search'],
       comparator: json['comparator'],

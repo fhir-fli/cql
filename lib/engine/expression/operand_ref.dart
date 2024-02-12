@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// Expression allowing the value of an operand to be referenced within the body of a function definition.
-class OperandRef extends Expression {
+class OperandRef extends CqlExpression {
   /// Name of the referenced operand.
   String name;
 

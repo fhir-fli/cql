@@ -1,15 +1,15 @@
 import '../../cql.dart';
 
 /// If operator evaluating a condition and returning the appropriate argument.
-class If extends Expression {
+class If extends CqlExpression {
   /// Condition expression.
-  Expression condition;
+  CqlExpression condition;
 
   /// Else expression.
-  Expression elseExpr;
+  CqlExpression elseExpr;
 
   /// Then expression.
-  Expression then;
+  CqlExpression then;
 
   If({
     required this.condition,
@@ -23,9 +23,9 @@ class If extends Expression {
   });
 
   factory If.fromJson(Map<String, dynamic> json) => If(
-        condition: Expression.fromJson(json['condition']!),
-        then: Expression.fromJson(json['then']!),
-        elseExpr: Expression.fromJson(json['else']!),
+        condition: CqlExpression.fromJson(json['condition']!),
+        then: CqlExpression.fromJson(json['then']!),
+        elseExpr: CqlExpression.fromJson(json['else']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

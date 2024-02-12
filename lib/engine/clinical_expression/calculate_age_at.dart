@@ -28,8 +28,8 @@ class CalculateAgeAt extends BinaryExpression {
 
   factory CalculateAgeAt.fromJson(Map<String, dynamic> json) => CalculateAgeAt(
         precision: DateTimePrecisionExtension.fromJson(json['precision']),
-        operand: List<Expression>.from(
-          json['operand'].map((x) => Expression.fromJson(x)),
+        operand: List<CqlExpression>.from(
+          json['operand'].map((x) => CqlExpression.fromJson(x)),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

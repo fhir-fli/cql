@@ -17,9 +17,9 @@ class GreaterOrEqual extends BinaryExpression {
   });
 
   factory GreaterOrEqual.fromJson(Map<String, dynamic> json) => GreaterOrEqual(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

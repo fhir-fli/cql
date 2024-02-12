@@ -26,10 +26,14 @@ class Ends extends BinaryExpression {
         operand: json['operand'] != null
             ? json['operand'] is List
                 ? (json['operand'] as List)
-                    .map((e) => Expression.fromJson(e as Map<String, dynamic>))
+                    .map((e) =>
+                        CqlExpression.fromJson(e as Map<String, dynamic>))
                     .toList()
-                : [Expression.fromJson(json['operand'] as Map<String, dynamic>)]
-            : <Expression>[],
+                : [
+                    CqlExpression.fromJson(
+                        json['operand'] as Map<String, dynamic>)
+                  ]
+            : <CqlExpression>[],
         isList: json['operand'] == null ? false : json['operand'] is List,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

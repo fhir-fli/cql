@@ -15,7 +15,7 @@ class Distinct extends UnaryExpression {
   });
 
   factory Distinct.fromJson(Map<String, dynamic> json) => Distinct(
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

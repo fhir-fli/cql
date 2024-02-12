@@ -6,7 +6,7 @@ class InstanceElement extends Element {
   String name;
 
   /// Value expression of the instance element.
-  Expression value;
+  CqlExpression value;
 
   InstanceElement({
     required this.name,
@@ -21,7 +21,7 @@ class InstanceElement extends Element {
   factory InstanceElement.fromJson(Map<String, dynamic> json) =>
       InstanceElement(
         name: json['name'],
-        value: Expression.fromJson(json['value']),
+        value: CqlExpression.fromJson(json['value']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

@@ -16,6 +16,8 @@ class ParameterDefs {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// Definition of a parameter that can be referenced by name within an expression.
@@ -27,7 +29,7 @@ class ParameterDef extends Element {
   AccessModifier accessLevel;
 
   /// Default value expression for the parameter.
-  Expression? defaultExpression;
+  CqlExpression? defaultExpression;
 
   /// Qualified name of the parameter type, optional.
   QName? parameterType;
@@ -56,7 +58,7 @@ class ParameterDef extends Element {
             : AccessModifier.public,
         defaultExpression: json['default'] == null
             ? null
-            : Expression.fromJson(json['default'] as Map<String, dynamic>),
+            : CqlExpression.fromJson(json['default'] as Map<String, dynamic>),
         parameterTypeSpecifier: json['parameterTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
@@ -107,4 +109,8 @@ class ParameterDef extends Element {
 
   @override
   String toString() => toJson().toString();
+
+  dynamic execute() {
+    throw UnimplementedError();
+  }
 }

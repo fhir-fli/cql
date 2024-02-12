@@ -5,8 +5,8 @@ import '../../../cql.dart';
 /// If the stringToSplit argument does not contain any appearances of the separator,
 /// the result is a list of strings containing one element that is the value of the stringToSplit argument.
 class Split extends OperatorExpression {
-  final Expression? separator;
-  final Expression stringToSplit;
+  final CqlExpression? separator;
+  final CqlExpression stringToSplit;
 
   Split({
     required this.stringToSplit,
@@ -19,9 +19,9 @@ class Split extends OperatorExpression {
   });
 
   factory Split.fromJson(Map<String, dynamic> json) => Split(
-        stringToSplit: Expression.fromJson(json['stringToSplit']),
+        stringToSplit: CqlExpression.fromJson(json['stringToSplit']),
         separator: json['separator'] != null
-            ? Expression.fromJson(json['separator'])
+            ? CqlExpression.fromJson(json['separator'])
             : null,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

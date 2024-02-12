@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// Literal expression defining a single scalar value.
-class Literal extends Expression {
+class Literal extends CqlExpression {
   /// Qualified name of the value type.
   QName valueType;
 

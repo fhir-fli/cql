@@ -5,8 +5,8 @@ import '../../../cql.dart';
 /// If the argument is null, the result is null.
 /// Precision determines the decimal place at which the rounding will occur. If precision is not specified or null, 0 is assumed.
 class Round extends OperatorExpression {
-  final Expression operand;
-  final Expression? precision;
+  final CqlExpression operand;
+  final CqlExpression? precision;
 
   Round({
     required this.operand,
@@ -19,9 +19,9 @@ class Round extends OperatorExpression {
   });
 
   factory Round.fromJson(Map<String, dynamic> json) => Round(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         precision: json['precision'] != null
-            ? Expression.fromJson(json['precision'])
+            ? CqlExpression.fromJson(json['precision'])
             : null,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

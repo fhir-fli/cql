@@ -21,7 +21,7 @@ class SubsumedBy extends BinaryExpression {
 
   factory SubsumedBy.fromJson(Map<String, dynamic> json) => SubsumedBy(
         operand: (json['operand']! as List)
-            .map((e) => Expression.fromJson(e))
+            .map((e) => CqlExpression.fromJson(e))
             .toList(),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

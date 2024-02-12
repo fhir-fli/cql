@@ -6,7 +6,7 @@ abstract class BinaryExpression extends OperatorExpression {
   final bool isList;
 
   /// List of expressions as operand.
-  List<Expression> operand;
+  List<CqlExpression> operand;
 
   BinaryExpression({
     required this.operand,

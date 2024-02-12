@@ -24,7 +24,7 @@ class Is extends UnaryExpression {
             ? TypeSpecifierExpression.fromJson(json['isTypeSpecifier'])
             : null,
         isType: json['isType'] != null ? QName.fromJson(json['isType']) : null,
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

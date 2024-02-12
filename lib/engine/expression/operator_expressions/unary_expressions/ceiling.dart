@@ -13,7 +13,7 @@ class Ceiling extends UnaryExpression {
   });
 
   factory Ceiling.fromJson(Map<String, dynamic> json) => Ceiling(
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

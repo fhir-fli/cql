@@ -1,14 +1,14 @@
 import '../../cql.dart';
 
 /// The Query operator represents a clause-based query.
-class Query extends Expression {
+class Query extends CqlExpression {
   List<LetClause>? let;
   List<RelationshipClause>? relationship;
   ReturnClause? returnClause;
   SortClause? sort;
   AggregateClause? aggregate;
   List<AliasedQuerySource> source;
-  Expression? where;
+  CqlExpression? where;
 
   Query({
     required this.source,
@@ -36,8 +36,9 @@ class Query extends Expression {
             ? null
             : List<RelationshipClause>.from(json['relationship']
                 .map((x) => RelationshipClause.fromJson(x))),
-        where:
-            json['where'] == null ? null : Expression.fromJson(json['where']),
+        where: json['where'] == null
+            ? null
+            : CqlExpression.fromJson(json['where']),
         returnClause: json['return'] == null
             ? null
             : ReturnClause.fromJson(json['return']),

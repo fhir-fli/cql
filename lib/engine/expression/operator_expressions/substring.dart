@@ -4,9 +4,9 @@ import '../../../cql.dart';
 /// If length is omitted, the substring returned starts at startIndex and continues to the end of stringToSub.
 /// If stringToSub or startIndex is null, or startIndex is out of range, the result is null.
 class Substring extends OperatorExpression {
-  final Expression? length;
-  final Expression startIndex;
-  final Expression stringToSub;
+  final CqlExpression? length;
+  final CqlExpression startIndex;
+  final CqlExpression stringToSub;
 
   Substring({
     required this.stringToSub,
@@ -20,10 +20,11 @@ class Substring extends OperatorExpression {
   });
 
   factory Substring.fromJson(Map<String, dynamic> json) => Substring(
-        stringToSub: Expression.fromJson(json['stringToSub']),
-        startIndex: Expression.fromJson(json['startIndex']),
-        length:
-            json['length'] != null ? Expression.fromJson(json['length']) : null,
+        stringToSub: CqlExpression.fromJson(json['stringToSub']),
+        startIndex: CqlExpression.fromJson(json['startIndex']),
+        length: json['length'] != null
+            ? CqlExpression.fromJson(json['length'])
+            : null,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

@@ -13,9 +13,9 @@ class Concatenate extends NaryExpression {
   });
 
   factory Concatenate.fromJson(Map<String, dynamic> json) => Concatenate(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

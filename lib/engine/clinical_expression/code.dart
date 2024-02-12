@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// The Code type represents a literal code selector.
-class Code extends Expression {
+class Code extends CqlExpression {
   /// The code.
   String code;
 

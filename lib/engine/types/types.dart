@@ -1,8 +1,8 @@
 import 'package:fhir/primitive_types/time.dart' as fhirtime;
 
-abstract class LiteralType {
-  dynamic toJson();
-}
+import '../../cql.dart';
+
+abstract class LiteralType extends CqlExpression {}
 
 class LiteralBoolean extends LiteralType {
   final bool value;

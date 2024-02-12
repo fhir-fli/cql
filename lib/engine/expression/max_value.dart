@@ -4,7 +4,7 @@ import '../../cql.dart';
 /// The MaxValue operator is defined for the Integer, Decimal, Date, DateTime, and Time types.
 /// For any other type, attempting to invoke MaxValue results in an error.
 /// Note that implementations may choose to represent the maximum DateTime value using a constant offset such as UTC.
-class MaxValue extends Expression {
+class MaxValue extends CqlExpression {
   final QName valueType;
 
   MaxValue({

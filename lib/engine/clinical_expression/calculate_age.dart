@@ -28,7 +28,7 @@ class CalculateAge extends UnaryExpression {
 
   factory CalculateAge.fromJson(Map<String, dynamic> json) => CalculateAge(
         precision: DateTimePrecisionExtension.fromJson(json['precision']),
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

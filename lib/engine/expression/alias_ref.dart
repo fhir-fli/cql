@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// The AliasRef expression allows for the reference of a specific source within the scope of a query.
-class AliasRef extends Expression {
+class AliasRef extends CqlExpression {
   final String name;
 
   AliasRef({

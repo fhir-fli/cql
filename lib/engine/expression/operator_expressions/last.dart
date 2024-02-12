@@ -5,7 +5,7 @@ import '../../../cql.dart';
 /// If the argument is null, the result is null.
 class Last extends OperatorExpression {
   final String? orderBy;
-  final Expression source;
+  final CqlExpression source;
 
   Last({
     required this.source,
@@ -19,7 +19,7 @@ class Last extends OperatorExpression {
 
   factory Last.fromJson(Map<String, dynamic> json) {
     return Last(
-      source: Expression.fromJson(json['source']!),
+      source: CqlExpression.fromJson(json['source']!),
       orderBy: json['orderBy'],
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)

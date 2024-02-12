@@ -14,9 +14,9 @@ class HighBoundary extends BinaryExpression {
   });
 
   factory HighBoundary.fromJson(Map<String, dynamic> json) => HighBoundary(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

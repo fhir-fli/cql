@@ -15,7 +15,7 @@ class ConvertsToString extends UnaryExpression {
 
   factory ConvertsToString.fromJson(Map<String, dynamic> json) =>
       ConvertsToString(
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

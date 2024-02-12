@@ -3,7 +3,7 @@ import '../../../cql.dart';
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {
   /// Operands passed to the function.
-  List<Expression>? operand;
+  List<CqlExpression>? operand;
 
   /// Declared signature of the function being called.
   List<TypeSpecifierExpression>? signature;
@@ -22,8 +22,8 @@ class FunctionRef extends ExpressionRef {
 
   factory FunctionRef.fromJson(Map<String, dynamic> json) => FunctionRef(
         operand: json['operand'] != null
-            ? List<Expression>.from(
-                json['operand'].map((x) => Expression.fromJson(x)))
+            ? List<CqlExpression>.from(
+                json['operand'].map((x) => CqlExpression.fromJson(x)))
             : null,
         signature: json['signature'] != null
             ? List<TypeSpecifierExpression>.from(json['signature']

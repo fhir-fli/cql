@@ -12,7 +12,7 @@ class Not extends UnaryExpression {
   });
 
   factory Not.fromJson(Map<String, dynamic> json) => Not(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

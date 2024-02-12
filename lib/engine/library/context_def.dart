@@ -16,6 +16,8 @@ class ContextDefs {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 class ContextDef extends Element {
@@ -61,5 +63,9 @@ class ContextDef extends Element {
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     val['name'] = name;
     return val;
+  }
+
+  dynamic execute() {
+    throw UnimplementedError();
   }
 }

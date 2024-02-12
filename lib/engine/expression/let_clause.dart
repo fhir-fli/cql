@@ -3,7 +3,7 @@ import '../../cql.dart';
 /// The LetClause element allows any number of expression definitions to be introduced within a query scope.
 /// Defined expressions can be referenced by name within the query scope.
 class LetClause extends Element {
-  final Expression expression;
+  final CqlExpression expression;
   final String identifier;
 
   LetClause({
@@ -17,7 +17,7 @@ class LetClause extends Element {
   });
 
   factory LetClause.fromJson(Map<String, dynamic> json) => LetClause(
-        expression: Expression.fromJson(json['expression']),
+        expression: CqlExpression.fromJson(json['expression']),
         identifier: json['identifier'],
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

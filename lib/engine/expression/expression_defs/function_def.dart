@@ -35,7 +35,7 @@ class FunctionDef extends ExpressionDef {
               ? AccessModifier.public
               : null,
       expression: json['expression'] != null
-          ? Expression.fromJson(json['expression'])
+          ? CqlExpression.fromJson(json['expression'])
           : null,
       operand: json['operand'] != null
           ? (json['operand'] as List)
@@ -91,4 +91,9 @@ class FunctionDef extends ExpressionDef {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };
+
+  @override
+  dynamic execute() {
+    throw UnimplementedError();
+  }
 }

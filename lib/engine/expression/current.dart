@@ -2,7 +2,7 @@ import '../../cql.dart';
 
 /// The Current expression returns the value of the object currently in scope.
 /// It's an error to invoke the Current operator outside of a scoped operation.
-class Current extends Expression {
+class Current extends CqlExpression {
   final String scope;
 
   Current({

@@ -2,9 +2,9 @@ import '../../../cql.dart';
 
 /// The AliasedQuerySource element defines a single source for inclusion in a query scope.
 /// The type of the source is determined by the expression element, and the source can be accessed within the query scope by the given alias.
-abstract class AliasedQuerySource extends Expression {
+abstract class AliasedQuerySource extends CqlExpression {
   final String alias;
-  final Expression expression;
+  final CqlExpression expression;
 
   AliasedQuerySource({
     required this.alias,

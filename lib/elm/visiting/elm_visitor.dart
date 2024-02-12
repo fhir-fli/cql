@@ -86,7 +86,7 @@ abstract class ElmVisitor<T, C> {
   ///  @param context the context passed to the visitor
   ///  @return the visitor result
   ///
-  T? visitExpression(Expression elm, C context);
+  T? visitExpression(CqlExpression elm, C context);
 
   ///  Visit a UnaryExpression. This method will be called for
   ///  every node in the tree that is a UnaryExpression.

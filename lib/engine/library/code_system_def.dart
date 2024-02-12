@@ -16,6 +16,8 @@ class CodeSystemDefs {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// The CodeSystemDef type defines a code system identifier that can then be
@@ -95,4 +97,8 @@ class CodeSystemDef extends Element {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };
+
+  dynamic execute() {
+    throw UnimplementedError();
+  }
 }

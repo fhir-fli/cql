@@ -3,7 +3,7 @@ import '../../../cql.dart';
 /// The ByExpression element specifies that the sort should be performed using the given expression and direction.
 /// This approach is used to specify the sort order as a calculated expression.
 class ByExpression extends SortByItem {
-  final Expression expression;
+  final CqlExpression expression;
 
   ByExpression({
     required super.direction,
@@ -17,7 +17,7 @@ class ByExpression extends SortByItem {
 
   factory ByExpression.fromJson(Map<String, dynamic> json) => ByExpression(
         direction: SortDirectionExtension.fromJson(json['direction']),
-        expression: Expression.fromJson(json['expression']),
+        expression: CqlExpression.fromJson(json['expression']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

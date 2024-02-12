@@ -14,7 +14,7 @@ class ToConcept extends UnaryExpression {
   });
 
   factory ToConcept.fromJson(Map<String, dynamic> json) => ToConcept(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

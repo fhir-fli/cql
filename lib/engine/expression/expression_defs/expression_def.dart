@@ -24,6 +24,8 @@ class ExpressionDefs {
     }
     return data;
   }
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// Expression definition with an associated name that can be referenced by any
@@ -38,7 +40,7 @@ class ExpressionDef extends Element {
   String? context;
 
   /// Expression associated with the definition.
-  Expression? expression;
+  CqlExpression? expression;
 
   /// Name of the expression.
   String name;
@@ -61,7 +63,7 @@ class ExpressionDef extends Element {
     String? locator,
     required String name,
     String? context,
-    required Expression expression,
+    required CqlExpression expression,
   }) =>
       ExpressionDef(
         type: type,
@@ -86,7 +88,7 @@ class ExpressionDef extends Element {
                 ? AccessModifier.public
                 : null,
         expression: json['expression'] != null
-            ? Expression.fromJson(json['expression'])
+            ? CqlExpression.fromJson(json['expression'])
             : null,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
@@ -107,7 +109,7 @@ class ExpressionDef extends Element {
     String? locator,
     required String name,
     String? context,
-    required Expression expression,
+    required CqlExpression expression,
   }) =>
       ExpressionDef(
         type: type,
@@ -123,7 +125,7 @@ class ExpressionDef extends Element {
     String? locator,
     required String name,
     String? context,
-    required Expression expression,
+    required CqlExpression expression,
   }) =>
       ExpressionDef(
         type: type,
@@ -173,4 +175,6 @@ class ExpressionDef extends Element {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };
+
+  dynamic execute() => expression?.execute();
 }

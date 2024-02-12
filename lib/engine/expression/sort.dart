@@ -3,9 +3,9 @@ import '../../cql.dart';
 /// The Sort operator returns a list with all the elements in source, sorted as described by the by element.
 /// When the sort elements do not provide a unique ordering, the order of duplicates is unspecified.
 /// If the argument is null, the result is null.
-class Sort extends Expression {
+class Sort extends CqlExpression {
   final List<SortByItem> by;
-  final Expression source;
+  final CqlExpression source;
 
   Sort({
     required this.source,
@@ -18,7 +18,7 @@ class Sort extends Expression {
   });
 
   factory Sort.fromJson(Map<String, dynamic> json) => Sort(
-        source: Expression.fromJson(json['source']),
+        source: CqlExpression.fromJson(json['source']),
         by: List<SortByItem>.from(
             json['by'].map((x) => SortByItem.fromJson(x))),
         annotation: json['annotation'] != null

@@ -17,7 +17,7 @@ class Count extends AggregateExpression {
   });
 
   factory Count.fromJson(Map<String, dynamic> json) => Count(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

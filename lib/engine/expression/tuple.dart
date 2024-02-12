@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// Expression allowing tuples of any type to be built up as an expression.
-class Tuple extends Expression {
+class Tuple extends CqlExpression {
   /// List of tuple elements specifying values for the elements of the tuple.
   List<TupleElement>? element;
 

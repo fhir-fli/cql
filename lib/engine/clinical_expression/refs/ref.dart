@@ -2,7 +2,7 @@ import '../../../cql.dart';
 
 /// The CodeRef expression allows a previously defined code to be referenced
 /// within an expression.
-abstract class Ref extends Expression {
+abstract class Ref extends CqlExpression {
   /// The name of the code.
   String name;
 

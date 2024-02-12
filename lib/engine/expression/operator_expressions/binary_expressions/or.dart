@@ -12,9 +12,9 @@ class Or extends BinaryExpression {
   });
 
   factory Or.fromJson(Map<String, dynamic> json) => Or(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

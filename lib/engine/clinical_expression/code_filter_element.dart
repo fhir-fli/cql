@@ -24,7 +24,7 @@ class CodeFilterElement extends Element {
   /// expression is expected to result in a List&lt;Code&gt; to match against.
   /// Only the clinical statements that match at least one of the specified
   /// codes will be returned.
-  Expression value;
+  CqlExpression value;
 
   /// The valueSetProperty attribute optionally specifies which property of
   /// the model contains a value set identifier that can be used as an
@@ -64,7 +64,7 @@ class CodeFilterElement extends Element {
 
   factory CodeFilterElement.fromJson(Map<String, dynamic> json) =>
       CodeFilterElement(
-        value: Expression.fromJson(json['value']),
+        value: CqlExpression.fromJson(json['value']),
         property: json['property'],
         valueSetProperty: json['valueSetProperty'],
         search: json['search'],

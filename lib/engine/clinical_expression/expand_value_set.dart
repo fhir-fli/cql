@@ -17,7 +17,7 @@ class ExpandValueSet extends UnaryExpression {
   });
 
   factory ExpandValueSet.fromJson(Map<String, dynamic> json) => ExpandValueSet(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

@@ -2,8 +2,8 @@ import '../../cql.dart';
 
 /// The SortClause element defines the sort order for the query.
 class AggregateClause extends Element {
-  Expression expression;
-  Expression? starting; // Optional, can be null
+  CqlExpression expression;
+  CqlExpression? starting; // Optional, can be null
   String identifier;
   bool distinct;
 
@@ -21,10 +21,10 @@ class AggregateClause extends Element {
 
   factory AggregateClause.fromJson(Map<String, dynamic> json) =>
       AggregateClause(
-        expression: Expression.fromJson(json['expression']),
+        expression: CqlExpression.fromJson(json['expression']),
         starting: json['starting'] == null
             ? null
-            : Expression.fromJson(json['starting']),
+            : CqlExpression.fromJson(json['starting']),
         identifier: json['identifier'],
         distinct: json['distinct'],
         annotation: json['annotation'] != null

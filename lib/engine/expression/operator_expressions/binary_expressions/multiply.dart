@@ -16,9 +16,9 @@ class Multiply extends BinaryExpression {
   });
 
   factory Multiply.fromJson(Map<String, dynamic> json) => Multiply(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

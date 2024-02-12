@@ -4,8 +4,8 @@ import '../../../cql.dart';
 /// If either argument is null, the result is null. If the source list is empty, the result is an empty string ('').
 /// For consistency with aggregate operator behavior, null elements in the input list are ignored.
 class Combine extends OperatorExpression {
-  final Expression? separator;
-  final Expression source;
+  final CqlExpression? separator;
+  final CqlExpression source;
 
   Combine({
     required this.source,
@@ -18,10 +18,10 @@ class Combine extends OperatorExpression {
   });
 
   factory Combine.fromJson(Map<String, dynamic> json) => Combine(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         separator: json['separator'] == null
             ? null
-            : Expression.fromJson(json['separator']),
+            : CqlExpression.fromJson(json['separator']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

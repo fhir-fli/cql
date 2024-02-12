@@ -16,6 +16,8 @@ class ConceptDefs {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// The ConceptDef type defines a concept identifier that can then be used to
@@ -97,4 +99,8 @@ class ConceptDef extends Element {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };
+
+  dynamic execute() {
+    throw UnimplementedError();
+  }
 }

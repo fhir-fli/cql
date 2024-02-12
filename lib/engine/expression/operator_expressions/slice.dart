@@ -6,9 +6,9 @@ import '../../../cql.dart';
 /// If the endIndex is null, the slice continues to the last element of the list.
 /// If the startIndex or endIndex is less than 0, or if the endIndex is less than the startIndex, the result is an empty list.
 class Slice extends OperatorExpression {
-  final Expression endIndex;
-  final Expression source;
-  final Expression startIndex;
+  final CqlExpression endIndex;
+  final CqlExpression source;
+  final CqlExpression startIndex;
 
   Slice({
     required this.source,
@@ -22,9 +22,9 @@ class Slice extends OperatorExpression {
   });
 
   factory Slice.fromJson(Map<String, dynamic> json) => Slice(
-        source: Expression.fromJson(json['source']),
-        startIndex: Expression.fromJson(json['startIndex']),
-        endIndex: Expression.fromJson(json['endIndex']),
+        source: CqlExpression.fromJson(json['source']),
+        startIndex: CqlExpression.fromJson(json['startIndex']),
+        endIndex: CqlExpression.fromJson(json['endIndex']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

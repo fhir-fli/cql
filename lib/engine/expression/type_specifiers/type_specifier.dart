@@ -1,7 +1,7 @@
 import '../../../cql.dart';
 
 /// Abstract type for TypeSpecifier.
-abstract class TypeSpecifierExpression extends Expression {
+abstract class TypeSpecifierExpression extends CqlExpression {
   TypeSpecifierExpression({
     super.annotation,
     super.localId,

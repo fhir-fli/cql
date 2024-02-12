@@ -18,10 +18,10 @@ class With extends RelationshipClause {
   factory With.fromJson(Map<String, dynamic> json) {
     return With(
       alias: json['alias'],
-      expression: Expression.fromJson(json['expression']),
+      expression: CqlExpression.fromJson(json['expression']),
       suchThat: json['suchThat'] == null
           ? null
-          : Expression.fromJson(json['suchThat']),
+          : CqlExpression.fromJson(json['suchThat']),
       type: json['type'] ?? '',
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)

@@ -4,8 +4,8 @@ import '../../../cql.dart';
 /// If the pattern is not found, the result is -1.
 /// If either argument is null, the result is null.
 class LastPositionOf extends OperatorExpression {
-  final Expression pattern;
-  final Expression string;
+  final CqlExpression pattern;
+  final CqlExpression string;
 
   LastPositionOf({
     required this.pattern,
@@ -18,8 +18,8 @@ class LastPositionOf extends OperatorExpression {
   });
 
   factory LastPositionOf.fromJson(Map<String, dynamic> json) => LastPositionOf(
-        pattern: Expression.fromJson(json['pattern']!),
-        string: Expression.fromJson(json['string']!),
+        pattern: CqlExpression.fromJson(json['pattern']!),
+        string: CqlExpression.fromJson(json['string']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

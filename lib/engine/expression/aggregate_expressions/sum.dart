@@ -17,7 +17,7 @@ class Sum extends AggregateExpression {
   });
 
   factory Sum.fromJson(Map<String, dynamic> json) => Sum(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

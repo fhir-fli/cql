@@ -16,6 +16,8 @@ class UsingDefs {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// Defines a data model that is available within the artifact.
@@ -84,5 +86,9 @@ class UsingDef extends Element {
     writeNotNull('resultTypeName', resultTypeName);
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     return val;
+  }
+
+  dynamic execute() {
+    throw UnimplementedError();
   }
 }

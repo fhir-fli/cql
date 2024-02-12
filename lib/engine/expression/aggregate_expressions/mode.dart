@@ -17,7 +17,7 @@ class Mode extends AggregateExpression {
   });
 
   factory Mode.fromJson(Map<String, dynamic> json) => Mode(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

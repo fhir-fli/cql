@@ -17,7 +17,7 @@ class ToRatio extends UnaryExpression {
   });
 
   factory ToRatio.fromJson(Map<String, dynamic> json) => ToRatio(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

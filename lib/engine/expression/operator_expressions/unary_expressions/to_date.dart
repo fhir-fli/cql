@@ -15,7 +15,7 @@ class ToDate extends UnaryExpression {
   });
 
   factory ToDate.fromJson(Map<String, dynamic> json) => ToDate(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

@@ -13,7 +13,7 @@ class Flatten extends UnaryExpression {
   });
 
   factory Flatten.fromJson(Map<String, dynamic> json) => Flatten(
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

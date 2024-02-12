@@ -21,7 +21,7 @@ class As extends UnaryExpression {
   });
 
   factory As.fromJson(Map<String, dynamic> json) => As(
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// Expression allowing class instances to be built up.
-class Instance extends Expression {
+class Instance extends CqlExpression {
   /// Type of the class instance being built.
   QName classType;
 

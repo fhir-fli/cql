@@ -14,7 +14,7 @@ import '../../cql.dart';
 /// ensures strict deterministic and functional behavior of the artifact,
 /// and allows the implementation engine freedom to cache intermediate
 /// results in order to improve performance.
-class Retrieve extends Expression {
+class Retrieve extends CqlExpression {
   /// The codeComparator attribute specifies how elements of the code
   /// property should be matched to the terminology. One of 'in', '=', or '~'.
   /// Note that 'in' will resolve to the appropriate terminology matching
@@ -55,13 +55,13 @@ class Retrieve extends Expression {
   /// The codes element optionally specifies an expression that results in a
   /// List<Code> to match against. Only the clinical statements that match at
   /// least one of the specified codes will be returned.
-  Expression? codes;
+  CqlExpression? codes;
 
   /// If specified, the context element references an expression that, when
   /// evaluated, provides the context for the retrieve. The expression
   /// evaluates to the instance id that will be used as the context for the
   /// retrieve.
-  Expression? context;
+  CqlExpression? context;
 
   /// The contextProperty attribute optionally specifies which property of
   /// the model contains the context value. Note that implementers could also
@@ -147,7 +147,7 @@ class Retrieve extends Expression {
   /// in an Interval&lt;DateTime&gt; to match against. Only those clinical
   /// statements whose date falls within the specified date range will be
   /// returned.
-  Expression? dateRange;
+  CqlExpression? dateRange;
 
   /// The dateSearch attribute specifies the name of the search path to use
   /// for searching for values in the date range specified by the dateRange
@@ -156,7 +156,7 @@ class Retrieve extends Expression {
 
   /// The id element optionally specifies an expression that results in a
   /// value that can be used to filter the retrieve to a specific id.
-  Expression? id;
+  CqlExpression? id;
 
   /// The idProperty attribute specifies which property of the model contains
   /// the Id for the clinical statement.
@@ -249,13 +249,15 @@ class Retrieve extends Expression {
 
   factory Retrieve.fromJson(Map<String, dynamic> json) {
     return Retrieve(
-      id: json['id'] != null ? Expression.fromJson(json['id']) : null,
-      codes: json['codes'] != null ? Expression.fromJson(json['codes']) : null,
+      id: json['id'] != null ? CqlExpression.fromJson(json['id']) : null,
+      codes:
+          json['codes'] != null ? CqlExpression.fromJson(json['codes']) : null,
       dateRange: json['dateRange'] != null
-          ? Expression.fromJson(json['dateRange'])
+          ? CqlExpression.fromJson(json['dateRange'])
           : null,
-      context:
-          json['context'] != null ? Expression.fromJson(json['context']) : null,
+      context: json['context'] != null
+          ? CqlExpression.fromJson(json['context'])
+          : null,
       include: json['include'] != null
           ? (json['include'] as List)
               .map((e) => IncludeElement.fromJson(e))

@@ -14,8 +14,9 @@ class Search extends Property {
 
   factory Search.fromJson(Map<String, dynamic> json) => Search(
         path: json['path'],
-        source:
-            json['source'] != null ? Expression.fromJson(json['source']) : null,
+        source: json['source'] != null
+            ? CqlExpression.fromJson(json['source'])
+            : null,
         scope: json['scope'],
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

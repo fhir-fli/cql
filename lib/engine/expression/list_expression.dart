@@ -1,9 +1,9 @@
 import '../../cql.dart';
 
 /// List selector returning a List value.
-class ListExpression extends Expression {
+class ListExpression extends CqlExpression {
   /// Elements of the list evaluated in order.
-  List<Expression>? element;
+  List<CqlExpression>? element;
 
   /// Type specifier for the list, if provided.
   TypeSpecifierExpression? typeSpecifier;
@@ -24,8 +24,8 @@ class ListExpression extends Expression {
           ? TypeSpecifierExpression.fromJson(json['typeSpecifier'])
           : null,
       element: json['element'] != null
-          ? List<Expression>.from(
-              json['element'].map((x) => Expression.fromJson(x)))
+          ? List<CqlExpression>.from(
+              json['element'].map((x) => CqlExpression.fromJson(x)))
           : null,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)

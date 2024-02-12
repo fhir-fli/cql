@@ -18,7 +18,7 @@ class PopulationVariance extends AggregateExpression {
 
   factory PopulationVariance.fromJson(Map<String, dynamic> json) =>
       PopulationVariance(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

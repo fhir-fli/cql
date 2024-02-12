@@ -17,7 +17,7 @@ class ReplaceMatches extends TernaryExpression {
   factory ReplaceMatches.fromJson(Map<String, dynamic> json) => ReplaceMatches(
         operands: json['operands'] != null
             ? (json['operands'] as List)
-                .map((e) => Expression.fromJson(e))
+                .map((e) => CqlExpression.fromJson(e))
                 .toList()
             : [],
         annotation: json['annotation'] != null

@@ -4,7 +4,7 @@ import '../../../../cql.dart';
 /// including zero.
 abstract class NaryExpression extends OperatorExpression {
   /// List of expressions as operands, can be zero or more.
-  List<Expression>? operand;
+  List<CqlExpression>? operand;
 
   NaryExpression({
     this.operand,

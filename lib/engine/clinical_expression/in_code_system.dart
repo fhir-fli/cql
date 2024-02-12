@@ -11,7 +11,7 @@ import '../../cql.dart';
 /// by the target environment as a service call to a terminology server, if
 /// desired.
 class InCodeSystem extends OperatorExpression {
-  final Expression code;
+  final CqlExpression code;
   final CodeSystemRef codesystem;
 
   InCodeSystem({
@@ -25,7 +25,7 @@ class InCodeSystem extends OperatorExpression {
   });
 
   factory InCodeSystem.fromJson(Map<String, dynamic> json) => InCodeSystem(
-        code: Expression.fromJson(json['code']!),
+        code: CqlExpression.fromJson(json['code']!),
         codesystem: CodeSystemRef.fromJson(json['codesystem']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

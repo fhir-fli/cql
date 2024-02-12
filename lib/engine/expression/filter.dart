@@ -2,10 +2,10 @@ import '../../cql.dart';
 
 /// Filter operator returns a list with only those elements in the source list for which the condition element evaluates to true.
 /// If the source argument is null, the result is null.
-class Filter extends Expression {
-  final Expression condition;
+class Filter extends CqlExpression {
+  final CqlExpression condition;
   final String scope;
-  final Expression source;
+  final CqlExpression source;
 
   Filter({
     required this.source,

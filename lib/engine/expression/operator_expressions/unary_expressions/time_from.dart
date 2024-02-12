@@ -14,7 +14,7 @@ class TimeFrom extends UnaryExpression {
   });
 
   factory TimeFrom.fromJson(Map<String, dynamic> json) => TimeFrom(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

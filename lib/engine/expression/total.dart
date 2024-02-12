@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// The Total expression returns the current value of the total aggregation accumulator in an aggregate operation.
-class Total extends Expression {
+class Total extends CqlExpression {
   final String scope;
 
   Total({

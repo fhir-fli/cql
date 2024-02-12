@@ -6,7 +6,7 @@ class TupleElement extends Element {
   String name;
 
   /// Value expression of the tuple element.
-  Expression value;
+  CqlExpression value;
 
   TupleElement({
     required this.value,
@@ -19,7 +19,7 @@ class TupleElement extends Element {
   });
 
   factory TupleElement.fromJson(Map<String, dynamic> json) => TupleElement(
-        value: Expression.fromJson(json['value']),
+        value: CqlExpression.fromJson(json['value']),
         name: json['name'],
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

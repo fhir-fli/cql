@@ -40,7 +40,7 @@ abstract class BaseElmClinicalVisitor<T, C> extends BaseElmVisitor<T, C>
   /// @return the visitor result
   ///
   @override
-  T? visitExpression(Expression elm, C context) {
+  T? visitExpression(CqlExpression elm, C context) {
     if (elm is FunctionRef) {
       return visitFunctionRef(elm, context);
     } else if (elm is ExpressionRef) {

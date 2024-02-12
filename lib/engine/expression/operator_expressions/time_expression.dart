@@ -4,10 +4,10 @@ import '../../../../cql.dart';
 /// At least one component must be specified, and no component may be specified at a precision below an unspecified precision.
 /// For example, minute may be null, but if it is, second, and millisecond must all be null as well.
 class TimeExpression extends OperatorExpression {
-  final Expression hour;
-  final Expression? millisecond;
-  final Expression? minute;
-  final Expression? second;
+  final CqlExpression hour;
+  final CqlExpression? millisecond;
+  final CqlExpression? minute;
+  final CqlExpression? second;
 
   TimeExpression({
     required this.hour,
@@ -22,14 +22,16 @@ class TimeExpression extends OperatorExpression {
   });
 
   factory TimeExpression.fromJson(Map<String, dynamic> json) => TimeExpression(
-        hour: Expression.fromJson(json['hour']),
-        minute:
-            json['minute'] == null ? null : Expression.fromJson(json['minute']),
-        second:
-            json['second'] == null ? null : Expression.fromJson(json['second']),
+        hour: CqlExpression.fromJson(json['hour']),
+        minute: json['minute'] == null
+            ? null
+            : CqlExpression.fromJson(json['minute']),
+        second: json['second'] == null
+            ? null
+            : CqlExpression.fromJson(json['second']),
         millisecond: json['millisecond'] == null
             ? null
-            : Expression.fromJson(json['millisecond']),
+            : CqlExpression.fromJson(json['millisecond']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

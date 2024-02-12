@@ -17,7 +17,7 @@ class GeometricMean extends AggregateExpression {
   });
 
   factory GeometricMean.fromJson(Map<String, dynamic> json) => GeometricMean(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

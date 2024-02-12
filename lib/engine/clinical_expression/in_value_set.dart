@@ -10,9 +10,9 @@ import '../../cql.dart';
 /// within an artifact, as well as the implementation of value set membership by
 /// the target environment as a service call to a terminology server, if desired.
 class InValueSet extends OperatorExpression {
-  final Expression code;
+  final CqlExpression code;
   final ValueSetRef? valueset;
-  final Expression? valuesetExpression;
+  final CqlExpression? valuesetExpression;
 
   InValueSet({
     required this.code,
@@ -27,13 +27,13 @@ class InValueSet extends OperatorExpression {
 
   factory InValueSet.fromJson(Map<String, dynamic> json) {
     return InValueSet(
-      code: Expression.fromJson(json['code']!),
+      code: CqlExpression.fromJson(json['code']!),
       valueset: json['valueset'] == null
           ? null
           : ValueSetRef.fromJson(json['valueset']!),
       valuesetExpression: json['valuesetExpression'] == null
           ? null
-          : Expression.fromJson(json['valuesetExpression']!),
+          : CqlExpression.fromJson(json['valuesetExpression']!),
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
               .map((e) => CqlToElmBase.fromJson(e))

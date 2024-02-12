@@ -4,8 +4,8 @@ import '../../../cql.dart';
 /// If a path is specified, the aggregation is performed for the value of the property specified by the path for each element of the source.
 /// If the list is null, the result is null.
 class Aggregate extends AggregateExpression {
-  final Expression? initialValue;
-  final Expression iteration;
+  final CqlExpression? initialValue;
+  final CqlExpression iteration;
 
   Aggregate({
     required this.iteration,
@@ -21,9 +21,9 @@ class Aggregate extends AggregateExpression {
   });
 
   factory Aggregate.fromJson(Map<String, dynamic> json) => Aggregate(
-        iteration: Expression.fromJson(json['iteration']!),
-        source: Expression.fromJson(json['source']!),
-        initialValue: Expression.fromJson(json['initialValue']),
+        iteration: CqlExpression.fromJson(json['iteration']!),
+        source: CqlExpression.fromJson(json['source']!),
+        initialValue: CqlExpression.fromJson(json['initialValue']),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

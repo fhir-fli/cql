@@ -15,7 +15,7 @@ class ToBoolean extends UnaryExpression {
   });
 
   factory ToBoolean.fromJson(Map<String, dynamic> json) => ToBoolean(
-        operand: Expression.fromJson(json['operand']),
+        operand: CqlExpression.fromJson(json['operand']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

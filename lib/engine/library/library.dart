@@ -150,4 +150,16 @@ class Library extends Element {
     writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     return val;
   }
+
+  dynamic execute() {
+    // final usingDefinitionExecuted = usings?.execute();
+    // final includeDefinitionExecuted = includes?.execute();
+    // final codeSystemsExecuted = codeSystems?.execute();
+    // final valueSetsExecuted = valueSets?.execute();
+    // final codesExecuted = codes?.execute();
+    // final conceptsExecuted = concepts?.execute();
+    // final contextsExecuted = contexts?.execute();
+    // final parametersExecuted = parameters?.execute();
+    final statementsExecuted = statements?.execute();
+  }
 }

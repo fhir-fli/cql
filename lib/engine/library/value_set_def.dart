@@ -16,6 +16,8 @@ class ValueSetDefs {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// The ValueSetDef type defines a value set identifier that can be referenced
@@ -125,4 +127,8 @@ class ValueSetDef extends Element {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };
+
+  dynamic execute() {
+    throw UnimplementedError();
+  }
 }

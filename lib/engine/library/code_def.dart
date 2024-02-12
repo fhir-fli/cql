@@ -17,6 +17,8 @@ class CodeDefs extends Element {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// The CodeDef type defines a code identifier that can then be used to
@@ -105,4 +107,8 @@ class CodeDef extends Element {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };
+
+  dynamic execute() {
+    throw UnimplementedError();
+  }
 }

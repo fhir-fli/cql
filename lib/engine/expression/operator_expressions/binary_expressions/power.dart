@@ -14,9 +14,9 @@ class Power extends BinaryExpression {
   });
 
   factory Power.fromJson(Map<String, dynamic> json) => Power(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

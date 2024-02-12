@@ -4,10 +4,10 @@ import '../../cql.dart';
 /// It uses equality comparison semantics as defined in the Equal operator.
 /// If the source argument is null, the result is null.
 /// If the element argument evaluates to null for some item in the source list, the resulting list will contain a null for that element.
-class Repeat extends Expression {
-  final Expression element;
+class Repeat extends CqlExpression {
+  final CqlExpression element;
   final String scope;
-  final Expression source;
+  final CqlExpression source;
 
   Repeat({
     required this.source,
@@ -21,8 +21,8 @@ class Repeat extends Expression {
   });
 
   factory Repeat.fromJson(Map<String, dynamic> json) => Repeat(
-        source: Expression.fromJson(json['source']),
-        element: Expression.fromJson(json['element']),
+        source: CqlExpression.fromJson(json['source']),
+        element: CqlExpression.fromJson(json['element']),
         scope: json['scope'],
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)

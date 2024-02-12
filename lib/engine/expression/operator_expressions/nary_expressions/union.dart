@@ -22,7 +22,7 @@ class Union extends NaryExpression {
   factory Union.fromJson(Map<String, dynamic> json) => Union(
         operand: json['operand'] != null
             ? (json['operand'] as List)
-                .map((e) => Expression.fromJson(e))
+                .map((e) => CqlExpression.fromJson(e))
                 .toList()
             : null,
         annotation: json['annotation'] != null

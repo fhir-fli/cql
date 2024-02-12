@@ -33,26 +33,26 @@ import '../../cql.dart';
 /// If the high bound of the interval is null and closed, the interval is
 /// interpreted to end at the maximum value of the point type, and computations
 /// involving the high boundary will be performed with that interpretation.
-class IntervalExpression extends Expression {
+class IntervalExpression extends CqlExpression {
   dynamic defaultPointType;
 
   /// High bound expression of the interval.
-  Expression? high;
+  CqlExpression? high;
 
   /// High bound closed status, defaults to true.
   bool highClosed = true;
 
   /// High bound closed expression of the interval.
-  Expression? highClosedExpression;
+  CqlExpression? highClosedExpression;
 
   /// Low bound expression of the interval.
-  Expression? low;
+  CqlExpression? low;
 
   /// Low bound closed status, defaults to true.
   bool lowClosed = true;
 
   /// Low bound closed expression of the interval.
-  Expression? lowClosedExpression;
+  CqlExpression? lowClosedExpression;
 
   IntervalExpression({
     this.lowClosed = true,
@@ -70,13 +70,14 @@ class IntervalExpression extends Expression {
 
   factory IntervalExpression.fromJson(Map<String, dynamic> json) =>
       IntervalExpression(
-        low: json['low'] != null ? Expression.fromJson(json['low']) : null,
+        low: json['low'] != null ? CqlExpression.fromJson(json['low']) : null,
         lowClosedExpression: json['lowClosedExpression'] != null
-            ? Expression.fromJson(json['lowClosedExpression'])
+            ? CqlExpression.fromJson(json['lowClosedExpression'])
             : null,
-        high: json['high'] != null ? Expression.fromJson(json['high']) : null,
+        high:
+            json['high'] != null ? CqlExpression.fromJson(json['high']) : null,
         highClosedExpression: json['highClosedExpression'] != null
-            ? Expression.fromJson(json['highClosedExpression'])
+            ? CqlExpression.fromJson(json['highClosedExpression'])
             : null,
         lowClosed: json['lowClosed'] ?? true,
         highClosed: json['highClosed'] ?? true,

@@ -15,9 +15,9 @@ class Indexer extends BinaryExpression {
   });
 
   factory Indexer.fromJson(Map<String, dynamic> json) => Indexer(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

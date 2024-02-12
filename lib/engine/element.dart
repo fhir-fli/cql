@@ -53,7 +53,7 @@ class Element {
         locator: json['locator'] as String?,
       );
 
-  Map<String, dynamic> toJson() {
+  dynamic toJson() {
     final val = <String, dynamic>{};
 
     void writeNotNull(String key, dynamic value) {

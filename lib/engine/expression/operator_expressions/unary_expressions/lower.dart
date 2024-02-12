@@ -13,7 +13,7 @@ class Lower extends UnaryExpression {
   });
 
   factory Lower.fromJson(Map<String, dynamic> json) => Lower(
-        operand: Expression.fromJson(json['operand']!),
+        operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

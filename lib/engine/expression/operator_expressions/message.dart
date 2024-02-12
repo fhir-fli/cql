@@ -15,11 +15,11 @@ import '../../../cql.dart';
 /// If the severity is Message, the operator is expected to provide the message
 /// as information to the calling environment.
 class Message extends OperatorExpression {
-  final Expression? code;
-  final Expression? condition;
-  final Expression? message;
-  final Expression? severity;
-  final Expression source;
+  final CqlExpression? code;
+  final CqlExpression? condition;
+  final CqlExpression? message;
+  final CqlExpression? severity;
+  final CqlExpression source;
 
   Message({
     required this.source,
@@ -35,17 +35,18 @@ class Message extends OperatorExpression {
   });
 
   factory Message.fromJson(Map<String, dynamic> json) => Message(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         condition: json['condition'] == null
             ? null
-            : Expression.fromJson(json['condition']),
-        code: json['code'] == null ? null : Expression.fromJson(json['code']),
+            : CqlExpression.fromJson(json['condition']),
+        code:
+            json['code'] == null ? null : CqlExpression.fromJson(json['code']),
         severity: json['severity'] == null
             ? null
-            : Expression.fromJson(json['severity']),
+            : CqlExpression.fromJson(json['severity']),
         message: json['message'] == null
             ? null
-            : Expression.fromJson(json['message']),
+            : CqlExpression.fromJson(json['message']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

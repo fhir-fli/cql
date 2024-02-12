@@ -4,9 +4,9 @@ import '../../../../cql.dart';
 /// At least one component must be specified, and no component may be specified at a precision below an unspecified precision.
 /// For example, month may be null, but if it is, day must be null as well.
 class DateExpression extends OperatorExpression {
-  final Expression? day;
-  final Expression? month;
-  final Expression year;
+  final CqlExpression? day;
+  final CqlExpression? month;
+  final CqlExpression year;
 
   DateExpression({
     required this.year,
@@ -20,10 +20,11 @@ class DateExpression extends OperatorExpression {
   });
 
   factory DateExpression.fromJson(Map<String, dynamic> json) => DateExpression(
-        year: Expression.fromJson(json['year']),
-        month:
-            json['month'] == null ? null : Expression.fromJson(json['month']),
-        day: json['day'] == null ? null : Expression.fromJson(json['day']),
+        year: CqlExpression.fromJson(json['year']),
+        month: json['month'] == null
+            ? null
+            : CqlExpression.fromJson(json['month']),
+        day: json['day'] == null ? null : CqlExpression.fromJson(json['day']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

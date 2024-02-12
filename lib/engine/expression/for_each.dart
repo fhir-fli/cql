@@ -4,10 +4,10 @@ import '../../cql.dart';
 /// It returns a list with the same number of elements, where each element in the new list is the result of evaluating the element expression for each element in the source list.
 /// If the source argument is null, the result is null.
 /// If the element argument evaluates to null for some item in the source list, the resulting list will contain a null for that element.
-class ForEach extends Expression {
-  final Expression element;
+class ForEach extends CqlExpression {
+  final CqlExpression element;
   final String scope;
-  final Expression source;
+  final CqlExpression source;
 
   ForEach({
     required this.source,

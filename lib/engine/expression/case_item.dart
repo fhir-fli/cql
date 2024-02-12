@@ -3,10 +3,10 @@ import '../../cql.dart';
 /// Represents an element within a case operator, specifying conditions and their corresponding actions.
 class CaseItem extends Element {
   /// Action to perform if the condition is met.
-  final Expression then;
+  final CqlExpression then;
 
   /// Condition to evaluate.
-  final Expression when_;
+  final CqlExpression when_;
 
   CaseItem({
     required this.when_,
@@ -19,8 +19,8 @@ class CaseItem extends Element {
   });
 
   factory CaseItem.fromJson(Map<String, dynamic> json) => CaseItem(
-        when_: Expression.fromJson(json['when']!),
-        then: Expression.fromJson(json['then']!),
+        when_: CqlExpression.fromJson(json['when']!),
+        then: CqlExpression.fromJson(json['then']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

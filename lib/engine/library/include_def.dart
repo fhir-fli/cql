@@ -16,6 +16,8 @@ class IncludeDefs {
         if (type != null) 'type': type,
         'def': def.map((e) => e.toJson()).toList(),
       };
+
+  dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
 /// Includes a library for use within the artifact.
@@ -89,5 +91,9 @@ class IncludeDef extends Element {
     writeNotNull('path', path);
     writeNotNull('version', version);
     return val;
+  }
+
+  dynamic execute() {
+    throw UnimplementedError();
   }
 }

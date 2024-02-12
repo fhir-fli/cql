@@ -17,7 +17,7 @@ class Product extends AggregateExpression {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        source: Expression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']!),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

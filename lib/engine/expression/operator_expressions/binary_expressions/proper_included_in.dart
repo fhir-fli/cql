@@ -23,9 +23,9 @@ class ProperIncludedIn extends BinaryExpression {
         precision: json['precision'] != null
             ? DateTimePrecisionExtension.fromJson(json['precision'])
             : null,
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

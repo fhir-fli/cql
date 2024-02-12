@@ -15,9 +15,9 @@ class Modulo extends BinaryExpression {
   });
 
   factory Modulo.fromJson(Map<String, dynamic> json) => Modulo(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

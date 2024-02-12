@@ -17,9 +17,9 @@ class Less extends BinaryExpression {
   });
 
   factory Less.fromJson(Map<String, dynamic> json) => Less(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

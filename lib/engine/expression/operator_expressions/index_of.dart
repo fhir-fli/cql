@@ -5,8 +5,8 @@ import '../../../cql.dart';
 /// If the list is empty or no element is found, the result is -1.
 /// If either argument is null, the result is null.
 class IndexOf extends OperatorExpression {
-  final Expression element;
-  final Expression source;
+  final CqlExpression element;
+  final CqlExpression source;
 
   IndexOf({
     required this.source,
@@ -19,8 +19,8 @@ class IndexOf extends OperatorExpression {
   });
 
   factory IndexOf.fromJson(Map<String, dynamic> json) => IndexOf(
-        source: Expression.fromJson(json['source']!),
-        element: Expression.fromJson(json['element']!),
+        source: CqlExpression.fromJson(json['source']!),
+        element: CqlExpression.fromJson(json['element']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))

@@ -58,7 +58,7 @@ class DateFilterElement extends Element {
   /// a date or time type, or a time-valued quantity. Only the clinical
   /// statements that match at least one of the specified codes will be
   /// returned.
-  Expression value;
+  CqlExpression value;
 
   DateFilterElement({
     required this.value,
@@ -80,7 +80,7 @@ class DateFilterElement extends Element {
     }
 
     return DateFilterElement(
-      value: Expression.fromJson(valueJson),
+      value: CqlExpression.fromJson(valueJson),
       property: json['property'],
       lowProperty: json['lowProperty'],
       highProperty: json['highProperty'],

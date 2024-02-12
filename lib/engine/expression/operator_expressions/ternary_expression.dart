@@ -3,7 +3,7 @@ import '../../../cql.dart';
 /// Abstract base class for expressions that take three arguments.
 abstract class TernaryExpression extends OperatorExpression {
   /// List of expressions as operands.
-  final List<Expression> operands;
+  final List<CqlExpression> operands;
 
   TernaryExpression({
     required this.operands,

@@ -17,9 +17,9 @@ class ConvertQuantity extends BinaryExpression {
 
   factory ConvertQuantity.fromJson(Map<String, dynamic> json) =>
       ConvertQuantity(
-        operand: List<Expression>.from(
+        operand: List<CqlExpression>.from(
           json['operand'].map(
-            (x) => Expression.fromJson(x),
+            (x) => CqlExpression.fromJson(x),
           ),
         ),
         annotation: json['annotation'] != null

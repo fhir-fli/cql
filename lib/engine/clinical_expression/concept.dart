@@ -1,7 +1,7 @@
 import '../../cql.dart';
 
 /// The Concept type represents a literal concept selector.
-class Concept extends Expression {
+class Concept extends CqlExpression {
   /// The codes that constitute the concept.
   List<Code> code;
 
