@@ -161,5 +161,6 @@ class Library extends Element {
     // final contextsExecuted = contexts?.execute();
     // final parametersExecuted = parameters?.execute();
     final statementsExecuted = statements?.execute();
+    return statementsExecuted;
   }
 }

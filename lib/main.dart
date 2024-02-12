@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'cql-to-elm/cql_to_elm.dart';
 
-const bool print = true;
-int stop = 10;
+const bool print = false;
 
 void main() => runApp(const MyApp());
 
@@ -40,16 +40,15 @@ void parseFile(BuildContext context) async {
   var assetsFile =
       await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
   final Map<String, dynamic> manifestMap = json.decode(assetsFile);
-  manifestMap
-      .removeWhere((key, value) => !key.contains('libraries_and_definitions/'));
+  manifestMap.removeWhere((key, value) => !key.contains('cql/'));
 
-  int i = 0;
   for (final file in manifestMap.keys) {
-    i++;
-    if (i > stop) {
-      break;
-    }
     final pathExpression = await rootBundle.loadString(file);
+    final json =
+        jsonDecode(await rootBundle.loadString(file.replaceAll('cql', 'json')));
+    final resultsJson = jsonDecode(await rootBundle.loadString(
+        file.replaceAll('cql', 'json').replaceFirst('json', 'results')));
+
     final parserAndErrors = parse(pathExpression);
     final parser = parserAndErrors.parser;
 
@@ -63,9 +62,16 @@ void parseFile(BuildContext context) async {
           .toList();
       visitor.library.annotation ??= [];
       visitor.library.annotation!.addAll(errors);
-      if (print) {
-        log(jsonEncode(visitor.result));
-      }
+      var jsonLibrary = json['library'];
+      (jsonLibrary as Map<String, dynamic>).remove('annotation');
+      var resultLibrary = visitor.result['library'];
+      (resultLibrary as Map<String, dynamic>).remove('annotation');
+
+      log(const DeepCollectionEquality()
+          .equals(jsonLibrary, resultLibrary)
+          .toString());
+      log((resultsJson.toString()));
+      log(visitor.library.execute().toString());
     } catch (e, s) {
       log(e.toString());
       log(s.toString());

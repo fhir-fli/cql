@@ -235,6 +235,11 @@ class Literal extends CqlExpression {
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}TimeInterval'),
           value: type as LiteralTimeInterval,
         );
+      case NullExpression:
+        return Literal(
+          valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Null'),
+          value: type as Null,
+        );
     }
     throw ArgumentError('Invalid LiteralType');
   }
@@ -255,4 +260,7 @@ class Literal extends CqlExpression {
 
   @override
   String get type => 'Literal';
+
+  @override
+  dynamic execute() => value?.execute();
 }

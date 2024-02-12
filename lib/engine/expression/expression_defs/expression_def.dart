@@ -25,7 +25,7 @@ class ExpressionDefs {
     return data;
   }
 
-  dynamic execute() => def.map((e) => e.execute()).toList();
+  dynamic execute() => Map.fromIterable(def.map((e) => e.execute()));
 }
 
 /// Expression definition with an associated name that can be referenced by any
@@ -176,5 +176,5 @@ class ExpressionDef extends Element {
     AccessModifier.private: 'Private',
   };
 
-  dynamic execute() => expression?.execute();
+  dynamic execute() => {name: expression?.execute()};
 }
