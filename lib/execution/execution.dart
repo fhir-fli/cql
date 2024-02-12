@@ -1,4 +1,5 @@
 export 'obfuscate/obfuscate.dart';
+export 'array_deque.dart';
 export 'cache.dart';
 export 'cql_engine.dart';
 export 'deque.dart';
@@ -9,4 +10,5 @@ export 'evaluation.dart';
 export 'expression_result.dart';
 export 'libraries.dart';
 export 'state.dart';
+export 'tuple2.dart';
 export 'variable.dart';

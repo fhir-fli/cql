@@ -1,3 +1,5 @@
+import '../../cql.dart';
+
 class ModelManager {
   final NamespaceManager namespaceManager;
   String? path; // Dart uses String paths with dart:io for file system access
@@ -48,7 +50,7 @@ class ModelManager {
       if (model != null) {
         globalCache[identifier] = model;
         models[modelPath] = model;
-        modelsByUri[model.modelInfo.url] = model;
+        modelsByUri[model.info.url.toString()] = model;
       }
     }
 

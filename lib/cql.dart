@@ -1,4 +1,5 @@
 export 'cql-to-elm/cql_to_elm.dart';
+export 'data/data.dart';
 export 'debug/debug.dart';
 export 'elm/elm.dart';
 export 'engine/engine.dart';

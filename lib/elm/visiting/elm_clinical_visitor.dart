@@ -13,7 +13,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCodeFilterElement(CodeFilterElement elm, C context);
+  T? visitCodeFilterElement(CodeFilterElement elm, C context);
 
   /// Visit a DateFilterElement. This method will be called for
   /// every node in the tree that is a DateFilterElement.
@@ -22,7 +22,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitDateFilterElement(DateFilterElement elm, C context);
+  T? visitDateFilterElement(DateFilterElement elm, C context);
 
   /// Visit an OtherFilterElement. This method will be called for
   /// every node in the tree that is an OtherFilterElement.
@@ -31,7 +31,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitOtherFilterElement(OtherFilterElement elm, C context);
+  T? visitOtherFilterElement(OtherFilterElement elm, C context);
 
   /// Visit an IncludeElement. This method will be called for
   /// every node in the tree that is an IncludeElement.
@@ -40,7 +40,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitIncludeElement(IncludeElement elm, C context);
+  T? visitIncludeElement(IncludeElement elm, C context);
 
   /// Visit a Retrieve. This method will be called for
   /// every node in the tree that is a Retrieve.
@@ -49,7 +49,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitRetrieve(Retrieve elm, C context);
+  T? visitRetrieve(Retrieve elm, C context);
 
   /// Visit a Search. This method will be called for
   /// every node in the tree that is a Search.
@@ -58,7 +58,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitSearch(Search elm, C context);
+  T? visitSearch(Search elm, C context);
 
   /// Visit a CodeSystemDef. This method will be called for
   /// every node in the tree that is a CodeSystemDef.
@@ -67,7 +67,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCodeSystemDef(CodeSystemDef elm, C context);
+  T? visitCodeSystemDef(CodeSystemDef elm, C context);
 
   /// Visit a ValueSetDef. This method will be called for
   /// every node in the tree that is a ValueSetDef.
@@ -76,7 +76,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitValueSetDef(ValueSetDef elm, C context);
+  T? visitValueSetDef(ValueSetDef elm, C context);
 
   /// Visit a CodeDef. This method will be called for
   /// every node in the tree that is a CodeDef.
@@ -85,7 +85,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCodeDef(CodeDef elm, C context);
+  T? visitCodeDef(CodeDef elm, C context);
 
   /// Visit an ConceptDef. This method will be called for
   /// every node in the tree that is an ConceptDef.
@@ -94,7 +94,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitConceptDef(ConceptDef elm, C context);
+  T? visitConceptDef(ConceptDef elm, C context);
 
   /// Visit a CodeSystemRef. This method will be called for
   /// every node in the tree that is a CodeSystemRef.
@@ -103,7 +103,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCodeSystemRef(CodeSystemRef elm, C context);
+  T? visitCodeSystemRef(CodeSystemRef elm, C context);
 
   /// Visit a ValueSetRef. This method will be called for
   /// every node in the tree that is a ValueSetRef.
@@ -112,7 +112,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitValueSetRef(ValueSetRef elm, C context);
+  T? visitValueSetRef(ValueSetRef elm, C context);
 
   /// Visit a CodeRef. This method will be called for
   /// every node in the tree that is a CodeRef.
@@ -121,7 +121,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCodeRef(CodeRef elm, C context);
+  T? visitCodeRef(CodeRef elm, C context);
 
   /// Visit a ConceptRef. This method will be called for
   /// every node in the tree that is a ConceptRef.
@@ -130,7 +130,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitConceptRef(ConceptRef elm, C context);
+  T? visitConceptRef(ConceptRef elm, C context);
 
   /// Visit a Code. This method will be called for
   /// every node in the tree that is a Code.
@@ -139,7 +139,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCode(Code elm, C context);
+  T? visitCode(Code elm, C context);
 
   /// Visit a Concept. This method will be called for
   /// every node in the tree that is a Concept.
@@ -148,7 +148,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitConcept(Concept elm, C context);
+  T? visitConcept(Concept elm, C context);
 
   /// Visit a InCodeSystem. This method will be called for
   /// every node in the tree that is a InCodeSystem.
@@ -157,7 +157,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitInCodeSystem(InCodeSystem elm, C context);
+  T? visitInCodeSystem(InCodeSystem elm, C context);
 
   /// Visit an AnyInCodeSystem. This method will be called for
   /// every node in the tree that is an AnyInCodeSystem.
@@ -166,7 +166,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitAnyInCodeSystem(AnyInCodeSystem elm, C context);
+  T? visitAnyInCodeSystem(AnyInCodeSystem elm, C context);
 
   /// Visit a InValueSet. This method will be called for
   /// every node in the tree that is a InValueSet.
@@ -175,7 +175,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitInValueSet(InValueSet elm, C context);
+  T? visitInValueSet(InValueSet elm, C context);
 
   /// Visit an AnyInValueSet. This method will be called for
   /// every node in the tree that is an AnyInValueSet.
@@ -184,7 +184,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitAnyInValueSet(AnyInValueSet elm, C context);
+  T? visitAnyInValueSet(AnyInValueSet elm, C context);
 
   /// Visit an Subsumes. This method will be called for
   /// every node in the tree that is an Subsumes.
@@ -193,7 +193,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitSubsumes(Subsumes elm, C context);
+  T? visitSubsumes(Subsumes elm, C context);
 
   /// Visit an SubsumedBy. This method will be called for
   /// every node in the tree that is an SubsumedBy.
@@ -202,7 +202,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitSubsumedBy(SubsumedBy elm, C context);
+  T? visitSubsumedBy(SubsumedBy elm, C context);
 
   /// Visit a Quantity. This method will be called for
   /// every node in the tree that is a Quantity.
@@ -211,7 +211,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitQuantity(Quantity elm, C context);
+  T? visitQuantity(Quantity elm, C context);
 
   /// Visit a Ratio. This method will be called for
   /// every node in the tree that is a Ratio.
@@ -220,7 +220,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitRatio(Ratio elm, C context);
+  T? visitRatio(Ratio elm, C context);
 
   /// Visit a CalculateAge. This method will be called for
   /// every node in the tree that is a CalculateAge.
@@ -229,7 +229,7 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCalculateAge(CalculateAge elm, C context);
+  T? visitCalculateAge(CalculateAge elm, C context);
 
   /// Visit a CalculateAgeAt. This method will be called for
   /// every node in the tree that is a CalculateAgeAt.
@@ -238,5 +238,5 @@ abstract class ElmClinicalVisitor<T, C> extends ElmVisitor<T, C> {
   /// @param context the context passed to the visitor
   /// @return the visitor result
   ///
-  T visitCalculateAgeAt(CalculateAgeAt elm, C context);
+  T? visitCalculateAgeAt(CalculateAgeAt elm, C context);
 }

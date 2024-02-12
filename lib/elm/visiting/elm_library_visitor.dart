@@ -12,7 +12,7 @@ abstract class ElmLibraryVisitor<T, C> extends ElmClinicalVisitor<T, C> {
   /// @param elm the ELM tree
   /// @param context the context passed to the visitor
   /// @return the visitor result
-  T visitLibrary(Library elm, C context);
+  T? visitLibrary(Library elm, C context);
 
   /// Visit a UsingDef. This method will be called for
   /// every node in the tree that is a UsingDef.
@@ -20,7 +20,7 @@ abstract class ElmLibraryVisitor<T, C> extends ElmClinicalVisitor<T, C> {
   /// @param elm the ELM tree
   /// @param context the context passed to the visitor
   /// @return the visitor result
-  T visitUsingDef(UsingDef elm, C context);
+  T? visitUsingDef(UsingDef elm, C context);
 
   /// Visit a IncludeDef. This method will be called for
   /// every node in the tree that is a IncludeDef.
@@ -28,7 +28,7 @@ abstract class ElmLibraryVisitor<T, C> extends ElmClinicalVisitor<T, C> {
   /// @param elm the ELM tree
   /// @param context the context passed to the visitor
   /// @return the visitor result
-  T visitIncludeDef(IncludeDef elm, C context);
+  T? visitIncludeDef(IncludeDef elm, C context);
 
   /// Visit a ContextDef. This method will be called for
   /// every node in the tree that is a ContextDef.
@@ -36,5 +36,5 @@ abstract class ElmLibraryVisitor<T, C> extends ElmClinicalVisitor<T, C> {
   /// @param elm the ELM tree
   /// @param context the context passed to the visitor
   /// @return the visitor result
-  T visitContextDef(ContextDef elm, C context);
+  T? visitContextDef(ContextDef elm, C context);
 }

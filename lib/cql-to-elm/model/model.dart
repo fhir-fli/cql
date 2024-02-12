@@ -7,18 +7,18 @@ class Model {
   late final Map<String, DataType> nameIndex;
   final List<Conversion> conversions = [];
   final List<ModelContext> contexts = [];
-  late final String defaultContext;
+  late final String? defaultContext;
 
   Model(this.info, ModelManager modelManager) {
     var importer = ModelImporter(info, modelManager);
-    index = importer.getTypes();
-    for (var c in importer.getConversions()) {
+    index = importer.resolvedTypes;
+    for (var c in importer.conversions) {
       conversions.add(c);
     }
-    for (var c in importer.getContexts()) {
+    for (var c in importer.contexts) {
       contexts.add(c);
     }
-    defaultContext = importer.getDefaultContextName();
+    defaultContext = importer.defaultContext?.name;
 
     classIndex = {};
     nameIndex = {};
@@ -27,14 +27,14 @@ class Model {
         classIndex[_casify(t.label!)] = t;
       }
       if (t is NamedType) {
-        nameIndex[_casify(t.getSimpleName())] = t;
+        nameIndex[_casify(t.toString())] = t;
       }
     }
   }
 
   ModelInfo getModelInfo() => info;
 
-  String getDefaultContext() => defaultContext;
+  String? getDefaultContext() => defaultContext;
 
   Iterable<Conversion> getConversions() => conversions;
 
@@ -57,18 +57,22 @@ class Model {
     if (contextType != null && contextType is ClassType) {
       String? keyName;
       for (var cte in contextType.elements) {
-        if (cte.getName() == "id") {
-          keyName = cte.getName();
+        if (cte.name == "id") {
+          keyName = cte.name;
           break;
         }
       }
-      return ModelContext(contextName, contextType,
-          keyNames: keyName != null ? List.of([keyName]) : null);
+      return ModelContext(
+        name: contextName,
+        type: contextType,
+        keys: keyName != null ? List.of([keyName]) : null,
+        birthDateElement: null,
+      );
     }
 
     if (mustResolve) {
       throw ArgumentError(
-          "Could not resolve context name $contextName in model ${info.getName()}.");
+          "Could not resolve context name $contextName in model ${info.name}.");
     }
 
     return null;
@@ -77,14 +81,14 @@ class Model {
   ClassType? resolveLabel(String label) => classIndex[_casify(label)];
 
   String _casify(String typeName) =>
-      info.isCaseSensitive ? typeName : typeName.toLowerCase();
+      (info.caseSensitive ?? false) ? typeName : typeName.toLowerCase();
 
   DataType? internalResolveTypeName(String typeName, Model systemModel) {
     DataType? result = resolveTypeName(typeName);
     result ??= systemModel.resolveTypeName(typeName);
     if (result == null) {
       throw ArgumentError(
-          "Could not resolve type name $typeName in model ${info.getName()}.");
+          "Could not resolve type name $typeName in model ${info.name}.");
     }
     return result;
   }

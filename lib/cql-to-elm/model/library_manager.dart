@@ -7,8 +7,6 @@ class LibraryManager {
   final Map<VersionedIdentifier, CompiledLibrary> compiledLibraries = {};
   final LibrarySourceLoader librarySourceLoader =
       PriorityLibrarySourceLoader(); // Assuming existence
-  UcumService?
-      ucumService; // Assuming existence or similar functionality in Dart
 
   LibraryManager(this.modelManager,
       [CqlCompilerOptions? options,
@@ -28,22 +26,6 @@ class LibraryManager {
 
   Map<VersionedIdentifier, CompiledLibrary> getCompiledLibraries() =>
       compiledLibraries;
-
-  UcumService getUcumService() {
-    ucumService ??= getDefaultUcumService();
-    return ucumService!;
-  }
-
-  UcumService getDefaultUcumService() {
-    // Dart equivalent for loading and using UCUM service
-    // This would typically involve initializing a UCUM service with necessary resources
-    // Example: return UcumEssenceService('path/to/ucum-essence.xml');
-    throw UnimplementedError();
-  }
-
-  void setUcumService(UcumService service) {
-    ucumService = service;
-  }
 
   LibrarySourceLoader getLibrarySourceLoader() => librarySourceLoader;
 

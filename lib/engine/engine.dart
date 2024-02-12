@@ -3,5 +3,7 @@ export 'cql_annotations/cql_annotations.dart';
 export 'expression/expression_.dart';
 export 'library/library_.dart';
 export 'model/model.dart';
+export 'retrieve/retrieve.dart';
+export 'terminology/terminology.dart';
 export 'types/types.dart';
 export 'element.dart';

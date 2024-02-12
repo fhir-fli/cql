@@ -1,5 +1,5 @@
 class ExpressionResult {
-  Object value;
+  Object? value;
   Set<Object> evaluatedResources;
 
   ExpressionResult(this.value, this.evaluatedResources);

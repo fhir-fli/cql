@@ -243,4 +243,9 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
     }
     return modelIdentifier.id == "System";
   }
+
+  @override
+  void setPath(String path) {
+    // TODO: implement setPath
+  }
 }

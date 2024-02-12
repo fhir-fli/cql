@@ -1,0 +1,17 @@
+enum Options {
+  enableDateRangeOptimization,
+  enableAnnotations,
+  enableLocators,
+  enableResultTypes,
+  enableDetailedErrors,
+  disableListTraversal,
+  disableListDemotion,
+  disableListPromotion,
+  enableIntervalDemotion,
+  enableIntervalPromotion,
+  disableMethodInvocation,
+  requireFromKeyword,
+  disableDefaultModelInfoLoad,
+  enableExpressionCaching,
+  enableValidation,
+}

@@ -3,7 +3,7 @@ import '../cql.dart';
 class CqlException implements Exception {
   final String? message;
   final Exception? cause;
-  final SourceLocator? sourceLocator;
+  SourceLocator? sourceLocator;
   final Severity severity;
 
   // Constructors

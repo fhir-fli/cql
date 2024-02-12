@@ -1,7 +1,7 @@
 import '../cql.dart';
 
 class ModelContext {
-  final String birthDateElement;
+  final String? birthDateElement;
   List<String> keys;
   final String name;
   final ClassType type;
@@ -21,7 +21,7 @@ class ModelContext {
     return type;
   }
 
-  String getBirthDateElement() {
+  String? getBirthDateElement() {
     return birthDateElement;
   }
 
