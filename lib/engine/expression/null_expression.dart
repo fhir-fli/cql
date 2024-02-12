@@ -55,4 +55,7 @@ class NullExpression extends Literal {
 
   @override
   String get type => 'Null';
+
+  @override
+  dynamic execute() => null;
 }

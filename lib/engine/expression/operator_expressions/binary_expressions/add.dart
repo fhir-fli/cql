@@ -116,7 +116,7 @@ class Add extends BinaryExpression {
       final lhs = operand[0].execute();
       final rhs = operand[1].execute();
       // TODO(Dokotela) Some of the BigInt/FhirInteger64 + int/FhirInteger may be incorrect
-      switch (lhs) {
+      switch (lhs.runtimeType) {
         case FhirInteger:
           return rhs is FhirInteger
               ? (lhs as FhirInteger).isValid && rhs.isValid

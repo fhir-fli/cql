@@ -1,4 +1,5 @@
-import 'package:fhir/primitive_types/time.dart' as fhirtime;
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
 
@@ -28,6 +29,9 @@ class LiteralBoolean extends LiteralType {
 
   @override
   String toJson() => value.toString();
+
+  @override
+  FhirBoolean execute() => FhirBoolean(value);
 }
 
 class LiteralCode extends LiteralType {
@@ -199,6 +203,9 @@ class LiteralDate extends LiteralType {
 
   @override
   String toJson() => value;
+
+  @override
+  FhirDate execute() => FhirDate(value);
 }
 
 class LiteralDateTime extends LiteralType {
@@ -224,6 +231,9 @@ class LiteralDateTime extends LiteralType {
 
   @override
   String toJson() => value;
+
+  @override
+  FhirDateTime execute() => FhirDateTime(value);
 }
 
 class LiteralDecimal extends LiteralType {
@@ -257,6 +267,9 @@ class LiteralDecimal extends LiteralType {
 
   @override
   String toJson() => value.toString();
+
+  @override
+  FhirDecimal execute() => FhirDecimal(value);
 }
 
 class LiteralInteger extends LiteralType {
@@ -290,6 +303,9 @@ class LiteralInteger extends LiteralType {
 
   @override
   String toJson() => value.toString();
+
+  @override
+  FhirInteger execute() => FhirInteger(value);
 }
 
 class LiteralLong extends LiteralType {
@@ -323,6 +339,9 @@ class LiteralLong extends LiteralType {
 
   @override
   String toJson() => value.toString();
+
+  @override
+  FhirInteger64 execute() => FhirInteger64(value);
 }
 
 class LiteralQuantity extends LiteralType {
@@ -344,6 +363,14 @@ class LiteralQuantity extends LiteralType {
       'value': value.toJson(),
       if (unit != null) 'unit': unit,
     };
+  }
+
+  @override
+  ValidatedQuantity execute() {
+    return ValidatedQuantity(
+      value: UcumDecimal.fromString(value.value.toString()),
+      code: unit,
+    );
   }
 }
 
@@ -391,6 +418,9 @@ class LiteralString extends LiteralType {
 
   @override
   String toJson() => value;
+
+  @override
+  String execute() => value;
 }
 
 class LiteralTime extends LiteralType {
@@ -399,12 +429,12 @@ class LiteralTime extends LiteralType {
   LiteralTime({required this.value});
 
   factory LiteralTime.fromJson(dynamic json) {
-    if (json is String && fhirtime.FhirTime(json).isValid) {
+    if (json is String && FhirTime(json).isValid) {
       return LiteralTime(
         value: json,
       );
     } else if (json is Map<String, dynamic> && json['value'] != null) {
-      if (json['value'] is String && fhirtime.FhirTime(json['value']).isValid) {
+      if (json['value'] is String && FhirTime(json['value']).isValid) {
         return LiteralTime(
           value: json['value'],
         );
@@ -415,6 +445,9 @@ class LiteralTime extends LiteralType {
 
   @override
   String toJson() => value;
+
+  @override
+  FhirTime execute() => FhirTime(value);
 }
 
 abstract class LiteralIntervalType extends LiteralType {
