@@ -11,32 +11,32 @@ dependencies:
   antlr4: ^4.13.1
   collection: ^1.18.0
   fhir:
-    path: ../../fhir/fhir
+    path: ../fhir/fhir
   flutter:
     sdk: flutter
   freezed_annotation: ^2.4.1
-  http: ^1.1.2
+  http: ^1.2.0
   json_annotation: ^4.8.1
   path: ^1.8.3
   petitparser: ^6.0.2
-  ucum: 
-    path: ../../fhir/ucum
+  ucum:
+    path: ../fhir/ucum
   uuid: ^4.3.3
   xml: ^6.5.0
-  xml2json: ^6.2.1
-  xml_serializable: ^2.4.0
+  xml2json: ^6.2.2
+  xml_serializable: ^2.5.0
 
 dev_dependencies:
-  build_runner: ^2.4.6
+  build_runner: ^2.4.8
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-  freezed: ^2.4.5
+  flutter_lints: ^3.0.1
+  freezed: ^2.4.7
   # flutter pub run import_sorter:main
   import_sorter: ^4.6.0
   json_serializable: ^6.7.1
-  lints: ^2.1.1
-  test: ^1.24.6
+  lints: ^3.0.0
+  # test: ^1.25.2
 
 flutter:
   uses-material-design: true
