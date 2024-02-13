@@ -5,6 +5,18 @@ import '../../cql.dart';
 
 abstract class LiteralType extends CqlExpression {}
 
+class LiteralNull extends LiteralType {
+  LiteralNull();
+
+  factory LiteralNull.fromJson(dynamic json) => LiteralNull();
+
+  @override
+  String toJson() => null.toString();
+
+  @override
+  String? execute() => null;
+}
+
 class LiteralBoolean extends LiteralType {
   final bool value;
 

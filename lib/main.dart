@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 
 import 'cql-to-elm/cql_to_elm.dart';
 
-const bool print = false;
+const bool print = true;
 
 void main() => runApp(const MyApp());
 
@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
                     height: 200,
                     width: 200,
                     child: Center(
-                      child: Text('Press me', style: TextStyle(fontSize: 45)),
+                      child: Text('Press\nme',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 45)),
                     ))),
           ),
         ),
@@ -66,6 +68,9 @@ void parseFile(BuildContext context) async {
       (jsonLibrary as Map<String, dynamic>).remove('annotation');
       var resultLibrary = visitor.result['library'];
       (resultLibrary as Map<String, dynamic>).remove('annotation');
+      if (print) {
+        log(jsonPrettyPrint(visitor.result));
+      }
 
       log(const DeepCollectionEquality()
           .equals(jsonLibrary, resultLibrary)

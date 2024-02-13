@@ -1,3 +1,6 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to check if the first argument is less than or equal to the second argument.
@@ -6,6 +9,55 @@ import '../../../../cql.dart';
 /// If either argument is null, the result is null.
 /// The LessOrEqual operator is defined for the Integer, Decimal, String, Date, DateTime, Time, and Quantity types.
 /// Note that relative ratio comparisons are not directly supported due to healthcare variance.
+///
+/// Signature
+/// <=(left Integer, right Integer) Boolean
+/// <=(left Long, right Long) Boolean
+/// <=(left Decimal, right Decimal) Boolean
+/// <=(left Quantity, right Quantity) Boolean
+/// <=(left Date, right Date) Boolean
+/// <=(left DateTime, right DateTime) Boolean
+/// <=(left Time, right Time) Boolean
+/// <=(left String, right String) Boolean
+/// Description:
+///
+/// The less or equal (<=) operator returns true if the first argument is less
+/// than or equal to the second argument.
+/// String comparisons are strictly lexical based on the Unicode value of the
+/// individual characters in the string.
+/// For comparisons involving quantities, the dimensions of each quantity must
+/// be the same, but not necessarily the unit. For example, units of 'cm' and
+/// 'm' are comparable, but units of 'cm2' and 'cm' are not. Attempting to
+/// operate on quantities with invalid units will result in a null. When a
+/// quantity has no units specified, it is treated as a quantity with the
+/// default unit ('1').
+/// For time-valued quantities, the UCUM definite-quantity durations above days
+/// (and weeks) are not comparable to calendar durations. Definite-time
+/// duration unit conversions shall be performed as specified in ISO-8601,
+/// while calendar-time duration unit conversions shall be performed according
+/// to calendar duration semantics. In particular, unit conversion between
+/// variable length calendar durations (i.e. years and months) and definite-time
+/// durations (i.e. days or below) results in null.
+/// For Date, DateTime, and Time values, the comparison is performed by
+/// considering each precision in order, beginning with years (or hours for
+/// time values). If the values are the same, comparison proceeds to the next
+/// precision; if the first value is less than the second, the result is true;
+/// if the first value is greater than the second, the result is false; if one
+/// input has a value for the precision and the other does not, the comparison
+/// stops and the result is null; if neither input has a value for the precision
+/// or the last precision has been reached, the comparison stops and the result
+/// is true. For example:
+/// define "DateTimeLessOrEqualIsNull": @2012-01-01 <= @2012-01-01T12
+/// Note that for the purposes of comparison, seconds and milliseconds are
+/// combined as a single precision using a decimal, with decimal comparison
+/// semantics.
+/// If either argument is null, the result is null.
+/// The following examples illustrate the behavior of the less or equal operator:
+/// define "IntegerLessOrEqualIsTrue": 4 <= (2 + 2)
+/// define "LongLessOrEqualIsTrue": 4L <= (2L + 2L)
+/// define "DecimalLessOrEqualIsFalse": 3.5 <= (3.5 - 0.1)
+/// define "QuantityLessOrEqualIsNull": 3.6 'cm2' <= 3.6 'cm'
+/// define "NullLessOrEqualIsNull": null <= 5
 class LessOrEqual extends BinaryExpression {
   LessOrEqual({
     required super.operand,
@@ -61,4 +113,31 @@ class LessOrEqual extends BinaryExpression {
 
   @override
   String get type => 'LessOrEqual';
+
+  @override
+  dynamic execute() {
+    final left = operand[0].execute();
+    final right = operand[1].execute();
+    if (left == null || right == null) {
+      return null;
+    }
+    if (left is FhirInteger && right is FhirInteger) {
+      return left <= right;
+    } else if (left is FhirDecimal && right is FhirDecimal) {
+      return left <= right;
+    } else if (left is FhirInteger64 && right is FhirInteger64) {
+      return left <= right;
+    } else if (left is String && right is String) {
+      return left.compareTo(right) <= 0;
+    } else if (left is FhirDateTime && right is FhirDateTime) {
+      return left <= right;
+    } else if (left is FhirTime && right is FhirTime) {
+      return left <= right;
+    } else if (left is FhirDate && right is FhirDate) {
+      return left <= right;
+    } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
+      return left <= right;
+    }
+    throw ArgumentError('Invalid operand types for LessOrEqual operation');
+  }
 }

@@ -1,0 +1,124 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "type": "CqlToElmInfo",
+                "translatorVersion": "2.11.0"
+            }
+        ],
+        "identifier": {
+            "id": "Exercises01Key"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "This is a quoted identifier",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            "2021-03-29",
+                            {
+                                "value": "3.0",
+                                "unit": "days"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "_1MoreIdentifier",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "value": "0.0",
+                        "unit": "g"
+                    }
+                },
+                {
+                    "name": "Inequality Expression",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "Relative Comparison Expression",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "LessOrEqual",
+                        "operand": [
+                            "4",
+                            "5"
+                        ]
+                    }
+                },
+                {
+                    "name": "Quantity Expression",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "value": "5.0",
+                        "unit": "g/dL"
+                    }
+                },
+                {
+                    "name": "Reference Expression",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Quantity Expression",
+                        "type": "ExpressionRef"
+                    }
+                },
+                {
+                    "name": "String Concatenation",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            "1",
+                            "John"
+                        ]
+                    }
+                },
+                {
+                    "name": "Warning Message",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Message",
+                        "type": "FunctionRef"
+                    }
+                },
+                {
+                    "name": "Nested Warning Message",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            "1",
+                            {
+                                "name": "Message",
+                                "type": "FunctionRef"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

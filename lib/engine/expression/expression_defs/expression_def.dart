@@ -25,7 +25,13 @@ class ExpressionDefs {
     return data;
   }
 
-  dynamic execute() => Map.fromIterable(def.map((e) => e.execute()));
+  dynamic execute() {
+    final Map<String, dynamic> result = <String, dynamic>{};
+    for (final e in def) {
+      result.addAll(e.execute());
+    }
+    return result;
+  }
 }
 
 /// Expression definition with an associated name that can be referenced by any

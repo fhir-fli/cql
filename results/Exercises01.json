@@ -1,0 +1,11 @@
+{
+    "This is a quoted identifier": "2021-04-01",
+    "_1MoreIdentifier": "0.0 'g'",
+    "Inequality Expression": "true",
+    "Relative Comparison Expression": "true",
+    "Quantity Expression": "5 'g/dL'",
+    "Reference Expression": "5 'g/dL'",
+    "String Concatenation": "1John",
+    "Warning Message": "1",
+    "Nested Warning Message": "3"
+}
