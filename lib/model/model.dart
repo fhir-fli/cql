@@ -1,10 +1,4 @@
-export 'data_types/data_types.dart';
 export 'serializing/serializing.dart';
-export 'base_model_resolver.dart';
-export 'class_type_element.dart';
-export 'instantiation_context.dart';
-export 'invalid_redeclaration_info.dart';
-export 'model_context.dart';
 export 'model_identifier.dart';
 export 'model_info_provider.dart';
 export 'model_specifier.dart';
@@ -12,6 +6,3 @@ export 'name_space_aware.dart';
 export 'name_space_info.dart';
 export 'name_space_manager.dart';
 export 'qname.dart';
-export 'relationship.dart';
-export 'search_type.dart';
-export 'tuple_type_element.dart';
