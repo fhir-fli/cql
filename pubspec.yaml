@@ -11,7 +11,7 @@ dependencies:
   antlr4: ^4.13.1
   collection: ^1.18.0
   fhir:
-    path: ../fhir/fhir
+    path: ../../fhir/fhir
   flutter:
     sdk: flutter
   freezed_annotation: ^2.4.1
@@ -20,7 +20,7 @@ dependencies:
   path: ^1.8.3
   petitparser: ^6.0.2
   ucum:
-    path: ../fhir/ucum
+    path: ../../fhir/ucum
   uuid: ^4.3.3
   xml: ^6.5.0
   xml2json: ^6.2.2

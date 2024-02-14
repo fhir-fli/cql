@@ -69,7 +69,25 @@
                 {
                     "name": "Inequality Expression",
                     "context": "Unfiltered",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Not",
+                        "operand": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "4",
+                                    "type": "Literal"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
                 },
                 {
                     "name": "Relative Comparison Expression",
@@ -115,7 +133,7 @@
                     "context": "Unfiltered",
                     "accessLevel": "Public",
                     "expression": {
-                        "type": "Add",
+                        "type": "Concatenate",
                         "operand": [
                             {
                                 "valueType": "{urn:hl7-org:elm-types:r1}String",
@@ -135,8 +153,32 @@
                     "context": "Unfiltered",
                     "accessLevel": "Public",
                     "expression": {
-                        "name": "Message",
-                        "type": "FunctionRef"
+                        "type": "Message",
+                        "source": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        },
+                        "condition": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "true",
+                            "type": "Literal"
+                        },
+                        "code": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "123",
+                            "type": "Literal"
+                        },
+                        "severity": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "Warning",
+                            "type": "Literal"
+                        },
+                        "message": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "This is a warning message",
+                            "type": "Literal"
+                        }
                     }
                 },
                 {
@@ -152,8 +194,32 @@
                                 "type": "Literal"
                             },
                             {
-                                "name": "Message",
-                                "type": "FunctionRef"
+                                "type": "Message",
+                                "source": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                },
+                                "condition": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "value": "true",
+                                    "type": "Literal"
+                                },
+                                "code": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "123",
+                                    "type": "Literal"
+                                },
+                                "severity": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Warning",
+                                    "type": "Literal"
+                                },
+                                "message": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "The value is 2",
+                                    "type": "Literal"
+                                }
                             }
                         ]
                     }

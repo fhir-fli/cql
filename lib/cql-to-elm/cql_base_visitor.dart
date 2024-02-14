@@ -48,7 +48,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (operand.length == 2) {
-      return Add(operand: operand);
+      if (operand[0] is LiteralString && operand[1] is LiteralString) {
+        return Concatenate(operand: operand);
+      } else {
+        return Add(operand: operand);
+      }
     }
     throw ArgumentError('$thisNode Invalid AdditionExpressionTerm');
   }
@@ -813,10 +817,33 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitEqualityExpression(EqualityExpressionContext ctx) {
-    printIf(ctx);
+  CqlExpression visitEqualityExpression(EqualityExpressionContext ctx) {
+    printIf(ctx, true);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    String? equalityOperator;
+    List<CqlExpression> operand = [];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
+        if (result is CqlExpression) {
+          operand.add(result);
+        }
+      } else {
+        equalityOperator = child.text;
+      }
+    }
+    if (operand.length == 2) {
+      if (equalityOperator == '==') {
+        return Equal(operand: operand);
+      } else if (equalityOperator == '!=') {
+        return Not(operand: Equal(operand: operand));
+      } else if (equalityOperator == '~') {
+        return Equivalent(operand: operand);
+      } else if (equalityOperator == '!~') {
+        return Not(operand: Equivalent(operand: operand));
+      }
+    }
+    throw ArgumentError('$thisNode Invalid EqualityExpression');
   }
 
   /// The default implementation returns the result of calling
@@ -897,37 +924,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// identifierOrFunctionIdentifier '(' (
-  /// 		operandDefinition (',' operandDefinition)*
-  /// 	)? ')' ('returns' typeSpecifier)? ':' (
-  /// 		functionBody
-  /// 		| 'external'
-  /// 	)
+  /// function: referentialIdentifier '(' paramList? ')';
   @override
   dynamic visitFunction(FunctionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    List<TypeSpecifierExpression> signature = [];
+    Ref? ref;
     List<CqlExpression> operand = [];
-    String? name;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is! TerminalNodeImpl) {
-        final result = byContext(child);
-        if (result is Ref) {
-        } else if (result == null) {
-        } else {
-          throw result.runtimeType.toString();
-        }
-
-        //   }else if(result is )
-        // } else if (result is TypeSpecifierExpression) {
-        //   signature.add(result);
-        //   // TODO(Dokotela) placeholder
-        // } else if (result is Ref) {
-        //   name = result.name;
-        // } else if (result is CqlExpression) {
-        //   operand.add(result);
+      if (child is ReferentialIdentifierContext) {
+        ref = visitReferentialIdentifier(child);
+      } else if (child is ParamListContext) {
+        operand.addAll(visitParamList(child));
       }
+    }
+    if (ref != null) {
+      return CqlExpression.byName(ref.name, operand);
     }
     throw ArgumentError('$thisNode Invalid Function');
   }
@@ -1681,7 +1693,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx, true);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      log('NotExpression: ${child.runtimeType} ${child.text}');
+      print('NotExpression: ${child.runtimeType} ${child.text}');
     }
     visitChildren(ctx);
   }
@@ -1800,10 +1812,20 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitParamList(ParamListContext ctx) {
+  List<CqlExpression> visitParamList(ParamListContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    final List<CqlExpression> operand = <CqlExpression>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      final result = byContext(child);
+      if (result is CqlExpression) {
+        operand.add(result);
+      }
+    }
+    if (operand.isNotEmpty) {
+      return operand;
+    }
+    throw ArgumentError('$thisNode Invalid ParamList');
   }
 
   /// parameterDefinition:
@@ -2918,7 +2940,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   void printIf(ParserRuleContext ctx, [bool should = false]) {
     if (shouldPrint || should) {
-      log('$nodeNumber    '
+      print('$nodeNumber    '
           '${ctx.runtimeType}    '
           '${ctx.text}    '
           '${ctx.childCount}    '

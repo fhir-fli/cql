@@ -457,6 +457,451 @@ class CqlExpression extends Element {
         json.toString(), 'json', 'Could not parse unknown Expression type');
   }
 
+  factory CqlExpression.byName(String type, List<CqlExpression> operand) {
+    switch (type) {
+      case 'Abs':
+        return Abs(operand: operand.first);
+      case 'Add':
+        return Add(operand: operand);
+      case 'After':
+        return After(operand: operand);
+      // case 'Aggregate':
+      //   return Aggregate(iteration: operand.first, source: operand.first);
+      // case 'AggregateExpression':
+      //   return AggregateExpression(operand: operand);
+      // case 'AliasedQuerySource':
+      //   return AliasedQuerySource(operand: operand.first);
+      // case 'AliasRef':
+      //   return AliasRef(operand: operand.first);
+      case 'AllTrue':
+        return AllTrue(source: operand.first);
+      case 'And':
+        return And(operand: operand);
+      // case 'AnyInCodeSystem':
+      //   return AnyInCodeSystem(operand: operand);
+      case 'AnyInValueSet':
+        return AnyInValueSet(codes: operand.first);
+      case 'AnyTrue':
+        return AnyTrue(source: operand.first);
+      case 'As':
+        return As(operand: operand.first);
+      case 'Avg':
+        return Avg(source: operand.first);
+      case 'Before':
+        return Before(operand: operand);
+      // case 'BoundParameterTypeSpecifier':
+      //   return BoundParameterTypeSpecifier(operand: operand);
+      // case 'CalculateAge':
+      //   return CalculateAge(operand: operand);
+      // case 'CalculateAgeAt':
+      //   return CalculateAgeAt(operand: operand);
+      case 'CanConvert':
+        return CanConvert(operand: operand.first);
+      case 'CanConvertQuantity':
+        return CanConvertQuantity(operand: operand);
+      // case 'Case':
+      //   return Case(operand: operand);
+      case 'Ceiling':
+        return Ceiling(operand: operand.first);
+      case 'Children':
+        return Children(source: operand.first);
+      case 'ChoiceTypeSpecifier':
+        return ChoiceTypeSpecifier();
+      case 'Coalesce':
+        return Coalesce(operand: operand);
+      // case 'Code':
+      //   return Code(operand: operand);
+      // case 'CodeRef':
+      //   return CodeRef(operand: operand);
+      // case 'CodeSystemRef':
+      //   return CodeSystemRef(operand: operand);
+      case 'Collapse':
+        return Collapse(operand: operand);
+      case 'Combine':
+        return Combine(source: operand.first);
+      case 'Concatenate':
+        return Concatenate(operand: operand);
+      // case 'Concept':
+      //   return Concept(operand: operand);
+      // case 'ConceptRef':
+      //   return ConceptRef(operand: operand);
+      case 'Contains':
+        return Contains(operand: operand);
+      case 'Convert':
+        return Convert(operand: operand.first);
+      case 'ConvertQuantity':
+        return ConvertQuantity(operand: operand);
+      case 'ConvertsToBoolean':
+        return ConvertsToBoolean(operand: operand.first);
+      case 'ConvertsToDate':
+        return ConvertsToDate(operand: operand.first);
+      case 'ConvertsToDateTime':
+        return ConvertsToDateTime(operand: operand.first);
+      case 'ConvertsToDecimal':
+        return ConvertsToDecimal(operand: operand.first);
+      case 'ConvertsToInteger':
+        return ConvertsToInteger(operand: operand.first);
+      case 'ConvertsToLong':
+        return ConvertsToLong(operand: operand.first);
+      case 'ConvertsToQuantity':
+        return ConvertsToQuantity(operand: operand.first);
+      case 'ConvertsToRatio':
+        return ConvertsToRatio(operand: operand.first);
+      case 'ConvertsToString':
+        return ConvertsToString(operand: operand.first);
+      case 'ConvertsToTime':
+        return ConvertsToTime(operand: operand.first);
+      case 'Count':
+        return Count(source: operand.first);
+      // case 'Current':
+      //   return Current(operand: operand);
+      case 'DateFrom':
+        return DateFrom(operand: operand.first);
+      // case 'DateTimeComponentFrom':
+      //   return DateTimeComponentFrom(operand: operand);
+      case 'Descendents':
+        return Descendents(source: operand.first);
+      // case 'DifferenceBetween':
+      //   return DifferenceBetween(operand: operand);
+      case 'Distinct':
+        return Distinct(operand: operand.first);
+      case 'Divide':
+        return Divide(operand: operand);
+      // case 'DurationBetween':
+      //   return DurationBetween(operand: operand);
+      case 'End':
+        return End(operand: operand.first);
+      case 'Ends':
+        return Ends(operand: operand);
+      case 'EndsWith':
+        return EndsWith(operand: operand);
+      case 'Equal':
+        return Equal(operand: operand);
+      case 'Equivalent':
+        return Equivalent(operand: operand);
+      case 'Except':
+        return Except(operand: operand);
+      case 'Exists':
+        return Exists(operand: operand.first);
+      case 'Exp':
+        return Exp(operand: operand.first);
+      case 'Expand':
+        return Expand(operand: operand);
+      case 'ExpandValueSet':
+        return ExpandValueSet(operand: operand.first);
+      // case 'DateTime':
+      //   return DateTimeExpression(operand: operand);
+      // case 'Date':
+      //   return DateExpression(operand: operand);
+      // case 'Expression':
+      //   return CqlExpression(operand: operand);
+      // case 'ExpressionRef':
+      //   return ExpressionRef(operand: operand);
+      // case 'Time':
+      //   return TimeExpression(operand: operand);
+      // case 'Filter':
+      //   return Filter(operand: operand);
+      // case 'First':
+      //   return First(operand: operand);
+      case 'Flatten':
+        return Flatten(operand: operand.first);
+      case 'Floor':
+        return Floor(operand: operand.first);
+      // case 'ForEach':
+      //   return ForEach(operand: operand);
+      // case 'FunctionRef':
+      //   return FunctionRef(operand: operand);
+      case 'GeometricMean':
+        return GeometricMean(source: operand.first);
+      case 'Greater':
+        return Greater(operand: operand);
+      case 'GreaterOrEqual':
+        return GreaterOrEqual(operand: operand);
+      case 'HighBoundary':
+        return HighBoundary(operand: operand);
+      // case 'IdentifierRef':
+      //   return IdentifierRef(operand: operand);
+      // case 'If':
+      //   return If(operand: operand);
+      case 'Implies':
+        return Implies(operand: operand);
+      case 'In':
+        return In(operand: operand);
+      case 'IncludedIn':
+        return IncludedIn(operand: operand);
+      case 'Includes':
+        return Includes(operand: operand);
+      // case 'InCodeSystem':
+      //   return InCodeSystem(operand: operand);
+      case 'Indexer':
+        return Indexer(operand: operand);
+      // case 'IndexOf':
+      //   return IndexOf(operand: operand);
+      // case 'Instance':
+      //   return Instance(operand: operand);
+      case 'Intersect':
+        return Intersect(operand: operand);
+      // case 'Interval':
+      //   return IntervalExpression(operand: operand);
+      // case 'IntervalTypeSpecifier':
+      //   return IntervalTypeSpecifier(operand: operand);
+      case 'InValueSet':
+        return InValueSet(code: operand.first);
+      case 'Is':
+        return Is(operand: operand.first);
+      case 'IsFalse':
+        return IsFalse(operand: operand.first);
+      // case 'Null':
+      //   return NullExpression(operand: operand);
+      case 'IsNull':
+        return IsNull(operand: operand.first);
+      case 'IsTrue':
+        return IsTrue(operand: operand.first);
+      // case 'Iteration':
+      //   return Iteration(operand: operand);
+      // case 'Last':
+      //   return Last(operand: operand);
+      // case 'LastPositionOf':
+      //   return LastPositionOf(operand: operand);
+      case 'Length':
+        return Length(operand: operand.first);
+      case 'Less':
+        return Less(operand: operand);
+      case 'LessOrEqual':
+        return LessOrEqual(operand: operand);
+      // case 'List':
+      //   return ListExpression(operand: operand);
+      // case 'ListTypeSpecifier':
+      //   return ListTypeSpecifier(operand: operand);
+      // case 'Literal':
+      //   return Literal(operand: operand);
+      case 'Ln':
+        return Ln(operand: operand.first);
+      case 'Log':
+        return Log(operand: operand);
+      case 'LowBoundary':
+        return LowBoundary(operand: operand);
+      case 'Lower':
+        return Lower(operand: operand.first);
+      case 'Matches':
+        return Matches(operand: operand);
+      case 'Max':
+        return Max(source: operand.first);
+      // case 'MaxValue':
+      //   return MaxValue(operand: operand);
+      case 'Median':
+        return Median(source: operand.first);
+      case 'Meets':
+        return Meets(operand: operand);
+      case 'MeetsAfter':
+        return MeetsAfter(operand: operand);
+      case 'MeetsBefore':
+        return MeetsBefore(operand: operand);
+      case 'Message':
+        return Message(
+            source: operand.first,
+            condition: operand.length > 1 ? operand[1] : null,
+            code: operand.length > 2 ? operand[2] : null,
+            severity: operand.length > 3 ? operand[3] : null,
+            message: operand.length > 4 ? operand[4] : null);
+      case 'Min':
+        return Min(source: operand.first);
+      // case 'MinValue':
+      //   return MinValue(operand: operand);
+      case 'Mode':
+        return Mode(source: operand.first);
+      case 'Modulo':
+        return Modulo(operand: operand);
+      case 'Multiply':
+        return Multiply(operand: operand);
+      // case 'NamedTypeSpecifier':
+      //   return NamedTypeSpecifier(operand: operand);
+      // case 'NaryExpression':
+      //   return NaryExpression(operand: operand);
+      case 'Negate':
+        return Negate(operand: operand.first);
+      case 'Not':
+        return Not(operand: operand.first);
+      case 'NotEqual':
+        return NotEqual(operand: operand);
+      // case 'Now':
+      //   return Now(operand: operand);
+      // case 'NullExpression':
+      //   return NullExpression(operand: operand);
+      // case 'OperandRef':
+      //   return OperandRef(operand: operand);
+      // case 'OperatorExpression':
+      //   return OperatorExpression(operand: operand);
+      case 'Or':
+        return Or(operand: operand);
+      case 'Overlaps':
+        return Overlaps(operand: operand);
+      case 'OverlapsAfter':
+        return OverlapsAfter(operand: operand);
+      case 'OverlapsBefore':
+        return OverlapsBefore(operand: operand);
+      // case 'ParameterRef':
+      //   return ParameterRef(operand: operand);
+      // case 'ParameterTypeSpecifier':
+      //   return ParameterTypeSpecifier(operand: operand);
+      case 'PointFrom':
+        return PointFrom(operand: operand.first);
+      case 'PopulationStdDev':
+        return PopulationStdDev(source: operand.first);
+      case 'PopulationVariance':
+        return PopulationVariance(source: operand.first);
+      // case 'PositionOf':
+      //   return PositionOf(operand: operand);
+      case 'Power':
+        return Power(operand: operand);
+      case 'Precision':
+        return Precision(operand: operand.first);
+      case 'Predecessor':
+        return Predecessor(operand: operand.first);
+      case 'Product':
+        return Product(source: operand.first);
+      case 'ProperContains':
+        return ProperContains(operand: operand);
+      case 'ProperIn':
+        return ProperIn(operand: operand);
+      case 'ProperIncludedIn':
+        return ProperIncludedIn(operand: operand);
+      case 'ProperIncludes':
+        return ProperIncludes(operand: operand);
+      // case 'Property':
+      //   return Property(operand: operand);
+      // case 'Quantity':
+      //   return Quantity(operand: operand);
+      // case 'Query':
+      //   return Query(operand: operand);
+      // case 'QueryLetRef':
+      //   return QueryLetRef(operand: operand);
+      // case 'Ratio':
+      //   return Ratio(operand: operand);
+      // case 'Ref':
+      //   return Ref(operand: operand);
+      // case 'RelationshipClause':
+      //   return RelationshipClause(operand: operand);
+      // case 'Repeat':
+      //   return Repeat(operand: operand);
+      case 'ReplaceMatches':
+        return ReplaceMatches(operands: operand);
+      // case 'Retrieve':
+      //   return Retrieve(operand: operand);
+      case 'Round':
+        return Round(operand: operand.first);
+      case 'SameAs':
+        return SameAs(operand: operand);
+      case 'SameOrAfter':
+        return SameOrAfter(operand: operand);
+      case 'SameOrBefore':
+        return SameOrBefore(operand: operand);
+      case 'SingletonFrom':
+        return SingletonFrom(operand: operand.first);
+      case 'Size':
+        return Size(operand: operand.first);
+      // case 'Slice':
+      //   return Slice(operand: operand);
+      // case 'Sort':
+      //   return Sort(operand: operand);
+      case 'Split':
+        return Split(stringToSplit: operand.first);
+      // case 'SplitOnMatches':
+      //   return SplitOnMatches(operand: operand);
+      case 'Start':
+        return Start(operand: operand.first);
+      case 'Starts':
+        return Starts(operand: operand);
+      case 'StartsWith':
+        return StartsWith(operand: operand);
+      case 'StdDev':
+        return StdDev(source: operand.first);
+      // case 'Substring':
+      //   return Substring(operand: operand);
+      case 'SubsumedBy':
+        return SubsumedBy(operand: operand);
+      case 'Subsumes':
+        return Subsumes(operand: operand);
+      case 'Subtract':
+        return Subtract(operand: operand);
+      case 'Successor':
+        return Successor(operand: operand.first);
+      case 'Sum':
+        return Sum(source: operand.first);
+      // case 'TernaryExpression':
+      //   return TernaryExpression(operands: operand);
+      case 'TimeFrom':
+        return TimeFrom(operand: operand.first);
+      // case 'TimeOfDay':
+      //   return TimeOfDay(operand: operand);
+      case 'Times':
+        return Times(operand: operand);
+      case 'TimezoneOffsetFrom':
+        return TimezoneOffsetFrom(operand: operand.first);
+      case 'ToBoolean':
+        return ToBoolean(operand: operand.first);
+      case 'ToChars':
+        return ToChars(operand: operand.first);
+      case 'ToConcept':
+        return ToConcept(operand: operand.first);
+      case 'ToDate':
+        return ToDate(operand: operand.first);
+      case 'ToDateTime':
+        return ToDateTime(operand: operand.first);
+      // case 'Today':
+      //   return Today(operand: operand);
+      case 'ToDecimal':
+        return ToDecimal(operand: operand.first);
+      case 'ToInteger':
+        return ToInteger(operand: operand.first);
+      case 'ToLong':
+        return ToLong(operand: operand.first);
+      case 'ToList':
+        return ToList(operand: operand.first);
+      case 'ToQuantity':
+        return ToQuantity(operand: operand.first);
+      case 'ToRatio':
+        return ToRatio(operand: operand.first);
+      case 'ToString':
+        return ToString(operand: operand.first);
+      // case 'Total':
+      //   return Total(operand: operand);
+      case 'ToTime':
+        return ToTime(operand: operand.first);
+      case 'Truncate':
+        return Truncate(operand: operand.first);
+      case 'TruncatedDivide':
+        return TruncatedDivide(operand: operand);
+      // case 'Tuple':
+      //   return Tuple(operand: operand);
+      // case 'TupleTypeSpecifier':
+      //   return TupleTypeSpecifier(operand: operand);
+      // case 'TypeSpecifier':
+      //   return TypeSpecifierExpression(operand: operand);
+      // case 'UnaryExpression':
+      //   return UnaryExpression(operand: operand.first);
+      case 'Union':
+        return Union(operand: operand);
+      case 'Upper':
+        return Upper(operand: operand.first);
+      // case 'ValueSetRef':
+      //   return ValueSetRef(operand: operand);
+      case 'Variance':
+        return Variance(source: operand.first);
+      case 'Width':
+        return Width(operand: operand.first);
+      // case 'With':
+      //   return With(operand: operand);
+      // case 'Without':
+      //   return Without(operand: operand);
+      case 'Xor':
+        return Xor(operand: operand);
+      default:
+        throw ArgumentError.value(
+            type, type, 'Could not parse unknown Expression type');
+    }
+  }
+
   @override
   dynamic toJson() {
     final data = <String, dynamic>{};
