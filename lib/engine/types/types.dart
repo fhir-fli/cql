@@ -40,10 +40,17 @@ class LiteralBoolean extends LiteralType {
   }
 
   @override
-  String toJson() => value.toString();
+  Map<String, dynamic> toJson() => {
+        'valueType': '{urn:hl7-org:elm-types:r1}$type',
+        'value': value.toString(),
+        'type': 'Literal',
+      };
 
   @override
   FhirBoolean execute() => FhirBoolean(value);
+
+  @override
+  String get type => 'Boolean';
 }
 
 class LiteralCode extends LiteralType {
@@ -214,10 +221,21 @@ class LiteralDate extends LiteralType {
   }
 
   @override
-  String toJson() => value;
+  Map<String, dynamic> toJson() {
+    final date = FhirDate(value);
+    return {
+      'type': type,
+      'year': LiteralInteger(value: date.year).toJson(),
+      'month': LiteralInteger(value: date.month).toJson(),
+      'day': LiteralInteger(value: date.day).toJson(),
+    };
+  }
 
   @override
   FhirDate execute() => FhirDate(value);
+
+  @override
+  String get type => 'Date';
 }
 
 class LiteralDateTime extends LiteralType {
@@ -242,7 +260,19 @@ class LiteralDateTime extends LiteralType {
   }
 
   @override
-  String toJson() => value;
+  String toJson() {
+    final dateTime = FhirDateTime(value);
+    return {
+      'type': type,
+      'year': LiteralInteger(value: dateTime.year).toJson(),
+      'month': LiteralInteger(value: dateTime.month).toJson(),
+      'day': LiteralInteger(value: dateTime.day).toJson(),
+      'hour': LiteralInteger(value: dateTime.hour).toJson(),
+      'minute': LiteralInteger(value: dateTime.minute).toJson(),
+      'second': LiteralInteger(value: dateTime.second).toJson(),
+      'millisecond': LiteralInteger(value: dateTime.millisecond).toJson(),
+    }.toString();
+  }
 
   @override
   FhirDateTime execute() => FhirDateTime(value);
@@ -278,10 +308,17 @@ class LiteralDecimal extends LiteralType {
   }
 
   @override
-  String toJson() => value.toString();
+  Map<String, dynamic> toJson() => {
+        'valueType': '{urn:hl7-org:elm-types:r1}$type',
+        'value': value.toString(),
+        'type': 'Literal',
+      };
 
   @override
   FhirDecimal execute() => FhirDecimal(value);
+
+  @override
+  String get type => 'Decimal';
 }
 
 class LiteralInteger extends LiteralType {
@@ -314,10 +351,17 @@ class LiteralInteger extends LiteralType {
   }
 
   @override
-  String toJson() => value.toString();
+  Map<String, dynamic> toJson() => {
+        'valueType': '{urn:hl7-org:elm-types:r1}$type',
+        'value': value.toString(),
+        'type': 'Literal',
+      };
 
   @override
   FhirInteger execute() => FhirInteger(value);
+
+  @override
+  String get type => 'Integer';
 }
 
 class LiteralLong extends LiteralType {
@@ -350,10 +394,17 @@ class LiteralLong extends LiteralType {
   }
 
   @override
-  String toJson() => value.toString();
+  Map<String, dynamic> toJson() => {
+        'valueType': '{urn:hl7-org:elm-types:r1}$type',
+        'value': value.toString(),
+        'type': 'Literal',
+      };
 
   @override
   FhirInteger64 execute() => FhirInteger64(value);
+
+  @override
+  String get type => 'Long';
 }
 
 class LiteralQuantity extends LiteralType {
@@ -372,8 +423,9 @@ class LiteralQuantity extends LiteralType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      'value': value.toJson(),
+      'value': value.value,
       if (unit != null) 'unit': unit,
+      'type': type,
     };
   }
 
@@ -384,6 +436,9 @@ class LiteralQuantity extends LiteralType {
       code: unit,
     );
   }
+
+  @override
+  String get type => 'Quantity';
 }
 
 class LiteralRatio extends LiteralType {
@@ -429,10 +484,17 @@ class LiteralString extends LiteralType {
   }
 
   @override
-  String toJson() => value;
+  Map<String, dynamic> toJson() => {
+        'valueType': '{urn:hl7-org:elm-types:r1}$type',
+        'value': value,
+        'type': 'Literal',
+      };
 
   @override
   String execute() => value;
+
+  @override
+  String get type => 'String';
 }
 
 class LiteralTime extends LiteralType {

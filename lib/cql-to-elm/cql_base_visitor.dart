@@ -1,5 +1,7 @@
 // Generated from cql.g4 by ANTLR 4.13.1
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
+import 'dart:developer';
+
 import 'package:antlr4/antlr4.dart';
 
 import '../../cql.dart';
@@ -895,8 +897,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// identifierOrFunctionIdentifier '(' (
+  /// 		operandDefinition (',' operandDefinition)*
+  /// 	)? ')' ('returns' typeSpecifier)? ':' (
+  /// 		functionBody
+  /// 		| 'external'
+  /// 	)
   @override
   dynamic visitFunction(FunctionContext ctx) {
     printIf(ctx);
@@ -907,22 +913,21 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);
-        if (result is TypeSpecifierExpression) {
-          signature.add(result);
-          // TODO(Dokotela) placeholder
-        } else if (result is Ref) {
-          name = result.name;
-        } else if (result is CqlExpression) {
-          operand.add(result);
+        if (result is Ref) {
+        } else if (result == null) {
+        } else {
+          throw result.runtimeType.toString();
         }
+
+        //   }else if(result is )
+        // } else if (result is TypeSpecifierExpression) {
+        //   signature.add(result);
+        //   // TODO(Dokotela) placeholder
+        // } else if (result is Ref) {
+        //   name = result.name;
+        // } else if (result is CqlExpression) {
+        //   operand.add(result);
       }
-    }
-    if (name != null) {
-      return FunctionRef(
-        name: name,
-        signature: signature.isEmpty ? null : signature,
-        operand: operand.isEmpty ? null : operand,
-      );
     }
     throw ArgumentError('$thisNode Invalid Function');
   }
@@ -1673,8 +1678,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitNotExpression(NotExpressionContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      log('NotExpression: ${child.runtimeType} ${child.text}');
+    }
     visitChildren(ctx);
   }
 
@@ -2447,7 +2455,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         statement = visitExpressionDefinition(child);
       }
       if (child is ContextDefinitionContext) {
-        visitContextDefinition(child);
+        throw ctx.text;
       } else if (child is FunctionDefinitionContext) {
         statement = visitFunctionDefinition(child);
       }
@@ -2910,7 +2918,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   void printIf(ParserRuleContext ctx, [bool should = false]) {
     if (shouldPrint || should) {
-      print('$nodeNumber    '
+      log('$nodeNumber    '
           '${ctx.runtimeType}    '
           '${ctx.text}    '
           '${ctx.childCount}    '

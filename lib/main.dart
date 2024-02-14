@@ -69,7 +69,7 @@ void parseFile(BuildContext context) async {
       var resultLibrary = visitor.result['library'];
       (resultLibrary as Map<String, dynamic>).remove('annotation');
       if (print) {
-        log(jsonPrettyPrint(visitor.result));
+        log(jsonEncode(visitor.result));
       }
 
       log(const DeepCollectionEquality()

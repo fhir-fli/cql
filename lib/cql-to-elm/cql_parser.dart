@@ -1,5 +1,6 @@
 // Generated from cql.g4 by ANTLR 4.13.1
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
+// ignore_for_file: constant_identifier_names
 import 'package:antlr4/antlr4.dart';
 
 import 'cql_visitor.dart';
@@ -11495,7 +11496,7 @@ class cqlParser extends Parser {
   static final PredictionContextCache _sharedContextCache =
       PredictionContextCache();
 
-  cqlParser(TokenStream input) : super(input) {
+  cqlParser(super.input) {
     interpreter =
         ParserATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
   }
@@ -16692,8 +16693,7 @@ class cqlParser extends Parser {
 }
 
 class LibraryContext extends ParserRuleContext {
-  LibraryContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  LibraryContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16722,8 +16722,7 @@ class LibraryContext extends ParserRuleContext {
 }
 
 class DefinitionContext extends ParserRuleContext {
-  DefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  DefinitionContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16760,8 +16759,8 @@ class DefinitionContext extends ParserRuleContext {
 }
 
 class LibraryDefinitionContext extends ParserRuleContext {
-  LibraryDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  LibraryDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16783,8 +16782,8 @@ class LibraryDefinitionContext extends ParserRuleContext {
 }
 
 class UsingDefinitionContext extends ParserRuleContext {
-  UsingDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  UsingDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16806,8 +16805,8 @@ class UsingDefinitionContext extends ParserRuleContext {
 }
 
 class IncludeDefinitionContext extends ParserRuleContext {
-  IncludeDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  IncludeDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16832,8 +16831,8 @@ class IncludeDefinitionContext extends ParserRuleContext {
 }
 
 class LocalIdentifierContext extends ParserRuleContext {
-  LocalIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  LocalIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16851,8 +16850,7 @@ class LocalIdentifierContext extends ParserRuleContext {
 }
 
 class AccessModifierContext extends ParserRuleContext {
-  AccessModifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  AccessModifierContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16868,8 +16866,8 @@ class AccessModifierContext extends ParserRuleContext {
 }
 
 class ParameterDefinitionContext extends ParserRuleContext {
-  ParameterDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ParameterDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16895,8 +16893,8 @@ class ParameterDefinitionContext extends ParserRuleContext {
 }
 
 class CodesystemDefinitionContext extends ParserRuleContext {
-  CodesystemDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodesystemDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16922,8 +16920,8 @@ class CodesystemDefinitionContext extends ParserRuleContext {
 }
 
 class ValuesetDefinitionContext extends ParserRuleContext {
-  ValuesetDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ValuesetDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16951,8 +16949,7 @@ class ValuesetDefinitionContext extends ParserRuleContext {
 }
 
 class CodesystemsContext extends ParserRuleContext {
-  CodesystemsContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodesystemsContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16974,8 +16971,8 @@ class CodesystemsContext extends ParserRuleContext {
 }
 
 class CodesystemIdentifierContext extends ParserRuleContext {
-  CodesystemIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodesystemIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -16996,8 +16993,8 @@ class CodesystemIdentifierContext extends ParserRuleContext {
 }
 
 class LibraryIdentifierContext extends ParserRuleContext {
-  LibraryIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  LibraryIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17015,8 +17012,7 @@ class LibraryIdentifierContext extends ParserRuleContext {
 }
 
 class CodeDefinitionContext extends ParserRuleContext {
-  CodeDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodeDefinitionContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17045,8 +17041,8 @@ class CodeDefinitionContext extends ParserRuleContext {
 }
 
 class ConceptDefinitionContext extends ParserRuleContext {
-  ConceptDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ConceptDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17076,8 +17072,7 @@ class ConceptDefinitionContext extends ParserRuleContext {
 }
 
 class CodeIdentifierContext extends ParserRuleContext {
-  CodeIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodeIdentifierContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17098,8 +17093,7 @@ class CodeIdentifierContext extends ParserRuleContext {
 }
 
 class CodesystemIdContext extends ParserRuleContext {
-  CodesystemIdContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodesystemIdContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17117,8 +17111,7 @@ class CodesystemIdContext extends ParserRuleContext {
 }
 
 class ValuesetIdContext extends ParserRuleContext {
-  ValuesetIdContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ValuesetIdContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17136,8 +17129,8 @@ class ValuesetIdContext extends ParserRuleContext {
 }
 
 class VersionSpecifierContext extends ParserRuleContext {
-  VersionSpecifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  VersionSpecifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17155,8 +17148,7 @@ class VersionSpecifierContext extends ParserRuleContext {
 }
 
 class CodeIdContext extends ParserRuleContext {
-  CodeIdContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodeIdContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17174,8 +17166,7 @@ class CodeIdContext extends ParserRuleContext {
 }
 
 class TypeSpecifierContext extends ParserRuleContext {
-  TypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TypeSpecifierContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17206,8 +17197,8 @@ class TypeSpecifierContext extends ParserRuleContext {
 }
 
 class NamedTypeSpecifierContext extends ParserRuleContext {
-  NamedTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  NamedTypeSpecifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17230,8 +17221,8 @@ class NamedTypeSpecifierContext extends ParserRuleContext {
 }
 
 class ModelIdentifierContext extends ParserRuleContext {
-  ModelIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ModelIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17249,8 +17240,8 @@ class ModelIdentifierContext extends ParserRuleContext {
 }
 
 class ListTypeSpecifierContext extends ParserRuleContext {
-  ListTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ListTypeSpecifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17269,8 +17260,8 @@ class ListTypeSpecifierContext extends ParserRuleContext {
 }
 
 class IntervalTypeSpecifierContext extends ParserRuleContext {
-  IntervalTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  IntervalTypeSpecifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17289,8 +17280,8 @@ class IntervalTypeSpecifierContext extends ParserRuleContext {
 }
 
 class TupleTypeSpecifierContext extends ParserRuleContext {
-  TupleTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TupleTypeSpecifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17312,8 +17303,8 @@ class TupleTypeSpecifierContext extends ParserRuleContext {
 }
 
 class TupleElementDefinitionContext extends ParserRuleContext {
-  TupleElementDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TupleElementDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17335,8 +17326,8 @@ class TupleElementDefinitionContext extends ParserRuleContext {
 }
 
 class ChoiceTypeSpecifierContext extends ParserRuleContext {
-  ChoiceTypeSpecifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ChoiceTypeSpecifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17358,8 +17349,7 @@ class ChoiceTypeSpecifierContext extends ParserRuleContext {
 }
 
 class StatementContext extends ParserRuleContext {
-  StatementContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  StatementContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17384,8 +17374,8 @@ class StatementContext extends ParserRuleContext {
 }
 
 class ExpressionDefinitionContext extends ParserRuleContext {
-  ExpressionDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ExpressionDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17408,8 +17398,8 @@ class ExpressionDefinitionContext extends ParserRuleContext {
 }
 
 class ContextDefinitionContext extends ParserRuleContext {
-  ContextDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ContextDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17430,8 +17420,8 @@ class ContextDefinitionContext extends ParserRuleContext {
 }
 
 class FunctionDefinitionContext extends ParserRuleContext {
-  FunctionDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  FunctionDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17464,8 +17454,8 @@ class FunctionDefinitionContext extends ParserRuleContext {
 }
 
 class OperandDefinitionContext extends ParserRuleContext {
-  OperandDefinitionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  OperandDefinitionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17487,8 +17477,7 @@ class OperandDefinitionContext extends ParserRuleContext {
 }
 
 class FunctionBodyContext extends ParserRuleContext {
-  FunctionBodyContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  FunctionBodyContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17506,8 +17495,7 @@ class FunctionBodyContext extends ParserRuleContext {
 }
 
 class QuerySourceContext extends ParserRuleContext {
-  QuerySourceContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QuerySourceContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17530,8 +17518,8 @@ class QuerySourceContext extends ParserRuleContext {
 }
 
 class AliasedQuerySourceContext extends ParserRuleContext {
-  AliasedQuerySourceContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  AliasedQuerySourceContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17551,8 +17539,7 @@ class AliasedQuerySourceContext extends ParserRuleContext {
 }
 
 class AliasContext extends ParserRuleContext {
-  AliasContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  AliasContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17570,8 +17557,8 @@ class AliasContext extends ParserRuleContext {
 }
 
 class QueryInclusionClauseContext extends ParserRuleContext {
-  QueryInclusionClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QueryInclusionClauseContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17592,8 +17579,7 @@ class QueryInclusionClauseContext extends ParserRuleContext {
 }
 
 class WithClauseContext extends ParserRuleContext {
-  WithClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  WithClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17614,8 +17600,7 @@ class WithClauseContext extends ParserRuleContext {
 }
 
 class WithoutClauseContext extends ParserRuleContext {
-  WithoutClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  WithoutClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17636,8 +17621,7 @@ class WithoutClauseContext extends ParserRuleContext {
 }
 
 class RetrieveContext extends ParserRuleContext {
-  RetrieveContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  RetrieveContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17666,8 +17650,8 @@ class RetrieveContext extends ParserRuleContext {
 }
 
 class ContextIdentifierContext extends ParserRuleContext {
-  ContextIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ContextIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17686,8 +17670,7 @@ class ContextIdentifierContext extends ParserRuleContext {
 }
 
 class CodePathContext extends ParserRuleContext {
-  CodePathContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodePathContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17705,8 +17688,7 @@ class CodePathContext extends ParserRuleContext {
 }
 
 class CodeComparatorContext extends ParserRuleContext {
-  CodeComparatorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodeComparatorContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17722,8 +17704,7 @@ class CodeComparatorContext extends ParserRuleContext {
 }
 
 class TerminologyContext extends ParserRuleContext {
-  TerminologyContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TerminologyContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17744,8 +17725,7 @@ class TerminologyContext extends ParserRuleContext {
 }
 
 class QualifierContext extends ParserRuleContext {
-  QualifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QualifierContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17763,8 +17743,7 @@ class QualifierContext extends ParserRuleContext {
 }
 
 class QueryContext extends ParserRuleContext {
-  QueryContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QueryContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17799,8 +17778,7 @@ class QueryContext extends ParserRuleContext {
 }
 
 class SourceClauseContext extends ParserRuleContext {
-  SourceClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  SourceClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17822,8 +17800,7 @@ class SourceClauseContext extends ParserRuleContext {
 }
 
 class LetClauseContext extends ParserRuleContext {
-  LetClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  LetClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17845,8 +17822,7 @@ class LetClauseContext extends ParserRuleContext {
 }
 
 class LetClauseItemContext extends ParserRuleContext {
-  LetClauseItemContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  LetClauseItemContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17866,8 +17842,7 @@ class LetClauseItemContext extends ParserRuleContext {
 }
 
 class WhereClauseContext extends ParserRuleContext {
-  WhereClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  WhereClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17885,8 +17860,7 @@ class WhereClauseContext extends ParserRuleContext {
 }
 
 class ReturnClauseContext extends ParserRuleContext {
-  ReturnClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ReturnClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17904,8 +17878,8 @@ class ReturnClauseContext extends ParserRuleContext {
 }
 
 class AggregateClauseContext extends ParserRuleContext {
-  AggregateClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  AggregateClauseContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17928,8 +17902,7 @@ class AggregateClauseContext extends ParserRuleContext {
 }
 
 class StartingClauseContext extends ParserRuleContext {
-  StartingClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  StartingClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17952,8 +17925,7 @@ class StartingClauseContext extends ParserRuleContext {
 }
 
 class SortClauseContext extends ParserRuleContext {
-  SortClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  SortClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17976,8 +17948,7 @@ class SortClauseContext extends ParserRuleContext {
 }
 
 class SortDirectionContext extends ParserRuleContext {
-  SortDirectionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  SortDirectionContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -17993,8 +17964,7 @@ class SortDirectionContext extends ParserRuleContext {
 }
 
 class SortByItemContext extends ParserRuleContext {
-  SortByItemContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  SortByItemContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18016,8 +17986,8 @@ class SortByItemContext extends ParserRuleContext {
 }
 
 class QualifiedIdentifierContext extends ParserRuleContext {
-  QualifiedIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QualifiedIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18040,8 +18010,7 @@ class QualifiedIdentifierContext extends ParserRuleContext {
 
 class QualifiedIdentifierExpressionContext extends ParserRuleContext {
   QualifiedIdentifierExpressionContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18066,8 +18035,8 @@ class QualifiedIdentifierExpressionContext extends ParserRuleContext {
 }
 
 class QualifierExpressionContext extends ParserRuleContext {
-  QualifierExpressionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QualifierExpressionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18086,32 +18055,29 @@ class QualifierExpressionContext extends ParserRuleContext {
 }
 
 class SimplePathContext extends ParserRuleContext {
-  SimplePathContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  SimplePathContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_simplePath;
 }
 
 class SimpleLiteralContext extends ParserRuleContext {
-  SimpleLiteralContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  SimpleLiteralContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_simpleLiteral;
 }
 
 class ExpressionContext extends ParserRuleContext {
-  ExpressionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ExpressionContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_expression;
 }
 
 class DateTimePrecisionContext extends ParserRuleContext {
-  DateTimePrecisionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  DateTimePrecisionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18127,8 +18093,8 @@ class DateTimePrecisionContext extends ParserRuleContext {
 }
 
 class DateTimeComponentContext extends ParserRuleContext {
-  DateTimeComponentContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  DateTimeComponentContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18148,8 +18114,7 @@ class DateTimeComponentContext extends ParserRuleContext {
 
 class PluralDateTimePrecisionContext extends ParserRuleContext {
   PluralDateTimePrecisionContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18165,16 +18130,15 @@ class PluralDateTimePrecisionContext extends ParserRuleContext {
 }
 
 class ExpressionTermContext extends ParserRuleContext {
-  ExpressionTermContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ExpressionTermContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_expressionTerm;
 }
 
 class CaseExpressionItemContext extends ParserRuleContext {
-  CaseExpressionItemContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CaseExpressionItemContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18195,8 +18159,7 @@ class CaseExpressionItemContext extends ParserRuleContext {
 
 class DateTimePrecisionSpecifierContext extends ParserRuleContext {
   DateTimePrecisionSpecifierContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18215,8 +18178,8 @@ class DateTimePrecisionSpecifierContext extends ParserRuleContext {
 }
 
 class RelativeQualifierContext extends ParserRuleContext {
-  RelativeQualifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  RelativeQualifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18233,8 +18196,7 @@ class RelativeQualifierContext extends ParserRuleContext {
 
 class OffsetRelativeQualifierContext extends ParserRuleContext {
   OffsetRelativeQualifierContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18251,8 +18213,7 @@ class OffsetRelativeQualifierContext extends ParserRuleContext {
 
 class ExclusiveRelativeQualifierContext extends ParserRuleContext {
   ExclusiveRelativeQualifierContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18268,8 +18229,7 @@ class ExclusiveRelativeQualifierContext extends ParserRuleContext {
 }
 
 class QuantityOffsetContext extends ParserRuleContext {
-  QuantityOffsetContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QuantityOffsetContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18293,8 +18253,8 @@ class QuantityOffsetContext extends ParserRuleContext {
 }
 
 class TemporalRelationshipContext extends ParserRuleContext {
-  TemporalRelationshipContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TemporalRelationshipContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18310,32 +18270,31 @@ class TemporalRelationshipContext extends ParserRuleContext {
 }
 
 class IntervalOperatorPhraseContext extends ParserRuleContext {
-  IntervalOperatorPhraseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  IntervalOperatorPhraseContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_intervalOperatorPhrase;
 }
 
 class TermContext extends ParserRuleContext {
-  TermContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TermContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_term;
 }
 
 class QualifiedInvocationContext extends ParserRuleContext {
-  QualifiedInvocationContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QualifiedInvocationContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_qualifiedInvocation;
 }
 
 class QualifiedFunctionContext extends ParserRuleContext {
-  QualifiedFunctionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QualifiedFunctionContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18356,16 +18315,14 @@ class QualifiedFunctionContext extends ParserRuleContext {
 }
 
 class InvocationContext extends ParserRuleContext {
-  InvocationContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  InvocationContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_invocation;
 }
 
 class FunctionContext extends ParserRuleContext {
-  FunctionContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  FunctionContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18386,8 +18343,7 @@ class FunctionContext extends ParserRuleContext {
 }
 
 class RatioContext extends ParserRuleContext {
-  RatioContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  RatioContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18407,16 +18363,15 @@ class RatioContext extends ParserRuleContext {
 }
 
 class LiteralContext extends ParserRuleContext {
-  LiteralContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  LiteralContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   int get ruleIndex => RULE_literal;
 }
 
 class IntervalSelectorContext extends ParserRuleContext {
-  IntervalSelectorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  IntervalSelectorContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18436,8 +18391,7 @@ class IntervalSelectorContext extends ParserRuleContext {
 }
 
 class TupleSelectorContext extends ParserRuleContext {
-  TupleSelectorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TupleSelectorContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18459,8 +18413,8 @@ class TupleSelectorContext extends ParserRuleContext {
 }
 
 class TupleElementSelectorContext extends ParserRuleContext {
-  TupleElementSelectorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TupleElementSelectorContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18481,8 +18435,8 @@ class TupleElementSelectorContext extends ParserRuleContext {
 }
 
 class InstanceSelectorContext extends ParserRuleContext {
-  InstanceSelectorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  InstanceSelectorContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18508,8 +18462,7 @@ class InstanceSelectorContext extends ParserRuleContext {
 
 class InstanceElementSelectorContext extends ParserRuleContext {
   InstanceElementSelectorContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18530,8 +18483,7 @@ class InstanceElementSelectorContext extends ParserRuleContext {
 }
 
 class ListSelectorContext extends ParserRuleContext {
-  ListSelectorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ListSelectorContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18554,8 +18506,7 @@ class ListSelectorContext extends ParserRuleContext {
 }
 
 class DisplayClauseContext extends ParserRuleContext {
-  DisplayClauseContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  DisplayClauseContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18573,8 +18524,7 @@ class DisplayClauseContext extends ParserRuleContext {
 }
 
 class CodeSelectorContext extends ParserRuleContext {
-  CodeSelectorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  CodeSelectorContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18598,8 +18548,8 @@ class CodeSelectorContext extends ParserRuleContext {
 }
 
 class ConceptSelectorContext extends ParserRuleContext {
-  ConceptSelectorContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ConceptSelectorContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18624,8 +18574,7 @@ class ConceptSelectorContext extends ParserRuleContext {
 }
 
 class KeywordContext extends ParserRuleContext {
-  KeywordContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  KeywordContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18641,8 +18590,7 @@ class KeywordContext extends ParserRuleContext {
 }
 
 class ReservedWordContext extends ParserRuleContext {
-  ReservedWordContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ReservedWordContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18658,8 +18606,8 @@ class ReservedWordContext extends ParserRuleContext {
 }
 
 class KeywordIdentifierContext extends ParserRuleContext {
-  KeywordIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  KeywordIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18675,8 +18623,8 @@ class KeywordIdentifierContext extends ParserRuleContext {
 }
 
 class ObsoleteIdentifierContext extends ParserRuleContext {
-  ObsoleteIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ObsoleteIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18692,8 +18640,8 @@ class ObsoleteIdentifierContext extends ParserRuleContext {
 }
 
 class FunctionIdentifierContext extends ParserRuleContext {
-  FunctionIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  FunctionIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18709,8 +18657,8 @@ class FunctionIdentifierContext extends ParserRuleContext {
 }
 
 class TypeNameIdentifierContext extends ParserRuleContext {
-  TypeNameIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  TypeNameIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18726,8 +18674,8 @@ class TypeNameIdentifierContext extends ParserRuleContext {
 }
 
 class ReferentialIdentifierContext extends ParserRuleContext {
-  ReferentialIdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ReferentialIdentifierContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18749,8 +18697,7 @@ class ReferentialIdentifierContext extends ParserRuleContext {
 
 class ReferentialOrTypeNameIdentifierContext extends ParserRuleContext {
   ReferentialOrTypeNameIdentifierContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18773,8 +18720,7 @@ class ReferentialOrTypeNameIdentifierContext extends ParserRuleContext {
 
 class IdentifierOrFunctionIdentifierContext extends ParserRuleContext {
   IdentifierOrFunctionIdentifierContext(
-      [ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18795,8 +18741,7 @@ class IdentifierOrFunctionIdentifierContext extends ParserRuleContext {
 }
 
 class IdentifierContext extends ParserRuleContext {
-  IdentifierContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  IdentifierContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18820,8 +18765,8 @@ class IdentifierContext extends ParserRuleContext {
 }
 
 class ExternalConstantContext extends ParserRuleContext {
-  ExternalConstantContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ExternalConstantContext(
+      [ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18841,8 +18786,7 @@ class ExternalConstantContext extends ParserRuleContext {
 }
 
 class ParamListContext extends ParserRuleContext {
-  ParamListContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  ParamListContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18862,8 +18806,7 @@ class ParamListContext extends ParserRuleContext {
 }
 
 class QuantityContext extends ParserRuleContext {
-  QuantityContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  QuantityContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {
@@ -18883,8 +18826,7 @@ class QuantityContext extends ParserRuleContext {
 }
 
 class UnitContext extends ParserRuleContext {
-  UnitContext([ParserRuleContext? parent, int? invokingState])
-      : super(parent, invokingState);
+  UnitContext([ParserRuleContext? super.parent, super.invokingState]);
 
   @override
   T? accept<T>(ParseTreeVisitor<T> visitor) {

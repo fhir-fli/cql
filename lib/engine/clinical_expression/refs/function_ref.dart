@@ -54,8 +54,6 @@ class FunctionRef extends ExpressionRef {
       json['libraryName'] = libraryName;
     }
 
-    json['type'] = type;
-
     if (signature != null) {
       json['signature'] = signature!.map((x) => x.toJson()).toList();
     }

@@ -1,5 +1,6 @@
 // Generated from cql.g4 by ANTLR 4.13.1
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names, unused_field
 import 'package:antlr4/antlr4.dart';
 
 class cqlLexer extends Lexer {
@@ -13109,7 +13110,7 @@ class cqlLexer extends Lexer {
   static final PredictionContextCache _sharedContextCache =
       PredictionContextCache();
 
-  cqlLexer(CharStream input) : super(input) {
+  cqlLexer(super.input) {
     interpreter = LexerATNSimulator(_ATN, _decisionToDFA, _sharedContextCache,
         recog: this);
   }
