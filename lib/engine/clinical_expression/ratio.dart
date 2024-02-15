@@ -1,3 +1,5 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../cql.dart';
 
 /// The Ratio type defines a ratio between two quantities. For example, the
@@ -62,4 +64,20 @@ class Ratio extends CqlExpression {
 
   @override
   String get type => 'Ratio';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    } else if (other is Ratio) {
+      return (numerator.validatedQuantity / denominator.validatedQuantity) ==
+          (other.numerator.validatedQuantity /
+              other.denominator.validatedQuantity);
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  int get hashCode => numerator.hashCode ^ denominator.hashCode;
 }

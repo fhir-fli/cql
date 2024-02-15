@@ -1,3 +1,5 @@
+import 'package:ucum/ucum.dart';
+
 import '../../cql.dart';
 
 /// The Quantity type defines a clinical quantity. For example, the quantity 10
@@ -66,4 +68,21 @@ class Quantity extends CqlExpression {
 
   @override
   String get type => 'Quantity';
+
+  ValidatedQuantity get validatedQuantity => ValidatedQuantity(
+      value: UcumDecimal.fromString(value.toString()), code: unit);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    } else if (other is Quantity) {
+      return validatedQuantity == other.validatedQuantity;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  int get hashCode => value.hashCode ^ unit.hashCode;
 }
