@@ -453,8 +453,8 @@ class CqlExpression extends Element {
     if (json.isEmpty) {
       return CqlExpression();
     }
-    throw ArgumentError.value(
-        json.toString(), 'json', 'Could not parse unknown Expression type');
+    throw ArgumentError.value(json.toString(), 'json',
+        'Could not parse fromJson unknown Expression type');
   }
 
   factory CqlExpression.byName(String type, List<CqlExpression> operand) {
@@ -898,7 +898,7 @@ class CqlExpression extends Element {
         return Xor(operand: operand);
       default:
         throw ArgumentError.value(
-            type, type, 'Could not parse unknown Expression type');
+            type, type, 'Could not parse by name unknown Expression type');
     }
   }
 

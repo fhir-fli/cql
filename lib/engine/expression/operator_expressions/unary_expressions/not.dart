@@ -1,6 +1,13 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Not operator returning the logical negation of its argument.
+/// not (argument Boolean) Boolean
+/// Description:
+/// The not operator returns true if the argument is false and false if the
+/// argument is true. Otherwise, the result is null.
+/// The following table defines the truth table for this operator:
 class Not extends UnaryExpression {
   Not({
     required super.operand,
@@ -56,5 +63,19 @@ class Not extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  FhirBoolean? execute() {
+    final operandValue = operand.execute();
+    if (operandValue == null) {
+      return null;
+    } else if (operandValue is FhirBoolean && operandValue.isValid) {
+      return FhirBoolean(!operandValue.value!);
+    } else if (operandValue is bool) {
+      return FhirBoolean(!operandValue);
+    } else {
+      throw ArgumentError('Invalid argument for Not operation');
+    }
   }
 }
