@@ -113,60 +113,74 @@ class Add extends BinaryExpression {
     if (operand.length != 2) {
       return null;
     } else {
-      final lhs = operand[0].execute();
-      final rhs = operand[1].execute();
+      final left = operand[0].execute();
+      final right = operand[1].execute();
       // TODO(Dokotela) Some of the BigInt/FhirInteger64 + int/FhirInteger may be incorrect
-      switch (lhs.runtimeType) {
-        case FhirInteger:
-          return rhs is FhirInteger
-              ? (lhs as FhirInteger).isValid && rhs.isValid
-                  ? FhirInteger(lhs.value! + rhs.value!)
+      switch (left) {
+        case FhirInteger _:
+          return right is FhirInteger
+              ? (left).isValid && right.isValid
+                  ? FhirInteger(left.value! + right.value!)
                   : null
-              : rhs is FhirDecimal
-                  ? (lhs as FhirInteger).isValid && rhs.isValid
-                      ? FhirDecimal(lhs.value! + rhs.value!)
+              : right is FhirDecimal
+                  ? (left).isValid && right.isValid
+                      ? FhirDecimal(double.parse(
+                          UcumDecimal.fromInt(left.value!)
+                              .add(UcumDecimal.fromDouble(right.value!))
+                              .asUcumDecimal()))
                       : null
-                  : rhs is FhirInteger64
-                      ? (lhs as FhirInteger).isValid && rhs.isValid
+                  : right is FhirInteger64
+                      ? (left).isValid && right.isValid
                           ? FhirInteger64(
-                              (lhs.value as int) + rhs.value!.toInt())
+                              (left.value as int) + right.value!.toInt())
                           : null
                       : null;
-        case FhirInteger64:
-          return rhs is FhirInteger64
-              ? (lhs as FhirInteger64).isValid && rhs.isValid
-                  ? FhirInteger64(lhs.value! + rhs.value!)
+        case FhirInteger64 _:
+          return right is FhirInteger64
+              ? (left).isValid && right.isValid
+                  ? FhirInteger64(left.value! + right.value!)
                   : null
-              : rhs is FhirDecimal
-                  ? (lhs as FhirInteger64).isValid && rhs.isValid
-                      ? FhirDecimal(lhs.value!.toDouble() + rhs.value!)
+              : right is FhirDecimal
+                  ? (left).isValid && right.isValid
+                      ? FhirDecimal(double.parse(
+                          UcumDecimal.fromBigInt(left.value!)
+                              .add(UcumDecimal.fromDouble(right.value!))
+                              .asUcumDecimal()))
                       : null
-                  : rhs is FhirInteger
-                      ? (lhs as FhirInteger64).isValid && rhs.isValid
+                  : right is FhirInteger
+                      ? (left).isValid && right.isValid
                           ? FhirInteger64(
-                              lhs.value!.toInt() + rhs.value!.toInt())
+                              left.value!.toInt() + right.value!.toInt())
                           : null
                       : null;
-        case FhirDecimal:
-          return rhs is FhirDecimal
-              ? (lhs as FhirDecimal).isValid && rhs.isValid
-                  ? FhirDecimal(lhs.value! + rhs.value!)
+        case FhirDecimal _:
+          return right is FhirDecimal
+              ? (left).isValid && right.isValid
+                  ? FhirDecimal(double.parse(UcumDecimal.fromDouble(left.value!)
+                      .add(UcumDecimal.fromDouble(right.value!))
+                      .asUcumDecimal()))
                   : null
-              : rhs is FhirInteger
-                  ? (lhs as FhirDecimal).isValid && rhs.isValid
-                      ? FhirDecimal(lhs.value! + rhs.value!.toDouble())
+              : right is FhirInteger
+                  ? (left).isValid && right.isValid
+                      ? FhirDecimal(double.parse(
+                          UcumDecimal.fromDouble(left.value!)
+                              .add(UcumDecimal.fromInt(right.value!))
+                              .asUcumDecimal()))
                       : null
-                  : rhs is FhirInteger64
-                      ? (lhs as FhirDecimal).isValid && rhs.isValid
-                          ? FhirDecimal(lhs.value! + rhs.value!.toDouble())
+                  : right is FhirInteger64
+                      ? (left).isValid && right.isValid
+                          ? FhirDecimal(double.parse(
+                              UcumDecimal.fromDouble(left.value!)
+                                  .add(UcumDecimal.fromBigInt(right.value!))
+                                  .asUcumDecimal()))
                           : null
                       : null;
-        case ValidatedQuantity:
-          return rhs is ValidatedQuantity
-              ? (lhs as ValidatedQuantity).isValid() && rhs.isValid()
-                  ? lhs + rhs
-                  : rhs is FhirDecimal && rhs.isValid()
-                      ? lhs + rhs
+        case ValidatedQuantity _:
+          return right is ValidatedQuantity
+              ? (left).isValid() && right.isValid()
+                  ? left + right
+                  : right is FhirDecimal && right.isValid()
+                      ? left + right
                       : null
               : null;
         default:
