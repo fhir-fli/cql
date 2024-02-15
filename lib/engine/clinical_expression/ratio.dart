@@ -1,4 +1,4 @@
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
 
@@ -80,4 +80,10 @@ class Ratio extends CqlExpression {
 
   @override
   int get hashCode => numerator.hashCode ^ denominator.hashCode;
+
+  @override
+  ValidatedRatio execute() => ValidatedRatio(
+        numerator: numerator.execute(),
+        denominator: denominator.execute(),
+      );
 }

@@ -171,7 +171,7 @@ class Equal extends BinaryExpression {
         return FhirBoolean(left == right);
       } else if (left is FhirDate && right is FhirDate) {
         return FhirBoolean(left == right);
-      } else if (left is Ratio && right is Ratio) {
+      } else if (left is ValidatedRatio && right is ValidatedRatio) {
         return FhirBoolean(left == right);
       } else if (left is Tuple && right is Tuple) {
         return FhirBoolean(left == right);
