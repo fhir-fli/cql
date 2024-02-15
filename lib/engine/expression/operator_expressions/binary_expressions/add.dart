@@ -115,7 +115,6 @@ class Add extends BinaryExpression {
     } else {
       final left = operand[0].execute(context);
       final right = operand[1].execute(context);
-      print('left ${left.runtimeType} right ${right.runtimeType}');
       // TODO(Dokotela) Some of the BigInt/FhirInteger64 + int/FhirInteger may be incorrect
       switch (left) {
         case FhirInteger _:

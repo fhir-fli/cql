@@ -1,6 +1,8 @@
 // Generated from cql.g4 by ANTLR 4.13.1
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, avoid_renaming_method_parameters
+// ignore_for_file: prefer_function_declarations_over_variables
 import 'package:antlr4/antlr4.dart';
 
 import 'cql_visitor.dart';

@@ -7,7 +7,6 @@
 /// laboratory. Such studies include but are not limited to imaging studies, cardiology
 /// studies (electrocardiogram, treadmill stress testing), pulmonary function testing,
 /// vascular laboratory testing, and others.
-
 class DiagnosticStudyOrder {
   DiagnosticStudyOrder();
 }

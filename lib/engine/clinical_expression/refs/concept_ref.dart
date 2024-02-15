@@ -4,22 +4,14 @@ import '../../../cql.dart';
 /// referenced within an expression.
 class ConceptRef extends Ref {
   ConceptRef({
-    required String name,
-    String? libraryName,
-    List<CqlToElmBase>? annotation,
-    String? localId,
-    String? locator,
-    String? resultTypeName,
-    TypeSpecifierExpression? resultTypeSpecifier,
-  }) : super(
-          name: name,
-          libraryName: libraryName,
-          annotation: annotation,
-          localId: localId,
-          locator: locator,
-          resultTypeName: resultTypeName,
-          resultTypeSpecifier: resultTypeSpecifier,
-        );
+    required super.name,
+    super.libraryName,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
 
   factory ConceptRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];

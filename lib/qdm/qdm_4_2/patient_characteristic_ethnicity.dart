@@ -6,7 +6,6 @@
 /// QDM category and its corresponding value
 /// set.
 ///
-
 class PatientCharacteristicEthnicity {
   PatientCharacteristicEthnicity();
 }

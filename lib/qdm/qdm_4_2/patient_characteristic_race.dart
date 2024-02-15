@@ -3,7 +3,6 @@
 /// datatype should document the
 /// patient’s race.
 ///
-
 class PatientCharacteristicRace {
   PatientCharacteristicRace();
 }
