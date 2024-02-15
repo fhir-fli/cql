@@ -109,12 +109,13 @@ class Add extends BinaryExpression {
   String get type => 'Add';
 
   @override
-  dynamic execute() {
+  dynamic execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
       return null;
     } else {
-      final left = operand[0].execute();
-      final right = operand[1].execute();
+      final left = operand[0].execute(context);
+      final right = operand[1].execute(context);
+      print('left ${left.runtimeType} right ${right.runtimeType}');
       // TODO(Dokotela) Some of the BigInt/FhirInteger64 + int/FhirInteger may be incorrect
       switch (left) {
         case FhirInteger _:
@@ -177,12 +178,47 @@ class Add extends BinaryExpression {
                       : null;
         case ValidatedQuantity _:
           return right is ValidatedQuantity
-              ? (left).isValid() && right.isValid()
+              ? left.isValid() && right.isValid()
                   ? left + right
                   : right is FhirDecimal && right.isValid()
                       ? left + right
                       : null
               : null;
+        case FhirDateTimeBase _:
+          {
+            num? value = double.tryParse(right.value.asUcumDecimal());
+            if (value != null) {
+              value = value == value.toInt() ? value.toInt() : null;
+            }
+
+            return right is ValidatedQuantity &&
+                    left.isValid &&
+                    right.isValid() &&
+                    right.isDuration &&
+                    value != null
+                ? left +
+                    ExtendedDuration(
+                      years:
+                          isYears(right.code.toLowerCase()) ? value as int : 0,
+                      months:
+                          isMonths(right.code.toLowerCase()) ? value as int : 0,
+                      weeks:
+                          isWeeks(right.code.toLowerCase()) ? value as int : 0,
+                      days: isDays(right.code.toLowerCase()) ? value as int : 0,
+                      hours:
+                          isHours(right.code.toLowerCase()) ? value as int : 0,
+                      minutes: isMinutes(right.code.toLowerCase())
+                          ? value as int
+                          : 0,
+                      seconds: isSeconds(right.code.toLowerCase())
+                          ? value as int
+                          : 0,
+                      milliseconds: isMilliseconds(right.code.toLowerCase())
+                          ? value as int
+                          : 0,
+                    )
+                : null;
+          }
         default:
           return null;
       }

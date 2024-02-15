@@ -82,8 +82,8 @@ class Ratio extends CqlExpression {
   int get hashCode => numerator.hashCode ^ denominator.hashCode;
 
   @override
-  ValidatedRatio execute() => ValidatedRatio(
-        numerator: numerator.execute(),
-        denominator: denominator.execute(),
+  ValidatedRatio execute(Map<String, dynamic> context) => ValidatedRatio(
+        numerator: numerator.execute(context),
+        denominator: denominator.execute(context),
       );
 }

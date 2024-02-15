@@ -1,6 +1,5 @@
 export 'aggregate_expressions/aggregate_expressions.dart';
 export 'aliased_query_sources/aliased_query_sources.dart';
-export 'expression_defs/expression_defs.dart';
 export 'operator_expressions/operator_expressions.dart';
 export 'sort_by_items/sort_by_items.dart';
 export 'type_specifiers/type_specifiers.dart';

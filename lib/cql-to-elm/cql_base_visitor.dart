@@ -39,17 +39,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     final List<CqlExpression> operand = <CqlExpression>[];
+    String? additionOperator;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);
         if (result is CqlExpression) {
           operand.add(result);
         }
+      } else {
+        additionOperator = child.text;
       }
     }
     if (operand.length == 2) {
-      if (operand[0] is LiteralString && operand[1] is LiteralString) {
-        return Concatenate(operand: operand);
+      if (additionOperator == '-') {
+        return Subtract(operand: operand);
+      } else if (operand[0] is LiteralString && operand[1] is LiteralString) {
+        return Concatenate(operand: operand, plus: additionOperator == '+');
       } else {
         return Add(operand: operand);
       }

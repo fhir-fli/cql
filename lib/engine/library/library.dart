@@ -160,7 +160,8 @@ class Library extends Element {
     // final conceptsExecuted = concepts?.execute();
     // final contextsExecuted = contexts?.execute();
     // final parametersExecuted = parameters?.execute();
-    final statementsExecuted = statements?.execute();
+    final Map<String, dynamic> context = <String, dynamic>{};
+    final statementsExecuted = statements?.execute(context);
     return statementsExecuted;
   }
 }

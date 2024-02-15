@@ -43,4 +43,9 @@ class ExpressionRef extends Ref {
     final Map<String, dynamic> val = super.toJson();
     return val;
   }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    return context[name];
+  }
 }

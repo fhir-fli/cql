@@ -115,28 +115,28 @@ class LessOrEqual extends BinaryExpression {
   String get type => 'LessOrEqual';
 
   @override
-  dynamic execute() {
-    final left = operand[0].execute();
-    final right = operand[1].execute();
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
     if (left == null || right == null) {
       return null;
     }
     if (left is FhirInteger && right is FhirInteger) {
-      return left <= right;
+      return FhirBoolean(left <= right);
     } else if (left is FhirDecimal && right is FhirDecimal) {
-      return left <= right;
+      return FhirBoolean(left <= right);
     } else if (left is FhirInteger64 && right is FhirInteger64) {
-      return left <= right;
+      return FhirBoolean(left <= right);
     } else if (left is String && right is String) {
-      return left.compareTo(right) <= 0;
+      return FhirBoolean(left.compareTo(right) <= 0);
     } else if (left is FhirDateTime && right is FhirDateTime) {
-      return left <= right;
+      return FhirBoolean(left <= right);
     } else if (left is FhirTime && right is FhirTime) {
-      return left <= right;
+      return FhirBoolean(left <= right);
     } else if (left is FhirDate && right is FhirDate) {
-      return left <= right;
+      return FhirBoolean(left <= right);
     } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
-      return left <= right;
+      return FhirBoolean(left <= right);
     }
     throw ArgumentError('Invalid operand types for LessOrEqual operation');
   }

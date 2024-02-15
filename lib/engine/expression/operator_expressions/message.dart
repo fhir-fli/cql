@@ -15,11 +15,11 @@ import '../../../cql.dart';
 /// If the severity is Message, the operator is expected to provide the message
 /// as information to the calling environment.
 class Message extends OperatorExpression {
+  final CqlExpression source;
   final CqlExpression? code;
   final CqlExpression? condition;
   final CqlExpression? message;
   final CqlExpression? severity;
-  final CqlExpression source;
 
   Message({
     required this.source,
@@ -108,4 +108,7 @@ class Message extends OperatorExpression {
 
   @override
   String get type => 'Message';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) => source.execute(context);
 }

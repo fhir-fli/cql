@@ -105,12 +105,12 @@ class Subtract extends BinaryExpression {
   String get type => 'Subtract';
 
   @override
-  dynamic execute() {
+  dynamic execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
       return null;
     } else {
-      final left = operand[0].execute();
-      final right = operand[1].execute();
+      final left = operand[0].execute(context);
+      final right = operand[1].execute(context);
       // TODO(Dokotela) Some of the BigInt/FhirInteger64 - int/FhirInteger may be incorrect
       switch (left) {
         case FhirInteger _:

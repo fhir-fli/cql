@@ -25,12 +25,11 @@ class ExpressionDefs {
     return data;
   }
 
-  dynamic execute() {
-    final Map<String, dynamic> result = <String, dynamic>{};
+  Map<String, dynamic> execute(Map<String, dynamic> context) {
     for (final e in def) {
-      result.addAll(e.execute());
+      context.addAll(e.execute(context));
     }
-    return result;
+    return context;
   }
 }
 
@@ -182,5 +181,6 @@ class ExpressionDef extends Element {
     AccessModifier.private: 'Private',
   };
 
-  dynamic execute() => {name: expression?.execute()};
+  dynamic execute(Map<String, dynamic> context) =>
+      {name: expression?.execute(context)};
 }

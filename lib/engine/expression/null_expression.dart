@@ -57,5 +57,5 @@ class NullExpression extends Literal {
   String get type => 'Null';
 
   @override
-  dynamic execute() => null;
+  dynamic execute(Map<String, dynamic> context) => null;
 }

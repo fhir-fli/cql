@@ -131,111 +131,111 @@ class Literal extends CqlExpression {
 
   factory Literal.fromType(LiteralType type) {
     switch (type.runtimeType) {
-      case LiteralBoolean:
+      case LiteralBoolean _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Boolean'),
           value: type as LiteralBoolean,
         );
-      case LiteralCode:
+      case LiteralCode _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Code'),
           value: type as LiteralCode,
         );
-      case LiteralConcept:
+      case LiteralConcept _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Concept'),
           value: type as LiteralConcept,
         );
-      case LiteralValueSet:
+      case LiteralValueSet _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}ValueSet'),
           value: type as LiteralValueSet,
         );
-      case LiteralCodeSystem:
+      case LiteralCodeSystem _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}CodeSystem'),
           value: type as LiteralCodeSystem,
         );
-      case LiteralDate:
+      case LiteralDate _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Date'),
           value: type as LiteralDate,
         );
-      case LiteralDateTime:
+      case LiteralDateTime _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}DateTime'),
           value: type as LiteralDateTime,
         );
-      case LiteralDecimal:
+      case LiteralDecimal _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Decimal'),
           value: type as LiteralDecimal,
         );
-      case LiteralInteger:
+      case LiteralInteger _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Integer'),
           value: type as LiteralInteger,
         );
-      case LiteralLong:
+      case LiteralLong _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Long'),
           value: type as LiteralLong,
         );
-      case LiteralQuantity:
+      case LiteralQuantity _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Quantity'),
           value: type as LiteralQuantity,
         );
-      case LiteralRatio:
+      case LiteralRatio _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Ratio'),
           value: type as LiteralRatio,
         );
-      case LiteralString:
+      case LiteralString _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}String'),
           value: type as LiteralString,
         );
-      case LiteralTime:
+      case LiteralTime _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Time'),
           value: type as LiteralTime,
         );
-      case LiteralIntegerInterval:
+      case LiteralIntegerInterval _:
         return Literal(
           valueType:
               QName.fromFull('{urn:hl7-org:elm-types:r1}IntegerInterval'),
           value: type as LiteralIntegerInterval,
         );
-      case LiteralDecimalInterval:
+      case LiteralDecimalInterval _:
         return Literal(
           valueType:
               QName.fromFull('{urn:hl7-org:elm-types:r1}DecimalInterval'),
           value: type as LiteralDecimalInterval,
         );
-      case LiteralQuantityInterval:
+      case LiteralQuantityInterval _:
         return Literal(
           valueType:
               QName.fromFull('{urn:hl7-org:elm-types:r1}QuantityInterval'),
           value: type as LiteralQuantityInterval,
         );
-      case LiteralDateTimeInterval:
+      case LiteralDateTimeInterval _:
         return Literal(
           valueType:
               QName.fromFull('{urn:hl7-org:elm-types:r1}DateTimeInterval'),
           value: type as LiteralDateTimeInterval,
         );
-      case LiteralDateInterval:
+      case LiteralDateInterval _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}DateInterval'),
           value: type as LiteralDateInterval,
         );
-      case LiteralTimeInterval:
+      case LiteralTimeInterval _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}TimeInterval'),
           value: type as LiteralTimeInterval,
         );
-      case NullExpression:
+      case NullExpression _:
         return Literal(
           valueType: QName.fromFull('{urn:hl7-org:elm-types:r1}Null'),
           value: type as Null,
@@ -262,5 +262,5 @@ class Literal extends CqlExpression {
   String get type => 'Literal';
 
   @override
-  dynamic execute() => value?.execute();
+  dynamic execute(Map<String, dynamic> context) => value?.execute(context);
 }

@@ -66,8 +66,8 @@ class Not extends UnaryExpression {
   }
 
   @override
-  FhirBoolean? execute() {
-    final operandValue = operand.execute();
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    final operandValue = operand.execute(context);
     if (operandValue == null) {
       return null;
     } else if (operandValue is FhirBoolean && operandValue.isValid) {

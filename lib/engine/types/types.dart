@@ -14,7 +14,7 @@ class LiteralNull extends LiteralType {
   String toJson() => null.toString();
 
   @override
-  String? execute() => null;
+  String? execute(Map<String, dynamic> context) => null;
 }
 
 class LiteralBoolean extends LiteralType {
@@ -47,7 +47,7 @@ class LiteralBoolean extends LiteralType {
       };
 
   @override
-  FhirBoolean execute() => FhirBoolean(value);
+  FhirBoolean execute(Map<String, dynamic> context) => FhirBoolean(value);
 
   @override
   String get type => 'Boolean';
@@ -232,7 +232,7 @@ class LiteralDate extends LiteralType {
   }
 
   @override
-  FhirDate execute() => FhirDate(value);
+  FhirDate execute(Map<String, dynamic> context) => FhirDate(value);
 
   @override
   String get type => 'Date';
@@ -275,7 +275,7 @@ class LiteralDateTime extends LiteralType {
   }
 
   @override
-  FhirDateTime execute() => FhirDateTime(value);
+  FhirDateTime execute(Map<String, dynamic> context) => FhirDateTime(value);
 }
 
 class LiteralDecimal extends LiteralType {
@@ -315,7 +315,7 @@ class LiteralDecimal extends LiteralType {
       };
 
   @override
-  FhirDecimal execute() => FhirDecimal(value);
+  FhirDecimal execute(Map<String, dynamic> context) => FhirDecimal(value);
 
   @override
   String get type => 'Decimal';
@@ -358,7 +358,7 @@ class LiteralInteger extends LiteralType {
       };
 
   @override
-  FhirInteger execute() => FhirInteger(value);
+  FhirInteger execute(Map<String, dynamic> context) => FhirInteger(value);
 
   @override
   String get type => 'Integer';
@@ -401,7 +401,7 @@ class LiteralLong extends LiteralType {
       };
 
   @override
-  FhirInteger64 execute() => FhirInteger64(value);
+  FhirInteger64 execute(Map<String, dynamic> context) => FhirInteger64(value);
 
   @override
   String get type => 'Long';
@@ -430,7 +430,7 @@ class LiteralQuantity extends LiteralType {
   }
 
   @override
-  ValidatedQuantity execute() {
+  ValidatedQuantity execute(Map<String, dynamic> context) {
     return ValidatedQuantity(
       value: UcumDecimal.fromString(value.value.toString()),
       code: unit,
@@ -491,7 +491,7 @@ class LiteralString extends LiteralType {
       };
 
   @override
-  String execute() => value;
+  String execute(Map<String, dynamic> context) => value;
 
   @override
   String get type => 'String';
@@ -521,7 +521,7 @@ class LiteralTime extends LiteralType {
   String toJson() => value;
 
   @override
-  FhirTime execute() => FhirTime(value);
+  FhirTime execute(Map<String, dynamic> context) => FhirTime(value);
 }
 
 abstract class LiteralIntervalType extends LiteralType {

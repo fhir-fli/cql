@@ -12,7 +12,7 @@ void main() {
           LiteralInteger(value: 2),
         ],
       );
-      expect(add.execute(), FhirInteger(4));
+      expect(add.execute({}), FhirInteger(4));
     });
     test('define "IntegerAddIsNull": 2 + null', () {
       final add = Add(
@@ -21,7 +21,7 @@ void main() {
           NullExpression(valueType: QName.fromLocalPart('Null')),
         ],
       );
-      expect(add.execute(), null);
+      expect(add.execute({}), null);
     });
     test('define "LongAdd": 25L + 5 // 30L', () {
       final add = Add(
@@ -30,7 +30,7 @@ void main() {
           LiteralInteger(value: 5),
         ],
       );
-      expect(add.execute(), FhirInteger64(30));
+      expect(add.execute({}), FhirInteger64(30));
     });
     test('define "DecimalAdd": 2.5 + 5 // 7.5', () {
       final add = Add(
@@ -39,7 +39,7 @@ void main() {
           LiteralInteger(value: 5),
         ],
       );
-      expect(add.execute(), FhirDecimal(7.5));
+      expect(add.execute({}), FhirDecimal(7.5));
     });
     test("""define "QuantityAdd": -5.5 'mg' + 2 'mg' // -3.5 'mg'""", () {
       final add = Add(
@@ -54,7 +54,7 @@ void main() {
           ),
         ],
       );
-      expect(add.execute(),
+      expect(add.execute({}),
           ValidatedQuantity(value: UcumDecimal.fromString('-3.5'), code: 'mg'));
     });
     test("""define "QuantityAddIsNull": -5.5 'cm' + 2 'cm2'""", () {
@@ -70,7 +70,7 @@ void main() {
           ),
         ],
       );
-      expect(add.execute(), null);
+      expect(add.execute({}), null);
     });
   });
 }

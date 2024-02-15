@@ -16,7 +16,7 @@ void main() {
           ),
         ],
       );
-      expect(equal.execute(), FhirBoolean(true));
+      expect(equal.execute({}), FhirBoolean(true));
     });
     test('define "LongEqualIsTrue": 4L = (2L + 2L)', () {
       final equal = Equal(
@@ -30,7 +30,7 @@ void main() {
           ),
         ],
       );
-      expect(equal.execute(), FhirBoolean(true));
+      expect(equal.execute({}), FhirBoolean(true));
     });
     test('define "DecimalEqualIsFalse": 3.5 = (3.5 - 0.1)', () {
       final equal = Equal(
@@ -44,7 +44,7 @@ void main() {
           ),
         ],
       );
-      expect(equal.execute(), FhirBoolean(false));
+      expect(equal.execute({}), FhirBoolean(false));
     });
     test("""define "StringEqualIsFalse": 'John Doe' = 'john doe'""", () {
       final equal = Equal(
@@ -53,7 +53,7 @@ void main() {
           LiteralString(value: 'john doe'),
         ],
       );
-      expect(equal.execute(), FhirBoolean(false));
+      expect(equal.execute({}), FhirBoolean(false));
     });
     test("""define "QuantityEqualIsNull": 3.5 'cm2' = 3.5 'cm'""", () {
       final equal = Equal(
@@ -62,7 +62,7 @@ void main() {
           Quantity(value: 3.5, unit: 'cm'),
         ],
       );
-      expect(equal.execute(), FhirBoolean(false));
+      expect(equal.execute({}), FhirBoolean(false));
     });
     test('define "RatioEqualIsTrue": 1:8 = 1:8', () {
       final equal = Equal(
@@ -75,7 +75,7 @@ void main() {
               denominator: Quantity(value: 8, unit: '1')),
         ],
       );
-      expect(equal.execute(), FhirBoolean(true));
+      expect(equal.execute({}), FhirBoolean(true));
     });
     test('define "RatioEqualIsFalse": 1:8 = 2:16', () {
       final equal = Equal(
@@ -88,7 +88,7 @@ void main() {
               denominator: Quantity(value: 16, unit: '1')),
         ],
       );
-      expect(equal.execute(), FhirBoolean(false));
+      expect(equal.execute({}), FhirBoolean(false));
     });
     test('define "ListEqualIsTrue": { null, 1, 2, 3 } = { null, 1, 2, 3 }',
         () {});
@@ -99,13 +99,13 @@ void main() {
           LiteralDateTime(value: '2012-01-01T12'),
         ],
       );
-      expect(equal.execute(), null);
+      expect(equal.execute({}), null);
     });
     test('define "NullEqualIsNull": null = null', () {
       final equal = Equal(
         operand: [LiteralNull(), LiteralNull()],
       );
-      expect(equal.execute(), null);
+      expect(equal.execute({}), null);
     });
   });
 }

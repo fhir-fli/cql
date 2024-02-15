@@ -147,12 +147,12 @@ class Equal extends BinaryExpression {
   String get type => 'Equal';
 
   @override
-  FhirBoolean? execute() {
+  FhirBoolean? execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
       throw ArgumentError('Binary expression must have 2 operands');
     } else {
-      final left = operand[0].execute();
-      final right = operand[1].execute();
+      final left = operand[0].execute(context);
+      final right = operand[1].execute(context);
       if (left == null || right == null) {
         return null;
       } else if (left is FhirInteger && right is FhirInteger) {
@@ -166,11 +166,13 @@ class Equal extends BinaryExpression {
       } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
         return FhirBoolean(left == right);
       } else if (left is FhirDateTime && right is FhirDateTime) {
-        return FhirBoolean(left == right);
+        final bool? isEqual = left.isEqual(right);
+        return isEqual == null ? null : FhirBoolean(isEqual);
       } else if (left is FhirTime && right is FhirTime) {
         return FhirBoolean(left == right);
       } else if (left is FhirDate && right is FhirDate) {
-        return FhirBoolean(left == right);
+        final bool? isEqual = left.isEqual(right);
+        return isEqual == null ? null : FhirBoolean(isEqual);
       } else if (left is ValidatedRatio && right is ValidatedRatio) {
         return FhirBoolean(left == right);
       } else if (left is Tuple && right is Tuple) {

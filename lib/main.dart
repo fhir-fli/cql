@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'cql-to-elm/cql_to_elm.dart';
+import 'results/results.dart';
 
-const bool print = true;
+const bool print = false;
 
 void main() => runApp(const MyApp());
 
@@ -48,8 +49,7 @@ void parseFile(BuildContext context) async {
     final pathExpression = await rootBundle.loadString(file);
     final json =
         jsonDecode(await rootBundle.loadString(file.replaceAll('cql', 'json')));
-    final resultsJson = jsonDecode(await rootBundle.loadString(
-        file.replaceAll('cql', 'json').replaceFirst('json', 'results')));
+    final resultsJson = results[file.split("/").last];
 
     final parserAndErrors = parse(pathExpression);
     final parser = parserAndErrors.parser;
@@ -72,11 +72,17 @@ void parseFile(BuildContext context) async {
         log(jsonEncode(visitor.result));
       }
 
-      log(const DeepCollectionEquality()
-          .equals(jsonLibrary, resultLibrary)
-          .toString());
-      log((resultsJson.toString()));
-      log(visitor.library.execute().toString());
+      final results = visitor.library.execute();
+      log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
+      bool areEqual = true;
+      if (results is Map<String, dynamic>) {
+        results.forEach((key, value) {
+          if (results[key] != resultsJson?[key]) {
+            areEqual = false;
+          }
+        });
+      }
+      log('${file.split("/").last} Results are equal: $areEqual');
     } catch (e, s) {
       log(e.toString());
       log(s.toString());

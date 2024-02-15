@@ -12,7 +12,7 @@ void main() {
           LiteralInteger(value: 1),
         ],
       );
-      expect(subtract.execute(), FhirInteger(1));
+      expect(subtract.execute({}), FhirInteger(1));
     });
     test('define  "LongSubtract": 2L - 1L // 1L', () {
       final subtract = Subtract(
@@ -21,7 +21,7 @@ void main() {
           LiteralLong(value: BigInt.from(1)),
         ],
       );
-      expect(subtract.execute(), FhirInteger64(BigInt.from(1)));
+      expect(subtract.execute({}), FhirInteger64(BigInt.from(1)));
     });
     test('define  "DecimalSubtract": 3.14 - 3.12 // 0.02', () {
       final subtract = Subtract(
@@ -30,7 +30,7 @@ void main() {
           LiteralDecimal(value: 3.12),
         ],
       );
-      expect(subtract.execute(), FhirDecimal(0.02));
+      expect(subtract.execute({}), FhirDecimal(0.02));
     });
     test("""define  "QuantitySubtract": 3.14 'mg' - 3.12 'mg' // 0.02 'mg'""",
         () {
@@ -42,7 +42,7 @@ void main() {
       );
 
       expect(
-          subtract.execute(), ValidatedQuantity.fromNumber(0.02, code: 'mg'));
+          subtract.execute({}), ValidatedQuantity.fromNumber(0.02, code: 'mg'));
     });
     test("""define  "QuantitySubtractError": 3.14 'cm' - 3.12 'cm2'""", () {
       final subtract = Subtract(
@@ -51,7 +51,7 @@ void main() {
           Quantity(value: 3.12, unit: 'cm2'),
         ],
       );
-      expect(subtract.execute(), null);
+      expect(subtract.execute({}), null);
     });
     test('define  "SubtractIsNull": 3 - null', () {
       final subtract = Subtract(
@@ -60,7 +60,7 @@ void main() {
           LiteralNull(),
         ],
       );
-      expect(subtract.execute(), null);
+      expect(subtract.execute({}), null);
     });
   });
 }
