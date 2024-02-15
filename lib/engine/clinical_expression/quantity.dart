@@ -85,4 +85,7 @@ class Quantity extends CqlExpression {
 
   @override
   int get hashCode => value.hashCode ^ unit.hashCode;
+
+  @override
+  ValidatedQuantity execute() => validatedQuantity;
 }

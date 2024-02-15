@@ -172,7 +172,14 @@ class Equal extends BinaryExpression {
       } else if (left is FhirDate && right is FhirDate) {
         return FhirBoolean(left == right);
       } else if (left is Ratio && right is Ratio) {
-        return FhirBoolean(left == right);
+        if (left.numerator.value == right.numerator.value &&
+            left.denominator.value == right.denominator.value &&
+            left.numerator.unit == right.numerator.unit &&
+            left.denominator.unit == right.denominator.unit) {
+          return FhirBoolean(true);
+        } else {
+          return FhirBoolean(false);
+        }
       } else if (left is Tuple && right is Tuple) {
         return FhirBoolean(left == right);
       } else if (left is List && right is List) {
