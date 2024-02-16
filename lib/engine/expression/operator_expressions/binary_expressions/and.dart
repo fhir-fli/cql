@@ -1,6 +1,37 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// And operator returning the logical conjunction of its arguments.
+/// Signature:
+///
+/// and (left Boolean, right Boolean) Boolean
+/// Description:
+///
+/// The and operator returns true if both its arguments are true. If either
+/// argument is false, the result is false. Otherwise, the result is null.
+///
+/// The following table defines the truth table for this operator:
+///
+///        TRUE  FALSE   NULL
+///
+/// TRUE   TRUE  FALSE   NULL
+///
+/// FALSE  FALSE FALSE   FALSE
+///
+/// NULL   NULL  FALSE   NULL
+///
+/// Table 9‑A - The truth table for the And operator
+///
+/// Example:
+///
+/// The following examples illustrate the behavior of the and operator:
+///
+/// define "IsTrue": true and true
+/// define "IsFalse": true and false
+/// define "IsAlsoFalse": false and null
+/// define "IsNull": true and null
+/// Note that CQL does not prescribe short-circuit evaluation of logical operators.
 class And extends BinaryExpression {
   And({
     required super.operand,
@@ -59,4 +90,40 @@ class And extends BinaryExpression {
 
   @override
   String toString() => 'And(operand: $operand)';
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    /// Assuming operand is accessible and contains the operands
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+
+    /// Both operands are non-null and true
+    if (left is FhirBoolean &&
+        left.isValid &&
+        right is FhirBoolean &&
+        right.isValid) {
+      return FhirBoolean(left.value! && right.value!);
+    }
+
+    /// Either operand is false
+    /// One operand is null and the other is false (handled above as "either operand is false")
+    if ((left is FhirBoolean && left.value == false) ||
+        (right is FhirBoolean && right.value == false)) {
+      return FhirBoolean(false);
+    }
+
+    /// Both operands are null
+    if (left == null && right == null) {
+      return null;
+    }
+
+    /// One operand is null and the other is true
+    if ((left == null && right is FhirBoolean && (right.value ?? false)) ||
+        (right == null && left is FhirBoolean && (left.value ?? false))) {
+      return null;
+    }
+
+    /// Default return null if not covered above, though all cases should be covered
+    return null;
+  }
 }

@@ -31,6 +31,24 @@ class DateTimeExpression extends OperatorExpression {
     super.resultTypeSpecifier,
   });
 
+  factory DateTimeExpression.fromOperandList(
+      {required List<CqlExpression> operand}) {
+    if (operand.isEmpty) {
+      throw ArgumentError('DateTimeExpression must have at least one operand');
+    }
+
+    return DateTimeExpression(
+      year: operand[0],
+      month: operand.length > 1 ? operand[1] : null,
+      day: operand.length > 2 ? operand[2] : null,
+      hour: operand.length > 3 ? operand[3] : null,
+      minute: operand.length > 4 ? operand[4] : null,
+      second: operand.length > 5 ? operand[5] : null,
+      millisecond: operand.length > 6 ? operand[6] : null,
+      timezoneOffset: operand.length > 7 ? operand[7] : null,
+    );
+  }
+
   factory DateTimeExpression.fromJson(Map<String, dynamic> json) =>
       DateTimeExpression(
         year: CqlExpression.fromJson(json['year']),

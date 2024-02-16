@@ -21,6 +21,20 @@ class TimeExpression extends OperatorExpression {
     super.resultTypeSpecifier,
   });
 
+  factory TimeExpression.fromOperandList(
+      {required List<CqlExpression> operand}) {
+    if (operand.isEmpty) {
+      throw ArgumentError('TimeExpression must have at least one operand');
+    }
+
+    return TimeExpression(
+      hour: operand[0],
+      minute: operand.length > 1 ? operand[1] : null,
+      second: operand.length > 2 ? operand[2] : null,
+      millisecond: operand.length > 3 ? operand[3] : null,
+    );
+  }
+
   factory TimeExpression.fromJson(Map<String, dynamic> json) => TimeExpression(
         hour: CqlExpression.fromJson(json['hour']),
         minute: json['minute'] == null

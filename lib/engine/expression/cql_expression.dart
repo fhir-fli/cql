@@ -589,16 +589,16 @@ class CqlExpression extends Element {
         return Expand(operand: operand);
       case 'ExpandValueSet':
         return ExpandValueSet(operand: operand.first);
-      // case 'DateTime':
-      //   return DateTimeExpression(operand: operand);
+      case 'DateTime':
+        return DateTimeExpression.fromOperandList(operand: operand);
       // case 'Date':
       //   return DateExpression(operand: operand);
       // case 'Expression':
       //   return CqlExpression(operand: operand);
       // case 'ExpressionRef':
       //   return ExpressionRef(operand: operand);
-      // case 'Time':
-      //   return TimeExpression(operand: operand);
+      case 'Time':
+        return TimeExpression.fromOperandList(operand: operand);
       // case 'Filter':
       //   return Filter(operand: operand);
       // case 'First':
@@ -724,8 +724,8 @@ class CqlExpression extends Element {
         return Not(operand: operand.first);
       case 'NotEqual':
         return NotEqual(operand: operand);
-      // case 'Now':
-      //   return Now(operand: operand);
+      case 'Now':
+        return Now();
       // case 'NullExpression':
       //   return NullExpression(operand: operand);
       // case 'OperandRef':
@@ -832,8 +832,8 @@ class CqlExpression extends Element {
       //   return TernaryExpression(operands: operand);
       case 'TimeFrom':
         return TimeFrom(operand: operand.first);
-      // case 'TimeOfDay':
-      //   return TimeOfDay(operand: operand);
+      case 'TimeOfDay':
+        return TimeOfDay();
       case 'Times':
         return Times(operand: operand);
       case 'TimezoneOffsetFrom':
@@ -848,8 +848,8 @@ class CqlExpression extends Element {
         return ToDate(operand: operand.first);
       case 'ToDateTime':
         return ToDateTime(operand: operand.first);
-      // case 'Today':
-      //   return Today(operand: operand);
+      case 'Today':
+        return Today();
       case 'ToDecimal':
         return ToDecimal(operand: operand.first);
       case 'ToInteger':
@@ -929,9 +929,9 @@ class CqlExpression extends Element {
     return data;
   }
 
-  String? get type => throw 'Unknown Expression type: $runtimeType';
+  String? get type => throw 'Get Type Unknown Expression type: $runtimeType';
 
   dynamic execute(Map<String, dynamic> context) {
-    throw 'Unknown Expression type: $runtimeType';
+    throw 'Execute Unknown Expression type: $runtimeType';
   }
 }

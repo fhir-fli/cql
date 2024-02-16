@@ -275,6 +275,9 @@ class LiteralDateTime extends LiteralType {
   }
 
   @override
+  String get type => 'DateTime';
+
+  @override
   FhirDateTime execute(Map<String, dynamic> context) => FhirDateTime(value);
 }
 

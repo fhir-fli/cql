@@ -1,6 +1,19 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// IsFalse operator determining whether its argument evaluates to false.
+/// Signature:
+///
+/// is false(argument Boolean) Boolean
+/// Description:
+///
+/// The is false operator determines whether or not its argument evaluates to false. If the argument evaluates to false, the result is true; otherwise, the result is false.
+///
+/// The following examples illustrate the behavior of the is false operator:
+///
+/// define "IsFalseIsTrue": false is false
+/// define "IsFalseIsFalse": null is false
 class IsFalse extends UnaryExpression {
   IsFalse({
     required super.operand,
@@ -56,5 +69,15 @@ class IsFalse extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  FhirBoolean execute(Map<String, dynamic> context) {
+    final operandValue = operand.execute(context);
+    if (operandValue is FhirBoolean && operandValue.isValid) {
+      return FhirBoolean(operandValue.value == false);
+    } else {
+      return FhirBoolean(false);
+    }
   }
 }
