@@ -10,8 +10,8 @@ import '../../cql.dart';
 /// which can be extended to create a visitor which only needs to handle
 /// a subset of the available methods.
 ///
-/// [T] is the print(ctx.runtimeType); return type of the visit operation. Use `void` for
-/// operations with no print(ctx.runtimeType); return type.
+/// [T] is the print(ctx.runtimeType); return type of the visit operation. Use
+/// `void` for operations with no print(ctx.runtimeType); return type.
 class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   Library library = Library();
   final modelInfoProvider = StandardModelInfoProvider();
@@ -259,7 +259,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           false_ = true;
         }
       } else {
+        print('$thisNode - ${child.runtimeType} - ${child.text}');
         final result = byContext(child);
+        print('$thisNode - ${child.runtimeType} - $result');
         if (result is CqlExpression) {
           operand = result;
         }
@@ -1062,7 +1064,17 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitImpliesExpression(ImpliesExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    final List<CqlExpression> operand = <CqlExpression>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      final result = byContext(child);
+      if (result is CqlExpression) {
+        operand.add(result);
+      }
+    }
+    if (operand.length == 2) {
+      return Implies(operand: operand);
+    }
+    throw ArgumentError('$thisNode Invalid ImpliesExpression');
   }
 
   /// expression ('|' | 'union' | 'intersect' | 'except') expression
@@ -1556,7 +1568,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   LiteralType visitLiteralTerm(LiteralTermContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     LiteralType? type;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -1694,13 +1706,18 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// The default implementation returns the result of calling
   /// [visitChildren] on [ctx].
   @override
-  dynamic visitNotExpression(NotExpressionContext ctx) {
+  Not visitNotExpression(NotExpressionContext ctx) {
     printIf(ctx, true);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('NotExpression: ${child.runtimeType} ${child.text}');
+      if (child is! TerminalNodeImpl) {
+        final result = byContext(child);
+        if (result is CqlExpression) {
+          return Not(operand: result);
+        }
+      }
     }
-    visitChildren(ctx);
+    throw ArgumentError('$thisNode Invalid NotExpression');
   }
 
   /// The default implementation returns the result of calling
@@ -1875,7 +1892,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitParenthesizedTerm(ParenthesizedTermContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
@@ -2474,7 +2491,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   // | functionDefinition;
   @override
   void visitStatement(StatementContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     ExpressionDef? statement;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -2535,7 +2552,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// [visitChildren] on [ctx].
   @override
   dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       return byContext(child);
