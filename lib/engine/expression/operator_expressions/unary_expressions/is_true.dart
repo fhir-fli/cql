@@ -1,6 +1,21 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// IsTrue operator determining whether its argument evaluates to true.
+/// Signature:
+///
+/// is true(argument Boolean) Boolean
+/// Description:
+///
+/// The is true operator determines whether or not its argument evaluates to
+/// true. If the argument evaluates to true, the result is true; otherwise,
+/// the result is false.
+///
+/// The following examples illustrate the behavior of the is true operator:
+///
+/// define "IsTrueIsTrue": true is true
+/// define "IsTrueIsFalse": false is true
 class IsTrue extends UnaryExpression {
   IsTrue({
     required super.operand,
@@ -56,5 +71,15 @@ class IsTrue extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  FhirBoolean execute(Map<String, dynamic> context) {
+    final operandValue = operand.execute(context);
+    if (operandValue is FhirBoolean && operandValue.isValid) {
+      return FhirBoolean(operandValue.value == true);
+    } else {
+      return FhirBoolean(false);
+    }
   }
 }

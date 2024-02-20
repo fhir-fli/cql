@@ -130,13 +130,19 @@ class LessOrEqual extends BinaryExpression {
     } else if (left is String && right is String) {
       return FhirBoolean(left.compareTo(right) <= 0);
     } else if (left is FhirDateTime && right is FhirDateTime) {
-      return FhirBoolean(left <= right);
+      final result = left < right;
+      return result == null ? null : FhirBoolean(left < right);
     } else if (left is FhirTime && right is FhirTime) {
       return FhirBoolean(left <= right);
     } else if (left is FhirDate && right is FhirDate) {
-      return FhirBoolean(left <= right);
+      final result = left < right;
+      return result == null ? null : FhirBoolean(left < right);
     } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
-      return FhirBoolean(left <= right);
+      try {
+        return FhirBoolean(left <= right);
+      } catch (e) {
+        return null;
+      }
     }
     throw ArgumentError('Invalid operand types for LessOrEqual operation');
   }

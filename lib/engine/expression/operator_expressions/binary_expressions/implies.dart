@@ -1,6 +1,41 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Implies operator returning the logical implication of its arguments.
+/// Signature:
+///
+/// implies (left Boolean, right Boolean) Boolean
+/// Description:
+///
+/// The implies operator returns the logical implication of its arguments.
+/// This means that if the left operand evaluates to true, this operator
+/// returns the boolean evaluation of the right operand. If the left operand
+/// evaluates to false, this operator returns true. Otherwise, this operator
+/// returns true if the right operand evaluates to true, and null otherwise.
+///
+/// Note that implies may use short-circuit evaluation in the case that the
+/// first operand evaluates to false.
+///
+/// The following table defines the truth table for this operator:
+///
+/// The truth table for the Implies operator
+///        TRUE    FALSE    NULL
+///
+/// TRUE   TRUE    FALSE    NULL
+///
+/// FALSE  TRUE    TRUE     TRUE
+///
+/// NULL   TRUE    NULL     NULL
+///
+/// Example:
+///
+/// The following examples illustrate the behavior of the implies operator:
+///
+/// define "IsTrue": false implies false
+/// define "IsAlsoTrue": false implies null
+/// define "IsFalse": true implies false
+/// define "IsNull": true implies null
 class Implies extends BinaryExpression {
   Implies({
     required super.operand,
@@ -56,4 +91,48 @@ class Implies extends BinaryExpression {
 
   @override
   String get type => 'Implies';
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    /// Assuming operand is accessible and contains the operands
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+
+    /// TRUE implies TRUE and FALSE implies anything is TRUE
+    if ((left is FhirBoolean &&
+            left.isValid &&
+            left.value == true &&
+            right is FhirBoolean &&
+            right.isValid &&
+            right.value == true) ||
+        (left is FhirBoolean && left.isValid && left.value == false) ||
+        (left == null)) {
+      return FhirBoolean(true);
+    }
+
+    /// TRUE implies FALSE
+    if (left is FhirBoolean &&
+        left.isValid &&
+        left.value == true &&
+        right is FhirBoolean &&
+        right.isValid &&
+        right.value == false) {
+      return FhirBoolean(false);
+    }
+
+    /// TRUE implies NULL
+    if (left is FhirBoolean &&
+        left.isValid &&
+        left.value == true &&
+        right == null) {
+      return null;
+    }
+
+    /// NULL implies NULL
+    if (left == null && right == null) {
+      return null;
+    }
+
+    return null;
+  }
 }

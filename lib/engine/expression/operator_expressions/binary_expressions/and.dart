@@ -13,15 +13,15 @@ import '../../../../cql.dart';
 ///
 /// The following table defines the truth table for this operator:
 ///
-///        TRUE  FALSE   NULL
+/// The truth table for the And operator
+///        TRUE    FALSE    NULL
 ///
-/// TRUE   TRUE  FALSE   NULL
+/// TRUE   TRUE    FALSE    NULL
 ///
-/// FALSE  FALSE FALSE   FALSE
+/// FALSE  FALSE   FALSE    FALSE
 ///
-/// NULL   NULL  FALSE   NULL
+/// NULL   NULL    FALSE    NULL
 ///
-/// Table 9‑A - The truth table for the And operator
 ///
 /// Example:
 ///
