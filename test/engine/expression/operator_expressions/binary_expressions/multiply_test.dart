@@ -16,7 +16,7 @@ void main() {
 
       expect(result, isA<ValidatedQuantity>());
       expect(finalResult.value, UcumDecimal.fromString('36'));
-      expect(finalResult.code, 'cm2');
+      expect(finalResult.unit, 'cm2');
     });
 
     test('3 cm * 12 cm2 results in 36 cm^3', () {
@@ -31,7 +31,7 @@ void main() {
 
       expect(result, isA<ValidatedQuantity>());
       expect(finalResult.value, UcumDecimal.fromString('36'));
-      expect(finalResult.code, 'cm3');
+      expect(finalResult.unit, 'cm3');
     });
 
     // Example test for null handling

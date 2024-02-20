@@ -107,12 +107,14 @@ class Multiply extends BinaryExpression {
     if (left == null || right == null) {
       return null;
     } else {
-      switch (left.runtimeType) {
+      switch (left) {
         case FhirInteger _:
           if (right is FhirInteger && left.isValid && right.isValid) {
             return FhirInteger(left.value! * right.value!);
           } else if (right is FhirDecimal && left.isValid && right.isValid) {
-            return FhirDecimal(left.value! * right.value!);
+            return FhirDecimal(double.parse((UcumDecimal.fromInt(left.value!) *
+                    UcumDecimal.fromDouble(right.value!))
+                .asUcumDecimal()));
           } else if (right is FhirInteger64 && left.isValid && right.isValid) {
             return FhirInteger64(
                 BigInt.from(left.value as int) * (right.value as BigInt));
@@ -124,16 +126,28 @@ class Multiply extends BinaryExpression {
           } else if (right is FhirInteger64 && left.isValid && right.isValid) {
             return FhirInteger64(left.value! * right.value!);
           } else if (right is FhirDecimal && left.isValid && right.isValid) {
-            return FhirDecimal(left.value! * right.value!);
+            return FhirDecimal(double.parse(
+                (UcumDecimal.fromBigInt(left.value!) *
+                        UcumDecimal.fromDouble(right.value!))
+                    .asUcumDecimal()));
           }
           break;
         case FhirDecimal _:
           if (right is FhirInteger && left.isValid && right.isValid) {
-            return FhirDecimal(left.value! * right.value!);
+            return FhirDecimal(double.parse(
+                (UcumDecimal.fromDouble(left.value!) *
+                        UcumDecimal.fromInt(right.value!))
+                    .asUcumDecimal()));
           } else if (right is FhirInteger64 && left.isValid && right.isValid) {
-            return FhirDecimal(left.value! * right.value!.toDouble());
+            return FhirDecimal(double.parse(
+                (UcumDecimal.fromDouble(left.value!) *
+                        UcumDecimal.fromBigInt(right.value!))
+                    .asUcumDecimal()));
           } else if (right is FhirDecimal && left.isValid && right.isValid) {
-            return FhirDecimal(left.value! * right.value!);
+            return FhirDecimal(double.parse(
+                (UcumDecimal.fromDouble(left.value!) *
+                        UcumDecimal.fromDouble(right.value!))
+                    .asUcumDecimal()));
           } else if (right is ValidatedQuantity) {
             return ValidatedQuantity.fromNumber(left.value!) * right;
           }
