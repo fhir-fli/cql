@@ -70,7 +70,7 @@ class Quantity extends CqlExpression {
   String get type => 'Quantity';
 
   ValidatedQuantity get validatedQuantity => ValidatedQuantity(
-      value: UcumDecimal.fromString(value.toString()), code: unit);
+      value: UcumDecimal.fromString(value.toString()), unit: unit);
 
   @override
   bool operator ==(Object other) {

@@ -1794,22 +1794,34 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   String visitModelIdentifier(ModelIdentifierContext ctx) =>
       _noQuoteString(ctx.text);
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// expressionTerm ('*' | '/' | 'div' | 'mod') expressionTerm
   @override
-  Multiply visitMultiplicationExpressionTerm(
+  CqlExpression visitMultiplicationExpressionTerm(
       MultiplicationExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    String? operator;
     final List<CqlExpression> operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
-      final result = byContext(child);
-      if (result is CqlExpression) {
-        operand.add(result);
+      if (child is TerminalNodeImpl) {
+        operator = child.text;
+      } else {
+        final result = byContext(child);
+        if (result is CqlExpression) {
+          operand.add(result);
+        }
       }
     }
     if (operand.length == 2) {
-      return Multiply(operand: operand);
+      if (operator == '*') {
+        return Multiply(operand: operand);
+      } else if (operator == '/') {
+        return Divide(operand: operand);
+      } else if (operator == 'div') {
+        return Divide(operand: operand);
+      } else if (operator == 'mod') {
+        return Modulo(operand: operand);
+      }
     }
     throw ArgumentError('$thisNode Invalid MultiplicationExpressionTerm');
   }
@@ -2744,7 +2756,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   LiteralTime visitTimeLiteral(TimeLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    return LiteralTime(value: _noQuoteString(ctx.text));
+    return LiteralTime(
+        value: _noQuoteString(
+            ctx.text.replaceFirst('@', '').replaceFirst('T', '')));
   }
 
   /// The default implementation returns the result of calling

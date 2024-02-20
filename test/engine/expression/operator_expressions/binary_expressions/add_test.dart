@@ -55,7 +55,7 @@ void main() {
         ],
       );
       expect(add.execute({}),
-          ValidatedQuantity(value: UcumDecimal.fromString('-3.5'), code: 'mg'));
+          ValidatedQuantity(value: UcumDecimal.fromString('-3.5'), unit: 'mg'));
     });
     test("""define "QuantityAddIsNull": -5.5 'cm' + 2 'cm2'""", () {
       final add = Add(

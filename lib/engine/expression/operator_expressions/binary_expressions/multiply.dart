@@ -106,26 +106,46 @@ class Multiply extends BinaryExpression {
 
     if (left == null || right == null) {
       return null;
-    } else if (left is FhirInteger &&
-        left.isValid &&
-        right is FhirInteger &&
-        right.isValid) {
-      return FhirInteger(left.value! * right.value!);
-    } else if (left is FhirInteger64 &&
-        left.isValid &&
-        right is FhirInteger64 &&
-        right.isValid) {
-      return FhirInteger(left.value! * right.value!);
-    } else if (left is FhirDecimal &&
-        left.isValid &&
-        right is FhirDecimal &&
-        right.isValid) {
-      return FhirDecimal(left.value! * right.value!);
-    } else if (left is ValidatedQuantity &&
-        left.isValid() &&
-        right is ValidatedQuantity &&
-        right.isValid()) {
-      return left * right;
+    } else {
+      switch (left.runtimeType) {
+        case FhirInteger _:
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirInteger(left.value! * right.value!);
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! * right.value!);
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirInteger64(
+                BigInt.from(left.value as int) * (right.value as BigInt));
+          }
+          break;
+        case FhirInteger64 _:
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirInteger64(left.value! * BigInt.from(right.value as int));
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirInteger64(left.value! * right.value!);
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! * right.value!);
+          }
+          break;
+        case FhirDecimal _:
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! * right.value!);
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! * right.value!.toDouble());
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! * right.value!);
+          } else if (right is ValidatedQuantity) {
+            return ValidatedQuantity.fromNumber(left.value!) * right;
+          }
+          break;
+        case ValidatedQuantity _:
+          if (right is FhirDecimal && left.isValid() && right.isValid) {
+            return left * ValidatedQuantity.fromNumber(right.value!);
+          } else if (right is ValidatedQuantity) {
+            return left * right;
+          }
+          break;
+      }
     }
 
     throw ArgumentError('Invalid arguments for multiply operation');

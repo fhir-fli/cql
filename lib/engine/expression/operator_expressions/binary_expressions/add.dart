@@ -198,21 +198,21 @@ class Add extends BinaryExpression {
                 ? left +
                     ExtendedDuration(
                       years:
-                          isYears(right.code.toLowerCase()) ? value as int : 0,
+                          isYears(right.unit.toLowerCase()) ? value as int : 0,
                       months:
-                          isMonths(right.code.toLowerCase()) ? value as int : 0,
+                          isMonths(right.unit.toLowerCase()) ? value as int : 0,
                       weeks:
-                          isWeeks(right.code.toLowerCase()) ? value as int : 0,
-                      days: isDays(right.code.toLowerCase()) ? value as int : 0,
+                          isWeeks(right.unit.toLowerCase()) ? value as int : 0,
+                      days: isDays(right.unit.toLowerCase()) ? value as int : 0,
                       hours:
-                          isHours(right.code.toLowerCase()) ? value as int : 0,
-                      minutes: isMinutes(right.code.toLowerCase())
+                          isHours(right.unit.toLowerCase()) ? value as int : 0,
+                      minutes: isMinutes(right.unit.toLowerCase())
                           ? value as int
                           : 0,
-                      seconds: isSeconds(right.code.toLowerCase())
+                      seconds: isSeconds(right.unit.toLowerCase())
                           ? value as int
                           : 0,
-                      milliseconds: isMilliseconds(right.code.toLowerCase())
+                      milliseconds: isMilliseconds(right.unit.toLowerCase())
                           ? value as int
                           : 0,
                     )

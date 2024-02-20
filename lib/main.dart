@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
+import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -76,7 +77,23 @@ void parseFile(BuildContext context) async {
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
       bool areEqual = true;
       if (results is Map<String, dynamic>) {
+        results.remove('startTimestamp');
         results.forEach((key, value) {
+          final resultsValue = results[key];
+          final resultsJsonValue = resultsJson?[key];
+          if (resultsValue != resultsJsonValue) {
+            log('$key: $resultsValue == $resultsJsonValue');
+            areEqual = false;
+          }
+          // if (resultsValue is FhirTime) {
+          //   log(resultsValue.toString());
+          //   log(resultsValue.value ?? '');
+          // }
+          // if (resultsJsonValue is FhirTime) {
+          //   log(resultsJsonValue.toString());
+          //   log(resultsJsonValue.value ?? '');
+          // }
+          // log('$key: ${results[key]} == ${resultsJson?[key]}');
           if (results[key] != resultsJson?[key]) {
             areEqual = false;
           }
@@ -84,6 +101,7 @@ void parseFile(BuildContext context) async {
       }
       log('${file.split("/").last} Results are equal: $areEqual');
     } catch (e, s) {
+      log(file);
       log(e.toString());
       log(s.toString());
     }

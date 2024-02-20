@@ -436,7 +436,7 @@ class LiteralQuantity extends LiteralType {
   ValidatedQuantity execute(Map<String, dynamic> context) {
     return ValidatedQuantity(
       value: UcumDecimal.fromString(value.value.toString()),
-      code: unit,
+      unit: unit,
     );
   }
 

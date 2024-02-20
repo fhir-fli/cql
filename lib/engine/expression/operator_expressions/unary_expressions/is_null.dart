@@ -1,6 +1,19 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// IsNull operator determining whether its argument evaluates to null.
+/// Signature:
+///
+/// is null(argument Any) Boolean
+/// Description:
+///
+/// The is null operator determines whether or not its argument evaluates to null. If the argument evaluates to null, the result is true; otherwise, the result is false.
+///
+/// The following examples illustrate the behavior of the is null operator:
+///
+/// define "IsTrue": null is null
+/// define "IsFalse": true is null
 class IsNull extends UnaryExpression {
   IsNull({
     required super.operand,
@@ -56,5 +69,11 @@ class IsNull extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  FhirBoolean execute(Map<String, dynamic> context) {
+    final operandValue = operand.execute(context);
+    return FhirBoolean(operandValue == null);
   }
 }

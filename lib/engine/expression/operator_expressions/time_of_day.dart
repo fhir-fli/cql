@@ -1,6 +1,17 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../cql.dart';
 
-/// Operator to return the time-of-day of the start timestamp associated with the evaluation request.
+/// Operator to return the time-of-day of the start timestamp associated with
+/// the evaluation request.
+/// Signature:
+///
+/// TimeOfDay() Time
+/// Description:
+///
+/// The TimeOfDay operator returns the time of day of the start timestamp
+/// associated with the evaluation request. See the Now operator for more
+/// information on the rationale for defining the TimeOfDay operator in this way.
 class TimeOfDay extends OperatorExpression {
   TimeOfDay({
     super.annotation,
@@ -55,4 +66,10 @@ class TimeOfDay extends OperatorExpression {
 
   @override
   String get type => 'TimeOfDay';
+
+  @override
+  FhirTime execute(Map<String, dynamic> context) {
+    final startTimestamp = context['startTimestamp'] as FhirDateTime;
+    return FhirTime(startTimestamp.toIso8601String().substring(11, 19));
+  }
 }

@@ -1,6 +1,17 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../cql.dart';
 
-/// Operator to return the date (with no time component) of the start timestamp associated with the evaluation request.
+/// Operator to return the date (with no time component) of the start timestamp
+/// associated with the evaluation request.
+/// Signature:
+///
+/// Today() Date
+/// Description:
+///
+/// The Today operator returns the date of the start timestamp associated with
+/// the evaluation request. See the Now operator for more information on the
+/// rationale for defining the Today operator in this way.
 class Today extends OperatorExpression {
   Today({
     super.annotation,
@@ -55,4 +66,10 @@ class Today extends OperatorExpression {
 
   @override
   String get type => 'Today';
+
+  @override
+  FhirDate execute(Map<String, dynamic> context) {
+    final startTimestamp = context['startTimestamp'] as FhirDateTime;
+    return FhirDate(startTimestamp.toIso8601String().substring(0, 10));
+  }
 }

@@ -42,7 +42,7 @@ void main() {
       );
 
       expect(
-          subtract.execute({}), ValidatedQuantity.fromNumber(0.02, code: 'mg'));
+          subtract.execute({}), ValidatedQuantity.fromNumber(0.02, unit: 'mg'));
     });
     test("""define  "QuantitySubtractError": 3.14 'cm' - 3.12 'cm2'""", () {
       final subtract = Subtract(

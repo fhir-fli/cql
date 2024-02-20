@@ -1,6 +1,27 @@
 import '../../../../cql.dart';
 
 /// Coalesce operator returning the first non-null result in a list of arguments.
+/// Signature:
+///
+/// Coalesce<T>(argument1 T, argument2 T) T
+/// Coalesce<T>(argument1 T, argument2 T, argument3 T) T
+/// Coalesce<T>(argument1 T, argument2 T, argument3 T, argument4 T) T
+/// Coalesce<T>(argument1 T, argument2 T, argument3 T, argument4 T, argument5 T) T
+/// Coalesce<T>(arguments List<T>) T
+/// Description:
+///
+/// The Coalesce operator returns the first non-null result in a list of
+/// arguments. If all arguments evaluate to null, the result is null.
+///
+/// The static type of the first argument determines the type of the result,
+/// and all subsequent arguments must be of that same type.
+///
+/// The following examples illustrate the behavior of the Coalesce operator:
+///
+/// define "Coalesce15": Coalesce(null, 15, null)
+/// define "IsNull": Coalesce({ null, null, null })
+/// define "CoalesceError": Coalesce(null, 15, null, null, null, null) // more
+/// than 5 inputs must be represented as list
 class Coalesce extends NaryExpression {
   Coalesce({
     super.operand,
@@ -56,5 +77,16 @@ class Coalesce extends NaryExpression {
       data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
     return data;
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    for (final op in operand!) {
+      final result = op.execute(context);
+      if (result != null) {
+        return result;
+      }
+    }
+    return null;
   }
 }

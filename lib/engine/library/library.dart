@@ -1,3 +1,5 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../cql.dart';
 
 /// Library represents a serialized library of CQL-Expression Logic Model.
@@ -160,7 +162,9 @@ class Library extends Element {
     // final conceptsExecuted = concepts?.execute();
     // final contextsExecuted = contexts?.execute();
     // final parametersExecuted = parameters?.execute();
-    final Map<String, dynamic> context = <String, dynamic>{};
+    final Map<String, dynamic> context = <String, dynamic>{
+      'startTimestamp': FhirDateTime(DateTime.now())
+    };
     final statementsExecuted = statements?.execute(context);
     return statementsExecuted;
   }
