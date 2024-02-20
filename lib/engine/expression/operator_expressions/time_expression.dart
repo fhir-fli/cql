@@ -1,8 +1,28 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to construct a time value from the given components.
-/// At least one component must be specified, and no component may be specified at a precision below an unspecified precision.
-/// For example, minute may be null, but if it is, second, and millisecond must all be null as well.
+/// At least one component must be specified, and no component may be specified
+/// at a precision below an unspecified precision.
+/// For example, minute may be null, but if it is, second, and millisecond must
+/// all be null as well.
+/// Definition:
+///
+/// simple type Time
+/// Description:
+///
+/// The Time type represents time-of-day values within CQL.
+///
+/// CQL supports time values in the range @T00:00:00.0 to @T23:59:59.999 with a
+/// step size of 1 millisecond.
+///
+/// CQL also supports partial time values. For example, the time @T03 represents
+/// some instant during the hour of 3:00.
+///
+/// Although the milliseconds are specified with a separate component, seconds
+/// and milliseconds are combined and represented as a Decimal for the purposes
+/// of comparison.
 class TimeExpression extends OperatorExpression {
   final CqlExpression hour;
   final CqlExpression? millisecond;
@@ -103,4 +123,19 @@ class TimeExpression extends OperatorExpression {
 
   @override
   String get type => 'TimeExpression';
+
+  @override
+  FhirTime execute(Map<String, dynamic> context) {
+    final hourValue = hour.execute(context);
+    final minuteValue = minute?.execute(context);
+    final secondValue = second?.execute(context);
+    final millisecondValue = millisecond?.execute(context);
+
+    return FhirTime.fromUnits(
+      hour: hourValue,
+      minute: minuteValue,
+      second: secondValue,
+      millisecond: millisecondValue,
+    );
+  }
 }

@@ -1,10 +1,34 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to construct a DateTime value from the given components.
 /// At least one component other than timezoneOffset must be specified,
-/// and no component may be specified at a precision below an unspecified precision.
-/// For example, hour may be null, but if it is, minute, second, and millisecond must all be null as well.
-/// If timezoneOffset is not specified, it is defaulted to the timezone offset of the evaluation request.
+/// and no component may be specified at a precision below an unspecified
+/// precision.
+/// For example, hour may be null, but if it is, minute, second, and
+/// millisecond must all be null as well.
+/// If timezoneOffset is not specified, it is defaulted to the timezone offset
+/// of the evaluation request.
+/// Definition:
+///
+/// simple type DateTime
+/// Description:
+///
+/// The DateTime type represents date and time values with potential
+/// uncertainty within CQL.
+///
+/// CQL supports date and time values in the range @0001-01-01T00:00:00.0 to
+/// @9999-12-31T23:59:59.999 with a 1 millisecond step size. Note that DateTime
+/// values may also optionally indicate an offset.
+///
+/// CQL also supports partial datetime values. For example, the datetime
+/// @2014-01-01T03 represents some instant during the hour of 3:00 on January
+/// 1st, 2014.
+///
+/// Although the milliseconds are specified with a separate component, seconds
+/// and milliseconds are combined and represented as a Decimal for the purposes
+/// of comparison.
 class DateTimeExpression extends OperatorExpression {
   final CqlExpression? day;
   final CqlExpression? hour;
@@ -136,4 +160,27 @@ class DateTimeExpression extends OperatorExpression {
 
   @override
   String get type => 'DateTime';
+
+  @override
+  FhirDateTime execute(Map<String, dynamic> context) {
+    final yearValue = year.execute(context);
+    final monthValue = month?.execute(context);
+    final dayValue = day?.execute(context);
+    final hourValue = hour?.execute(context);
+    final minuteValue = minute?.execute(context);
+    final secondValue = second?.execute(context);
+    final millisecondValue = millisecond?.execute(context);
+    final timezoneOffsetValue = timezoneOffset?.execute(context);
+
+    return FhirDateTime.fromUnits(
+      year: yearValue?.value,
+      month: monthValue?.value,
+      day: dayValue?.value,
+      hour: hourValue?.value,
+      minute: minuteValue?.value,
+      second: secondValue?.value,
+      millisecond: millisecondValue?.value,
+      timeZoneOffset: stringToTimeZoneOffset(timezoneOffsetValue),
+    );
+  }
 }
