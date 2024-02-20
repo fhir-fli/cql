@@ -14,6 +14,15 @@ class OperandRef extends CqlExpression {
     super.resultTypeSpecifier,
   });
 
+  factory OperandRef.fromRef(Ref ref) => OperandRef(
+        name: ref.name,
+        annotation: ref.annotation,
+        localId: ref.localId,
+        locator: ref.locator,
+        resultTypeName: ref.resultTypeName,
+        resultTypeSpecifier: ref.resultTypeSpecifier,
+      );
+
   factory OperandRef.fromJson(Map<String, dynamic> json) => OperandRef(
         name: json['name']!,
         annotation: json['annotation'] != null

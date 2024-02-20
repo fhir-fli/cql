@@ -8,9 +8,10 @@ import 'cql-to-elm/cql_to_elm.dart';
 const bool print = true;
 
 Future<void> main() async {
-  final dir = Directory('cql');
+  final dir = Directory('lib/cql/libraries');
   final files = await dir.list().toList();
   for (final file in files) {
+    log(file.path);
     final cqlFile = await File(file.path).readAsString();
 
     final parserAndErrors = parse(cqlFile);
@@ -26,16 +27,25 @@ Future<void> main() async {
           .toList();
       visitor.library.annotation ??= [];
       visitor.library.annotation!.addAll(errors);
-      var resultLibrary = visitor.result['library'];
-      (resultLibrary as Map<String, dynamic>).remove('annotation');
-      if (print) {
-        log(jsonEncode(visitor.result));
-      }
+      await File(file.path
+              .replaceAll('cql/libraries', 'cql/libraries_json')
+              .replaceAll('.cql', '2.json'))
+          .writeAsString(
+              jsonPrettyPrint({'library': visitor.library.toJson()}));
+      // var resultLibrary = visitor.result['library'];
+      // (resultLibrary as Map<String, dynamic>).remove('annotation');
+      // if (print) {
+      //   log(jsonEncode(visitor.result));
+      // }
 
-      log(visitor.library.execute().toString());
+      // log(visitor.library.execute().toString());
     } catch (e, s) {
       log(e.toString());
       log(s.toString());
+      await File(file.path
+              .replaceAll('cql/libraries', 'cql/libraries_json')
+              .replaceAll('.cql', '2.json'))
+          .writeAsString('$e: $s');
     }
   }
 }

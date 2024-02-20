@@ -39,7 +39,7 @@ class ParameterTypeSpecifier extends TypeSpecifierExpression {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
       'type': type,
-      'parameterName': parameterName.toString(),
+      'parameterName': parameterName.toJson(),
     };
 
     if (annotation != null) {

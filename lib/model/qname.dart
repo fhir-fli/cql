@@ -17,6 +17,12 @@ class QName {
         prefix: '',
       );
 
+  factory QName.fromDataType(String type) => QName(
+        namespaceURI: _isElmType(type) ? 'urn:hl7-org:elm-types:r1' : '',
+        localPart: type,
+        prefix: '',
+      );
+
   factory QName.fromFull(String? qNameAsString) {
     if (qNameAsString?.isEmpty ?? true) {
       throw ArgumentError('Cannot create QName from "null" or empty String');
@@ -27,13 +33,23 @@ class QName {
         throw ArgumentError(
             'Cannot create QName from "$qNameAsString", missing closing "}"');
       }
+      String namespaceURI =
+          qNameAsString.substring(beginningOfNamespaceURI, endOfNamespaceURI);
+      final String localPart = qNameAsString.substring(endOfNamespaceURI + 1);
+      if (namespaceURI.isEmpty) {
+        namespaceURI = _isElmType(localPart) ? 'urn:hl7-org:elm-types:r1' : '';
+      }
       return QName(
-          namespaceURI: qNameAsString.substring(1, endOfNamespaceURI),
-          localPart: qNameAsString.substring(endOfNamespaceURI + 1),
+          namespaceURI: namespaceURI,
+          localPart: localPart,
           prefix: qNameAsString.substring(0, beginningOfNamespaceURI));
     } else {
       return QName(
-          namespaceURI: qNameAsString, localPart: qNameAsString, prefix: '');
+          namespaceURI: _isElmType(qNameAsString)
+              ? 'urn:hl7-org:elm-types:r1'
+              : qNameAsString,
+          localPart: qNameAsString,
+          prefix: '');
     }
   }
 
@@ -94,4 +110,19 @@ class QName {
       }
     }
   }
+
+  static bool _isElmType(String? type) => [
+        'Quantity',
+        'Ratio',
+        'Integer',
+        'Decimal',
+        'Code',
+        'DateTime',
+        'Time',
+        'String',
+        'Boolean',
+        'Concept',
+        'Interval',
+        'ValueSet',
+      ].contains(type);
 }

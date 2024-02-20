@@ -47,8 +47,8 @@ class NamedTypeSpecifier extends TypeSpecifierExpression {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
+      'name': namespace.toJson(),
       'type': type,
-      'name': namespace.toString(),
     };
 
     if (modelName != null) {
