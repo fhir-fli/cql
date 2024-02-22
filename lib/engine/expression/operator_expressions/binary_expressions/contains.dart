@@ -6,7 +6,7 @@ import '../../../../cql.dart';
 /// If precision is specified and the point type is Date, DateTime, or Time, comparisons used in the operation are performed at the specified precision.
 /// If the first argument is null, the result is false. If the second argument is null, the result is null.
 class Contains extends BinaryExpression {
-  final DateTimePrecision? precision;
+  final CqlDateTimePrecision? precision;
 
   Contains({
     this.precision,
@@ -21,7 +21,7 @@ class Contains extends BinaryExpression {
   factory Contains.fromJson(Map<String, dynamic> json) => Contains(
         precision: json['precision'] == null
             ? null
-            : DateTimePrecisionExtension.fromJson(json['precision']),
+            : CqlDateTimePrecisionExtension.fromJson(json['precision']),
         operand: List<CqlExpression>.from(
           json['operand'].map(
             (x) => CqlExpression.fromJson(x),

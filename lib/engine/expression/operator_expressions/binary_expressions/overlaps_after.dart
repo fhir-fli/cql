@@ -6,7 +6,7 @@ import '../../../../cql.dart';
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class OverlapsAfter extends BinaryExpression {
-  final DateTimePrecision? precision;
+  final CqlDateTimePrecision? precision;
 
   OverlapsAfter({
     this.precision,
@@ -20,7 +20,7 @@ class OverlapsAfter extends BinaryExpression {
 
   factory OverlapsAfter.fromJson(Map<String, dynamic> json) => OverlapsAfter(
         precision: json['precision'] != null
-            ? DateTimePrecisionExtension.fromJson(json['precision'])
+            ? CqlDateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: List<CqlExpression>.from(
           json['operand'].map(

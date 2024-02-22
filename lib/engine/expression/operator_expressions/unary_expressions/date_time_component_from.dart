@@ -1,10 +1,47 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the specified component of the argument.
 /// If the argument is null, the result is null.
 /// The precision must be one of Year, Month, Day, Hour, Minute, Second, or Millisecond.
+/// Signature:
+///
+/// _precision_ from(argument Date) Integer
+/// _precision_ from(argument DateTime) Integer
+/// _precision_ from(argument Time) Integer
+/// timezoneoffset from(argument DateTime) Decimal
+/// date from(argument DateTime) Date
+/// time from(argument DateTime) Time
+/// Description:
+///
+/// The component-from operator returns the specified component of the argument.
+///
+/// For Date values, precision must be one of: year, month, or day.
+///
+/// For DateTime values, precision must be one of: year, month, day, hour,
+/// minute, second, or millisecond.
+///
+/// For Time values, precision must be one of: hour, minute, second, or millisecond.
+///
+/// Note specifically that due to variability in the way week numbers are
+/// determined, extraction of a week component is not supported.
+///
+/// When extracting the Date or Time from a DateTime value, implementations
+/// should normalize to the timezone offset of the evaluation request timestamp.
+///
+/// If the argument is null, or is not specified to the level of precision
+/// being extracted, the result is null.
+///
+/// The following examples illustrate the behavior of the component-from operator:
+///
+/// define "MonthFrom": month from DateTime(2012, 1, 1, 12, 30, 0, 0, -7) // 1
+/// define "TimeZoneOffsetFrom": timezoneoffset from DateTime(2012, 1, 1, 12, 30, 0, 0, -7) // -7.0
+/// define "DateFrom": date from DateTime(2012, 1, 1, 12, 30, 0, 0, -7) // @2012-01-01
+/// define "TimeFrom": time from DateTime(2012, 1, 1, 12, 30, 0, 0, -7) // @T12:30:00.000-07:00
+/// define "MonthFromIsNull": month from DateTime(2012)
 class DateTimeComponentFrom extends UnaryExpression {
-  final DateTimePrecision precision;
+  final CqlDateTimePrecision precision;
 
   DateTimeComponentFrom({
     required this.precision,
@@ -18,7 +55,7 @@ class DateTimeComponentFrom extends UnaryExpression {
 
   factory DateTimeComponentFrom.fromJson(Map<String, dynamic> json) =>
       DateTimeComponentFrom(
-        precision: DateTimePrecisionExtension.fromJson(json['precision']),
+        precision: CqlDateTimePrecisionExtension.fromJson(json['precision']),
         operand: CqlExpression.fromJson(json['operand']!),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
@@ -66,4 +103,82 @@ class DateTimeComponentFrom extends UnaryExpression {
 
   @override
   String get type => 'DateTimeComponentFrom';
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final operandValue = operand.execute(context);
+    if (operandValue is FhirDateTime) {
+      switch (precision) {
+        case CqlDateTimePrecision.year:
+          return operandValue.precision.hasYear
+              ? FhirInteger(operandValue.year)
+              : null;
+        case CqlDateTimePrecision.month:
+          return operandValue.precision.hasMonth
+              ? FhirInteger(operandValue.month)
+              : null;
+        case CqlDateTimePrecision.day:
+          return operandValue.precision.hasDay
+              ? FhirInteger(operandValue.day)
+              : null;
+        case CqlDateTimePrecision.hour:
+          return operandValue.precision.hasHours
+              ? FhirInteger(operandValue.hour)
+              : null;
+        case CqlDateTimePrecision.minute:
+          return operandValue.precision.hasMinutes
+              ? FhirInteger(operandValue.minute)
+              : null;
+        case CqlDateTimePrecision.second:
+          return operandValue.precision.hasSeconds
+              ? FhirInteger(operandValue.second)
+              : null;
+        case CqlDateTimePrecision.millisecond:
+          return operandValue.precision.hasMilliseconds
+              ? FhirInteger(operandValue.millisecond)
+              : null;
+        default:
+          return null;
+      }
+    } else if (operandValue is FhirDate) {
+      switch (precision) {
+        case CqlDateTimePrecision.year:
+          return operandValue.precision.hasYear
+              ? FhirInteger(operandValue.year)
+              : null;
+        case CqlDateTimePrecision.month:
+          return operandValue.precision.hasMonth
+              ? FhirInteger(operandValue.month)
+              : null;
+        case CqlDateTimePrecision.day:
+          return operandValue.precision.hasDay
+              ? FhirInteger(operandValue.day)
+              : null;
+        default:
+          return null;
+      }
+    } else if (operandValue is FhirTime) {
+      switch (precision) {
+        case CqlDateTimePrecision.hour:
+          return operandValue.hour != null
+              ? FhirInteger(operandValue.hour)
+              : null;
+        case CqlDateTimePrecision.minute:
+          return operandValue.minute != null
+              ? FhirInteger(operandValue.minute)
+              : null;
+        case CqlDateTimePrecision.second:
+          return operandValue.second != null
+              ? FhirInteger(operandValue.second)
+              : null;
+        case CqlDateTimePrecision.millisecond:
+          return operandValue.millisecond != null
+              ? FhirInteger(operandValue.millisecond)
+              : null;
+        default:
+          return null;
+      }
+    }
+    return null;
+  }
 }

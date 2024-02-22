@@ -82,7 +82,8 @@ void parseFile(BuildContext context) async {
           final resultsValue = results[key];
           final resultsJsonValue = resultsJson?[key];
           if (resultsValue != resultsJsonValue) {
-            log('$key: $resultsValue == $resultsJsonValue');
+            log('$key: $resultsValue (${resultsValue.runtimeType}) == '
+                '$resultsJsonValue (${resultsJsonValue.runtimeType})');
             areEqual = false;
           }
           // if (resultsValue is FhirTime) {

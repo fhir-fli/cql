@@ -6,7 +6,7 @@ import '../../../../cql.dart';
 /// For DateTime values, precision must be one of year, month, day, hour, minute, second, or millisecond.
 /// For Time values, precision must be one of hour, minute, second, or millisecond.
 class SameOrAfter extends BinaryExpression {
-  final DateTimePrecision? precision;
+  final CqlDateTimePrecision? precision;
 
   SameOrAfter({
     this.precision,
@@ -20,7 +20,7 @@ class SameOrAfter extends BinaryExpression {
 
   factory SameOrAfter.fromJson(Map<String, dynamic> json) => SameOrAfter(
         precision: json['precision'] != null
-            ? DateTimePrecisionExtension.fromJson(json['precision'])
+            ? CqlDateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: List<CqlExpression>.from(
           json['operand'].map(

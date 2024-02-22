@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 /// Enum to specify the units of precision available for temporal operations.
-enum DateTimePrecision {
+enum CqlDateTimePrecision {
   @JsonValue('Year')
   year,
   @JsonValue('Month')
@@ -20,32 +20,32 @@ enum DateTimePrecision {
   millisecond,
 }
 
-extension DateTimePrecisionExtension on DateTimePrecision {
+extension CqlDateTimePrecisionExtension on CqlDateTimePrecision {
   static const _jsonValues = {
-    DateTimePrecision.year: 'Year',
-    DateTimePrecision.month: 'Month',
-    DateTimePrecision.week: 'Week',
-    DateTimePrecision.day: 'Day',
-    DateTimePrecision.hour: 'Hour',
-    DateTimePrecision.minute: 'Minute',
-    DateTimePrecision.second: 'Second',
-    DateTimePrecision.millisecond: 'Millisecond',
+    CqlDateTimePrecision.year: 'Year',
+    CqlDateTimePrecision.month: 'Month',
+    CqlDateTimePrecision.week: 'Week',
+    CqlDateTimePrecision.day: 'Day',
+    CqlDateTimePrecision.hour: 'Hour',
+    CqlDateTimePrecision.minute: 'Minute',
+    CqlDateTimePrecision.second: 'Second',
+    CqlDateTimePrecision.millisecond: 'Millisecond',
   };
 
   static const _jsonValuesReversed = {
-    'year': DateTimePrecision.year,
-    'month': DateTimePrecision.month,
-    'week': DateTimePrecision.week,
-    'day': DateTimePrecision.day,
-    'hour': DateTimePrecision.hour,
-    'minute': DateTimePrecision.minute,
-    'second': DateTimePrecision.second,
-    'millisecond': DateTimePrecision.millisecond,
+    'year': CqlDateTimePrecision.year,
+    'month': CqlDateTimePrecision.month,
+    'week': CqlDateTimePrecision.week,
+    'day': CqlDateTimePrecision.day,
+    'hour': CqlDateTimePrecision.hour,
+    'minute': CqlDateTimePrecision.minute,
+    'second': CqlDateTimePrecision.second,
+    'millisecond': CqlDateTimePrecision.millisecond,
   };
 
-  static DateTimePrecision fromJson(String? json) => json == null
-      ? DateTimePrecision.year
-      : _jsonValuesReversed[json.toLowerCase()] ?? DateTimePrecision.year;
+  static CqlDateTimePrecision fromJson(String? json) => json == null
+      ? CqlDateTimePrecision.year
+      : _jsonValuesReversed[json.toLowerCase()] ?? CqlDateTimePrecision.year;
 
   String toJson() => _jsonValues[this]!;
 }

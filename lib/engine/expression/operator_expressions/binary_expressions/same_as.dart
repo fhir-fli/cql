@@ -8,7 +8,7 @@ import '../../../../cql.dart';
 /// If no precision is specified, the comparison is performed beginning with years (or hours for time values) and proceeding to the finest precision specified in either input.
 /// If either argument is null, the result is null.
 class SameAs extends BinaryExpression {
-  final DateTimePrecision? precision;
+  final CqlDateTimePrecision? precision;
 
   SameAs({
     this.precision,
@@ -22,7 +22,7 @@ class SameAs extends BinaryExpression {
 
   factory SameAs.fromJson(Map<String, dynamic> json) => SameAs(
         precision: json['precision'] != null
-            ? DateTimePrecisionExtension.fromJson(json['precision'])
+            ? CqlDateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: List<CqlExpression>.from(
           json['operand'].map(

@@ -6,7 +6,7 @@ import '../../../../cql.dart';
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class Ends extends BinaryExpression {
-  final DateTimePrecision? precision;
+  final CqlDateTimePrecision? precision;
 
   Ends({
     this.precision,
@@ -21,7 +21,7 @@ class Ends extends BinaryExpression {
 
   factory Ends.fromJson(Map<String, dynamic> json) => Ends(
         precision: json['precision'] != null
-            ? DateTimePrecisionExtension.fromJson(json['precision'])
+            ? CqlDateTimePrecisionExtension.fromJson(json['precision'])
             : null,
         operand: json['operand'] != null
             ? json['operand'] is List

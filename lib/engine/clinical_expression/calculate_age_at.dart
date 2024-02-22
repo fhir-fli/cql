@@ -14,7 +14,7 @@ import '../../cql.dart';
 /// For the DateTime overload, the result is the number of whole calendar periods
 /// that have elapsed between the first datetime and the second datetime.
 class CalculateAgeAt extends BinaryExpression {
-  final DateTimePrecision precision;
+  final CqlDateTimePrecision precision;
 
   CalculateAgeAt({
     required this.precision,
@@ -27,7 +27,7 @@ class CalculateAgeAt extends BinaryExpression {
   });
 
   factory CalculateAgeAt.fromJson(Map<String, dynamic> json) => CalculateAgeAt(
-        precision: DateTimePrecisionExtension.fromJson(json['precision']),
+        precision: CqlDateTimePrecisionExtension.fromJson(json['precision']),
         operand: List<CqlExpression>.from(
           json['operand'].map((x) => CqlExpression.fromJson(x)),
         ),

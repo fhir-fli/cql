@@ -70,6 +70,7 @@ class TimeOfDay extends OperatorExpression {
   @override
   FhirTime execute(Map<String, dynamic> context) {
     final startTimestamp = context['startTimestamp'] as FhirDateTime;
-    return FhirTime(startTimestamp.toIso8601String().substring(11, 19));
+    print(startTimestamp.toIso8601String());
+    return FhirTime(startTimestamp.toIso8601String().substring(11, 23));
   }
 }

@@ -469,7 +469,15 @@ class LiteralRatio extends LiteralType {
 class LiteralString extends LiteralType {
   final String value;
 
-  LiteralString({required this.value});
+  LiteralString({required String value})
+      : value = value
+            .replaceAll(r'\n', '\n')
+            .replaceAll(r'\t', '\t')
+            .replaceAll(r'\b', '\b')
+            .replaceAll(r'\r', '\r')
+            .replaceAll(r'\\', '\\')
+            .replaceAll(r"\'", "'")
+            .replaceAll(r'\"', '"');
 
   factory LiteralString.fromJson(dynamic json) {
     if (json is String) {

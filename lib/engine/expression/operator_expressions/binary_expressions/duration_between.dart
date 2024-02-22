@@ -5,7 +5,7 @@ import '../../../../cql.dart';
 /// The result of this operation is always an integer; any fractional periods are dropped.
 /// If either argument is null, the result is null.
 class DurationBetween extends BinaryExpression {
-  final DateTimePrecision precision;
+  final CqlDateTimePrecision precision;
 
   DurationBetween({
     required this.precision,
@@ -19,7 +19,7 @@ class DurationBetween extends BinaryExpression {
 
   factory DurationBetween.fromJson(Map<String, dynamic> json) =>
       DurationBetween(
-        precision: DateTimePrecisionExtension.fromJson(json['precision']),
+        precision: CqlDateTimePrecisionExtension.fromJson(json['precision']),
         operand: List<CqlExpression>.from(
           json['operand'].map(
             (x) => CqlExpression.fromJson(x),

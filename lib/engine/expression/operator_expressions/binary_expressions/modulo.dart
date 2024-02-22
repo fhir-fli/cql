@@ -1,3 +1,6 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to compute the remainder of the division of its arguments.
@@ -105,20 +108,58 @@ class Modulo extends BinaryExpression {
 
     if (left == null || right == null) {
       return null;
+    } else {
+      switch (left) {
+        case FhirInteger _:
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirInteger(left.value! % right.value!);
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(double.parse((UcumDecimal.fromInt(left.value!)
+                    .modulo(UcumDecimal.fromDouble(right.value!)))
+                .asUcumDecimal()));
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirInteger64(
+                BigInt.from(left.value as int) % (right.value as BigInt));
+          }
+          break;
+        case FhirInteger64 _:
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirInteger64(left.value! % BigInt.from(right.value as int));
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirInteger64(left.value! % right.value!);
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(double.parse((UcumDecimal.fromBigInt(left.value!)
+                    .modulo(UcumDecimal.fromDouble(right.value!)))
+                .asUcumDecimal()));
+          }
+          break;
+        case FhirDecimal _:
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirDecimal(double.parse((UcumDecimal.fromDouble(left.value!)
+                    .modulo(UcumDecimal.fromInt(right.value!)))
+                .asUcumDecimal()));
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirDecimal(double.parse((UcumDecimal.fromDouble(left.value!)
+                    .modulo(UcumDecimal.fromBigInt(right.value!)))
+                .asUcumDecimal()));
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(double.parse((UcumDecimal.fromDouble(left.value!)
+                    .modulo(UcumDecimal.fromDouble(right.value!)))
+                .asUcumDecimal()));
+          } else if (right is ValidatedQuantity) {
+            return ValidatedQuantity.fromNumber(left.value!) % right;
+          }
+          break;
+        case ValidatedQuantity _:
+          if (right is FhirDecimal && left.isValid() && right.isValid) {
+            return left % ValidatedQuantity.fromNumber(right.value!);
+          } else if (right is ValidatedQuantity) {
+            return left % right;
+          }
+          break;
+      }
     }
 
-    if (left is int && right is int) {
-      return left % right;
-    }
-
-    if (left is double && right is double) {
-      return left % right;
-    }
-
-    if (left is Quantity && right is Quantity) {
-      // return left % right;
-    }
-
-    throw ArgumentError('Invalid arguments for modulo: $left, $right');
+    throw ArgumentError('Invalid arguments for multiply operation');
   }
 }

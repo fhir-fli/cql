@@ -5,7 +5,7 @@ import '../../../../cql.dart';
 /// Because this operation is only counting boundaries crossed, the result is always an integer.
 /// If either argument is null, the result is null.
 class DifferenceBetween extends BinaryExpression {
-  final DateTimePrecision precision;
+  final CqlDateTimePrecision precision;
 
   DifferenceBetween({
     required this.precision,
@@ -19,7 +19,7 @@ class DifferenceBetween extends BinaryExpression {
 
   factory DifferenceBetween.fromJson(Map<String, dynamic> json) =>
       DifferenceBetween(
-        precision: DateTimePrecisionExtension.fromJson(json['precision']),
+        precision: CqlDateTimePrecisionExtension.fromJson(json['precision']),
         operand: List<CqlExpression>.from(
           json['operand'].map(
             (x) => CqlExpression.fromJson(x),
