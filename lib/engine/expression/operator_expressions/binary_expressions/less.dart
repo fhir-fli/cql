@@ -139,8 +139,6 @@ class Less extends BinaryExpression {
     if (left == null || right == null) {
       return null;
     }
-    print(left);
-    print(right);
     if (left is FhirInteger && right is FhirInteger) {
       return FhirBoolean(left < right);
     } else if (left is FhirDecimal && right is FhirDecimal) {

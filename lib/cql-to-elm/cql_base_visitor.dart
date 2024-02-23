@@ -831,7 +831,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   ///	| 'timezoneoffset';
   @override
   String visitDateTimeComponent(DateTimeComponentContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
@@ -2777,8 +2777,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// dateTimeComponent 'from' expressionTerm
   @override
-  dynamic visitTimeUnitExpressionTerm(TimeUnitExpressionTermContext ctx) {
-    printIf(ctx, true);
+  CqlExpression visitTimeUnitExpressionTerm(TimeUnitExpressionTermContext ctx) {
+    printIf(ctx);
     final int thisNode = getNextNode();
     final String unit =
         visitDateTimeComponent(ctx.children![0] as DateTimeComponentContext);
@@ -2790,16 +2790,29 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         return TimeFrom(operand: expression);
       case 'timezoneoffset':
         return TimezoneOffsetFrom(operand: expression);
+      case 'year':
+        return DateTimeComponentFrom(
+            operand: expression, precision: CqlDateTimePrecision.year);
+      case 'month':
+        return DateTimeComponentFrom(
+            operand: expression, precision: CqlDateTimePrecision.month);
+      case 'day':
+        return DateTimeComponentFrom(
+            operand: expression, precision: CqlDateTimePrecision.day);
+      case 'hour':
+        return DateTimeComponentFrom(
+            operand: expression, precision: CqlDateTimePrecision.hour);
+      case 'minute':
+        return DateTimeComponentFrom(
+            operand: expression, precision: CqlDateTimePrecision.minute);
+      case 'second':
+        return DateTimeComponentFrom(
+            operand: expression, precision: CqlDateTimePrecision.second);
+      case 'millisecond':
+        return DateTimeComponentFrom(
+            operand: expression, precision: CqlDateTimePrecision.millisecond);
     }
-
-    ///	'year'
-    ///	| 'month'
-    ///	| 'week'
-    ///	| 'day'
-    ///	| 'hour'
-    ///	| 'minute'
-    ///	| 'second'
-    ///	| 'millisecond';
+    throw ArgumentError('$thisNode Invalid TimeUnitExpressionTerm');
   }
 
   /// expression intervalOperatorPhrase expression # timingExpression
