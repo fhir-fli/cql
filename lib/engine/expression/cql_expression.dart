@@ -826,8 +826,13 @@ class CqlExpression extends Element {
         return StartsWith(operand: operand);
       case 'StdDev':
         return StdDev(source: operand.first);
-      // case 'Substring':
-      //   return Substring(operand: operand);
+      case 'Substring':
+        {
+          if (operand.length == 2) {
+            return Substring(
+                stringToSub: operand.first, startIndex: operand.last);
+          }
+        }
       case 'SubsumedBy':
         return SubsumedBy(operand: operand);
       case 'Subsumes':

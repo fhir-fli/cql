@@ -277,9 +277,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
-    LiteralQuantity? quantityOffset;
+    CqlExpression? quantityOffset;
     String? temporalRelationship;
-    CqlDateTimePrecision? dateTimePrecisionSpecifier;
+    CqlDateTimePrecision? dateTimePrecision;
     String? startEnd;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
@@ -294,72 +294,47 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         quantityOffset = visitQuantityOffset(child);
       } else if (child is TemporalRelationshipContext) {
         temporalRelationship = visitTemporalRelationship(child);
-      } else if (child is DateTimePrecisionSpecifierContext) {
-        dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
+      } else if (child is DateTimePrecisionContext) {
+        dateTimePrecision = CqlDateTimePrecisionExtension.fromJson(
+            visitDateTimePrecision(child));
       }
     }
-
-    if (temporalRelationship != null) {
-      final before = temporalRelationship.contains('before');
-      final after = temporalRelationship.contains('after');
-      final leftOperand = startsEndsOccurs != null && left != null
-          ? (startsEndsOccurs == 'starts'
-              ? Start(operand: left)
-              : (startsEndsOccurs == 'ends' ? End(operand: left) : null))
-          : null;
-      final rightOperand = before
-          ? Subtract(operand: [
-              if (right != null) right,
-              if (quantityOffset != null) Literal.fromType(quantityOffset)
-            ])
-          : after
-              ? Add(operand: [
-                  if (right != null) right,
-                  if (quantityOffset != null) Literal.fromType(quantityOffset)
-                ])
-              : null;
-      final same = temporalRelationship.contains('on or') ||
-              temporalRelationship.contains('or on')
-          // TODO(Dokotela): come back and fix this
-          // ||
-          // (quantityOffset?.offset?.contains('more') ?? false
-          // )
-          ;
-      if (before) {
+    if (startsEndsOccurs != null) {
+      final start = startEnd == 'start';
+      final end = startEnd == 'end';
+      final same = startsEndsOccurs.contains('same');
+      if (start) {
         if (same) {
-          return SameOrBefore(
-            operand: [
-              if (leftOperand != null) leftOperand,
-              if (rightOperand != null) rightOperand,
-            ],
-            precision: dateTimePrecisionSpecifier,
+          return SameAs(
+            precision: dateTimePrecision,
+            operand: [],
           );
         } else {
-          return Before(
-            operand: [
-              if (leftOperand != null) leftOperand,
-              if (rightOperand != null) rightOperand,
-            ],
-            precision: dateTimePrecisionSpecifier,
+          return Starts(
+            precision: dateTimePrecision,
+            operand: [],
           );
         }
-      } else if (after) {
+      } else if (end) {
         if (same) {
-          return SameOrAfter(
-            operand: [
-              if (leftOperand != null) leftOperand,
-              if (rightOperand != null) rightOperand,
-            ],
-            precision: dateTimePrecisionSpecifier,
+          return SameAs(
+            precision: dateTimePrecision,
+            operand: [],
           );
         } else {
-          return After(
-            operand: [
-              if (leftOperand != null) leftOperand,
-              if (rightOperand != null) rightOperand,
-            ],
-            precision: dateTimePrecisionSpecifier,
+          return Ends(
+            precision: dateTimePrecision,
+            operand: [],
           );
+        }
+      }
+    }
+    if (temporalRelationship != null) {
+      if (left != null && right != null) {
+        if (temporalRelationship == 'before') {
+          return Before(operand: [left, right]);
+        } else if (temporalRelationship == 'after') {
+          return After(operand: [left, right]);
         }
       }
     }
@@ -487,24 +462,30 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   Case visitCaseExpressionTerm(CaseExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    bool orElse = false;
     CqlExpression? comparand;
     List<CaseItem> caseItem = [];
     CqlExpression? elseExpr;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ExpressionContext) {
-        if (comparand == null) {
-          comparand = byContext(child);
-        } else {
-          elseExpr = byContext(child);
-        }
-      } else if (child is CaseExpressionItemContext) {
+      if (child is CaseExpressionItemContext) {
         caseItem.add(visitCaseExpressionItem(child));
+      } else if (child is ExpressionContext) {
+        if (orElse) {
+          elseExpr = byContext(child);
+        } else {
+          comparand = byContext(child);
+        }
+      } else if (child is TerminalNodeImpl) {
+        if (child.text == 'else') {
+          orElse = true;
+        }
       }
     }
     if (caseItem.isNotEmpty && elseExpr != null) {
       return Case(comparand: comparand, caseItem: caseItem, elseExpr: elseExpr);
+    } else {
+      throw ArgumentError('$thisNode Invalid CaseExpressionTerm');
     }
-    throw ArgumentError('$thisNode Invalid CaseExpressionTerm');
   }
 
   /// | 'cast' expression 'as' typeSpecifier # castExpression
@@ -834,11 +815,74 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// | 'as'
   /// ) ('start' | 'end')?
   @override
-  dynamic visitConcurrentWithIntervalOperatorPhrase(
+  CqlExpression visitConcurrentWithIntervalOperatorPhrase(
       ConcurrentWithIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    String? startsEndsOccurs;
+    CqlDateTimePrecision? dateTimePrecision;
+    String? relativeQualifier;
+    String? as_;
+    String? startEnd;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        if (child.text == 'starts' ||
+            child.text == 'ends' ||
+            child.text == 'occurs') {
+          startsEndsOccurs = child.text;
+        } else if (child.text == 'start' || child.text == 'end') {
+          startEnd = child.text;
+        } else if (child.text == 'as') {
+          as_ = child.text;
+        } else if (child.text == 'same') {
+          relativeQualifier = child.text;
+        }
+      } else if (child is DateTimePrecisionContext) {
+        dateTimePrecision = CqlDateTimePrecisionExtension.fromJson(
+            visitDateTimePrecision(child));
+      }
+    }
+    // print('startsEndsOccurs: $startsEndsOccurs');
+    // print('relativeQualifier: $relativeQualifier');
+    // print('as_: $as_');
+    // print('startEnd: $startEnd');
+    if (relativeQualifier != null) {
+      final start = startEnd == 'start';
+      final end = startEnd == 'end';
+      final same = relativeQualifier.contains('same');
+      if (start) {
+        if (same) {
+          return SameAs(
+            precision: dateTimePrecision,
+            operand: [],
+          );
+        } else {
+          return Starts(
+            precision: dateTimePrecision,
+            operand: [],
+          );
+        }
+      } else if (end) {
+        if (same) {
+          return SameAs(
+            precision: dateTimePrecision,
+            operand: [],
+          );
+        } else {
+          return Ends(
+            precision: dateTimePrecision,
+            operand: [],
+          );
+        }
+      } else if (same) {
+        return SameAs(
+          precision: dateTimePrecision,
+          operand: [],
+        );
+      }
+    }
+    throw ArgumentError(
+        '$thisNode Invalid ConcurrentWithIntervalOperatorPhrase');
   }
 
   /// contextDefinition: 'context' (modelIdentifier '.')? identifier;
@@ -1048,14 +1092,18 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid ElementExtractorExpressionTerm');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'ends' dateTimePrecisionSpecifier?
   @override
-  dynamic visitEndsIntervalOperatorPhrase(
-      EndsIntervalOperatorPhraseContext ctx) {
+  Ends visitEndsIntervalOperatorPhrase(EndsIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    CqlDateTimePrecision? dateTimePrecision;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is DateTimePrecisionSpecifierContext) {
+        dateTimePrecision = visitDateTimePrecisionSpecifier(child);
+      }
+    }
+    return Ends(precision: dateTimePrecision, operand: []);
   }
 
   /// expression ('=' | '!=' | '~' | '!~') expression
@@ -1414,7 +1462,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
-    bool? properly;
+    String? properly;
     String? duringIncludedIn;
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -1424,7 +1472,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             child.text == 'occurs') {
           startsEndsOccurs = child.text;
         } else if (child.text == 'properly') {
-          properly = true;
+          properly = child.text;
         } else if (child.text == 'during' || child.text == 'included in') {
           duringIncludedIn = child.text;
         }
@@ -1432,18 +1480,54 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
       }
     }
-
-    return IncludedIn(operand: []);
+    if (duringIncludedIn != null) {
+      return IncludedIn(
+        precision: dateTimePrecisionSpecifier,
+        operand: [],
+      );
+    }
+    throw ArgumentError('$thisNode Invalid IncludedInIntervalOperatorPhrase');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'properly'? 'includes' dateTimePrecisionSpecifier? (
+  ///	'start'
+  ///	| 'end'
+  /// )?
   @override
-  dynamic visitIncludesIntervalOperatorPhrase(
+  CqlExpression visitIncludesIntervalOperatorPhrase(
       IncludesIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    String? properly;
+    CqlDateTimePrecision? dateTimePrecisionSpecifier;
+    String? startEnd;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        if (child.text == 'properly') {
+          properly = child.text;
+        } else if (child.text == 'start' || child.text == 'end') {
+          startEnd = child.text;
+        }
+      } else if (child is DateTimePrecisionSpecifierContext) {
+        dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
+      }
+    }
+    if (startEnd != null) {
+      final start = startEnd == 'start';
+      final end = startEnd == 'end';
+      if (start) {
+        return Starts(
+          precision: dateTimePrecisionSpecifier,
+          operand: [],
+        );
+      } else if (end) {
+        return Ends(
+          precision: dateTimePrecisionSpecifier,
+          operand: [],
+        );
+      }
+    }
+    throw ArgumentError('$thisNode Invalid IncludesIntervalOperatorPhrase');
   }
 
   /// The default implementation returns the result of calling
@@ -1682,6 +1766,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
+      // print('$thisNode invocation: ${child.runtimeType} ${child.text}');
       if (child is MemberInvocationContext) {
         return visitMemberInvocation(child);
       } else if (child is FunctionInvocationContext) {
@@ -1875,27 +1960,39 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return LiteralLong(value: BigInt.parse(ctx.text));
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'meets' ('before' | 'after')? dateTimePrecisionSpecifier?
   @override
   dynamic visitMeetsIntervalOperatorPhrase(
       MeetsIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    String? beforeAfter;
+    CqlDateTimePrecision? dateTimePrecisionSpecifier;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        if (child.text == 'before' || child.text == 'after') {
+          beforeAfter = child.text;
+        }
+      } else if (child is DateTimePrecisionSpecifierContext) {
+        dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
+      }
+    }
+    if (beforeAfter != null) {
+      return Meets(
+        precision: dateTimePrecisionSpecifier,
+        operand: [],
+      );
+    }
+    throw ArgumentError('$thisNode Invalid MeetsIntervalOperatorPhrase');
   }
 
   /// referentialIdentifier	# memberInvocation
   @override
-  String visitMemberInvocation(MemberInvocationContext ctx) {
+  Ref visitMemberInvocation(MemberInvocationContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    for (final child in ctx.children ?? <ParseTree>[]) {
-      if (child is ReferentialIdentifierContext) {
-        return visitReferentialIdentifier(child);
-      }
-    }
-    throw ArgumentError('$thisNode Invalid MemberInvocation');
+    print(ctx.text);
+    return returnRef(_noQuoteString(ctx.text), null);
   }
 
   /// expression ('in' | 'contains') dateTimePrecisionSpecifier? expression
@@ -2330,30 +2427,28 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// 'overlaps' ('before' | 'after')? dateTimePrecisionSpecifier?
   @override
-  dynamic visitOverlapsIntervalOperatorPhrase(
+  CqlExpression visitOverlapsIntervalOperatorPhrase(
       OverlapsIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    bool? before;
+    String? beforeAfter;
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
-        before = child.text == 'before'
-            ? true
-            : child.text == 'after'
-                ? false
-                : null;
+        if (child.text == 'before' || child.text == 'after') {
+          beforeAfter = child.text;
+        }
       } else if (child is DateTimePrecisionSpecifierContext) {
         dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
       }
     }
-    if (before == null) {
-      return Overlaps(operand: [], precision: dateTimePrecisionSpecifier);
-    } else if (before) {
-      return OverlapsBefore(operand: [], precision: dateTimePrecisionSpecifier);
-    } else {
-      return OverlapsAfter(operand: [], precision: dateTimePrecisionSpecifier);
+    if (beforeAfter != null) {
+      return Overlaps(
+        precision: dateTimePrecisionSpecifier,
+        operand: [],
+      );
     }
+    throw ArgumentError('$thisNode Invalid OverlapsIntervalOperatorPhrase');
   }
 
   /// The default implementation returns the result of calling
@@ -3096,14 +3191,19 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'starts' dateTimePrecisionSpecifier?
   @override
-  dynamic visitStartsIntervalOperatorPhrase(
+  Starts visitStartsIntervalOperatorPhrase(
       StartsIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    CqlDateTimePrecision? dateTimePrecisionSpecifier;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is DateTimePrecisionSpecifierContext) {
+        dateTimePrecisionSpecifier = visitDateTimePrecisionSpecifier(child);
+      }
+    }
+    return Starts(precision: dateTimePrecisionSpecifier, operand: []);
   }
 
   /// statement:
@@ -3169,7 +3269,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('child: ${child.runtimeType} ${child.text}');
+      // print('termExpressioncontext: ${child.runtimeType} ${child.text}');
       if (child is! TerminalNodeImpl) {
         return byContext(child);
       }
@@ -3193,6 +3293,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
+      // print('$thisNode termExpressionTerm: ${child.runtimeType} ${child.text}');
       return byContext(child);
     }
     throw ArgumentError('$thisNode Invalid TermExpressionTerm');
@@ -3305,33 +3406,37 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           visitTermExpression(ctx.children![2] as TermExpressionContext);
       CqlExpression? result;
       final intervalOperatorPhrase = ctx.children![1];
-      if (intervalOperatorPhrase
-          is ConcurrentWithIntervalOperatorPhraseContext) {
-        result =
-            visitConcurrentWithIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is IncludesIntervalOperatorPhraseContext) {
-        result = visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is IncludedInIntervalOperatorPhraseContext) {
-        result = visitIncludedInIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is BeforeOrAfterIntervalOperatorPhraseContext) {
-        return visitBeforeOrAfterIntervalOperatorPhrase(
-            intervalOperatorPhrase, left, right);
-      } else if (intervalOperatorPhrase
-          is WithinIntervalOperatorPhraseContext) {
-        result = visitWithinIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase is MeetsIntervalOperatorPhraseContext) {
-        result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is OverlapsIntervalOperatorPhraseContext) {
-        result = visitOverlapsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase
-          is StartsIntervalOperatorPhraseContext) {
-        result = visitStartsIntervalOperatorPhrase(intervalOperatorPhrase);
-      } else if (intervalOperatorPhrase is EndsIntervalOperatorPhraseContext) {
-        result = visitEndsIntervalOperatorPhrase(intervalOperatorPhrase);
+      switch (intervalOperatorPhrase) {
+        case ConcurrentWithIntervalOperatorPhraseContext _:
+          result =
+              visitConcurrentWithIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
+        case IncludesIntervalOperatorPhraseContext _:
+          result = visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
+        case IncludedInIntervalOperatorPhraseContext _:
+          result =
+              visitIncludedInIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
+        case BeforeOrAfterIntervalOperatorPhraseContext _:
+          result = visitBeforeOrAfterIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
+          break;
+        case WithinIntervalOperatorPhraseContext _:
+          result = visitWithinIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
+        case MeetsIntervalOperatorPhraseContext _:
+          result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
+        case OverlapsIntervalOperatorPhraseContext _:
+          result = visitOverlapsIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
+        case StartsIntervalOperatorPhraseContext _:
+          result = visitStartsIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
+        case EndsIntervalOperatorPhraseContext _:
+          result = visitEndsIntervalOperatorPhrase(intervalOperatorPhrase);
+          break;
       }
       if (result is BinaryExpression) {
         result.operand.add(left);
@@ -3634,14 +3739,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid WithClause');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// ('starts' | 'ends' | 'occurs')? 'properly'? 'within' quantity 'of' (
+  ///	'start'
+  ///	| 'end'
+  /// )?
   @override
-  dynamic visitWithinIntervalOperatorPhrase(
+  CqlExpression visitWithinIntervalOperatorPhrase(
       WithinIntervalOperatorPhraseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    final CqlExpression quantity = byContext(ctx.children![2]);
+    final String? startOrEnd = ctx.children!.length == 6
+        ? _noQuoteString(ctx.children![5].text!)
+        : null;
+    if (ctx.children![0].text == 'starts') {
+      return Contains(operand: [quantity]);
+    } else if (ctx.children![0].text == 'ends') {
+      return Contains(operand: [quantity]);
+    } else if (ctx.children![0].text == 'occurs') {
+      return Contains(operand: [quantity]);
+    }
+    throw ArgumentError('$thisNode Invalid WithinIntervalOperatorPhrase');
   }
 
   /// The default implementation returns the result of calling
@@ -4067,6 +4185,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     int? conceptIndex;
     int? parameterIndex;
     int? expressionIndex;
+    print('NAME: $name');
 
     codeSystemIndex =
         library.codeSystems?.def.indexWhere((element) => element.name == name);
