@@ -1,9 +1,43 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to perform integer division of its arguments.
 /// If either argument is null, the result is null.
-/// If the result of the operation cannot be represented, or the right argument is 0, the result is null.
+/// If the result of the operation cannot be represented, or the right argument
+/// is 0, the result is null.
 /// The TruncatedDivide operator is defined for the Integer and Decimal types.
+/// Signature:
+///
+/// div(left Integer, right Integer) Integer
+/// div(left Decimal, right Decimal) Decimal
+/// div(left Long, right Long) Long
+/// div(left Quantity, right Quantity) Quantity
+/// The Long type is a new feature being introduced in CQL 1.5, and has trial-use status. The Quantity overload for this operator is a new feature being introduced in CQL 1.5, and has trial-use status.
+///
+/// Description:
+///
+/// The div operator performs truncated division of its arguments.
+///
+/// When invoked with mixed Integer and Decimal or Long arguments, the Integer argument will be implicitly converted to Decimal or Long.
+///
+/// When invoked with mixed Long and Decimal arguments, the Long argument will be implicitly converted to Decimal
+///
+/// When invoked with mixed Integer or Decimal and Quantity arguments, the Integer or Decimal argument will be implicitly converted to Quantity.
+///
+/// For division operations involving quantities, the resulting quantity will have the appropriate unit.
+///
+/// If either argument is null, the result is null.
+///
+/// If the result of the operation cannot be represented, or the right argument is 0, the result is null.
+///
+/// The following examples illustrate the behavior of the div operator:
+///
+/// define "IntegerTruncatedDivide": 4 div 2 // 2
+/// define "LongTruncatedDivide": 4L div 2L // 2L
+/// define "DecimalTruncatedDivide": 4.14 div 2.06 // 2
+/// define "TruncatedDivideIsNull": 3 div null
 class TruncatedDivide extends BinaryExpression {
   TruncatedDivide({
     required super.operand,
@@ -59,4 +93,67 @@ class TruncatedDivide extends BinaryExpression {
 
   @override
   String get type => 'TruncatedDivide';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+
+    if (left == null || right == null) {
+      return null;
+    }
+
+    switch (left) {
+      case FhirInteger _:
+        {
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirInteger(left.value! ~/ right.value!);
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirInteger64(BigInt.from(left.value!) ~/ right.value!);
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! ~/ right.value!);
+          }
+        }
+        break;
+      case FhirInteger64 _:
+        {
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirInteger64(left.value! ~/ BigInt.from(right.value!));
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirInteger64(left.value! ~/ right.value!);
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(left.value!.toDouble() ~/ right.value!);
+          }
+        }
+        break;
+      case FhirDecimal _:
+        {
+          if (right is FhirInteger && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! ~/ right.value!);
+          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! ~/ right.value!.toDouble());
+          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+            return FhirDecimal(left.value! ~/ right.value!);
+          } else if (right is ValidatedQuantity &&
+              left.isValid &&
+              right.isValid()) {
+            return ValidatedQuantity.fromNumber(left.value!) ~/ right;
+          }
+        }
+        break;
+      case ValidatedQuantity _:
+        {
+          if (right is FhirDecimal && left.isValid() && right.isValid) {
+            return left ~/ ValidatedQuantity.fromNumber(right.value!);
+          } else if (right is ValidatedQuantity &&
+              left.isValid() &&
+              right.isValid()) {
+            return left ~/ right;
+          }
+        }
+        break;
+    }
+
+    throw ArgumentError('Invalid arguments for divide operation');
+  }
 }

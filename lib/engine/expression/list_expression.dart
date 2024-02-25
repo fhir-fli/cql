@@ -62,4 +62,9 @@ class ListExpression extends CqlExpression {
 
   @override
   String get type => 'List';
+
+  @override
+  List execute(Map<String, dynamic> context) {
+    return element!.map((e) => e.execute(context)).toList();
+  }
 }

@@ -54,4 +54,13 @@ class Tuple extends CqlExpression {
 
   @override
   String get type => 'Tuple';
+
+  @override
+  Map<String, dynamic> execute(Map<String, dynamic> context) {
+    final Map<String, dynamic> result = {};
+    for (final e in element!) {
+      result[e.name] = e.value.execute(context);
+    }
+    return result;
+  }
 }

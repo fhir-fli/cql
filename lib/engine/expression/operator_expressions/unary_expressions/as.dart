@@ -12,6 +12,8 @@ class As extends UnaryExpression {
   bool strict = false;
 
   As({
+    this.asType,
+    this.asTypeSpecifier,
     required super.operand,
     super.annotation,
     super.localId,
@@ -41,34 +43,25 @@ class As extends UnaryExpression {
             json['asType'] == null ? null : QName.fromFull(json['asType'])
         ..strict = json['strict'] ?? false;
 
-  //     if (asType != null) 'asType': asType!.toJson(),
-  //     'type': type,
-  //     'operand': operand.toJson(),
-  //     if (asTypeSpecifier != null) 'asTypeSpecifier': asTypeSpecifier!.toJson(),
-  //   };
-  // }
-
   @override
   String get type => 'As';
 
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
+      if (asType != null) 'asType': asType!.toJson(),
       'type': type,
       'operand': operand.toJson(),
     };
-    if (operand is! NullExpression && operand is! Property) {
+    if (operand is! NullExpression &&
+        operand is! Property &&
+        operand is! LiteralNull) {
       data['strict'] = strict;
-    }
-    if (asType != null) {
-      data['asType'] = asType!.toJson();
     }
 
     if (asTypeSpecifier != null) {
       data['asTypeSpecifier'] = asTypeSpecifier!.toJson();
     }
-
-    data['strict'] = strict;
 
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();

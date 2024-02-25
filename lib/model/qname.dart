@@ -33,8 +33,8 @@ class QName {
         throw ArgumentError(
             'Cannot create QName from "$qNameAsString", missing closing "}"');
       }
-      String namespaceURI =
-          qNameAsString.substring(beginningOfNamespaceURI, endOfNamespaceURI);
+      String namespaceURI = qNameAsString.substring(
+          beginningOfNamespaceURI + 1, endOfNamespaceURI);
       final String localPart = qNameAsString.substring(endOfNamespaceURI + 1);
       if (namespaceURI.isEmpty) {
         namespaceURI = _isElmType(localPart) ? 'urn:hl7-org:elm-types:r1' : '';

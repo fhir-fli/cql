@@ -72,19 +72,36 @@ void parseFile(BuildContext context) async {
       if (print) {
         log(jsonEncode(visitor.result));
       }
-
-      final results = visitor.library.execute();
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
+      // log(jsonEncode(resultLibrary));
+
       bool areEqual = true;
+      final results = visitor.library.execute();
       if (results is Map<String, dynamic>) {
         results.remove('startTimestamp');
         results.forEach((key, value) {
           final resultsValue = results[key];
           final resultsJsonValue = resultsJson?[key];
           if (resultsValue != resultsJsonValue) {
-            log('$key: $resultsValue (${resultsValue.runtimeType}) == '
-                '$resultsJsonValue (${resultsJsonValue.runtimeType})');
-            areEqual = false;
+            if (resultsValue is List && resultsJsonValue is List) {
+              if (!(const DeepCollectionEquality()
+                  .equals(resultsValue, resultsJsonValue))) {
+                log('$key: $resultsValue (${resultsValue.runtimeType}) != '
+                    '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+                areEqual = false;
+              }
+            } else if (resultsValue is Map && resultsJsonValue is Map) {
+              if (!(const DeepCollectionEquality()
+                  .equals(resultsValue, resultsJsonValue))) {
+                log('$key: $resultsValue (${resultsValue.runtimeType}) != '
+                    '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+                areEqual = false;
+              }
+            } else {
+              log('$key: $resultsValue (${resultsValue.runtimeType}) != '
+                  '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+              areEqual = false;
+            }
           }
           // if (resultsValue is FhirTime) {
           //   log(resultsValue.toString());

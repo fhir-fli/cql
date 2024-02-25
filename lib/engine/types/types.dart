@@ -3,7 +3,11 @@ import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
 
-abstract class LiteralType extends CqlExpression {}
+abstract class LiteralType extends CqlExpression {
+  @override
+  String get type;
+  String get valueType => '{urn:hl7-org:elm-types:r1}$type';
+}
 
 class LiteralNull extends LiteralType {
   LiteralNull();
@@ -11,10 +15,13 @@ class LiteralNull extends LiteralType {
   factory LiteralNull.fromJson(dynamic json) => LiteralNull();
 
   @override
-  String toJson() => null.toString();
+  Map<String, dynamic> toJson() => {'type': type};
 
   @override
   String? execute(Map<String, dynamic> context) => null;
+
+  @override
+  String get type => 'Null';
 }
 
 class LiteralBoolean extends LiteralType {
@@ -84,6 +91,9 @@ class LiteralCode extends LiteralType {
       if (version != null) 'version': version,
     };
   }
+
+  @override
+  String get type => 'Code';
 }
 
 class LiteralConcept extends LiteralType {
@@ -111,6 +121,9 @@ class LiteralConcept extends LiteralType {
       if (display != null) 'display': display,
     };
   }
+
+  @override
+  String get type => 'Concept';
 }
 
 abstract class LiteralVocabularyType extends LiteralType {
@@ -171,6 +184,9 @@ class LiteralValueSet extends LiteralVocabularyType {
     }
     return json;
   }
+
+  @override
+  String get type => 'ValueSet';
 }
 
 class LiteralCodeSystem extends LiteralVocabularyType {
@@ -199,6 +215,9 @@ class LiteralCodeSystem extends LiteralVocabularyType {
     }
     return json;
   }
+
+  @override
+  String get type => 'CodeSystem';
 }
 
 class LiteralDate extends LiteralType {
@@ -225,9 +244,12 @@ class LiteralDate extends LiteralType {
     final date = FhirDate(value);
     return {
       'type': type,
-      'year': LiteralInteger(value: date.year).toJson(),
-      'month': LiteralInteger(value: date.month).toJson(),
-      'day': LiteralInteger(value: date.day).toJson(),
+      if (date.precision.hasYear)
+        'year': LiteralInteger(value: date.year).toJson(),
+      if (date.precision.hasMonth)
+        'month': LiteralInteger(value: date.month).toJson(),
+      if (date.precision.hasDay)
+        'day': LiteralInteger(value: date.day).toJson(),
     };
   }
 
@@ -260,7 +282,7 @@ class LiteralDateTime extends LiteralType {
   }
 
   @override
-  String toJson() {
+  Map<String, dynamic> toJson() {
     final dateTime = FhirDateTime(value);
     return {
       'type': type,
@@ -270,8 +292,9 @@ class LiteralDateTime extends LiteralType {
       'hour': LiteralInteger(value: dateTime.hour).toJson(),
       'minute': LiteralInteger(value: dateTime.minute).toJson(),
       'second': LiteralInteger(value: dateTime.second).toJson(),
-      'millisecond': LiteralInteger(value: dateTime.millisecond).toJson(),
-    }.toString();
+      if (dateTime.millisecond != 0)
+        'millisecond': LiteralInteger(value: dateTime.millisecond).toJson(),
+    };
   }
 
   @override
@@ -282,18 +305,48 @@ class LiteralDateTime extends LiteralType {
 }
 
 class LiteralDecimal extends LiteralType {
-  final double value;
+  // TODO(Dokotela): in order to properly match decimal places
+  final num value;
+  final int? sigFigs;
 
-  LiteralDecimal({required this.value});
+  LiteralDecimal({required this.value, this.sigFigs});
+
+  factory LiteralDecimal.fromString(String stringValue) {
+    if (num.tryParse(stringValue) != null) {
+      /// Remove any leading and trailing whitespaces
+      String number = stringValue.trim();
+
+      /// Check if the number includes a decimal point
+      bool isDecimal = number.contains('.');
+
+      /// Remove leading zeros, they are not significant
+      number = number.replaceFirst(RegExp(r'^0+'), '');
+
+      /// If the number is in decimal form, remove the decimal point for simplicity
+      if (isDecimal) {
+        number = number.replaceAll('.', '');
+      }
+
+      /// For a non-decimal number, trailing zeros are not significant
+      if (!isDecimal) {
+        number = number.replaceFirst(RegExp(r'0+$'), '');
+      }
+
+      // At this point, all remaining digits are significant
+      return LiteralDecimal(
+          value: num.parse(stringValue), sigFigs: number.length);
+    }
+    throw 'Incorrectly formed String for type LiteralDecimal: $stringValue';
+  }
 
   factory LiteralDecimal.fromJson(dynamic json) {
     if (json is num) {
       return LiteralDecimal(
         value: json.toDouble(),
       );
-    } else if (json is String && double.tryParse(json) != null) {
+    } else if (json is String && num.tryParse(json) != null) {
       return LiteralDecimal(
-        value: double.parse(json),
+        value: num.parse(json),
       );
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is num) {
@@ -301,9 +354,9 @@ class LiteralDecimal extends LiteralType {
           value: (json['value'] as num).toDouble(),
         );
       } else if (json['value'] is String &&
-          double.tryParse(json['value']) != null) {
+          num.tryParse(json['value']) != null) {
         return LiteralDecimal(
-          value: double.parse(json['value']),
+          value: num.parse(json['value']),
         );
       }
     }
@@ -313,7 +366,9 @@ class LiteralDecimal extends LiteralType {
   @override
   Map<String, dynamic> toJson() => {
         'valueType': '{urn:hl7-org:elm-types:r1}$type',
-        'value': value.toString(),
+        'value': sigFigs == null
+            ? value.toString()
+            : value.toStringAsPrecision(sigFigs!),
         'type': 'Literal',
       };
 
@@ -464,6 +519,9 @@ class LiteralRatio extends LiteralType {
       'denominator': denominator.toJson(),
     };
   }
+
+  @override
+  String get type => 'Ratio';
 }
 
 class LiteralString extends LiteralType {
@@ -513,6 +571,23 @@ class LiteralTime extends LiteralType {
 
   LiteralTime({required this.value});
 
+  factory LiteralTime.fromOperandList({required List<CqlExpression> operand}) {
+    String value = '';
+    if (operand.isNotEmpty) {
+      value = (operand[0] as LiteralInteger).value.toString();
+      if (operand.length > 1) {
+        value += ':${(operand[1] as LiteralInteger).value.toString()}';
+        if (operand.length > 2) {
+          value += ':${(operand[2] as LiteralInteger).value.toString()}';
+          if (operand.length > 3) {
+            value += '.${(operand[3] as LiteralInteger).value.toString()}';
+          }
+        }
+      }
+    }
+    return LiteralTime(value: value);
+  }
+
   factory LiteralTime.fromJson(dynamic json) {
     if (json is String && FhirTime(json).isValid) {
       return LiteralTime(
@@ -529,7 +604,27 @@ class LiteralTime extends LiteralType {
   }
 
   @override
-  String toJson() => value;
+  Map<String, dynamic> toJson() {
+    final date = FhirTime(value);
+    final json = <String, dynamic>{'type': type};
+    if (date.hour != null) {
+      json['hour'] = LiteralInteger(value: date.hour!).toJson();
+      if (date.minute != null) {
+        json['minute'] = LiteralInteger(value: date.minute!).toJson();
+        if (date.second != null) {
+          json['second'] = LiteralInteger(value: date.second!).toJson();
+          if (date.millisecond != null) {
+            json['millisecond'] =
+                LiteralInteger(value: date.millisecond!).toJson();
+          }
+        }
+      }
+    }
+    return json;
+  }
+
+  @override
+  String get type => 'Time';
 
   @override
   FhirTime execute(Map<String, dynamic> context) => FhirTime(value);
@@ -592,6 +687,9 @@ class LiteralIntegerInterval extends LiteralIntervalType {
       if (high != null) 'high': high!.toJson(),
     };
   }
+
+  @override
+  String get type => 'Interval<Integer>';
 }
 
 class LiteralDecimalInterval extends LiteralIntervalType {
@@ -623,6 +721,9 @@ class LiteralDecimalInterval extends LiteralIntervalType {
       if (high != null) 'high': high!.toJson(),
     };
   }
+
+  @override
+  String get type => 'Interval<Decimal>';
 }
 
 class LiteralQuantityInterval extends LiteralIntervalType {
@@ -654,6 +755,9 @@ class LiteralQuantityInterval extends LiteralIntervalType {
       if (high != null) 'high': high!.toJson(),
     };
   }
+
+  @override
+  String get type => 'Interval<Quantity>';
 }
 
 class LiteralDateInterval extends LiteralIntervalType {
@@ -685,6 +789,9 @@ class LiteralDateInterval extends LiteralIntervalType {
       if (high != null) 'high': high!.toJson(),
     };
   }
+
+  @override
+  String get type => 'Interval<Date>';
 }
 
 class LiteralDateTimeInterval extends LiteralIntervalType {
@@ -716,6 +823,9 @@ class LiteralDateTimeInterval extends LiteralIntervalType {
       if (high != null) 'high': high!.toJson(),
     };
   }
+
+  @override
+  String get type => 'Interval<DateTime>';
 }
 
 class LiteralTimeInterval extends LiteralIntervalType {
@@ -747,4 +857,7 @@ class LiteralTimeInterval extends LiteralIntervalType {
       if (high != null) 'high': high!.toJson(),
     };
   }
+
+  @override
+  String get type => 'Interval<Time>';
 }

@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
+import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
 
@@ -51,11 +52,86 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
     if (operand.length == 2) {
       if (additionOperator == '-') {
-        return Subtract(operand: operand);
+        if (operand.first is Literal && operand.last is LiteralNull) {
+          return Subtract(operand: [
+            operand.first,
+            As(
+                operand: operand.last,
+                asType:
+                    QName.fromFull((operand.first as LiteralType).valueType))
+          ]);
+        } else if (operand.first is LiteralNull && operand.last is Literal) {
+          return Subtract(operand: [
+            As(
+                operand: operand.first,
+                asType:
+                    QName.fromFull((operand.first as LiteralType).valueType)),
+            operand.last
+          ]);
+        }
       } else if (operand[0] is LiteralString && operand[1] is LiteralString) {
         return Concatenate(operand: operand, plus: additionOperator == '+');
       } else {
-        return Add(operand: operand);
+        final left = operand.first;
+        final right = operand.last;
+        switch (left) {
+          case LiteralInteger _:
+            return right is LiteralInteger
+                ? Add(operand: operand)
+                : right is LiteralLong
+                    ? Add(operand: [ToLong(operand: left), right])
+                    : right is LiteralDecimal
+                        ? Add(operand: [ToDecimal(operand: left), right])
+                        : right is LiteralNull
+                            ? Add(operand: [
+                                left,
+                                As(
+                                    operand: right,
+                                    asType: QName.fromFull(left.valueType))
+                              ])
+                            : Add(operand: operand);
+          case LiteralLong _:
+            return right is LiteralInteger
+                ? Add(operand: [left, ToLong(operand: right)])
+                : right is LiteralLong
+                    ? Add(operand: operand)
+                    : right is LiteralDecimal
+                        ? Add(operand: [ToDecimal(operand: left), right])
+                        : right is LiteralNull
+                            ? Add(operand: [
+                                left,
+                                As(
+                                    operand: right,
+                                    asType: QName.fromFull(left.valueType))
+                              ])
+                            : Add(operand: operand);
+          case LiteralDecimal _:
+            return right is LiteralInteger
+                ? Add(operand: [left, ToDecimal(operand: right)])
+                : right is LiteralLong
+                    ? Add(operand: [left, ToDecimal(operand: right)])
+                    : right is LiteralNull
+                        ? Add(operand: [
+                            left,
+                            As(
+                                operand: right,
+                                asType: QName.fromFull(left.valueType))
+                          ])
+                        : Add(operand: operand);
+          case LiteralQuantity _:
+            return right is LiteralDecimal
+                ? Add(operand: [left, ToQuantity(operand: right)])
+                : right is LiteralNull
+                    ? Add(operand: [
+                        left,
+                        As(
+                            operand: right,
+                            asType: QName.fromFull(left.valueType))
+                      ])
+                    : Add(operand: operand);
+          default:
+            return Add(operand: operand);
+        }
       }
     }
     throw ArgumentError('$thisNode Invalid AdditionExpressionTerm');
@@ -162,7 +238,30 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         }
       }
     }
-    return And(operand: operand);
+    if (operand.length == 2) {
+      if (operand.first is LiteralType && operand.last is LiteralType) {
+        if (operand.first is! LiteralNull && operand.last is LiteralNull) {
+          return And(operand: [
+            operand.first,
+            As(
+                operand: operand.last,
+                asType:
+                    QName.fromFull((operand.first as LiteralType).valueType))
+          ]);
+        } else if (operand.first is LiteralNull &&
+            operand.last is LiteralNull) {
+          return And(operand: [
+            As(
+                operand: operand.first,
+                asType:
+                    QName.fromFull((operand.last as LiteralType).valueType)),
+            operand.last,
+          ]);
+        }
+      }
+      return And(operand: operand);
+    }
+    throw '$thisNode Invalid number of arguments for And operator';
   }
 
   /// ('starts' | 'ends' | 'occurs')? quantityOffset? temporalRelationship
@@ -843,8 +942,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid DateTimeComponent');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// DATETIME				# dateTimeLiteral
   @override
   LiteralDateTime visitDateTimeLiteral(DateTimeLiteralContext ctx) {
     printIf(ctx);
@@ -977,6 +1075,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
     if (operand.length == 2) {
       if (equalityOperator == '=') {
+        if (operand.first is LiteralType &&
+            operand.first is! LiteralNull &&
+            operand.last is LiteralNull) {
+          return Equal(operand: [
+            operand.first,
+            As(
+                operand: operand.last,
+                asType:
+                    QName.fromFull((operand.first as LiteralType).valueType))
+          ]);
+        } else if (operand.first is LiteralNull &&
+            operand.last is LiteralType &&
+            operand.last is! LiteralNull) {
+          return Equal(operand: [
+            As(
+                operand: operand.first,
+                asType:
+                    QName.fromFull((operand.first as LiteralType).valueType)),
+            operand.last
+          ]);
+        }
         return Equal(operand: operand);
       } else if (equalityOperator == '!=') {
         return Not(operand: Equal(operand: operand));
@@ -1808,6 +1927,208 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   String visitModelIdentifier(ModelIdentifierContext ctx) =>
       _noQuoteString(ctx.text);
 
+  Multiply handleMultiply(CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger) {
+            return Multiply(operand: [left, right]);
+          } else if (right is LiteralLong) {
+            return Multiply(operand: [ToLong(operand: left), right]);
+          } else if (right is LiteralDecimal) {
+            return Multiply(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Multiply(operand: [left, ToLong(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Multiply(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger) {
+            return Multiply(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralLong) {
+            return Multiply(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Multiply(operand: [left, right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralDecimal) {
+            return Multiply(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralQuantity) {
+            return Multiply(operand: [left, right]);
+          }
+        }
+        break;
+      default:
+        return Multiply(operand: [left, right]);
+    }
+    throw ArgumentError('Invalid type for multiplication');
+  }
+
+  CqlExpression handleDivide(CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Divide(
+                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Divide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Divide(
+                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Divide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Divide(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Divide(operand: [left, right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralDecimal) {
+            return Divide(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralQuantity) {
+            return Divide(operand: [left, right]);
+          }
+        }
+        break;
+      default:
+        return Divide(operand: [left, right]);
+    }
+    throw ArgumentError('Invalid type for division');
+  }
+
+  TruncatedDivide handleTruncatedDivide(
+      CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger) {
+            return TruncatedDivide(operand: [left, right]);
+          } else if (right is LiteralLong) {
+            return TruncatedDivide(operand: [ToLong(operand: left), right]);
+          } else if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger) {
+            return TruncatedDivide(operand: [left, ToLong(operand: right)]);
+          } else if (right is LiteralLong) {
+            return TruncatedDivide(operand: [left, right]);
+          } else if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger) {
+            return TruncatedDivide(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralLong) {
+            return TruncatedDivide(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [left, right]);
+          } else if (right is LiteralQuantity) {
+            return TruncatedDivide(operand: [ToQuantity(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralQuantity) {
+            return TruncatedDivide(operand: [left, right]);
+          }
+        }
+      default:
+        return TruncatedDivide(operand: [left, right]);
+    }
+    throw ArgumentError('Invalid type for truncated division');
+  }
+
+  Modulo handleModulo(CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, right]);
+          } else if (right is LiteralLong) {
+            return Modulo(operand: [ToLong(operand: left), right]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [ToDecimal(operand: left), right]);
+          } else if (right is LiteralQuantity) {
+            return Modulo(operand: [ToQuantity(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, ToLong(operand: right)]);
+          } else if (right is LiteralLong) {
+            return Modulo(operand: [left, right]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralLong) {
+            return Modulo(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [left, right]);
+          } else if (right is LiteralQuantity) {
+            return Modulo(operand: [ToQuantity(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralQuantity) {
+            return Modulo(operand: [left, right]);
+          }
+        }
+        break;
+      default:
+        return Modulo(operand: [left, right]);
+    }
+    throw ArgumentError('Invalid type for modulo');
+  }
+
   /// expressionTerm ('*' | '/' | 'div' | 'mod') expressionTerm
   @override
   CqlExpression visitMultiplicationExpressionTerm(
@@ -1827,14 +2148,20 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (operand.length == 2) {
-      if (operator == '*') {
-        return Multiply(operand: operand);
-      } else if (operator == '/') {
-        return Divide(operand: operand);
-      } else if (operator == 'div') {
-        return Divide(operand: operand);
-      } else if (operator == 'mod') {
-        return Modulo(operand: operand);
+      final left = operand.first;
+      final right = operand.last;
+      switch (operator) {
+        case '*':
+          return handleMultiply(left, right);
+        case '/':
+          return handleDivide(left, right);
+        case 'div':
+          return handleTruncatedDivide(left, right);
+        case 'mod':
+          return handleModulo(left, right);
+        default:
+          throw ArgumentError(
+              'Unsupported operator $operator in MultiplicationExpressionTerm');
       }
     }
     throw ArgumentError('$thisNode Invalid MultiplicationExpressionTerm');
@@ -1901,7 +2228,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     if (int.tryParse(text) != null) {
       return LiteralInteger(value: int.parse(text));
     } else if (double.tryParse(text) != null) {
-      return LiteralDecimal(value: double.parse(text));
+      return LiteralDecimal.fromString(text);
     } else if (BigInt.tryParse(text) != null) {
       return LiteralLong(value: BigInt.parse(text));
     }
@@ -1946,21 +2273,50 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid OperandDefinition');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// expression ('or' | 'xor') expression # orExpression
   @override
-  Or visitOrExpression(OrExpressionContext ctx) {
+  BinaryExpression visitOrExpression(OrExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    bool orXor = true;
     final List<CqlExpression> operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
-      final result = byContext(child);
-      if (result is CqlExpression) {
-        operand.add(result);
+      if (child is TerminalNodeImpl) {
+        orXor = child.text == 'or' ? true : false;
+      } else {
+        final result = byContext(child);
+        if (result is CqlExpression) {
+          operand.add(result);
+        }
       }
     }
-    if (operand.isNotEmpty) {
-      return Or(operand: operand);
+    if (operand.length == 2) {
+      CqlExpression left = operand.first;
+      CqlExpression right = operand.last;
+      if (left is LiteralType && right is LiteralType) {
+        if (left is! LiteralNull && right is LiteralNull) {
+          return orXor
+              ? Or(operand: [
+                  left,
+                  As(operand: right, asType: QName.fromFull(left.valueType))
+                ])
+              : Xor(operand: [
+                  left,
+                  As(operand: right, asType: QName.fromFull(left.valueType))
+                ]);
+        } else if (left is LiteralNull && right is! LiteralNull) {
+          return orXor
+              ? Or(operand: [
+                  As(operand: left, asType: QName.fromFull(right.valueType)),
+                  right,
+                ])
+              : Xor(operand: [
+                  As(operand: left, asType: QName.fromFull(right.valueType)),
+                  right,
+                ]);
+        }
+      }
+      return orXor ? Or(operand: operand) : Xor(operand: operand);
     }
     throw ArgumentError('$thisNode Invalid OrExpression');
   }
@@ -2194,23 +2550,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// quantity: NUMBER unit?;
   @override
   LiteralQuantity visitQuantity(QuantityContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    if (ctx.childCount == 2) {
-      final double? value = ctx.getChild(0)!.text == null
-          ? null
-          : double.tryParse(ctx.getChild(0)!.text!);
-      final String? unitText = ctx.getChild(1) is UnitContext
-          ? visitUnit(ctx.getChild(1) as UnitContext)
-          : null;
-      if (value != null) {
-        return LiteralQuantity(
-            value: LiteralDecimal(value: value), unit: unitText);
+    num? number;
+    String? unit;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        number = num.tryParse(child.text!);
+      } else if (child is UnitContext) {
+        unit = visitUnit(child);
       }
+    }
+    if (number != null) {
+      return LiteralQuantity(value: LiteralDecimal(value: number), unit: unit);
     }
 
     throw ArgumentError('$thisNode Invalid Quantity');
@@ -2708,8 +3063,17 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid TermExpression');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// term:
+  ///	invocation				# invocationTerm
+  ///	| literal				# literalTerm
+  ///	| externalConstant		# externalConstantTerm
+  ///	| intervalSelector		# intervalSelectorTerm
+  ///	| tupleSelector			# tupleSelectorTerm
+  ///	| instanceSelector		# instanceSelectorTerm
+  ///	| listSelector			# listSelectorTerm
+  ///	| codeSelector			# codeSelectorTerm
+  ///	| conceptSelector		# conceptSelectorTerm
+  ///	| '(' expression ')'	# parenthesizedTerm;
   @override
   dynamic visitTermExpressionTerm(TermExpressionTermContext ctx) {
     printIf(ctx);
@@ -2897,13 +3261,30 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// referentialIdentifier ':' expression;
   @override
-  dynamic visitTupleElementSelector(TupleElementSelectorContext ctx) {
+  TupleElement visitTupleElementSelector(TupleElementSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    String? referentialIdentifier;
+    CqlExpression? expression;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ReferentialIdentifierContext) {
+        referentialIdentifier = visitReferentialIdentifier(child).name;
+      } else if (child is! TerminalNodeImpl) {
+        // print('$thisNode child: ${child.runtimeType} ${child.text}');
+        expression = byContext(child);
+      }
+    }
+    // print('$thisNode: referentialIdentifier: $referentialIdentifier');
+    // print('$thisNode: expression: $expression');
+    if (referentialIdentifier != null && expression != null) {
+      return TupleElement(
+        name: referentialIdentifier,
+        value: expression,
+      );
+    }
+    throw ArgumentError('$thisNode Invalid TupleElementSelector');
   }
 
   /// tupleSelector:
@@ -2912,11 +3293,16 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   ///		| (tupleElementSelector (',' tupleElementSelector)*)
   ///	) '}';
   @override
-  dynamic visitTupleSelector(TupleSelectorContext ctx) {
+  Tuple visitTupleSelector(TupleSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-
-    visitChildren(ctx);
+    final List<TupleElement> elements = <TupleElement>[];
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TupleElementSelectorContext) {
+        elements.add(visitTupleElementSelector(child));
+      }
+    }
+    return Tuple(element: elements);
   }
 
   /// The default implementation returns the result of calling
@@ -2925,7 +3311,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitTupleSelectorTerm(TupleSelectorTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TupleSelectorContext) {
+        return visitTupleSelector(child);
+      }
+    }
+
+    throw ArgumentError('$thisNode Invalid TupleSelectorTerm');
   }
 
   /// tupleTypeSpecifier:

@@ -598,7 +598,7 @@ class CqlExpression extends Element {
       // case 'ExpressionRef':
       //   return ExpressionRef(operand: operand);
       case 'Time':
-        return TimeExpression.fromOperandList(operand: operand);
+        return LiteralTime.fromOperandList(operand: operand);
       // case 'Filter':
       //   return Filter(operand: operand);
       // case 'First':

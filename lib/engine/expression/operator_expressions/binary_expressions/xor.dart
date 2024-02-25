@@ -1,6 +1,34 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Xor operator returning the exclusive or of its arguments.
+/// Signature:
+///
+/// xor (left Boolean, right Boolean) Boolean
+/// Description:
+///
+/// The xor (exclusive or) operator returns true if one argument is true and the other is false. If both arguments are true or both arguments are false, the result is false. Otherwise, the result is null.
+///
+/// The following table defines the truth table for this operator:
+///
+/// Table The truth table for the Xor operator
+///
+///        TRUE    FALSE    NULL
+///
+/// TRUE   FALSE   TRUE    NULL
+///
+/// FALSE  TRUE    FALSE    NULL
+///
+/// NULL   NULL    NULL     NULL
+///
+///
+/// The following examples illustrate the behavior of the xor operator:
+///
+/// define "IsTrue": true xor false
+/// define "IsAlsoTrue": false xor true
+/// define "IsFalse": true xor true
+/// define "IsNull": true xor null
 class Xor extends BinaryExpression {
   Xor({
     required super.operand,
@@ -55,4 +83,44 @@ class Xor extends BinaryExpression {
 
   @override
   String get type => 'Xor';
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    /// Assuming operand is accessible and contains the operands
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+
+    /// If both operands are null
+    if (left == null && right == null) {
+      return null;
+    } else
+
+    /// If one operand is true and the other is false
+    if ((left is FhirBoolean &&
+            left.isValid &&
+            left.value == true &&
+            right is FhirBoolean &&
+            right.isValid &&
+            right.value == false) ||
+        (right is FhirBoolean &&
+            right.isValid &&
+            right.value == true &&
+            left is FhirBoolean &&
+            left.isValid &&
+            left.value == false)) {
+      return FhirBoolean(true);
+    } else
+
+    /// If both operands are true or both are false
+    if ((left is FhirBoolean &&
+        left.isValid &&
+        right is FhirBoolean &&
+        right.isValid &&
+        left.value == right.value)) {
+      return FhirBoolean(false);
+    }
+
+    /// In all other cases, including when one operand is null and the other is not
+    return null;
+  }
 }

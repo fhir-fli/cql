@@ -73,8 +73,8 @@ class DateTimeComponentFrom extends UnaryExpression {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
-      'type': type,
       'precision': precision.toJson(),
+      'type': type,
       'operand': operand.toJson(),
     };
 
