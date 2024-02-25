@@ -1,10 +1,49 @@
 import '../../../cql.dart';
 
 /// The Min operator returns the minimum element in the source.
-/// Comparison semantics are defined by the comparison operators for the type of the values being aggregated.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// Comparison semantics are defined by the comparison operators for the type
+/// of the values being aggregated.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, null is returned.
 /// If the source is null, the result is null.
+/// Signature:
+///
+/// minimum<T>() T
+/// Description:
+///
+/// The minimum operator returns the minimum representable value for the given type.
+///
+/// The minimum operator is defined for the Integer, Long, Decimal, Quantity,
+/// Date, DateTime, and Time types.
+///
+/// For Integer, minimum returns the minimum signed 32-bit integer, -231.
+///
+/// For Long, minimum returns the minimum signed 64-bit long, -263.
+///
+/// For Decimal, minimum returns the minimum representable decimal value,
+/// (-1028 + 1) / 108 (-99999999999999999999.99999999).
+///
+/// For Quantity, minimum returns the minimum representable quantity, i.e. the minimum representable decimal value with a default unit (1).
+///
+/// For Date, minimum returns the minimum representable date value, DateTime(1, 1, 1).
+///
+/// For DateTime, minimum returns the minimum representable datetime value, DateTime(1, 1, 1, 0, 0, 0, 0).
+///
+/// For Time, minimum returns the minimum representable time value, Time(0, 0, 0, 0).
+///
+/// For any other type, attempting to invoke minimum results in an error.
+///
+/// Note that implementations may choose to represent the minimum DateTime value using a constant offset such as UTC.
+///
+/// Note that if implementations support larger and/or more precise values than the minimum required precision and scale for Decimal, DateTime, and Time values, they will return the minimum representable decimal for the implementation.
+///
+/// The following examples illustrate the behavior of the minimum operator:
+///
+/// define "IntegerMinimum": minimum Integer // -2147483648
+/// define "LongMinimum": minimum Long // -9223372036854775808
+/// define "DateTimeMinimum": minimum DateTime // @0001-01-01T00:00:00.000
+/// define "ErrorMinimum": minimum Quantity
 class Min extends AggregateExpression {
   Min({
     required super.source,

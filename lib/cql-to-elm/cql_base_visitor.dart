@@ -35,7 +35,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// expressionTerm ('+' | '-' | '&') expressionTerm	# additionExpressionTerm
   @override
-  dynamic visitAdditionExpressionTerm(AdditionExpressionTermContext ctx) {
+  CqlExpression visitAdditionExpressionTerm(AdditionExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     final List<CqlExpression> operand = <CqlExpression>[];
@@ -52,7 +52,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
     if (operand.length == 2) {
       if (additionOperator == '-') {
-        if (operand.first is Literal && operand.last is LiteralNull) {
+        if (operand.first is LiteralType && operand.last is LiteralNull) {
           return Subtract(operand: [
             operand.first,
             As(
@@ -60,7 +60,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                 asType:
                     QName.fromFull((operand.first as LiteralType).valueType))
           ]);
-        } else if (operand.first is LiteralNull && operand.last is Literal) {
+        } else if (operand.first is LiteralNull &&
+            operand.last is LiteralType) {
           return Subtract(operand: [
             As(
                 operand: operand.first,
@@ -68,6 +69,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     QName.fromFull((operand.first as LiteralType).valueType)),
             operand.last
           ]);
+        } else {
+          return Subtract(operand: operand);
         }
       } else if (operand[0] is LiteralString && operand[1] is LiteralString) {
         return Concatenate(operand: operand, plus: additionOperator == '+');
@@ -1055,8 +1058,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// expression ('=' | '!=' | '~' | '!~') expression
   @override
   CqlExpression visitEqualityExpression(EqualityExpressionContext ctx) {
     printIf(ctx);
@@ -1068,6 +1070,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         final result = byContext(child);
         if (result is CqlExpression) {
           operand.add(result);
+        } else if (result is String) {
+          operand.add(ExpressionRef(name: result));
+        } else {
+          print('$thisNode resulttype: ${child.runtimeType} ${child.text} '
+              '${result.runtimeType} $result');
         }
       } else {
         equalityOperator = child.text;
@@ -1191,7 +1198,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitFunction(FunctionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Ref? ref;
+    String? ref;
     List<CqlExpression> operand = [];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
@@ -1201,7 +1208,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (ref != null) {
-      return CqlExpression.byName(ref.name, operand);
+      return CqlExpression.byName(ref, operand);
     }
     throw ArgumentError('$thisNode Invalid Function');
   }
@@ -1506,7 +1513,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitInstanceElementSelector(InstanceElementSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Ref? name;
+    String? name;
     CqlExpression? value;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
@@ -1519,8 +1526,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
 
-    if (name?.name != null && value != null) {
-      return InstanceElement(name: name!.name, value: value);
+    if (name != null && value != null) {
+      return InstanceElement(name: name, value: value);
     }
 
     throw ArgumentError('$thisNode Invalid InstanceElementSelector');
@@ -1880,7 +1887,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// referentialIdentifier	# memberInvocation
   @override
-  Ref visitMemberInvocation(MemberInvocationContext ctx) {
+  String visitMemberInvocation(MemberInvocationContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -2173,7 +2180,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? qualifier;
-    Ref? referentialOrTypeNameIdentifier;
+    String? referentialOrTypeNameIdentifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifierContext) {
         qualifier = visitQualifier(child);
@@ -2184,9 +2191,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     // TODO(Dokotela): unclear what to do with qualifiers
-    if (referentialOrTypeNameIdentifier?.name != null) {
+    if (referentialOrTypeNameIdentifier != null) {
       return NamedTypeSpecifier(
-          namespace: QName.fromFull(referentialOrTypeNameIdentifier!.name));
+          namespace: QName.fromFull(referentialOrTypeNameIdentifier));
     } else {
       throw ArgumentError('$thisNode Invalid NamedTypeSpecifier');
     }
@@ -2255,7 +2262,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   OperandDef visitOperandDefinition(OperandDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Ref? referentialIdentifier;
+    String? referentialIdentifier;
     TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
@@ -2264,9 +2271,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         typeSpecifier = visitTypeSpecifier(child);
       }
     }
-    if (referentialIdentifier?.name != null && typeSpecifier != null) {
+    if (referentialIdentifier != null && typeSpecifier != null) {
       return OperandDef(
-        name: referentialIdentifier!.name,
+        name: referentialIdentifier,
         operandTypeSpecifier: typeSpecifier,
       );
     }
@@ -2406,8 +2413,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// '(' expression ')'
   @override
   dynamic visitParenthesizedTerm(ParenthesizedTermContext ctx) {
     printIf(ctx);
@@ -2439,31 +2445,129 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// ('+' | '-') expressionTerm
   @override
-  dynamic visitPolarityExpressionTerm(PolarityExpressionTermContext ctx) {
+  CqlExpression visitPolarityExpressionTerm(PolarityExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    bool? isPositive;
+    CqlExpression? expressionTerm;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        expressionTerm = byContext(child);
+      } else {
+        isPositive = child.text == '+';
+      }
+    }
+    if (expressionTerm != null && isPositive != null) {
+      if (isPositive) {
+        return expressionTerm;
+      } else {
+        if (expressionTerm is LiteralInteger) {
+          return LiteralInteger(value: expressionTerm.value * -1);
+        } else if (expressionTerm is LiteralLong) {
+          return LiteralLong(value: expressionTerm.value * BigInt.from(-1));
+        } else if (expressionTerm is LiteralDecimal) {
+          return LiteralDecimal(value: expressionTerm.value * -1);
+        } else if (expressionTerm is LiteralQuantity) {
+          return LiteralQuantity(
+              value: LiteralDecimal(value: expressionTerm.value.value * -1),
+              unit: expressionTerm.unit);
+        }
+      }
+    }
+    throw ArgumentError('$thisNode Invalid Polarity Expression');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// expressionTerm '^' expressionTerm
   @override
   dynamic visitPowerExpressionTerm(PowerExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    CqlExpression? left;
+    CqlExpression? right;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        if (left == null) {
+          left = byContext(child);
+        } else {
+          right = byContext(child);
+        }
+      }
+    }
+    if (left != null && right != null) {
+      if (left is LiteralType && right is LiteralType) {
+        switch (left) {
+          case LiteralInteger _:
+            {
+              if (right is LiteralInteger) {
+                return Power(operand: [left, right]);
+              } else if (right is LiteralLong) {
+                return Power(operand: [
+                  As(operand: left, asType: QName.fromFull(right.valueType)),
+                  right
+                ]);
+              } else if (right is LiteralDecimal) {
+                return Power(operand: [
+                  As(operand: left, asType: QName.fromFull(right.valueType)),
+                  right
+                ]);
+              }
+            }
+            break;
+          case LiteralLong _:
+            {
+              if (right is LiteralInteger) {
+                return Power(operand: [
+                  left,
+                  As(operand: right, asType: QName.fromFull(left.valueType))
+                ]);
+              } else if (right is LiteralLong) {
+                return Power(operand: [left, right]);
+              } else if (right is LiteralDecimal) {
+                return Power(operand: [
+                  As(operand: left, asType: QName.fromFull(right.valueType)),
+                  right
+                ]);
+              }
+            }
+            break;
+          case LiteralDecimal _:
+            {
+              if (right is LiteralInteger || right is LiteralLong) {
+                return Power(operand: [
+                  left,
+                  As(operand: right, asType: QName.fromFull(left.valueType))
+                ]);
+              } else if (right is LiteralDecimal) {
+                return Power(operand: [left, right]);
+              }
+            }
+            break;
+          default:
+            return Power(operand: [left, right]);
+        }
+      }
+      return Power(operand: [left, right]);
+    }
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'predecessor' 'of' expressionTerm
   @override
-  dynamic visitPredecessorExpressionTerm(PredecessorExpressionTermContext ctx) {
+  Predecessor visitPredecessorExpressionTerm(
+      PredecessorExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    CqlExpression? expressionTerm;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        expressionTerm = byContext(child);
+      }
+    }
+    if (expressionTerm != null) {
+      return Predecessor(operand: expressionTerm);
+    }
+    throw ArgumentError('$thisNode Invalid PredecessorExpressionTerm');
   }
 
   /// The default implementation returns the result of calling
@@ -2506,7 +2610,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       QualifiedIdentifierExpressionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Ref? name;
+    String? name;
     String? libraryName;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifierContext) {
@@ -2515,8 +2619,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         name = visitReferentialIdentifier(child);
       }
     }
-    if (name?.name != null) {
-      return returnRef(name!.name, libraryName);
+    if (name != null) {
+      return returnRef(name, libraryName);
     }
     throw ArgumentError('$thisNode Invalid QualifiedIdentifierExpression');
   }
@@ -2734,24 +2838,25 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// referentialIdentifier: identifier | keywordIdentifier;
   @override
-  Ref visitReferentialIdentifier(ReferentialIdentifierContext ctx) {
+  String visitReferentialIdentifier(ReferentialIdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
-        return returnRef(visitIdentifier(child), null);
+        return visitIdentifier(child);
       } else if (child is KeywordIdentifierContext) {
-        return returnRef(visitKeywordIdentifier(child), null);
+        return visitKeywordIdentifier(child);
       }
     }
 
     throw ArgumentError('$thisNode Invalid ReferentialIdentifier');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// referentialOrTypeNameIdentifier:
+  ///	referentialIdentifier
+  ///	| typeNameIdentifier;
   @override
-  dynamic visitReferentialOrTypeNameIdentifier(
+  String visitReferentialOrTypeNameIdentifier(
       ReferentialOrTypeNameIdentifierContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
@@ -3035,13 +3140,21 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return LiteralString(value: _noQuoteString(ctx.getChild(0)!.text!));
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'successor' 'of' expressionTerm
   @override
-  dynamic visitSuccessorExpressionTerm(SuccessorExpressionTermContext ctx) {
+  Successor visitSuccessorExpressionTerm(SuccessorExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    CqlExpression? expressionTerm;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is! TerminalNodeImpl) {
+        expressionTerm = byContext(child);
+      }
+    }
+    if (expressionTerm != null) {
+      return Successor(operand: expressionTerm);
+    }
+    throw ArgumentError('$thisNode Invalid SuccessorExpressionTerm');
   }
 
   /// The default implementation returns the result of calling
@@ -3056,6 +3169,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
+      print('child: ${child.runtimeType} ${child.text}');
       if (child is! TerminalNodeImpl) {
         return byContext(child);
       }
@@ -3244,7 +3358,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       TupleElementDefinitionContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    Ref? name;
+    String? name;
     TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
@@ -3253,9 +3367,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         typeSpecifier = visitTypeSpecifier(child);
       }
     }
-    if (name?.name != null && typeSpecifier != null) {
-      return TupleElementDefinition(
-          elementType: typeSpecifier, name: name!.name);
+    if (name != null && typeSpecifier != null) {
+      return TupleElementDefinition(elementType: typeSpecifier, name: name);
     } else {
       throw ArgumentError('$thisNode Invalid TupleElementDefinition');
     }
@@ -3270,7 +3383,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     CqlExpression? expression;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
-        referentialIdentifier = visitReferentialIdentifier(child).name;
+        referentialIdentifier = visitReferentialIdentifier(child);
       } else if (child is! TerminalNodeImpl) {
         // print('$thisNode child: ${child.runtimeType} ${child.text}');
         expression = byContext(child);
@@ -3346,13 +3459,20 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// ('minimum' | 'maximum') namedTypeSpecifier
   @override
   dynamic visitTypeExtentExpressionTerm(TypeExtentExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    final CqlExpression? expression = byContext(ctx.children![1]);
+    if (expression != null) {
+      if (ctx.children![0].text == 'minimum') {
+        return Min(source: expression);
+      } else if (ctx.children![0].text == 'maximum') {
+        return Max(source: expression);
+      }
+    }
+    throw ArgumentError('$thisNode Invalid TypeExtentExpressionTerm');
   }
 
   /// Reserved words that are also type names

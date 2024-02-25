@@ -1,10 +1,55 @@
 import '../../../cql.dart';
 
 /// The Max operator returns the maximum element in the source.
-/// Comparison semantics are defined by the comparison operators for the type of the values being aggregated.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// Comparison semantics are defined by the comparison operators for the type
+/// of the values being aggregated.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, null is returned.
 /// If the source is null, the result is null.
+/// Signature:
+///
+/// maximum<T>() T
+/// Description:
+///
+/// The maximum operator returns the maximum representable value for the given type.
+///
+/// The maximum operator is defined for the Integer, Long, Decimal, Quantity,
+/// Date, DateTime, and Time types.
+///
+/// For Integer, maximum returns the maximum signed 32-bit integer, 231 - 1.
+///
+/// For Long, maximum returns the maximum signed 64-bit long, 263 - 1.
+///
+/// For Decimal, maximum returns the maximum representable decimal value,
+/// (1028 – 1) / 108 (99999999999999999999.99999999).
+///
+/// For Quantity, maximum returns the maximum representable quantity, i.e. the
+/// maximum representable decimal value with a default unit (1).
+///
+/// For Date, maximum returns the maximum representable date value, Date(9999, 12, 31).
+///
+/// For DateTime, maximum returns the maximum representable datetime value,
+/// DateTime(9999, 12, 31, 23, 59, 59, 999).
+///
+/// For Time, maximum returns the maximum representable time value, Time(23, 59, 59, 999).
+///
+/// For any other type, attempting to invoke maximum results in an error.
+///
+/// Note that implementations may choose to represent the maximum DateTime
+/// value using a constant offset such as UTC.
+///
+/// Note that if implementations support larger and/or more precise values than
+/// the minimum required precision and scale for Decimal, DateTime, and Time
+/// values, they will return the maximum representable decimal for the
+/// implementation.
+///
+/// The following examples illustrate the behavior of the maximum operator:
+///
+/// define "IntegerMaximum": maximum Integer // 2147483647
+/// define "LongMaximum": maximum Long // 9223372036854775807
+/// define "DateTimeMaximum": maximum DateTime // @9999-12-31T23:59:59.999
+/// define "ErrorMaximum": maximum Quantity
 class Max extends AggregateExpression {
   Max({
     required super.source,

@@ -661,8 +661,13 @@ class CqlExpression extends Element {
       //   return Iteration(operand: operand);
       // case 'Last':
       //   return Last(operand: operand);
-      // case 'LastPositionOf':
-      //   return LastPositionOf(operand: operand);
+      case 'LastPositionOf':
+        {
+          if (operand.length == 2) {
+            return LastPositionOf(pattern: operand.first, string: operand.last);
+          }
+        }
+        break;
       case 'Length':
         return Length(operand: operand.first);
       case 'Less':
@@ -750,8 +755,13 @@ class CqlExpression extends Element {
         return PopulationStdDev(source: operand.first);
       case 'PopulationVariance':
         return PopulationVariance(source: operand.first);
-      // case 'PositionOf':
-      //   return PositionOf(operand: operand);
+      case 'PositionOf':
+        {
+          if (operand.length == 2) {
+            return PositionOf(pattern: operand.first, string: operand.last);
+          }
+        }
+        break;
       case 'Power':
         return Power(operand: operand);
       case 'Precision':
@@ -896,10 +906,9 @@ class CqlExpression extends Element {
       //   return Without(operand: operand);
       case 'Xor':
         return Xor(operand: operand);
-      default:
-        throw ArgumentError.value(
-            type, type, 'Could not parse by name unknown Expression type');
     }
+    throw ArgumentError.value(
+        type, type, 'Could not parse by name unknown Expression type');
   }
 
   @override
