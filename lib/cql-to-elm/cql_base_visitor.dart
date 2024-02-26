@@ -1106,6 +1106,29 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return Ends(precision: dateTimePrecision, operand: []);
   }
 
+  List<CqlExpression> translateOperand(List<CqlExpression> operand) {
+    if (operand.first is LiteralType &&
+        operand.first is! LiteralNull &&
+        operand.last is LiteralNull) {
+      return [
+        operand.first,
+        As(
+            operand: operand.last,
+            asType: QName.fromFull((operand.first as LiteralType).valueType))
+      ];
+    } else if (operand.first is LiteralNull &&
+        operand.last is LiteralType &&
+        operand.last is! LiteralNull) {
+      return [
+        As(
+            operand: operand.first,
+            asType: QName.fromFull((operand.first as LiteralType).valueType)),
+        operand.last
+      ];
+    }
+    return operand;
+  }
+
   /// expression ('=' | '!=' | '~' | '!~') expression
   @override
   CqlExpression visitEqualityExpression(EqualityExpressionContext ctx) {
@@ -1130,34 +1153,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
     if (operand.length == 2) {
       if (equalityOperator == '=') {
-        if (operand.first is LiteralType &&
-            operand.first is! LiteralNull &&
-            operand.last is LiteralNull) {
-          return Equal(operand: [
-            operand.first,
-            As(
-                operand: operand.last,
-                asType:
-                    QName.fromFull((operand.first as LiteralType).valueType))
-          ]);
-        } else if (operand.first is LiteralNull &&
-            operand.last is LiteralType &&
-            operand.last is! LiteralNull) {
-          return Equal(operand: [
-            As(
-                operand: operand.first,
-                asType:
-                    QName.fromFull((operand.first as LiteralType).valueType)),
-            operand.last
-          ]);
-        }
-        return Equal(operand: operand);
+        print(operand.first);
+        print(operand.last);
+        return Equal(operand: translateOperand(operand));
       } else if (equalityOperator == '!=') {
-        return Not(operand: Equal(operand: operand));
+        return Not(operand: Equal(operand: translateOperand(operand)));
       } else if (equalityOperator == '~') {
-        return Equivalent(operand: operand);
+        return Equivalent(operand: translateOperand(operand));
       } else if (equalityOperator == '!~') {
-        return Not(operand: Equivalent(operand: operand));
+        return Not(operand: Equivalent(operand: translateOperand(operand)));
       }
     }
     throw ArgumentError('$thisNode Invalid EqualityExpression');
@@ -2558,17 +2562,18 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       if (isPositive) {
         return expressionTerm;
       } else {
-        if (expressionTerm is LiteralInteger) {
-          return LiteralInteger(value: expressionTerm.value * -1);
-        } else if (expressionTerm is LiteralLong) {
-          return LiteralLong(value: expressionTerm.value * BigInt.from(-1));
-        } else if (expressionTerm is LiteralDecimal) {
-          return LiteralDecimal(value: expressionTerm.value * -1);
-        } else if (expressionTerm is LiteralQuantity) {
-          return LiteralQuantity(
-              value: LiteralDecimal(value: expressionTerm.value.value * -1),
-              unit: expressionTerm.unit);
-        }
+        return Negate(operand: expressionTerm);
+        // if (expressionTerm is LiteralInteger) {
+        //   return LiteralInteger(value: expressionTerm.value * -1);
+        // } else if (expressionTerm is LiteralLong) {
+        //   return LiteralLong(value: expressionTerm.value * BigInt.from(-1));
+        // } else if (expressionTerm is LiteralDecimal) {
+        //   return LiteralDecimal(value: expressionTerm.value * -1);
+        // } else if (expressionTerm is LiteralQuantity) {
+        //   return LiteralQuantity(
+        //       value: LiteralDecimal(value: expressionTerm.value.value * -1),
+        //       unit: expressionTerm.unit);
+        // }
       }
     }
     throw ArgumentError('$thisNode Invalid Polarity Expression');
@@ -3569,12 +3574,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   dynamic visitTypeExtentExpressionTerm(TypeExtentExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    final CqlExpression? expression = byContext(ctx.children![1]);
-    if (expression != null) {
+    final NamedTypeSpecifier? namedTypeSpecifier =
+        visitNamedTypeSpecifier(ctx.children![1] as NamedTypeSpecifierContext);
+    if (namedTypeSpecifier != null) {
       if (ctx.children![0].text == 'minimum') {
-        return Min(source: expression);
+        return MinValue(valueType: namedTypeSpecifier.namespace);
       } else if (ctx.children![0].text == 'maximum') {
-        return Max(source: expression);
+        return MaxValue(valueType: namedTypeSpecifier.namespace);
       }
     }
     throw ArgumentError('$thisNode Invalid TypeExtentExpressionTerm');
@@ -4185,7 +4191,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     int? conceptIndex;
     int? parameterIndex;
     int? expressionIndex;
-    print('NAME: $name');
 
     codeSystemIndex =
         library.codeSystems?.def.indexWhere((element) => element.name == name);

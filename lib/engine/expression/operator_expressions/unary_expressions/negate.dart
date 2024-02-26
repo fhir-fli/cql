@@ -2,8 +2,36 @@ import '../../../../cql.dart';
 
 /// Operator to return the negative of its argument.
 /// When negating quantities, the unit is unchanged.
-/// If the argument is null or the result of negating the argument cannot be represented, the result is null.
+/// If the argument is null or the result of negating the argument cannot be
+/// represented, the result is null.
 /// The Negate operator is defined for the Integer, Decimal, and Quantity types.
+/// Signature:
+///
+/// -(argument Integer) Integer
+/// -(argument Long) Long
+/// -(argument Decimal) Decimal
+/// -(argument Quantity) Quantity
+/// The Long type is a new feature being introduced in CQL 1.5, and has
+/// trial-use status.
+///
+/// Description:
+///
+/// The negate (-) operator returns the negative of its argument.
+///
+/// When negating quantities, the unit is unchanged.
+///
+/// If the argument is null, the result is null.
+///
+/// If the result of negating the argument cannot be represented
+/// (e.g. -(minimum Integer)), the result is null.
+///
+/// The following examples illustrate the behavior of the negate operator:
+///
+/// define "IntegerNegate": -3 // -3
+/// define "LongNegate": -3L // -3L
+/// define "DecimalNegate": -(-3.3) // 3.3
+/// define "QuantityNegate": -3.3 'mg' // -3.3 'mg'
+/// define "NegateIsNull": -(null as Integer)
 class Negate extends UnaryExpression {
   Negate({
     required super.operand,

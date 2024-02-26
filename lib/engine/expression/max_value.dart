@@ -34,8 +34,8 @@ class MaxValue extends CqlExpression {
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> val = {
-      'type': type,
       'valueType': valueType,
+      'type': type,
     };
 
     void writeNotNull(String key, dynamic value) {

@@ -73,9 +73,9 @@ void parseFile(BuildContext context) async {
         log(jsonEncode(visitor.result));
       }
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
-      if (file.contains('01')) {
-        log(jsonEncode(resultLibrary));
-      }
+      // if (file.contains('03')) {
+      //   log(jsonEncode(resultLibrary));
+      // }
       bool areEqual = true;
       // final results = visitor.library.execute();
       // if (results is Map<String, dynamic>) {

@@ -1,9 +1,34 @@
 import '../../../cql.dart';
 
 /// Operator to return the nearest integer to its argument.
-/// The semantics of round are defined as a traditional round, meaning that a decimal value of 0.5 or higher will round to 1.
+/// The semantics of round are defined as a traditional round, meaning that a
+/// decimal value of 0.5 or higher will round to 1.
 /// If the argument is null, the result is null.
-/// Precision determines the decimal place at which the rounding will occur. If precision is not specified or null, 0 is assumed.
+/// Precision determines the decimal place at which the rounding will occur.
+/// If precision is not specified or null, 0 is assumed.
+/// Signature:
+///
+/// Round(argument Decimal) Decimal
+/// Round(argument Decimal, precision Integer) Decimal
+/// Description:
+///
+/// The Round operator returns the nearest whole number to its argument. The
+/// semantics of round are defined as a traditional round, meaning that a
+/// decimal value of 0.5 or higher will round to 1.
+///
+/// When invoked with an Integer argument, the argument will be implicitly
+/// converted to Decimal.
+///
+/// If the argument is null, the result is null.
+///
+/// Precision determines the decimal place at which the rounding will occur.
+/// If precision is not specified or null, 0 is assumed.
+///
+/// The following examples illustrate the behavior of the Round operator:
+///
+/// define "IntegerRound": Round(1) // 1
+/// define "DecimalRound": Round(3.14159, 3) // 3.142
+/// define "RoundIsNull": Round(null)
 class Round extends OperatorExpression {
   final CqlExpression operand;
   final CqlExpression? precision;

@@ -1,6 +1,6 @@
 {
     "identifier": {
-        "id": "Exercises01Key"
+        "id": "Exercises03Key"
     },
     "schemaIdentifier": {
         "id": "urn:hl7-org:elm",
@@ -17,61 +17,589 @@
     "statements": {
         "def": [
             {
-                "name": "This is a quoted identifier",
+                "name": "String Equality",
                 "context": "Unfiltered",
                 "accessLevel": "Public",
                 "expression": {
-                    "type": "Add",
-                    "operand": [
+                    "type": "IsFalse",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Abel",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "abel",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "String Equivalence",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equivalent",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Abel",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "abel",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "String Comparison",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Less",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Abel",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "abel",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "String Inequality",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Not",
+                        "operand": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Abel",
+                                    "type": "Literal"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "abel",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            {
+                "name": "String Inequivalence",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsFalse",
+                    "operand": {
+                        "type": "Not",
+                        "operand": {
+                            "type": "Equivalent",
+                            "operand": [
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Abel",
+                                    "type": "Literal"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "abel",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            {
+                "name": "String Equality With Null",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsNull",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Abel",
+                                "type": "Literal"
+                            },
+                            {
+                                "asType": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "String Equivalence With Null",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsFalse",
+                    "operand": {
+                        "type": "Equivalent",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Abel",
+                                "type": "Literal"
+                            },
+                            {
+                                "asType": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "T1",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Tuple",
+                    "element": [
                         {
-                            "type": "Date",
-                            "year": {
+                            "name": "X",
+                            "value": {
                                 "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "2021",
-                                "type": "Literal"
-                            },
-                            "month": {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "3",
-                                "type": "Literal"
-                            },
-                            "day": {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "29",
+                                "value": "1",
                                 "type": "Literal"
                             }
                         },
                         {
-                            "value": 3,
-                            "unit": "days",
-                            "type": "Quantity"
+                            "name": "Y",
+                            "value": {
+                                "type": "Null"
+                            }
                         }
                     ]
                 }
             },
             {
-                "name": "_1MoreIdentifier",
+                "name": "T2",
                 "context": "Unfiltered",
                 "accessLevel": "Public",
                 "expression": {
-                    "value": 0.0,
-                    "unit": "g",
-                    "type": "Quantity"
+                    "type": "Tuple",
+                    "element": [
+                        {
+                            "name": "X",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "Y",
+                            "value": {
+                                "type": "Null"
+                            }
+                        }
+                    ]
                 }
             },
             {
-                "name": "Inequality Expression",
+                "name": "T3",
                 "context": "Unfiltered",
                 "accessLevel": "Public",
                 "expression": {
-                    "type": "Not",
+                    "type": "Tuple",
+                    "element": [
+                        {
+                            "name": "X",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "Y",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "TEqual",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
                     "operand": {
                         "type": "Equal",
                         "operand": [
                             {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                "value": "4",
+                                "name": "T1",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "T2",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "TEqualWithNull",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsNull",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "name": "T2",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "T3",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "TEquivalent",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsFalse",
+                    "operand": {
+                        "type": "Equivalent",
+                        "operand": [
+                            {
+                                "name": "T2",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "T3",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "C1",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "classType": "{urn:hl7-org:elm-types:r1}Code",
+                    "type": "Instance",
+                    "element": [
+                        {
+                            "name": "code",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "ABC",
                                 "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "display",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Code ABC",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "system",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "http://example.com",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "version",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "2017-01",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "C2",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "classType": "{urn:hl7-org:elm-types:r1}Code",
+                    "type": "Instance",
+                    "element": [
+                        {
+                            "name": "code",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "ABC",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "display",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Variant Description",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "system",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "http://example.com",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "name": "version",
+                            "value": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "2017-05",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "CEqual",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsFalse",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "name": "C1",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "C2",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "CEquivalent",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equivalent",
+                        "operand": [
+                            {
+                                "name": "C1",
+                                "type": "ExpressionRef"
+                            },
+                            {
+                                "name": "C2",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Standard Precedence",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Add",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "type": "Multiply",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "5",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "10",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "52",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Force Precedence",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Multiply",
+                                "operand": [
+                                    {
+                                        "type": "Add",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "2",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "5",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "70",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Division Always Results in a Decimal",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Divide",
+                                "operand": [
+                                    {
+                                        "type": "ToDecimal",
+                                        "operand": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "10",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "type": "ToDecimal",
+                                        "operand": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "5.0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Truncated Divide for Integer Division",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "TruncatedDivide",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    }
+                                ]
                             },
                             {
                                 "valueType": "{urn:hl7-org:elm-types:r1}Integer",
@@ -83,138 +611,1628 @@
                 }
             },
             {
-                "name": "Relative Comparison Expression",
+                "name": "Modulo is the Remainder",
                 "context": "Unfiltered",
                 "accessLevel": "Public",
                 "expression": {
-                    "type": "LessOrEqual",
-                    "operand": [
-                        {
-                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                            "value": "4",
-                            "type": "Literal"
-                        },
-                        {
-                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                            "value": "5",
-                            "type": "Literal"
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "Quantity Expression",
-                "context": "Unfiltered",
-                "accessLevel": "Public",
-                "expression": {
-                    "value": 5,
-                    "unit": "g/dL",
-                    "type": "Quantity"
-                }
-            },
-            {
-                "name": "Reference Expression",
-                "context": "Unfiltered",
-                "accessLevel": "Public",
-                "expression": {
-                    "name": "\"Quantity Expression\"",
-                    "type": "IdentifierRef"
-                }
-            },
-            {
-                "name": "String Concatenation",
-                "context": "Unfiltered",
-                "accessLevel": "Public",
-                "expression": {
-                    "type": "Concatenate",
-                    "operand": [
-                        {
-                            "valueType": "{urn:hl7-org:elm-types:r1}String",
-                            "value": "1",
-                            "type": "Literal"
-                        },
-                        {
-                            "valueType": "{urn:hl7-org:elm-types:r1}String",
-                            "value": "John",
-                            "type": "Literal"
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "Warning Message",
-                "context": "Unfiltered",
-                "accessLevel": "Public",
-                "expression": {
-                    "type": "Message",
-                    "source": {
-                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                        "value": "1",
-                        "type": "Literal"
-                    },
-                    "condition": {
-                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
-                        "value": "true",
-                        "type": "Literal"
-                    },
-                    "code": {
-                        "valueType": "{urn:hl7-org:elm-types:r1}String",
-                        "value": "123",
-                        "type": "Literal"
-                    },
-                    "severity": {
-                        "valueType": "{urn:hl7-org:elm-types:r1}String",
-                        "value": "Warning",
-                        "type": "Literal"
-                    },
-                    "message": {
-                        "valueType": "{urn:hl7-org:elm-types:r1}String",
-                        "value": "This is a warning message",
-                        "type": "Literal"
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Modulo",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        ]
                     }
                 }
             },
             {
-                "name": "Nested Warning Message",
+                "name": "Negation",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Negate",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Negate",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Absolute Value",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Abs",
+                                "operand": {
+                                    "type": "Negate",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    }
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "10",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Successor Of",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Successor",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Predecessor Of",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Predecessor",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Minimum Integer",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "MinValue"
+                            },
+                            {
+                                "type": "Subtract",
+                                "operand": [
+                                    {
+                                        "type": "Negate",
+                                        "operand": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2147483647",
+                                            "type": "Literal"
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "1",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Maximum Integer",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "type": "MaxValue"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2147483647",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Default Round",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Round",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "5.5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "6",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Precision Round",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Round",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "5.55",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "5.6",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Truncate",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Truncate",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "5.5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "5",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Truncate Negative",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Truncate",
+                                "operand": {
+                                    "type": "Negate",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                        "value": "5.5",
+                                        "type": "Literal"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Negate",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Floor",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Floor",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "5.5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "5",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Floor Negative",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Floor",
+                                "operand": {
+                                    "type": "Negate",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                        "value": "5.5",
+                                        "type": "Literal"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Negate",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "6",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Ceiling",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Ceiling",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "5.5",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "6",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Ceiling Negative",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Ceiling",
+                                "operand": {
+                                    "type": "Negate",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                        "value": "5.5",
+                                        "type": "Literal"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Negate",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "5",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Integer Exponent",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Power",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "25",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Decimal Exponent",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Power",
+                                "operand": [
+                                    {
+                                        "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                        "type": "As",
+                                        "operand": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "25",
+                                            "type": "Literal"
+                                        },
+                                        "strict": false
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                        "value": "0.5",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "5",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Logarithm Base 5",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Log",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "25",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Logarithm Base 25",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Log",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "5",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "25",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "0.5",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Natural Logarithm",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Ln",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "10",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "2.30258209288405",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Exponent",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "IsTrue",
+                    "operand": {
+                        "type": "Equal",
+                        "operand": [
+                            {
+                                "type": "Exp",
+                                "operand": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "2.30258509288405",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "10",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "String Concatenate",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "type": "Concatenate",
+                            "operand": [
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "AB",
+                                    "type": "Literal"
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "CD",
+                                    "type": "Literal"
+                                }
+                            ]
+                        },
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "ABCD",
+                            "type": "Literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "String Concatenate With Nulls",
                 "context": "Unfiltered",
                 "accessLevel": "Public",
                 "expression": {
                     "type": "Add",
                     "operand": [
                         {
-                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                            "value": "1",
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "AB",
                             "type": "Literal"
                         },
                         {
-                            "type": "Message",
-                            "source": {
+                            "type": "Null"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "String Null Concatenate",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Add",
+                    "operand": [
+                        {
+                            "type": "Add",
+                            "operand": [
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "AB",
+                                    "type": "Literal"
+                                },
+                                {
+                                    "type": "Null"
+                                }
+                            ]
+                        },
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "CD",
+                            "type": "Literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "String Length",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Length",
+                    "operand": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "ABCD",
+                        "type": "Literal"
+                    }
+                }
+            },
+            {
+                "name": "String Indexer",
+                "context": "Unfiltered",
+                "accessLevel": "Public"
+            },
+            {
+                "name": "PositionOf",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "PositionOf",
+                    "pattern": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "C",
+                        "type": "Literal"
+                    },
+                    "string": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "ABCDCBA",
+                        "type": "Literal"
+                    }
+                }
+            },
+            {
+                "name": "LastPositionOf",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "LastPositionOf",
+                    "pattern": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "C",
+                        "type": "Literal"
+                    },
+                    "string": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "ABCDCBA",
+                        "type": "Literal"
+                    }
+                }
+            },
+            {
+                "name": "StartsWith",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "StartsWith",
+                    "operand": [
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "AB",
+                            "type": "Literal"
+                        },
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "ABCDCBA",
+                            "type": "Literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "EndsWith",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "EndsWith",
+                    "operand": [
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "AB",
+                            "type": "Literal"
+                        },
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "ABCDCBA",
+                            "type": "Literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Matches",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Matches",
+                    "operand": [
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "ABCD",
+                            "type": "Literal"
+                        },
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "AB.*",
+                            "type": "Literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "ReplaceMatches",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "ReplaceMatches",
+                    "operands": [
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "ABCD",
+                            "type": "Literal"
+                        },
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "C",
+                            "type": "Literal"
+                        },
+                        {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "X",
+                            "type": "Literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Date Equal",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
                                 "valueType": "{urn:hl7-org:elm-types:r1}Integer",
                                 "value": "2",
                                 "type": "Literal"
                             },
-                            "condition": {
-                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
-                                "value": "true",
-                                "type": "Literal"
-                            },
-                            "code": {
-                                "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                "value": "123",
-                                "type": "Literal"
-                            },
-                            "severity": {
-                                "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                "value": "Warning",
-                                "type": "Literal"
-                            },
-                            "message": {
-                                "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                "value": "The value is 2",
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
                                 "type": "Literal"
                             }
                         }
                     ]
+                }
+            },
+            {
+                "name": "Date Less Than",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Less",
+                    "operand": [
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Date Less Or Equal",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "LessOrEqual",
+                    "operand": [
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Same Year As",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "SameAs",
+                    "precision": "Year",
+                    "operand": [
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Same Year Or Before",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "SameAs",
+                    "precision": "Year",
+                    "operand": [
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2012",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Before Year Of",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Before",
+                    "operand": [
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2012",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2012",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "15",
+                                "type": "Literal"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Day Quantity",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "value": 1,
+                    "unit": "day",
+                    "type": "Quantity"
+                }
+            },
+            {
+                "name": "Years Quantity",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "value": 2,
+                    "unit": "years",
+                    "type": "Quantity"
+                }
+            },
+            {
+                "name": "Minutes Quantity",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "value": 30,
+                    "unit": "minutes",
+                    "type": "Quantity"
+                }
+            },
+            {
+                "name": "UCUM Days",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "value": 1,
+                    "unit": "d",
+                    "type": "Quantity"
+                }
+            },
+            {
+                "name": "UCUM Annum",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "value": 2,
+                    "unit": "a",
+                    "type": "Quantity"
+                }
+            },
+            {
+                "name": "UCUM Minutes",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "value": 30,
+                    "unit": "min",
+                    "type": "Quantity"
+                }
+            },
+            {
+                "name": "1 Year Ago",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Subtract",
+                    "operand": [
+                        {
+                            "type": "Today"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "year",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Add 30 Minutes",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Add",
+                    "operand": [
+                        {
+                            "type": "DateTime",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "hour": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "14",
+                                "type": "Literal"
+                            },
+                            "minute": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "30",
+                                "type": "Literal"
+                            },
+                            "second": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "value": 30,
+                            "unit": "minutes",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Add 24 Months",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Add",
+                    "operand": [
+                        {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2014",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "value": 24,
+                            "unit": "months",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Years Equivalent To UCUM Annum (a)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equivalent",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "year",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "a",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Months Equivalent To UCUM Month (mo)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equivalent",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "month",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "mo",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Weeks Equal To UCUM Weeks (wk)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "week",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "wk",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Days Equal To UCUM Days (d)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "day",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "d",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Hours Equal To UCUM Hours (h)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "hour",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "h",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Minutes Equal To UCUM Minutes (min)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "minute",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "min",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Seconds Equal To UCUM Seconds (s)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "second",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "s",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Calendar Milliseconds Equal To UCUM Milliseconds (ms)",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Equal",
+                    "operand": [
+                        {
+                            "value": 1,
+                            "unit": "millisecond",
+                            "type": "Quantity"
+                        },
+                        {
+                            "value": 1,
+                            "unit": "ms",
+                            "type": "Quantity"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Duration In Months Between",
+                "context": "Unfiltered",
+                "accessLevel": "Public"
+            },
+            {
+                "name": "Difference In Months Between",
+                "context": "Unfiltered",
+                "accessLevel": "Public"
+            },
+            {
+                "name": "strength",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "value": 10.0,
+                    "unit": "mg/mL",
+                    "type": "Quantity"
+                }
+            },
+            {
+                "name": "If Conditional",
+                "context": "Unfiltered",
+                "accessLevel": "Public"
+            },
+            {
+                "name": "unit",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                    "value": "MG/ACTUAT",
+                    "type": "Literal"
+                }
+            },
+            {
+                "name": "Selected Case Conditional",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Case",
+                    "caseItem": [
+                        {
+                            "type": "CaseItem",
+                            "when": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "MG",
+                                "type": "Literal"
+                            },
+                            "then": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "mg",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "CaseItem",
+                            "when": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "MG/ACTUAT",
+                                "type": "Literal"
+                            },
+                            "then": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "mg/{actuat}",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "CaseItem",
+                            "when": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "MG/HR",
+                                "type": "Literal"
+                            },
+                            "then": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "mg/h",
+                                "type": "Literal"
+                            }
+                        },
+                        {
+                            "type": "CaseItem",
+                            "when": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "MG/ML",
+                                "type": "Literal"
+                            },
+                            "then": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "mg/mL",
+                                "type": "Literal"
+                            }
+                        }
+                    ],
+                    "else": {
+                        "type": "Add",
+                        "operand": [
+                            {
+                                "type": "Add",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "{",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "name": "unit",
+                                        "type": "ExpressionRef"
+                                    }
+                                ]
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "}",
+                                "type": "Literal"
+                            }
+                        ]
+                    },
+                    "comparand": {
+                        "name": "unit",
+                        "type": "ExpressionRef"
+                    }
+                }
+            },
+            {
+                "name": "doseFormCode",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                    "value": "316897",
+                    "type": "Literal"
+                }
+            },
+            {
+                "name": "Conditional Case",
+                "context": "Unfiltered",
+                "accessLevel": "Public",
+                "expression": {
+                    "type": "Case",
+                    "caseItem": [
+                        {
+                            "type": "CaseItem",
+                            "when": {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "name": "doseFormCode",
+                                        "type": "ExpressionRef"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "316897",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            "then": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                "value": "12.6",
+                                "type": "Literal"
+                            }
+                        }
+                    ],
+                    "else": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                        "value": "30",
+                        "type": "Literal"
+                    }
                 }
             }
         ]

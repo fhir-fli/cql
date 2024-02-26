@@ -1,13 +1,5 @@
 {
     "library": {
-        "annotation": [
-            {
-                "translatorVersion": "3.3.2",
-                "translatorOptions": "",
-                "signatureLevel": "None",
-                "type": "CqlToElmInfo"
-            }
-        ],
         "identifier": {
             "id": "Exercises03Key"
         },
