@@ -126,4 +126,7 @@ class And extends BinaryExpression {
     /// Default return null if not covered above, though all cases should be covered
     return null;
   }
+
+  @override
+  List<Type> get returnTypes => const [FhirBoolean];
 }

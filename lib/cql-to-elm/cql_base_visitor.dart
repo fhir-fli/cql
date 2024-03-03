@@ -1125,6 +1125,48 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             asType: QName.fromFull((operand.first as LiteralType).valueType)),
         operand.last
       ];
+    } else {
+      List<Type>? firstReturnTypes = operand.first.returnTypes;
+      List<Type>? lastReturnTypes = operand.last.returnTypes;
+      print(
+          'FIRSTRETURNTYPES: $firstReturnTypes LASTRETURNTYPES: $lastReturnTypes');
+      Type? firstType;
+      Type? lastType;
+      if (firstReturnTypes != null && firstReturnTypes.isNotEmpty) {
+        firstType = firstReturnTypes.first;
+      }
+      if (lastReturnTypes != null && lastReturnTypes.isNotEmpty) {
+        lastType = lastReturnTypes.first;
+      }
+      if (firstType != null && lastType != null) {
+        firstType = LiteralType.typeToLiteral(firstType);
+        lastType = LiteralType.typeToLiteral(lastType);
+        if (firstType == LiteralInteger) {
+          if (lastType == LiteralLong) {
+            return [ToLong(operand: operand.first), operand.last];
+          } else if (lastType == LiteralDecimal) {
+            return [ToDecimal(operand: operand.first), operand.last];
+          }
+        } else if (firstType == LiteralLong) {
+          if (lastType == LiteralInteger) {
+            return [operand.first, ToLong(operand: operand.last)];
+          } else if (lastType == LiteralDecimal) {
+            return [ToDecimal(operand: operand.first), operand.last];
+          }
+        } else if (firstType == LiteralDecimal) {
+          if (lastType == LiteralInteger) {
+            return [operand.first, ToDecimal(operand: operand.last)];
+          } else if (lastType == LiteralLong) {
+            return [operand.first, ToDecimal(operand: operand.last)];
+          } else if (lastType == LiteralQuantity) {
+            return [operand.first, ToQuantity(operand: operand.last)];
+          }
+        } else if (firstType == LiteralQuantity) {
+          if (lastType == LiteralDecimal) {
+            return [operand.first, ToQuantity(operand: operand.last)];
+          }
+        }
+      }
     }
     return operand;
   }
@@ -1137,6 +1179,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     String? equalityOperator;
     List<CqlExpression> operand = [];
     for (final child in ctx.children ?? <ParseTree>[]) {
+      // print('EqualityExpression: ${child.runtimeType} ${child.text}');
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);
         if (result is CqlExpression) {
@@ -1153,8 +1196,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
     if (operand.length == 2) {
       if (equalityOperator == '=') {
-        print(operand.first);
-        print(operand.last);
         return Equal(operand: translateOperand(operand));
       } else if (equalityOperator == '!=') {
         return Not(operand: Equal(operand: translateOperand(operand)));
@@ -2518,6 +2559,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
+      // print('termExpressioncontext: ${child.runtimeType} ${child.text}');
       if (child is! TerminalNodeImpl) {
         return byContext(child);
       }
@@ -2603,42 +2645,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
               if (right is LiteralInteger) {
                 return Power(operand: [left, right]);
               } else if (right is LiteralLong) {
-                return Power(operand: [
-                  As(operand: left, asType: QName.fromFull(right.valueType)),
-                  right
-                ]);
+                return Power(operand: [ToLong(operand: left), right]);
               } else if (right is LiteralDecimal) {
-                return Power(operand: [
-                  As(operand: left, asType: QName.fromFull(right.valueType)),
-                  right
-                ]);
+                return Power(operand: [ToDecimal(operand: left), right]);
               }
             }
             break;
           case LiteralLong _:
             {
               if (right is LiteralInteger) {
-                return Power(operand: [
-                  left,
-                  As(operand: right, asType: QName.fromFull(left.valueType))
-                ]);
+                return Power(operand: [left, ToLong(operand: right)]);
               } else if (right is LiteralLong) {
                 return Power(operand: [left, right]);
               } else if (right is LiteralDecimal) {
-                return Power(operand: [
-                  As(operand: left, asType: QName.fromFull(right.valueType)),
-                  right
-                ]);
+                return Power(operand: [ToDecimal(operand: left), right]);
               }
             }
             break;
           case LiteralDecimal _:
             {
               if (right is LiteralInteger || right is LiteralLong) {
-                return Power(operand: [
-                  left,
-                  As(operand: right, asType: QName.fromFull(left.valueType))
-                ]);
+                return Power(operand: [left, ToDecimal(operand: right)]);
               } else if (right is LiteralDecimal) {
                 return Power(operand: [left, right]);
               }

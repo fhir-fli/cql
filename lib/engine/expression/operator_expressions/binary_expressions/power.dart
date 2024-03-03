@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to raise the first argument to the power given by the second argument.
@@ -42,6 +46,74 @@ class Power extends BinaryExpression {
     super.resultTypeName,
     super.resultTypeSpecifier,
   });
+
+  factory Power.compareFirst({
+    required CqlExpression first,
+    required CqlExpression second,
+    List<CqlToElmBase>? annotation,
+    String? localId,
+    String? locator,
+    String? resultTypeName,
+    TypeSpecifierExpression? resultTypeSpecifier,
+  }) {
+    final operand = <CqlExpression>[];
+    switch (first) {
+      case LiteralInteger _:
+        {
+          if (second is LiteralInteger) {
+            operand.add(first);
+            operand.add(second);
+          } else if (second is LiteralLong) {
+            operand.add(ToLong(operand: first));
+            operand.add(second);
+          } else if (second is LiteralDecimal) {
+            operand.add(ToDecimal(operand: first));
+            operand.add(second);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (second is LiteralInteger) {
+            operand.add(first);
+            operand.add(ToLong(operand: second));
+          } else if (second is LiteralLong) {
+            operand.add(first);
+            operand.add(second);
+          } else if (second is LiteralDecimal) {
+            operand.add(ToDecimal(operand: first));
+            operand.add(second);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (second is LiteralInteger) {
+            operand.add(first);
+            operand.add(ToDecimal(operand: second));
+          } else if (second is LiteralLong) {
+            operand.add(first);
+            operand.add(ToDecimal(operand: second));
+          } else if (second is LiteralDecimal) {
+            operand.add(first);
+            operand.add(second);
+          }
+        }
+        break;
+      default:
+        throw ArgumentError(
+            'First argument must be an Integer, Long, or Decimal');
+    }
+
+    return Power(
+      operand: operand,
+      annotation: annotation,
+      localId: localId,
+      locator: locator,
+      resultTypeName: resultTypeName,
+      resultTypeSpecifier: resultTypeSpecifier,
+    );
+  }
 
   factory Power.fromJson(Map<String, dynamic> json) => Power(
         operand: List<CqlExpression>.from(
@@ -88,4 +160,40 @@ class Power extends BinaryExpression {
 
   @override
   String get type => 'Power';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('Power must have two operands');
+    } else {
+      final first = operand.first.execute(context);
+      final second = operand.last.execute(context);
+      if (first == null || second == null) {
+        return null;
+      } else if (first is FhirInteger &&
+          first.isValid &&
+          second is FhirInteger &&
+          second.isValid) {
+        return FhirInteger(pow(first.value!, second.value!));
+      } else if (first is FhirInteger64 &&
+          first.isValid &&
+          second is FhirInteger64 &&
+          second.isValid) {
+        return FhirInteger64(first.value!.pow(second.value!.toInt()));
+      } else if (first is FhirDecimal &&
+          first.isValid &&
+          second is FhirDecimal &&
+          second.isValid) {
+        return FhirDecimal(pow(first.value!, second.value!));
+      } else {
+        throw ArgumentError(
+            'Power must have two operands of type Integer, Long, or Decimal');
+      }
+    }
+  }
+
+  @override
+  List<Type>? get returnTypes {
+    return operand.isEmpty ? null : operand.first.returnTypes;
+  }
 }

@@ -763,7 +763,15 @@ class CqlExpression extends Element {
         }
         break;
       case 'Power':
-        return Power(operand: operand);
+        {
+          if (operand.length == 2) {
+            print(operand.first);
+            print(operand.last);
+            return Power.compareFirst(
+                first: operand.first, second: operand.last);
+          }
+        }
+        break;
       case 'Precision':
         return Precision(operand: operand.first);
       case 'Predecessor':
@@ -799,7 +807,9 @@ class CqlExpression extends Element {
       // case 'Retrieve':
       //   return Retrieve(operand: operand);
       case 'Round':
-        return Round(operand: operand.first);
+        return Round(
+            operand: operand.first,
+            precision: operand.length > 1 ? operand[1] : null);
       case 'SameAs':
         return SameAs(operand: operand);
       case 'SameOrAfter':
@@ -945,7 +955,8 @@ class CqlExpression extends Element {
 
   String? get type => throw 'Get Type Unknown Expression type: $runtimeType';
 
-  dynamic execute(Map<String, dynamic> context) {
-    throw 'Execute Unknown Expression type: $runtimeType';
-  }
+  dynamic execute(Map<String, dynamic> context) =>
+      'Execute Unknown Expression type: $runtimeType';
+
+  List<Type>? get returnTypes => null;
 }

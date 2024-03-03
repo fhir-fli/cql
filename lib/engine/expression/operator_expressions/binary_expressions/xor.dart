@@ -123,4 +123,7 @@ class Xor extends BinaryExpression {
     /// In all other cases, including when one operand is null and the other is not
     return null;
   }
+
+  @override
+  List<Type> get returnTypes => const [FhirBoolean];
 }

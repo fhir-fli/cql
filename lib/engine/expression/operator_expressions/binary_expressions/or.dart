@@ -121,4 +121,7 @@ class Or extends BinaryExpression {
     /// If not covered above, return null as a fallback
     return null;
   }
+
+  @override
+  List<Type> get returnTypes => const [FhirBoolean];
 }

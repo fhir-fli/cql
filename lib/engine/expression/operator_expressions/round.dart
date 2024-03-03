@@ -1,3 +1,5 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../cql.dart';
 
 /// Operator to return the nearest integer to its argument.
@@ -97,4 +99,7 @@ class Round extends OperatorExpression {
 
   @override
   String get type => 'Round';
+
+  @override
+  List<Type> get returnTypes => const [FhirDecimal];
 }

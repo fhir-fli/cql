@@ -135,4 +135,7 @@ class Implies extends BinaryExpression {
 
     return null;
   }
+
+  @override
+  List<Type> get returnTypes => const [FhirBoolean];
 }

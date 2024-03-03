@@ -1,10 +1,47 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to convert the value of its argument to an Long value.
-/// The operator accepts strings using the format: (+|-)?#0, meaning an optional polarity indicator,
-/// followed by any number of digits (including none), followed by at least one digit.
-/// If the input string is not formatted correctly or cannot be interpreted as a valid Long value, the result is null.
+/// The operator accepts strings using the format: (+|-)?#0, meaning an optional
+/// polarity indicator,
+/// followed by any number of digits (including none), followed by at least one
+/// digit.
+/// If the input string is not formatted correctly or cannot be interpreted as a
+/// valid Long value, the result is null.
 /// If the argument is null, the result is null.
+/// The Long type is a new feature being introduced in CQL 1.5, and has
+/// trial-use status.
+///
+/// Signature:
+///
+/// ToLong(argument Boolean) Long
+/// ToLong(argument Integer) Long
+/// ToLong(argument String) Long
+/// Description:
+///
+/// The ToLong operator converts the value of its argument to a Long value. The operator accepts strings using the following format:
+///
+/// (+|-)?#0
+///
+/// Meaning an optional polarity indicator, followed by any number of digits
+/// (including none), followed by at least one digit.
+///
+/// See Formatting Strings for a description of the formatting strings used in
+/// this specification.
+///
+/// Note that the long value returned by this operator must be a valid value in
+/// the range representable for Long values in CQL.
+///
+/// If the input string is not formatted correctly, or cannot be interpreted as
+/// a valid Long value, the result is null.
+///
+/// If the argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the ToLong operator:
+///
+/// define "IsValid": ToLong('-1')
+/// define "IsNull": ToLong('one')
 class ToLong extends UnaryExpression {
   ToLong({
     required super.operand,
@@ -61,4 +98,43 @@ class ToLong extends UnaryExpression {
 
     return data;
   }
+
+  @override
+  FhirInteger64? execute(Map<String, dynamic> context) {
+    final result = operand.execute(context);
+    switch (result) {
+      case null:
+        return null;
+      case FhirBoolean _:
+        {
+          if (result.value == null) {
+            return null;
+          } else {
+            return result.value! ? FhirInteger64(1) : FhirInteger64(0);
+          }
+        }
+      case String _:
+        {
+          final value = BigInt.tryParse(result);
+          if (value == null) {
+            return null;
+          } else {
+            return FhirInteger64(value);
+          }
+        }
+      case FhirInteger _:
+        {
+          return result.value == null ? null : FhirInteger64(result.value!);
+        }
+      case FhirInteger64 _:
+        {
+          return result;
+        }
+      default:
+        return null;
+    }
+  }
+
+  @override
+  List<Type>? get returnTypes => [FhirInteger64];
 }
