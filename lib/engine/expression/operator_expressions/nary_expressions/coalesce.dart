@@ -89,4 +89,8 @@ class Coalesce extends NaryExpression {
     }
     return null;
   }
+
+  @override
+  List<Type>? get returnTypes =>
+      (operand?.isEmpty ?? true) ? null : [operand!.first.runtimeType];
 }

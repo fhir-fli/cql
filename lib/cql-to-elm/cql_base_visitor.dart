@@ -74,6 +74,16 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         }
       } else if (operand[0] is LiteralString && operand[1] is LiteralString) {
         return Concatenate(operand: operand, plus: additionOperator == '+');
+      } else if (operand[0] is LiteralString && operand[1] is LiteralNull) {
+        return Concatenate(operand: [
+          operand[0],
+          As(operand: operand[1], asType: QName.fromFull('String'))
+        ], plus: additionOperator == '+');
+      } else if (operand[0] is LiteralNull && operand[1] is LiteralString) {
+        return Concatenate(operand: [
+          As(operand: operand[0], asType: QName.fromFull('String')),
+          operand[1]
+        ], plus: additionOperator == '+');
       } else {
         final left = operand.first;
         final right = operand.last;
@@ -133,7 +143,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                       ])
                     : Add(operand: operand);
           default:
-            return Add(operand: operand);
+            {
+              final return1 = operand.first.returnTypes;
+              final return2 = operand.last.returnTypes;
+
+              return Add(operand: operand);
+            }
         }
       }
     }
@@ -1128,8 +1143,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     } else {
       List<Type>? firstReturnTypes = operand.first.returnTypes;
       List<Type>? lastReturnTypes = operand.last.returnTypes;
-      print(
-          'FIRSTRETURNTYPES: $firstReturnTypes LASTRETURNTYPES: $lastReturnTypes');
       Type? firstType;
       Type? lastType;
       if (firstReturnTypes != null && firstReturnTypes.isNotEmpty) {

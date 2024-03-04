@@ -584,7 +584,11 @@ class CqlExpression extends Element {
       case 'Exists':
         return Exists(operand: operand.first);
       case 'Exp':
-        return Exp(operand: operand.first);
+        {
+          if (operand.length == 1) {
+            return Exp.compareFirst(first: operand.first);
+          }
+        }
       case 'Expand':
         return Expand(operand: operand);
       case 'ExpandValueSet':
@@ -681,9 +685,17 @@ class CqlExpression extends Element {
       // case 'Literal':
       //   return Literal(operand: operand);
       case 'Ln':
-        return Ln(operand: operand.first);
+        {
+          if (operand.length == 1) {
+            return Ln.compareFirst(first: operand.first);
+          }
+        }
       case 'Log':
-        return Log(operand: operand);
+        {
+          if (operand.length == 2) {
+            return Log.compareFirst(first: operand.first, second: operand.last);
+          }
+        }
       case 'LowBoundary':
         return LowBoundary(operand: operand);
       case 'Lower':
@@ -765,8 +777,6 @@ class CqlExpression extends Element {
       case 'Power':
         {
           if (operand.length == 2) {
-            print(operand.first);
-            print(operand.last);
             return Power.compareFirst(
                 first: operand.first, second: operand.last);
           }

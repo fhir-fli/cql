@@ -33,6 +33,61 @@ class Concatenate extends NaryExpression {
     super.resultTypeSpecifier,
   });
 
+  factory Concatenate.compareFirst({
+    required CqlExpression first,
+    required CqlExpression second,
+    List<CqlToElmBase>? annotation,
+    String? localId,
+    String? locator,
+    String? resultTypeName,
+    TypeSpecifierExpression? resultTypeSpecifier,
+  }) {
+    List<CqlExpression> operand = [];
+    if (first is LiteralString) {
+      operand.add(first);
+    } else if (first is LiteralNull) {
+      operand.add(As(operand: first, asType: QName.fromDataType('String')));
+    } else {
+      final return1 = first.returnTypes;
+      if (return1?.length == 1) {
+        if (return1!.first == LiteralString) {
+          operand.add(first);
+        } else if (return1.first == LiteralNull) {
+          operand.add(As(operand: first, asType: QName.fromDataType('String')));
+        }
+      }
+    }
+
+    if (second is LiteralString) {
+      operand.add(second);
+    } else if (second is LiteralNull) {
+      operand.add(As(operand: second, asType: QName.fromDataType('String')));
+    } else {
+      final return2 = second.returnTypes;
+      if (return2?.length == 1) {
+        if (return2!.first == LiteralString) {
+          operand.add(second);
+        } else if (return2.first == LiteralNull) {
+          operand
+              .add(As(operand: second, asType: QName.fromDataType('String')));
+        }
+      }
+    }
+
+    if (operand.length != 2) {
+      throw ArgumentError('There were not 2 ');
+    }
+
+    return Concatenate(
+      operand: operand,
+      annotation: annotation,
+      localId: localId,
+      locator: locator,
+      resultTypeName: resultTypeName,
+      resultTypeSpecifier: resultTypeSpecifier,
+    );
+  }
+
   factory Concatenate.fromJson(Map<String, dynamic> json) => Concatenate(
         operand: List<CqlExpression>.from(
           json['operand'].map(
@@ -115,4 +170,7 @@ class Concatenate extends NaryExpression {
       return plus ? concatenatePlus(left, right) : concatenateAnd(left, right);
     }
   }
+
+  @override
+  List<Type>? get returnTypes => [String];
 }

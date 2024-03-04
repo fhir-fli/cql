@@ -1130,21 +1130,30 @@
                                     "type": "Log",
                                     "operand": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "25",
-                                            "type": "Literal"
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "25",
+                                                "type": "Literal"
+                                            }
                                         },
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "5",
-                                            "type": "Literal"
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "5",
+                                                "type": "Literal"
+                                            }
                                         }
                                     ]
                                 },
                                 {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "2",
-                                    "type": "Literal"
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "2",
+                                        "type": "Literal"
+                                    }
                                 }
                             ]
                         }
@@ -1163,14 +1172,20 @@
                                     "type": "Log",
                                     "operand": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "5",
-                                            "type": "Literal"
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "5",
+                                                "type": "Literal"
+                                            }
                                         },
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "25",
-                                            "type": "Literal"
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "25",
+                                                "type": "Literal"
+                                            }
                                         }
                                     ]
                                 },
@@ -1195,9 +1210,12 @@
                                 {
                                     "type": "Ln",
                                     "operand": {
-                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                        "value": "10",
-                                        "type": "Literal"
+                                        "type": "ToDecimal",
+                                        "operand": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "10",
+                                            "type": "Literal"
+                                        }
                                     }
                                 },
                                 {
@@ -1227,9 +1245,12 @@
                                     }
                                 },
                                 {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "10",
-                                    "type": "Literal"
+                                    "type": "ToDecimal",
+                                    "operand": {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "10",
+                                        "type": "Literal"
+                                    }
                                 }
                             ]
                         }
@@ -1270,7 +1291,7 @@
                     "context": "Unfiltered",
                     "accessLevel": "Public",
                     "expression": {
-                        "type": "Add",
+                        "type": "Concatenate",
                         "operand": [
                             {
                                 "valueType": "{urn:hl7-org:elm-types:r1}String",
@@ -1278,7 +1299,11 @@
                                 "type": "Literal"
                             },
                             {
-                                "type": "Null"
+                                "asType": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "As",
+                                "operand": {
+                                    "type": "Null"
+                                }
                             }
                         ]
                     }
@@ -1291,7 +1316,7 @@
                         "type": "Add",
                         "operand": [
                             {
-                                "type": "Add",
+                                "type": "Concatenate",
                                 "operand": [
                                     {
                                         "valueType": "{urn:hl7-org:elm-types:r1}String",
@@ -1299,7 +1324,11 @@
                                         "type": "Literal"
                                     },
                                     {
-                                        "type": "Null"
+                                        "asType": "{urn:hl7-org:elm-types:r1}String",
+                                        "type": "As",
+                                        "operand": {
+                                            "type": "Null"
+                                        }
                                     }
                                 ]
                             },
