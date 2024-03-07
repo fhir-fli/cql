@@ -32,6 +32,101 @@ class Coalesce extends NaryExpression {
     super.resultTypeSpecifier,
   });
 
+  factory Coalesce.one(
+    CqlExpression operand1, {
+    List<CqlToElmBase>? annotation,
+    String? localId,
+    String? locator,
+    String? resultTypeName,
+    TypeSpecifierExpression? resultTypeSpecifier,
+  }) =>
+      Coalesce(
+        operand: [operand1],
+        annotation: annotation,
+        localId: localId,
+        locator: locator,
+        resultTypeName: resultTypeName,
+        resultTypeSpecifier: resultTypeSpecifier,
+      );
+
+  factory Coalesce.two(
+    CqlExpression operand1,
+    CqlExpression operand2, {
+    List<CqlToElmBase>? annotation,
+    String? localId,
+    String? locator,
+    String? resultTypeName,
+    TypeSpecifierExpression? resultTypeSpecifier,
+  }) =>
+      Coalesce(
+        operand: [operand1, operand2],
+        annotation: annotation,
+        localId: localId,
+        locator: locator,
+        resultTypeName: resultTypeName,
+        resultTypeSpecifier: resultTypeSpecifier,
+      );
+
+  factory Coalesce.three(
+    CqlExpression operand1,
+    CqlExpression operand2,
+    CqlExpression operand3, {
+    List<CqlToElmBase>? annotation,
+    String? localId,
+    String? locator,
+    String? resultTypeName,
+    TypeSpecifierExpression? resultTypeSpecifier,
+  }) =>
+      Coalesce(
+        operand: [operand1, operand2, operand3],
+        annotation: annotation,
+        localId: localId,
+        locator: locator,
+        resultTypeName: resultTypeName,
+        resultTypeSpecifier: resultTypeSpecifier,
+      );
+
+  factory Coalesce.four(
+    CqlExpression operand1,
+    CqlExpression operand2,
+    CqlExpression operand3,
+    CqlExpression operand4, {
+    List<CqlToElmBase>? annotation,
+    String? localId,
+    String? locator,
+    String? resultTypeName,
+    TypeSpecifierExpression? resultTypeSpecifier,
+  }) =>
+      Coalesce(
+        operand: [operand1, operand2, operand3, operand4],
+        annotation: annotation,
+        localId: localId,
+        locator: locator,
+        resultTypeName: resultTypeName,
+        resultTypeSpecifier: resultTypeSpecifier,
+      );
+
+  factory Coalesce.five(
+    CqlExpression operand1,
+    CqlExpression operand2,
+    CqlExpression operand3,
+    CqlExpression operand4,
+    CqlExpression operand5, {
+    List<CqlToElmBase>? annotation,
+    String? localId,
+    String? locator,
+    String? resultTypeName,
+    TypeSpecifierExpression? resultTypeSpecifier,
+  }) =>
+      Coalesce(
+        operand: [operand1, operand2, operand3, operand4, operand5],
+        annotation: annotation,
+        localId: localId,
+        locator: locator,
+        resultTypeName: resultTypeName,
+        resultTypeSpecifier: resultTypeSpecifier,
+      );
+
   factory Coalesce.fromJson(Map<String, dynamic> json) => Coalesce(
         operand: List<CqlExpression>.from(
           json['operand'].map(
@@ -91,6 +186,17 @@ class Coalesce extends NaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes =>
-      (operand?.isEmpty ?? true) ? null : [operand!.first.runtimeType];
+  List<Type>? get returnTypes {
+    if (operand == null || operand!.isEmpty) {
+      return null;
+    }
+    for (final op in operand!) {
+      if (op.returnTypes != null &&
+          op.returnTypes!.isNotEmpty &&
+          op.returnTypes!.length == 1) {
+        return [op.returnTypes!.first];
+      }
+    }
+    return null;
+  }
 }

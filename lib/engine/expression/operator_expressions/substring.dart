@@ -75,4 +75,7 @@ class Substring extends OperatorExpression {
 
   @override
   String get type => 'Substring';
+
+  @override
+  List<Type>? get returnTypes => [String];
 }

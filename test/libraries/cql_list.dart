@@ -1,3 +1,0 @@
-const cqlList = [
-  'Simple.cql',
-];

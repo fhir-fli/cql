@@ -41,6 +41,7 @@ class Before extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
+    print(toString());
     final Map<String, dynamic> json = {
       if (precision != null) 'precision': precision!.toJson(),
       'type': type,
@@ -66,4 +67,9 @@ class Before extends BinaryExpression {
 
   @override
   String get type => 'Before';
+
+  @override
+  String toString() {
+    return 'Before(${operand.join(', ')})';
+  }
 }

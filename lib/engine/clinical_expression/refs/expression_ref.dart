@@ -40,7 +40,22 @@ class ExpressionRef extends Ref {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = super.toJson();
+    final Map<String, dynamic> val = {};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
+      }
+    }
+
+    writeNotNull('name', name);
+    writeNotNull('type', type);
+    writeNotNull('libraryName', libraryName);
+    writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
+    writeNotNull('localId', localId);
+    writeNotNull('locator', locator);
+    writeNotNull('resultTypeName', resultTypeName);
+    writeNotNull('resultTypeSpecifier', resultTypeSpecifier?.toJson());
     return val;
   }
 

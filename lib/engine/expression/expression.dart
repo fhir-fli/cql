@@ -12,7 +12,7 @@ export 'current.dart';
 export 'date_time_precision.dart';
 export 'filter.dart';
 export 'for_each.dart';
-export 'if.dart';
+export 'if_then_else.dart';
 export 'instance_element.dart';
 export 'instance.dart';
 export 'interval.dart';

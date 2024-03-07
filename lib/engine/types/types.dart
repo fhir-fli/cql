@@ -309,9 +309,7 @@ class LiteralDate extends LiteralType {
 class LiteralDateTime extends LiteralType {
   final String value;
 
-  LiteralDateTime({
-    required this.value,
-  });
+  LiteralDateTime({required this.value});
 
   factory LiteralDateTime.fromJson(dynamic json) {
     if (json is String) {
@@ -333,12 +331,17 @@ class LiteralDateTime extends LiteralType {
     return {
       'type': type,
       'year': LiteralInteger(value: dateTime.year).toJson(),
-      'month': LiteralInteger(value: dateTime.month).toJson(),
-      'day': LiteralInteger(value: dateTime.day).toJson(),
-      'hour': LiteralInteger(value: dateTime.hour).toJson(),
-      'minute': LiteralInteger(value: dateTime.minute).toJson(),
-      'second': LiteralInteger(value: dateTime.second).toJson(),
-      if (dateTime.millisecond != 0)
+      if (dateTime.precision.hasMonth)
+        'month': LiteralInteger(value: dateTime.month).toJson(),
+      if (dateTime.precision.hasDay)
+        'day': LiteralInteger(value: dateTime.day).toJson(),
+      if (dateTime.precision.hasHours)
+        'hour': LiteralInteger(value: dateTime.hour).toJson(),
+      if (dateTime.precision.hasMinutes)
+        'minute': LiteralInteger(value: dateTime.minute).toJson(),
+      if (dateTime.precision.hasSeconds)
+        'second': LiteralInteger(value: dateTime.second).toJson(),
+      if (dateTime.precision.hasMilliseconds && dateTime.millisecond != 0)
         'millisecond': LiteralInteger(value: dateTime.millisecond).toJson(),
     };
   }

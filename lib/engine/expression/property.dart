@@ -1,12 +1,19 @@
 import '../../cql.dart';
 
-/// The Property operator returns the value of the property on source specified by the path attribute.
+/// The Property operator returns the value of the property on source specified
+/// by the path attribute.
 /// If the result of evaluating source is null, the result is null.
-/// The path attribute may include qualifiers (.) and indexers ([x]). Indexers must be literal integer values.
-/// If the path attribute contains qualifiers or indexers, each qualifier or indexer is traversed to obtain the actual value.
-/// If the object of the property access at any point in traversing the path is null, the result is null.
-/// If a scope is specified, the name is used to resolve the scope in which the path will be resolved.
-/// Property expressions can also be used to access the individual points and closed indicators for interval types using the property names low, high, lowClosed, and highClosed.
+/// The path attribute may include qualifiers (.) and indexers ([x]). Indexers
+/// must be literal integer values.
+/// If the path attribute contains qualifiers or indexers, each qualifier or
+/// indexer is traversed to obtain the actual value.
+/// If the object of the property access at any point in traversing the path is
+/// null, the result is null.
+/// If a scope is specified, the name is used to resolve the scope in which the
+/// path will be resolved.
+/// Property expressions can also be used to access the individual points and
+/// closed indicators for interval types using the property names low, high,
+/// lowClosed, and highClosed.
 class Property extends CqlExpression {
   final String path;
   final String? scope;
@@ -55,8 +62,8 @@ class Property extends CqlExpression {
     }
 
     writeNotNull('path', path);
-    writeNotNull('scope', scope);
     writeNotNull('type', type);
+    writeNotNull('scope', scope);
     writeNotNull('source', source?.toJson());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);

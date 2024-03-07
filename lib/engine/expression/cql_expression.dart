@@ -179,7 +179,7 @@ class CqlExpression extends Element {
         case 'IdentifierRef':
           return IdentifierRef.fromJson(json);
         case 'If':
-          return If.fromJson(json);
+          return IfThenElse.fromJson(json);
         case 'Implies':
           return Implies.fromJson(json);
         case 'In':
@@ -813,7 +813,7 @@ class CqlExpression extends Element {
       // case 'Repeat':
       //   return Repeat(operand: operand);
       case 'ReplaceMatches':
-        return ReplaceMatches(operands: operand);
+        return ReplaceMatches(operand: operand);
       // case 'Retrieve':
       //   return Retrieve(operand: operand);
       case 'Round':

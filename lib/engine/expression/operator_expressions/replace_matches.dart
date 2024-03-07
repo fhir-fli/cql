@@ -6,7 +6,7 @@ import '../../../cql.dart';
 /// Platforms will typically use native regular expression implementations.
 class ReplaceMatches extends TernaryExpression {
   ReplaceMatches({
-    required super.operands,
+    required super.operand,
     super.annotation,
     super.localId,
     super.locator,
@@ -15,8 +15,8 @@ class ReplaceMatches extends TernaryExpression {
   });
 
   factory ReplaceMatches.fromJson(Map<String, dynamic> json) => ReplaceMatches(
-        operands: json['operands'] != null
-            ? (json['operands'] as List)
+        operand: json['operand'] != null
+            ? (json['operand'] as List)
                 .map((e) => CqlExpression.fromJson(e))
                 .toList()
             : [],
@@ -37,7 +37,7 @@ class ReplaceMatches extends TernaryExpression {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
       'type': type,
-      'operands': operands.map((e) => e.toJson()).toList(),
+      'operand': operand.map((e) => e.toJson()).toList(),
     };
 
     if (annotation != null) {

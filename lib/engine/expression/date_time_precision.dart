@@ -41,6 +41,14 @@ extension CqlDateTimePrecisionExtension on CqlDateTimePrecision {
     'minute': CqlDateTimePrecision.minute,
     'second': CqlDateTimePrecision.second,
     'millisecond': CqlDateTimePrecision.millisecond,
+    'years': CqlDateTimePrecision.year,
+    'months': CqlDateTimePrecision.month,
+    'weeks': CqlDateTimePrecision.week,
+    'days': CqlDateTimePrecision.day,
+    'hours': CqlDateTimePrecision.hour,
+    'minutes': CqlDateTimePrecision.minute,
+    'seconds': CqlDateTimePrecision.second,
+    'milliseconds': CqlDateTimePrecision.millisecond,
   };
 
   static CqlDateTimePrecision fromJson(String? json) => json == null

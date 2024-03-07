@@ -1313,7 +1313,7 @@
                     "context": "Unfiltered",
                     "accessLevel": "Public",
                     "expression": {
-                        "type": "Add",
+                        "type": "Concatenate",
                         "operand": [
                             {
                                 "type": "Concatenate",
@@ -1356,7 +1356,22 @@
                 {
                     "name": "String Indexer",
                     "context": "Unfiltered",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Indexer",
+                        "operand": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "ABCD",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
                 },
                 {
                     "name": "PositionOf",
@@ -1460,7 +1475,7 @@
                     "accessLevel": "Public",
                     "expression": {
                         "type": "ReplaceMatches",
-                        "operands": [
+                        "operand": [
                             {
                                 "valueType": "{urn:hl7-org:elm-types:r1}String",
                                 "value": "ABCD",
@@ -1622,8 +1637,8 @@
                     "context": "Unfiltered",
                     "accessLevel": "Public",
                     "expression": {
-                        "type": "SameAs",
                         "precision": "Year",
+                        "type": "SameAs",
                         "operand": [
                             {
                                 "type": "Date",
@@ -1669,8 +1684,8 @@
                     "context": "Unfiltered",
                     "accessLevel": "Public",
                     "expression": {
-                        "type": "SameAs",
                         "precision": "Year",
+                        "type": "SameOrBefore",
                         "operand": [
                             {
                                 "type": "Date",
@@ -1716,44 +1731,9 @@
                     "context": "Unfiltered",
                     "accessLevel": "Public",
                     "expression": {
+                        "precision": "Year",
                         "type": "Before",
                         "operand": [
-                            {
-                                "type": "Date",
-                                "year": {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "2012",
-                                    "type": "Literal"
-                                },
-                                "month": {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "1",
-                                    "type": "Literal"
-                                },
-                                "day": {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "15",
-                                    "type": "Literal"
-                                }
-                            },
-                            {
-                                "type": "Date",
-                                "year": {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "2014",
-                                    "type": "Literal"
-                                },
-                                "month": {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "2",
-                                    "type": "Literal"
-                                },
-                                "day": {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "15",
-                                    "type": "Literal"
-                                }
-                            },
                             {
                                 "type": "Date",
                                 "year": {
@@ -1903,11 +1883,6 @@
                                 "minute": {
                                     "valueType": "{urn:hl7-org:elm-types:r1}Integer",
                                     "value": "30",
-                                    "type": "Literal"
-                                },
-                                "second": {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                    "value": "0",
                                     "type": "Literal"
                                 }
                             },
@@ -2105,12 +2080,96 @@
                 {
                     "name": "Duration In Months Between",
                     "context": "Unfiltered",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "DurationBetween",
+                        "operand": [
+                            {
+                                "type": "Date",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "31",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Date",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
                 },
                 {
                     "name": "Difference In Months Between",
                     "context": "Unfiltered",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {
+                        "precision": "Month",
+                        "type": "DifferenceBetween",
+                        "operand": [
+                            {
+                                "type": "Date",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "31",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "Date",
+                                "year": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2014",
+                                    "type": "Literal"
+                                },
+                                "month": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "2",
+                                    "type": "Literal"
+                                },
+                                "day": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "1",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
                 },
                 {
                     "name": "strength",
@@ -2125,7 +2184,88 @@
                 {
                     "name": "If Conditional",
                     "context": "Unfiltered",
-                    "accessLevel": "Public"
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "type": "Less",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "strength",
+                                        "type": "ExpressionRef"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                    "value": "0.1",
+                                    "type": "Literal"
+                                }
+                            ]
+                        },
+                        "then": {
+                            "classType": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "Instance",
+                            "element": [
+                                {
+                                    "name": "value",
+                                    "value": {
+                                        "type": "Multiply",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "strength",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                "value": "1000",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "unit",
+                                    "value": {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "mcg",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "type": "Substring",
+                                                "stringToSub": {
+                                                    "path": "unit",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "strength",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                },
+                                                "startIndex": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "2",
+                                                    "type": "Literal"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "else": {
+                            "name": "strength",
+                            "type": "ExpressionRef"
+                        }
+                    }
                 },
                 {
                     "name": "unit",
@@ -2143,9 +2283,12 @@
                     "accessLevel": "Public",
                     "expression": {
                         "type": "Case",
+                        "comparand": {
+                            "name": "unit",
+                            "type": "ExpressionRef"
+                        },
                         "caseItem": [
                             {
-                                "type": "CaseItem",
                                 "when": {
                                     "valueType": "{urn:hl7-org:elm-types:r1}String",
                                     "value": "MG",
@@ -2158,7 +2301,6 @@
                                 }
                             },
                             {
-                                "type": "CaseItem",
                                 "when": {
                                     "valueType": "{urn:hl7-org:elm-types:r1}String",
                                     "value": "MG/ACTUAT",
@@ -2171,7 +2313,6 @@
                                 }
                             },
                             {
-                                "type": "CaseItem",
                                 "when": {
                                     "valueType": "{urn:hl7-org:elm-types:r1}String",
                                     "value": "MG/HR",
@@ -2184,7 +2325,6 @@
                                 }
                             },
                             {
-                                "type": "CaseItem",
                                 "when": {
                                     "valueType": "{urn:hl7-org:elm-types:r1}String",
                                     "value": "MG/ML",
@@ -2220,10 +2360,6 @@
                                     "type": "Literal"
                                 }
                             ]
-                        },
-                        "comparand": {
-                            "name": "unit",
-                            "type": "ExpressionRef"
                         }
                     }
                 },
@@ -2245,7 +2381,6 @@
                         "type": "Case",
                         "caseItem": [
                             {
-                                "type": "CaseItem",
                                 "when": {
                                     "type": "Equal",
                                     "operand": [

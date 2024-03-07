@@ -37,7 +37,6 @@ class CaseItem extends Element {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
-      'type': type,
       'when': when_.toJson(),
       'then': then.toJson(),
     };

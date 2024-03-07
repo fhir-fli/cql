@@ -47,13 +47,15 @@ class Case extends CqlExpression {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
       'type': type,
-      'caseItem': caseItem.map((e) => e.toJson()).toList(),
-      'else': elseExpr.toJson(),
     };
 
     if (comparand != null) {
       data['comparand'] = comparand!.toJson();
     }
+
+    data['caseItem'] = caseItem.map((e) => e.toJson()).toList();
+
+    data['else'] = elseExpr.toJson();
 
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
