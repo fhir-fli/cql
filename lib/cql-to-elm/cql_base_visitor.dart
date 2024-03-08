@@ -525,6 +525,41 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (caseItem.isNotEmpty && elseExpr != null) {
+      final elseTypes = elseExpr.getReturnTypes(library);
+      final caseTypes = <Type>[];
+      for (final case_ in caseItem) {
+        final newCaseTypes = case_.then.getReturnTypes(library);
+        if (newCaseTypes != null && newCaseTypes.isNotEmpty) {
+          caseTypes.addAll(newCaseTypes);
+        }
+      }
+      final totalTypes = caseTypes.toSet().union(elseTypes?.toSet() ?? {});
+      if (totalTypes.contains(ValidatedQuantity) ||
+          totalTypes.contains(FhirDecimal)) {
+        if (elseTypes?.length == 1 &&
+            (elseTypes?.first == FhirInteger64 ||
+                elseTypes?.first == FhirInteger)) {
+          elseExpr = ToDecimal(operand: elseExpr);
+        }
+        for (var i = 0; i < caseTypes.length; i++) {
+          if (caseTypes[i] == FhirInteger64 || caseTypes[i] == FhirInteger) {
+            caseItem[i] = CaseItem(
+                when_: caseItem[i].when_,
+                then: ToDecimal(operand: caseItem[i].then));
+          }
+        }
+      } else if (totalTypes.contains(FhirInteger64)) {
+        if (elseTypes?.length == 1 && elseTypes?.first == FhirInteger) {
+          elseExpr = ToLong(operand: elseExpr);
+        }
+        for (var i = 0; i < caseTypes.length; i++) {
+          if (caseTypes[i] == FhirInteger) {
+            caseItem[i] = CaseItem(
+                when_: caseItem[i].when_,
+                then: ToLong(operand: caseItem[i].then));
+          }
+        }
+      }
       return Case(comparand: comparand, caseItem: caseItem, elseExpr: elseExpr);
     } else {
       throw ArgumentError('$thisNode Invalid CaseExpressionTerm');
@@ -2216,12 +2251,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         break;
       default:
         {
-          final leftType = left is ExpressionRef
-              ? left.getReturnTypes(library)
-              : left.getReturnTypes(library);
-          final rightType = right is ExpressionRef
-              ? right.getReturnTypes(library)
-              : right.getReturnTypes(library);
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
 
           if (leftType?.length == 1 && rightType?.length == 1) {
             switch (leftType!.first) {
@@ -2322,12 +2353,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         break;
       default:
         {
-          final leftType = left is ExpressionRef
-              ? left.getReturnTypes(library)
-              : left.getReturnTypes(library);
-          final rightType = right is ExpressionRef
-              ? right.getReturnTypes(library)
-              : right.getReturnTypes(library);
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
           if (leftType?.length == 1 && rightType?.length == 1) {
             switch (leftType!.first) {
               case FhirInteger _:
@@ -2433,12 +2460,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         }
       default:
         {
-          final leftType = left is ExpressionRef
-              ? left.getReturnTypes(library)
-              : left.getReturnTypes(library);
-          final rightType = right is ExpressionRef
-              ? right.getReturnTypes(library)
-              : right.getReturnTypes(library);
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
           if (leftType?.length == 1 && rightType?.length == 1) {
             switch (leftType!.first) {
               case FhirInteger _:
@@ -2554,12 +2577,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         break;
       default:
         {
-          final leftType = left is ExpressionRef
-              ? left.getReturnTypes(library)
-              : left.getReturnTypes(library);
-          final rightType = right is ExpressionRef
-              ? right.getReturnTypes(library)
-              : right.getReturnTypes(library);
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
           if (leftType?.length == 1 && rightType?.length == 1) {
             switch (leftType!.first) {
               case FhirInteger _:

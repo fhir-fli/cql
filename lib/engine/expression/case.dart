@@ -1,6 +1,10 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../cql.dart';
 
-/// Represents a case operator allowing multiple conditional expressions to be chained together.
+/// Represents a case operator allowing multiple conditional expressions to be
+/// chained together.
 class Case extends CqlExpression {
   /// List of case items specifying conditions and actions.
   final List<CaseItem> caseItem;
@@ -82,4 +86,34 @@ class Case extends CqlExpression {
 
   @override
   String get type => 'Case';
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    List<Type>? types;
+    for (final item in caseItem) {
+      final newTypes = item.then.getReturnTypes(library);
+      if (newTypes != null) {
+        types ??= [];
+        types.addAll(newTypes);
+      }
+    }
+    final elseTypes = elseExpr.getReturnTypes(library);
+    if (elseTypes != null) {
+      types ??= [];
+      types.addAll(elseTypes);
+    }
+    if (types == null || types.isEmpty) {
+      return null;
+    } else {
+      if (types.contains(ValidatedQuantity) || types.contains(FhirDecimal)) {
+        return [FhirDecimal];
+      } else if (types.contains(FhirInteger64)) {
+        return [FhirInteger64];
+      } else if (types.contains(FhirInteger)) {
+        return [FhirInteger];
+      } else {
+        return types.toSet().toList();
+      }
+    }
+  }
 }
