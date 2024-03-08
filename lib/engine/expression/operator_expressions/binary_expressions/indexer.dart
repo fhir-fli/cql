@@ -106,12 +106,12 @@ class Indexer extends BinaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes {
-    if ((operand[0].returnTypes?.contains(String) ?? false) &&
-        (operand[1].returnTypes?.contains(FhirInteger) ?? false)) {
+  List<Type>? getReturnTypes(Library library) {
+    if ((operand[0].getReturnTypes(library)?.contains(String) ?? false) &&
+        (operand[1].getReturnTypes(library)?.contains(FhirInteger) ?? false)) {
       return [String];
-    } else if ((operand[0].returnTypes?.contains(List) ?? false) &&
-        (operand[1].returnTypes?.contains(FhirInteger) ?? false)) {
+    } else if ((operand[0].getReturnTypes(library)?.contains(List) ?? false) &&
+        (operand[1].getReturnTypes(library)?.contains(FhirInteger) ?? false)) {
       return [dynamic];
     }
     return null;

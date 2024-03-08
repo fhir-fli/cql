@@ -186,15 +186,16 @@ class Coalesce extends NaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes {
+  List<Type>? getReturnTypes(Library library) {
     if (operand == null || operand!.isEmpty) {
       return null;
     }
     for (final op in operand!) {
-      if (op.returnTypes != null &&
-          op.returnTypes!.isNotEmpty &&
-          op.returnTypes!.length == 1) {
-        return [op.returnTypes!.first];
+      final returnTypes = op.getReturnTypes(library);
+      if (returnTypes != null &&
+          returnTypes.isNotEmpty &&
+          returnTypes.length == 1) {
+        return [returnTypes.first];
       }
     }
     return null;

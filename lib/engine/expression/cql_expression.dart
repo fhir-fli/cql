@@ -457,7 +457,8 @@ class CqlExpression extends Element {
         'Could not parse fromJson unknown Expression type');
   }
 
-  factory CqlExpression.byName(String type, List<CqlExpression> operand) {
+  factory CqlExpression.byName(
+      String type, List<CqlExpression> operand, Library library) {
     switch (type) {
       case 'Abs':
         return Abs(operand: operand.first);
@@ -586,7 +587,7 @@ class CqlExpression extends Element {
       case 'Exp':
         {
           if (operand.length == 1) {
-            return Exp.compareFirst(first: operand.first);
+            return Exp.compareFirst(first: operand.first, library: library);
           }
         }
       case 'Expand':
@@ -687,13 +688,14 @@ class CqlExpression extends Element {
       case 'Ln':
         {
           if (operand.length == 1) {
-            return Ln.compareFirst(first: operand.first);
+            return Ln.compareFirst(first: operand.first, library: library);
           }
         }
       case 'Log':
         {
           if (operand.length == 2) {
-            return Log.compareFirst(first: operand.first, second: operand.last);
+            return Log.compareFirst(
+                first: operand.first, second: operand.last, library: library);
           }
         }
       case 'LowBoundary':
@@ -968,5 +970,5 @@ class CqlExpression extends Element {
   dynamic execute(Map<String, dynamic> context) =>
       'Execute Unknown Expression type: $runtimeType';
 
-  List<Type>? get returnTypes => null;
+  List<Type>? getReturnTypes(Library library) => null;
 }

@@ -123,5 +123,5 @@ class Or extends BinaryExpression {
   }
 
   @override
-  List<Type> get returnTypes => const [FhirBoolean];
+  List<Type> getReturnTypes(Library library) => const [FhirBoolean];
 }

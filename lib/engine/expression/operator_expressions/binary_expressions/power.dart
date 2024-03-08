@@ -193,7 +193,7 @@ class Power extends BinaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes {
-    return operand.isEmpty ? null : operand.first.returnTypes;
+  List<Type>? getReturnTypes(Library library) {
+    return operand.isEmpty ? null : operand.first.getReturnTypes(library);
   }
 }

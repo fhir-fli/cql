@@ -101,5 +101,5 @@ class Round extends OperatorExpression {
   String get type => 'Round';
 
   @override
-  List<Type> get returnTypes => const [FhirDecimal];
+  List<Type> getReturnTypes(Library library) => const [FhirDecimal];
 }

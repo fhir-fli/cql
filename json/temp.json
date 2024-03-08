@@ -2223,9 +2223,12 @@
                                                 }
                                             },
                                             {
-                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                "value": "1000",
-                                                "type": "Literal"
+                                                "type": "ToDecimal",
+                                                "operand": {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "1000",
+                                                    "type": "Literal"
+                                                }
                                             }
                                         ]
                                     }
@@ -2338,10 +2341,10 @@
                             }
                         ],
                         "else": {
-                            "type": "Add",
+                            "type": "Concatenate",
                             "operand": [
                                 {
-                                    "type": "Add",
+                                    "type": "Concatenate",
                                     "operand": [
                                         {
                                             "valueType": "{urn:hl7-org:elm-types:r1}String",

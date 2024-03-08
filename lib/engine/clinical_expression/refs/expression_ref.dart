@@ -63,4 +63,15 @@ class ExpressionRef extends Ref {
   dynamic execute(Map<String, dynamic> context) {
     return context[name];
   }
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    final expression =
+        library.statements?.def.indexWhere((element) => element.name == name);
+    if (expression != null && expression != -1) {
+      return library.statements?.def[expression].expression
+          ?.getReturnTypes(library);
+    }
+    return null;
+  }
 }

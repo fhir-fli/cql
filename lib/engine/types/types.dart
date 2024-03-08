@@ -55,7 +55,7 @@ class LiteralNull extends LiteralType {
   String get type => 'Null';
 
   @override
-  List<Type>? get returnTypes => [Null];
+  List<Type>? getReturnTypes(Library library) => [Null];
 }
 
 class LiteralBoolean extends LiteralType {
@@ -97,7 +97,7 @@ class LiteralBoolean extends LiteralType {
   String toString() => 'LiteralBoolean: $value';
 
   @override
-  List<Type>? get returnTypes => [FhirBoolean];
+  List<Type>? getReturnTypes(Library library) => [FhirBoolean];
 }
 
 class LiteralCode extends LiteralType {
@@ -303,7 +303,7 @@ class LiteralDate extends LiteralType {
   String toString() => 'LiteralDate: $value';
 
   @override
-  List<Type>? get returnTypes => [FhirDate];
+  List<Type>? getReturnTypes(Library library) => [FhirDate];
 }
 
 class LiteralDateTime extends LiteralType {
@@ -356,7 +356,7 @@ class LiteralDateTime extends LiteralType {
   FhirDateTime execute(Map<String, dynamic> context) => FhirDateTime(value);
 
   @override
-  List<Type>? get returnTypes => [FhirDateTime];
+  List<Type>? getReturnTypes(Library library) => [FhirDateTime];
 }
 
 class LiteralDecimal extends LiteralType {
@@ -437,7 +437,7 @@ class LiteralDecimal extends LiteralType {
   String toString() => 'LiteralDecimal: $value';
 
   @override
-  List<Type>? get returnTypes => [FhirDecimal];
+  List<Type>? getReturnTypes(Library library) => [FhirDecimal];
 }
 
 class LiteralInteger extends LiteralType {
@@ -486,7 +486,7 @@ class LiteralInteger extends LiteralType {
   String toString() => 'LiteralInteger: $value';
 
   @override
-  List<Type>? get returnTypes => [FhirInteger];
+  List<Type>? getReturnTypes(Library library) => [FhirInteger];
 }
 
 class LiteralLong extends LiteralType {
@@ -535,7 +535,7 @@ class LiteralLong extends LiteralType {
   String toString() => 'LiteralLong: $value';
 
   @override
-  List<Type>? get returnTypes => [FhirInteger64];
+  List<Type>? getReturnTypes(Library library) => [FhirInteger64];
 }
 
 class LiteralQuantity extends LiteralType {
@@ -575,7 +575,7 @@ class LiteralQuantity extends LiteralType {
   String toString() => 'LiteralQuantity: ${value.value} $unit';
 
   @override
-  List<Type>? get returnTypes => [ValidatedQuantity];
+  List<Type>? getReturnTypes(Library library) => [ValidatedQuantity];
 }
 
 class LiteralRatio extends LiteralType {
@@ -645,7 +645,7 @@ class LiteralString extends LiteralType {
   String get type => 'String';
 
   @override
-  List<Type>? get returnTypes => [String];
+  List<Type>? getReturnTypes(Library library) => [String];
 }
 
 class LiteralTime extends LiteralType {
@@ -712,7 +712,7 @@ class LiteralTime extends LiteralType {
   FhirTime execute(Map<String, dynamic> context) => FhirTime(value);
 
   @override
-  List<Type>? get returnTypes => [FhirTime];
+  List<Type>? getReturnTypes(Library library) => [FhirTime];
 }
 
 abstract class LiteralIntervalType extends LiteralType {

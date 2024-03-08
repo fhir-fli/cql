@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
+import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
@@ -88,8 +89,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       } else {
         final left = operand.first;
         final right = operand.last;
-        final return1 = left.returnTypes;
-        final return2 = right.returnTypes;
+        final return1 = left.getReturnTypes(library);
+        final return2 = right.getReturnTypes(library);
         Type? returnType1;
         Type? returnType2;
         if ((return1?.isNotEmpty ?? false) && return1?.length == 1) {
@@ -98,8 +99,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         if ((return2?.isNotEmpty ?? false) && return2?.length == 1) {
           returnType2 = return2?.first;
         }
-        print('$left $right');
-        print('returnType1: $returnType1 returnType2: $returnType2');
+        // print('$left $right');
+        // print('returnType1: $returnType1 returnType2: $returnType2');
         if (returnType1 == String && returnType2 == String) {
           return Concatenate(operand: operand, plus: additionOperator == '+');
         } else if (returnType1 == String && returnType2 == Null) {
@@ -170,8 +171,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     : Add(operand: operand);
           default:
             {
-              final return1 = operand.first.returnTypes;
-              final return2 = operand.last.returnTypes;
+              final return1 = operand.first.getReturnTypes(library);
+              final return2 = operand.last.getReturnTypes(library);
 
               return Add(operand: operand);
             }
@@ -254,7 +255,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     CqlExpression? querySource;
     String? alias;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('aliasedQuerySource: ${child.runtimeType} ${child.text}');
+      // print('aliasedQuerySource: ${child.runtimeType} ${child.text}');
       if (child is QuerySourceContext) {
         querySource = visitQuerySource(child);
       } else if (child is AliasContext) {
@@ -1189,8 +1190,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         operand.last
       ];
     } else {
-      List<Type>? firstReturnTypes = operand.first.returnTypes;
-      List<Type>? lastReturnTypes = operand.last.returnTypes;
+      List<Type>? firstReturnTypes = operand.first.getReturnTypes(library);
+      List<Type>? lastReturnTypes = operand.last.getReturnTypes(library);
       Type? firstType;
       Type? lastType;
       if (firstReturnTypes != null && firstReturnTypes.isNotEmpty) {
@@ -1363,7 +1364,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (ref != null) {
-      return CqlExpression.byName(ref, operand);
+      return CqlExpression.byName(ref, operand, library);
     }
     throw ArgumentError('$thisNode Invalid Function');
   }
@@ -2205,15 +2206,76 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         break;
       case LiteralQuantity _:
         {
-          if (right is LiteralDecimal) {
+          if (right is LiteralInteger || right is LiteralLong) {
             return Multiply(operand: [left, ToQuantity(operand: right)]);
-          } else if (right is LiteralQuantity) {
+          }
+          if (right is LiteralDecimal || right is LiteralQuantity) {
             return Multiply(operand: [left, right]);
           }
         }
         break;
       default:
-        return Multiply(operand: [left, right]);
+        {
+          final leftType = left is ExpressionRef
+              ? left.getReturnTypes(library)
+              : left.getReturnTypes(library);
+          final rightType = right is ExpressionRef
+              ? right.getReturnTypes(library)
+              : right.getReturnTypes(library);
+
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger:
+                {
+                  if (rightType!.first == FhirInteger) {
+                    return Multiply(operand: [left, right]);
+                  } else if (rightType.first == FhirInteger64) {
+                    return Multiply(operand: [ToLong(operand: left), right]);
+                  } else if (rightType.first == FhirDecimal) {
+                    return Multiply(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64:
+                {
+                  if (rightType!.first == FhirInteger ||
+                      right == FhirInteger64) {
+                    return Multiply(operand: [left, ToLong(operand: right)]);
+                  } else if (rightType.first == FhirDecimal) {
+                    return Multiply(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal:
+                {
+                  if (rightType!.first == FhirInteger) {
+                    return Multiply(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first == FhirInteger64) {
+                    return Multiply(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first == FhirDecimal) {
+                    return Multiply(operand: [left, right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity:
+                {
+                  if (rightType!.first == FhirInteger ||
+                      rightType.first == FhirInteger64) {
+                    print('leftType: $leftType rightType: $rightType');
+                    return Multiply(operand: [left, ToDecimal(operand: right)]);
+                  }
+                  if (rightType.first == FhirDecimal ||
+                      rightType.first == ValidatedQuantity) {
+                    return Multiply(operand: [left, right]);
+                  }
+                }
+                break;
+              default:
+                break;
+            }
+          }
+          return Multiply(operand: [left, right]);
+        }
     }
     throw ArgumentError('Invalid type for multiplication');
   }
@@ -2259,7 +2321,66 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         }
         break;
       default:
-        return Divide(operand: [left, right]);
+        {
+          final leftType = left is ExpressionRef
+              ? left.getReturnTypes(library)
+              : left.getReturnTypes(library);
+          final rightType = right is ExpressionRef
+              ? right.getReturnTypes(library)
+              : right.getReturnTypes(library);
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger _:
+                {
+                  if (rightType!.first is FhirInteger ||
+                      rightType.first is FhirInteger64) {
+                    return Divide(operand: [
+                      ToDecimal(operand: left),
+                      ToDecimal(operand: right)
+                    ]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Divide(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64 _:
+                {
+                  if (rightType!.first is FhirInteger ||
+                      rightType.first is FhirInteger64) {
+                    return Divide(operand: [
+                      ToDecimal(operand: left),
+                      ToDecimal(operand: right)
+                    ]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Divide(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal _:
+                {
+                  if (rightType!.first is FhirInteger ||
+                      rightType.first is FhirInteger64) {
+                    return Divide(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Divide(operand: [left, right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity _:
+                {
+                  if (rightType!.first is FhirDecimal) {
+                    return Divide(operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Divide(operand: [left, right]);
+                  }
+                }
+                break;
+              default:
+                break;
+            }
+          }
+          return Divide(operand: [left, right]);
+        }
     }
     throw ArgumentError('Invalid type for division');
   }
@@ -2311,7 +2432,72 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           }
         }
       default:
-        return TruncatedDivide(operand: [left, right]);
+        {
+          final leftType = left is ExpressionRef
+              ? left.getReturnTypes(library)
+              : left.getReturnTypes(library);
+          final rightType = right is ExpressionRef
+              ? right.getReturnTypes(library)
+              : right.getReturnTypes(library);
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return TruncatedDivide(operand: [left, right]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return TruncatedDivide(
+                        operand: [ToLong(operand: left), right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return TruncatedDivide(
+                        operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64 _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return TruncatedDivide(
+                        operand: [left, ToLong(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return TruncatedDivide(operand: [left, right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return TruncatedDivide(
+                        operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return TruncatedDivide(
+                        operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return TruncatedDivide(
+                        operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return TruncatedDivide(operand: [left, right]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return TruncatedDivide(
+                        operand: [ToQuantity(operand: left), right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity _:
+                {
+                  if (rightType!.first is FhirDecimal) {
+                    return TruncatedDivide(
+                        operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return TruncatedDivide(operand: [left, right]);
+                  }
+                }
+              default:
+                break;
+            }
+          }
+          return TruncatedDivide(operand: [left, right]);
+        }
     }
     throw ArgumentError('Invalid type for truncated division');
   }
@@ -2367,7 +2553,69 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         }
         break;
       default:
-        return Modulo(operand: [left, right]);
+        {
+          final leftType = left is ExpressionRef
+              ? left.getReturnTypes(library)
+              : left.getReturnTypes(library);
+          final rightType = right is ExpressionRef
+              ? right.getReturnTypes(library)
+              : right.getReturnTypes(library);
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, right]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return Modulo(operand: [ToLong(operand: left), right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [ToDecimal(operand: left), right]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Modulo(operand: [ToQuantity(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64 _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, ToLong(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return Modulo(operand: [left, right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return Modulo(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [left, right]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Modulo(operand: [ToQuantity(operand: left), right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Modulo(operand: [left, right]);
+                  }
+                }
+                break;
+              default:
+                break;
+            }
+          }
+          return Modulo(operand: [left, right]);
+        }
     }
     throw ArgumentError('Invalid type for modulo');
   }

@@ -148,5 +148,5 @@ class ToDecimal extends UnaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes => [FhirDecimal];
+  List<Type>? getReturnTypes(Library library) => [FhirDecimal];
 }

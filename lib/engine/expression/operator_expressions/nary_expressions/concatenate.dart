@@ -41,6 +41,7 @@ class Concatenate extends NaryExpression {
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
+    required Library library,
   }) {
     List<CqlExpression> operand = [];
     if (first is LiteralString) {
@@ -48,7 +49,7 @@ class Concatenate extends NaryExpression {
     } else if (first is LiteralNull) {
       operand.add(As(operand: first, asType: QName.fromDataType('String')));
     } else {
-      final return1 = first.returnTypes;
+      final return1 = first.getReturnTypes(library);
       if (return1?.length == 1) {
         if (return1!.first == LiteralString) {
           operand.add(first);
@@ -63,7 +64,7 @@ class Concatenate extends NaryExpression {
     } else if (second is LiteralNull) {
       operand.add(As(operand: second, asType: QName.fromDataType('String')));
     } else {
-      final return2 = second.returnTypes;
+      final return2 = second.getReturnTypes(library);
       if (return2?.length == 1) {
         if (return2!.first == LiteralString) {
           operand.add(second);
@@ -172,5 +173,5 @@ class Concatenate extends NaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes => [String];
+  List<Type>? getReturnTypes(Library library) => [String];
 }

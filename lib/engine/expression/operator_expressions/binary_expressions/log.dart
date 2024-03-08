@@ -47,6 +47,7 @@ class Log extends BinaryExpression {
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
+    required Library library,
   }) {
     final operand = <CqlExpression>[];
     if (first is LiteralInteger || first is LiteralLong) {
@@ -56,7 +57,7 @@ class Log extends BinaryExpression {
     } else if (first is LiteralNull) {
       operand.add(As(operand: first, asType: QName.fromDataType('Decimal')));
     } else {
-      final return1 = operand.first.returnTypes;
+      final return1 = operand.first.getReturnTypes(library);
       if (return1?.length == 1) {
         if (return1!.first == LiteralInteger || return1.first == LiteralLong) {
           operand.add(ToDecimal(operand: first));
@@ -75,7 +76,7 @@ class Log extends BinaryExpression {
     } else if (second is LiteralNull) {
       operand.add(As(operand: second, asType: QName.fromDataType('Decimal')));
     } else {
-      final return2 = operand.last.returnTypes;
+      final return2 = operand.last.getReturnTypes(library);
       if (return2?.length == 1) {
         if (return2!.first == LiteralInteger || return2.first is LiteralLong) {
           operand.add(ToDecimal(operand: second));
@@ -163,5 +164,5 @@ class Log extends BinaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes => [FhirDecimal];
+  List<Type>? getReturnTypes(Library library) => [FhirDecimal];
 }

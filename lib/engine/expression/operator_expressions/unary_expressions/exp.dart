@@ -44,6 +44,7 @@ class Exp extends UnaryExpression {
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
+    required Library library,
   }) {
     CqlExpression? operand;
     if (first is LiteralInteger || first is LiteralLong) {
@@ -53,7 +54,7 @@ class Exp extends UnaryExpression {
     } else if (first is LiteralNull) {
       operand = As(operand: first, asType: QName.fromDataType('Decimal'));
     } else {
-      final return1 = first.returnTypes;
+      final return1 = first.getReturnTypes(library);
       if (return1?.length == 1) {
         if (return1!.first == LiteralInteger || return1.first == LiteralLong) {
           operand = ToDecimal(operand: first);
@@ -137,5 +138,5 @@ class Exp extends UnaryExpression {
   }
 
   @override
-  List<Type>? get returnTypes => [FhirDecimal];
+  List<Type>? getReturnTypes(Library library) => [FhirDecimal];
 }

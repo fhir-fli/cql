@@ -78,4 +78,12 @@ class Property extends CqlExpression {
 
   @override
   String get type => 'Property';
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    if (source != null) {
+      return source!.getReturnTypes(library);
+    }
+    return null;
+  }
 }

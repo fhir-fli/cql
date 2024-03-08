@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import '../../../cql.dart';
 
 class ExpressionDefs {
@@ -185,4 +183,7 @@ class ExpressionDef extends Element {
 
   dynamic execute(Map<String, dynamic> context) =>
       {name: expression?.execute(context)};
+
+  List<Type>? getReturnTypes(Library library) =>
+      expression?.getReturnTypes(library);
 }
