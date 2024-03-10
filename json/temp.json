@@ -1324,11 +1324,9 @@
                                         "type": "Literal"
                                     },
                                     {
-                                        "asType": "{urn:hl7-org:elm-types:r1}String",
-                                        "type": "As",
-                                        "operand": {
-                                            "type": "Null"
-                                        }
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "",
+                                        "type": "Literal"
                                     }
                                 ]
                             },

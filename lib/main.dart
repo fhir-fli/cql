@@ -73,52 +73,52 @@ void parseFile(BuildContext context) async {
         log(jsonEncode(visitor.result));
       }
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
-      if (file.contains('03')) {
-        log(jsonEncode({'library': resultLibrary}));
-      }
-      bool areEqual = true;
-      // final results = visitor.library.execute();
-      // if (results is Map<String, dynamic>) {
-      //   results.remove('startTimestamp');
-      //   results.forEach((key, value) {
-      //     final resultsValue = results[key];
-      //     final resultsJsonValue = resultsJson?[key];
-      //     if (resultsValue != resultsJsonValue) {
-      //       if (resultsValue is List && resultsJsonValue is List) {
-      //         if (!(const DeepCollectionEquality()
-      //             .equals(resultsValue, resultsJsonValue))) {
-      //           log('$key: $resultsValue (${resultsValue.runtimeType}) != '
-      //               '$resultsJsonValue (${resultsJsonValue.runtimeType})');
-      //           areEqual = false;
-      //         }
-      //       } else if (resultsValue is Map && resultsJsonValue is Map) {
-      //         if (!(const DeepCollectionEquality()
-      //             .equals(resultsValue, resultsJsonValue))) {
-      //           log('$key: $resultsValue (${resultsValue.runtimeType}) != '
-      //               '$resultsJsonValue (${resultsJsonValue.runtimeType})');
-      //           areEqual = false;
-      //         }
-      //       } else {
-      //         log('$key: $resultsValue (${resultsValue.runtimeType}) != '
-      //             '$resultsJsonValue (${resultsJsonValue.runtimeType})');
-      //         areEqual = false;
-      //       }
-      //     }
-      //     // if (resultsValue is FhirTime) {
-      //     //   log(resultsValue.toString());
-      //     //   log(resultsValue.value ?? '');
-      //     // }
-      //     // if (resultsJsonValue is FhirTime) {
-      //     //   log(resultsJsonValue.toString());
-      //     //   log(resultsJsonValue.value ?? '');
-      //     // }
-      //     // log('$key: ${results[key]} == ${resultsJson?[key]}');
-      //     if (results[key] != resultsJson?[key]) {
-      //       areEqual = false;
-      //     }
-      //   });
+      // if (file.contains('03')) {
+      //   log(jsonEncode({'library': resultLibrary}));
       // }
-      // log('${file.split("/").last} Results are equal: $areEqual');
+      bool areEqual = true;
+      final results = visitor.library.execute();
+      if (results is Map<String, dynamic>) {
+        results.remove('startTimestamp');
+        results.forEach((key, value) {
+          final resultsValue = results[key];
+          final resultsJsonValue = resultsJson?[key];
+          if (resultsValue != resultsJsonValue) {
+            if (resultsValue is List && resultsJsonValue is List) {
+              if (!(const DeepCollectionEquality()
+                  .equals(resultsValue, resultsJsonValue))) {
+                log('$key: $resultsValue (${resultsValue.runtimeType}) != '
+                    '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+                areEqual = false;
+              }
+            } else if (resultsValue is Map && resultsJsonValue is Map) {
+              if (!(const DeepCollectionEquality()
+                  .equals(resultsValue, resultsJsonValue))) {
+                log('$key: $resultsValue (${resultsValue.runtimeType}) != '
+                    '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+                areEqual = false;
+              }
+            } else {
+              log('$key: $resultsValue (${resultsValue.runtimeType}) != '
+                  '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+              areEqual = false;
+            }
+          }
+          // if (resultsValue is FhirTime) {
+          //   log(resultsValue.toString());
+          //   log(resultsValue.value ?? '');
+          // }
+          // if (resultsJsonValue is FhirTime) {
+          //   log(resultsJsonValue.toString());
+          //   log(resultsJsonValue.value ?? '');
+          // }
+          // log('$key: ${results[key]} == ${resultsJson?[key]}');
+          if (results[key] != resultsJson?[key]) {
+            areEqual = false;
+          }
+        });
+      }
+      log('${file.split("/").last} Results are equal: $areEqual');
     } catch (e, s) {
       log(file);
       log(e.toString());

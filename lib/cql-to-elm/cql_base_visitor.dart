@@ -77,15 +77,28 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       } else if (operand[0] is LiteralString && operand[1] is LiteralString) {
         return Concatenate(operand: operand, plus: additionOperator == '+');
       } else if (operand[0] is LiteralString && operand[1] is LiteralNull) {
-        return Concatenate(operand: [
-          operand[0],
-          As(operand: operand[1], asType: QName.fromFull('String'))
-        ], plus: additionOperator == '+');
+        if (additionOperator == '+') {
+          return Concatenate(operand: [
+            operand[0],
+            As(operand: operand[1], asType: QName.fromFull('String'))
+          ], plus: additionOperator == '+');
+        } else {
+          return Concatenate(operand: [
+            operand[0],
+            LiteralString(value: ''),
+          ], plus: additionOperator == '+');
+        }
       } else if (operand[0] is LiteralNull && operand[1] is LiteralString) {
-        return Concatenate(operand: [
-          As(operand: operand[0], asType: QName.fromFull('String')),
-          operand[1]
-        ], plus: additionOperator == '+');
+        if (additionOperator == '+') {
+          return Concatenate(operand: [
+            As(operand: operand[0], asType: QName.fromFull('String')),
+            operand[1]
+          ], plus: additionOperator == '+');
+        } else {
+          return Concatenate(
+              operand: [LiteralString(value: ''), operand[1]],
+              plus: additionOperator == '+');
+        }
       } else {
         final left = operand.first;
         final right = operand.last;
@@ -104,15 +117,28 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         if (returnType1 == String && returnType2 == String) {
           return Concatenate(operand: operand, plus: additionOperator == '+');
         } else if (returnType1 == String && returnType2 == Null) {
-          return Concatenate(operand: [
-            operand[0],
-            As(operand: operand[1], asType: QName.fromFull('String'))
-          ], plus: additionOperator == '+');
+          if (additionOperator == '+') {
+            return Concatenate(operand: [
+              operand[0],
+              As(operand: operand[1], asType: QName.fromFull('String'))
+            ], plus: additionOperator == '+');
+          } else {
+            return Concatenate(operand: [
+              operand[0],
+              LiteralString(value: ''),
+            ], plus: additionOperator == '+');
+          }
         } else if (returnType1 == Null && returnType2 == String) {
-          return Concatenate(operand: [
-            As(operand: operand[0], asType: QName.fromFull('String')),
-            operand[1]
-          ], plus: additionOperator == '+');
+          if (additionOperator == '+') {
+            return Concatenate(operand: [
+              As(operand: operand[0], asType: QName.fromFull('String')),
+              operand[1]
+            ], plus: additionOperator == '+');
+          } else {
+            return Concatenate(
+                operand: [LiteralString(value: ''), operand[1]],
+                plus: additionOperator == '+');
+          }
         }
         switch (left) {
           case LiteralInteger _:
