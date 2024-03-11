@@ -1,9 +1,40 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the absolute value of its argument.
 /// When taking the absolute value of a quantity, the unit is unchanged.
-/// If the argument is null or the result of taking the absolute value cannot be represented, the result is null.
+/// If the argument is null or the result of taking the absolute value cannot
+/// be represented, the result is null.
 /// The Abs operator is defined for the Integer, Decimal, and Quantity types.
+/// Signature:
+///
+/// Abs(argument Integer) Integer
+/// Abs(argument Long) Long
+/// Abs(argument Decimal) Decimal
+/// Abs(argument Quantity) Quantity
+/// The Long type is a new feature being introduced in CQL 1.5, and has
+/// trial-use status.
+///
+/// Description:
+///
+/// The Abs operator returns the absolute value of its argument.
+///
+/// When taking the absolute value of a quantity, the unit is unchanged.
+///
+/// If the argument is null, the result is null.
+///
+/// If the result of taking the absolute value of the input cannot be
+/// represented (e.g. Abs(minimum Integer)), the result is null.
+///
+/// The following examples illustrate the behavior of the Abs operator:
+///
+/// define "IntegerAbs": Abs(-5) // 5
+/// define "IntegerAbsIsNull": Abs(null as Integer)
+/// define "LongAbs": Abs(-5000000L) // 5000000L
+/// define "DecimalAbs": Abs(-5.5) // 5.5
+/// define "QuantityAbs": Abs(-5.5 'mg') // 5.5 'mg'
 class Abs extends UnaryExpression {
   Abs({
     required super.operand,
@@ -54,5 +85,26 @@ class Abs extends UnaryExpression {
       data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) =>
+      operand.getReturnTypes(library);
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final value = operand.execute(context);
+    if (value == null) {
+      return null;
+    } else if (value is FhirInteger && value.isValid) {
+      return FhirInteger(value.value!.abs());
+    } else if (value is FhirInteger64 && value.isValid) {
+      return FhirInteger64(value.value!.abs());
+    } else if (value is FhirDecimal && value.isValid) {
+      return FhirDecimal(value.value!.abs());
+    } else if (value is ValidatedQuantity && value.isValid()) {
+      return ValidatedQuantity(value: value.value.absolute(), unit: value.unit);
+    }
+    throw ArgumentError('Invalid input type for Abs: ${value.runtimeType}');
   }
 }

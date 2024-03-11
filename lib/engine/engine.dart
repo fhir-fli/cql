@@ -5,5 +5,5 @@ export 'library/library_.dart';
 export 'model/model.dart';
 export 'retrieve/retrieve.dart';
 export 'terminology/terminology.dart';
-export 'types/literal_types.dart';
+export 'types/types.dart';
 export 'element.dart';

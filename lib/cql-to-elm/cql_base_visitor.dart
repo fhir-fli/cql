@@ -529,7 +529,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// 'case' expression? caseExpressionItem+ 'else' expression 'end'	# caseExpressionTerm
   @override
   Case visitCaseExpressionTerm(CaseExpressionTermContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     bool orElse = false;
     CqlExpression? comparand;
@@ -728,15 +728,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid CodePath');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// codeSelector:
+  /// 'Code' STRING 'from' codesystemIdentifier displayClause?;
   @override
   Code visitCodeSelector(CodeSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    String? display;
-    CodeSystemRef? codeSystem;
     String? code;
+    CodeSystemRef? codeSystem;
+    String? display;
     if (ctx.childCount >= 3 && ctx.getChild(1)?.text != null) {
       code = _noQuoteString(ctx.getChild(1)!.text!);
     }
@@ -748,6 +748,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (code != null && codeSystem != null) {
+      // print('Code: $code, CodeSystem: $codeSystem, Display: $display');
       return Code(code: code, system: codeSystem, display: display);
     }
 
@@ -1201,7 +1202,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// 'duration' 'in' pluralDateTimePrecision 'of' expressionTerm
   @override
   dynamic visitDurationExpressionTerm(DurationExpressionTermContext ctx) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     visitChildren(ctx);
   }
@@ -1792,10 +1793,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid InequalityExpression');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// instanceElementSelector: referentialIdentifier ':' expression;
   @override
-  dynamic visitInstanceElementSelector(InstanceElementSelectorContext ctx) {
+  InstanceElement visitInstanceElementSelector(
+      InstanceElementSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? name;
@@ -1818,37 +1819,42 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid InstanceElementSelector');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// instanceSelector:
+  ///	namedTypeSpecifier '{' (
+  ///		':'
+  ///		| (
+  ///			instanceElementSelector (',' instanceElementSelector)*
+  ///		)
+  ///	) '}';
   @override
-  dynamic visitInstanceSelector(InstanceSelectorContext ctx) {
+  Instance visitInstanceSelector(InstanceSelectorContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    QName? classType;
+    NamedTypeSpecifier? classType;
     List<InstanceElement> element = <InstanceElement>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
+      // print('InstanceSelectorTerm: ${child.runtimeType} ${child.text}');
       if (child is NamedTypeSpecifierContext) {
-        classType = visitNamedTypeSpecifier(child)?.namespace;
+        classType = visitNamedTypeSpecifier(child);
       } else if (child is InstanceElementSelectorContext) {
         final newElement = visitInstanceElementSelector(child);
-        if (newElement is InstanceElement) {
-          element.add(newElement);
-        }
+        element.add(newElement);
       }
     }
 
     if (classType != null) {
+      // print('InstanceSelectorTerm: ${classType.namespace} ${element.length}');
       return Instance(
-          classType: classType, element: element.isEmpty ? null : element);
+          classType: classType.namespace,
+          element: element.isEmpty ? null : element);
     }
 
     throw ArgumentError('$thisNode Invalid InstanceSelector');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// instanceSelector		# instanceSelectorTerm
   @override
-  dynamic visitInstanceSelectorTerm(InstanceSelectorTermContext ctx) {
+  Instance visitInstanceSelectorTerm(InstanceSelectorTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -2318,7 +2324,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                 {
                   if (rightType!.first == FhirInteger ||
                       rightType.first == FhirInteger64) {
-                    print('leftType: $leftType rightType: $rightType');
+                    // print('leftType: $leftType rightType: $rightType');
                     return Multiply(operand: [left, ToDecimal(operand: right)]);
                   }
                   if (rightType.first == FhirDecimal ||

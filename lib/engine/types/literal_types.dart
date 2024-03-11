@@ -134,6 +134,17 @@ class LiteralCode extends LiteralType {
 
   @override
   String get type => 'Code';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [CodeType];
+
+  @override
+  CodeType execute(Map<String, dynamic> context) => CodeType(
+        code: code,
+        display: display,
+        system: system,
+        version: version,
+      );
 }
 
 class LiteralConcept extends LiteralType {
@@ -164,6 +175,15 @@ class LiteralConcept extends LiteralType {
 
   @override
   String get type => 'Concept';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [ConceptType];
+
+  @override
+  ConceptType execute(Map<String, dynamic> context) {
+    return ConceptType(
+        display: display, codes: codes.map((e) => e.execute(context)).toList());
+  }
 }
 
 abstract class LiteralVocabularyType extends LiteralType {

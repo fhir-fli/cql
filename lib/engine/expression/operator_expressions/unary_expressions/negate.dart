@@ -1,3 +1,6 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the negative of its argument.
@@ -87,5 +90,28 @@ class Negate extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) =>
+      operand.getReturnTypes(library);
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final value = operand.execute(context);
+    if (value == null) {
+      return null;
+    } else if (value is FhirInteger && value.isValid) {
+      return FhirInteger(value.value! * -1);
+    } else if (value is FhirInteger64 && value.isValid) {
+      return FhirInteger64(value.value! * BigInt.from(-1));
+    } else if (value is FhirDecimal && value.isValid) {
+      return FhirDecimal(value.value! * -1);
+    } else if (value is ValidatedQuantity && value.isValid()) {
+      return ValidatedQuantity(
+          value: value.value.multiply(UcumDecimal.fromInt(-1)),
+          unit: value.unit);
+    }
+    return null;
   }
 }

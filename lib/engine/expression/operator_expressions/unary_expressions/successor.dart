@@ -1,9 +1,58 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the successor of the argument.
-/// The Successor operator is defined for the Integer, Decimal, Date, DateTime, and Time types.
+/// The Successor operator is defined for the Integer, Decimal, Date, DateTime,
+/// and Time types.
 /// If the argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
+/// Signature:
+///
+/// successor of<T>(argument T) T
+/// Description:
+///
+/// The successor operator returns the successor of the argument. For example,
+/// the successor of 1 is 2. If the argument is already the maximum value for
+/// the type, a run-time error is thrown.
+///
+/// The successor operator is defined for the Integer, Long, Quantity, Decimal,
+/// Date, DateTime, and Time types.
+///
+/// For Integer, successor is equivalent to adding 1.
+///
+/// For Long, successor is equivalent to adding 1L.
+///
+/// For Decimal, successor is equivalent to adding the minimum precision value
+/// for the Decimal type, or 10-08.
+///
+/// For Date, DateTime and Time values, successor is equivalent to adding a
+/// time-unit quantity for the lowest specified precision of the value. For
+/// example, if the DateTime is fully specified, successor is equivalent to
+/// adding 1 millisecond; if the DateTime is specified to the second, successor
+/// is equivalent to adding one second, etc.
+///
+/// For Quantity values, the successor is equivalent to adding 1 if the quantity
+/// is an integer, and the minimum precision value for the Decimal type if the
+/// quantity is a decimal. The units are unchanged.
+///
+/// If the argument is null, the result is null.
+///
+/// If the result of the operation cannot be represented, the result is null.
+///
+/// Note that implementations that support more precise values than the minimum
+/// required precision and scale for Decimal, DateTime, and Time values, the
+/// successor will reflect the minimum representable step size for the
+/// implementation.
+///
+/// The following examples illustrate the behavior of the successor operator:
+///
+/// define "IntegerSuccessor": successor of 100 // 101
+/// define "LongSuccessor": successor of 100L // 101L
+/// define "DecimalSuccessor": successor of 1.0 // 1.00000001
+/// define "DateSuccessor": successor of @2014-01-01 // @2014-01-02
+/// define "SuccessorIsNull": successor of (null as Quantity)
 class Successor extends UnaryExpression {
   Successor({
     required super.operand,
@@ -59,5 +108,68 @@ class Successor extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    return operand.getReturnTypes(library);
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final value = operand.execute(context);
+    if (value == null) {
+      return null;
+    } else if (value is FhirInteger && value.isValid) {
+      return FhirInteger(value.value! + 1);
+    } else if (value is FhirInteger64 && value.isValid) {
+      return FhirInteger64(value.value! + BigInt.from(1));
+    } else if (value is FhirDecimal && value.isValid) {
+      return FhirDecimal(value.value! + 0.00000001);
+    } else if (value is FhirDateTimeBase && value.isValid) {
+      switch (value.precision) {
+        case DateTimePrecision.yyyy:
+          return value + ExtendedDuration(days: 1);
+        case DateTimePrecision.yyyy_MM:
+          return value + ExtendedDuration(days: 1);
+        case DateTimePrecision.yyyy_MM_dd:
+        case DateTimePrecision.yyyy_MM_dd_T_Z:
+        case DateTimePrecision.yyyy_MM_dd_T_ZZ:
+          return value + ExtendedDuration(days: 1);
+        case DateTimePrecision.yyyy_MM_dd_T_HH:
+        case DateTimePrecision.yyyy_MM_dd_T_HH_Z:
+        case DateTimePrecision.yyyy_MM_dd_T_HHZZ:
+          return value + ExtendedDuration(hours: 1);
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm:
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
+          return value + ExtendedDuration(minutes: 1);
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
+          return value + ExtendedDuration(seconds: 1);
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
+        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
+        case DateTimePrecision.instant:
+        case DateTimePrecision.dateTime:
+          return value + ExtendedDuration(milliseconds: 1);
+        case DateTimePrecision.invalid:
+          return null;
+      }
+    } else if (value is FhirTime && value.isValid) {
+      if (value.millisecond != null) {
+        return value.plus(milliseconds: 1);
+      } else if (value.second != null) {
+        return value.plus(seconds: 1);
+      } else if (value.minute != null) {
+        return value.plus(minutes: 1);
+      } else if (value.hour != null) {
+        return value.plus(hours: 1);
+      }
+    } else if (value is ValidatedQuantity && value.isValid()) {
+      return value + 1;
+    }
+    throw ArgumentError('Invalid type for Successor: ${value.runtimeType}');
   }
 }

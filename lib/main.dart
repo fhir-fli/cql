@@ -69,9 +69,9 @@ void parseFile(BuildContext context) async {
       (jsonLibrary as Map<String, dynamic>).remove('annotation');
       var resultLibrary = visitor.result['library'];
       (resultLibrary as Map<String, dynamic>).remove('annotation');
-      if (print) {
-        log(jsonEncode(visitor.result));
-      }
+      // if (print) {
+      //   log(jsonEncode(visitor.result));
+      // }
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
       // if (file.contains('03')) {
       //   log(jsonEncode({'library': resultLibrary}));

@@ -180,89 +180,188 @@ class Equivalent extends BinaryExpression {
     }
   }
 
-  bool equivalent(dynamic left, dynamic right) {
-    if (left is String && right is String) {
-      return left.toLowerCase().trim() == right.toLowerCase().trim();
-    } else if ((left is FhirNumber || left is FhirInteger64) &&
-        left.isValid &&
-        (right is FhirNumber || right is FhirInteger64) &&
-        right.isValid) {
-      return (left is FhirNumber
-              ? ValidatedQuantity.fromNumber(left.value!)
-              : ValidatedQuantity.fromBigInt(left.value!))
-          .equivalent(right is FhirNumber
-              ? ValidatedQuantity.fromNumber(right.value!)
-              : ValidatedQuantity.fromBigInt(right.value!));
-    } else if ((left is num || left is BigInt) &&
-        (right is num || right is BigInt)) {
-      return (left is num
-              ? ValidatedQuantity.fromNumber(left)
-              : ValidatedQuantity.fromBigInt(left))
-          .equivalent(right is num
-              ? ValidatedQuantity.fromNumber(right)
-              : ValidatedQuantity.fromBigInt(right));
-    } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
-      return left.equivalent(right);
-    } else if (left is ValidatedRatio && right is ValidatedRatio) {
-      return left.equivalent(right);
-    } else if (left is List && right is List) {
-      if (left.length != right.length) {
-        return false;
-      }
-      for (var i = 0; i < left.length; i++) {
-        if (!equivalent(left[i], right[i])) {
+  static bool equivalent(dynamic left, dynamic right) {
+    switch (left) {
+      case null:
+        return right == null;
+      case String _:
+        {
+          if (right is String) {
+            return left.toLowerCase().trim() == right.toLowerCase().trim();
+          }
           return false;
         }
-      }
-      return true;
-    } else if (left is Tuple && right is Tuple) {
-      if (left.element?.length != right.element?.length) {
-        return false;
-      }
-      final leftList = left.element?.toList();
-      final rightList = right.element?.toList();
-      for (final element in leftList ?? <TupleElement>[]) {
-        final index = rightList?.indexWhere((e) => e.name == element.name);
-        if (index == null || index == -1) {
+      case FhirDateTimeBase _:
+        {
+          if (right is FhirDateTimeBase) {
+            return left.isEqual(right) ?? false;
+          }
           return false;
         }
-        if (!equivalent(
-            element.value.execute({}), rightList?[index].value.execute({}))) {
+      case FhirTime _:
+        {
+          if (right is FhirTime) {
+            return left.isEqual(right) ?? false;
+          }
           return false;
-        } else {
-          rightList?.removeAt(index);
         }
-      }
-      return rightList?.isEmpty ?? false;
-    }
-    // TODO(Dokotela) intervals
-    else if (left is FhirDateTimeBase && right is FhirDateTimeBase) {
-      final result = left.isEqual(right);
-      return result ?? false;
-    } else if (left is FhirTime && right is FhirTime) {
-      final result = left.isEqual(right);
-      return result ?? false;
-    }
-    // TODO(Dokotela): Codes, Concepts
-    else if (left is Map && right is Map) {
-      if (left.keys.length != right.keys.length) {
-        return false;
-      } else if (const DeepCollectionEquality().equals(left, right)) {
-        return true;
-      } else {
-        for (final key in left.keys) {
-          if (!right.containsKey(key)) {
-            return false;
-          } else if (!equivalent(left[key], right[key])) {
-            return false;
+      case CodeType _:
+        {
+          return left.equivalent(right);
+        }
+      case ConceptType _:
+        {
+          return left.equivalent(right);
+        }
+      case num _:
+      case BigInt _:
+        {
+          if (right is num || right is BigInt) {
+            return (left is num
+                    ? ValidatedQuantity.fromNumber(left)
+                    : ValidatedQuantity.fromBigInt(left))
+                .equivalent(right is num
+                    ? ValidatedQuantity.fromNumber(right)
+                    : ValidatedQuantity.fromBigInt(right));
+          } else if ((right is FhirNumber && right.isValid) ||
+              (right is FhirInteger64 && right.isValid)) {
+            return (left is num
+                    ? ValidatedQuantity.fromNumber(left)
+                    : ValidatedQuantity.fromBigInt(left))
+                .equivalent(right is FhirNumber
+                    ? ValidatedQuantity.fromNumber(right.value!)
+                    : ValidatedQuantity.fromBigInt(
+                        (right as FhirInteger64).value!));
           } else {
-            right.remove(key);
+            return false;
           }
         }
-        return right.isEmpty;
-      }
-    } else {
-      return left == right;
+      case FhirNumber _:
+      case FhirInteger64 _:
+        {
+          if (left.isValid) {
+            if (right is num || right is BigInt) {
+              return (left is FhirNumber
+                      ? ValidatedQuantity.fromNumber(left.value!)
+                      : ValidatedQuantity.fromBigInt(
+                          (left as FhirInteger64).value!))
+                  .equivalent(right is num
+                      ? ValidatedQuantity.fromNumber(right)
+                      : ValidatedQuantity.fromBigInt(right));
+            } else if ((right is FhirNumber && right.isValid) ||
+                (right is FhirInteger64 && right.isValid)) {
+              return (left is FhirNumber
+                      ? ValidatedQuantity.fromNumber(left.value!)
+                      : ValidatedQuantity.fromBigInt(
+                          (left as FhirInteger64).value!))
+                  .equivalent(right is FhirNumber
+                      ? ValidatedQuantity.fromNumber(right.value!)
+                      : ValidatedQuantity.fromBigInt(
+                          (right as FhirInteger64).value!));
+            } else {
+              if (left is FhirDecimal &&
+                  left.isValid &&
+                  right is ValidatedQuantity) {
+                return ValidatedQuantity.fromNumber(left.value!)
+                    .equivalent(right);
+              } else if (left is double && right is ValidatedQuantity) {
+                return ValidatedQuantity.fromNumber(left).equivalent(right);
+              }
+            }
+          }
+          return false;
+        }
+      case ValidatedQuantity _:
+        {
+          if (right is ValidatedQuantity) {
+            return left.equivalent(right);
+          } else if (right is FhirDecimal && right.isValid) {
+            return left.equivalent(ValidatedQuantity.fromNumber(right.value!));
+          } else if (right is double) {
+            return left.equivalent(ValidatedQuantity.fromNumber(right));
+          }
+          return false;
+        }
+      case ValidatedRatio _:
+        {
+          if (right is ValidatedRatio) {
+            return left.equivalent(right);
+          }
+          return false;
+        }
+
+      case List _:
+        {
+          if (right is List && left.length == right.length) {
+            for (var i = 0; i < left.length; i++) {
+              if (!equivalent(left[i], right[i])) {
+                return false;
+              }
+            }
+            return true;
+          }
+          return false;
+        }
+      case TupleType _:
+        {
+          if (right is TupleType) {
+            if (left.elements == null ||
+                right.elements == null ||
+                left.elements?.length != right.elements?.length) {
+              return false;
+            }
+            final leftMap = Map.from(left.elements!);
+            final rightMap = Map.from(right.elements!);
+            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
+              return true;
+            }
+            for (final element in leftMap.keys) {
+              if (!rightMap.containsKey(element)) {
+                return false;
+              } else if (!equivalent(leftMap[element], rightMap[element])) {
+                return false;
+              } else {
+                rightMap.remove(element);
+              }
+            }
+            return rightMap.isEmpty;
+          }
+          return false;
+        }
+      case Map _:
+        {
+          if (right is Map) {
+            if (left.length != right.length) {
+              return false;
+            }
+            final leftMap = Map.from(left);
+            final rightMap = Map.from(right);
+            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
+              return true;
+            }
+            for (final element in leftMap.keys) {
+              if (!rightMap.containsKey(element)) {
+                return false;
+              } else if (!equivalent(leftMap[element], rightMap[element])) {
+                return false;
+              } else {
+                rightMap.remove(element);
+              }
+            }
+            return rightMap.isEmpty;
+          }
+          return false;
+        }
+      // TODO(Dokotela): Implement IntervalType
+      // case IntervalType _:
+      //   {
+      //     if (right is IntervalType) {
+      //       return left.equivalent(right);
+      //     }
+      //     return false;
+      //   }
+      default:
+        return left == right;
     }
   }
 }

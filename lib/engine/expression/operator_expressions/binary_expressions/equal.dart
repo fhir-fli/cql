@@ -153,40 +153,188 @@ class Equal extends BinaryExpression {
     } else {
       final left = operand[0].execute(context);
       final right = operand[1].execute(context);
-      if (left == null || right == null) {
-        return null;
-      } else if (left is FhirInteger && right is FhirInteger) {
-        return FhirBoolean(left == right);
-      } else if (left is FhirInteger64 && right is FhirInteger64) {
-        return FhirBoolean(left == right);
-      } else if (left is FhirDecimal && right is FhirDecimal) {
-        return FhirBoolean(left == right);
-      } else if (left is String && right is String) {
-        return FhirBoolean(left == right);
-      } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
-        return FhirBoolean(left == right);
-      } else if (left is FhirDateTime && right is FhirDateTime) {
-        final bool? isEqual = left.isEqual(right);
-        return isEqual == null ? null : FhirBoolean(isEqual);
-      } else if (left is FhirTime && right is FhirTime) {
-        return FhirBoolean(left == right);
-      } else if (left is FhirDate && right is FhirDate) {
-        final bool? isEqual = left.isEqual(right);
-        return isEqual == null ? null : FhirBoolean(isEqual);
-      } else if (left is ValidatedRatio && right is ValidatedRatio) {
-        return FhirBoolean(left == right);
-      } else if (left is Tuple && right is Tuple) {
-        final leftResult = left.execute(context);
-        final rightResult = right.execute(context);
-        return FhirBoolean(
-            const DeepCollectionEquality().equals(leftResult, rightResult));
-      } else if (left is List && right is List) {
-        return FhirBoolean(const DeepCollectionEquality().equals(left, right));
-      } else if (left is Map && right is Map) {
-        return FhirBoolean(const DeepCollectionEquality().equals(left, right));
-      } else {
-        return FhirBoolean(left == right);
-      }
+      final result = equal(left, right);
+      return result == null ? null : FhirBoolean(result);
+    }
+  }
+
+  static bool? equal(dynamic left, dynamic right) {
+    if (left == null || right == null) {
+      return null;
+    }
+    switch (left) {
+      case String _:
+        {
+          if (right is String) {
+            return left == right;
+          }
+          return false;
+        }
+      case FhirDateTime _:
+        {
+          if (right is FhirDateTime) {
+            return left.isEqual(right);
+          }
+          return false;
+        }
+      case FhirDate _:
+        {
+          if (right is FhirDate) {
+            return left.isEqual(right);
+          }
+          return false;
+        }
+      case FhirTime _:
+        {
+          if (right is FhirTime) {
+            return left.isEqual(right);
+          }
+          return false;
+        }
+      case CodeType _:
+        {
+          return left.equal(right);
+        }
+      case ConceptType _:
+        {
+          return left.equal(right);
+        }
+      case int _:
+        {
+          if (right is int) {
+            return left == right;
+          }
+          return false;
+        }
+      case BigInt _:
+        {
+          if (right is BigInt) {
+            return left == right;
+          }
+          return false;
+        }
+      case double _:
+        {
+          if (right is double) {
+            return left == right;
+          }
+          return false;
+        }
+      case FhirInteger _:
+        {
+          if (right is FhirInteger) {
+            return left == right;
+          }
+          return false;
+        }
+      case FhirInteger64 _:
+        {
+          if (right is FhirInteger64) {
+            return left == right;
+          }
+          return false;
+        }
+      case FhirDecimal _:
+        {
+          if (right is FhirDecimal) {
+            return left == right;
+          }
+          return false;
+        }
+      case ValidatedQuantity _:
+        {
+          if (right is ValidatedQuantity) {
+            return left == right;
+          }
+          return false;
+        }
+      case ValidatedRatio _:
+        {
+          if (right is ValidatedRatio) {
+            return left == right;
+          }
+          return false;
+        }
+
+      case List _:
+        {
+          if (right is List && left.length == right.length) {
+            for (var i = 0; i < left.length; i++) {
+              final result = equal(left[i], right[i]);
+              if (result == null || !result) {
+                return result;
+              }
+            }
+            return true;
+          }
+          return false;
+        }
+      case TupleType _:
+        {
+          if (right is TupleType) {
+            if (left.elements == null ||
+                right.elements == null ||
+                left.elements?.length != right.elements?.length) {
+              return false;
+            }
+            final leftMap = Map.from(left.elements!);
+            final rightMap = Map.from(right.elements!);
+            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
+              return true;
+            }
+            for (final element in leftMap.keys) {
+              if (!rightMap.containsKey(element)) {
+                return false;
+              } else {
+                final result = equal(leftMap[element], rightMap[element]);
+                if (result == null || !result) {
+                  return result;
+                } else {
+                  rightMap.remove(element);
+                }
+              }
+            }
+            return rightMap.isEmpty;
+          }
+          return false;
+        }
+      case Map _:
+        {
+          if (right is Map) {
+            if (left.length != right.length) {
+              return false;
+            }
+            final leftMap = Map.from(left);
+            final rightMap = Map.from(right);
+            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
+              return true;
+            }
+            for (final element in leftMap.keys) {
+              if (!rightMap.containsKey(element)) {
+                return false;
+              } else {
+                final result = equal(leftMap[element], rightMap[element]);
+                if (result == null || !result) {
+                  return result;
+                } else {
+                  rightMap.remove(element);
+                }
+              }
+            }
+            return rightMap.isEmpty;
+          }
+          return false;
+        }
+      // TODO(Dokotela): Implement IntervalType
+      // case IntervalType _:
+      //   {
+      //     if (right is IntervalType) {
+      //       return left.equivalent(right);
+      //     }
+      //     return false;
+      //   }
+      default:
+        return left == right;
     }
   }
 }
