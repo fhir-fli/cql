@@ -11,28 +11,28 @@ final exercises03 = {
   'String Inequivalence': FhirBoolean(true),
   'String Equality With Null': FhirBoolean(true),
   'String Equivalence With Null': FhirBoolean(true),
-  'T1': {
+  'T1': <String, dynamic>{
     "X": 1,
     "Y": null,
   },
-  'T2': {
+  'T2': <String, dynamic>{
     "X": 1,
     "Y": null,
   },
-  'T3': {
+  'T3': <String, dynamic>{
     "X": 1,
     "Y": 2,
   },
   'TEqual': FhirBoolean(true),
   'TEqualWithNull': FhirBoolean(true),
   'TEquivalent': FhirBoolean(true),
-  'C1': {
+  'C1': <String, dynamic>{
     'code': 'ABC',
     'system': 'http://example.com',
     'version': '2017-01',
     'display': 'Code ABC'
   },
-  'C2': {
+  'C2': <String, dynamic>{
     'code': 'ABC',
     'system': 'http://example.com',
     'version': '2017-05',

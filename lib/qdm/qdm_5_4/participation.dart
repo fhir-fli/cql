@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// Data elements that meet criteria using this data type should document
 /// the type of plan or program in which the patient is expected to be enrolled. The

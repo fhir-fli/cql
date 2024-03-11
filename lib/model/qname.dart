@@ -1,3 +1,8 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
+import '../cql.dart';
+
 class QName {
   final String namespaceURI;
   final String localPart;
@@ -65,7 +70,7 @@ class QName {
       QName(namespaceURI: namespaceURI ?? '', localPart: localPart, prefix: '');
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     if (other == this) {
       return true;
     } else if (other is QName) {
@@ -125,4 +130,49 @@ class QName {
         'Interval',
         'ValueSet',
       ].contains(type);
+
+  List<Type>? getReturnTypes(Library library) {
+    switch (localPart) {
+      case 'Null':
+        return [Null];
+      case 'Boolean':
+        return [FhirBoolean];
+      // case 'Code': return [Code];
+      // case 'Concept': return [Concept];
+      // case 'ValueSet': return [ValueSet];
+      // case 'CodeSystem': return [CodeSystem];
+      case 'Date':
+        return [FhirDate];
+      case 'DateTime':
+        return [FhirDateTime];
+      case 'Decimal':
+        return [FhirDecimal];
+      case 'Integer':
+        return [FhirInteger];
+      case 'Long':
+        return [FhirInteger64];
+      case 'Quantity':
+        return [ValidatedQuantity];
+      case 'Ratio':
+        return [ValidatedRatio];
+      case 'String':
+        return [String];
+      case 'Time':
+        return [FhirTime];
+      case 'IntegerInterval':
+        return [LiteralIntegerInterval];
+      case 'DecimalInterval':
+        return [LiteralDecimalInterval];
+      case 'QuantityInterval':
+        return [LiteralQuantityInterval];
+      case 'DateTimeInterval':
+        return [LiteralDateTimeInterval];
+      case 'DateInterval':
+        return [LiteralDateInterval];
+      case 'TimeInterval':
+        return [LiteralTimeInterval];
+      default:
+        return null;
+    }
+  }
 }

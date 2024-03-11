@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// Data elements that meet this criterion indicate the patient’s care
 /// experience, usually measured with a validated survey tool. The most common tool is

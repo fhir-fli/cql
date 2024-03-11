@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:ucum/ucum.dart';
 
@@ -243,7 +244,24 @@ class Equivalent extends BinaryExpression {
       return result ?? false;
     }
     // TODO(Dokotela): Codes, Concepts
-    else {
+    else if (left is Map && right is Map) {
+      if (left.keys.length != right.keys.length) {
+        return false;
+      } else if (const DeepCollectionEquality().equals(left, right)) {
+        return true;
+      } else {
+        for (final key in left.keys) {
+          if (!right.containsKey(key)) {
+            return false;
+          } else if (!equivalent(left[key], right[key])) {
+            return false;
+          } else {
+            right.remove(key);
+          }
+        }
+        return right.isEmpty;
+      }
+    } else {
       return left == right;
     }
   }

@@ -176,8 +176,13 @@ class Equal extends BinaryExpression {
       } else if (left is ValidatedRatio && right is ValidatedRatio) {
         return FhirBoolean(left == right);
       } else if (left is Tuple && right is Tuple) {
-        return FhirBoolean(left == right);
+        final leftResult = left.execute(context);
+        final rightResult = right.execute(context);
+        return FhirBoolean(
+            const DeepCollectionEquality().equals(leftResult, rightResult));
       } else if (left is List && right is List) {
+        return FhirBoolean(const DeepCollectionEquality().equals(left, right));
+      } else if (left is Map && right is Map) {
         return FhirBoolean(const DeepCollectionEquality().equals(left, right));
       } else {
         return FhirBoolean(left == right);

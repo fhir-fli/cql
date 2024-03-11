@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// Data elements that meet criteria using this datatype should document
 /// that no order was given to a pharmacy to provide the medication indicated by the QDM

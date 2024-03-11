@@ -1,6 +1,54 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir/r5.dart' as r5;
+import 'package:ucum/ucum.dart';
+
 import '../../../../cql.dart';
 
-/// As operator allowing casting the result of an expression to a given target type.
+/// As operator allowing casting the result of an expression to a given target
+/// type.
+/// As : UnaryExpression
+///  ¦
+///  0..1 --> asTypeSpecifier : TypeSpecifier
+///  ¦
+///  0..1 --> asType
+///  ¦
+///  0..1 --> strict
+/// The As operator allows the result of an expression to be cast as a given
+/// target type. This allows expressions to be written that are statically
+/// typed against the expected run-time type of the argument. If the argument
+/// is not of the specified type, and the strict attribute is false (the
+/// default), the result is null. If the argument is not of the specified type
+/// and the strict attribute is true, an exception is thrown.
+///
+/// Signature:
+///
+/// as<T>(argument Any) T
+/// cast as<T>(argument Any) T
+/// Description:
+///
+/// The as operator allows the result of an expression to be cast as a given
+/// target type. This allows expressions to be written that are statically
+/// typed against the expected run-time type of the argument.
+///
+/// If the argument is not of the specified type at run-time the result is null.
+///
+/// The cast prefix indicates that if the argument is not of the specified type
+/// at run-time then an exception is thrown.
+///
+/// Example:
+///
+/// The following examples illustrate the use of the as operator.
+///
+/// define "AllProcedures": [Procedure]
+///
+/// define "ImagingProcedures":
+///   AllProcedures P
+///     where P is ImagingProcedure
+///     return P as ImagingProcedure
+///
+/// define "RuntimeError":
+///   ImagingProcedures P
+///     return cast P as Observation
 class As extends UnaryExpression {
   /// Target type for casting.
   QName? asType;
@@ -88,5 +136,114 @@ class As extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    return asType?.getReturnTypes(library);
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final result = operand.execute(context);
+    if (result == null) {
+      return null;
+    }
+
+    if (asType != null) {
+      switch (asType!.localPart) {
+        case 'Integer':
+          {
+            if (result is FhirInteger) {
+              return result;
+            }
+            break;
+          }
+        case 'Decimal':
+          {
+            if (result is FhirDecimal) {
+              return result;
+            }
+            break;
+          }
+        case 'String':
+          {
+            if (result is String) {
+              return result;
+            }
+            break;
+          }
+        case 'Boolean':
+          {
+            if (result is FhirBoolean) {
+              return result;
+            }
+            break;
+          }
+        case 'Quantity':
+          {
+            if (result is ValidatedQuantity) {
+              return result;
+            }
+            break;
+          }
+        case 'Ratio':
+          {
+            if (result is ValidatedRatio) {
+              return result;
+            }
+            break;
+          }
+        case 'DateTime':
+          {
+            if (result is FhirDateTime) {
+              return result;
+            }
+            break;
+          }
+        case 'Time':
+          {
+            if (result is FhirTime) {
+              return result;
+            }
+            break;
+          }
+        case 'Date':
+          {
+            if (result is FhirDate) {
+              return result;
+            }
+            break;
+          }
+        case 'Code':
+          {
+            if (result is Code) {
+              return result;
+            }
+            break;
+          }
+        case 'Concept':
+          {
+            if (result is Concept) {
+              return result;
+            }
+            break;
+          }
+        case 'Interval':
+          {
+            if (result is IntervalExpression) {
+              return result;
+            }
+            break;
+          }
+        case 'ValueSet':
+          {
+            if (result is r5.ValueSet) {
+              return result;
+            }
+            break;
+          }
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// The Ratio type is used to represent a ratio of two quantities.
 

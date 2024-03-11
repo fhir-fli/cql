@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// The Patient Characteristic Birthdate data element should document the
 /// patient’s date of birth. Note: Patient Characteristic Birthdate is fixed to LOINC

@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 class CommunicationBase {
   final LiteralDateTime? authorTime;

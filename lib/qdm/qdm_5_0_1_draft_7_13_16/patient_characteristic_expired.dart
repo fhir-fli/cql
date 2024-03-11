@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 ///
 /// The Patient Characteristic Expired data element should document that the patient is deceased.

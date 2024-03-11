@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// Data elements that meet criteria using this datatype should document
 /// an unexpected or dangerous reaction to the medication indicated by the QDM category

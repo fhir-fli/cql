@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// Data elements that meet criteria using this datatype should document
 /// that a clinician or appropriately licensed care provider did not make a request to

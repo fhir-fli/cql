@@ -50,7 +50,7 @@ void parseFile(BuildContext context) async {
     final pathExpression = await rootBundle.loadString(file);
     final json =
         jsonDecode(await rootBundle.loadString(file.replaceAll('cql', 'json')));
-    final resultsJson = results[file.split("/").last];
+    final answers = results[file.split("/").last];
 
     final parserAndErrors = parse(pathExpression);
     final parser = parserAndErrors.parser;
@@ -81,39 +81,52 @@ void parseFile(BuildContext context) async {
       if (results is Map<String, dynamic>) {
         results.remove('startTimestamp');
         results.forEach((key, value) {
-          final resultsValue = results[key];
-          final resultsJsonValue = resultsJson?[key];
-          if (resultsValue != resultsJsonValue) {
-            if (resultsValue is List && resultsJsonValue is List) {
-              if (!(const DeepCollectionEquality()
-                  .equals(resultsValue, resultsJsonValue))) {
-                log('$key: $resultsValue (${resultsValue.runtimeType}) != '
-                    '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+          final result = value;
+          final answer = answers?[key];
+          // log('$key: $value (${value.runtimeType}) == '
+          //     '$answer (${answer.runtimeType})');
+          if (result != answer) {
+            if (result is List && answer is List) {
+              if (!(const DeepCollectionEquality().equals(result, answer))) {
+                log('$key: $result (${result.runtimeType}) != '
+                    '$answer (${answer.runtimeType})');
                 areEqual = false;
               }
-            } else if (resultsValue is Map && resultsJsonValue is Map) {
-              if (!(const DeepCollectionEquality()
-                  .equals(resultsValue, resultsJsonValue))) {
-                log('$key: $resultsValue (${resultsValue.runtimeType}) != '
-                    '$resultsJsonValue (${resultsJsonValue.runtimeType})');
-                areEqual = false;
+            } else if (result is Map && answer is Map) {
+              if (!(const DeepCollectionEquality().equals(result, answer))) {
+                if (result.keys.length != answer.keys.length) {
+                  areEqual = false;
+                } else {
+                  for (final key in result.keys) {
+                    if (!answer.containsKey(key)) {
+                      areEqual = false;
+                    } else if (result[key] != answer[key]) {
+                      areEqual = false;
+                    } else {
+                      answer.remove(key);
+                    }
+                  }
+                  if (answer.isNotEmpty) {
+                    areEqual = false;
+                  }
+                }
               }
             } else {
-              log('$key: $resultsValue (${resultsValue.runtimeType}) != '
-                  '$resultsJsonValue (${resultsJsonValue.runtimeType})');
+              log('$key: $result (${result.runtimeType}) != '
+                  '$answer (${answer.runtimeType})');
               areEqual = false;
             }
           }
-          // if (resultsValue is FhirTime) {
-          //   log(resultsValue.toString());
-          //   log(resultsValue.value ?? '');
-          // }
-          // if (resultsJsonValue is FhirTime) {
-          //   log(resultsJsonValue.toString());
-          //   log(resultsJsonValue.value ?? '');
-          // }
-          // log('$key: ${results[key]} == ${resultsJson?[key]}');
-          if (results[key] != resultsJson?[key]) {
+          if (result is FhirTime) {
+            log(result.toString());
+            log(result.value ?? '');
+          }
+          if (answer is FhirTime) {
+            log(answer.toString());
+            log(answer.value ?? '');
+          }
+          // log('$key: ${results[key]} == ${answers?[key]}');
+          if (results[key] != answers?[key]) {
             areEqual = false;
           }
         });

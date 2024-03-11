@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// Data elements that meet criteria using this datatype should document
 /// that the patient has one or more of the payers indicated by the QDM category and its

@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/types.dart';
+import 'package:cql/engine/types/literal_types.dart';
 
 /// Data elements that meet this criterion typically address non-immune
 /// adverse reactions that are not determined or perceived to be allergic or
