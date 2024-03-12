@@ -1,8 +1,34 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
-/// Operator to return true if the given string matches the given regular expression pattern.
+/// Operator to return true if the given string matches the given regular
+/// expression pattern.
 /// If either argument is null, the result is null.
 /// Platforms will typically use native regular expression implementations.
+/// Signature:
+///
+/// Matches(argument String, pattern String) Boolean
+/// Description:
+///
+/// The Matches operator returns true if the given string matches the given
+/// regular expression pattern. Regular expressions should function
+/// consistently, regardless of any culture- and locale-specific settings in
+/// the environment, should be case-sensitive, use single line mode, and allow
+/// Unicode characters.
+///
+/// If either argument is null, the result is null.
+///
+/// Platforms will typically use native regular expression implementations.
+/// These are typically fairly similar, but there will always be small
+/// differences. As such, CQL does not prescribe a particular dialect, but
+/// recommends the use of the PCRE dialect.
+///
+/// The following examples illustrate the behavior of the Matches operator:
+///
+/// define "MatchesTrue": Matches('1,2three', '\\d,\\d\\w+')
+/// define "MatchesFalse": Matches('1,2three', '\\w+')
+/// define "MatchesIsNull": Matches('12three', null)
 class Matches extends BinaryExpression {
   Matches({
     required super.operand,
@@ -57,5 +83,35 @@ class Matches extends BinaryExpression {
       json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
     return json;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [FhirBoolean];
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('Binary expression must have 2 operands');
+    }
+
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+
+    // Check if either operand is null
+    if (left == null || right == null) {
+      return null;
+    } else
+
+    // Ensure operands are strings
+    if (left is! String || right is! String) {
+      throw ArgumentError('Both operands must be of type String');
+    }
+
+    // Adjust the regular expression to ensure it matches the entire string
+    // by using start ^ and end $ anchors.
+    final regex = RegExp('^$right\$');
+
+    // Return true if the entire string matches the pattern, otherwise false
+    return FhirBoolean(regex.hasMatch(left));
   }
 }
