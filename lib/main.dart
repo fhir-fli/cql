@@ -118,12 +118,10 @@ void parseFile(BuildContext context) async {
             }
           }
           if (result is FhirTime) {
-            log(result.toString());
-            log(result.value ?? '');
+            log('result is FhirTime ${result.toString()} ${result.value ?? ''}');
           }
           if (answer is FhirTime) {
-            log(answer.toString());
-            log(answer.value ?? '');
+            log('answer is FhirTime ${answer.toString()} ${answer.value ?? ''}');
           }
           // log('$key: ${results[key]} == ${answers?[key]}');
           if (results[key] != answers?[key]) {

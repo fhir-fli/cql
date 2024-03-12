@@ -1,7 +1,27 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the first integer less than or equal to the argument.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+///Floor(argument Decimal) Integer
+///Description:
+///
+///The Floor operator returns the first integer less than or equal to the
+///argument.
+///
+///When invoked with an Integer argument, the argument will be implicitly
+///converted to Decimal.
+///
+///If the argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the Floor operator:
+///
+///define "IntegerFloor": Floor(1) // 1
+///define "DecimalFloor": Floor(2.1) // 2
+///define "QuantityFloorIsNull": Floor(null as Decimal)
 class Floor extends UnaryExpression {
   Floor({
     required super.operand,
@@ -57,5 +77,25 @@ class Floor extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type> getReturnTypes(Library library) => const [FhirInteger];
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final value = operand.execute(context);
+    if (value == null) {
+      return null;
+    } else if (value is FhirInteger && value.isValid) {
+      return value;
+    } else if (value is FhirInteger64 && value.isValid) {
+      return FhirInteger(value.value!);
+    } else if (value is FhirDecimal && value.isValid) {
+      return FhirInteger(value.value!.floor());
+    } else {
+      throw ArgumentError(
+          'Truncate operator can only be used with Decimal or Integer');
+    }
   }
 }

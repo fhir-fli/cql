@@ -1,7 +1,27 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the first integer greater than or equal to the argument.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+///Ceiling(argument Decimal) Integer
+///Description:
+///
+///The Ceiling operator returns the first integer greater than or equal to the
+///argument.
+///
+///When invoked with an Integer argument, the argument will be implicitly
+///converted to Decimal.
+///
+///If the argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the Ceiling operator:
+///
+///define "IntegerCeiling": Ceiling(1) // 1
+///define "DecimalCeiling": Ceiling(1.1) // 2
+///define "QuantityCeilingIsNull": Ceiling(null as Decimal)
 class Ceiling extends UnaryExpression {
   Ceiling({
     required super.operand,
@@ -58,5 +78,25 @@ class Ceiling extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type> getReturnTypes(Library library) => const [FhirInteger];
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final value = operand.execute(context);
+    if (value == null) {
+      return null;
+    } else if (value is FhirInteger && value.isValid) {
+      return value;
+    } else if (value is FhirInteger64 && value.isValid) {
+      return FhirInteger(value.value!);
+    } else if (value is FhirDecimal && value.isValid) {
+      return FhirInteger(value.value!.ceil());
+    } else {
+      throw ArgumentError(
+          'Truncate operator can only be used with Decimal or Integer');
+    }
   }
 }

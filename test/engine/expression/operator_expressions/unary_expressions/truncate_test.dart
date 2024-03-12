@@ -1,0 +1,29 @@
+import 'package:cql/cql.dart';
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  group('Truncate', () {
+    test("""define "IntegerTruncate": Truncate(101) // 101""", () {
+      final input = LiteralInteger(value: 101);
+      final result = Truncate(operand: input);
+      expect(result.execute({}), equals(FhirInteger(101)));
+    });
+    test("""define "DecimalTruncate": Truncate(1.00000001) // 1""", () {
+      final input = LiteralDecimal(value: 1.00000001);
+      final result = Truncate(operand: input);
+      expect(result.execute({}), equals(FhirInteger(1)));
+    });
+
+    test("""define "DecimalTruncate": Truncate(1987.00000871) // 1""", () {
+      final input = LiteralDecimal(value: 1987.00000871);
+      final result = Truncate(operand: input);
+      expect(result.execute({}), equals(FhirInteger(1987)));
+    });
+    test("""define "TruncateIsNull": Truncate(null)""", () {
+      final input = LiteralNull();
+      final result = Truncate(operand: input);
+      expect(result.execute({}), equals(null));
+    });
+  });
+}

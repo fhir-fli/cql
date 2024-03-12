@@ -1,8 +1,29 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../cql.dart';
 
-/// Operator to return the 0-based index of the beginning of the last appearance of the given pattern in the given string.
+/// Operator to return the 0-based index of the beginning of the last
+/// appearance of the given pattern in the given string.
 /// If the pattern is not found, the result is -1.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+///LastPositionOf(pattern String, argument String) Integer
+///Description:
+///
+///The LastPositionOf operator returns the 0-based index of the last
+///appearance of the given pattern in the given string.
+///
+///If the pattern is not found, the result is -1.
+///
+///If either argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the LastPositionOf
+///operator:
+///
+///define "LastPositionOfFound": LastPositionOf('B', 'ABCDEDCBA') // 7
+///define "LastPositionOfNotFound": LastPositionOf('XYZ', 'ABCDE') // -1
+///define "LastPositionOfIsNull": LastPositionOf(null, 'ABCDE') // null
 class LastPositionOf extends OperatorExpression {
   final CqlExpression pattern;
   final CqlExpression string;
@@ -66,4 +87,20 @@ class LastPositionOf extends OperatorExpression {
 
   @override
   String get type => 'LastPositionOf';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [FhirInteger];
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final patternValue = pattern.execute(context);
+    final stringValue = string.execute(context);
+    if (patternValue == null || stringValue == null) {
+      return null;
+    }
+    if (patternValue is String && stringValue is String) {
+      return FhirInteger(stringValue.lastIndexOf(patternValue));
+    }
+    return null;
+  }
 }

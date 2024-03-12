@@ -1,8 +1,28 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../cql.dart';
 
-/// Operator to return the 0-based index of the beginning of the given pattern in the given string.
+/// Operator to return the 0-based index of the beginning of the given pattern
+/// in the given string.
 /// If the pattern is not found, the result is -1.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+///PositionOf(pattern String, argument String) Integer
+///Description:
+///
+///The PositionOf operator returns the 0-based index of the given pattern in
+///the given string.
+///
+///If the pattern is not found, the result is -1.
+///
+///If either argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the PositionOf operator:
+///
+///define "PositionOfFound": PositionOf('B', 'ABCDEDCBA') // 1
+///define "PositionOfNotFound": PositionOf('Z', 'ABCDE') // -1
+///define "PositionOfIsNull": PositionOf(null, 'ABCDE') // null
 class PositionOf extends OperatorExpression {
   final CqlExpression pattern;
   final CqlExpression string;
@@ -66,4 +86,20 @@ class PositionOf extends OperatorExpression {
 
   @override
   String get type => 'PositionOf';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [FhirInteger];
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final patternValue = pattern.execute(context);
+    final stringValue = string.execute(context);
+    if (patternValue == null || stringValue == null) {
+      return null;
+    }
+    if (patternValue is String && stringValue is String) {
+      return FhirInteger(stringValue.indexOf(patternValue));
+    }
+    return null;
+  }
 }

@@ -1,8 +1,27 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return true if the given string starts with the given prefix.
 /// If the prefix is the empty string, the result is true.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+///StartsWith(argument String, prefix String) Boolean
+///Description:
+///
+///The StartsWith operator returns true if the given string starts with the
+///given prefix.
+///
+///If the prefix is the empty string, the result is true.
+///
+///If either argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the StartsWith operator:
+///
+///define "StartsWithIsTrue": StartsWith('ABCDE', 'ABC') // true
+///define "StartsWithIsFalse": StartsWith('ABCDE', 'XYZ') // false
+///define "StartsWithIsNull": StartsWith('ABCDE', null) // null
 class StartsWith extends BinaryExpression {
   StartsWith({
     required super.operand,
@@ -57,4 +76,23 @@ class StartsWith extends BinaryExpression {
 
   @override
   String get type => 'StartsWith';
+
+  @override
+  List<Type> getReturnTypes(Library library) => [FhirBoolean];
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('StartsWith must have 2 operands');
+    }
+    final argument = operand[0].execute(context);
+    final prefix = operand[1].execute(context);
+    if (argument == null || prefix == null) {
+      return null;
+    }
+    if (argument is! String || prefix is! String) {
+      throw ArgumentError('StartsWith operands must be of type String');
+    }
+    return FhirBoolean(argument.startsWith(prefix));
+  }
 }

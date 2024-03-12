@@ -1,7 +1,26 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the integer component of its argument.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+///Truncate(argument Decimal) Integer
+///Description:
+///
+///The Truncate operator returns the integer component of its argument.
+///
+///When invoked with an Integer argument, the argument will be implicitly
+///converted to Decimal.
+///
+///If the argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the Truncate operator:
+///
+///define "IntegerTruncate": Truncate(101) // 101
+///define "DecimalTruncate": Truncate(1.00000001) // 1
+///define "TruncateIsNull": Truncate(null)
 class Truncate extends UnaryExpression {
   Truncate({
     required super.operand,
@@ -59,4 +78,24 @@ class Truncate extends UnaryExpression {
 
   @override
   String get type => 'Truncate';
+
+  @override
+  List<Type> getReturnTypes(Library library) => const [FhirInteger];
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final value = operand.execute(context);
+    if (value == null) {
+      return null;
+    } else if (value is FhirInteger && value.isValid) {
+      return value;
+    } else if (value is FhirInteger64 && value.isValid) {
+      return FhirInteger(value.value!);
+    } else if (value is FhirDecimal && value.isValid) {
+      return FhirInteger(value.value!.truncate());
+    } else {
+      throw ArgumentError(
+          'Truncate operator can only be used with Decimal or Integer');
+    }
+  }
 }

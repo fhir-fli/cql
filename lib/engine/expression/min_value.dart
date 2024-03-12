@@ -1,3 +1,6 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../cql.dart';
 
 /// Operator to return the minimum representable value for the given type.
@@ -6,6 +9,52 @@ import '../../cql.dart';
 /// For any other type, attempting to invoke MinValue results in an error.
 /// Note that implementations may choose to represent the minimum DateTime
 /// value using a constant offset such as UTC.
+/// Signature:
+///
+/// minimum<T>() T
+/// Description:
+///
+/// The minimum operator returns the minimum representable value for the given
+/// type.
+///
+/// The minimum operator is defined for the Integer, Long, Decimal, Quantity,
+/// Date, DateTime, and Time types.
+///
+/// For Integer, minimum returns the minimum signed 32-bit integer, -231.
+///
+/// For Long, minimum returns the minimum signed 64-bit long, -263.
+///
+/// For Decimal, minimum returns the minimum representable decimal value,
+/// (-1028 + 1) / 108 (-99999999999999999999.99999999).
+///
+/// For Quantity, minimum returns the minimum representable quantity, i.e. the
+/// minimum representable decimal value with a default unit (1).
+///
+/// For Date, minimum returns the minimum representable date value,
+/// DateTime(1, 1, 1).
+///
+/// For DateTime, minimum returns the minimum representable datetime value,
+/// DateTime(1, 1, 1, 0, 0, 0, 0).
+///
+/// For Time, minimum returns the minimum representable time value,
+/// Time(0, 0, 0, 0).
+///
+/// For any other type, attempting to invoke minimum results in an error.
+///
+/// Note that implementations may choose to represent the minimum DateTime
+/// value using a constant offset such as UTC.
+///
+/// Note that if implementations support larger and/or more precise values than
+/// the minimum required precision and scale for Decimal, DateTime, and Time
+/// values, they will return the minimum representable decimal for the
+/// implementation.
+///
+/// The following examples illustrate the behavior of the minimum operator:
+///
+/// define "IntegerMinimum": minimum Integer // -2147483648
+/// define "LongMinimum": minimum Long // -9223372036854775808
+/// define "DateTimeMinimum": minimum DateTime // @0001-01-01T00:00:00.000
+/// define "ErrorMinimum": minimum Quantity
 class MinValue extends CqlExpression {
   final QName valueType;
 
@@ -59,4 +108,49 @@ class MinValue extends CqlExpression {
 
   @override
   String get type => 'MinValue';
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    switch (valueType.localPart) {
+      case 'Integer':
+        return [FhirInteger];
+      case 'Long':
+        return [FhirInteger64];
+      case 'Decimal':
+        return [FhirDecimal];
+      case 'Quantity':
+        return [ValidatedQuantity];
+      case 'Date':
+        return [FhirDate];
+      case 'DateTime':
+        return [FhirDateTime];
+      case 'Time':
+        return [FhirTime];
+      default:
+        return null;
+    }
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    switch (valueType.localPart) {
+      case 'Integer':
+        return FhirInteger(-2147483648);
+      case 'Long':
+        return FhirInteger64('-9223372036854775808');
+      case 'Decimal':
+        return FhirDecimal(-99999999999999999999.99999999);
+      case 'Quantity':
+        return ValidatedQuantity.fromNumber(-99999999999999999999.99999999);
+      case 'Date':
+        return FhirDate.fromUnits(year: 1, month: 1, day: 1);
+      case 'DateTime':
+        return FhirDateTime('0001-01-01T00:00:00.000');
+      case 'Time':
+        return FhirTime.fromUnits(
+            hour: 0, minute: 0, second: 0, millisecond: 0);
+      default:
+        throw UnimplementedError();
+    }
+  }
 }

@@ -1,9 +1,24 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the length of its argument.
 /// For strings, the length is the number of characters in the string.
 /// For lists, the length is the number of elements in the list.
 /// If the argument is null, the result is 0.
+/// Signature:
+///
+///Length(argument String) Integer
+///Description:
+///
+///The Length operator returns the number of characters in a string.
+///
+///If the argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the Length operator:
+///
+///define "Length14": Length('ABCDE') // 5
+///define "LengthIsNull": Length(null as String) // null
 class Length extends UnaryExpression {
   Length({
     required super.operand,
@@ -59,5 +74,23 @@ class Length extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [FhirInteger];
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final operand = this.operand.execute(context);
+    if (operand == null) {
+      return null;
+    }
+    if (operand is String) {
+      return FhirInteger(operand.length);
+    }
+    if (operand is List) {
+      return FhirInteger(operand.length);
+    }
+    return null;
   }
 }

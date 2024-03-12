@@ -90,9 +90,7 @@ class Not extends UnaryExpression {
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {
-    print(operand);
     final operandValue = operand.execute(context);
-    print(operandValue);
     if (operandValue == null) {
       return null;
     } else if (operandValue is FhirBoolean && operandValue.isValid) {

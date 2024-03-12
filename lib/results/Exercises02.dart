@@ -40,9 +40,10 @@ final exercises02 = {
   'Date From': FhirDate('2014-01-25'),
   'Time From': FhirTime('14:30:14'),
   'Component From (Year)': FhirInteger(2014),
-  'Now Function': FhirDateTime('2024-02-15T21:13:46.599'),
+  'Now Function': FhirDateTime(DateTime.now()),
   'Today Function': FhirDate(DateTime.now().toIso8601String().substring(0, 10)),
-  'TimeOfDay Function': FhirTime('21:13:46.599'),
+  'TimeOfDay Function':
+      FhirTime(DateTime.now().toIso8601String().substring(11)),
   'Simple Info': <String, dynamic>{
     "name": 'Patrick',
     "dob": FhirDate('2014-01-01')

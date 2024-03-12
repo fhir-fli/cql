@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fhir/primitive_types/primitive_types.dart';
 
 import '../../../cql.dart';
@@ -102,4 +104,24 @@ class Round extends OperatorExpression {
 
   @override
   List<Type> getReturnTypes(Library library) => const [FhirDecimal];
+
+  @override
+  FhirDecimal? execute(Map<String, dynamic> context) {
+    final value = operand.execute(context);
+    if (value == null) {
+      return null;
+    } else if (value is FhirDecimal && value.isValid) {
+      final precisionValue = precision?.execute(context);
+      if (precisionValue == null) {
+        return FhirDecimal(value.value!.round());
+      } else if (precisionValue is FhirInteger && precisionValue.isValid) {
+        num mod = pow(10.0, precisionValue.value!.toDouble());
+        return FhirDecimal((value.value! * mod).round().toDouble() / mod);
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
 }
