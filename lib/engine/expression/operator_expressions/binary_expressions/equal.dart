@@ -89,7 +89,6 @@ import '../../../../cql.dart';
 /// define "ListEqualIsTrue": { null, 1, 2, 3 } = { null, 1, 2, 3 }
 /// define "DateTimeEqualIsNull": @2012-01-01 = @2012-01-01T12
 /// define "NullEqualIsNull": null = null
-
 class Equal extends BinaryExpression {
   Equal({
     required super.operand,

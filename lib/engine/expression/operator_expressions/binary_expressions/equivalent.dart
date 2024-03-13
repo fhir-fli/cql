@@ -273,7 +273,10 @@ class Equivalent extends BinaryExpression {
         }
       case ValidatedQuantity _:
         {
+          print(
+              'left: $left ${left.runtimeType}, right: $right ${right.runtimeType}');
           if (right is ValidatedQuantity) {
+            print(left.equivalent(right));
             return left.equivalent(right);
           } else if (right is FhirDecimal && right.isValid) {
             return left.equivalent(ValidatedQuantity.fromNumber(right.value!));

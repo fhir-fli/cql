@@ -49,6 +49,58 @@ import '../../../../cql.dart';
 /// define "QuantitySubtract": 3.14 'mg' - 3.12 'mg' // 0.02 'mg'
 /// define "QuantitySubtractError": 3.14 'cm' - 3.12 'cm2'
 /// define "SubtractIsNull": 3 - null
+///
+/// Signature:
+///
+/// -(left Date, right Quantity) Date
+/// -(left DateTime, right Quantity) DateTime
+/// -(left Time, right Quantity) Time
+/// Description:
+///
+/// The subtract (-) operator returns the value of the given Date, DateTime,
+/// or Time, decremented by the time-valued quantity, respecting variable
+/// length periods for calendar years and months.
+///
+/// For Date values, the quantity unit must be one of: years, months, weeks, or
+/// days.
+///
+/// For DateTime values, the quantity unit must be one of: years, months, weeks,
+/// days, hours, minutes, seconds, or milliseconds.
+///
+/// For Time values, the quantity unit must be one of: hours, minutes, seconds,
+/// or milliseconds.
+///
+/// Note that the quantity units may be specified in singular, plural or UCUM
+/// form. However, to avoid the potential confusion of calendar-based date and
+/// time arithmetic with definite-duration date and time arithmetic, it is an
+/// error to attempt to subtract a definite-duration time-valued unit above days
+/// (and weeks), a calendar duration must be used.
+///
+/// For precisions above seconds, any decimal portion of the time-valued
+/// quantity is ignored, since date/time arithmetic above seconds is performed
+/// with calendar duration semantics.
+///
+/// For partial date/time values where the time-valued quantity is more precise
+/// than the partial date/time, the operation is performed by converting the
+/// time-based quantity to the most precise value specified in the first
+/// argument (truncating any resulting decimal portion) and then subtracting it
+/// from the first argument. For example, the following subtraction:
+///
+/// DateTime(2014) - 24 months
+///
+/// This example results in the value DateTime(2012) even though the DateTime
+/// value is not specified to the level of precision of the time-valued
+/// quantity.
+///
+/// Note also that this means that if decimals appear in the time-valued
+/// quantities, the fractional component will be ignored. For example, the
+/// following subtraction:
+///
+/// DateTime(2014) - 18 months
+///
+/// This example results in the value DateTime(2013)
+///
+/// If either argument is null, the result is null.
 class Subtract extends BinaryExpression {
   Subtract({
     required super.operand,
@@ -179,12 +231,37 @@ class Subtract extends BinaryExpression {
                       ? left - right
                       : null
               : null;
-        default:
+        case FhirDateTimeBase _:
           {
-            print(
-                'Subtract: $left (${left.runtimeType}) - $right (${right.runtimeType}) is not supported.');
+            if (right is ValidatedQuantity && right.isDuration) {
+              return left -
+                  ExtendedDuration(
+                    years: right.years?.toInt() ?? 0,
+                    months: right.months?.toInt() ?? 0,
+                    weeks: right.weeks?.toInt() ?? 0,
+                    days: right.days?.toInt() ?? 0,
+                    hours: right.hours?.toInt() ?? 0,
+                    minutes: right.minutes?.toInt() ?? 0,
+                    seconds: right.seconds?.toInt() ?? 0,
+                    milliseconds: right.milliseconds?.toInt() ?? 0,
+                  );
+            }
             return null;
           }
+        case FhirTime _:
+          {
+            if (right is ValidatedQuantity && right.isDuration) {
+              return left.subtract(
+                hours: right.hours?.toInt() ?? 0,
+                minutes: right.minutes?.toInt() ?? 0,
+                seconds: right.seconds?.toInt() ?? 0,
+                milliseconds: right.milliseconds?.toInt() ?? 0,
+              );
+            }
+            return null;
+          }
+        default:
+          return null;
       }
     }
   }
