@@ -3,6 +3,8 @@
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:ucum/ucum.dart';
 
+import '../cql.dart';
+
 final exercises03 = {
   'String Equality': FhirBoolean(true),
   'String Equivalence': FhirBoolean(true),
@@ -26,18 +28,18 @@ final exercises03 = {
   'TEqual': FhirBoolean(true),
   'TEqualWithNull': FhirBoolean(true),
   'TEquivalent': FhirBoolean(true),
-  'C1': <String, dynamic>{
+  'C1': CodeType.fromJson({
     'code': 'ABC',
     'system': 'http://example.com',
     'version': '2017-01',
     'display': 'Code ABC'
-  },
-  'C2': <String, dynamic>{
+  }),
+  'C2': CodeType.fromJson({
     'code': 'ABC',
     'system': 'http://example.com',
     'version': '2017-05',
     'display': 'Variant Description'
-  },
+  }),
   'CEqual': FhirBoolean(true),
   'CEquivalent': FhirBoolean(true),
   'Standard Precedence': FhirBoolean(true),

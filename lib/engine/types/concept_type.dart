@@ -63,4 +63,20 @@ class ConceptType implements CqlType {
   String toString() {
     return 'ConceptType(display: $display, codes: $codes)';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    } else {
+      return other is ConceptType &&
+          other.display == display &&
+          other.codes == codes;
+    }
+  }
+
+  @override
+  int get hashCode {
+    return display.hashCode ^ codes.hashCode;
+  }
 }

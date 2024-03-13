@@ -180,7 +180,11 @@ class Subtract extends BinaryExpression {
                       : null
               : null;
         default:
-          return null;
+          {
+            print(
+                'Subtract: $left (${left.runtimeType}) - $right (${right.runtimeType}) is not supported.');
+            return null;
+          }
       }
     }
   }

@@ -42,4 +42,25 @@ class CodeType implements CqlType {
   String toString() {
     return "Code { code: $code, system: $system, version: $version, display: $display }";
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    } else {
+      return other is CodeType &&
+          other.code == code &&
+          other.display == display &&
+          other.system == system &&
+          other.version == version;
+    }
+  }
+
+  @override
+  int get hashCode {
+    return code.hashCode ^
+        display.hashCode ^
+        system.hashCode ^
+        version.hashCode;
+  }
 }
