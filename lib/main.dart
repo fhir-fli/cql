@@ -112,18 +112,48 @@ void parseFile(BuildContext context) async {
                 }
               }
             } else {
-              log('$key: $result (${result.runtimeType}) != '
-                  '$answer (${answer.runtimeType})');
-              areEqual = false;
+              if (result.runtimeType == answer.runtimeType &&
+                  result is FhirDateTimeBase &&
+                  answer is FhirDateTimeBase) {
+                if (result != answer) {
+                  final difference =
+                      result.valueDateTime.difference(answer.valueDateTime);
+                  log('$key: $result differs by ${difference.inMilliseconds} '
+                      'ms from $answer');
+                  areEqual = false;
+                }
+              } else if (result.runtimeType == answer.runtimeType &&
+                  result is FhirTime &&
+                  answer is FhirTime) {
+                if (result != answer) {
+                  final int resultMilliseconds = (result.hour ?? 0) * 3600000 +
+                      (result.minute ?? 0) * 60000 +
+                      (result.second ?? 0) * 1000 +
+                      (result.millisecond ?? 0);
+                  final int answerMilliseconds = (answer.hour ?? 0) * 3600000 +
+                      (answer.minute ?? 0) * 60000 +
+                      (answer.second ?? 0) * 1000 +
+                      (answer.millisecond ?? 0);
+
+                  final int differenceMilliseconds =
+                      resultMilliseconds - answerMilliseconds;
+
+                  log('$key: $result differs by $differenceMilliseconds '
+                      'ms from $answer');
+                  areEqual = false;
+                }
+              } else {
+                log('$key: $result (${result.runtimeType}) != '
+                    '$answer (${answer.runtimeType})');
+                areEqual = false;
+              }
             }
           }
-          if (result is FhirTime) {
-            log('result is FhirTime ${result.toString()} ${result.value ?? ''}');
+          if (result is FhirTime && answer is! FhirTime) {
+            log('result is FhirTime but answer is not');
+          } else if (result is! FhirTime && answer is FhirTime) {
+            log('result is not FhirTime but answer is');
           }
-          if (answer is FhirTime) {
-            log('answer is FhirTime ${answer.toString()} ${answer.value ?? ''}');
-          }
-          // log('$key: ${results[key]} == ${answers?[key]}');
           if (results[key] != answers?[key]) {
             areEqual = false;
           }

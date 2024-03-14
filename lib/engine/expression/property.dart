@@ -1,3 +1,6 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_path/fhir_path.dart';
+
 import '../../cql.dart';
 
 /// The Property operator returns the value of the property on source specified
@@ -85,5 +88,32 @@ class Property extends CqlExpression {
       return source!.getReturnTypes(library);
     }
     return null;
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source?.execute(context);
+    try {
+      final sourceJson = sourceResult.toJson();
+      final result = walkFhirPath(context: sourceJson, pathExpression: path);
+      if (result.length == 1) {
+        switch (result.first) {
+          case int _:
+            return FhirInteger(result.first);
+          case BigInt _:
+            return FhirInteger64(result.first);
+          case double _:
+            return FhirDecimal(result.first);
+          case DateTime _:
+            return FhirDateTime(result.first);
+          default:
+            return result.first;
+        }
+      } else {
+        return result;
+      }
+    } catch (e) {
+      return null;
+    }
   }
 }

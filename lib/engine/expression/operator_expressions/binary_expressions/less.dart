@@ -162,6 +162,8 @@ class Less extends BinaryExpression {
         return null;
       }
     }
-    throw ArgumentError('Invalid operand types for Less operation');
+    throw ArgumentError('Invalid operand types for Less operation: \n'
+        'Left: $left (${left.runtimeType})\n'
+        'Right: $right (${right.runtimeType})');
   }
 }
