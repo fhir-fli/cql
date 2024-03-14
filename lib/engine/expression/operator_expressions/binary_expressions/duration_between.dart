@@ -105,10 +105,11 @@ class DurationBetween extends BinaryExpression {
   String get type => 'DurationBetween';
 
   @override
-  List<Type> getReturnTypes(Library library) => [FhirInteger];
+  List<Type> getReturnTypes(Library library) =>
+      [FhirInteger, List<FhirInteger>];
 
   @override
-  FhirInteger? execute(Map<String, dynamic> context) {
+  dynamic execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
       throw ArgumentError('Binary expression must have 2 operands');
     }
@@ -119,32 +120,24 @@ class DurationBetween extends BinaryExpression {
     } else if (low is FhirDateTimeBase) {
       if (high is FhirDateTimeBase) {
         if (low.isValid && high.isValid) {
-          final result = ExtendedDuration(
-            years: high.year - low.year,
-            months: high.month - low.month,
-            days: high.day - low.day,
-            hours: high.hour - low.hour,
-            minutes: high.minute - low.minute,
-            seconds: high.second - low.second,
-            milliseconds: high.millisecond - low.millisecond,
-          );
+          final result = high.valueDateTime.difference(low.valueDateTime);
           switch (precision) {
             case CqlDateTimePrecision.year:
-              return FhirInteger(result.years);
+              return FhirInteger(result.inDays ~/ 365);
             case CqlDateTimePrecision.month:
-              return FhirInteger(result.months);
+              return FhirInteger(result.inDays ~/ 30);
             case CqlDateTimePrecision.week:
-              return FhirInteger(result.weeks);
+              return FhirInteger(result.inDays ~/ 7);
             case CqlDateTimePrecision.day:
-              return FhirInteger(result.days);
+              return FhirInteger(result.inDays);
             case CqlDateTimePrecision.hour:
-              return FhirInteger(result.hours);
+              return FhirInteger(result.inHours);
             case CqlDateTimePrecision.minute:
-              return FhirInteger(result.minutes);
+              return FhirInteger(result.inMinutes);
             case CqlDateTimePrecision.second:
-              return FhirInteger(result.seconds);
+              return FhirInteger(result.inSeconds);
             case CqlDateTimePrecision.millisecond:
-              return FhirInteger(result.milliseconds);
+              return FhirInteger(result.inMilliseconds);
           }
         } else {
           throw CqlException(
@@ -154,31 +147,39 @@ class DurationBetween extends BinaryExpression {
         }
       } else {
         throw CqlException(
-            message: 'DurationBetween must have comparable arguments, but '
-                'was passed ${low.runtimeType} and ${high.runtimeType}');
+            message: 'DurationBetween must be passed two Dates, DateTimes, or '
+                'Times, it was instead passed: '
+                'low (${low.runtimeType}) and'
+                'high (${high.runtimeType})');
       }
     } else if (low is FhirTime) {
       if (high is FhirTime) {
         if (low.isValid && high.isValid) {
-          final result = ExtendedDuration(
-            hours: (high.hour ?? 0) - (low.hour ?? 0),
-            minutes: (high.minute ?? 0) - (low.minute ?? 0),
-            seconds: (high.second ?? 0) - (low.second ?? 0),
-            milliseconds: (high.millisecond ?? 0) - (low.millisecond ?? 0),
-          );
+          final int lowTotalMilliseconds = (low.hour ?? 0) * 3600000 +
+              (low.minute ?? 0) * 60000 +
+              (low.second ?? 0) * 1000 +
+              (low.millisecond ?? 0);
+          final int highTotalMilliseconds = (high.hour ?? 0) * 3600000 +
+              (high.minute ?? 0) * 60000 +
+              (high.second ?? 0) * 1000 +
+              (high.millisecond ?? 0);
+
+          final int differenceMilliseconds =
+              highTotalMilliseconds - lowTotalMilliseconds;
+
           switch (precision) {
             case CqlDateTimePrecision.hour:
-              return FhirInteger(result.hours);
+              return FhirInteger((differenceMilliseconds / 3600000).floor());
             case CqlDateTimePrecision.minute:
-              return FhirInteger(result.minutes);
+              return FhirInteger((differenceMilliseconds / 60000).floor());
             case CqlDateTimePrecision.second:
-              return FhirInteger(result.seconds);
+              return FhirInteger((differenceMilliseconds / 1000).floor());
             case CqlDateTimePrecision.millisecond:
-              return FhirInteger(result.milliseconds);
+              return FhirInteger(differenceMilliseconds);
             default:
               throw CqlException(
-                  message: 'DurationBetween precsion for times must be hours, '
-                      'minutes, seconds, or milliseconds, but was $precision');
+                  message:
+                      'Unsupported precision for FhirTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.');
           }
         } else {
           throw CqlException(
@@ -186,10 +187,18 @@ class DurationBetween extends BinaryExpression {
                   'low (${low.isValid ? "valid" : "invalid"}) and'
                   'high (${high.isValid ? "valid" : "invalid"})');
         }
+      } else {
+        throw CqlException(
+            message: 'DurationBetween must be passed two Dates, DateTimes, or '
+                'Times, it was instead passed: '
+                'low (${low.runtimeType}) and'
+                'high (${high.runtimeType})');
       }
+    } else {
+      throw CqlException(
+          message: 'DurationBetween must be either Dates, DateTimes, or Times,'
+              'but was instead passed low (${low.runtimeType}) and '
+              'high (${high.runtimeType}).');
     }
-    throw CqlException(
-        message: 'DurationBetween requires proper arguments,'
-            'but was passed low (${low.runtimeType}) and high (${high.runtimeType})');
   }
 }
