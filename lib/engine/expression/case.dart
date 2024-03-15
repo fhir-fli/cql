@@ -116,4 +116,34 @@ class Case extends CqlExpression {
       }
     }
   }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    if (comparand == null) {
+      final index = caseItem.indexWhere((element) {
+        final whenResult = element.when_.execute(context);
+        if (whenResult is FhirBoolean && whenResult.isValid) {
+          return whenResult.value!;
+        } else {
+          return false;
+        }
+      });
+      if (index != -1) {
+        return caseItem[index].then.execute(context);
+      } else {
+        return elseExpr.execute(context);
+      }
+    } else {
+      final comparandResult = comparand!.execute(context);
+      final index = caseItem.indexWhere((element) {
+        final whenResult = element.when_.execute(context);
+        return Equal.equal(comparandResult, whenResult) ?? false;
+      });
+      if (index != -1) {
+        return caseItem[index].then.execute(context);
+      } else {
+        return elseExpr.execute(context);
+      }
+    }
+  }
 }
