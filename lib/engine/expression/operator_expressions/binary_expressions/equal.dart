@@ -153,187 +153,136 @@ class Equal extends BinaryExpression {
       final left = operand[0].execute(context);
       final right = operand[1].execute(context);
       final result = equal(left, right);
-      return result == null ? null : FhirBoolean(result);
+      return result;
     }
   }
 
-  static bool? equal(dynamic left, dynamic right) {
+  static FhirBoolean? equal(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
     }
+    bool? result;
     switch (left) {
       case String _:
-        {
-          if (right is String) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is String && left == right;
+        break;
       case FhirDateTime _:
-        {
-          if (right is FhirDateTime) {
-            return left.isEqual(right);
-          }
-          return false;
-        }
+        result = right is FhirDateTime ? left.isEqual(right) : false;
+        break;
       case FhirDate _:
-        {
-          if (right is FhirDate) {
-            return left.isEqual(right);
-          }
-          return false;
-        }
+        result = right is FhirDate ? left.isEqual(right) : false;
+        break;
       case FhirTime _:
-        {
-          if (right is FhirTime) {
-            return left.isEqual(right);
-          }
-          return false;
-        }
+        result = right is FhirTime ? left.isEqual(right) : false;
+        break;
       case CodeType _:
-        {
-          return left.equal(right);
-        }
+        result = left.equal(right);
+        break;
       case ConceptType _:
-        {
-          return left.equal(right);
-        }
+        result = left.equal(right);
+        break;
       case int _:
-        {
-          if (right is int) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is int && left == right;
+        break;
       case BigInt _:
-        {
-          if (right is BigInt) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is BigInt && left == right;
+        break;
       case double _:
-        {
-          if (right is double) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is double && left == right;
+        break;
       case FhirInteger _:
-        {
-          if (right is FhirInteger) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is FhirInteger && left == right;
+        break;
       case FhirInteger64 _:
-        {
-          if (right is FhirInteger64) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is FhirInteger64 && left == right;
+        break;
       case FhirDecimal _:
-        {
-          if (right is FhirDecimal) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is FhirDecimal && left == right;
+        break;
       case ValidatedQuantity _:
-        {
-          if (right is ValidatedQuantity) {
-            return left == right;
-          }
-          return false;
-        }
+        result = right is ValidatedQuantity && left == right;
+        break;
       case ValidatedRatio _:
-        {
-          if (right is ValidatedRatio) {
-            return left == right;
-          }
-          return false;
-        }
-
+        result = right is ValidatedRatio && left == right;
+        break;
       case List _:
-        {
-          if (right is List && left.length == right.length) {
-            for (var i = 0; i < left.length; i++) {
-              final result = equal(left[i], right[i]);
-              if (result == null || !result) {
-                return result;
-              }
+        if (right is List && left.length == right.length) {
+          result = true;
+          for (int i = 0; i < left.length; i++) {
+            final tempResult = equal(left[i], right[i])?.value;
+            if (tempResult == false || tempResult == null) {
+              result = tempResult;
+              break;
             }
-            return true;
           }
-          return false;
+        } else {
+          result = false;
         }
+        break;
       case TupleType _:
-        {
-          if (right is TupleType) {
-            if (left.elements == null ||
-                right.elements == null ||
-                left.elements?.length != right.elements?.length) {
-              return false;
-            }
-            final leftMap = Map.from(left.elements!);
-            final rightMap = Map.from(right.elements!);
-            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
-              return true;
-            }
-            for (final element in leftMap.keys) {
-              if (!rightMap.containsKey(element)) {
-                return false;
-              } else {
-                final result = equal(leftMap[element], rightMap[element]);
-                if (result == null || !result) {
-                  return result;
-                } else {
-                  rightMap.remove(element);
+        if (right is TupleType &&
+            left.elements?.length == right.elements?.length) {
+          if (left.elements == null || right.elements == null) {
+            result = null;
+          } else {
+            result = true;
+
+            if (!const DeepCollectionEquality()
+                .equals(left.elements, right.elements)) {
+              for (var key in left.elements!.keys) {
+                // Check for key presence and value equality.
+                final tempResult = right.elements!.containsKey(key)
+                    ? equal(left.elements![key], right.elements![key])?.value
+                    : false;
+
+                // If a mismatch is found, or comparison is indeterminate,
+                //update result accordingly.
+                if (tempResult == false) {
+                  result = false;
+                  break;
+                } else if (tempResult == null) {
+                  result = null;
+                  break;
                 }
               }
             }
-            return rightMap.isEmpty;
           }
-          return false;
+        } else {
+          result = false;
         }
+        break;
       case Map _:
-        {
-          if (right is Map) {
-            if (left.length != right.length) {
-              return false;
-            }
-            final leftMap = Map.from(left);
-            final rightMap = Map.from(right);
-            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
-              return true;
-            }
-            for (final element in leftMap.keys) {
-              if (!rightMap.containsKey(element)) {
-                return false;
-              } else {
-                final result = equal(leftMap[element], rightMap[element]);
-                if (result == null || !result) {
-                  return result;
-                } else {
-                  rightMap.remove(element);
-                }
+        if (right is Map && left.length == right.length) {
+          result = true;
+
+          if (!const DeepCollectionEquality().equals(left, right)) {
+            for (var key in left.keys) {
+              // Check for key presence and value equality.
+              final tempResult = right.containsKey(key)
+                  ? equal(left[key], right[key])?.value
+                  : false;
+
+              // If a mismatch is found, or comparison is indeterminate,
+              //update result accordingly.
+              if (tempResult == false) {
+                result = false;
+                break;
+              } else if (tempResult == null) {
+                result = null;
+                break;
               }
             }
-            return rightMap.isEmpty;
           }
-          return false;
+        } else {
+          result = false;
         }
-      // TODO(Dokotela): Implement IntervalType
-      // case IntervalType _:
-      //   {
-      //     if (right is IntervalType) {
-      //       return left.equivalent(right);
-      //     }
-      //     return false;
-      //   }
+        break;
+      case IntervalType _:
+        result = right is IntervalType && left == right;
+        break;
       default:
-        return left == right;
+        result = left == right;
     }
+    return result == null ? null : FhirBoolean(result);
   }
 }

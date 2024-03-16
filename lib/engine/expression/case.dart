@@ -137,7 +137,7 @@ class Case extends CqlExpression {
       final comparandResult = comparand!.execute(context);
       final index = caseItem.indexWhere((element) {
         final whenResult = element.when_.execute(context);
-        return Equal.equal(comparandResult, whenResult) ?? false;
+        return Equal.equal(comparandResult, whenResult)?.value ?? false;
       });
       if (index != -1) {
         return caseItem[index].then.execute(context);

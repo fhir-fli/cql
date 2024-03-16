@@ -236,6 +236,56 @@ class As extends UnaryExpression {
             }
             break;
           }
+        case 'Interval<Integer>':
+          {
+            if (result is IntervalType<FhirInteger>) {
+              return result;
+            }
+            break;
+          }
+        case 'Interval<Long>':
+          {
+            if (result is IntervalType<FhirInteger64>) {
+              return result;
+            }
+            break;
+          }
+
+        case 'Interval<Decimal>':
+          {
+            if (result is IntervalType<FhirDecimal>) {
+              return result;
+            }
+            break;
+          }
+        case 'Interval<FhirDate>':
+          {
+            if (result is IntervalType<FhirDate>) {
+              return result;
+            }
+            break;
+          }
+        case 'Interval<FhirDateTime>':
+          {
+            if (result is IntervalType<FhirDateTime>) {
+              return result;
+            }
+            break;
+          }
+        case 'Interval<FhirTime>':
+          {
+            if (result is IntervalType<FhirTime>) {
+              return result;
+            }
+            break;
+          }
+        case 'Interval<Quantity>':
+          {
+            if (result is IntervalType<ValidatedQuantity>) {
+              return result;
+            }
+            break;
+          }
         case 'ValueSet':
           {
             if (result is r5.ValueSet) {

@@ -1,10 +1,47 @@
+import 'package:fhir/primitive_types/primitive_types.dart';
+
 import '../../../../cql.dart';
 
-/// Operator to determine if the first interval overlaps and ends after the second interval.
+/// Operator to determine if the first interval overlaps and ends after the
+/// second interval.
 /// Returns true if End(i1) > End(i2) and Start(i1) <= End(i2).
 /// If precision is specified and the point type is Date, DateTime, or Time,
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+/// overlaps _precision_ (left Interval<T>, right Interval<T>) Boolean
+/// overlaps before _precision_ (left Interval<T>, right Interval<T>) Boolean
+/// overlaps after _precision_ (left Interval<T>, right Interval<T>) Boolean
+/// Description:
+///
+/// The overlaps operator returns true if the first interval overlaps the
+/// second. More precisely, if the starting or ending point of either interval
+/// is in the other, or if the ending point of the first interval is greater
+/// than or equal to the starting point of the second interval, and the starting
+/// point of the first interval is less than or equal to the ending point of the
+/// second interval.
+///
+/// The operator overlaps before returns true if the first interval overlaps the
+/// second and starts before it, while the overlaps after operator returns true
+/// if the first interval overlaps the second and ends after it.
+///
+/// This operator uses the semantics described in the Start and End operators to
+/// determine interval boundaries.
+///
+/// If precision is specified and the point type is a Date, DateTime, or Time
+/// type, comparisons used in the operation are performed at the specified
+/// precision.
+///
+/// If either argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the overlaps, overlaps
+/// before, and overlaps after operators:
+///
+/// define "OverlapsIsTrue": Interval[0, 4] overlaps Interval[1, 4]
+/// define "OverlapsBeforeIsTrue": Interval[0, 4] overlaps before Interval[1, 4]
+/// define "OverlapsAfterIsFalse": Interval[0, 4] overlaps after Interval[1, 4]
+/// define "OverlapsIsNull": Interval[6, 10] overlaps (null as Interval<Integer>)
 class OverlapsAfter extends BinaryExpression {
   final CqlDateTimePrecision? precision;
 
@@ -67,4 +104,51 @@ class OverlapsAfter extends BinaryExpression {
 
   @override
   String get type => 'OverlapsAfter';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [FhirBoolean];
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('Binary expression requires two operands');
+    }
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+    return overlapsAfter(left, right, precision);
+  }
+
+  static FhirBoolean? overlapsAfter(dynamic left, dynamic right,
+      [CqlDateTimePrecision? precision]) {
+    if (left == null || right == null) {
+      return null;
+    }
+
+    if (left is IntervalType && right is IntervalType) {
+      var leftEnd = left.getEnd();
+      var rightEnd = right.getEnd();
+
+      bool after = false;
+      bool overlaps = false;
+
+      if (leftEnd is FhirDateTimeBase &&
+          rightEnd is FhirDateTimeBase &&
+          precision != null) {
+        after = After.after(leftEnd, rightEnd, precision)?.value ?? after;
+        overlaps = Overlaps.overlaps(left, right, precision)?.value ?? overlaps;
+      } else if (leftEnd is FhirTime &&
+          rightEnd is FhirTime &&
+          precision != null) {
+        after = After.after(leftEnd, rightEnd, precision)?.value ?? after;
+        overlaps = Overlaps.overlaps(left, right, precision)?.value ?? overlaps;
+      } else if (leftEnd is Comparable && rightEnd is Comparable) {
+        after = leftEnd.compareTo(rightEnd) > 0;
+        overlaps = Overlaps.overlaps(left, right)?.value ?? overlaps;
+      }
+
+      return FhirBoolean(after && overlaps);
+    }
+
+    throw Exception("OverlapsAfter requires IntervalType arguments.");
+  }
 }

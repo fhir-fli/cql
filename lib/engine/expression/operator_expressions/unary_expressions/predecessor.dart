@@ -118,6 +118,10 @@ class Predecessor extends UnaryExpression {
   @override
   dynamic execute(Map<String, dynamic> context) {
     final value = operand.execute(context);
+    return predecessor(value);
+  }
+
+  static dynamic predecessor(dynamic value) {
     if (value == null) {
       return null;
     } else if (value is FhirInteger && value.isValid) {

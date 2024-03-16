@@ -173,195 +173,151 @@ class Equivalent extends BinaryExpression {
   FhirBoolean execute(Map<String, dynamic> context) {
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
-    if (left == null || right == null) {
-      return FhirBoolean(left == right);
-    } else {
-      return FhirBoolean(equivalent(left, right));
-    }
+    return equivalent(left, right);
   }
 
-  static bool equivalent(dynamic left, dynamic right) {
+  static FhirBoolean equivalent(dynamic left, dynamic right) {
+    bool result = false;
     switch (left) {
       case null:
-        return right == null;
+        result = right == null;
+        break;
       case String _:
-        {
-          if (right is String) {
-            return left.toLowerCase().trim() == right.toLowerCase().trim();
-          }
-          return false;
-        }
+        result = right is String
+            ? left.toLowerCase().trim() == right.toLowerCase().trim()
+            : false;
+        break;
       case FhirDateTimeBase _:
-        {
-          if (right is FhirDateTimeBase) {
-            return left.isEqual(right) ?? false;
-          }
-          return false;
-        }
+        result =
+            right is FhirDateTimeBase ? left.isEqual(right) ?? false : false;
+        break;
       case FhirTime _:
-        {
-          if (right is FhirTime) {
-            return left.isEqual(right) ?? false;
-          }
-          return false;
-        }
+        result = right is FhirTime ? left.isEqual(right) ?? false : false;
+        break;
       case CodeType _:
-        {
-          return left.equivalent(right);
-        }
+        result = left.equivalent(right);
+        break;
       case ConceptType _:
-        {
-          return left.equivalent(right);
-        }
+        result = left.equivalent(right);
+        break;
       case num _:
       case BigInt _:
-        {
-          if (right is num || right is BigInt) {
-            return (left is num
-                    ? ValidatedQuantity.fromNumber(left)
-                    : ValidatedQuantity.fromBigInt(left))
-                .equivalent(right is num
-                    ? ValidatedQuantity.fromNumber(right)
-                    : ValidatedQuantity.fromBigInt(right));
-          } else if ((right is FhirNumber && right.isValid) ||
-              (right is FhirInteger64 && right.isValid)) {
-            return (left is num
-                    ? ValidatedQuantity.fromNumber(left)
-                    : ValidatedQuantity.fromBigInt(left))
-                .equivalent(right is FhirNumber
-                    ? ValidatedQuantity.fromNumber(right.value!)
-                    : ValidatedQuantity.fromBigInt(
-                        (right as FhirInteger64).value!));
-          } else {
-            return false;
-          }
+        if (right is num || right is BigInt) {
+          result = UcumDecimal.fromString(left.toString())
+              .equivalent(UcumDecimal.fromString(right.toString()));
+        } else if ((right is FhirNumber && right.isValid) ||
+            (right is FhirInteger64 && right.isValid)) {
+          result = (UcumDecimal.fromString(left.toString())
+              .equivalent(UcumDecimal.fromString(right.toString())));
+        } else if (right is ValidatedQuantity && left is double) {
+          result = ValidatedQuantity.fromNumber(left).equivalent(right);
+        } else {
+          result = false;
         }
+        break;
       case FhirNumber _:
       case FhirInteger64 _:
-        {
-          if (left.isValid) {
-            if (right is num || right is BigInt) {
-              return (left is FhirNumber
-                      ? ValidatedQuantity.fromNumber(left.value!)
-                      : ValidatedQuantity.fromBigInt(
-                          (left as FhirInteger64).value!))
-                  .equivalent(right is num
-                      ? ValidatedQuantity.fromNumber(right)
-                      : ValidatedQuantity.fromBigInt(right));
-            } else if ((right is FhirNumber && right.isValid) ||
-                (right is FhirInteger64 && right.isValid)) {
-              return (left is FhirNumber
-                      ? ValidatedQuantity.fromNumber(left.value!)
-                      : ValidatedQuantity.fromBigInt(
-                          (left as FhirInteger64).value!))
-                  .equivalent(right is FhirNumber
-                      ? ValidatedQuantity.fromNumber(right.value!)
-                      : ValidatedQuantity.fromBigInt(
-                          (right as FhirInteger64).value!));
-            } else {
-              if (left is FhirDecimal &&
-                  left.isValid &&
-                  right is ValidatedQuantity) {
-                return ValidatedQuantity.fromNumber(left.value!)
-                    .equivalent(right);
-              } else if (left is double && right is ValidatedQuantity) {
-                return ValidatedQuantity.fromNumber(left).equivalent(right);
-              }
-            }
+        if (left.isValid) {
+          if (right is num || right is BigInt) {
+            result = UcumDecimal.fromString(left.value!.toString())
+                .equivalent(UcumDecimal.fromString(right.toString()));
+          } else if ((right is FhirNumber && right.isValid) ||
+              (right is FhirInteger64 && right.isValid)) {
+            result = UcumDecimal.fromString(left.value!.toString())
+                .equivalent(UcumDecimal.fromString(right.toString()));
+          } else if (right is ValidatedQuantity && left is FhirDecimal) {
+            result =
+                ValidatedQuantity.fromNumber(left.value!).equivalent(right);
           }
-          return false;
+        } else {
+          result = false;
         }
+        break;
       case ValidatedQuantity _:
-        {
-          if (right is ValidatedQuantity) {
-            return left.equivalent(right);
-          } else if (right is FhirDecimal && right.isValid) {
-            return left.equivalent(ValidatedQuantity.fromNumber(right.value!));
-          } else if (right is double) {
-            return left.equivalent(ValidatedQuantity.fromNumber(right));
-          }
-          return false;
+        if (right is ValidatedQuantity) {
+          result = left.equivalent(right);
+        } else if (right is FhirDecimal && right.isValid) {
+          result = left.equivalent(ValidatedQuantity.fromNumber(right.value!));
+        } else if (right is double) {
+          result = left.equivalent(ValidatedQuantity.fromNumber(right));
+        } else {
+          result = false;
         }
+        break;
       case ValidatedRatio _:
-        {
-          if (right is ValidatedRatio) {
-            return left.equivalent(right);
-          }
-          return false;
-        }
-
+        result = right is ValidatedRatio ? left.equivalent(right) : false;
+        break;
       case List _:
-        {
-          if (right is List && left.length == right.length) {
-            for (var i = 0; i < left.length; i++) {
-              if (!equivalent(left[i], right[i])) {
-                return false;
-              }
+        if (right is List && left.length == right.length) {
+          result = true;
+          for (var i = 0; i < left.length; i++) {
+            if (!(equivalent(left[i], right[i]).value ?? false)) {
+              result = false;
+              break;
             }
-            return true;
           }
-          return false;
+        } else {
+          result = false;
         }
+        break;
       case TupleType _:
-        {
-          if (right is TupleType) {
-            if (left.elements == null ||
-                right.elements == null ||
-                left.elements?.length != right.elements?.length) {
-              return false;
-            }
-            final leftMap = Map.from(left.elements!);
-            final rightMap = Map.from(right.elements!);
-            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
-              return true;
-            }
-            for (final element in leftMap.keys) {
-              if (!rightMap.containsKey(element)) {
-                return false;
-              } else if (!equivalent(leftMap[element], rightMap[element])) {
-                return false;
-              } else {
-                rightMap.remove(element);
+        if (right is TupleType &&
+            left.elements?.length == right.elements?.length) {
+          if (left.elements == null || right.elements == null) {
+            result = false;
+          } else {
+            result = true;
+
+            if (!const DeepCollectionEquality()
+                .equals(left.elements, right.elements)) {
+              for (var key in left.elements!.keys) {
+                // Check for key presence and value equality.
+                final tempResult = right.elements!.containsKey(key)
+                    ? equivalent(left.elements![key], right.elements![key])
+                        .value
+                    : false;
+
+                // If a mismatch is found, or comparison is indeterminate,
+                //update result accordingly.
+                if (tempResult == false || tempResult == null) {
+                  result = false;
+                  break;
+                }
               }
             }
-            return rightMap.isEmpty;
           }
-          return false;
+        } else {
+          result = false;
         }
+        break;
       case Map _:
-        {
-          if (right is Map) {
-            if (left.length != right.length) {
-              return false;
-            }
-            final leftMap = Map.from(left);
-            final rightMap = Map.from(right);
-            if (const DeepCollectionEquality().equals(leftMap, rightMap)) {
-              return true;
-            }
-            for (final element in leftMap.keys) {
-              if (!rightMap.containsKey(element)) {
-                return false;
-              } else if (!equivalent(leftMap[element], rightMap[element])) {
-                return false;
-              } else {
-                rightMap.remove(element);
+        if (right is Map && left.length == right.length) {
+          result = true;
+          if (!const DeepCollectionEquality().equals(left, right)) {
+            for (var key in left.keys) {
+              // Check for key presence and value equality.
+              final tempResult = right.containsKey(key)
+                  ? equivalent(left[key], right[key]).value
+                  : false;
+
+              // If a mismatch is found, or comparison is indeterminate,
+              //update result accordingly.
+              if (tempResult == false || tempResult == null) {
+                result = false;
+                break;
               }
             }
-            return rightMap.isEmpty;
           }
-          return false;
+        } else {
+          result = false;
         }
-      // TODO(Dokotela): Implement IntervalType
-      // case IntervalType _:
-      //   {
-      //     if (right is IntervalType) {
-      //       return left.equivalent(right);
-      //     }
-      //     return false;
-      //   }
+        break;
+      case IntervalType _:
+        result = right is IntervalType ? left.equivalent(right) : false;
+        break;
       default:
-        return left == right;
+        result = left == right;
     }
+    return FhirBoolean(result);
   }
 }

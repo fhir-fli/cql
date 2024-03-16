@@ -115,9 +115,16 @@ class LessOrEqual extends BinaryExpression {
   String get type => 'LessOrEqual';
 
   @override
+  List<Type> getReturnTypes(Library library) => [FhirBoolean];
+
+  @override
   FhirBoolean? execute(Map<String, dynamic> context) {
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return lessOrEqual(left, right);
+  }
+
+  static FhirBoolean? lessOrEqual(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
     }
@@ -144,6 +151,8 @@ class LessOrEqual extends BinaryExpression {
         return null;
       }
     }
-    throw ArgumentError('Invalid operand types for LessOrEqual operation');
+    throw ArgumentError('Invalid operand types for LessOrEqual operation: \n'
+        'Left: $left (${left.runtimeType})\n'
+        'Right: $right (${right.runtimeType})');
   }
 }

@@ -1,8 +1,28 @@
 import '../../../../cql.dart';
 
 /// Operator to return the width of an interval (End(i) - Start(i)).
-/// Note: This operator is not defined for intervals of type Date, DateTime, and Time.
+/// Note: This operator is not defined for intervals of type Date, DateTime,
+/// and Time.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+/// width of(argument Interval<T>) T
+/// Description:
+///
+/// The width operator returns the width of an interval. The result of this
+/// operator is equivalent to invoking: (end of argument – start of argument).
+///
+/// Note that because CQL defines duration and difference operations for date
+/// and time valued intervals, width is not defined for intervals of these
+/// types.
+///
+/// If the argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the width operator:
+///
+/// define "Width": width of Interval[3, 7] // 4
+/// define "WidthIsNull": width of (null as Interval<Integer>) // null
+/// define "NullInterval": width of Interval[0, null) //null
 class Width extends UnaryExpression {
   Width({
     required super.operand,

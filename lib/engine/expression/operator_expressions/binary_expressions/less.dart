@@ -133,9 +133,16 @@ class Less extends BinaryExpression {
   String get type => 'Less';
 
   @override
+  List<Type>? getReturnTypes(Library library) => [FhirBoolean];
+
+  @override
   FhirBoolean? execute(Map<String, dynamic> context) {
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return less(left, right);
+  }
+
+  static FhirBoolean? less(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
     }

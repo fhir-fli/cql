@@ -118,6 +118,10 @@ class Successor extends UnaryExpression {
   @override
   dynamic execute(Map<String, dynamic> context) {
     final value = operand.execute(context);
+    return successor(value);
+  }
+
+  static dynamic successor(dynamic value) {
     if (value == null) {
       return null;
     } else if (value is FhirInteger && value.isValid) {

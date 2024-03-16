@@ -159,110 +159,129 @@ class Subtract extends BinaryExpression {
   @override
   dynamic execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
-      return null;
+      throw CqlException(
+          message: "The Subtract expression must have 2 operands.");
     } else {
       final left = operand[0].execute(context);
       final right = operand[1].execute(context);
-      // TODO(Dokotela) Some of the BigInt/FhirInteger64 - int/FhirInteger may be incorrect
-      switch (left) {
-        case FhirInteger _:
-          return right is FhirInteger
-              ? (left).isValid && right.isValid
-                  ? FhirInteger(left.value! - right.value!)
-                  : null
-              : right is FhirDecimal
-                  ? (left).isValid && right.isValid
-                      ? FhirDecimal(double.parse(
-                          UcumDecimal.fromInt(left.value!)
-                              .subtract(UcumDecimal.fromDouble(right.value!))
-                              .asUcumDecimal()))
-                      : null
-                  : right is FhirInteger64
-                      ? (left).isValid && right.isValid
-                          ? FhirInteger64(
-                              (left.value as int) - right.value!.toInt())
-                          : null
-                      : null;
-        case FhirInteger64 _:
-          return right is FhirInteger64
-              ? (left).isValid && right.isValid
-                  ? FhirInteger64(left.value! - right.value!)
-                  : null
-              : right is FhirDecimal
-                  ? (left).isValid && right.isValid
-                      ? FhirDecimal(double.parse(
-                          UcumDecimal.fromBigInt(left.value!)
-                              .subtract(UcumDecimal.fromDouble(right.value!))
-                              .asUcumDecimal()))
-                      : null
-                  : right is FhirInteger
-                      ? (left).isValid && right.isValid
-                          ? FhirInteger64(
-                              left.value!.toInt() - right.value!.toInt())
-                          : null
-                      : null;
-        case FhirDecimal _:
-          return right is FhirDecimal
-              ? (left).isValid && right.isValid
-                  ? FhirDecimal(double.parse(UcumDecimal.fromDouble(left.value!)
-                      .subtract(UcumDecimal.fromDouble(right.value!))
-                      .asUcumDecimal()))
-                  : null
-              : right is FhirInteger
-                  ? (left).isValid && right.isValid
-                      ? FhirDecimal(double.parse(
-                          UcumDecimal.fromDouble(left.value!)
-                              .subtract(UcumDecimal.fromInt(right.value!))
-                              .asUcumDecimal()))
-                      : null
-                  : right is FhirInteger64
-                      ? (left).isValid && right.isValid
-                          ? FhirDecimal(double.parse(UcumDecimal.fromDouble(
-                                  left.value!)
-                              .subtract(UcumDecimal.fromBigInt(right.value!))
-                              .asUcumDecimal()))
-                          : null
-                      : null;
-        case ValidatedQuantity _:
-          return right is ValidatedQuantity
-              ? (left).isValid() && right.isValid()
-                  ? left - right
-                  : right is FhirDecimal && right.isValid()
-                      ? left - right
-                      : null
-              : null;
-        case FhirDateTimeBase _:
-          {
-            if (right is ValidatedQuantity && right.isDuration) {
-              return left -
-                  ExtendedDuration(
-                    years: right.years?.toInt() ?? 0,
-                    months: right.months?.toInt() ?? 0,
-                    weeks: right.weeks?.toInt() ?? 0,
-                    days: right.days?.toInt() ?? 0,
-                    hours: right.hours?.toInt() ?? 0,
-                    minutes: right.minutes?.toInt() ?? 0,
-                    seconds: right.seconds?.toInt() ?? 0,
-                    milliseconds: right.milliseconds?.toInt() ?? 0,
-                  );
-            }
-            return null;
+      return subtract(left, right);
+    }
+  }
+
+  static dynamic subtract(dynamic left, dynamic right) {
+    if (left == null || right == null) {
+      return null;
+    }
+
+    switch (left) {
+      case FhirInteger _:
+        return right is FhirInteger
+            ? (left).isValid && right.isValid
+                ? FhirInteger(left.value! - right.value!)
+                : null
+            : right is FhirDecimal
+                ? (left).isValid && right.isValid
+                    ? FhirDecimal(double.parse(UcumDecimal.fromInt(left.value!)
+                        .subtract(UcumDecimal.fromDouble(right.value!))
+                        .asUcumDecimal()))
+                    : null
+                : right is FhirInteger64
+                    ? (left).isValid && right.isValid
+                        ? FhirInteger64(
+                            (left.value as int) - right.value!.toInt())
+                        : null
+                    : null;
+      case FhirInteger64 _:
+        return right is FhirInteger64
+            ? (left).isValid && right.isValid
+                ? FhirInteger64(left.value! - right.value!)
+                : null
+            : right is FhirDecimal
+                ? (left).isValid && right.isValid
+                    ? FhirDecimal(double.parse(
+                        UcumDecimal.fromBigInt(left.value!)
+                            .subtract(UcumDecimal.fromDouble(right.value!))
+                            .asUcumDecimal()))
+                    : null
+                : right is FhirInteger
+                    ? (left).isValid && right.isValid
+                        ? FhirInteger64(
+                            left.value!.toInt() - right.value!.toInt())
+                        : null
+                    : null;
+      case FhirDecimal _:
+        return right is FhirDecimal
+            ? (left).isValid && right.isValid
+                ? FhirDecimal(double.parse(UcumDecimal.fromDouble(left.value!)
+                    .subtract(UcumDecimal.fromDouble(right.value!))
+                    .asUcumDecimal()))
+                : null
+            : right is FhirInteger
+                ? (left).isValid && right.isValid
+                    ? FhirDecimal(double.parse(
+                        UcumDecimal.fromDouble(left.value!)
+                            .subtract(UcumDecimal.fromInt(right.value!))
+                            .asUcumDecimal()))
+                    : null
+                : right is FhirInteger64
+                    ? (left).isValid && right.isValid
+                        ? FhirDecimal(double.parse(
+                            UcumDecimal.fromDouble(left.value!)
+                                .subtract(UcumDecimal.fromBigInt(right.value!))
+                                .asUcumDecimal()))
+                        : null
+                    : null;
+      case ValidatedQuantity _:
+        return right is ValidatedQuantity
+            ? (left).isValid() && right.isValid()
+                ? left - right
+                : right is FhirDecimal && right.isValid()
+                    ? left - right
+                    : null
+            : null;
+      case FhirDateTimeBase _:
+        {
+          if (right is ValidatedQuantity && right.isDuration) {
+            return left -
+                ExtendedDuration(
+                  years: right.years?.toInt() ?? 0,
+                  months: right.months?.toInt() ?? 0,
+                  weeks: right.weeks?.toInt() ?? 0,
+                  days: right.days?.toInt() ?? 0,
+                  hours: right.hours?.toInt() ?? 0,
+                  minutes: right.minutes?.toInt() ?? 0,
+                  seconds: right.seconds?.toInt() ?? 0,
+                  milliseconds: right.milliseconds?.toInt() ?? 0,
+                );
           }
-        case FhirTime _:
-          {
-            if (right is ValidatedQuantity && right.isDuration) {
-              return left.subtract(
-                hours: right.hours?.toInt() ?? 0,
-                minutes: right.minutes?.toInt() ?? 0,
-                seconds: right.seconds?.toInt() ?? 0,
-                milliseconds: right.milliseconds?.toInt() ?? 0,
-              );
-            }
-            return null;
-          }
-        default:
           return null;
-      }
+        }
+      case FhirTime _:
+        {
+          if (right is ValidatedQuantity && right.isDuration) {
+            return left.subtract(
+              hours: right.hours?.toInt() ?? 0,
+              minutes: right.minutes?.toInt() ?? 0,
+              seconds: right.seconds?.toInt() ?? 0,
+              milliseconds: right.milliseconds?.toInt() ?? 0,
+            );
+          }
+          return null;
+        }
+      case IntervalType _:
+        {
+          if (right is IntervalType) {
+            IntervalType(
+                low: subtract(left.getStart(), right.getStart()),
+                lowClosed: true,
+                high: subtract(left.getEnd(), right.getEnd()),
+                highClosed: true);
+          } else {
+            return null;
+          }
+        }
+      default:
+        return null;
     }
   }
 }

@@ -12,22 +12,13 @@ class TupleType implements CqlType {
           elements: elements ?? this.elements, state: state ?? this.state);
 
   @override
-  bool equivalent(Object other) {
-    if (other is TupleType) {
-      return Equivalent.equivalent(this, other);
-    } else {
-      return false;
-    }
-  }
+  bool equivalent(Object other) => other is TupleType
+      ? Equivalent.equivalent(this, other).value ?? false
+      : false;
 
   @override
-  bool? equal(Object other) {
-    if (other is TupleType) {
-      return Equal.equal(this, other);
-    } else {
-      return false;
-    }
-  }
+  bool? equal(Object other) =>
+      other is TupleType ? Equal.equal(this, other)?.value : null;
 
   @override
   String toString() {

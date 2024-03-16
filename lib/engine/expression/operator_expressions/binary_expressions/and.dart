@@ -92,11 +92,17 @@ class And extends BinaryExpression {
   String toString() => 'And(operand: $operand)';
 
   @override
+  List<Type> getReturnTypes(Library library) => const [FhirBoolean];
+
+  @override
   FhirBoolean? execute(Map<String, dynamic> context) {
     /// Assuming operand is accessible and contains the operands
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return and(left, right);
+  }
 
+  static FhirBoolean? and(dynamic left, dynamic right) {
     /// Both operands are non-null and true
     if (left is FhirBoolean &&
         left.isValid &&
@@ -126,7 +132,4 @@ class And extends BinaryExpression {
     /// Default return null if not covered above, though all cases should be covered
     return null;
   }
-
-  @override
-  List<Type> getReturnTypes(Library library) => const [FhirBoolean];
 }

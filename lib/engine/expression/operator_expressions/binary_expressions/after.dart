@@ -164,6 +164,11 @@ class After extends BinaryExpression {
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return after(left, right, precision);
+  }
+
+  static FhirBoolean? after(dynamic left, dynamic right,
+      [CqlDateTimePrecision? precision]) {
     if (left == null || right == null) {
       return null;
     } else if (left is FhirDateTimeBase && right is FhirDateTimeBase) {

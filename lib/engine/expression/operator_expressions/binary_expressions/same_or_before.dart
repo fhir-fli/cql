@@ -146,6 +146,11 @@ class SameOrBefore extends BinaryExpression {
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return sameOrBefore(left, right, precision);
+  }
+
+  static FhirBoolean? sameOrBefore(
+      dynamic left, dynamic right, CqlDateTimePrecision? precision) {
     if (left == null || right == null) {
       return null;
     } else if (left is FhirDateTimeBase && right is FhirDateTimeBase) {

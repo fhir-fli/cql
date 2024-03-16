@@ -133,8 +133,11 @@ class MaxValue extends CqlExpression {
   }
 
   @override
-  dynamic execute(Map<String, dynamic> context) {
-    switch (valueType.localPart) {
+  dynamic execute(Map<String, dynamic> context) =>
+      maxValue(valueType.localPart);
+
+  static dynamic maxValue(String type) {
+    switch (type) {
       case 'Integer':
         return FhirInteger(2147483647);
       case 'Long':

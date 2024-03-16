@@ -12,7 +12,8 @@ import '../../../cql.dart';
 /// minimum<T>() T
 /// Description:
 ///
-/// The minimum operator returns the minimum representable value for the given type.
+/// The minimum operator returns the minimum representable value for the given
+/// type.
 ///
 /// The minimum operator is defined for the Integer, Long, Decimal, Quantity,
 /// Date, DateTime, and Time types.
@@ -24,19 +25,27 @@ import '../../../cql.dart';
 /// For Decimal, minimum returns the minimum representable decimal value,
 /// (-1028 + 1) / 108 (-99999999999999999999.99999999).
 ///
-/// For Quantity, minimum returns the minimum representable quantity, i.e. the minimum representable decimal value with a default unit (1).
+/// For Quantity, minimum returns the minimum representable quantity, i.e. the
+/// minimum representable decimal value with a default unit (1).
 ///
-/// For Date, minimum returns the minimum representable date value, DateTime(1, 1, 1).
+/// For Date, minimum returns the minimum representable date value,
+/// DateTime(1, 1, 1).
 ///
-/// For DateTime, minimum returns the minimum representable datetime value, DateTime(1, 1, 1, 0, 0, 0, 0).
+/// For DateTime, minimum returns the minimum representable datetime value,
+/// DateTime(1, 1, 1, 0, 0, 0, 0).
 ///
-/// For Time, minimum returns the minimum representable time value, Time(0, 0, 0, 0).
+/// For Time, minimum returns the minimum representable time value,
+/// Time(0, 0, 0, 0).
 ///
 /// For any other type, attempting to invoke minimum results in an error.
 ///
-/// Note that implementations may choose to represent the minimum DateTime value using a constant offset such as UTC.
+/// Note that implementations may choose to represent the minimum DateTime
+/// value using a constant offset such as UTC.
 ///
-/// Note that if implementations support larger and/or more precise values than the minimum required precision and scale for Decimal, DateTime, and Time values, they will return the minimum representable decimal for the implementation.
+/// Note that if implementations support larger and/or more precise values than
+/// the minimum required precision and scale for Decimal, DateTime, and Time
+/// values, they will return the minimum representable decimal for the
+/// implementation.
 ///
 /// The following examples illustrate the behavior of the minimum operator:
 ///

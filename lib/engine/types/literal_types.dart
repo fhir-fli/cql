@@ -795,6 +795,18 @@ class LiteralIntegerInterval extends LiteralIntervalType {
 
   @override
   String get type => 'Interval<Integer>';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [IntervalType];
+
+  @override
+  IntervalType? execute(Map<String, dynamic> context) =>
+      IntervalType<FhirInteger>(
+        low: low?.execute(context),
+        lowClosed: lowClosed?.execute(context).value,
+        high: high?.execute(context),
+        highClosed: highClosed?.execute(context).value,
+      );
 }
 
 class LiteralDecimalInterval extends LiteralIntervalType {
@@ -829,6 +841,18 @@ class LiteralDecimalInterval extends LiteralIntervalType {
 
   @override
   String get type => 'Interval<Decimal>';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [IntervalType];
+
+  @override
+  IntervalType? execute(Map<String, dynamic> context) =>
+      IntervalType<FhirDecimal>(
+        low: low?.execute(context),
+        lowClosed: lowClosed?.execute(context).value,
+        high: high?.execute(context),
+        highClosed: highClosed?.execute(context).value,
+      );
 }
 
 class LiteralQuantityInterval extends LiteralIntervalType {
@@ -863,6 +887,18 @@ class LiteralQuantityInterval extends LiteralIntervalType {
 
   @override
   String get type => 'Interval<Quantity>';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [IntervalType];
+
+  @override
+  IntervalType? execute(Map<String, dynamic> context) =>
+      IntervalType<ValidatedQuantity>(
+        low: low?.execute(context),
+        lowClosed: lowClosed?.execute(context).value,
+        high: high?.execute(context),
+        highClosed: highClosed?.execute(context).value,
+      );
 }
 
 class LiteralDateInterval extends LiteralIntervalType {
@@ -897,6 +933,17 @@ class LiteralDateInterval extends LiteralIntervalType {
 
   @override
   String get type => 'Interval<Date>';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [IntervalType];
+
+  @override
+  IntervalType? execute(Map<String, dynamic> context) => IntervalType<FhirDate>(
+        low: low?.execute(context),
+        lowClosed: lowClosed?.execute(context).value,
+        high: high?.execute(context),
+        highClosed: highClosed?.execute(context).value,
+      );
 }
 
 class LiteralDateTimeInterval extends LiteralIntervalType {
@@ -931,6 +978,18 @@ class LiteralDateTimeInterval extends LiteralIntervalType {
 
   @override
   String get type => 'Interval<DateTime>';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [IntervalType];
+
+  @override
+  IntervalType? execute(Map<String, dynamic> context) =>
+      IntervalType<FhirDateTime>(
+        low: low?.execute(context),
+        lowClosed: lowClosed?.execute(context).value,
+        high: high?.execute(context),
+        highClosed: highClosed?.execute(context).value,
+      );
 }
 
 class LiteralTimeInterval extends LiteralIntervalType {
@@ -965,4 +1024,15 @@ class LiteralTimeInterval extends LiteralIntervalType {
 
   @override
   String get type => 'Interval<Time>';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => [IntervalType];
+
+  @override
+  IntervalType? execute(Map<String, dynamic> context) => IntervalType<FhirTime>(
+        low: low?.execute(context),
+        lowClosed: lowClosed?.execute(context).value,
+        high: high?.execute(context),
+        highClosed: highClosed?.execute(context).value,
+      );
 }

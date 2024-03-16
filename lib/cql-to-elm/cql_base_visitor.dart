@@ -3698,7 +3698,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      // print('termExpressioncontext: ${child.runtimeType} ${child.text}');
+      print('termExpressioncontext: ${child.runtimeType} ${child.text}');
       if (child is! TerminalNodeImpl) {
         return byContext(child);
       }
@@ -4141,13 +4141,17 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid WhereClause');
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'width' 'of' expressionTerm
   @override
-  dynamic visitWidthExpressionTerm(WidthExpressionTermContext ctx) {
+  Width visitWidthExpressionTerm(WidthExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    visitChildren(ctx);
+    final CqlExpression expression = byContext(ctx.children![2]);
+    if (expression is IntervalType) {
+      return Width(operand: expression);
+    }
+
+    throw ArgumentError('$thisNode Invalid WidthExpressionTerm');
   }
 
   /// withClause: 'with' aliasedQuerySource 'such that' expression;
