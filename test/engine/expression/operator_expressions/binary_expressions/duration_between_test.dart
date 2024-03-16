@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void durationBetweenTest() {
   group('DurationBetween', () {
     test(
         """define "DurationInMonths": months between @2012-01-01 and @2012-02-01 // 1""",

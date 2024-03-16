@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void intersectTest() {
   group('Intersect', () {
     test(
         """define "Intersect": Interval[1, 5] intersect Interval[3, 7] // Interval[3, 5]""",

@@ -1,7 +1,7 @@
 import 'package:cql/cql.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void replaceMatchesTest() {
   group('ReplaceMatches', () {
     test(
         """define "ReplaceMatchesFound": ReplaceMatches('ABCDE', 'C', 'XYZ') // 'ABXYZDE'""",

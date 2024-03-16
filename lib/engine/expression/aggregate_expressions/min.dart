@@ -9,50 +9,31 @@ import '../../../cql.dart';
 /// If the source is null, the result is null.
 /// Signature:
 ///
-/// minimum<T>() T
+/// Min(argument List<Integer>) Integer
+/// Min(argument List<Long>) Long
+/// Min(argument List<Decimal>) Decimal
+/// Min(argument List<Quantity>) Quantity
+/// Min(argument List<Date>) Date
+/// Min(argument List<DateTime>) DateTime
+/// Min(argument List<Time>) Time
+/// Min(argument List<String>) String
 /// Description:
 ///
-/// The minimum operator returns the minimum representable value for the given
-/// type.
+/// The Min operator returns the minimum element in the source. Comparison
+/// semantics are defined by the Comparison Operators for the type of value
+/// being aggregated.
 ///
-/// The minimum operator is defined for the Integer, Long, Decimal, Quantity,
-/// Date, DateTime, and Time types.
+/// If the source contains no non-null elements, null is returned.
 ///
-/// For Integer, minimum returns the minimum signed 32-bit integer, -231.
+/// If the source is null, the result is null.
 ///
-/// For Long, minimum returns the minimum signed 64-bit long, -263.
+/// The following examples illustrate the behavior of the Min operator:
 ///
-/// For Decimal, minimum returns the minimum representable decimal value,
-/// (-1028 + 1) / 108 (-99999999999999999999.99999999).
-///
-/// For Quantity, minimum returns the minimum representable quantity, i.e. the
-/// minimum representable decimal value with a default unit (1).
-///
-/// For Date, minimum returns the minimum representable date value,
-/// DateTime(1, 1, 1).
-///
-/// For DateTime, minimum returns the minimum representable datetime value,
-/// DateTime(1, 1, 1, 0, 0, 0, 0).
-///
-/// For Time, minimum returns the minimum representable time value,
-/// Time(0, 0, 0, 0).
-///
-/// For any other type, attempting to invoke minimum results in an error.
-///
-/// Note that implementations may choose to represent the minimum DateTime
-/// value using a constant offset such as UTC.
-///
-/// Note that if implementations support larger and/or more precise values than
-/// the minimum required precision and scale for Decimal, DateTime, and Time
-/// values, they will return the minimum representable decimal for the
-/// implementation.
-///
-/// The following examples illustrate the behavior of the minimum operator:
-///
-/// define "IntegerMinimum": minimum Integer // -2147483648
-/// define "LongMinimum": minimum Long // -9223372036854775808
-/// define "DateTimeMinimum": minimum DateTime // @0001-01-01T00:00:00.000
-/// define "ErrorMinimum": minimum Quantity
+/// define "IntegerMin": Min({ 2, 4, 8, 6 }) // 2
+/// define "LongMin": Min({ 2L, 4L, 8L, 6L }) // 2L
+/// define "DateMin": Min({ @2012-12-31, @2013-01-01, @2012-01-01 }) // @2012-01-01
+/// define "MinIsNull": Min({ null as Quantity, null as Quantity, null as Quantity })
+/// define "MinIsAlsoNull": Min(null as List<Decimal>)
 class Min extends AggregateExpression {
   Min({
     required super.source,

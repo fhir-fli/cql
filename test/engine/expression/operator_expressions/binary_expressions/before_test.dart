@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void beforeTest() {
   group('Before', () {
     test("""define "BeforeIsTrue": @2012-01-01 before month of @2012-02-01""",
         () {

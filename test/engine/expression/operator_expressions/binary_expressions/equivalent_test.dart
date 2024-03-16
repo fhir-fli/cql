@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void equivalentTest() {
   group('Equivalent', () {
     test("""define "IntegerEquivalentIsTrue": 4 ~ (2 + 2)""", () {
       final left = LiteralInteger(value: 4);

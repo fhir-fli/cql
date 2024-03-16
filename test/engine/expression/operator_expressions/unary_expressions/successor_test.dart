@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void successorTest() {
   group('Successor', () {
     test("""define "IntegerSuccessor": successor of 100 // 101""", () {
       final input = LiteralInteger(value: 100);

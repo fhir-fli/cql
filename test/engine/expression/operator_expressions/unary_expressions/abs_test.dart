@@ -3,7 +3,7 @@ import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ucum/ucum.dart';
 
-void main() {
+void absTest() {
   group('Abs', () {
     test("""define "IntegerAbs": Abs(-5) // 5""", () {
       final input = LiteralInteger(value: -5);

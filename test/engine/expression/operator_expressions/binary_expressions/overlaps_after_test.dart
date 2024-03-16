@@ -2,7 +2,7 @@ import 'package:cql/engine/engine.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void overlapsAfterTest() {
   group('OverlapsAfter', () {
     test(
         """define "OverlapsAfterIsFalse": Interval[0, 4] overlaps after Interval[1, 4] // false""",

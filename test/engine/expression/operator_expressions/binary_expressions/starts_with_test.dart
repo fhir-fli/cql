@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void startsWithTest() {
   group('StartsWith', () {
     test("""define "StartsWithIsTrue": StartsWith('ABCDE', 'ABC') // true""",
         () {

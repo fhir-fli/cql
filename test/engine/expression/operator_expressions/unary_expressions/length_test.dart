@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void lengthTest() {
   group('Length', () {
     test("""define "Length14": Length('ABCDE') // 5""", () {
       final input = LiteralString(value: 'ABCDE');

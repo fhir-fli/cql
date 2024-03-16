@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void truncateTest() {
   group('Truncate', () {
     test("""define "IntegerTruncate": Truncate(101) // 101""", () {
       final input = LiteralInteger(value: 101);

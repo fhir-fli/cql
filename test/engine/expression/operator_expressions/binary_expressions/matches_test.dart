@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void matchesTest() {
   group('Matches', () {
     test(""""define "MatchesTrue": Matches('1,2three', '\\d,\\d\\w+')""", () {
       final argument = LiteralString(value: '1,2three');

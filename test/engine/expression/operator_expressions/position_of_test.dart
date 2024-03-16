@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void positionOfTest() {
   group('PositionOf', () {
     test("""define "PositionOfFound": PositionOf('B', 'ABCDEDCBA') // 1""", () {
       final pattern = LiteralString(value: 'B');

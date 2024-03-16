@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void predecessorTest() {
   group('Predecessor', () {
     test("""define "IntegerPredecessor": predecessor of 100 // 99""", () {
       final input = LiteralInteger(value: 100);

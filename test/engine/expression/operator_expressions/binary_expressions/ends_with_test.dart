@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void endsWithTest() {
   group('EndsWith', () {
     test("""define "EndsWithIsTrue": EndsWith('ABC', 'C') // true""", () {
       final argument = LiteralString(value: 'ABC');

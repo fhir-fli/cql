@@ -3,7 +3,7 @@ import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ucum/ucum.dart';
 
-void main() {
+void negateTest() {
   group('Negate', () {
     test("""define "IntegerNegate": 3 // -3""", () {
       final input = LiteralInteger(value: 3);

@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void overlapsTest() {
   group('Overlaps', () {
     test(
         """define "OverlapsIsTrue": Interval[0, 4] overlaps Interval[1, 4] // true""",

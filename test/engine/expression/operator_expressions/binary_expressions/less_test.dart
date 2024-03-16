@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void lessTest() {
   group('Less', () {
     test("""define "DateTimeLessIsNull": @2012-01-01 < @2012-01-01T12""", () {
       final left = LiteralDateTime(value: '2012-01-01');
