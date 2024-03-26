@@ -1,5 +1,5 @@
 import 'package:cql/cql.dart';
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void successorTest() {

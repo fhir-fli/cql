@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:ucum/ucum.dart';
 
 final exercises01 = {

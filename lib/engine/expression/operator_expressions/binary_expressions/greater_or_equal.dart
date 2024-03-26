@@ -1,4 +1,4 @@
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -15,7 +15,7 @@ import '../../../../cql.dart';
 /// Note that relative ratio comparisons are not directly supported due to
 /// healthcare variance.
 /// Signature:
-/// 
+///
 /// >=(left Integer, right Integer) Boolean
 /// >=(left Long, right Long) Boolean
 /// >=(left Decimal, right Decimal) Boolean
@@ -24,59 +24,59 @@ import '../../../../cql.dart';
 /// >=(left DateTime, right DateTime) Boolean
 /// >=(left Time, right Time) Boolean
 /// >=(left String, right String) Boolean
-/// The Long type is a new feature being introduced in CQL 1.5, and has 
+/// The Long type is a new feature being introduced in CQL 1.5, and has
 /// trial-use status.
-/// 
+///
 /// Description:
-/// 
-/// The greater or equal (>=) operator returns true if the first argument is 
+///
+/// The greater or equal (>=) operator returns true if the first argument is
 /// greater than or equal to the second argument.
-/// 
-/// String comparisons are strictly lexical based on the Unicode value of the 
+///
+/// String comparisons are strictly lexical based on the Unicode value of the
 /// individual characters in the string.
-/// 
-/// For comparisons involving quantities, the dimensions of each quantity must 
-/// be the same, but not necessarily the unit. For example, units of 'cm' and 
-/// 'm' are comparable, but units of 'cm2' and 'cm' are not. Attempting to 
-/// operate on quantities with invalid units will result in a null. When a 
-/// quantity has no units specified, it is treated as a quantity with the 
+///
+/// For comparisons involving quantities, the dimensions of each quantity must
+/// be the same, but not necessarily the unit. For example, units of 'cm' and
+/// 'm' are comparable, but units of 'cm2' and 'cm' are not. Attempting to
+/// operate on quantities with invalid units will result in a null. When a
+/// quantity has no units specified, it is treated as a quantity with the
 /// default unit ('1').
-/// 
-/// For time-valued quantities, the UCUM definite-quantity durations above days 
-/// (and weeks) are not comparable to calendar durations. Definite-time duration 
-/// unit conversions shall be performed as specified in ISO-8601, while 
-/// calendar-time duration unit conversions shall be performed according to 
-/// calendar duration semantics. In particular, unit conversion between 
-/// variable length calendar durations (i.e. years and months) and 
+///
+/// For time-valued quantities, the UCUM definite-quantity durations above days
+/// (and weeks) are not comparable to calendar durations. Definite-time duration
+/// unit conversions shall be performed as specified in ISO-8601, while
+/// calendar-time duration unit conversions shall be performed according to
+/// calendar duration semantics. In particular, unit conversion between
+/// variable length calendar durations (i.e. years and months) and
 /// definite-time durations (i.e. days or below) results in null.
-/// 
-/// For Date, DateTime, and Time values, the comparison is performed by 
-/// considering each precision in order, beginning with years (or hours for 
-/// time values). If the values are the same, comparison proceeds to the next 
-/// precision; if the first value is greater than the second, the result is 
-/// true; if the first value is less than the second, the result is false; if 
-/// one input has a value for the precision and the other does not, the 
-/// comparison stops and the result is null; if neither input has a value for 
-/// the precision or the last precision has been reached, the comparison stops 
+///
+/// For Date, DateTime, and Time values, the comparison is performed by
+/// considering each precision in order, beginning with years (or hours for
+/// time values). If the values are the same, comparison proceeds to the next
+/// precision; if the first value is greater than the second, the result is
+/// true; if the first value is less than the second, the result is false; if
+/// one input has a value for the precision and the other does not, the
+/// comparison stops and the result is null; if neither input has a value for
+/// the precision or the last precision has been reached, the comparison stops
 /// and the result is true. For example:
-/// 
+///
 /// define "DateTimeGreaterOrEqualIsNull": @2012-01-01 >= @2012-01-01T12
-/// Note that for the purposes of comparison, seconds and milliseconds are 
-/// combined as a single precision using a decimal, with decimal comparison 
+/// Note that for the purposes of comparison, seconds and milliseconds are
+/// combined as a single precision using a decimal, with decimal comparison
 /// semantics.
-/// 
+///
 /// If either argument is null, the result is null.
-/// 
-/// The following examples illustrate the behavior of the greater or equal 
+///
+/// The following examples illustrate the behavior of the greater or equal
 /// operator:
-/// 
+///
 /// define "IntegerGreaterOrEqualIsTrue": 4 >= (2 + 2)
 /// define "LongGreaterOrEqualIsTrue": 4L >= (2L + 2L)
 /// define "DecimalGreaterOrEqualIsFalse": 3.5 >= (3.5 + 0.1)
 /// define "QuantityGreaterOrEqualIsNull": 3.6 'cm2' >= 3.5 'cm'
 /// define "NullGreaterOrEqualIsNull": null >= 5
-/// Note that relative ratio comparisons are not directly supported due to the 
-/// variance of uses within healthcare. See the discussion in Ratio Operators 
+/// Note that relative ratio comparisons are not directly supported due to the
+/// variance of uses within healthcare. See the discussion in Ratio Operators
 /// for more information.
 class GreaterOrEqual extends BinaryExpression {
   GreaterOrEqual({

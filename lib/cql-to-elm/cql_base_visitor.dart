@@ -3,7 +3,7 @@
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
@@ -2169,7 +2169,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitMeetsIntervalOperatorPhrase(
       MeetsIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     String? beforeAfter;
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
@@ -2183,13 +2183,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    if (beforeAfter != null) {
-      return Meets(
-        precision: dateTimePrecisionSpecifier,
-        operand: [],
-      );
-    }
-    throw ArgumentError('$thisNode Invalid MeetsIntervalOperatorPhrase');
+    return Meets(
+      precision: dateTimePrecisionSpecifier,
+      operand: [],
+    );
   }
 
   /// referentialIdentifier	# memberInvocation
@@ -4147,11 +4144,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     final CqlExpression expression = byContext(ctx.children![2]);
-    if (expression is IntervalType) {
-      return Width(operand: expression);
-    }
-
-    throw ArgumentError('$thisNode Invalid WidthExpressionTerm');
+    return Width(operand: expression);
   }
 
   /// withClause: 'with' aliasedQuerySource 'such that' expression;

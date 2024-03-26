@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_primitives/fhir_primitives.dart';
 
 import '../../../../cql.dart';
 

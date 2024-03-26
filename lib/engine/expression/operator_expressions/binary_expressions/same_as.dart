@@ -1,6 +1,6 @@
 import 'package:cql/engine/engine.dart';
 import 'package:cql/engine/expression/expression.dart';
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_primitives/fhir_primitives.dart';
 
 import '../../../../cql.dart';
 

@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
-import 'package:fhir/primitive_types/primitive_types.dart';
+import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
