@@ -11,7 +11,6 @@ class Starts extends BinaryExpression {
   Starts({
     this.precision,
     required super.operand,
-    super.isList = false,
     super.annotation,
     super.localId,
     super.locator,
@@ -45,10 +44,12 @@ class Starts extends BinaryExpression {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['type'] = type;
-    data['precision'] = precision?.toJson();
-    data['operand'] = isList
-        ? operand.map((e) => e.toJson()).toList()
-        : operand.first.toJson();
+    if (precision != null) {
+      data['precision'] = precision?.toJson();
+    }
+    if (operand.isNotEmpty) {
+      data['operand'] = operand.map((e) => e.toJson()).toList();
+    }
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
     }

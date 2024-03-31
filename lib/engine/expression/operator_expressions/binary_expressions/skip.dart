@@ -1,16 +1,12 @@
-import '../../../cql.dart';
+import '../../../../../cql.dart';
 
 /// First operator returns the first element in a list.
 /// If the order by attribute is specified, the list is sorted by that
 /// ordering prior to returning the first element.
 /// If the argument is null, the result is null.
-class First extends OperatorExpression {
-  final String? orderBy;
-  final CqlExpression source;
-
-  First({
-    required this.source,
-    this.orderBy,
+class Skip extends BinaryExpression {
+  Skip({
+    required super.operand,
     super.annotation,
     super.localId,
     super.locator,
@@ -18,9 +14,12 @@ class First extends OperatorExpression {
     super.resultTypeSpecifier,
   });
 
-  factory First.fromJson(Map<String, dynamic> json) => First(
-        source: CqlExpression.fromJson(json['source']!),
-        orderBy: json['orderBy'],
+  factory Skip.fromJson(Map<String, dynamic> json) => Skip(
+        operand: List<CqlExpression>.from(
+          json['operand'].map(
+            (x) => CqlExpression.fromJson(x),
+          ),
+        ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))
@@ -36,38 +35,27 @@ class First extends OperatorExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{
-      'type': type,
-      'source': source.toJson(),
-    };
-
-    if (orderBy != null) {
-      data['orderBy'] = orderBy;
-    }
-
+    final data = <String, dynamic>{};
+    data['type'] = type;
+    data['operand'] = operand.map((e) => e.toJson()).toList();
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
     }
-
     if (localId != null) {
       data['localId'] = localId;
     }
-
     if (locator != null) {
       data['locator'] = locator;
     }
-
     if (resultTypeName != null) {
       data['resultTypeName'] = resultTypeName;
     }
-
     if (resultTypeSpecifier != null) {
       data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
-
     return data;
   }
 
   @override
-  String get type => 'First';
+  String get type => 'Skip';
 }

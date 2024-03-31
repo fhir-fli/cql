@@ -87,6 +87,10 @@ abstract class OperatorExpression extends CqlExpression {
         return Multiply.fromJson(json);
       case 'NotEqual':
         return NotEqual.fromJson(json);
+      case 'OnOrAfter':
+        return OnOrAfter.fromJson(json);
+      case 'OnOrBefore':
+        return OnOrBefore.fromJson(json);
       case 'Or':
         return Or.fromJson(json);
       case 'OverlapsAfter':
@@ -111,6 +115,8 @@ abstract class OperatorExpression extends CqlExpression {
         return SameOrAfter.fromJson(json);
       case 'SameOrBefore':
         return SameOrBefore.fromJson(json);
+      case 'Skip':
+        return Skip.fromJson(json);
       case 'StartsWith':
         return StartsWith.fromJson(json);
       case 'Starts':
@@ -213,6 +219,8 @@ abstract class OperatorExpression extends CqlExpression {
         return Start.fromJson(json);
       case 'Successor':
         return Successor.fromJson(json);
+      case 'Tail':
+        return Tail.fromJson(json);
       case 'TimeFrom':
         return TimeFrom.fromJson(json);
       case 'TimezoneOffsetFrom':
@@ -283,6 +291,8 @@ abstract class OperatorExpression extends CqlExpression {
         return Split.fromJson(json);
       case 'Substring':
         return Substring.fromJson(json);
+      case 'Take':
+        return Take.fromJson(json);
       case 'TimeExpression':
         return TimeExpression.fromJson(json);
       case 'TimeOfDay':

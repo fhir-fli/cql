@@ -361,7 +361,7 @@ class LiteralDateTime extends LiteralType {
         'minute': LiteralInteger(value: dateTime.minute).toJson(),
       if (dateTime.precision.hasSeconds)
         'second': LiteralInteger(value: dateTime.second).toJson(),
-      if (dateTime.precision.hasMilliseconds && dateTime.millisecond != 0)
+      if (dateTime.precision.hasMilliseconds)
         'millisecond': LiteralInteger(value: dateTime.millisecond).toJson(),
     };
   }

@@ -9,7 +9,7 @@ class Last extends OperatorExpression {
 
   Last({
     required this.source,
-    required this.orderBy,
+    this.orderBy,
     super.annotation,
     super.localId,
     super.locator,

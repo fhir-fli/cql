@@ -280,6 +280,8 @@ class CqlExpression extends Element {
           return Now.fromJson(json);
         case 'NullExpression':
           return NullExpression.fromJson(json);
+        case 'OnOrBefore':
+          return OnOrBefore.fromJson(json);
         case 'OperandRef':
           return OperandRef.fromJson(json);
         case 'OperatorExpression':
@@ -352,6 +354,8 @@ class CqlExpression extends Element {
           return SingletonFrom.fromJson(json);
         case 'Size':
           return Size.fromJson(json);
+        case 'Skip':
+          return Skip.fromJson(json);
         case 'Slice':
           return Slice.fromJson(json);
         case 'Sort':
@@ -380,6 +384,10 @@ class CqlExpression extends Element {
           return Successor.fromJson(json);
         case 'Sum':
           return Sum.fromJson(json);
+        case 'Tail':
+          return Tail.fromJson(json);
+        case 'Take':
+          return Take.fromJson(json);
         case 'TernaryExpression':
           return TernaryExpression.fromJson(json);
         case 'TimeFrom':
@@ -606,8 +614,10 @@ class CqlExpression extends Element {
         return LiteralTime.fromOperandList(operand: operand);
       // case 'Filter':
       //   return Filter(operand: operand);
-      // case 'First':
-      //   return First(operand: operand);
+      case 'First':
+        if (operand.length == 1) {
+          return First(source: operand.first);
+        }
       case 'Flatten':
         return Flatten(operand: operand.first);
       case 'Floor':
@@ -640,8 +650,10 @@ class CqlExpression extends Element {
       //   return InCodeSystem(operand: operand);
       case 'Indexer':
         return Indexer(operand: operand);
-      // case 'IndexOf':
-      //   return IndexOf(operand: operand);
+      case 'IndexOf':
+        if (operand.length == 2) {
+          return IndexOf(source: operand.first, element: operand.last);
+        }
       // case 'Instance':
       //   return Instance(operand: operand);
       case 'Intersect':
@@ -664,8 +676,10 @@ class CqlExpression extends Element {
         return IsTrue(operand: operand.first);
       // case 'Iteration':
       //   return Iteration(operand: operand);
-      // case 'Last':
-      //   return Last(operand: operand);
+      case 'Last':
+        if (operand.length == 1) {
+          return Last(source: operand.first);
+        }
       case 'LastPositionOf':
         {
           if (operand.length == 2) {
@@ -747,6 +761,10 @@ class CqlExpression extends Element {
         return Now();
       // case 'NullExpression':
       //   return NullExpression(operand: operand);
+      case 'OnOrAfter':
+        return OnOrAfter(operand: operand);
+      case 'OnOrBefore':
+        return OnOrBefore(operand: operand);
       // case 'OperandRef':
       //   return OperandRef(operand: operand);
       // case 'OperatorExpression':
@@ -832,6 +850,8 @@ class CqlExpression extends Element {
         return SingletonFrom(operand: operand.first);
       case 'Size':
         return Size(operand: operand.first);
+      case 'Skip':
+        return Skip(operand: operand);
       // case 'Slice':
       //   return Slice(operand: operand);
       // case 'Sort':
@@ -865,6 +885,12 @@ class CqlExpression extends Element {
         return Successor(operand: operand.first);
       case 'Sum':
         return Sum(source: operand.first);
+      case 'Tail':
+        if (operand.length == 1) {
+          return Tail(operand: operand.first);
+        }
+      case 'Take':
+        return Take(operand: operand);
       // case 'TernaryExpression':
       //   return TernaryExpression(operands: operand);
       case 'TimeFrom':

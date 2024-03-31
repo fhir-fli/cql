@@ -93,6 +93,8 @@ abstract class UnaryExpression extends OperatorExpression {
         return Start.fromJson(json);
       case 'Successor':
         return Successor.fromJson(json);
+      case 'Tail':
+        return Tail.fromJson(json);
       case 'TimeFrom':
         return TimeFrom.fromJson(json);
       case 'TimezoneOffsetFrom':

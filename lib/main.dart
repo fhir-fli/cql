@@ -46,7 +46,12 @@ void parseFile(BuildContext context) async {
   final Map<String, dynamic> manifestMap = json.decode(assetsFile);
   manifestMap.removeWhere((key, value) => !key.contains('cql/'));
 
+  int i = 0;
   for (final file in manifestMap.keys) {
+    i++;
+    if (i > 4) {
+      break;
+    }
     final pathExpression = await rootBundle.loadString(file);
     final json =
         jsonDecode(await rootBundle.loadString(file.replaceAll('cql', 'json')));

@@ -42,25 +42,17 @@ class IntervalExpression extends CqlExpression {
   /// High bound closed status, defaults to true.
   bool highClosed = true;
 
-  /// High bound closed expression of the interval.
-  CqlExpression? highClosedExpression;
-
   /// Low bound expression of the interval.
   CqlExpression? low;
 
   /// Low bound closed status, defaults to true.
   bool lowClosed = true;
 
-  /// Low bound closed expression of the interval.
-  CqlExpression? lowClosedExpression;
-
   IntervalExpression({
     this.lowClosed = true,
     this.highClosed = true,
     this.low,
-    this.lowClosedExpression,
     this.high,
-    this.highClosedExpression,
     super.annotation,
     super.localId,
     super.locator,
@@ -71,14 +63,8 @@ class IntervalExpression extends CqlExpression {
   factory IntervalExpression.fromJson(Map<String, dynamic> json) =>
       IntervalExpression(
         low: json['low'] != null ? CqlExpression.fromJson(json['low']) : null,
-        lowClosedExpression: json['lowClosedExpression'] != null
-            ? CqlExpression.fromJson(json['lowClosedExpression'])
-            : null,
         high:
             json['high'] != null ? CqlExpression.fromJson(json['high']) : null,
-        highClosedExpression: json['highClosedExpression'] != null
-            ? CqlExpression.fromJson(json['highClosedExpression'])
-            : null,
         lowClosed: json['lowClosed'] ?? true,
         highClosed: json['highClosed'] ?? true,
         annotation: json['annotation'] != null
@@ -108,9 +94,7 @@ class IntervalExpression extends CqlExpression {
     }
 
     writeNotNull('low', low?.toJson());
-    writeNotNull('lowClosedExpression', lowClosedExpression?.toJson());
     writeNotNull('high', high?.toJson());
-    writeNotNull('highClosedExpression', highClosedExpression?.toJson());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);

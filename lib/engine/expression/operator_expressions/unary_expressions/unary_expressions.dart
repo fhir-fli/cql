@@ -37,6 +37,7 @@ export 'singleton_from.dart';
 export 'size.dart';
 export 'start.dart';
 export 'successor.dart';
+export 'tail.dart';
 export 'time_from.dart';
 export 'timezone_offset_from.dart';
 export 'to_boolean.dart';

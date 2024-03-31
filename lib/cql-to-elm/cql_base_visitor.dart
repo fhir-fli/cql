@@ -336,6 +336,28 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw '$thisNode Invalid number of arguments for And operator';
   }
 
+  CqlExpression _startsEndsOccurs(CqlExpression expression, String? value) {
+    switch (value) {
+      case 'starts':
+        return Start(operand: expression);
+      case 'ends':
+        return End(operand: expression);
+      default:
+        return expression;
+    }
+  }
+
+  CqlExpression _startEnd(CqlExpression expression, String? value) {
+    switch (value) {
+      case 'start':
+        return Start(operand: expression);
+      case 'end':
+        return End(operand: expression);
+      default:
+        return expression;
+    }
+  }
+
   /// ('starts' | 'ends' | 'occurs')? quantityOffset? temporalRelationship
   ///	dateTimePrecisionSpecifier? ('start' | 'end')?
   @override
@@ -343,13 +365,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       BeforeOrAfterIntervalOperatorPhraseContext ctx,
       [CqlExpression? left,
       CqlExpression? right]) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
-    CqlExpression? quantityOffset;
     String? temporalRelationship;
     CqlDateTimePrecision? dateTimePrecision;
     String? startEnd;
+    LiteralQuantity? quantityOffset;
+    String? relativeQualifier;
+    ctx.temporalRelationship();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
         if (child.text == 'starts' ||
@@ -360,7 +384,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           startEnd = child.text;
         }
       } else if (child is QuantityOffsetContext) {
-        quantityOffset = visitQuantityOffset(child);
+        for (final grandChild in child.children ?? <ParseTree>[]) {
+          if (grandChild is QuantityContext) {
+            quantityOffset = visitQuantity(grandChild);
+          } else if (grandChild is OffsetRelativeQualifierContext) {
+            relativeQualifier = visitOffsetRelativeQualifier(grandChild);
+          } else if (grandChild is ExclusiveRelativeQualifierContext) {
+            relativeQualifier = visitExclusiveRelativeQualifier(grandChild);
+          }
+        }
       } else if (child is TemporalRelationshipContext) {
         temporalRelationship = visitTemporalRelationship(child);
       } else if (child is DateTimePrecisionSpecifierContext) {
@@ -368,47 +400,186 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    if (startsEndsOccurs != null) {
-      final start = startEnd == 'start';
-      final end = startEnd == 'end';
-      final same = startsEndsOccurs.contains('same');
-      if (start) {
-        if (same) {
-          return SameAs(
-            precision: dateTimePrecision,
-            operand: [],
-          );
-        } else {
-          return Starts(
-            precision: dateTimePrecision,
-            operand: [],
-          );
-        }
-      } else if (end) {
-        if (same) {
-          return SameAs(
-            precision: dateTimePrecision,
-            operand: [],
-          );
-        } else {
-          return Ends(
-            precision: dateTimePrecision,
-            operand: [],
-          );
-        }
+
+    if (temporalRelationship != null && left != null && right != null) {
+      final effectiveLeft = _startsEndsOccurs(left, startsEndsOccurs);
+      final effectiveRight = _startEnd(right, startEnd);
+      switch (temporalRelationship.toLowerCase().replaceAll(' ', '')) {
+        case 'before':
+          {
+            if (quantityOffset != null) {
+              return relativeQualifier == 'or more'
+                  ? SameOrBefore(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Subtract(
+                          operand: [effectiveRight, quantityOffset],
+                        ),
+                      ],
+                    )
+                  : relativeQualifier == 'or less'
+                      ? SameOrAfter(
+                          precision: dateTimePrecision,
+                          operand: [
+                            effectiveLeft,
+                            Subtract(
+                              operand: [effectiveRight, quantityOffset],
+                            ),
+                          ],
+                        )
+                      : SameAs(
+                          precision: dateTimePrecision,
+                          operand: [
+                            effectiveLeft,
+                            Subtract(
+                              operand: [effectiveRight, quantityOffset],
+                            ),
+                          ],
+                        );
+            } else {
+              return Before(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  effectiveRight,
+                ],
+              );
+            }
+          }
+        case 'after':
+          {
+            if (quantityOffset != null) {
+              return relativeQualifier == 'or more'
+                  ? SameOrAfter(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Add(
+                          operand: [effectiveRight, quantityOffset],
+                        ),
+                      ],
+                    )
+                  : relativeQualifier == 'or less'
+                      ? SameOrBefore(
+                          precision: dateTimePrecision,
+                          operand: [
+                            effectiveLeft,
+                            Add(
+                              operand: [effectiveRight, quantityOffset],
+                            ),
+                          ],
+                        )
+                      : SameAs(
+                          precision: dateTimePrecision,
+                          operand: [
+                            effectiveLeft,
+                            Add(
+                              operand: [effectiveRight, quantityOffset],
+                            ),
+                          ],
+                        );
+            } else {
+              return After(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  effectiveRight,
+                ],
+              );
+            }
+          }
+        case 'onorbefore':
+          {
+            if (quantityOffset != null) {
+              return OnOrBefore(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  Subtract(
+                    operand: [effectiveRight, quantityOffset],
+                  ),
+                ],
+              );
+            } else {
+              return OnOrBefore(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  effectiveRight,
+                ],
+              );
+            }
+          }
+        case 'onorafter':
+          {
+            if (quantityOffset != null) {
+              return OnOrAfter(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  Add(
+                    operand: [effectiveRight, quantityOffset],
+                  ),
+                ],
+              );
+            } else {
+              return OnOrAfter(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  effectiveRight,
+                ],
+              );
+            }
+          }
+        case 'beforeoron':
+          {
+            if (quantityOffset != null) {
+              return OnOrBefore(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  Subtract(
+                    operand: [effectiveRight, quantityOffset],
+                  ),
+                ],
+              );
+            } else {
+              return OnOrBefore(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  effectiveRight,
+                ],
+              );
+            }
+          }
+        case 'afteroron':
+          {
+            if (quantityOffset != null) {
+              return OnOrAfter(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  Add(
+                    operand: [effectiveRight, quantityOffset],
+                  ),
+                ],
+              );
+            } else {
+              return OnOrAfter(
+                precision: dateTimePrecision,
+                operand: [
+                  effectiveLeft,
+                  effectiveRight,
+                ],
+              );
+            }
+          }
       }
     }
-    if (temporalRelationship != null) {
-      if (left != null && right != null) {
-        if (temporalRelationship == 'before') {
-          return Before(operand: [left, right], precision: dateTimePrecision);
-        } else if (temporalRelationship == 'after') {
-          return After(operand: [left, right], precision: dateTimePrecision);
-        }
-      }
-    }
-    throw ArgumentError(
-        '$thisNode Invalid BeforeOrAfterIntervalOperatorPhrase');
+    throw '$thisNode Invalid arguments for BeforeOrAfterIntervalOperator';
   }
 
   /// expression 'properly'? 'between' expressionTerm 'and' expressionTerm
@@ -916,13 +1087,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     throw ArgumentError('$thisNode Invalid ConceptSelectorTerm');
   }
 
-  /// ('starts' | 'ends' | 'occurs')? 'same' dateTimePrecision? (
-  /// relativeQualifier
-  /// | 'as'
-  /// ) ('start' | 'end')?
   @override
   CqlExpression visitConcurrentWithIntervalOperatorPhrase(
-      ConcurrentWithIntervalOperatorPhraseContext ctx) {
+      ConcurrentWithIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left,
+      CqlExpression? right]) {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
@@ -948,17 +1117,20 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecision(child));
       }
     }
-    // print('startsEndsOccurs: $startsEndsOccurs');
-    // print('dateTimePrecision: $dateTimePrecision');
-    // print('relativeQualifier: $relativeQualifier');
-    // print('as_: $as_');
-    // print('startEnd: $startEnd');
-    if (as_) {
-      return SameAs(operand: [], precision: dateTimePrecision);
-    } else if (relativeQualifier == 'or after') {
-      return SameOrAfter(operand: [], precision: dateTimePrecision);
-    } else if (relativeQualifier == 'or before') {
-      return SameOrBefore(operand: [], precision: dateTimePrecision);
+    if (left != null && right != null) {
+      final effectiveLeft = _startsEndsOccurs(left, startsEndsOccurs);
+      final effectiveRight = _startEnd(right, startEnd);
+      if (as_) {
+        return SameAs(operand: [], precision: dateTimePrecision);
+      } else if (relativeQualifier == 'or after') {
+        return SameOrAfter(
+            operand: [effectiveLeft, effectiveRight],
+            precision: dateTimePrecision);
+      } else if (relativeQualifier == 'or before') {
+        return SameOrBefore(
+            operand: [effectiveLeft, effectiveRight],
+            precision: dateTimePrecision);
+      }
     }
 
     throw ArgumentError(
@@ -1207,13 +1379,21 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  /// The default implementation returns the result of calling
-  /// [visitChildren] on [ctx].
+  /// 'singleton' 'from' expressionTerm
   @override
-  dynamic visitElementExtractorExpressionTerm(
+  SingletonFrom visitElementExtractorExpressionTerm(
       ElementExtractorExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    CqlExpression? operand;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is ExpressionTermContext) {
+        operand = byContext(child);
+      }
+    }
+    if (operand != null) {
+      return SingletonFrom(operand: operand);
+    }
     throw ArgumentError('$thisNode Invalid ElementExtractorExpressionTerm');
   }
 
@@ -1714,6 +1894,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           operand: [],
         );
       }
+    } else {
+      return Includes(
+        precision: dateTimePrecisionSpecifier,
+        operand: [],
+      );
     }
     throw ArgumentError('$thisNode Invalid IncludesIntervalOperatorPhrase');
   }
@@ -1891,12 +2076,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
       if (low.runtimeType == high.runtimeType) {
         return IntervalExpression(
-          low: lowClosed || low == null ? null : Literal.fromType(low),
-          high: highClosed || high == null ? null : Literal.fromType(high),
-          highClosedExpression:
-              highClosed && high != null ? Literal.fromType(high) : null,
-          lowClosedExpression:
-              lowClosed && low != null ? Literal.fromType(low) : null,
+          low: low,
+          high: high,
           lowClosed: lowClosed,
           highClosed: highClosed,
         );
@@ -2878,13 +3059,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    if (beforeAfter != null) {
-      return Overlaps(
-        precision: dateTimePrecisionSpecifier,
-        operand: [],
-      );
-    }
-    throw ArgumentError('$thisNode Invalid OverlapsIntervalOperatorPhrase');
+    return Overlaps(
+      precision: dateTimePrecisionSpecifier,
+      operand: [],
+    );
   }
 
   /// The default implementation returns the result of calling
@@ -3213,6 +3391,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     LiteralQuantity? quantity;
     String? relativeQualifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
+      print('quantityOffset: ${child.runtimeType} ${child.text}');
       if (child is QuantityContext) {
         quantity = visitQuantity(child);
       } else if (child is OffsetRelativeQualifierContext) {
@@ -3502,12 +3681,41 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     visitChildren(ctx);
   }
 
-  ///
+  /// ('expand' | 'collapse') expression ('per' (dateTimePrecision | expression) )?
   @override
-  dynamic visitSetAggregateExpressionTerm(
+  CqlExpression visitSetAggregateExpressionTerm(
       SetAggregateExpressionTermContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
+    bool expandOrCollapse = true;
+    CqlExpression? expression;
+    CqlExpression? perExpression;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      print('setAggregateExpressionTerm: ${child.runtimeType} ${child.text}');
+      if (child is TerminalNodeImpl) {
+        expandOrCollapse = child.text == 'expand';
+      } else if (child is ExpressionContext) {
+        if (expression == null) {
+          expression = byContext(child);
+        } else {
+          perExpression = byContext(child);
+        }
+      } else if (child is DateTimePrecisionContext) {
+        perExpression = LiteralQuantity(
+            value: LiteralDecimal(value: 1),
+            unit: visitDateTimePrecision(child));
+      }
+    }
+
+    if (expression != null) {
+      final expressionList =
+          perExpression == null ? [expression] : [expression, perExpression];
+      if (expandOrCollapse) {
+        return Expand(operand: expressionList);
+      } else {
+        return Collapse(operand: expressionList);
+      }
+    }
     throw ArgumentError('$thisNode Invalid SetAggregateExpressionTerm');
   }
 
@@ -3695,7 +3903,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('termExpressioncontext: ${child.runtimeType} ${child.text}');
+      // print('termExpressioncontext: ${child.runtimeType} ${child.text}');
       if (child is! TerminalNodeImpl) {
         return byContext(child);
       }
@@ -3834,8 +4042,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       final intervalOperatorPhrase = ctx.children![1];
       switch (intervalOperatorPhrase) {
         case ConcurrentWithIntervalOperatorPhraseContext _:
-          result =
-              visitConcurrentWithIntervalOperatorPhrase(intervalOperatorPhrase);
+          result = visitConcurrentWithIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
           break;
         case IncludesIntervalOperatorPhraseContext _:
           result = visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
@@ -3848,7 +4056,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           return visitBeforeOrAfterIntervalOperatorPhrase(
               intervalOperatorPhrase, left, right);
         case WithinIntervalOperatorPhraseContext _:
-          result = visitWithinIntervalOperatorPhrase(intervalOperatorPhrase);
+          result = visitWithinIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
           break;
         case MeetsIntervalOperatorPhraseContext _:
           result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
@@ -4173,20 +4382,39 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// )?
   @override
   CqlExpression visitWithinIntervalOperatorPhrase(
-      WithinIntervalOperatorPhraseContext ctx) {
-    printIf(ctx);
+      WithinIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left,
+      CqlExpression? right]) {
+    printIf(ctx, true);
     final int thisNode = getNextNode();
-    final CqlExpression quantity = byContext(ctx.children![2]);
-    final String? startOrEnd = ctx.children!.length == 6
-        ? _noQuoteString(ctx.children![5].text!)
-        : null;
-    if (ctx.children![0].text == 'starts') {
-      return Contains(operand: [quantity]);
-    } else if (ctx.children![0].text == 'ends') {
-      return Contains(operand: [quantity]);
-    } else if (ctx.children![0].text == 'occurs') {
-      return Contains(operand: [quantity]);
+    String? startsEndsOccurs;
+    String? startEnd;
+    bool properly = false;
+    LiteralQuantity? quantity;
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TerminalNodeImpl) {
+        if (['starts', 'ends', 'occcurs'].contains(child.text)) {
+          startsEndsOccurs = child.text;
+        } else if (['start', 'end'].contains(child.text)) {
+          startEnd = child.text;
+        }
+      } else if (child is QuantityContext) {
+        quantity = visitQuantity(child);
+      }
     }
+
+    if (left != null && right != null && quantity != null) {
+      final effectiveLeft = _startsEndsOccurs(left, startsEndsOccurs);
+      final effectiveRight = _startEnd(right, startEnd);
+      return In(operand: [
+        effectiveLeft,
+        IntervalExpression(
+          high: Add(operand: [effectiveRight, quantity]),
+          low: Subtract(operand: [effectiveRight, quantity]),
+        )
+      ]);
+    }
+
     throw ArgumentError('$thisNode Invalid WithinIntervalOperatorPhrase');
   }
 
