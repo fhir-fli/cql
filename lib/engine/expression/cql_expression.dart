@@ -857,7 +857,13 @@ class CqlExpression extends Element {
       // case 'Sort':
       //   return Sort(operand: operand);
       case 'Split':
-        return Split(stringToSplit: operand.first);
+        {
+          if (operand.isNotEmpty) {
+            return Split(
+                stringToSplit: operand.first,
+                separator: operand.length > 1 ? operand.last : null);
+          }
+        }
       // case 'SplitOnMatches':
       //   return SplitOnMatches(operand: operand);
       case 'Start':

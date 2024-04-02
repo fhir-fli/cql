@@ -2661,6 +2661,11 @@
                                     "valueType": "{urn:hl7-org:elm-types:r1}String",
                                     "value": "completed;refused;pending",
                                     "type": "Literal"
+                                },
+                                "separator": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": ";",
+                                    "type": "Literal"
                                 }
                             },
                             {

@@ -337,6 +337,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   CqlExpression _startsEndsOccurs(CqlExpression expression, String? value) {
+    final returnTypes = expression.getReturnTypes(library);
+    if (!(returnTypes?.contains(LiteralType) ?? false)) {
+      return expression;
+    }
     switch (value) {
       case 'starts':
         return Start(operand: expression);
@@ -348,6 +352,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   CqlExpression _startEnd(CqlExpression expression, String? value) {
+    final returnTypes = expression.getReturnTypes(library);
+    if (!(returnTypes?.contains(LiteralType) ?? false)) {
+      return expression;
+    }
     switch (value) {
       case 'start':
         return Start(operand: expression);
@@ -365,7 +373,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       BeforeOrAfterIntervalOperatorPhraseContext ctx,
       [CqlExpression? left,
       CqlExpression? right]) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
     String? temporalRelationship;
@@ -1092,7 +1100,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       ConcurrentWithIntervalOperatorPhraseContext ctx,
       [CqlExpression? left,
       CqlExpression? right]) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
     CqlDateTimePrecision? dateTimePrecision;
@@ -1121,7 +1129,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       final effectiveLeft = _startsEndsOccurs(left, startsEndsOccurs);
       final effectiveRight = _startEnd(right, startEnd);
       if (as_) {
-        return SameAs(operand: [], precision: dateTimePrecision);
+        return SameAs(
+            operand: [effectiveLeft, effectiveRight],
+            precision: dateTimePrecision);
       } else if (relativeQualifier == 'or after') {
         return SameOrAfter(
             operand: [effectiveLeft, effectiveRight],
@@ -1399,7 +1409,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// 'ends' dateTimePrecisionSpecifier?
   @override
-  Ends visitEndsIntervalOperatorPhrase(EndsIntervalOperatorPhraseContext ctx) {
+  Ends visitEndsIntervalOperatorPhrase(EndsIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left, CqlExpression? right]) {
     printIf(ctx);
     final int thisNode = getNextNode();
     CqlDateTimePrecision? dateTimePrecision;
@@ -1409,7 +1420,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    return Ends(precision: dateTimePrecision, operand: []);
+    if (left != null && right != null) {
+      return Ends(precision: dateTimePrecision, operand: [left, right]);
+    }
+    throw ArgumentError('$thisNode invalid EndsIntervalOperatorPhrase');
   }
 
   List<CqlExpression> translateOperand(List<CqlExpression> operand) {
@@ -1824,7 +1838,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// dateTimePrecisionSpecifier?
   @override
   IncludedIn visitIncludedInIntervalOperatorPhrase(
-      IncludedInIntervalOperatorPhraseContext ctx) {
+      IncludedInIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left,
+      CqlExpression? right]) {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
@@ -1847,10 +1863,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    if (duringIncludedIn != null) {
+    if (duringIncludedIn != null && left != null && right != null) {
       return IncludedIn(
         precision: dateTimePrecisionSpecifier,
-        operand: [],
+        operand: [left, right],
       );
     }
     throw ArgumentError('$thisNode Invalid IncludedInIntervalOperatorPhrase');
@@ -1862,7 +1878,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// )?
   @override
   CqlExpression visitIncludesIntervalOperatorPhrase(
-      IncludesIntervalOperatorPhraseContext ctx) {
+      IncludesIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left,
+      CqlExpression? right]) {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? properly;
@@ -1880,25 +1898,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    if (startEnd != null) {
-      final start = startEnd == 'start';
-      final end = startEnd == 'end';
-      if (start) {
-        return Starts(
+    if (left != null && right != null) {
+      if (startEnd != null) {
+        final start = startEnd == 'start';
+        final end = startEnd == 'end';
+        if (start) {
+          return Starts(
+            precision: dateTimePrecisionSpecifier,
+            operand: [left, right],
+          );
+        } else if (end) {
+          return Ends(
+            precision: dateTimePrecisionSpecifier,
+            operand: [left, right],
+          );
+        }
+      } else {
+        return Includes(
           precision: dateTimePrecisionSpecifier,
-          operand: [],
-        );
-      } else if (end) {
-        return Ends(
-          precision: dateTimePrecisionSpecifier,
-          operand: [],
+          operand: [left, right],
         );
       }
-    } else {
-      return Includes(
-        precision: dateTimePrecisionSpecifier,
-        operand: [],
-      );
     }
     throw ArgumentError('$thisNode Invalid IncludesIntervalOperatorPhrase');
   }
@@ -2349,8 +2369,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// 'meets' ('before' | 'after')? dateTimePrecisionSpecifier?
   @override
   dynamic visitMeetsIntervalOperatorPhrase(
-      MeetsIntervalOperatorPhraseContext ctx) {
-    printIf(ctx, true);
+      MeetsIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left,
+      CqlExpression? right]) {
+    printIf(ctx);
     final int thisNode = getNextNode();
     String? beforeAfter;
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
@@ -2364,10 +2386,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    return Meets(
-      precision: dateTimePrecisionSpecifier,
-      operand: [],
-    );
+    if (left != null && right != null) {
+      return Meets(
+        precision: dateTimePrecisionSpecifier,
+        operand: [left, right],
+      );
+    }
+    throw ArgumentError('$thisNode Invalid MeetsIntervalOperatorPhrase');
   }
 
   /// referentialIdentifier	# memberInvocation
@@ -3044,7 +3069,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// 'overlaps' ('before' | 'after')? dateTimePrecisionSpecifier?
   @override
   CqlExpression visitOverlapsIntervalOperatorPhrase(
-      OverlapsIntervalOperatorPhraseContext ctx) {
+      OverlapsIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left,
+      CqlExpression? right]) {
     printIf(ctx);
     final int thisNode = getNextNode();
     String? beforeAfter;
@@ -3059,10 +3086,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    return Overlaps(
-      precision: dateTimePrecisionSpecifier,
-      operand: [],
-    );
+    if (left != null && right != null) {
+      return Overlaps(
+        precision: dateTimePrecisionSpecifier,
+        operand: [left, right],
+      );
+    }
+    throw ArgumentError('$thisNode Invalid OverlapsIntervalOperatorPhrase');
   }
 
   /// The default implementation returns the result of calling
@@ -3826,7 +3856,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// 'starts' dateTimePrecisionSpecifier?
   @override
   Starts visitStartsIntervalOperatorPhrase(
-      StartsIntervalOperatorPhraseContext ctx) {
+      StartsIntervalOperatorPhraseContext ctx,
+      [CqlExpression? left,
+      CqlExpression? right]) {
     printIf(ctx);
     final int thisNode = getNextNode();
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
@@ -3836,7 +3868,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             visitDateTimePrecisionSpecifier(child));
       }
     }
-    return Starts(precision: dateTimePrecisionSpecifier, operand: []);
+    if (left != null && right != null) {
+      return Starts(
+          precision: dateTimePrecisionSpecifier, operand: [left, right]);
+    }
+    throw ArgumentError('$thisNode Invalid StartsIntervalOperatorPhrase');
   }
 
   /// statement:
@@ -4042,40 +4078,32 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       final intervalOperatorPhrase = ctx.children![1];
       switch (intervalOperatorPhrase) {
         case ConcurrentWithIntervalOperatorPhraseContext _:
-          result = visitConcurrentWithIntervalOperatorPhrase(
+          return visitConcurrentWithIntervalOperatorPhrase(
               intervalOperatorPhrase, left, right);
-          break;
         case IncludesIntervalOperatorPhraseContext _:
-          result = visitIncludesIntervalOperatorPhrase(intervalOperatorPhrase);
-          break;
+          return visitIncludesIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
         case IncludedInIntervalOperatorPhraseContext _:
-          result =
-              visitIncludedInIntervalOperatorPhrase(intervalOperatorPhrase);
-          break;
+          return visitIncludedInIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
         case BeforeOrAfterIntervalOperatorPhraseContext _:
           return visitBeforeOrAfterIntervalOperatorPhrase(
               intervalOperatorPhrase, left, right);
         case WithinIntervalOperatorPhraseContext _:
-          result = visitWithinIntervalOperatorPhrase(
+          return visitWithinIntervalOperatorPhrase(
               intervalOperatorPhrase, left, right);
-          break;
         case MeetsIntervalOperatorPhraseContext _:
-          result = visitMeetsIntervalOperatorPhrase(intervalOperatorPhrase);
-          break;
+          return visitMeetsIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
         case OverlapsIntervalOperatorPhraseContext _:
-          result = visitOverlapsIntervalOperatorPhrase(intervalOperatorPhrase);
-          break;
+          return visitOverlapsIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
         case StartsIntervalOperatorPhraseContext _:
-          result = visitStartsIntervalOperatorPhrase(intervalOperatorPhrase);
-          break;
+          return visitStartsIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
         case EndsIntervalOperatorPhraseContext _:
-          result = visitEndsIntervalOperatorPhrase(intervalOperatorPhrase);
-          break;
-      }
-      if (result is BinaryExpression) {
-        result.operand.add(left);
-        result.operand.add(right);
-        return result;
+          return visitEndsIntervalOperatorPhrase(
+              intervalOperatorPhrase, left, right);
       }
     }
 
@@ -4385,7 +4413,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       WithinIntervalOperatorPhraseContext ctx,
       [CqlExpression? left,
       CqlExpression? right]) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
     String? startEnd;

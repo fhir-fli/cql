@@ -136,7 +136,7 @@ class Before extends BinaryExpression {
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
-      throw ArgumentError('Binary expression must have 2 operands');
+      throw ArgumentError('Before expression must have 2 operands');
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);

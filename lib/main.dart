@@ -78,93 +78,93 @@ void parseFile(BuildContext context) async {
       //   log(jsonEncode(visitor.result));
       // }
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
-      if (file.contains('04')) {
-        log(jsonEncode({'library': resultLibrary}));
+      // if (file.contains('04')) {
+      //   log(jsonEncode({'library': resultLibrary}));
+      // }
+      bool areEqual = true;
+      final results = visitor.library.execute();
+      if (results is Map<String, dynamic>) {
+        results.remove('startTimestamp');
+        results.forEach((key, value) {
+          final result = value;
+          final answer = answers?[key];
+          // log('$key: $value (${value.runtimeType}) == '
+          //     '$answer (${answer.runtimeType})');
+          if (result != answer) {
+            if (result is List && answer is List) {
+              if (!(const DeepCollectionEquality().equals(result, answer))) {
+                log('$key: $result (${result.runtimeType}) != '
+                    '$answer (${answer.runtimeType})');
+                areEqual = false;
+              }
+            } else if (result is Map && answer is Map) {
+              if (!(const DeepCollectionEquality().equals(result, answer))) {
+                if (result.keys.length != answer.keys.length) {
+                  areEqual = false;
+                } else {
+                  for (final key in result.keys) {
+                    if (!answer.containsKey(key)) {
+                      areEqual = false;
+                    } else if (result[key] != answer[key]) {
+                      areEqual = false;
+                    } else {
+                      answer.remove(key);
+                    }
+                  }
+                  if (answer.isNotEmpty) {
+                    areEqual = false;
+                  }
+                }
+              }
+            } else {
+              if (result.runtimeType == answer.runtimeType &&
+                  result is FhirDateTimeBase &&
+                  answer is FhirDateTimeBase) {
+                if (result != answer) {
+                  final difference =
+                      result.valueDateTime.difference(answer.valueDateTime);
+                  log('$key: $result differs by ${difference.inMilliseconds} '
+                      'ms from $answer');
+                  areEqual = false;
+                }
+              } else if (result.runtimeType == answer.runtimeType &&
+                  result is FhirTime &&
+                  answer is FhirTime) {
+                if (result != answer) {
+                  final int resultMilliseconds = (result.hour ?? 0) * 3600000 +
+                      (result.minute ?? 0) * 60000 +
+                      (result.second ?? 0) * 1000 +
+                      (result.millisecond ?? 0);
+                  final int answerMilliseconds = (answer.hour ?? 0) * 3600000 +
+                      (answer.minute ?? 0) * 60000 +
+                      (answer.second ?? 0) * 1000 +
+                      (answer.millisecond ?? 0);
+
+                  final int differenceMilliseconds =
+                      resultMilliseconds - answerMilliseconds;
+
+                  log('$key: $result differs by $differenceMilliseconds '
+                      'ms from $answer');
+                  areEqual = false;
+                }
+              } else {
+                log('$key: $result (${result.runtimeType}) != '
+                    '$answer (${answer.runtimeType})');
+                areEqual = false;
+              }
+            }
+          }
+          if (result is FhirTime && answer is! FhirTime) {
+            log('result is FhirTime but answer is not');
+          } else if (result is! FhirTime && answer is FhirTime) {
+            log('result is not FhirTime but answer is');
+          }
+          if (results[key] != answers?[key]) {
+            areEqual = false;
+          }
+        });
       }
-      //   bool areEqual = true;
-      //   final results = visitor.library.execute();
-      //   if (results is Map<String, dynamic>) {
-      //     results.remove('startTimestamp');
-      //     results.forEach((key, value) {
-      //       final result = value;
-      //       final answer = answers?[key];
-      //       // log('$key: $value (${value.runtimeType}) == '
-      //       //     '$answer (${answer.runtimeType})');
-      //       if (result != answer) {
-      //         if (result is List && answer is List) {
-      //           if (!(const DeepCollectionEquality().equals(result, answer))) {
-      //             log('$key: $result (${result.runtimeType}) != '
-      //                 '$answer (${answer.runtimeType})');
-      //             areEqual = false;
-      //           }
-      //         } else if (result is Map && answer is Map) {
-      //           if (!(const DeepCollectionEquality().equals(result, answer))) {
-      //             if (result.keys.length != answer.keys.length) {
-      //               areEqual = false;
-      //             } else {
-      //               for (final key in result.keys) {
-      //                 if (!answer.containsKey(key)) {
-      //                   areEqual = false;
-      //                 } else if (result[key] != answer[key]) {
-      //                   areEqual = false;
-      //                 } else {
-      //                   answer.remove(key);
-      //                 }
-      //               }
-      //               if (answer.isNotEmpty) {
-      //                 areEqual = false;
-      //               }
-      //             }
-      //           }
-      //         } else {
-      //           if (result.runtimeType == answer.runtimeType &&
-      //               result is FhirDateTimeBase &&
-      //               answer is FhirDateTimeBase) {
-      //             if (result != answer) {
-      //               final difference =
-      //                   result.valueDateTime.difference(answer.valueDateTime);
-      //               log('$key: $result differs by ${difference.inMilliseconds} '
-      //                   'ms from $answer');
-      //               areEqual = false;
-      //             }
-      //           } else if (result.runtimeType == answer.runtimeType &&
-      //               result is FhirTime &&
-      //               answer is FhirTime) {
-      //             if (result != answer) {
-      //               final int resultMilliseconds = (result.hour ?? 0) * 3600000 +
-      //                   (result.minute ?? 0) * 60000 +
-      //                   (result.second ?? 0) * 1000 +
-      //                   (result.millisecond ?? 0);
-      //               final int answerMilliseconds = (answer.hour ?? 0) * 3600000 +
-      //                   (answer.minute ?? 0) * 60000 +
-      //                   (answer.second ?? 0) * 1000 +
-      //                   (answer.millisecond ?? 0);
-
-      //               final int differenceMilliseconds =
-      //                   resultMilliseconds - answerMilliseconds;
-
-      //               log('$key: $result differs by $differenceMilliseconds '
-      //                   'ms from $answer');
-      //               areEqual = false;
-      //             }
-      //           } else {
-      //             log('$key: $result (${result.runtimeType}) != '
-      //                 '$answer (${answer.runtimeType})');
-      //             areEqual = false;
-      //           }
-      //         }
-      //       }
-      //       if (result is FhirTime && answer is! FhirTime) {
-      //         log('result is FhirTime but answer is not');
-      //       } else if (result is! FhirTime && answer is FhirTime) {
-      //         log('result is not FhirTime but answer is');
-      //       }
-      //       if (results[key] != answers?[key]) {
-      //         areEqual = false;
-      //       }
-      //     });
-      //   }
-      //   log('${file.split("/").last} Results are equal: $areEqual');
+      log('${file.split("/").last} Results are equal: $areEqual');
     } catch (e, s) {
       log(file);
       log(e.toString());

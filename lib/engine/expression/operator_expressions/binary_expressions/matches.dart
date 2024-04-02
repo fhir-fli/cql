@@ -91,7 +91,7 @@ class Matches extends BinaryExpression {
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
-      throw ArgumentError('Binary expression must have 2 operands');
+      throw ArgumentError('Matches expression must have 2 operands');
     }
 
     final left = operand[0].execute(context);
