@@ -36,5 +36,26 @@ void beforeTest() {
       final expression = Before(precision: precision, operand: [left, right]);
       expect(expression.execute({}), equals(null));
     });
+    test("""define "BeforeIsTrue": 0 before Interval[1, 4]""", () {
+      final left = LiteralInteger(value: 0);
+      final right = IntervalExpression(
+          low: LiteralInteger(value: 1), high: LiteralInteger(value: 4));
+      final expression = Before(operand: [left, right]);
+      expect(expression.execute({}), equals(FhirBoolean(true)));
+    });
+    test("""define "BeforeIsFalse": Interval[1, 4] before 0""", () {
+      final left = IntervalExpression(
+          low: LiteralInteger(value: 1), high: LiteralInteger(value: 4));
+      final right = LiteralInteger(value: 0);
+      final expression = Before(operand: [left, right]);
+      expect(expression.execute({}), equals(FhirBoolean(false)));
+    });
+    test("""define "BeforeIsNull": Interval[1, 4] before null""", () {
+      final left = IntervalExpression(
+          low: LiteralInteger(value: 1), high: LiteralInteger(value: 4));
+      final right = LiteralNull();
+      final expression = Before(operand: [left, right]);
+      expect(expression.execute({}), equals(null));
+    });
   });
 }

@@ -62,6 +62,37 @@ import '../../../../cql.dart';
 /// define "BeforeIsNull": @2012-01-01 before month of null
 /// This operator is also defined for intervals, see the Before (Intervals)
 /// operator for more information.
+/// Signature:
+///
+/// before _precision_ (left Interval<T>, right Interval<T>) Boolean
+/// before _precision_ (left T, right Interval<T>) Boolean
+/// before _precision_ (left interval<T>, right T) Boolean
+/// Description:
+///
+/// The before operator for intervals returns true if the first interval ends
+/// before the second one starts. In other words, if the ending point of the
+/// first interval is less than the starting point of the second interval.
+///
+/// For the point-interval overload, the operator returns true if the given
+/// point is less than the start of the interval.
+///
+/// For the interval-point overload, the operator returns true if the given
+/// interval ends before the given point.
+///
+/// This operator uses the semantics described in the Start and End operators
+/// to determine interval boundaries.
+///
+/// If precision is specified and the point type is a Date, DateTime, or Time
+/// type, comparisons used in the operation are performed at the specified
+/// precision.
+///
+/// If either argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the before operator:
+///
+/// define "BeforeIsTrue": 0 before Interval[1, 4]
+/// define "BeforeIsFalse": Interval[1, 4] before 0
+/// define "BeforeIsNull": Interval[1, 4] before null
 class Before extends BinaryExpression {
   final CqlDateTimePrecision? precision;
 
@@ -140,100 +171,150 @@ class Before extends BinaryExpression {
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return before(left, right, precision);
+  }
+
+  static FhirBoolean? before(dynamic left, dynamic right,
+      [CqlDateTimePrecision? precision]) {
     if (left == null || right == null) {
       return null;
     } else if (left is FhirDateTimeBase && right is FhirDateTimeBase) {
-      if (precision == null) {
-        final result = left.isBefore(right);
-        return result == null ? null : FhirBoolean(result);
+      return _beforeDateTimes(left, right, precision);
+    } else if (left is IntervalType && right is IntervalType) {
+      final leftEnd = left.getEnd();
+      final rightStart = right.getStart();
+      if (leftEnd == null || rightStart == null) {
+        return null;
+      } else if (leftEnd is FhirDateTimeBase &&
+          rightStart is FhirDateTimeBase) {
+        return _beforeDateTimes(leftEnd, rightStart, precision);
+      } else if (leftEnd is Comparable && rightStart is Comparable) {
+        return FhirBoolean(leftEnd.compareTo(rightStart) < 0);
       } else {
-        // Start from the highest precision and go down to the specified one.
-        if (left.year < right.year) {
-          return FhirBoolean(true);
-        } else if (left.year > right.year) {
-          return FhirBoolean(false);
-        } // Year comparison is equal, move to next precision
-        if (precision == CqlDateTimePrecision.year) {
-          return FhirBoolean(
-              false); // If only comparing years, they are equal at this point.
-        }
-
-        if (!left.precision.hasMonth || !right.precision.hasMonth) {
+        return null;
+      }
+    } else if (left is IntervalType) {
+      final leftEnd = left.getEnd();
+      if (leftEnd == null || right == null) {
+        return null;
+      } else if (leftEnd is FhirDateTimeBase && right is FhirDateTimeBase) {
+        return _beforeDateTimes(leftEnd, right, precision);
+      } else if (leftEnd is Comparable && right is Comparable) {
+        return FhirBoolean(leftEnd.compareTo(right) < 0);
+      } else {
+        return null;
+      }
+    } else if (right is IntervalType) {
+      final rightStart = right.getStart();
+      if (left == null || rightStart == null) {
+        return null;
+      } else if (left is FhirDateTimeBase && rightStart is FhirDateTimeBase) {
+        return _beforeDateTimes(left, rightStart, precision);
+      } else if (left is Comparable && rightStart is Comparable) {
+        return FhirBoolean(left.compareTo(rightStart) < 0);
+      } else {
+        try {
+          final result = left < rightStart;
+          return result == null ? null : FhirBoolean(result);
+        } catch (e) {
           return null;
-        } else if (left.month < right.month) {
-          return FhirBoolean(true);
-        } else if (left.month > right.month) {
-          return FhirBoolean(false);
         }
-        if (precision == CqlDateTimePrecision.month) {
-          return FhirBoolean(
-              false); // If only comparing months, they are equal at this point.
-        }
-
-        if (!left.precision.hasDay || !right.precision.hasDay) {
-          return null;
-        } else if (left.day < right.day) {
-          return FhirBoolean(true);
-        } else if (left.day > right.day) {
-          return FhirBoolean(false);
-        }
-        if (precision == CqlDateTimePrecision.day) {
-          return FhirBoolean(
-              false); // If only comparing days, they are equal at this point.
-        }
-
-        if (!left.precision.hasHours || !right.precision.hasHours) {
-          return null;
-        } else if (left.hour < right.hour) {
-          return FhirBoolean(true);
-        } else if (left.hour > right.hour) {
-          return FhirBoolean(false);
-        }
-
-        if (precision == CqlDateTimePrecision.hour) {
-          return FhirBoolean(
-              false); // If only comparing hours, they are equal at this point.
-        }
-
-        if (!left.precision.hasMinutes || !right.precision.hasMinutes) {
-          return null;
-        } else if (left.minute < right.minute) {
-          return FhirBoolean(true);
-        } else if (left.minute > right.minute) {
-          return FhirBoolean(false);
-        }
-
-        if (precision == CqlDateTimePrecision.minute) {
-          return FhirBoolean(
-              false); // If only comparing minutes, they are equal at this point.
-        }
-
-        if (!left.precision.hasSeconds || !right.precision.hasSeconds) {
-          return null;
-        } else if (left.second < right.second) {
-          return FhirBoolean(true);
-        } else if (left.second > right.second) {
-          return FhirBoolean(false);
-        }
-
-        if (precision == CqlDateTimePrecision.second) {
-          return FhirBoolean(
-              false); // If only comparing seconds, they are equal at this point.
-        }
-
-        if (!left.precision.hasMilliseconds ||
-            !right.precision.hasMilliseconds) {
-          return null;
-        } else if (left.millisecond < right.millisecond) {
-          return FhirBoolean(true);
-        } else if (left.millisecond > right.millisecond) {
-          return FhirBoolean(false);
-        }
-
-        return FhirBoolean(
-            false); // If only comparing milliseconds, they are equal at this point.
       }
     }
     return null;
+  }
+
+  static FhirBoolean? _beforeDateTimes(
+      FhirDateTimeBase left, FhirDateTimeBase right,
+      [CqlDateTimePrecision? precision]) {
+    if (precision == null) {
+      final result = left.isBefore(right);
+      return result == null ? null : FhirBoolean(result);
+    } else {
+      // Start from the highest precision and go down to the specified one.
+      if (left.year < right.year) {
+        return FhirBoolean(true);
+      } else if (left.year > right.year) {
+        return FhirBoolean(false);
+      } // Year comparison is equal, move to next precision
+      if (precision == CqlDateTimePrecision.year) {
+        return FhirBoolean(
+            false); // If only comparing years, they are equal at this point.
+      }
+
+      if (!left.precision.hasMonth || !right.precision.hasMonth) {
+        return null;
+      } else if (left.month < right.month) {
+        return FhirBoolean(true);
+      } else if (left.month > right.month) {
+        return FhirBoolean(false);
+      }
+      if (precision == CqlDateTimePrecision.month) {
+        return FhirBoolean(
+            false); // If only comparing months, they are equal at this point.
+      }
+
+      if (!left.precision.hasDay || !right.precision.hasDay) {
+        return null;
+      } else if (left.day < right.day) {
+        return FhirBoolean(true);
+      } else if (left.day > right.day) {
+        return FhirBoolean(false);
+      }
+      if (precision == CqlDateTimePrecision.day) {
+        return FhirBoolean(
+            false); // If only comparing days, they are equal at this point.
+      }
+
+      if (!left.precision.hasHours || !right.precision.hasHours) {
+        return null;
+      } else if (left.hour < right.hour) {
+        return FhirBoolean(true);
+      } else if (left.hour > right.hour) {
+        return FhirBoolean(false);
+      }
+
+      if (precision == CqlDateTimePrecision.hour) {
+        return FhirBoolean(
+            false); // If only comparing hours, they are equal at this point.
+      }
+
+      if (!left.precision.hasMinutes || !right.precision.hasMinutes) {
+        return null;
+      } else if (left.minute < right.minute) {
+        return FhirBoolean(true);
+      } else if (left.minute > right.minute) {
+        return FhirBoolean(false);
+      }
+
+      if (precision == CqlDateTimePrecision.minute) {
+        return FhirBoolean(
+            false); // If only comparing minutes, they are equal at this point.
+      }
+
+      if (!left.precision.hasSeconds || !right.precision.hasSeconds) {
+        return null;
+      } else if (left.second < right.second) {
+        return FhirBoolean(true);
+      } else if (left.second > right.second) {
+        return FhirBoolean(false);
+      }
+
+      if (precision == CqlDateTimePrecision.second) {
+        return FhirBoolean(
+            false); // If only comparing seconds, they are equal at this point.
+      }
+
+      if (!left.precision.hasMilliseconds || !right.precision.hasMilliseconds) {
+        return null;
+      } else if (left.millisecond < right.millisecond) {
+        return FhirBoolean(true);
+      } else if (left.millisecond > right.millisecond) {
+        return FhirBoolean(false);
+      }
+
+      return FhirBoolean(
+          false); // If only comparing milliseconds, they are equal at this point.
+    }
   }
 }

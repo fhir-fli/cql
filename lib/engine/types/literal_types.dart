@@ -35,6 +35,20 @@ abstract class LiteralType extends CqlExpression {
       return null;
     }
   }
+
+  static List<Type> get literalTypes => [
+        LiteralBoolean,
+        LiteralDate,
+        LiteralDateTime,
+        LiteralDecimal,
+        LiteralInteger,
+        LiteralLong,
+        LiteralString,
+        LiteralTime,
+        LiteralQuantity,
+        LiteralRatio,
+        LiteralNull,
+      ];
 }
 
 class LiteralNull extends LiteralType {

@@ -163,7 +163,8 @@ class Library extends Element {
     // final contextsExecuted = contexts?.execute();
     // final parametersExecuted = parameters?.execute();
     final Map<String, dynamic> context = <String, dynamic>{
-      'startTimestamp': FhirDateTime(DateTime.now())
+      'startTimestamp': FhirDateTime(DateTime.now()),
+      'library': this,
     };
     final statementsExecuted = statements?.execute(context);
     return statementsExecuted;

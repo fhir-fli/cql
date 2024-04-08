@@ -1,9 +1,33 @@
 import '../../../../cql.dart';
 
 /// Operator to return the ending point of an interval.
-/// If the high boundary of the interval is open, this operator returns the Predecessor of the high value of the interval.
-/// If the high boundary of the interval is closed and the high value of the interval is not null, this operator returns the high value of the interval. Otherwise, the result is the maximum value of the point type of the interval.
+/// If the high boundary of the interval is open, this operator returns the
+/// Predecessor of the high value of the interval.
+/// If the high boundary of the interval is closed and the high value of the
+/// interval is not null, this operator returns the high value of the interval.
+/// Otherwise, the result is the maximum value of the point type of the interval.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+/// end of(argument Interval<T>) T
+/// Description:
+///
+/// The End operator returns the ending point of an interval.
+///
+/// If the high boundary of the interval is open, this operator returns the
+/// predecessor of the high value of the interval. Note that if the high value
+/// of the interval is null, the result is null.
+///
+/// If the high boundary of the interval is closed and the high value of the
+/// interval is not null, this operator returns the high value of the interval.
+/// Otherwise, the result is the maximum value of the point type of the interval.
+///
+/// If the argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the End operator:
+///
+/// define "EndOfInterval": end of Interval[1, 5] // 5
+/// define "EndIsNull": end of (null as Interval<Integer>)
 class End extends UnaryExpression {
   End({
     required super.operand,
@@ -31,6 +55,7 @@ class End extends UnaryExpression {
 
   @override
   String get type => 'End';
+
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
@@ -59,5 +84,23 @@ class End extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    return operand.getReturnTypes(library);
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final interval = operand.execute(context);
+    if (interval == null) {
+      return null;
+    } else if (interval is IntervalType) {
+      return interval.getEnd();
+    } else {
+      throw Exception(
+          "Cannot perform end operator with argument of type '${interval.runtimeType}'.");
+    }
   }
 }

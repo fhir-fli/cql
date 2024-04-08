@@ -1,10 +1,63 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to check if the first operand contains the second operand.
-/// Returns true if the given point is greater than or equal to the starting point of the interval and less than or equal to the ending point of the interval.
-/// For open interval boundaries, exclusive comparison operators are used. For closed interval boundaries, if the interval boundary is null, the result of the boundary comparison is considered true.
-/// If precision is specified and the point type is Date, DateTime, or Time, comparisons used in the operation are performed at the specified precision.
-/// If the first argument is null, the result is false. If the second argument is null, the result is null.
+/// Returns true if the given point is greater than or equal to the starting
+/// point of the interval and less than or equal to the ending point of the
+/// interval.
+/// For open interval boundaries, exclusive comparison operators are used. For
+/// closed interval boundaries, if the interval boundary is null, the result of
+/// the boundary comparison is considered true.
+/// If precision is specified and the point type is Date, DateTime, or Time,
+/// comparisons used in the operation are performed at the specified precision.
+/// If the first argument is null, the result is false. If the second argument
+/// is null, the result is null.
+///
+/// Signature:
+///
+/// contains _precision_ (argument Interval<T>, point T) Boolean
+/// Description:
+///
+/// The contains operator for intervals returns true if the given point is
+/// equal to the starting or ending point of the interval, or greater than the
+/// starting point and less than the ending point. For open interval boundaries,
+/// exclusive comparison operators are used. For closed interval boundaries, if
+/// the interval boundary is null, the result of the boundary comparison is
+/// considered true.
+///
+/// If precision is specified and the point type is a Date, DateTime, or Time
+/// type, comparisons used in the operation are performed at the specified
+/// precision.
+///
+/// If the first argument is null, the result is false. If the second argument
+/// is null, the result is null.
+///
+/// The following examples illustrate the behavior of the contains operator:
+///
+/// define "ContainsIsTrue": Interval[1, 5] contains 4
+/// define "ContainsIsFalse": Interval[1, 5] contains 6
+/// define "ContainsIsNull": Interval[1, 5] contains null
+///
+/// Signature:
+///
+/// contains(argument List<T>, element T) Boolean
+/// Description:
+///
+/// The contains operator for lists returns true if the given element is in the
+/// list using equality semantics, with the exception that null elements are
+/// considered equal.
+///
+/// If the first argument is null, the result is false. If the second argument
+/// is null, the result is true if the list contains any null elements, and
+/// false otherwise.
+///
+/// The following examples illustrate the behavior of the contains operator:
+///
+/// define "ContainsIsTrue": { 1, 3, 5, 7 } contains 5
+/// define "ContainsIsFalse": { 1, 3, 5, 7 } contains 4
+/// define "ContainsIsAlsoFalse": null contains 4
+/// define "ContainsNullIsFalse": { 1, 3, 5, 7 } contains null
 class Contains extends BinaryExpression {
   final CqlDateTimePrecision? precision;
 
@@ -67,4 +120,28 @@ class Contains extends BinaryExpression {
 
   @override
   String get type => 'Contains';
+
+  @override
+  List<Type>? getReturnTypes(Library library) => const [FhirBoolean];
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('After expression must have 2 operands');
+    }
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+    if (left == null) {
+      return FhirBoolean(false);
+    } else if (left is IntervalType) {
+      if (right == null) {
+        return null;
+      }
+      return FhirBoolean(left.contains(right));
+    } else if (left is List) {
+      return FhirBoolean(left.contains(right));
+    } else {
+      throw ArgumentError('Left operand must be of type Interval or List');
+    }
+  }
 }

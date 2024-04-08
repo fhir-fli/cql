@@ -1,8 +1,32 @@
 import '../../../../cql.dart';
 
-/// Operator to return the size of an interval (End(i) - Start(i) + point-size), where point-size is determined by: Successor(Minimum_T) - Minimum_T.
-/// Note: This operator is not defined for intervals of type Date, DateTime, and Time.
+/// Operator to return the size of an interval (End(i) - Start(i) + point-size),
+/// where point-size is determined by: Successor(Minimum_T) - Minimum_T.
+/// Note: This operator is not defined for intervals of type Date, DateTime,
+/// and Time.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+/// Size(argument Interval<T>) T
+/// Description:
+///
+/// The Size operator returns the size of an interval. The result of this
+/// operator is equivalent to invoking: (end of argument – start of argument)
+/// + point-size, where point-size is determined by
+/// successor of minimum T - minimum T.
+///
+/// Note that because CQL defines duration and difference operations for date
+/// and time valued intervals, size is not defined for intervals of these types.
+///
+/// If the argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the Size operator:
+///
+/// define "SizeTest": Size(Interval[3, 7]) // 5, i.e. the interval contains
+/// 5 points
+/// define "SizeTestEquivalent": Size(Interval[3, 8)) // 5, i.e. the interval
+/// contains 5 points
+/// define "SizeIsNull": Size(null as Interval<Integer>) // null
 class Size extends UnaryExpression {
   Size({
     required super.operand,
@@ -58,5 +82,33 @@ class Size extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    return operand.getReturnTypes(library);
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final interval = operand.execute(context);
+    if (interval == null) {
+      return null;
+    } else if (interval is IntervalType) {
+      final end = interval.getEnd();
+      final start = interval.getStart();
+      if (end == null || start == null) {
+        return null;
+      } else {
+        final difference = Subtract.subtract(end, start);
+        final min = MinValue.minValue(difference.runtimeType.toString());
+        final successor = Successor.successor(min);
+        final pointSize = Subtract.subtract(successor, min);
+        return Add.add(difference, pointSize);
+      }
+    } else {
+      throw Exception(
+          "Cannot perform end operator with argument of type '${interval.runtimeType}'.");
+    }
   }
 }

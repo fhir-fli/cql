@@ -82,37 +82,41 @@ void parseFile(BuildContext context) async {
       //   log(jsonEncode({'library': resultLibrary}));
       // }
       bool areEqual = true;
+      String equalReason = '';
       final results = visitor.library.execute();
       if (results is Map<String, dynamic>) {
         results.remove('startTimestamp');
+        results.remove('library');
         results.forEach((key, value) {
           final result = value;
           final answer = answers?[key];
-          // log('$key: $value (${value.runtimeType}) == '
-          //     '$answer (${answer.runtimeType})');
           if (result != answer) {
             if (result is List && answer is List) {
               if (!(const DeepCollectionEquality().equals(result, answer))) {
-                log('$key: $result (${result.runtimeType}) != '
-                    '$answer (${answer.runtimeType})');
+                equalReason += '$key: $result (${result.runtimeType}) != '
+                    '$answer (${answer.runtimeType})\n';
                 areEqual = false;
               }
             } else if (result is Map && answer is Map) {
               if (!(const DeepCollectionEquality().equals(result, answer))) {
                 if (result.keys.length != answer.keys.length) {
                   areEqual = false;
+                  equalReason += 'unequal keys length\n';
                 } else {
                   for (final key in result.keys) {
                     if (!answer.containsKey(key)) {
                       areEqual = false;
+                      equalReason += 'missing key: $key\n';
                     } else if (result[key] != answer[key]) {
                       areEqual = false;
+                      equalReason += '${result[key]} != ${answer[key]}\n';
                     } else {
                       answer.remove(key);
                     }
                   }
                   if (answer.isNotEmpty) {
                     areEqual = false;
+                    equalReason += 'extra keys: ${answer.keys}\n';
                   }
                 }
               }
@@ -123,8 +127,9 @@ void parseFile(BuildContext context) async {
                 if (result != answer) {
                   final difference =
                       result.valueDateTime.difference(answer.valueDateTime);
-                  log('$key: $result differs by ${difference.inMilliseconds} '
-                      'ms from $answer');
+                  equalReason +=
+                      '$key: $result differs by ${difference.inMilliseconds} '
+                      'ms from $answer\n';
                   areEqual = false;
                 }
               } else if (result.runtimeType == answer.runtimeType &&
@@ -143,28 +148,21 @@ void parseFile(BuildContext context) async {
                   final int differenceMilliseconds =
                       resultMilliseconds - answerMilliseconds;
 
-                  log('$key: $result differs by $differenceMilliseconds '
-                      'ms from $answer');
+                  equalReason +=
+                      '$key: $result differs by $differenceMilliseconds '
+                      'ms from $answer\n';
                   areEqual = false;
                 }
               } else {
-                log('$key: $result (${result.runtimeType}) != '
-                    '$answer (${answer.runtimeType})');
+                equalReason += '$key: $result (${result.runtimeType}) != '
+                    '$answer (${answer.runtimeType}\n';
                 areEqual = false;
               }
             }
           }
-          if (result is FhirTime && answer is! FhirTime) {
-            log('result is FhirTime but answer is not');
-          } else if (result is! FhirTime && answer is FhirTime) {
-            log('result is not FhirTime but answer is');
-          }
-          if (results[key] != answers?[key]) {
-            areEqual = false;
-          }
         });
       }
-      log('${file.split("/").last} Results are equal: $areEqual');
+      log('${file.split("/").last} Results are equal: $areEqual\n$equalReason');
     } catch (e, s) {
       log(file);
       log(e.toString());

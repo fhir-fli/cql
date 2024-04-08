@@ -1,3 +1,5 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to return the number of boundaries crossed for the specified
@@ -108,4 +110,107 @@ class DifferenceBetween extends BinaryExpression {
 
   @override
   String get type => 'DifferenceBetween';
+
+  @override
+  List<Type>? getReturnTypes(Library library) =>
+      const [FhirInteger, IntervalType];
+
+  // TODO(Dokotela): uncertainties
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('Difference Between must have 2 operands');
+    }
+    final low = operand[0].execute(context);
+    final high = operand[1].execute(context);
+    if (low == null || high == null) {
+      return null;
+    } else if (low is FhirDateTimeBase) {
+      if (high is FhirDateTimeBase) {
+        if (low.isValid && high.isValid) {
+          final result = high.valueDateTime.difference(low.valueDateTime);
+          switch (precision) {
+            case CqlDateTimePrecision.year:
+              return FhirInteger(high.year - low.year);
+            case CqlDateTimePrecision.month:
+              return FhirInteger(
+                  (high.year - low.year) * 12 + high.month - low.month);
+            case CqlDateTimePrecision.week:
+              return FhirInteger(result.inDays ~/ 7);
+            case CqlDateTimePrecision.day:
+              return FhirInteger(result.inDays);
+            case CqlDateTimePrecision.hour:
+              return FhirInteger(result.inHours);
+            case CqlDateTimePrecision.minute:
+              return FhirInteger(result.inMinutes);
+            case CqlDateTimePrecision.second:
+              return FhirInteger(result.inSeconds);
+            case CqlDateTimePrecision.millisecond:
+              return FhirInteger(result.inMilliseconds);
+          }
+        } else {
+          throw CqlException(
+              message: 'DifferenceBetween must two valid arguments. This was '
+                  'low (${low.isValid ? "valid" : "invalid"}) and'
+                  'high (${high.isValid ? "valid" : "invalid"})');
+        }
+      } else {
+        throw CqlException(
+            message:
+                'DifferenceBetween must be passed two Dates, DateTimes, or '
+                'Times, it was instead passed: '
+                'low (${low.runtimeType}) and'
+                'high (${high.runtimeType})');
+      }
+    } else if (low is FhirTime) {
+      if (high is FhirTime) {
+        if (low.isValid && high.isValid) {
+          final int lowTotalMilliseconds = (low.hour ?? 0) * 3600000 +
+              (low.minute ?? 0) * 60000 +
+              (low.second ?? 0) * 1000 +
+              (low.millisecond ?? 0);
+          final int highTotalMilliseconds = (high.hour ?? 0) * 3600000 +
+              (high.minute ?? 0) * 60000 +
+              (high.second ?? 0) * 1000 +
+              (high.millisecond ?? 0);
+
+          final int differenceMilliseconds =
+              highTotalMilliseconds - lowTotalMilliseconds;
+
+          switch (precision) {
+            case CqlDateTimePrecision.hour:
+              return FhirInteger((differenceMilliseconds / 3600000).floor());
+            case CqlDateTimePrecision.minute:
+              return FhirInteger((differenceMilliseconds / 60000).floor());
+            case CqlDateTimePrecision.second:
+              return FhirInteger((differenceMilliseconds / 1000).floor());
+            case CqlDateTimePrecision.millisecond:
+              return FhirInteger(differenceMilliseconds);
+            default:
+              throw CqlException(
+                  message:
+                      'Unsupported precision for FhirTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.');
+          }
+        } else {
+          throw CqlException(
+              message: 'DifferenceBetween must two valid arguments. This was '
+                  'low (${low.isValid ? "valid" : "invalid"}) and'
+                  'high (${high.isValid ? "valid" : "invalid"})');
+        }
+      } else {
+        throw CqlException(
+            message:
+                'DifferenceBetween must be passed two Dates, DateTimes, or '
+                'Times, it was instead passed: '
+                'low (${low.runtimeType}) and'
+                'high (${high.runtimeType})');
+      }
+    } else {
+      throw CqlException(
+          message:
+              'DifferenceBetween must be either Dates, DateTimes, or Times,'
+              'but was instead passed low (${low.runtimeType}) and '
+              'high (${high.runtimeType}).');
+    }
+  }
 }

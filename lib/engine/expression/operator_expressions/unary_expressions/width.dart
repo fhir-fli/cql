@@ -79,4 +79,28 @@ class Width extends UnaryExpression {
 
     return data;
   }
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    return operand.getReturnTypes(library);
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final interval = operand.execute(context);
+    if (interval == null) {
+      return null;
+    } else if (interval is IntervalType) {
+      final end = interval.getEnd();
+      final start = interval.getStart();
+      if (end == null || start == null) {
+        return null;
+      } else {
+        return Subtract.subtract(end, start);
+      }
+    } else {
+      throw Exception(
+          "Cannot perform end operator with argument of type '${interval.runtimeType}'.");
+    }
+  }
 }

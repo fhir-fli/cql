@@ -527,7 +527,13 @@ class CqlExpression extends Element {
       case 'Collapse':
         return Collapse(operand: operand);
       case 'Combine':
-        return Combine(source: operand.first);
+        {
+          if (operand.isNotEmpty) {
+            return Combine(
+                source: operand.first,
+                separator: operand.length > 1 ? operand.last : null);
+          }
+        }
       case 'Concatenate':
         return Concatenate(operand: operand);
       // case 'Concept':

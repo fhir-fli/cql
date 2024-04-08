@@ -1,10 +1,13 @@
 import 'after_test.dart';
 import 'before_test.dart';
+import 'contains_test.dart';
+import 'difference_between_test.dart';
 import 'duration_between_test.dart';
 import 'ends_with_test.dart';
 import 'equivalent_test.dart';
 import 'greater_or_equal_test.dart';
 import 'greater_test.dart';
+import 'in_test.dart';
 import 'less_or_equal_test.dart';
 import 'less_test.dart';
 import 'matches_test.dart';
@@ -19,11 +22,14 @@ import 'starts_with_test.dart';
 void binaryExpressions() {
   afterTest();
   beforeTest();
+  containsTest();
+  differenceBetweenTest();
   durationBetweenTest();
   endsWithTest();
   equivalentTest();
   greaterOrEqualTest();
   greaterTest();
+  inTest();
   lessOrEqualTest();
   lessTest();
   matchesTest();

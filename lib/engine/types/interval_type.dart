@@ -52,13 +52,15 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
     return this;
   }
 
-  Object? getStart() => !lowClosed
-      ? Successor.successor(low)
-      : low ?? MinValue.minValue(T.toString());
+  Object? getStart() {
+    return lowClosed
+        ? low ?? MinValue.minValue(high.runtimeType.toString())
+        : Successor.successor(low);
+  }
 
-  Object? getEnd() => !highClosed
-      ? Predecessor.predecessor(high)
-      : high ?? MaxValue.maxValue(T.toString());
+  Object? getEnd() => highClosed
+      ? high ?? MaxValue.maxValue(low.runtimeType.toString())
+      : Predecessor.predecessor(high);
 
   @override
   int compareTo(IntervalType other) {
@@ -88,6 +90,11 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
           "Type ${left.runtimeType} is not compatible for comparison with ${right.runtimeType}");
     }
   }
+
+  bool contains(dynamic value) => value == null
+      ? false
+      : (GreaterOrEqual.greaterOrEqual(value, getStart())?.value ?? false) &&
+          (LessOrEqual.lessOrEqual(value, getEnd())?.value ?? false);
 
   @override
   bool equivalent(Object other) => other is IntervalType

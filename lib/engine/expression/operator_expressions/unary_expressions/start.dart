@@ -7,6 +7,27 @@ import '../../../../cql.dart';
 /// interval is not null, this operator returns the low value of the interval.
 /// Otherwise, the result is the minimum value of the point type of the interval.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+/// start of(argument Interval<T>) T
+/// Description:
+///
+/// The Start operator returns the starting point of an interval.
+///
+/// If the low boundary of the interval is open, this operator returns the
+/// successor of the low value of the interval. Note that if the low value of
+/// the interval is null, the result is null.
+///
+/// If the low boundary of the interval is closed and the low value of the
+/// interval is not null, this operator returns the low value of the interval.
+/// Otherwise, the result is the minimum value of the point type of the interval.
+///
+/// If the argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the Start operator:
+///
+/// define "StartOfInterval": start of Interval[1, 5] // 1
+/// define "StartIsNull": start of (null as Interval<Integer>)
 class Start extends UnaryExpression {
   Start({
     required super.operand,
@@ -34,6 +55,7 @@ class Start extends UnaryExpression {
 
   @override
   String get type => 'Start';
+
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
@@ -62,5 +84,23 @@ class Start extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(Library library) {
+    return operand.getReturnTypes(library);
+  }
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final interval = operand.execute(context);
+    if (interval == null) {
+      return null;
+    } else if (interval is IntervalType) {
+      return interval.getStart();
+    } else {
+      throw Exception(
+          "Cannot perform end operator with argument of type '${interval.runtimeType}'.");
+    }
   }
 }

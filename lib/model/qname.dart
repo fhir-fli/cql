@@ -23,8 +23,10 @@ class QName {
       );
 
   factory QName.fromDataType(String type) => QName(
-        namespaceURI: _isElmType(type) ? 'urn:hl7-org:elm-types:r1' : '',
-        localPart: type,
+        namespaceURI: _isElmType(type) || _isFhirType(type)
+            ? 'urn:hl7-org:elm-types:r1'
+            : '',
+        localPart: _isFhirType(type) ? _fhirTypeToElmType(type) : type,
         prefix: '',
       );
 
@@ -42,18 +44,24 @@ class QName {
           beginningOfNamespaceURI + 1, endOfNamespaceURI);
       final String localPart = qNameAsString.substring(endOfNamespaceURI + 1);
       if (namespaceURI.isEmpty) {
-        namespaceURI = _isElmType(localPart) ? 'urn:hl7-org:elm-types:r1' : '';
+        namespaceURI = _isElmType(localPart) || _isFhirType(localPart)
+            ? 'urn:hl7-org:elm-types:r1'
+            : '';
       }
       return QName(
           namespaceURI: namespaceURI,
-          localPart: localPart,
+          localPart: _isFhirType(localPart)
+              ? _fhirTypeToElmType(localPart)
+              : localPart,
           prefix: qNameAsString.substring(0, beginningOfNamespaceURI));
     } else {
       return QName(
-          namespaceURI: _isElmType(qNameAsString)
+          namespaceURI: _isElmType(qNameAsString) || _isFhirType(qNameAsString)
               ? 'urn:hl7-org:elm-types:r1'
               : qNameAsString,
-          localPart: qNameAsString,
+          localPart: _isFhirType(qNameAsString)
+              ? _fhirTypeToElmType(qNameAsString)
+              : qNameAsString,
           prefix: '');
     }
   }
@@ -131,6 +139,50 @@ class QName {
         'ValueSet',
       ].contains(type);
 
+  static bool _isFhirType(String? type) => [
+        'FhirDateTime',
+        'FhirTime',
+        'FhirDate',
+        'FhirDateTime',
+        'FhirDecimal',
+        'FhirInteger',
+        'FhirBoolean',
+        'ConceptType',
+        'IntervalType',
+        'ValidatedQuantity',
+        'ValidatedRatio',
+        'CodeType',
+      ].contains(type);
+
+  static String _fhirTypeToElmType(String fhirType) {
+    switch (fhirType) {
+      case 'FhirDateTime':
+        return 'DateTime';
+      case 'FhirTime':
+        return 'Time';
+      case 'FhirDate':
+        return 'DateTime';
+      case 'FhirDecimal':
+        return 'Decimal';
+      case 'FhirInteger':
+        return 'Integer';
+      case 'FhirBoolean':
+        return 'Boolean';
+      case 'ConceptType':
+        return 'Concept';
+      case 'IntervalType':
+        return 'Interval';
+      case 'ValidatedQuantity':
+        return 'Quantity';
+      case 'ValidatedRatio':
+        return 'Ratio';
+      case 'CodeType':
+        return 'Code';
+      default:
+        return fhirType;
+    }
+  }
+
   List<Type>? getReturnTypes(Library library) {
     final thisType = type;
     return thisType == null ? null : [thisType];
@@ -149,7 +201,10 @@ class QName {
           return ConceptType;
         // case 'ValueSet': return ValueSet;
         // case 'CodeSystem': return CodeSystem;
-        // case 'Interval': return IntervalType
+        case 'List':
+          return List;
+        case 'Interval':
+          return IntervalType;
         case 'Date':
           return FhirDate;
         case 'DateTime':

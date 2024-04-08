@@ -132,23 +132,31 @@ class MinValue extends CqlExpression {
   }
 
   @override
-  dynamic execute(Map<String, dynamic> context) =>
-      minValue(valueType.localPart);
+  dynamic execute(Map<String, dynamic> context) {
+    return minValue(valueType.localPart);
+  }
 
   static dynamic minValue(String type) {
     switch (type) {
+      case 'FhirInteger':
       case 'Integer':
         return FhirInteger(-2147483648);
+      case 'FhirInteger64':
       case 'Long':
         return FhirInteger64('-9223372036854775808');
+      case 'FhirDecimal':
       case 'Decimal':
         return FhirDecimal(-99999999999999999999.99999999);
+      case 'ValidatedQuantity':
       case 'Quantity':
         return ValidatedQuantity.fromNumber(-99999999999999999999.99999999);
+      case 'FhirDate':
       case 'Date':
         return FhirDate.fromUnits(year: 1, month: 1, day: 1);
+      case 'FhirDateTime':
       case 'DateTime':
         return FhirDateTime('0001-01-01T00:00:00.000');
+      case 'FhirTime':
       case 'Time':
         return FhirTime.fromUnits(
             hour: 0, minute: 0, second: 0, millisecond: 0);

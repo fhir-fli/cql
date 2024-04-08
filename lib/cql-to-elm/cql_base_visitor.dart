@@ -338,7 +338,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   CqlExpression _startsEndsOccurs(CqlExpression expression, String? value) {
     final returnTypes = expression.getReturnTypes(library);
-    if (!(returnTypes?.contains(LiteralType) ?? false)) {
+    if (returnTypes == null || returnTypes.isEmpty) {
+      return expression;
+    }
+    if (!LiteralType.literalTypes.contains(returnTypes.first) &&
+        returnTypes.first != IntervalType) {
       return expression;
     }
     switch (value) {
@@ -353,7 +357,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   CqlExpression _startEnd(CqlExpression expression, String? value) {
     final returnTypes = expression.getReturnTypes(library);
-    if (!(returnTypes?.contains(LiteralType) ?? false)) {
+    if (returnTypes == null || returnTypes.isEmpty) {
+      return expression;
+    }
+    if (!LiteralType.literalTypes.contains(returnTypes.first) &&
+        returnTypes.first != IntervalType) {
       return expression;
     }
     switch (value) {
@@ -412,6 +420,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     if (temporalRelationship != null && left != null && right != null) {
       final effectiveLeft = _startsEndsOccurs(left, startsEndsOccurs);
       final effectiveRight = _startEnd(right, startEnd);
+      // print('effectiveLeft: $effectiveLeft');
+      // print('effectiveRight: $effectiveRight');
+      // print('temporalRelationship: $temporalRelationship');
+      // print('dateTimePrecision: $dateTimePrecision');
+      // print('quantityOffset: $quantityOffset');
+      // print('relativeQualifier: $relativeQualifier');
       switch (temporalRelationship.toLowerCase().replaceAll(' ', '')) {
         case 'before':
           {
@@ -1100,7 +1114,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       ConcurrentWithIntervalOperatorPhraseContext ctx,
       [CqlExpression? left,
       CqlExpression? right]) {
-    printIf(ctx, true);
+    printIf(ctx);
     final int thisNode = getNextNode();
     String? startsEndsOccurs;
     CqlDateTimePrecision? dateTimePrecision;
@@ -2287,11 +2301,39 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         }
       }
     }
+    final typesList = <Type>{};
+    for (final e in element) {
+      final types = e.getReturnTypes(library);
+      if (types != null) {
+        typesList.addAll(types);
+      }
+    }
 
-    return ListExpression(
-      typeSpecifier: typeSpecifier,
-      element: element,
-    );
+    final nonNullList = typesList.where((element) => element != Null).toSet();
+    if (nonNullList.length == 1 && typesList.length == 2) {
+      final type = nonNullList.first;
+      final newElement = <CqlExpression>[];
+      for (final e in element) {
+        final returnTypes = e.getReturnTypes(library);
+        if (returnTypes == null ||
+            returnTypes.isEmpty ||
+            returnTypes.first == Null) {
+          newElement.add(As(
+              operand: e, asType: QName.fromDataType('${nonNullList.first}')));
+        } else {
+          newElement.add(e);
+        }
+      }
+      return ListExpression(
+        typeSpecifier: typeSpecifier,
+        element: newElement,
+      );
+    } else {
+      return ListExpression(
+        typeSpecifier: typeSpecifier,
+        element: element,
+      );
+    }
   }
 
   /// listSelector			# listSelectorTerm
@@ -3421,7 +3463,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     LiteralQuantity? quantity;
     String? relativeQualifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('quantityOffset: ${child.runtimeType} ${child.text}');
+      // print('quantityOffset: ${child.runtimeType} ${child.text}');
       if (child is QuantityContext) {
         quantity = visitQuantity(child);
       } else if (child is OffsetRelativeQualifierContext) {
@@ -3721,7 +3763,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     CqlExpression? expression;
     CqlExpression? perExpression;
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('setAggregateExpressionTerm: ${child.runtimeType} ${child.text}');
+      // print('setAggregateExpressionTerm: ${child.runtimeType} ${child.text}');
       if (child is TerminalNodeImpl) {
         expandOrCollapse = child.text == 'expand';
       } else if (child is ExpressionContext) {

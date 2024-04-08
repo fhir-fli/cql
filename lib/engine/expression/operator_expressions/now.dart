@@ -75,6 +75,7 @@ class Now extends OperatorExpression {
   String get type => 'Now';
 
   @override
-  FhirDateTime execute(Map<String, dynamic> context) =>
-      context['startTimestamp'];
+  FhirDateTime execute(Map<String, dynamic> context) {
+    return context['startTimestamp'];
+  }
 }
