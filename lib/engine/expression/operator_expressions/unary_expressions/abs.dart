@@ -88,7 +88,7 @@ class Abs extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) =>
+  List<Type>? getReturnTypes(CqlLibrary library) =>
       operand.getReturnTypes(library);
 
   @override

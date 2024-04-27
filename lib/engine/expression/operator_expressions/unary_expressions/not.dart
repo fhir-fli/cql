@@ -103,5 +103,5 @@ class Not extends UnaryExpression {
   }
 
   @override
-  List<Type> getReturnTypes(Library library) => const [FhirBoolean];
+  List<Type> getReturnTypes(CqlLibrary library) => const [FhirBoolean];
 }

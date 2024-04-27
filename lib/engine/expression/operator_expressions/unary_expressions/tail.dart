@@ -53,7 +53,7 @@ class Tail extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) => [List];
+  List<Type>? getReturnTypes(CqlLibrary library) => [List];
 
   @override
   dynamic execute(Map<String, dynamic> context) {

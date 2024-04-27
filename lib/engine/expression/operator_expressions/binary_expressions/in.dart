@@ -210,7 +210,7 @@ class In extends BinaryExpression {
   String get type => 'In';
 
   @override
-  List<Type> getReturnTypes(Library library) => const [FhirBoolean];
+  List<Type> getReturnTypes(CqlLibrary library) => const [FhirBoolean];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {
@@ -220,7 +220,7 @@ class In extends BinaryExpression {
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
     final rightReturnTypes = right == null
-        ? operand[1].getReturnTypes(context['library'] as Library)
+        ? operand[1].getReturnTypes(context['library'] as CqlLibrary)
         : null;
     if (right is IntervalType ||
         (rightReturnTypes != null &&

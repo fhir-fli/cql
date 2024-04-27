@@ -3,7 +3,7 @@ import 'package:fhir_primitives/fhir_primitives.dart';
 import '../../cql.dart';
 
 /// Library represents a serialized library of CQL-Expression Logic Model.
-class Library extends Element {
+class CqlLibrary extends Element {
   String? type;
 
   /// The code systems defined within this library.
@@ -39,7 +39,7 @@ class Library extends Element {
   /// The value sets defined within this library.
   ValueSetDefs? valueSets;
 
-  Library({
+  CqlLibrary({
     this.type,
     this.identifier,
     VersionedIdentifier? schemaIdentifier,
@@ -70,8 +70,8 @@ class Library extends Element {
               ]),
         super(annotation: annotation ?? [CqlToElmInfo()]);
 
-  factory Library.fromJson(Map<String, dynamic> json) {
-    return Library(
+  factory CqlLibrary.fromJson(Map<String, dynamic> json) {
+    return CqlLibrary(
         type: json['type'] as String?,
         identifier: json['identifier'] == null
             ? null

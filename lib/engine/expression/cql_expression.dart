@@ -466,7 +466,7 @@ class CqlExpression extends Element {
   }
 
   factory CqlExpression.byName(
-      String type, List<CqlExpression> operand, Library library) {
+      String type, List<CqlExpression> operand, CqlLibrary library) {
     switch (type) {
       case 'Abs':
         return Abs(operand: operand.first);
@@ -1008,5 +1008,5 @@ class CqlExpression extends Element {
   dynamic execute(Map<String, dynamic> context) =>
       'Execute Unknown Expression type: $runtimeType';
 
-  List<Type>? getReturnTypes(Library library) => null;
+  List<Type>? getReturnTypes(CqlLibrary library) => null;
 }

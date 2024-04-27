@@ -109,7 +109,7 @@ class OverlapsBefore extends BinaryExpression {
   String get type => 'OverlapsBefore';
 
   @override
-  List<Type>? getReturnTypes(Library library) => [FhirBoolean];
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirBoolean];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {

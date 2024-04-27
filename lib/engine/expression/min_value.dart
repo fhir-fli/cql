@@ -110,7 +110,7 @@ class MinValue extends CqlExpression {
   String get type => 'MinValue';
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     switch (valueType.localPart) {
       case 'Integer':
         return [FhirInteger];

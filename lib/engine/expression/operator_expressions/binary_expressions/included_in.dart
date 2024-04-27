@@ -1,10 +1,73 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../../cql.dart';
 
-/// Operator to check if the first operand is completely included in the second operand.
-/// Returns true if the starting point of the first interval is greater than or equal to the starting point of the second interval,
-/// and the ending point of the first interval is less than or equal to the ending point of the second interval.
-/// If precision is specified and the point type is Date, DateTime, or Time, comparisons used in the operation are performed at the specified precision.
+/// Operator to check if the first operand is completely included in the second
+/// operand.
+/// Returns true if the starting point of the first interval is greater than or
+/// equal to the starting point of the second interval,
+/// and the ending point of the first interval is less than or equal to the
+/// ending point of the second interval.
+/// If precision is specified and the point type is Date, DateTime, or Time,
+/// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+/// included in _precision_ (left Interval<T>, right Interval<T>) Boolean
+/// included in _precision_ (left T, right Interval<T>) Boolean
+/// Description:
+///
+/// The included in operator for intervals returns true if the first interval
+/// is completely included in the second. More precisely, if the starting point
+/// of the first interval is greater than or equal to the starting point of the
+/// second interval, and the ending point of the first interval is less than or
+/// equal to the ending point of the second interval.
+///
+/// For the point overload, this operator is a synonym for the in operator, and
+/// will return null if the first argument is null, and false if the second
+/// argument is null.
+///
+/// For the interval overload, if either argument is null, the result is null.
+///
+/// This operator uses the semantics described in the Start and End operators
+/// to determine interval boundaries.
+///
+/// If precision is specified and the point type is a Date, DateTime, or Time
+/// type, comparisons used in the operation are performed at the specified
+/// precision.
+///
+/// Note that during is a synonym for included in and may be used to invoke the
+/// same operation wherever included in may appear.
+///
+/// The following examples illustrate the behavior of the included in operator:
+///
+/// define "IncludedInIsTrue": Interval[1, 5] included in Interval[0, 5]
+/// define "IncludedInIsFalse": -1 during Interval[0, 7]
+/// define "IncludedInIsNull": 3 included in (null as Interval<Integer>)
+/// Signature:
+///
+/// included in(left List<T>, right list<T>) Boolean
+/// included in(left T, right list<T>) Boolean
+/// Description:
+///
+/// The included in operator for lists returns true if every element of the
+/// first list is in the second list using equality semantics.
+///
+/// For the singleton overload, this operator is a synonym for the in operator,
+/// and will return null if the first argument is null, and false if the second
+/// argument is null.
+///
+/// For the list overload, if either argument is null, the result is null.
+///
+/// Note that the order of elements does not matter for the purposes of
+/// determining inclusion.
+///
+/// The following examples illustrate the behavior of the included in operator:
+///
+/// define "IncludedInIsTrue": 5 included in { 1, 3, 5, 7 }
+/// define "IncludedInIsNull": null included in { 1, 3, 5 }
+/// define "IncludedInIsFalse": { 1, 3, 5 } included in { 1, 3 }
+/// define "IncludedInIsAlsoNull": { 1, 3, 5, null } included in null
 class IncludedIn extends BinaryExpression {
   final CqlDateTimePrecision? precision;
 
@@ -72,4 +135,10 @@ class IncludedIn extends BinaryExpression {
 
   @override
   String get type => 'IncludedIn';
+
+  @override
+  List<Type> getReturnTypes(CqlLibrary library) => [FhirBoolean];
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {}
 }

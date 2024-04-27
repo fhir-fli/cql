@@ -165,7 +165,7 @@ class Equivalent extends BinaryExpression {
   String get type => 'Equivalent';
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     return [FhirBoolean];
   }
 

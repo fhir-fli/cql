@@ -77,7 +77,7 @@ class Length extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) => [FhirInteger];
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirInteger];
 
   @override
   FhirInteger? execute(Map<String, dynamic> context) {

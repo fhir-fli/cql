@@ -65,7 +65,7 @@ class ExpressionRef extends Ref {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     final expression =
         library.statements?.def.indexWhere((element) => element.name == name);
     if (expression != null && expression != -1) {

@@ -25,7 +25,7 @@ void inTest() {
       final interval =
           As(operand: LiteralNull(), asType: QName.fromFull('Interval'));
       final inValue = In(operand: [value, interval]);
-      final result = inValue.execute({'library': Library()});
+      final result = inValue.execute({'library': CqlLibrary()});
       expect(result, FhirBoolean(false));
     });
     test("""define "InIsTrue": 5 in { 1, 3, 5, 7 }""", () {
@@ -55,7 +55,7 @@ void inTest() {
       final interval =
           As(operand: LiteralNull(), asType: QName.fromFull('List'));
       final inValue = In(operand: [value, interval]);
-      final result = inValue.execute({'library': Library()});
+      final result = inValue.execute({'library': CqlLibrary()});
       expect(result, FhirBoolean(false));
     });
     test("""define "NullInIsTrue": null in { 1, 3, 5, null }""", () {

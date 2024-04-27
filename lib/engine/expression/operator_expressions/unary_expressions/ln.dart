@@ -44,7 +44,7 @@ class Ln extends UnaryExpression {
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
-    required Library library,
+    required CqlLibrary library,
   }) {
     CqlExpression? operand;
     if (first is LiteralInteger || first is LiteralLong) {
@@ -138,5 +138,5 @@ class Ln extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) => [FhirDecimal];
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirDecimal];
 }

@@ -15,7 +15,7 @@ import '../../cql.dart';
 /// [T] is the print(ctx.runtimeType); return type of the visit operation. Use
 /// `void` for operations with no print(ctx.runtimeType); return type.
 class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
-  Library library = Library();
+  CqlLibrary library = CqlLibrary();
   final modelInfoProvider = StandardModelInfoProvider();
   int nodeNumber = 0;
   final shouldPrint = false;

@@ -193,7 +193,7 @@ class Power extends BinaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     return operand.isEmpty ? null : operand.first.getReturnTypes(library);
   }
 }

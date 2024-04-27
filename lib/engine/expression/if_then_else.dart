@@ -83,7 +83,7 @@ class IfThenElse extends CqlExpression {
   String get type => 'If';
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     final elseReturnTypes = elseExpr.getReturnTypes(library);
     final thenReturnTypes = then.getReturnTypes(library);
     if (const DeepCollectionEquality()

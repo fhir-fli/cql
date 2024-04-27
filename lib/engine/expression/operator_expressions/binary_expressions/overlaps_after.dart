@@ -106,7 +106,7 @@ class OverlapsAfter extends BinaryExpression {
   String get type => 'OverlapsAfter';
 
   @override
-  List<Type>? getReturnTypes(Library library) => [FhirBoolean];
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirBoolean];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {

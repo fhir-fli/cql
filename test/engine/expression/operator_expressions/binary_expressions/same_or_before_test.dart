@@ -51,5 +51,26 @@ void sameOrBeforeTest() {
       );
       expect(expression.execute({}), null);
     });
+    test("""define "SameOrBeforeIsTrue": 0 before Interval[1, 4]""", () {
+      final left = LiteralInteger(value: 0);
+      final right = IntervalExpression(
+          low: LiteralInteger(value: 1), high: LiteralInteger(value: 4));
+      final expression = SameOrBefore(operand: [left, right]);
+      expect(expression.execute({}), equals(FhirBoolean(true)));
+    });
+    test("""define "SameOrBeforeIsFalse": Interval[1, 4] before 0""", () {
+      final left = IntervalExpression(
+          low: LiteralInteger(value: 1), high: LiteralInteger(value: 4));
+      final right = LiteralInteger(value: 0);
+      final expression = SameOrBefore(operand: [left, right]);
+      expect(expression.execute({}), equals(FhirBoolean(false)));
+    });
+    test("""define "SameOrBeforeIsNull": Interval[1, 4] before null""", () {
+      final left = IntervalExpression(
+          low: LiteralInteger(value: 1), high: LiteralInteger(value: 4));
+      final right = LiteralNull();
+      final expression = SameOrBefore(operand: [left, right]);
+      expect(expression.execute({}), equals(null));
+    });
   });
 }

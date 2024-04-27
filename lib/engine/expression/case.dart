@@ -88,7 +88,7 @@ class Case extends CqlExpression {
   String get type => 'Case';
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     List<Type>? types;
     for (final item in caseItem) {
       final newTypes = item.then.getReturnTypes(library);

@@ -137,7 +137,7 @@ class OnOrAfter extends BinaryExpression {
   String get type => 'OnOrAfter';
 
   @override
-  List<Type>? getReturnTypes(Library library) => const [FhirBoolean];
+  List<Type>? getReturnTypes(CqlLibrary library) => const [FhirBoolean];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {

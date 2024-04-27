@@ -47,7 +47,7 @@ class Log extends BinaryExpression {
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
-    required Library library,
+    required CqlLibrary library,
   }) {
     final operand = <CqlExpression>[];
     if (first is LiteralInteger || first is LiteralLong) {
@@ -164,5 +164,5 @@ class Log extends BinaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) => [FhirDecimal];
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirDecimal];
 }

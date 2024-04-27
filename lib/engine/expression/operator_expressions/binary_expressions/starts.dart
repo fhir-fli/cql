@@ -1,3 +1,5 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to determine if the first interval starts the second interval.
@@ -5,6 +7,30 @@ import '../../../../cql.dart';
 /// If precision is specified and the point type is Date, DateTime, or Time,
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+///starts _precision_ (left Interval<T>, right Interval<T>) Boolean
+///Description:
+///
+///The starts operator returns true if the first interval starts the second.
+///More precisely, if the starting point of the first is equal to the starting
+///point of the second interval and the ending point of the first interval is
+///less than or equal to the ending point of the second interval.
+///
+///This operator uses the semantics described in the Start and End operators to
+///determine interval boundaries.
+///
+///If precision is specified and the point type is a Date, DateTime, or Time
+///type, comparisons used in the operation are performed at the specified
+///precision.
+///
+///If either argument is null, the result is null.
+///
+///The following examples illustrate the behavior of the starts operator:
+///
+///define "StartsIsTrue": Interval[0, 5] starts Interval[0, 7]
+///define "StartsIsFalse": Interval[0, 7] starts Interval[0, 6]
+///define "StartsIsNull": Interval[1, 5] starts null
 class Starts extends BinaryExpression {
   final CqlDateTimePrecision? precision;
 
@@ -70,4 +96,49 @@ class Starts extends BinaryExpression {
 
   @override
   String get type => 'Starts';
+
+  @override
+  List<Type> getReturnTypes(CqlLibrary library) => [FhirBoolean];
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('Starts expression must have 2 operands');
+    }
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+    if (left is IntervalType && right is IntervalType) {
+      return starts(left, right, precision);
+    } else {
+      return null;
+    }
+  }
+
+  static FhirBoolean? starts(
+    IntervalType left,
+    IntervalType right, [
+    CqlDateTimePrecision? precision,
+  ]) {
+    final leftStart = left.getStart();
+    final leftEnd = left.getEnd();
+    final rightStart = right.getStart();
+    final rightEnd = right.getEnd();
+    final equal = Equal.equal(leftStart, rightStart);
+    if (equal == null) {
+      return null;
+    } else if (equal.value == false) {
+      return FhirBoolean(false);
+    }
+    final result = SameOrBefore.sameOrBefore(leftEnd, rightEnd, precision);
+    if (result != null) {
+      return result;
+    }
+    if (leftEnd == null || rightEnd == null) {
+      return null;
+    }
+    if (leftEnd is Comparable && rightEnd is Comparable) {
+      return FhirBoolean(leftEnd.compareTo(rightEnd) <= 0);
+    }
+    return null;
+  }
 }

@@ -87,7 +87,7 @@ class End extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     return operand.getReturnTypes(library);
   }
 

@@ -107,7 +107,7 @@ class IntervalExpression extends CqlExpression {
   String get type => 'Interval';
 
   @override
-  List<Type>? getReturnTypes(Library library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
 
   @override
   IntervalType? execute(Map<String, dynamic> context) {

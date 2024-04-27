@@ -17,7 +17,7 @@ class SourceLocator {
     this.sourceLocation,
   });
 
-  factory SourceLocator.fromNode(Element node, Library? currentLibrary) {
+  factory SourceLocator.fromNode(Element node, CqlLibrary? currentLibrary) {
     return SourceLocator(
       librarySystemId: currentLibrary?.identifier?.system ??
           "http://cql.hl7.org/Library/unknown",

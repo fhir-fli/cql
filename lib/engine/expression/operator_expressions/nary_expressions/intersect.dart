@@ -107,7 +107,7 @@ class Intersect extends NaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) => [List, IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [List, IntervalType];
 
   @override
   dynamic execute(Map<String, dynamic> context) {

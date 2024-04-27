@@ -43,5 +43,32 @@ void sameOrAfterTest() {
           SameOrAfter(precision: precision, operand: [left, right]);
       expect(expression.execute({}), null);
     });
+    test("""define "SameOrAfterIsTrue": 5 after Interval[1, 4]""", () {
+      final left = LiteralInteger(value: 5);
+      final low = LiteralInteger(value: 1);
+      final high = LiteralInteger(value: 4);
+      final interval = IntervalExpression(low: low, high: high);
+      final after = SameOrAfter(operand: [left, interval]);
+      final result = after.execute({});
+      expect(result, FhirBoolean(true));
+    });
+    test("""define "SameOrAfterIsFalse": Interval[1, 4] after 5""", () {
+      final low = LiteralInteger(value: 1);
+      final high = LiteralInteger(value: 4);
+      final interval = IntervalExpression(low: low, high: high);
+      final left = LiteralInteger(value: 5);
+      final after = SameOrAfter(operand: [interval, left]);
+      final result = after.execute({});
+      expect(result, FhirBoolean(false));
+    });
+    test("""define "SameOrAfterIsNull": Interval[1, 4] after null""", () {
+      final low = LiteralInteger(value: 1);
+      final high = LiteralInteger(value: 4);
+      final interval = IntervalExpression(low: low, high: high);
+      final left = LiteralNull();
+      final after = SameOrAfter(operand: [interval, left]);
+      final result = after.execute({});
+      expect(result, isNull);
+    });
   });
 }

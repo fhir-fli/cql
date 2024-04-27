@@ -41,7 +41,7 @@ class Concatenate extends NaryExpression {
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
-    required Library library,
+    required CqlLibrary library,
   }) {
     List<CqlExpression> operand = [];
     if (first is LiteralString) {
@@ -173,5 +173,5 @@ class Concatenate extends NaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) => [String];
+  List<Type>? getReturnTypes(CqlLibrary library) => [String];
 }

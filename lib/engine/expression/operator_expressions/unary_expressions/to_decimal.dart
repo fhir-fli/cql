@@ -148,5 +148,5 @@ class ToDecimal extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) => [FhirDecimal];
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirDecimal];
 }

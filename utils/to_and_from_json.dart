@@ -14,7 +14,7 @@ Future<void> main() async {
         try {
           final pathExpression = jsonDecode(await file.readAsString());
           if (pathExpression['library'] != null) {
-            final library = Library.fromJson(pathExpression['library']);
+            final library = CqlLibrary.fromJson(pathExpression['library']);
 
             final newFileString =
                 jsonPrettyPrint({'library': library.toJson()});

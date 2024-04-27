@@ -105,7 +105,7 @@ class DurationBetween extends BinaryExpression {
   String get type => 'DurationBetween';
 
   @override
-  List<Type> getReturnTypes(Library library) =>
+  List<Type> getReturnTypes(CqlLibrary library) =>
       [FhirInteger, List<FhirInteger>];
 
   @override

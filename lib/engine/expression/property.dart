@@ -1,5 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
-import 'package:fhir_path/fhir_path.dart';
+import 'package:fhir_r5/fhir_r5.dart';
 
 import '../../cql.dart';
 
@@ -83,7 +82,7 @@ class Property extends CqlExpression {
   String get type => 'Property';
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     if (source != null) {
       return source!.getReturnTypes(library);
     }

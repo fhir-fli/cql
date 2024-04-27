@@ -103,7 +103,7 @@ class Round extends OperatorExpression {
   String get type => 'Round';
 
   @override
-  List<Type> getReturnTypes(Library library) => const [FhirDecimal];
+  List<Type> getReturnTypes(CqlLibrary library) => const [FhirDecimal];
 
   @override
   FhirDecimal? execute(Map<String, dynamic> context) {

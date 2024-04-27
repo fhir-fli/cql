@@ -111,7 +111,7 @@ class Successor extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     return operand.getReturnTypes(library);
   }
 
@@ -132,33 +132,33 @@ class Successor extends UnaryExpression {
       return FhirDecimal(value.value! + 0.00000001);
     } else if (value is FhirDateTimeBase && value.isValid) {
       switch (value.precision) {
-        case DateTimePrecision.yyyy:
+        case FhirDateTimePrecision.yyyy:
           return value + ExtendedDuration(days: 1);
-        case DateTimePrecision.yyyy_MM:
+        case FhirDateTimePrecision.yyyy_MM:
           return value + ExtendedDuration(days: 1);
-        case DateTimePrecision.yyyy_MM_dd:
-        case DateTimePrecision.yyyy_MM_dd_T_Z:
-        case DateTimePrecision.yyyy_MM_dd_T_ZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
           return value + ExtendedDuration(days: 1);
-        case DateTimePrecision.yyyy_MM_dd_T_HH:
-        case DateTimePrecision.yyyy_MM_dd_T_HH_Z:
-        case DateTimePrecision.yyyy_MM_dd_T_HHZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
           return value + ExtendedDuration(hours: 1);
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm:
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
           return value + ExtendedDuration(minutes: 1);
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
           return value + ExtendedDuration(seconds: 1);
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
-        case DateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
-        case DateTimePrecision.instant:
-        case DateTimePrecision.dateTime:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
+        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
+        case FhirDateTimePrecision.instant:
+        case FhirDateTimePrecision.dateTime:
           return value + ExtendedDuration(milliseconds: 1);
-        case DateTimePrecision.invalid:
+        case FhirDateTimePrecision.invalid:
           return null;
       }
     } else if (value is FhirTime && value.isValid) {

@@ -134,7 +134,7 @@ class Greater extends BinaryExpression {
   String get type => 'Greater';
 
   @override
-  List<Type>? getReturnTypes(Library library) => [FhirBoolean];
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirBoolean];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {

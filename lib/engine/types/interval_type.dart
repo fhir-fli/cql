@@ -16,8 +16,8 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
     this.high,
     bool? highClosed,
     this.state,
-  })  : lowClosed = lowClosed ?? false,
-        highClosed = highClosed ?? false {
+  })  : lowClosed = lowClosed ?? true,
+        highClosed = highClosed ?? true {
     if (low is FhirDateTimeBase && high is FhirDateTimeBase) {
       if ((low as FhirDateTimeBase).isAfter(high as FhirDateTimeBase) ?? true) {
         throw Exception(
@@ -110,6 +110,8 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
           return null;
         }
       }
+      print('${getStart()} ${other.getStart()}');
+      print('${getEnd()} ${other.getEnd()}');
 
       return And.and(Equal.equal(getStart(), other.getStart()),
               Equal.equal(getEnd(), other.getEnd()))

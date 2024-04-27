@@ -106,7 +106,7 @@ class Indexer extends BinaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(Library library) {
+  List<Type>? getReturnTypes(CqlLibrary library) {
     if ((operand[0].getReturnTypes(library)?.contains(String) ?? false) &&
         (operand[1].getReturnTypes(library)?.contains(FhirInteger) ?? false)) {
       return [String];
