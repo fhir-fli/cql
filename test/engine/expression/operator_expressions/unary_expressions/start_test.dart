@@ -7,9 +7,9 @@ void startTest() {
     test("""define "StartOfInterval": start of Interval[1, 5] // 1""", () {
       final interval = IntervalExpression(
           lowClosed: true,
-          low: LiteralInteger(value: 1),
+          low: LiteralInteger(1),
           highClosed: true,
-          high: LiteralInteger(value: 5));
+          high: LiteralInteger(5));
       final start = Start(operand: interval);
       final result = start.execute({});
       expect(result, FhirInteger(1));

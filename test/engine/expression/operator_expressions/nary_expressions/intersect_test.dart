@@ -8,16 +8,16 @@ void intersectTest() {
         """define "Intersect": Interval[1, 5] intersect Interval[3, 7] // Interval[3, 5]""",
         () {
       final left = LiteralIntegerInterval(
-        low: LiteralInteger(value: 1),
-        lowClosed: LiteralBoolean(value: true),
-        high: LiteralInteger(value: 5),
-        highClosed: LiteralBoolean(value: true),
+        low: LiteralInteger(1),
+        lowClosed: LiteralBoolean(true),
+        high: LiteralInteger(5),
+        highClosed: LiteralBoolean(true),
       );
       final right = LiteralIntegerInterval(
-        low: LiteralInteger(value: 3),
-        lowClosed: LiteralBoolean(value: true),
-        high: LiteralInteger(value: 7),
-        highClosed: LiteralBoolean(value: true),
+        low: LiteralInteger(3),
+        lowClosed: LiteralBoolean(true),
+        high: LiteralInteger(7),
+        highClosed: LiteralBoolean(true),
       );
       final result = Intersect(operand: [left, right]);
       expect(
@@ -34,10 +34,10 @@ void intersectTest() {
         """define "IntersectIsNull": Interval[3, 5] intersect (null as Interval<Integer>)""",
         () {
       final left = LiteralIntegerInterval(
-        low: LiteralInteger(value: 3),
-        lowClosed: LiteralBoolean(value: true),
-        high: LiteralInteger(value: 5),
-        highClosed: LiteralBoolean(value: true),
+        low: LiteralInteger(3),
+        lowClosed: LiteralBoolean(true),
+        high: LiteralInteger(5),
+        highClosed: LiteralBoolean(true),
       );
       final right =
           As(operand: LiteralNull(), resultTypeName: 'Interval<Integer>');

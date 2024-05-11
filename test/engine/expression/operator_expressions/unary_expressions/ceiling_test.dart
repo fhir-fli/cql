@@ -5,12 +5,12 @@ import 'package:flutter_test/flutter_test.dart';
 void ceilingTest() {
   group('Ceiling', () {
     test("""define "IntegerCeiling": Ceiling(1) // 1""", () {
-      final input = LiteralInteger(value: 1);
+      final input = LiteralInteger(1);
       final result = Ceiling(operand: input);
       expect(result.execute({}), equals(FhirInteger(1)));
     });
     test("""define "DecimalCeiling": Ceiling(1.1) // 2""", () {
-      final input = LiteralDecimal(value: 1.1);
+      final input = LiteralDecimal(1.1);
       final result = Ceiling(operand: input);
       expect(result.execute({}), equals(FhirInteger(2)));
     });

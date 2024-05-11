@@ -7,11 +7,11 @@ void meetsBeforeTest() {
     test(
         """define "MeetsBeforeIsTrue": Interval[-5, -1] meets before Interval[0, 5]""",
         () {
-      final low1 = LiteralInteger(value: -5);
-      final high1 = LiteralInteger(value: -1);
+      final low1 = LiteralInteger(-5);
+      final high1 = LiteralInteger(-1);
       final interval1 = IntervalExpression(low: low1, high: high1);
-      final low2 = LiteralInteger(value: 0);
-      final high2 = LiteralInteger(value: 5);
+      final low2 = LiteralInteger(0);
+      final high2 = LiteralInteger(5);
       final interval2 = IntervalExpression(low: low2, high: high2);
       final meetsBefore = MeetsBefore(operand: [interval1, interval2]);
       final result = meetsBefore.execute({});

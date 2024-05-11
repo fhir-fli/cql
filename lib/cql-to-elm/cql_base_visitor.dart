@@ -85,7 +85,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         } else {
           return Concatenate(operand: [
             operand[0],
-            LiteralString(value: ''),
+            LiteralString(''),
           ], plus: additionOperator == '+');
         }
       } else if (operand[0] is LiteralNull && operand[1] is LiteralString) {
@@ -96,7 +96,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           ], plus: additionOperator == '+');
         } else {
           return Concatenate(
-              operand: [LiteralString(value: ''), operand[1]],
+              operand: [LiteralString(''), operand[1]],
               plus: additionOperator == '+');
         }
       } else {
@@ -125,7 +125,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           } else {
             return Concatenate(operand: [
               operand[0],
-              LiteralString(value: ''),
+              LiteralString(''),
             ], plus: additionOperator == '+');
           }
         } else if (returnType1 == Null && returnType2 == String) {
@@ -136,7 +136,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             ], plus: additionOperator == '+');
           } else {
             return Concatenate(
-                operand: [LiteralString(value: ''), operand[1]],
+                operand: [LiteralString(''), operand[1]],
                 plus: additionOperator == '+');
           }
         }
@@ -694,7 +694,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   LiteralBoolean visitBooleanLiteral(BooleanLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    return LiteralBoolean(value: ctx.text == 'true');
+    return LiteralBoolean(ctx.text == 'true');
   }
 
   /// caseExpressionItem: 'when' expression 'then' expression;
@@ -1243,7 +1243,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   LiteralDate visitDateLiteral(DateLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    return LiteralDate(value: ctx.text.replaceFirst('@', ''));
+    return LiteralDate(ctx.text.replaceFirst('@', ''));
   }
 
   /// dateTimeComponent:
@@ -1270,7 +1270,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   LiteralDateTime visitDateTimeLiteral(DateTimeLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    return LiteralDateTime(value: ctx.text.replaceFirst('@', ''));
+    return LiteralDateTime(ctx.text.replaceFirst('@', ''));
   }
 
   /// dateTimePrecision:
@@ -2405,7 +2405,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   LiteralLong visitLongNumberLiteral(LongNumberLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    return LiteralLong(value: BigInt.parse(ctx.text));
+    return LiteralLong(BigInt.parse(ctx.text));
   }
 
   /// 'meets' ('before' | 'after')? dateTimePrecisionSpecifier?
@@ -3013,11 +3013,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     final int thisNode = getNextNode();
     final text = ctx.getChild(0)!.text!;
     if (int.tryParse(text) != null) {
-      return LiteralInteger(value: int.parse(text));
+      return LiteralInteger(int.parse(text));
     } else if (double.tryParse(text) != null) {
       return LiteralDecimal.fromString(text);
     } else if (BigInt.tryParse(text) != null) {
-      return LiteralLong(value: BigInt.parse(text));
+      return LiteralLong(BigInt.parse(text));
     }
     throw ArgumentError('$thisNode Invalid NumberLiteral');
   }
@@ -3244,14 +3244,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       } else {
         return Negate(operand: expressionTerm);
         // if (expressionTerm is LiteralInteger) {
-        //   return LiteralInteger(value: expressionTerm.value * -1);
+        //   return LiteralInteger( expressionTerm.value * -1);
         // } else if (expressionTerm is LiteralLong) {
-        //   return LiteralLong(value: expressionTerm.value * BigInt.from(-1));
+        //   return LiteralLong( expressionTerm.value * BigInt.from(-1));
         // } else if (expressionTerm is LiteralDecimal) {
-        //   return LiteralDecimal(value: expressionTerm.value * -1);
+        //   return LiteralDecimal( expressionTerm.value * -1);
         // } else if (expressionTerm is LiteralQuantity) {
         //   return LiteralQuantity(
-        //       value: LiteralDecimal(value: expressionTerm.value.value * -1),
+        //        LiteralDecimal( expressionTerm.value.value * -1),
         //       unit: expressionTerm.unit);
         // }
       }
@@ -3434,7 +3434,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (number != null) {
-      return LiteralQuantity(value: LiteralDecimal(value: number), unit: unit);
+      return LiteralQuantity(LiteralDecimal(number), unit: unit);
     }
 
     throw ArgumentError('$thisNode Invalid Quantity');
@@ -3474,7 +3474,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
     if (quantity != null) {
       return LiteralQuantity(
-        value: quantity.value,
+        quantity.value,
         unit: quantity.unit,
       );
     }
@@ -3773,8 +3773,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           perExpression = byContext(child);
         }
       } else if (child is DateTimePrecisionContext) {
-        perExpression = LiteralQuantity(
-            value: LiteralDecimal(value: 1),
+        perExpression = LiteralQuantity(LiteralDecimal(1),
             unit: visitDateTimePrecision(child));
       }
     }
@@ -3949,7 +3948,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   LiteralString visitStringLiteral(StringLiteralContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
-    return LiteralString(value: _noQuoteString(ctx.getChild(0)!.text!));
+    return LiteralString(_noQuoteString(ctx.getChild(0)!.text!));
   }
 
   /// 'successor' 'of' expressionTerm
@@ -4062,8 +4061,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     final int thisNode = getNextNode();
     return LiteralTime(
-        value: _noQuoteString(
-            ctx.text.replaceFirst('@', '').replaceFirst('T', '')));
+        _noQuoteString(ctx.text.replaceFirst('@', '').replaceFirst('T', '')));
   }
 
   /// dateTimeComponent 'from' expressionTerm

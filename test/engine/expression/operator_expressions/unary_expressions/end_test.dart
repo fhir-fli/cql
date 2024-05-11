@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 void endTest() {
   group('End', () {
     test("""define "EndOfInterval": end of Interval[1, 5] // 5""", () {
-      final interval = IntervalExpression(
-          low: LiteralInteger(value: 1), high: LiteralInteger(value: 5));
+      final interval =
+          IntervalExpression(low: LiteralInteger(1), high: LiteralInteger(5));
       final end = End(operand: interval);
       final result = end.execute({});
       expect(result, equals(FhirInteger(5)));

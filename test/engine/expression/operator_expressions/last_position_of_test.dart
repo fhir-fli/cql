@@ -7,16 +7,16 @@ void lastPositionOfTest() {
     test(
         """define "LastPositionOfFound": LastPositionOf('B', 'ABCDEDCBA') // 7""",
         () {
-      final pattern = LiteralString(value: 'B');
-      final argument = LiteralString(value: 'ABCDEDCBA');
+      final pattern = LiteralString('B');
+      final argument = LiteralString('ABCDEDCBA');
       final lastPositionOf = LastPositionOf(pattern: pattern, string: argument);
       expect(lastPositionOf.execute({}), equals(FhirInteger(7)));
     });
     test(
         """define "LastPositionOfNotFound": LastPositionOf('XYZ', 'ABCDE') // -1""",
         () {
-      final pattern = LiteralString(value: 'XYZ');
-      final argument = LiteralString(value: 'ABCDE');
+      final pattern = LiteralString('XYZ');
+      final argument = LiteralString('ABCDE');
       final lastPositionOf = LastPositionOf(pattern: pattern, string: argument);
       expect(lastPositionOf.execute({}), equals(FhirInteger(-1)));
     });
@@ -24,7 +24,7 @@ void lastPositionOfTest() {
         """define "LastPositionOfIsNull": LastPositionOf(null, 'ABCDE') // null""",
         () {
       final pattern = LiteralNull();
-      final argument = LiteralString(value: 'ABCDE');
+      final argument = LiteralString('ABCDE');
       final lastPositionOf = LastPositionOf(pattern: pattern, string: argument);
       expect(lastPositionOf.execute({}), equals(null));
     });

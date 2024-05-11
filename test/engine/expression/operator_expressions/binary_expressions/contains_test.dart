@@ -6,10 +6,10 @@ void containsTest() {
   group('Contains', () {
     test("""define "ContainsIsTrue": Interval[1, 5] contains 4""", () {
       final interval = IntervalExpression(
-        low: LiteralInteger(value: 1),
-        high: LiteralInteger(value: 5),
+        low: LiteralInteger(1),
+        high: LiteralInteger(5),
       );
-      final value = LiteralInteger(value: 4);
+      final value = LiteralInteger(4);
       final contains = Contains(
         operand: [interval, value],
       );
@@ -18,10 +18,10 @@ void containsTest() {
     });
     test("""define "ContainsIsFalse": Interval[1, 5] contains 6""", () {
       final interval = IntervalExpression(
-        low: LiteralInteger(value: 1),
-        high: LiteralInteger(value: 5),
+        low: LiteralInteger(1),
+        high: LiteralInteger(5),
       );
-      final value = LiteralInteger(value: 6);
+      final value = LiteralInteger(6);
       final contains = Contains(
         operand: [interval, value],
       );
@@ -30,8 +30,8 @@ void containsTest() {
     });
     test("""define "ContainsIsNull": Interval[1, 5] contains null""", () {
       final interval = IntervalExpression(
-        low: LiteralInteger(value: 1),
-        high: LiteralInteger(value: 5),
+        low: LiteralInteger(1),
+        high: LiteralInteger(5),
       );
       final value = LiteralNull();
       final contains = Contains(
@@ -43,13 +43,13 @@ void containsTest() {
     test("""define "ContainsIsTrue": { 1, 3, 5, 7 } contains 5""", () {
       final list = ListExpression(
         element: [
-          LiteralInteger(value: 1),
-          LiteralInteger(value: 3),
-          LiteralInteger(value: 5),
-          LiteralInteger(value: 7),
+          LiteralInteger(1),
+          LiteralInteger(3),
+          LiteralInteger(5),
+          LiteralInteger(7),
         ],
       );
-      final value = LiteralInteger(value: 5);
+      final value = LiteralInteger(5);
       final contains = Contains(
         operand: [list, value],
       );
@@ -59,13 +59,13 @@ void containsTest() {
     test("""define "ContainsIsFalse": { 1, 3, 5, 7 } contains 4""", () {
       final list = ListExpression(
         element: [
-          LiteralInteger(value: 1),
-          LiteralInteger(value: 3),
-          LiteralInteger(value: 5),
-          LiteralInteger(value: 7),
+          LiteralInteger(1),
+          LiteralInteger(3),
+          LiteralInteger(5),
+          LiteralInteger(7),
         ],
       );
-      final value = LiteralInteger(value: 4);
+      final value = LiteralInteger(4);
       final contains = Contains(
         operand: [list, value],
       );
@@ -74,7 +74,7 @@ void containsTest() {
     });
     test("""define "ContainsIsAlsoFalse": null contains 4""", () {
       final list = LiteralNull();
-      final value = LiteralInteger(value: 4);
+      final value = LiteralInteger(4);
       final contains = Contains(
         operand: [list, value],
       );
@@ -84,10 +84,10 @@ void containsTest() {
     test("""define "ContainsNullIsFalse": { 1, 3, 5, 7 } contains null""", () {
       final list = ListExpression(
         element: [
-          LiteralInteger(value: 1),
-          LiteralInteger(value: 3),
-          LiteralInteger(value: 5),
-          LiteralInteger(value: 7),
+          LiteralInteger(1),
+          LiteralInteger(3),
+          LiteralInteger(5),
+          LiteralInteger(7),
         ],
       );
       final value = LiteralNull();

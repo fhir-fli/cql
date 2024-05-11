@@ -9,9 +9,9 @@ void sizeTest() {
         () {
       final interval = IntervalExpression(
           lowClosed: true,
-          low: LiteralInteger(value: 3),
+          low: LiteralInteger(3),
           highClosed: true,
-          high: LiteralInteger(value: 7));
+          high: LiteralInteger(7));
       final size = Size(operand: interval);
       final result = size.execute({});
       expect(result, equals(FhirInteger(5)));
@@ -21,9 +21,9 @@ void sizeTest() {
         () {
       final interval = IntervalExpression(
           lowClosed: true,
-          low: LiteralInteger(value: 3),
+          low: LiteralInteger(3),
           highClosed: false,
-          high: LiteralInteger(value: 8));
+          high: LiteralInteger(8));
       final size = Size(operand: interval);
       final result = size.execute({});
       expect(result, equals(FhirInteger(5)));

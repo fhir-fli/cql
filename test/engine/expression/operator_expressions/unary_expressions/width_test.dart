@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 void widthTest() {
   group('Width', () {
     test("""define "Width": width of Interval[3, 7] // 4""", () {
-      final interval = IntervalExpression(
-          low: LiteralInteger(value: 3), high: LiteralInteger(value: 7));
+      final interval =
+          IntervalExpression(low: LiteralInteger(3), high: LiteralInteger(7));
       final width = Width(operand: interval);
       final result = width.execute({});
       expect(result, equals(FhirInteger(4)));
@@ -22,9 +22,7 @@ void widthTest() {
     });
     test("""define "NullInterval": width of Interval[0, null) //null""", () {
       final interval = IntervalExpression(
-          low: LiteralInteger(value: 0),
-          high: LiteralNull(),
-          highClosed: false);
+          low: LiteralInteger(0), high: LiteralNull(), highClosed: false);
       final width = Width(operand: interval);
       final result = width.execute({});
       expect(result, equals(null));

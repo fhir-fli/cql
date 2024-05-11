@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void lengthTest() {
   group('Length', () {
     test("""define "Length14": Length('ABCDE') // 5""", () {
-      final input = LiteralString(value: 'ABCDE');
+      final input = LiteralString('ABCDE');
       final output = Length(operand: input);
       expect(output.execute({}), equals(FhirInteger(5)));
     });

@@ -8,9 +8,9 @@ void overlapsAfterTest() {
         """define "OverlapsAfterIsFalse": Interval[0, 4] overlaps after Interval[1, 4] // false""",
         () {
       final left = LiteralIntegerInterval(
-          low: LiteralInteger(value: 0), high: LiteralInteger(value: 4));
+          low: LiteralInteger(0), high: LiteralInteger(4));
       final right = LiteralIntegerInterval(
-          low: LiteralInteger(value: 1), high: LiteralInteger(value: 4));
+          low: LiteralInteger(1), high: LiteralInteger(4));
       final result = OverlapsAfter(operand: [left, right]);
       expect(result.execute({}), equals(FhirBoolean(false)));
     });

@@ -6,9 +6,9 @@ void replaceMatchesTest() {
     test(
         """define "ReplaceMatchesFound": ReplaceMatches('ABCDE', 'C', 'XYZ') // 'ABXYZDE'""",
         () {
-      final argument = LiteralString(value: 'ABCDE');
-      final pattern = LiteralString(value: 'C');
-      final substitution = LiteralString(value: 'XYZ');
+      final argument = LiteralString('ABCDE');
+      final pattern = LiteralString('C');
+      final substitution = LiteralString('XYZ');
       final result = ReplaceMatches(
           operand: [argument, pattern, substitution],
           localId: 'ReplaceMatchesFound');
@@ -17,9 +17,9 @@ void replaceMatchesTest() {
     test(
         """define "ReplaceMatchesNotFound": ReplaceMatches('ABCDE', 'XYZ', '123') // 'ABCDE'""",
         () {
-      final argument = LiteralString(value: 'ABCDE');
-      final pattern = LiteralString(value: 'XYZ');
-      final substitution = LiteralString(value: '123');
+      final argument = LiteralString('ABCDE');
+      final pattern = LiteralString('XYZ');
+      final substitution = LiteralString('123');
       final result = ReplaceMatches(
           operand: [argument, pattern, substitution],
           localId: 'ReplaceMatchesNotFound');
@@ -28,8 +28,8 @@ void replaceMatchesTest() {
     test(
         """define "ReplaceMatchesIsNull": ReplaceMatches('ABCDE', 'C', null) // null""",
         () {
-      final argument = LiteralString(value: 'ABCDE');
-      final pattern = LiteralString(value: 'C');
+      final argument = LiteralString('ABCDE');
+      final pattern = LiteralString('C');
       final substitution = LiteralNull();
       final result = ReplaceMatches(
           operand: [argument, pattern, substitution],

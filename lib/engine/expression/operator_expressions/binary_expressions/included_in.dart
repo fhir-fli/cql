@@ -1,4 +1,5 @@
 import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
 
@@ -139,6 +140,67 @@ class IncludedIn extends BinaryExpression {
   @override
   List<Type> getReturnTypes(CqlLibrary library) => [FhirBoolean];
 
+  // TODO(Dokotela): Implement precision
   @override
-  FhirBoolean? execute(Map<String, dynamic> context) {}
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('After expression must have 2 operands');
+    }
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+    return includedIn(left, right, precision);
+  }
+
+  static FhirBoolean? includedIn(
+      dynamic left, dynamic right, CqlDateTimePrecision? precision) {
+    /// For all variations, if left is null, then return null
+    if (left == null) {
+      return null;
+    } else if (right == null) {
+      /// For the interval overload, if either argument is null, the result is null.
+      if (left is IntervalType) {
+        return null;
+      }
+
+      /// For the point overload, this operator is a synonym for the in
+      /// operator, and will return null if the first argument is null, and
+      /// false if the second argument is null.
+
+      else if (left is FhirDate ||
+          left is FhirDateTime ||
+          left is FhirTime ||
+          left is FhirInteger ||
+          left is FhirDecimal ||
+          left is FhirInteger64 ||
+          left is ValidatedQuantity) {
+        return FhirBoolean(false);
+      } else {
+        return null;
+      }
+    } else if (right is IntervalType) {
+      try {
+        final result = FhirBoolean(right.contains(left));
+        return result;
+      } catch (e) {
+        return null;
+      }
+    } else if (right is List) {
+      try {
+        if (left is List) {
+          for (final element in left) {
+            if (!right.contains(element)) {
+              return FhirBoolean(false);
+            }
+          }
+          return FhirBoolean(true);
+        } else {
+          return FhirBoolean(right.contains(left));
+        }
+      } catch (e) {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
 }

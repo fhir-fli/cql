@@ -75,21 +75,15 @@ class LiteralNull extends LiteralType {
 class LiteralBoolean extends LiteralType {
   final bool value;
 
-  LiteralBoolean({required this.value});
+  LiteralBoolean(this.value);
 
   factory LiteralBoolean.fromJson(dynamic json) {
     if (json is bool) {
-      return LiteralBoolean(
-        value: json,
-      );
+      return LiteralBoolean(json);
     } else if (json is Map<String, dynamic>) {
-      return LiteralBoolean(
-        value: json['value'],
-      );
+      return LiteralBoolean(json['value']);
     } else if (json is String && (json == 'true' || json == 'false')) {
-      return LiteralBoolean(
-        value: json == 'true',
-      );
+      return LiteralBoolean(json == 'true');
     }
     throw ArgumentError('LiteralBoolean: Invalid json type');
   }
@@ -120,8 +114,8 @@ class LiteralCode extends LiteralType {
   final String? system;
   final String? version;
 
-  LiteralCode({
-    required this.code,
+  LiteralCode(
+    this.code, {
     this.display,
     this.system,
     this.version,
@@ -129,7 +123,7 @@ class LiteralCode extends LiteralType {
 
   factory LiteralCode.fromJson(Map<String, dynamic> json) {
     return LiteralCode(
-      code: json['code'],
+      json['code'],
       display: json['display'],
       system: json['system'],
       version: json['version'],
@@ -165,14 +159,14 @@ class LiteralConcept extends LiteralType {
   final List<LiteralCode> codes;
   final String? display;
 
-  LiteralConcept({
-    required this.codes,
+  LiteralConcept(
+    this.codes, {
     this.display,
   });
 
   factory LiteralConcept.fromJson(Map<String, dynamic> json) {
     return LiteralConcept(
-      codes: (json['codes'] as List)
+      (json['codes'] as List)
           .map((code) => LiteralCode.fromJson(code))
           .toList(),
       display: json['display'],
@@ -205,8 +199,8 @@ abstract class LiteralVocabularyType extends LiteralType {
   final String? version;
   final String? name;
 
-  LiteralVocabularyType({
-    required this.id,
+  LiteralVocabularyType(
+    this.id, {
     this.version,
     this.name,
   });
@@ -226,8 +220,8 @@ abstract class LiteralVocabularyType extends LiteralType {
 class LiteralValueSet extends LiteralVocabularyType {
   final List<LiteralCodeSystem>? codesystem;
 
-  LiteralValueSet({
-    required super.id,
+  LiteralValueSet(
+    super.id, {
     super.version,
     super.name,
     this.codesystem,
@@ -235,7 +229,7 @@ class LiteralValueSet extends LiteralVocabularyType {
 
   factory LiteralValueSet.fromJson(Map<String, dynamic> json) {
     return LiteralValueSet(
-      id: json['id'],
+      json['id'],
       version: json['version'],
       name: json['name'],
       codesystem: (json['codesystem'] as List?)
@@ -264,15 +258,15 @@ class LiteralValueSet extends LiteralVocabularyType {
 }
 
 class LiteralCodeSystem extends LiteralVocabularyType {
-  LiteralCodeSystem({
-    required super.id,
+  LiteralCodeSystem(
+    super.id, {
     super.version,
     super.name,
   });
 
   factory LiteralCodeSystem.fromJson(Map<String, dynamic> json) {
     return LiteralCodeSystem(
-      id: json['id'],
+      json['id'],
       version: json['version'],
       name: json['name'],
     );
@@ -297,18 +291,14 @@ class LiteralCodeSystem extends LiteralVocabularyType {
 class LiteralDate extends LiteralType {
   final String value;
 
-  LiteralDate({required this.value});
+  LiteralDate(this.value);
 
   factory LiteralDate.fromJson(dynamic json) {
     if (json is String) {
-      return LiteralDate(
-        value: json,
-      );
+      return LiteralDate(json);
     } else if (json is Map<String, dynamic> &&
         DateTime.tryParse(json['value']) != null) {
-      return LiteralDate(
-        value: json['value'],
-      );
+      return LiteralDate(json['value']);
     }
     throw ArgumentError('LiteralDate: Invalid json type');
   }
@@ -318,12 +308,9 @@ class LiteralDate extends LiteralType {
     final date = FhirDate(value);
     return {
       'type': type,
-      if (date.precision.hasYear)
-        'year': LiteralInteger(value: date.year).toJson(),
-      if (date.precision.hasMonth)
-        'month': LiteralInteger(value: date.month).toJson(),
-      if (date.precision.hasDay)
-        'day': LiteralInteger(value: date.day).toJson(),
+      if (date.precision.hasYear) 'year': LiteralInteger(date.year).toJson(),
+      if (date.precision.hasMonth) 'month': LiteralInteger(date.month).toJson(),
+      if (date.precision.hasDay) 'day': LiteralInteger(date.day).toJson(),
     };
   }
 
@@ -343,18 +330,14 @@ class LiteralDate extends LiteralType {
 class LiteralDateTime extends LiteralType {
   final String value;
 
-  LiteralDateTime({required this.value});
+  LiteralDateTime(this.value);
 
   factory LiteralDateTime.fromJson(dynamic json) {
     if (json is String) {
-      return LiteralDateTime(
-        value: json,
-      );
+      return LiteralDateTime(json);
     } else if (json is Map<String, dynamic> &&
         DateTime.tryParse(json['value']) != null) {
-      return LiteralDateTime(
-        value: json['value'],
-      );
+      return LiteralDateTime(json['value']);
     }
     throw ArgumentError('LiteralDateTime: Invalid json type');
   }
@@ -364,19 +347,19 @@ class LiteralDateTime extends LiteralType {
     final dateTime = FhirDateTime(value);
     return {
       'type': type,
-      'year': LiteralInteger(value: dateTime.year).toJson(),
+      'year': LiteralInteger(dateTime.year).toJson(),
       if (dateTime.precision.hasMonth)
-        'month': LiteralInteger(value: dateTime.month).toJson(),
+        'month': LiteralInteger(dateTime.month).toJson(),
       if (dateTime.precision.hasDay)
-        'day': LiteralInteger(value: dateTime.day).toJson(),
+        'day': LiteralInteger(dateTime.day).toJson(),
       if (dateTime.precision.hasHours)
-        'hour': LiteralInteger(value: dateTime.hour).toJson(),
+        'hour': LiteralInteger(dateTime.hour).toJson(),
       if (dateTime.precision.hasMinutes)
-        'minute': LiteralInteger(value: dateTime.minute).toJson(),
+        'minute': LiteralInteger(dateTime.minute).toJson(),
       if (dateTime.precision.hasSeconds)
-        'second': LiteralInteger(value: dateTime.second).toJson(),
+        'second': LiteralInteger(dateTime.second).toJson(),
       if (dateTime.precision.hasMilliseconds)
-        'millisecond': LiteralInteger(value: dateTime.millisecond).toJson(),
+        'millisecond': LiteralInteger(dateTime.millisecond).toJson(),
     };
   }
 
@@ -398,7 +381,7 @@ class LiteralDecimal extends LiteralType {
   final num value;
   final int? sigFigs;
 
-  LiteralDecimal({required this.value, this.sigFigs});
+  LiteralDecimal(this.value, {this.sigFigs});
 
   factory LiteralDecimal.fromString(String stringValue) {
     if (num.tryParse(stringValue) != null) {
@@ -422,31 +405,22 @@ class LiteralDecimal extends LiteralType {
       }
 
       // At this point, all remaining digits are significant
-      return LiteralDecimal(
-          value: num.parse(stringValue), sigFigs: number.length);
+      return LiteralDecimal(num.parse(stringValue), sigFigs: number.length);
     }
     throw 'Incorrectly formed String for type LiteralDecimal: $stringValue';
   }
 
   factory LiteralDecimal.fromJson(dynamic json) {
     if (json is num) {
-      return LiteralDecimal(
-        value: json.toDouble(),
-      );
+      return LiteralDecimal(json.toDouble());
     } else if (json is String && num.tryParse(json) != null) {
-      return LiteralDecimal(
-        value: num.parse(json),
-      );
+      return LiteralDecimal(num.parse(json));
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is num) {
-        return LiteralDecimal(
-          value: (json['value'] as num).toDouble(),
-        );
+        return LiteralDecimal((json['value'] as num).toDouble());
       } else if (json['value'] is String &&
           num.tryParse(json['value']) != null) {
-        return LiteralDecimal(
-          value: num.parse(json['value']),
-        );
+        return LiteralDecimal(num.parse(json['value']));
       }
     }
     throw ArgumentError('LiteralDecimal: Invalid json type');
@@ -477,27 +451,19 @@ class LiteralDecimal extends LiteralType {
 class LiteralInteger extends LiteralType {
   final int value;
 
-  LiteralInteger({required this.value});
+  LiteralInteger(this.value);
 
   factory LiteralInteger.fromJson(dynamic json) {
     if (json is num) {
-      return LiteralInteger(
-        value: json.toInt(),
-      );
+      return LiteralInteger(json.toInt());
     } else if (json is String && int.tryParse(json) != null) {
-      return LiteralInteger(
-        value: int.parse(json),
-      );
+      return LiteralInteger(int.parse(json));
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is num) {
-        return LiteralInteger(
-          value: (json['value'] as num).toInt(),
-        );
+        return LiteralInteger((json['value'] as num).toInt());
       } else if (json['value'] is String &&
           int.tryParse(json['value']) != null) {
-        return LiteralInteger(
-          value: int.parse(json['value']),
-        );
+        return LiteralInteger(int.parse(json['value']));
       }
     }
     throw ArgumentError('LiteralInteger: Invalid json type');
@@ -526,27 +492,19 @@ class LiteralInteger extends LiteralType {
 class LiteralLong extends LiteralType {
   final BigInt value;
 
-  LiteralLong({required this.value});
+  LiteralLong(this.value);
 
   factory LiteralLong.fromJson(dynamic json) {
     if (json is num) {
-      return LiteralLong(
-        value: BigInt.from(json),
-      );
+      return LiteralLong(BigInt.from(json));
     } else if (json is String && BigInt.tryParse(json) != null) {
-      return LiteralLong(
-        value: BigInt.parse(json),
-      );
+      return LiteralLong(BigInt.parse(json));
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is num) {
-        return LiteralLong(
-          value: BigInt.from(json['value'] as num),
-        );
+        return LiteralLong(BigInt.from(json['value'] as num));
       } else if (json['value'] is String &&
           BigInt.tryParse(json['value']) != null) {
-        return LiteralLong(
-          value: BigInt.parse(json['value']),
-        );
+        return LiteralLong(BigInt.parse(json['value']));
       }
     }
     throw ArgumentError('LiteralLong: Invalid json type');
@@ -576,11 +534,11 @@ class LiteralQuantity extends LiteralType {
   final LiteralDecimal value;
   final String? unit;
 
-  LiteralQuantity({required this.value, this.unit});
+  LiteralQuantity(this.value, {this.unit});
 
   factory LiteralQuantity.fromJson(Map<String, dynamic> json) {
     return LiteralQuantity(
-      value: LiteralDecimal.fromJson(json['value']),
+      LiteralDecimal.fromJson(json['value']),
       unit: json['unit'],
     );
   }
@@ -616,12 +574,12 @@ class LiteralRatio extends LiteralType {
   final LiteralQuantity numerator;
   final LiteralQuantity denominator;
 
-  LiteralRatio({required this.numerator, required this.denominator});
+  LiteralRatio(this.numerator, this.denominator);
 
   factory LiteralRatio.fromJson(Map<String, dynamic> json) {
     return LiteralRatio(
-      numerator: LiteralQuantity.fromJson(json['numerator']),
-      denominator: LiteralQuantity.fromJson(json['denominator']),
+      LiteralQuantity.fromJson(json['numerator']),
+      LiteralQuantity.fromJson(json['denominator']),
     );
   }
 
@@ -640,7 +598,7 @@ class LiteralRatio extends LiteralType {
 class LiteralString extends LiteralType {
   final String value;
 
-  LiteralString({required String value})
+  LiteralString(String value)
       : value = value
             .replaceAll(r'\n', '\n')
             .replaceAll(r'\t', '\t')
@@ -652,14 +610,10 @@ class LiteralString extends LiteralType {
 
   factory LiteralString.fromJson(dynamic json) {
     if (json is String) {
-      return LiteralString(
-        value: json,
-      );
+      return LiteralString(json);
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is String) {
-        return LiteralString(
-          value: json['value'],
-        );
+        return LiteralString(json['value']);
       }
     }
     throw ArgumentError('LiteralString: Invalid json type');
@@ -685,7 +639,7 @@ class LiteralString extends LiteralType {
 class LiteralTime extends LiteralType {
   final String value;
 
-  LiteralTime({required String value})
+  LiteralTime(String value)
       : value = value.replaceFirst('@', '').replaceFirst('T', '');
 
   factory LiteralTime.fromOperandList({required List<CqlExpression> operand}) {
@@ -702,18 +656,18 @@ class LiteralTime extends LiteralType {
         }
       }
     }
-    return LiteralTime(value: value);
+    return LiteralTime(value);
   }
 
   factory LiteralTime.fromJson(dynamic json) {
     if (json is String && FhirTime(json).isValid) {
       return LiteralTime(
-        value: json,
+        json,
       );
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is String && FhirTime(json['value']).isValid) {
         return LiteralTime(
-          value: json['value'],
+          json['value'],
         );
       }
     }
@@ -725,14 +679,13 @@ class LiteralTime extends LiteralType {
     final date = FhirTime(value);
     final json = <String, dynamic>{'type': type};
     if (date.hour != null) {
-      json['hour'] = LiteralInteger(value: date.hour!).toJson();
+      json['hour'] = LiteralInteger(date.hour!).toJson();
       if (date.minute != null) {
-        json['minute'] = LiteralInteger(value: date.minute!).toJson();
+        json['minute'] = LiteralInteger(date.minute!).toJson();
         if (date.second != null) {
-          json['second'] = LiteralInteger(value: date.second!).toJson();
+          json['second'] = LiteralInteger(date.second!).toJson();
           if (date.millisecond != null) {
-            json['millisecond'] =
-                LiteralInteger(value: date.millisecond!).toJson();
+            json['millisecond'] = LiteralInteger(date.millisecond!).toJson();
           }
         }
       }

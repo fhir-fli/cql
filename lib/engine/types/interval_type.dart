@@ -93,8 +93,15 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
 
   bool contains(dynamic value) => value == null
       ? false
-      : (GreaterOrEqual.greaterOrEqual(value, getStart())?.value ?? false) &&
-          (LessOrEqual.lessOrEqual(value, getEnd())?.value ?? false);
+      : value is IntervalType
+          ? (GreaterOrEqual.greaterOrEqual(value.getStart(), getStart())
+                      ?.value ??
+                  false) &&
+              (LessOrEqual.lessOrEqual(value.getEnd(), getEnd())?.value ??
+                  false)
+          : (GreaterOrEqual.greaterOrEqual(value, getStart())?.value ??
+                  false) &&
+              (LessOrEqual.lessOrEqual(value, getEnd())?.value ?? false);
 
   @override
   bool equivalent(Object other) => other is IntervalType

@@ -8,6 +8,7 @@ import 'equivalent_test.dart';
 import 'greater_or_equal_test.dart';
 import 'greater_test.dart';
 import 'in_test.dart';
+import 'included_in_test.dart';
 import 'less_or_equal_test.dart';
 import 'less_test.dart';
 import 'matches_test.dart';
@@ -34,6 +35,7 @@ void binaryExpressions() {
   greaterOrEqualTest();
   greaterTest();
   inTest();
+  includedIn();
   lessOrEqualTest();
   lessTest();
   matchesTest();
