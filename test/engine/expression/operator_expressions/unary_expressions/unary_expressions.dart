@@ -5,6 +5,7 @@ import 'floor_test.dart';
 import 'length_test.dart';
 import 'negate_test.dart';
 import 'predecessor_test.dart';
+import 'singleton_from_test.dart';
 import 'size_test.dart';
 import 'start_test.dart';
 import 'successor_test.dart';
@@ -19,6 +20,7 @@ void unaryExpressions() {
   lengthTest();
   negateTest();
   predecessorTest();
+  singletonFromTest();
   sizeTest();
   startTest();
   successorTest();

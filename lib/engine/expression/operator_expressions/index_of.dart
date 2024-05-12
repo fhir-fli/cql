@@ -1,9 +1,30 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../cql.dart';
 
-/// The IndexOf operator returns the 0-based index of the given element in the given source list.
-/// The operator uses equality semantics as defined in the Equal operator to determine the index.
+/// The IndexOf operator returns the 0-based index of the given element in the
+/// given source list.
+/// The operator uses equality semantics as defined in the Equal operator to
+/// determine the index.
 /// If the list is empty or no element is found, the result is -1.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+/// IndexOf(argument List<T>, element T) Integer
+/// Description:
+///
+/// The IndexOf operator returns the 0-based index of the given element in the
+/// given source list using equality semantics.
+///
+/// If the list is empty, or no element is found, the result is -1.
+///
+/// If either argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the IndexOf operator:
+///
+/// define "IndexOfFound": IndexOf({ 1, 3, 5, 7 }, 5) // 2
+/// define "IndexOfNotFound": IndexOf({ 1, 3, 5, 7 }, 4) // -1
+/// define "IndexOfIsNull": IndexOf(null, 4)
 class IndexOf extends OperatorExpression {
   final CqlExpression element;
   final CqlExpression source;
@@ -67,4 +88,26 @@ class IndexOf extends OperatorExpression {
 
   @override
   String get type => 'IndexOf';
+
+  @override
+  List<Type> getReturnTypes(CqlLibrary library) => [FhirInteger];
+
+  @override
+  FhirInteger? execute(Map<String, dynamic> context) {
+    final left = source.execute(context);
+    final right = element.execute(context);
+    return indexOf(left, right);
+  }
+
+  static FhirInteger? indexOf(dynamic left, dynamic right) {
+    if (left == null || right == null) {
+      return null;
+    }
+
+    if (left is List) {
+      return FhirInteger(left.indexOf(right));
+    }
+
+    return null;
+  }
 }

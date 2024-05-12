@@ -127,7 +127,7 @@ class Contains extends BinaryExpression {
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {
     if (operand.length != 2) {
-      throw ArgumentError('After expression must have 2 operands');
+      throw ArgumentError('Contains expression must have 2 operands');
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
@@ -137,9 +137,11 @@ class Contains extends BinaryExpression {
       if (right == null) {
         return null;
       }
-      return FhirBoolean(left.contains(right));
+      final result = FhirBoolean(left.contains(right));
+      return result;
     } else if (left is List) {
-      return FhirBoolean(left.contains(right));
+      final result = FhirBoolean(left.contains(right));
+      return result;
     } else {
       throw ArgumentError('Left operand must be of type Interval or List');
     }

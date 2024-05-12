@@ -3,12 +3,14 @@ import 'before_test.dart';
 import 'contains_test.dart';
 import 'difference_between_test.dart';
 import 'duration_between_test.dart';
+import 'ends_test.dart';
 import 'ends_with_test.dart';
 import 'equivalent_test.dart';
 import 'greater_or_equal_test.dart';
 import 'greater_test.dart';
 import 'in_test.dart';
 import 'included_in_test.dart';
+import 'includes_test.dart';
 import 'less_or_equal_test.dart';
 import 'less_test.dart';
 import 'matches_test.dart';
@@ -21,8 +23,10 @@ import 'overlaps_test.dart';
 import 'same_as_test.dart';
 import 'same_or_after_test.dart';
 import 'same_or_before_test.dart';
+import 'skip_test.dart';
 import 'starts_test.dart';
 import 'starts_with_test.dart';
+import 'take_test.dart';
 
 void binaryExpressions() {
   afterTest();
@@ -30,12 +34,14 @@ void binaryExpressions() {
   containsTest();
   differenceBetweenTest();
   durationBetweenTest();
+  endsTest();
   endsWithTest();
   equivalentTest();
   greaterOrEqualTest();
   greaterTest();
   inTest();
-  includedIn();
+  includedInTest();
+  includesTest();
   lessOrEqualTest();
   lessTest();
   matchesTest();
@@ -48,6 +54,8 @@ void binaryExpressions() {
   sameAsTest();
   sameOrAfterTest();
   sameOrBeforeTest();
+  skipTest();
   startsTest();
   startsWithTest();
+  takeTest();
 }

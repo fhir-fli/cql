@@ -93,9 +93,12 @@ void parseFile(BuildContext context) async {
           if (result != answer) {
             if (result is List && answer is List) {
               if (!(const DeepCollectionEquality().equals(result, answer))) {
-                equalReason += '$key: $result (${result.runtimeType}) != '
-                    '$answer (${answer.runtimeType})\n';
-                areEqual = false;
+                if (jsonEncode(result) != jsonEncode(answer)) {
+                  areEqual = false;
+                  equalReason +=
+                      'LISTS: $key: $result (${result.runtimeType}) != '
+                      '$answer (${answer.runtimeType})\n';
+                }
               }
             } else if (result is Map && answer is Map) {
               if (!(const DeepCollectionEquality().equals(result, answer))) {

@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void includedIn() {
+void includedInTest() {
   group('included in', () {
     test('define "IncludedInIsTrue": Interval[1, 5] included in Interval[0, 5]',
         () {

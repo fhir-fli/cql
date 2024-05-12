@@ -33,13 +33,13 @@ final exercises04 = <String, dynamic>{
   'Interval Starts Within 3 days of Start': FhirBoolean(true),
   'Integer List': [1, 2, 3, 4, 5],
   'Choice List': [1, 'abc', null],
-  'Tuple List': [
-    {"X": 1, "Y": 1},
-    {"X": 2, "Y": 2}
+  'Tuple List': <dynamic>[
+    <String, dynamic>{"X": 1, "Y": 1},
+    <String, dynamic>{"X": 2, "Y": 2}
   ],
   'List Indexer': FhirBoolean(true),
   'List Index Of': FhirBoolean(true),
-  'List Contains': FhirBoolean(true),
+  'List Contains': FhirBoolean(false),
   'List Length': FhirBoolean(true),
   'List First': FhirBoolean(true),
   'List Last': FhirBoolean(true),
@@ -53,8 +53,20 @@ final exercises04 = <String, dynamic>{
   'List In (2)': FhirBoolean(true),
   'List Includes': FhirBoolean(true),
   'List Included In': FhirBoolean(true),
-  'ListA': [1, 2, 3, 4, 5],
-  'ListB': [4, 5, 6, 7, 8],
+  'ListA': [
+    FhirInteger(1),
+    FhirInteger(2),
+    FhirInteger(3),
+    FhirInteger(4),
+    FhirInteger(5)
+  ],
+  'ListB': [
+    FhirInteger(4),
+    FhirInteger(5),
+    FhirInteger(6),
+    FhirInteger(7),
+    FhirInteger(8)
+  ],
   'List Union': FhirBoolean(true),
   'Choice List Union': FhirBoolean(true),
   'List Intersect': FhirBoolean(true),

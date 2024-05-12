@@ -1,3 +1,5 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../../cql.dart';
 
 /// Operator to determine if the first interval ends the second interval.
@@ -5,6 +7,30 @@ import '../../../../cql.dart';
 /// If precision is specified and the point type is Date, DateTime, or Time,
 /// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
+/// Signature:
+///
+/// ends _precision_ (left Interval<T>, right Interval<T>) Boolean
+/// Description:
+///
+/// The ends operator returns true if the first interval ends the second. More
+/// precisely, if the starting point of the first interval is greater than or
+/// equal to the starting point of the second, and the ending point of the first
+/// interval is equal to the ending point of the second.
+///
+/// This operator uses the semantics described in the Start and End operators
+/// to determine interval boundaries.
+///
+/// If precision is specified and the point type is a Date, DateTime, or Time
+/// type, comparisons used in the operation are performed at the specified
+/// precision.
+///
+/// If either argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the ends operator:
+///
+/// define "EndsIsTrue": Interval[0, 5] ends Interval[-1, 5]
+/// define "EndsIsFalse": Interval[-1, 7] ends Interval[0, 7]
+/// define "EndsIsNull": Interval[1, 5] ends null
 class Ends extends BinaryExpression {
   final CqlDateTimePrecision? precision;
 
@@ -78,4 +104,48 @@ class Ends extends BinaryExpression {
 
   @override
   String get type => 'Ends';
+
+  @override
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirBoolean];
+
+  @override
+  FhirBoolean? execute(Map<String, dynamic> context) {
+    if (operand.length != 2) {
+      throw ArgumentError('Ends expression must have 2 operands');
+    }
+    final left = operand[0].execute(context);
+    final right = operand[1].execute(context);
+    return ends(left, right);
+  }
+
+  static FhirBoolean? ends(dynamic left, dynamic right) {
+    if (left == null || right == null) {
+      return null;
+    } else if (left is IntervalType && right is IntervalType) {
+      final leftStart = left.getStart();
+      final rightStart = right.getStart();
+      final leftEnd = left.getEnd();
+      final rightEnd = right.getEnd();
+
+      /// More precisely, if the starting point of the first interval is
+      /// greater than or equal to the starting point of the second, and the
+      /// ending point of the first interval is equal to the ending point of
+      /// the second.
+      if (leftStart == null ||
+          leftStart is! Comparable ||
+          rightStart == null ||
+          rightStart is! Comparable ||
+          leftEnd == null ||
+          rightEnd == null) {
+        return null;
+      } else {
+        return FhirBoolean(
+            leftStart.compareTo(rightStart) >= 0 && leftEnd == rightEnd);
+      }
+    } else {
+      throw ArgumentError(
+          'Ends expression must have 2 operands of type IntervalType. '
+          'Found $left (${left.runtimeType}) and $right (${right.runtimeType}).');
+    }
+  }
 }

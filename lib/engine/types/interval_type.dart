@@ -117,8 +117,6 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
           return null;
         }
       }
-      print('${getStart()} ${other.getStart()}');
-      print('${getEnd()} ${other.getEnd()}');
 
       return And.and(Equal.equal(getStart(), other.getStart()),
               Equal.equal(getEnd(), other.getEnd()))
