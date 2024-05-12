@@ -131,6 +131,10 @@ class Contains extends BinaryExpression {
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return contains(left, right);
+  }
+
+  static FhirBoolean? contains(dynamic left, dynamic right) {
     if (left == null) {
       return FhirBoolean(false);
     } else if (left is IntervalType) {

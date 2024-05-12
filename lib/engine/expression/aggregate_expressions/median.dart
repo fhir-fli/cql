@@ -1,9 +1,31 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../cql.dart';
 
 /// The Median operator returns the median of the elements in source.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, null is returned.
 /// If the source is null, the result is null.
+/// Signature:
+///
+/// Median(argument List<Decimal>) Decimal
+/// Median(argument List<Quantity>) Quantity
+/// Description:
+///
+/// The Median operator returns the median of the elements in source.
+///
+/// If the source contains no non-null elements, null is returned.
+///
+/// If the source is null, the result is null.
+///
+/// The following examples illustrate the behavior of the Median operator:
+///
+/// define "DecimalMedian": Median({ 2.0, 4.0, 8.0, 6.0 }) // 5.0
+/// define "QuantityMedian": Median({ 1.0 'mg', 2.0 'mg', 3.0 'mg' }) // 2.0 'mg'
+/// define "MedianIsNull": Median({ null as Quantity, null as Quantity, null as Quantity })
+/// define "MedianIsAlsoNull": Median(null as List<Decimal>)
 class Median extends AggregateExpression {
   Median({
     required super.source,
@@ -78,4 +100,61 @@ class Median extends AggregateExpression {
 
   @override
   String get type => 'Median';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return median(sourceResult);
+  }
+
+  static dynamic median(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return null;
+    }
+    if (sourceResult is List) {
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+      sourceResult.removeWhere((element) => element == null);
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+
+      // Handle FhirNumber or FhirDecimal
+      if (sourceResult.every((element) => element is FhirNumber)) {
+        var decimals = sourceResult.map((e) => FhirDecimal(e.value!)).toList();
+        decimals.sort((a, b) => a.value!.compareTo(
+            b.value!)); // Ensure FhirDecimal has a comparable implementation
+
+        int middleIndex = decimals.length ~/ 2;
+        if (decimals.length % 2 == 1) {
+          return decimals[
+              middleIndex]; // return the middle element for odd length
+        } else {
+          // Average the two middle elements for even length
+          return FhirDecimal((decimals[middleIndex - 1].value! +
+                  decimals[middleIndex].value!) /
+              2);
+        }
+      }
+      // Handle ValidatedQuantity
+      else if (sourceResult.every((element) => element is ValidatedQuantity)) {
+        sourceResult.sort((a, b) => a.compareTo(
+            b)); // Ensure ValidatedQuantity can be compared based on value
+
+        int middleIndex = sourceResult.length ~/ 2;
+        if (sourceResult.length % 2 == 1) {
+          return sourceResult[
+              middleIndex]; // return the middle element for odd length
+        } else {
+          // Calculate the average of the two middle quantities
+          var sum = sourceResult[middleIndex - 1] + sourceResult[middleIndex];
+          return ValidatedQuantity(
+              value: sum.value / UcumDecimal.fromInt(2), unit: sum.unit);
+        }
+      }
+    }
+    throw ArgumentError(
+        'Invalid source type for Median: ${sourceResult.runtimeType}');
+  }
 }

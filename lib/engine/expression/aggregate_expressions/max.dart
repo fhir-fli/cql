@@ -1,3 +1,6 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../cql.dart';
 
 /// The Max operator returns the maximum element in the source.
@@ -124,4 +127,83 @@ class Max extends AggregateExpression {
 
   @override
   String get type => 'Max';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return max(sourceResult);
+  }
+
+  static dynamic max(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return null;
+    }
+    if (sourceResult is List) {
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+      if (sourceResult.every((element) => element == null)) {
+        return null;
+      }
+      return sourceResult.reduce((value, element) {
+        if (value == null) {
+          return element;
+        }
+        if (element == null) {
+          return value;
+        }
+        if (value is int) {
+          return value > element ? value : element;
+        }
+        if (value is FhirInteger) {
+          return (Greater.greater(value, element)?.value ?? true)
+              ? value
+              : element;
+        }
+        if (value is double) {
+          return value > element ? value : element;
+        }
+        if (value is FhirDecimal) {
+          return (Greater.greater(value, element)?.value ?? true)
+              ? value
+              : element;
+        }
+        if (value is BigInt) {
+          return value > element ? value : element;
+        }
+        if (value is FhirInteger64) {
+          return (Greater.greater(value, element)?.value ?? true)
+              ? value
+              : element;
+        }
+        if (value is DateTime) {
+          return value.isBefore(element) ? value : element;
+        }
+        if (value is FhirDateTime) {
+          return (Greater.greater(value, element)?.value ?? true)
+              ? value
+              : element;
+        }
+        if (value is FhirDate) {
+          return (Greater.greater(value, element)?.value ?? true)
+              ? value
+              : element;
+        }
+        if (value is FhirTime) {
+          return (Greater.greater(value, element)?.value ?? true)
+              ? value
+              : element;
+        }
+        if (value is String) {
+          return value.compareTo(element) > 0 ? value : element;
+        }
+        if (value is ValidatedQuantity) {
+          return (Greater.greater(value, element)?.value ?? true)
+              ? value
+              : element;
+        }
+        throw ArgumentError('Invalid type for Min: ${value.runtimeType}');
+      });
+    }
+  }
 }

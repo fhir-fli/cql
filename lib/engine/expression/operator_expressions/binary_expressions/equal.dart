@@ -150,6 +150,8 @@ class Equal extends BinaryExpression {
     if (operand.length != 2) {
       throw ArgumentError('Equal expression must have 2 operands');
     } else {
+      // print(
+      //     'Equal operand: ${operand[0]} ${operand[0].runtimeType} ${operand[1]} ${operand[1].runtimeType}');
       final left = operand[0].execute(context);
       final right = operand[1].execute(context);
       final result = equal(left, right);
@@ -158,6 +160,8 @@ class Equal extends BinaryExpression {
   }
 
   static FhirBoolean? equal(dynamic left, dynamic right) {
+    // print(
+    //     'left: $left (${left.runtimeType}), right: $right (${right.runtimeType})');
     if (left == null || right == null) {
       return null;
     }
@@ -181,23 +185,65 @@ class Equal extends BinaryExpression {
       case ConceptType _:
         result = left.equal(right);
         break;
-      case int _:
-        result = right is int && left == right;
+      case num _:
+        {
+          if (right is num) {
+            result = left == right;
+          } else if (right is BigInt) {
+            result = left.toDouble() == right.toDouble();
+          } else if (right is FhirNumber) {
+            result = left == right.value;
+          } else if (right is FhirInteger64) {
+            result = BigInt.from(left) == right.value;
+          } else {
+            result = false;
+          }
+        }
         break;
       case BigInt _:
-        result = right is BigInt && left == right;
+        {
+          if (right is num) {
+            result = left == BigInt.from(right);
+          } else if (right is BigInt) {
+            result = left == right;
+          } else if (right is FhirNumber && right.isValid) {
+            result = left == BigInt.from(right.value!);
+          } else if (right is FhirInteger64) {
+            result = left == right.value;
+          } else {
+            result = false;
+          }
+        }
         break;
-      case double _:
-        result = right is double && left == right;
-        break;
-      case FhirInteger _:
-        result = right is FhirInteger && left == right;
+      case FhirNumber _:
+        {
+          if (right is num) {
+            result = left.value == right;
+          } else if (right is BigInt) {
+            result = left.value == right.toDouble();
+          } else if (right is FhirNumber) {
+            result = left == right;
+          } else if (right is FhirInteger64) {
+            result = left.value == right.value?.toDouble();
+          } else {
+            result = false;
+          }
+        }
         break;
       case FhirInteger64 _:
-        result = right is FhirInteger64 && left == right;
-        break;
-      case FhirDecimal _:
-        result = right is FhirDecimal && left == right;
+        {
+          if (right is num) {
+            result = left.value == BigInt.from(right);
+          } else if (right is BigInt) {
+            result = left.value == right;
+          } else if (right is FhirNumber && right.isValid) {
+            result = left.value == BigInt.from(right.value!);
+          } else if (right is FhirInteger64) {
+            result = left == right;
+          } else {
+            result = false;
+          }
+        }
         break;
       case ValidatedQuantity _:
         result = right is ValidatedQuantity && left == right;

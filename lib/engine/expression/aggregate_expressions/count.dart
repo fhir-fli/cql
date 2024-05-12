@@ -1,9 +1,26 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../cql.dart';
 
 /// The Count operator returns the number of non-null elements in the source.
-/// If a path is specified, the count returns the number of elements that have a value for the property specified by the path.
+/// If a path is specified, the count returns the number of elements that have
+/// a value for the property specified by the path.
 /// If the list is empty, the result is 0.
 /// If the list is null, the result is 0.
+/// Signature:
+///
+/// Count(argument List<T>) Integer
+/// Description:
+///
+/// The Count operator returns the number of non-null elements in the source.
+/// If the list contains no non-null elements, the result is 0. If the list is
+/// null, the result is 0.
+///
+/// The following examples illustrate the behavior of the Count operator:
+///
+/// define "Count5": Count({ 1, 2, 3, 4, 5 }) // 5
+/// define "Count0": Count({ null, null, null }) // 0
+/// define "CountNull0": Count(null as List<Decimal>) // 0
 class Count extends AggregateExpression {
   Count({
     required super.source,
@@ -77,4 +94,24 @@ class Count extends AggregateExpression {
 
   @override
   String get type => 'Count';
+
+  @override
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirInteger];
+
+  @override
+  FhirInteger execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return count(sourceResult);
+  }
+
+  static FhirInteger count(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return FhirInteger(0);
+    } else if (sourceResult is List) {
+      return FhirInteger(sourceResult.where((e) => e != null).length);
+    } else {
+      throw ArgumentError('Count operator can only be applied to a List, '
+          'but found ${sourceResult.runtimeType}');
+    }
+  }
 }

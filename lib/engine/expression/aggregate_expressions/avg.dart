@@ -1,9 +1,30 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../cql.dart';
 
 /// The Avg operator returns the average of the non-null elements in source.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, null is returned.
 /// If the source is null, the result is null.
+/// Signature:
+///
+/// Avg(argument List<Decimal>) Decimal
+/// Avg(argument List<Quantity>) Quantity
+/// Description:
+///
+/// The Avg operator returns the average of the non-null elements in the source.
+///
+/// If the source contains no non-null elements, null is returned.
+///
+/// If the source is null, the result is null.
+///
+/// The following examples illustrate the behavior of the Avg operator:
+///
+/// define "DecimalAvg": Avg({ 5.5, 4.7, 4.8 }) // 5.0
+/// define "QuantityAvg": Avg({ 5.5 'cm', 4.7 'cm', 4.8 'cm' }) // 5.0 'cm'
+/// define "AvgIsNull": Avg(null as List<Decimal>)
 class Avg extends AggregateExpression {
   Avg({
     required super.source,
@@ -77,4 +98,54 @@ class Avg extends AggregateExpression {
 
   @override
   String get type => 'Avg';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return avg(sourceResult);
+  }
+
+  static dynamic avg(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return null;
+    }
+    if (sourceResult is List) {
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+      sourceResult.removeWhere((element) => element == null);
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+      if (sourceResult.every((element) => element is FhirNumber)) {
+        sourceResult = sourceResult.map((e) => FhirDecimal(e.value!)).toList();
+        final sum = sourceResult.fold(FhirDecimal(0),
+            (FhirDecimal previousValue, dynamic element) {
+          return FhirDecimal(
+              previousValue.value! + (element as FhirDecimal).value!);
+        });
+        return sum.value == null
+            ? null
+            : FhirDecimal(sum.value! / sourceResult.length);
+      } else if (sourceResult
+          .every((element) => element is ValidatedQuantity)) {
+        ValidatedQuantity? sum;
+        for (final quantity in sourceResult) {
+          if (sum == null) {
+            sum = quantity;
+            continue;
+          } else {
+            sum = sum + quantity;
+          }
+        }
+        return sum == null
+            ? null
+            : ValidatedQuantity(
+                value: (sum.value / UcumDecimal.fromInt(sourceResult.length)),
+                unit: sum.unit);
+      }
+    }
+    throw ArgumentError(
+        'Invalid source type for Avg: ${sourceResult.runtimeType}');
+  }
 }

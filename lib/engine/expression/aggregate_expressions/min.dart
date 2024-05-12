@@ -1,3 +1,6 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../cql.dart';
 
 /// The Min operator returns the minimum element in the source.
@@ -108,4 +111,69 @@ class Min extends AggregateExpression {
 
   @override
   String get type => 'Min';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return min(sourceResult);
+  }
+
+  static dynamic min(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return null;
+    }
+    if (sourceResult is List) {
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+      if (sourceResult.every((element) => element == null)) {
+        return null;
+      }
+      return sourceResult.reduce((value, element) {
+        if (value == null) {
+          return element;
+        }
+        if (element == null) {
+          return value;
+        }
+        if (value is int) {
+          return value < element ? value : element;
+        }
+        if (value is FhirInteger) {
+          return (Less.less(value, element)?.value ?? true) ? value : element;
+        }
+        if (value is double) {
+          return value < element ? value : element;
+        }
+        if (value is FhirDecimal) {
+          return (Less.less(value, element)?.value ?? true) ? value : element;
+        }
+        if (value is BigInt) {
+          return value < element ? value : element;
+        }
+        if (value is FhirInteger64) {
+          return (Less.less(value, element)?.value ?? true) ? value : element;
+        }
+        if (value is DateTime) {
+          return value.isBefore(element) ? value : element;
+        }
+        if (value is FhirDateTime) {
+          return (Less.less(value, element)?.value ?? true) ? value : element;
+        }
+        if (value is FhirDate) {
+          return (Less.less(value, element)?.value ?? true) ? value : element;
+        }
+        if (value is FhirTime) {
+          return (Less.less(value, element)?.value ?? true) ? value : element;
+        }
+        if (value is String) {
+          return value.compareTo(element) < 0 ? value : element;
+        }
+        if (value is ValidatedQuantity) {
+          return (Less.less(value, element)?.value ?? true) ? value : element;
+        }
+        throw ArgumentError('Invalid type for Min: ${value.runtimeType}');
+      });
+    }
+  }
 }

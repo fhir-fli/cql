@@ -1,9 +1,27 @@
 import '../../../cql.dart';
 
 /// The Mode operator returns the statistical mode of the elements in source.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, null is returned.
 /// If the source is null, the result is null.
+/// Signature:
+///
+/// Mode(argument List<T>) T
+/// Description:
+///
+/// The Mode operator returns the statistical mode of the elements in source.
+///
+/// If the source contains no non-null elements, null is returned.
+///
+/// If the source is null, the result is null.
+///
+/// The following examples illustrate the behavior of the Mode operator:
+///
+/// define "DecimalMode": Mode({ 2.0, 2.0, 8.0, 6.0, 8.0, 8.0 }) // 8.0
+/// define "QuantityMode": Mode({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 2.0 'mg' }) // 2.0 'mg'
+/// define "ModeIsNull": Mode({ null as Quantity, null as Quantity, null as Quantity })
+/// define "ModeIsAlsoNull": Mode(null as List<Decimal>)
 class Mode extends AggregateExpression {
   Mode({
     required super.source,
@@ -78,4 +96,48 @@ class Mode extends AggregateExpression {
 
   @override
   String get type => 'Mode';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return mode(sourceResult);
+  }
+
+  // TODO(Dokotela): what if there is more than 1 mode?
+  static dynamic mode(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return null;
+    }
+    if (sourceResult is List) {
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+      sourceResult.removeWhere((element) => element == null);
+      if (sourceResult.isEmpty) {
+        return null;
+      }
+
+      Map<dynamic, int> frequencyMap = {};
+      for (var element in sourceResult) {
+        if (!frequencyMap.containsKey(element)) {
+          frequencyMap[element] = 1;
+        } else {
+          frequencyMap[element] = frequencyMap[element]! + 1;
+        }
+      }
+
+      // Find the highest frequency
+      int maxFreq = frequencyMap.values.fold(0, (max, e) => e > max ? e : max);
+
+      // Collect all items that have the highest frequency
+      var modes = frequencyMap.entries
+          .where((entry) => entry.value == maxFreq)
+          .map((entry) => entry.key)
+          .toList();
+
+      return modes.first;
+    }
+    throw ArgumentError(
+        'Invalid source type for Mode: ${sourceResult.runtimeType}');
+  }
 }

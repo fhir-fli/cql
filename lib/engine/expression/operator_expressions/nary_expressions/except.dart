@@ -128,7 +128,7 @@ class Except extends NaryExpression {
       if (left == null || right == null) {
         return null;
       } else if (left is IntervalType && right is IntervalType) {
-        // return left.except(right);
+        return left.except(right);
       }
     } else if (left is List || right is List) {
       if (left == null) {

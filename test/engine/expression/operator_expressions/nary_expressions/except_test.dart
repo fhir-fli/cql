@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void exceptTest() {
   group('except', () {
     test(
         'define "Except": Interval[0, 5] except Interval[3, 7] // Interval[0, 2]',

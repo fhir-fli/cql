@@ -176,6 +176,51 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
         low: maxStart, lowClosed: true, high: minEnd, highClosed: true);
   }
 
+  IntervalType? except(IntervalType right) {
+    // Get start and end points for both intervals
+    var leftStart = getStart();
+    var leftEnd = getEnd();
+    var rightStart = right.getStart();
+    var rightEnd = right.getEnd();
+
+    // Ensure no start or end point is null
+    if (leftStart == null ||
+        leftEnd == null ||
+        rightStart == null ||
+        rightEnd == null) {
+      return null;
+    }
+
+    // Determine if intervals overlap
+    bool overlaps = Overlaps.overlaps(this, right)?.value ?? false;
+    if (!overlaps) {
+      return this;
+    }
+    final doesContain = contains(right);
+    if (doesContain) {
+      return null;
+    }
+
+    dynamic start;
+    dynamic end;
+    if ((Less.less(leftStart, rightStart)?.value ?? false)) {
+      start = leftStart;
+      end = Predecessor.predecessor(rightStart);
+    } else if (Greater.greater(leftEnd, rightEnd)?.value ?? false) {
+      start = Successor.successor(rightEnd);
+      end = leftEnd;
+    }
+
+    // Ensure the intersection is valid (start is before end)
+    if (!(Greater.greater(end, start)?.value ?? false)) {
+      return null;
+    }
+
+    // Return the new interval representing the intersection
+    return IntervalType(
+        low: start, lowClosed: true, high: end, highClosed: true);
+  }
+
   @override
   bool operator ==(Object other) {
     if (other is IntervalType) {
