@@ -1,9 +1,35 @@
+import 'dart:math' as math;
+
+import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../cql.dart';
 
-/// The StdDev operator returns the statistical standard deviation of the elements in source.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// The StdDev operator returns the statistical standard deviation of the
+/// elements in source.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, null is returned.
 /// If the list is null, the result is null.
+/// Signature:
+///
+/// StdDev(argument List<Decimal>) Decimal
+/// StdDev(argument List<Quantity>) Quantity
+/// Description:
+///
+/// The StdDev operator returns the statistical standard deviation of the
+/// elements in source.
+///
+/// If the source contains no non-null elements, null is returned.
+///
+/// If the list is null, the result is null.
+///
+/// The following examples illustrate the behavior of the StdDev operator:
+///
+/// define "DecimalStdDev": StdDev({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 1.58113883
+/// define "QuantityStdDev": StdDev({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 1.58113883 'mg'
+/// define "StdDevIsNull": StdDev({ null as Quantity, null as Quantity, null as Quantity })
+/// define "StdDevIsAlsoNull": StdDev(null as List<Decimal>)
 class StdDev extends AggregateExpression {
   StdDev({
     required super.source,
@@ -77,4 +103,39 @@ class StdDev extends AggregateExpression {
 
   @override
   String get type => 'StdDev';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return stddev(sourceResult);
+  }
+
+  static dynamic stddev(dynamic sourceResult) {
+    var varianceResult = Variance.variance(sourceResult);
+    if (varianceResult == null) {
+      return null;
+    }
+
+    /// For FhirDecimal
+    if (varianceResult is FhirDecimal) {
+      double stdDevValue = math.sqrt(varianceResult.value!);
+      return FhirDecimal(stdDevValue);
+    }
+
+    /// For ValidatedQuantity
+    else if (varianceResult is ValidatedQuantity) {
+      /// Assuming UcumDecimal supports a sqrt method or using math.sqrt if
+      /// UcumDecimal is a wrapper around a primitive type.
+      final String varianceString = varianceResult.value.asUcumDecimal();
+      final double? varianceDouble = double.tryParse(varianceString);
+      if (varianceDouble != null) {
+        UcumDecimal stdDevValue =
+            UcumDecimal.fromDouble(math.sqrt(varianceDouble));
+        return ValidatedQuantity(value: stdDevValue, unit: varianceResult.unit);
+      }
+    }
+
+    throw ArgumentError(
+        'Unsupported type for Standard Deviation: ${varianceResult.runtimeType}');
+  }
 }

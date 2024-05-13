@@ -1,9 +1,31 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../cql.dart';
 
-/// The AllTrue operator returns true if all the non-null elements in source are true.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// The AllTrue operator returns true if all the non-null elements in source
+/// are true.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, true is returned.
 /// If the source is null, the result is true.
+/// Signature:
+///
+/// AllTrue(argument List<Boolean>) Boolean
+/// Description:
+///
+/// The AllTrue operator returns true if all the non-null elements in the source
+/// are true.
+///
+/// If the source contains no non-null elements, true is returned.
+///
+/// If the source is null, the result is true.
+///
+/// The following examples illustrate the behavior of the AllTrue operator:
+///
+/// define "AllTrueIsTrue": AllTrue({ true, null, true })
+/// define "AllTrueIsAlsoTrue": AllTrue({ null, null, null })
+/// define "AllTrueIsTrueWhenNull": AllTrue(null)
+/// define "AllTrueIsFalse": AllTrue({ true, false, null })
 class AllTrue extends AggregateExpression {
   AllTrue({
     required super.source,
@@ -77,4 +99,29 @@ class AllTrue extends AggregateExpression {
 
   @override
   String get type => 'AllTrue';
+
+  @override
+  List<Type>? getReturnTypes(CqlLibrary library) => [FhirBoolean];
+
+  @override
+  FhirBoolean execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return allTrue(sourceResult);
+  }
+
+  FhirBoolean allTrue(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return FhirBoolean(true);
+    } else if (sourceResult is List) {
+      for (final element in sourceResult) {
+        if (element != null &&
+            ((element is FhirBoolean && !(element.value ?? true)) ||
+                (element is bool && !element))) {
+          return FhirBoolean(false);
+        }
+      }
+      return FhirBoolean(true);
+    }
+    throw ArgumentError('AllTrue operator failed to execute');
+  }
 }

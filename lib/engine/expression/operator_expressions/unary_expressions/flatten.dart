@@ -2,6 +2,19 @@ import '../../../../cql.dart';
 
 /// The Flatten operator flattens a list of lists into a single list.
 /// If the argument is null, the result is null.
+/// Signature:
+///
+/// flatten(argument List<List<T>>) List<T>
+/// Description:
+///
+/// The flatten operator flattens a list of lists into a single list.
+///
+/// If the argument is null, the result is null.
+///
+/// The following examples illustrate the behavior of the flatten operator:
+///
+/// define "Flatten": flatten { { 1, 2 }, { 3, 4, 5 } } // { 1, 2, 3, 4, 5 }
+/// define "FlattenIsNull": flatten null
 class Flatten extends UnaryExpression {
   Flatten({
     required super.operand,
@@ -57,5 +70,24 @@ class Flatten extends UnaryExpression {
     }
 
     return data;
+  }
+
+  @override
+  List<Type>? getReturnTypes(CqlLibrary library) => [List];
+
+  @override
+  List? execute(Map<String, dynamic> context) {
+    final operandValue = operand.execute(context);
+    return flatten(operandValue);
+  }
+
+  List? flatten(dynamic operandValue) {
+    if (operandValue == null) {
+      return null;
+    } else if (operandValue is List &&
+        operandValue.every((element) => element is List)) {
+      return operandValue.expand((element) => element).toList();
+    }
+    throw ArgumentError('Invalid argument for Flatten operator');
   }
 }

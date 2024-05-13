@@ -1,3 +1,6 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../cql.dart';
 
 /// The PopulationVariance operator returns the statistical population variance of the elements in source.
@@ -78,4 +81,54 @@ class PopulationVariance extends AggregateExpression {
 
   @override
   String get type => 'PopulationVariance';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return populationVariance(sourceResult);
+  }
+
+  static dynamic populationVariance(dynamic sourceResult) {
+    if (sourceResult == null || sourceResult.isEmpty) {
+      return null;
+    }
+    sourceResult.removeWhere((element) => element == null);
+    if (sourceResult.isEmpty) {
+      return null;
+    }
+
+    var mean = Avg.avg(sourceResult);
+
+    if (mean is FhirDecimal) {
+      FhirDecimal sumOfSquaredDiffs = FhirDecimal(0.0);
+      for (final val in sourceResult as List<dynamic>) {
+        var diff = FhirDecimal(val.value! - mean.value!);
+        var squaredDiff = FhirDecimal(diff.value! * diff.value!);
+        sumOfSquaredDiffs =
+            FhirDecimal(sumOfSquaredDiffs.value! + squaredDiff.value!);
+      }
+      var variance =
+          sumOfSquaredDiffs.value! / sourceResult.length; // N instead of N-1
+      return FhirDecimal(variance);
+    } else if (mean is ValidatedQuantity) {
+      UcumDecimal? sumOfSquaredValues;
+      for (final val in sourceResult as List<dynamic>) {
+        ValidatedQuantity? diffValue = val - mean;
+        if (diffValue != null) {
+          UcumDecimal squaredDiffValue = diffValue.value * diffValue.value;
+          sumOfSquaredValues = sumOfSquaredValues == null
+              ? squaredDiffValue
+              : sumOfSquaredValues.add(squaredDiffValue);
+        }
+      }
+      if (sumOfSquaredValues != null) {
+        var varianceValue = sumOfSquaredValues /
+            UcumDecimal.fromInt(sourceResult.length); // N instead of N-1
+        return ValidatedQuantity(value: varianceValue, unit: mean.unit);
+      }
+    }
+
+    throw ArgumentError(
+        'Unsupported type for Population Variance: ${sourceResult.runtimeType}');
+  }
 }

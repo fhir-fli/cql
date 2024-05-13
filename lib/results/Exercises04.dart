@@ -79,7 +79,7 @@ final exercises04 = <String, dynamic>{
   'Aggregate Median': FhirBoolean(true),
   'Aggregate Mode': FhirBoolean(true),
   'Aggregate Variance': FhirBoolean(false),
-  'Aggregate StdDev': FhirBoolean(true),
+  'Aggregate StdDev': FhirBoolean(false),
   'Aggregate Population Variance': FhirBoolean(true),
   'Aggregate Population StdDev': FhirBoolean(true),
   'Aggregate All True': FhirBoolean(true),

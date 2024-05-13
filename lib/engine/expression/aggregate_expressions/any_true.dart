@@ -1,7 +1,10 @@
+import 'package:fhir_primitives/fhir_primitives.dart';
+
 import '../../../cql.dart';
 
 /// The AnyTrue operator returns true if any non-null element in source is true.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, false is returned.
 /// If the source is null, the result is false.
 class AnyTrue extends AggregateExpression {
@@ -77,4 +80,25 @@ class AnyTrue extends AggregateExpression {
 
   @override
   String get type => 'AnyTrue';
+
+  @override
+  FhirBoolean execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return anyTrue(sourceResult);
+  }
+
+  FhirBoolean anyTrue(dynamic sourceResult) {
+    if (sourceResult == null) {
+      return FhirBoolean(false);
+    } else if (sourceResult is List) {
+      for (final element in sourceResult) {
+        if ((element is FhirBoolean && (element.value ?? true)) ||
+            (element is bool && element == true)) {
+          return FhirBoolean(true);
+        }
+      }
+      return FhirBoolean(false);
+    }
+    throw ArgumentError('AllTrue operator failed to execute');
+  }
 }

@@ -1,9 +1,36 @@
+import 'dart:math' as math;
+
+import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:ucum/ucum.dart';
+
 import '../../../cql.dart';
 
-/// The PopulationStdDev operator returns the statistical standard deviation of the elements in source.
-/// If a path is specified, elements with no value for the property specified by the path are ignored.
+/// The PopulationStdDev operator returns the statistical standard deviation of
+/// the elements in source.
+/// If a path is specified, elements with no value for the property specified
+/// by the path are ignored.
 /// If the source contains no non-null elements, null is returned.
 /// If the source is null, the result is null.
+/// Signature:
+///
+/// PopulationStdDev(argument List<Decimal>) Decimal
+/// PopulationStdDev(argument List<Quantity>) Quantity
+/// Description:
+///
+/// The PopulationStdDev operator returns the statistical standard deviation of
+/// the elements in source.
+///
+/// If the source contains no non-null elements, null is returned.
+///
+/// If the source is null, the result is null.
+///
+/// The following examples illustrate the behavior of the PopulationStdDev
+/// operator:
+///
+/// define "DecimalPopulationStdDev": PopulationStdDev({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 1.4142135623730951
+/// define "QuantityPopulationStdDev": PopulationStdDev({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 1.4142135623730951 'mg'
+/// define "PopulationStdDevIsNull": PopulationStdDev({ null as Quantity, null as Quantity, null as Quantity })
+/// define "PopulationStdDevIsAlsoNull": PopulationStdDev(null as List<Decimal>)
 class PopulationStdDev extends AggregateExpression {
   PopulationStdDev({
     required super.source,
@@ -78,4 +105,34 @@ class PopulationStdDev extends AggregateExpression {
 
   @override
   String get type => 'PopulationStdDev';
+
+  @override
+  dynamic execute(Map<String, dynamic> context) {
+    final sourceResult = source.execute(context);
+    return populationStdDev(sourceResult);
+  }
+
+  static dynamic populationStdDev(dynamic sourceResult) {
+    var popVarianceResult = PopulationVariance.populationVariance(sourceResult);
+    if (popVarianceResult == null) {
+      return null;
+    }
+
+    if (popVarianceResult is FhirDecimal) {
+      double stdDevValue = math.sqrt(popVarianceResult.value!);
+      return FhirDecimal(stdDevValue);
+    } else if (popVarianceResult is ValidatedQuantity) {
+      final String varianceString = popVarianceResult.value.asUcumDecimal();
+      final double? varianceDouble = double.tryParse(varianceString);
+      if (varianceDouble != null) {
+        UcumDecimal stdDevValue =
+            UcumDecimal.fromDouble(math.sqrt(varianceDouble));
+        return ValidatedQuantity(
+            value: stdDevValue, unit: popVarianceResult.unit);
+      }
+    }
+
+    throw ArgumentError(
+        'Unsupported type for Population Standard Deviation: ${popVarianceResult.runtimeType}');
+  }
 }

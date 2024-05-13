@@ -2,15 +2,34 @@ import '../../../cql.dart';
 
 /// Operator to split a string into a list of strings using a separator.
 /// If the stringToSplit argument is null, the result is null.
-/// If the stringToSplit argument does not contain any appearances of the separator,
-/// the result is a list of strings containing one element that is the value of the stringToSplit argument.
+/// If the stringToSplit argument does not contain any appearances of the
+/// separator, the result is a list of strings containing one element that is
+/// the value of the stringToSplit argument.
+/// Signature:
+///
+/// Split(stringToSplit String, separator String) List<String>
+/// Description:
+///
+/// The Split operator splits a string into a list of strings using a separator.
+///
+/// If the stringToSplit argument is null, the result is null.
+///
+/// If the stringToSplit argument does not contain any appearances of the
+/// separator, the result is a list of strings containing one element that is
+/// the value of the stringToSplit argument.
+///
+/// The following examples illustrate the behavior of the Split operator:
+///
+/// define "SplitFound": Split('A B C', ' ') // { 'A', 'B', 'C' }
+/// define "SplitNotFound": Split('A B C', ',') // { 'A B C' }
+/// define "SplitIsNull": Split(null, ' ') // null
 class Split extends OperatorExpression {
-  final CqlExpression? separator;
+  final CqlExpression separator;
   final CqlExpression stringToSplit;
 
   Split({
     required this.stringToSplit,
-    this.separator,
+    required this.separator,
     super.annotation,
     super.localId,
     super.locator,
@@ -20,9 +39,7 @@ class Split extends OperatorExpression {
 
   factory Split.fromJson(Map<String, dynamic> json) => Split(
         stringToSplit: CqlExpression.fromJson(json['stringToSplit']),
-        separator: json['separator'] != null
-            ? CqlExpression.fromJson(json['separator'])
-            : null,
+        separator: CqlExpression.fromJson(json['separator']),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))
@@ -41,11 +58,8 @@ class Split extends OperatorExpression {
     final data = <String, dynamic>{
       'type': type,
       'stringToSplit': stringToSplit.toJson(),
+      'separator': separator.toJson(),
     };
-
-    if (separator != null) {
-      data['separator'] = separator!.toJson();
-    }
 
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
@@ -72,4 +86,25 @@ class Split extends OperatorExpression {
 
   @override
   String get type => 'Split';
+
+  @override
+  List<Type>? getReturnTypes(CqlLibrary library) => [List];
+
+  @override
+  List<String>? execute(Map<String, dynamic> context) {
+    final stringToSplitValue = stringToSplit.execute(context);
+    final separatorValue = separator.execute(context);
+    return split(stringToSplitValue, separatorValue);
+  }
+
+  List<String>? split(dynamic sourceValue, dynamic separatorValue) {
+    if (sourceValue == null) {
+      return null;
+    }
+    if (sourceValue is String &&
+        (separatorValue is String || separatorValue == null)) {
+      return sourceValue.split(separatorValue ?? '');
+    }
+    throw ArgumentError('Invalid argument for Combine operator');
+  }
 }
