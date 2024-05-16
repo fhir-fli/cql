@@ -128,7 +128,10 @@ class Meets extends BinaryExpression {
 
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return meets(left, right);
+  }
 
+  static FhirBoolean? meets(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
     } else if (left is IntervalType && right is IntervalType) {

@@ -188,33 +188,39 @@ class Add extends BinaryExpression {
             : null;
       case FhirDateTimeBase _:
         {
-          num? value = double.tryParse(right.value.asUcumDecimal());
-          if (value != null) {
-            value = value == value.toInt() ? value.toInt() : null;
-          }
+          if (right is ValidatedQuantity) {
+            num? value = double.tryParse(right.value.asUcumDecimal());
+            if (value != null) {
+              value = value == value.toInt() ? value.toInt() : null;
+            }
 
-          return right is ValidatedQuantity &&
-                  left.isValid &&
-                  right.isValid() &&
-                  right.isDuration &&
-                  value != null
-              ? left +
-                  ExtendedDuration(
-                    years: isYears(right.unit.toLowerCase()) ? value as int : 0,
-                    months:
-                        isMonths(right.unit.toLowerCase()) ? value as int : 0,
-                    weeks: isWeeks(right.unit.toLowerCase()) ? value as int : 0,
-                    days: isDays(right.unit.toLowerCase()) ? value as int : 0,
-                    hours: isHours(right.unit.toLowerCase()) ? value as int : 0,
-                    minutes:
-                        isMinutes(right.unit.toLowerCase()) ? value as int : 0,
-                    seconds:
-                        isSeconds(right.unit.toLowerCase()) ? value as int : 0,
-                    milliseconds: isMilliseconds(right.unit.toLowerCase())
-                        ? value as int
-                        : 0,
-                  )
-              : null;
+            return left.isValid &&
+                    right.isValid() &&
+                    right.isDuration &&
+                    value != null
+                ? left +
+                    ExtendedDuration(
+                      years:
+                          isYears(right.unit.toLowerCase()) ? value as int : 0,
+                      months:
+                          isMonths(right.unit.toLowerCase()) ? value as int : 0,
+                      weeks:
+                          isWeeks(right.unit.toLowerCase()) ? value as int : 0,
+                      days: isDays(right.unit.toLowerCase()) ? value as int : 0,
+                      hours:
+                          isHours(right.unit.toLowerCase()) ? value as int : 0,
+                      minutes: isMinutes(right.unit.toLowerCase())
+                          ? value as int
+                          : 0,
+                      seconds: isSeconds(right.unit.toLowerCase())
+                          ? value as int
+                          : 0,
+                      milliseconds: isMilliseconds(right.unit.toLowerCase())
+                          ? value as int
+                          : 0,
+                    )
+                : null;
+          }
         }
       default:
         return null;

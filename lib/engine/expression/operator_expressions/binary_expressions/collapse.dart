@@ -121,4 +121,77 @@ class Collapse extends BinaryExpression {
 
   @override
   String get type => 'Collapse';
+
+  @override
+  List<Type> getReturnTypes(CqlLibrary library) => [List<IntervalType>];
+
+  @override
+  List<IntervalType>? execute(Map<String, dynamic> context) {
+    if (operand.isEmpty) {
+      return [];
+    }
+
+    final source = operand[0].execute(context);
+    final per = operand.length > 1 ? operand[1].execute(context) : null;
+    return collapse(source, per);
+  }
+
+  // TODO(Dokotela): with precision
+  List<IntervalType>? collapse(dynamic source, dynamic per) {
+    if (source == null) {
+      return null;
+    }
+
+    if (source.isEmpty) {
+      return [];
+    }
+
+    if (source is List && source.every((element) => element is IntervalType)) {
+      if (source.length == 1) {
+        return source as List<IntervalType>;
+      }
+
+      // Sort the source by their start points
+      source.sort((a, b) => a.compareTo(b));
+
+      final List<IntervalType> collapsedSource = [];
+      IntervalType? currentInterval = source.first;
+
+      for (var i = 1; i < source.length; i++) {
+        final nextInterval = source[i];
+
+        // Check if current and next source overlap or meet
+        final overlaps =
+            Overlaps.overlaps(currentInterval, nextInterval)?.value ?? false;
+        final meets =
+            Meets.meets(currentInterval, nextInterval)?.value ?? false;
+
+        if (overlaps || meets) {
+          // Merge the source
+          final newEnd =
+              (Greater.greater(currentInterval?.getEnd(), nextInterval.getEnd())
+                          ?.value ??
+                      false)
+                  ? currentInterval?.getEnd()
+                  : nextInterval.getEnd();
+          currentInterval = IntervalType(
+            low: currentInterval?.low,
+            lowClosed: currentInterval?.lowClosed,
+            high: newEnd,
+            highClosed: nextInterval.highClosed,
+          );
+        } else if (currentInterval != null) {
+          collapsedSource.add(currentInterval);
+          currentInterval = nextInterval;
+        }
+      }
+
+      if (currentInterval != null) {
+        collapsedSource.add(currentInterval);
+      }
+
+      return collapsedSource;
+    }
+    throw ArgumentError('Collapse expression must have a list of intervals');
+  }
 }
