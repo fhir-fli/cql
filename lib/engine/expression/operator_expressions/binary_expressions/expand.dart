@@ -189,7 +189,7 @@ class Expand extends BinaryExpression {
     }
 
     if (source is IntervalType) {
-      return expandInterval(source, per);
+      return expandSingleInterval(source, per);
     } else if (source is List &&
         source.every((element) => element is IntervalType)) {
       return expandList(source, per);
@@ -197,6 +197,24 @@ class Expand extends BinaryExpression {
       throw ArgumentError(
           'Expand expression must have a single interval or a list of intervals');
     }
+  }
+
+  List<dynamic> expandSingleInterval(IntervalType interval, dynamic per) {
+    final List<dynamic> expandedInterval = [];
+    dynamic start = interval.getStart();
+    dynamic end = interval.getEnd();
+    per ??= perUnit(start);
+
+    if (start == null || end == null) {
+      return expandedInterval;
+    }
+
+    while ((LessOrEqual.lessOrEqual(start, end)?.value ?? false)) {
+      expandedInterval.add(start);
+      start = Add.add(start, per);
+    }
+
+    return expandedInterval;
   }
 
   List<IntervalType> expandList(List<dynamic> intervals, dynamic per) {
@@ -218,15 +236,13 @@ class Expand extends BinaryExpression {
     }
 
     while ((LessOrEqual.lessOrEqual(start, end)?.value ?? false)) {
-      final nextStart = start;
-
       expandedIntervals.add(IntervalType(
-        low: nextStart,
+        low: start,
         lowClosed: true,
-        high: nextStart,
+        high: start,
         highClosed: true,
       ));
-      start = Add.add(nextStart, per);
+      start = Add.add(start, per);
     }
 
     return expandedIntervals;

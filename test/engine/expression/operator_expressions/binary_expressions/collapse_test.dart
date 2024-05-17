@@ -2,7 +2,7 @@ import 'package:cql/cql.dart';
 import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main() {
+void collapseTest() {
   group('collapse', () {
     test(
         'define "Collapse1To9": collapse { Interval[1, 4], Interval[4, 8], Interval[7, 9] } // { Interval[1, 9] }',
