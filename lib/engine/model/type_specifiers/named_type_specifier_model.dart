@@ -18,4 +18,26 @@ class NamedTypeSpecifierModel extends TypeSpecifierModel {
     this.namespace,
     required this.name,
   });
+
+  NamedTypeSpecifierModel.fromJson(Map<String, dynamic> map)
+      : modelName = map['modelName'],
+        namespace =
+            map['namespace'] != null ? QName.fromJson(map['namespace']) : null,
+        name = map['name'],
+        super(type: 'NamedTypeSpecifier');
+
+  @override
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{
+      'type': 'NamedTypeSpecifier',
+      'name': name,
+    };
+    if (namespace != null) {
+      map['namespace'] = namespace!.toJson();
+    }
+    if (modelName != null) {
+      map['modelName'] = modelName;
+    }
+    return map;
+  }
 }

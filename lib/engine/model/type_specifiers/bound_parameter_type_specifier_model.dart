@@ -19,4 +19,25 @@ class BoundParameterTypeSpecifierModel extends TypeSpecifierModel {
     required this.boundType,
     this.elementTypeSpecifier,
   });
+
+  BoundParameterTypeSpecifierModel.fromJson(Map<String, dynamic> map)
+      : parameterName = map['parameterName'],
+        boundType = map['boundType'],
+        elementTypeSpecifier = map['elementTypeSpecifier'] != null
+            ? TypeSpecifierModel.fromJson(map['elementTypeSpecifier'])
+            : null,
+        super(type: 'BoundParameterTypeSpecifier');
+
+  @override
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{
+      'type': 'BoundParameterTypeSpecifier',
+      'parameterName': parameterName,
+      'boundType': boundType,
+    };
+    if (elementTypeSpecifier != null) {
+      map['elementTypeSpecifier'] = elementTypeSpecifier!.toJson();
+    }
+    return map;
+  }
 }

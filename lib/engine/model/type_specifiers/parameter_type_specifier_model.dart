@@ -11,4 +11,16 @@ class ParameterTypeSpecifierModel extends TypeSpecifierModel {
   ParameterTypeSpecifierModel({
     required String parameterName,
   }) : parameterName = QName.fromFull(parameterName);
+
+  ParameterTypeSpecifierModel.fromJson(Map<String, dynamic> map)
+      : parameterName = QName.fromFull(map['parameterName']),
+        super(type: 'ParameterTypeSpecifier');
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'type': 'ParameterTypeSpecifier',
+      'parameterName': parameterName.toString(),
+    };
+  }
 }

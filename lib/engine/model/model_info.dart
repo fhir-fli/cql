@@ -6,54 +6,60 @@ import '../../../../../cql.dart';
 /// by the CQL translator. None of the information specified here is mandatory;
 /// it offers convenient shorthands within the language.
 class ModelInfo {
-  // Optional - If identifiers should be resolved case-sensitively
-  final bool? caseSensitive;
-
-  final List<ContextInfo> contextInfo;
-  final bool? contextInfoSingle;
-  final List<ConversionInfo> conversionInfo;
-  final bool? conversionInfoSingle;
-  // Optional - Default context for CQL expressions on this model
-  final String? defaultContext;
-
   // Required - Model name used in CQL definitions/specifiers
   final String name;
 
-  // Optional - Deprecated: Birthdate property name on the Patient model
-  final String? patientBirthDatePropertyName;
-
-  // Optional - Deprecated: Unique name for the Patient class
-  final String? patientClassIdentifier;
-
-  // Optional - Deprecated: Patient class name within the model
-  final String? patientClassName;
-
-  // Lists for nested elements
-  final List<ModelSpecifier> requiredModelInfo;
-
-  final bool? requiredModelInfoSingle;
-  // Optional - Schema location for the XSD of the data model
-  final String? schemaLocation;
-
-  // Optional - If retrieve expressions should be semantically validated
-  final bool? strictRetrieveTyping;
-
-  // Optional - Namespace qualifier for referencing model types in ELM
-  final String? targetQualifier;
+  // Required - XML namespace associated with the model
+  final Uri url;
 
   // Optional - Target XML namespace of the underlying representation
   final Uri? targetUrl;
 
-  // Optional - Target version of the underlying representation
-  final String? targetVersion;
+  // Optional - Schema location for the XSD of the data model
+  final String? schemaLocation;
 
-  final List<TypeInfo> typeInfo;
-  final bool? typeInfoSingle;
-  // Required - XML namespace associated with the model
-  final Uri url;
+  // Optional - Namespace qualifier for referencing model types in ELM
+  final String? targetQualifier;
+
+  // Optional - Deprecated: Patient class name within the model
+  final String? patientClassName;
+
+  // Optional - Deprecated: Unique name for the Patient class
+  final String? patientClassIdentifier;
 
   // Optional - Model version used in CQL using definitions
   final String? version;
+
+  // Optional - Target version of the underlying representation
+  final String? targetVersion;
+
+  // Optional - If identifiers should be resolved case-sensitively
+  final bool? caseSensitive;
+
+  // Optional - Context information for CQL expressions on this model
+  final List<ContextInfo> contextInfo;
+  final bool? contextInfoSingle;
+
+  // Optional - If retrieve expressions should be semantically validated
+  final bool? strictRetrieveTyping;
+
+  // Optional - Conversion information for CQL expressions on this model
+  final List<ConversionInfo> conversionInfo;
+  final bool? conversionInfoSingle;
+
+  // Optional - Default context for CQL expressions on this model
+  final String? defaultContext;
+
+  // Optional - Deprecated: Birthdate property name on the Patient model
+  final String? patientBirthDatePropertyName;
+
+  // Lists for nested elements
+  final List<ModelSpecifier> requiredModelInfo;
+  final bool? requiredModelInfoSingle;
+
+  // Lists for nested elements
+  final List<TypeInfo> typeInfo;
+  final bool? typeInfoSingle;
 
   ModelInfo({
     required this.name,
@@ -82,18 +88,30 @@ class ModelInfo {
   factory ModelInfo.fromJson(Map<String, dynamic> json) {
     return ModelInfo(
       name: json['name'] as String? ?? '',
-      version: json['version'] as String?,
       url: Uri.parse(json['url'] as String? ?? ''),
       targetUrl:
           json['targetUrl'] is! String ? null : Uri.tryParse(json['targetUrl']),
-      targetVersion: json['targetVersion'] as String?,
       schemaLocation: json['schemaLocation'] as String?,
       targetQualifier: json['targetQualifier'] as String?,
       patientClassName: json['patientClassName'] as String?,
       patientClassIdentifier: json['patientClassIdentifier'] as String?,
       patientBirthDatePropertyName:
           json['patientBirthDatePropertyName'] as String?,
+      version: json['version'] as String?,
+      targetVersion: json['targetVersion'] as String?,
       caseSensitive: json['caseSensitive'] as bool?,
+      contextInfo: json['contextInfo'] == null
+          ? <ContextInfo>[]
+          : json['contextInfo'] is Map
+              ? [ContextInfo.fromJson(json['contextInfo'])]
+              : (json['contextInfo'] as List)
+                  .map((e) => ContextInfo.fromJson(e))
+                  .toList(),
+      contextInfoSingle: json['contextInfo'] is Map
+          ? true
+          : json['contextInfo'] is List
+              ? false
+              : null,
       strictRetrieveTyping: json['strictRetrieveTyping'] == null
           ? null
           : json['strictRetrieveTyping'] is bool
@@ -106,6 +124,18 @@ class ModelInfo {
                           : null
                   : null,
       defaultContext: json['defaultContext'] as String?,
+      conversionInfo: json['conversionInfo'] == null
+          ? <ConversionInfo>[]
+          : json['conversionInfo'] is Map
+              ? [ConversionInfo.fromJson(json['conversionInfo'])]
+              : (json['conversionInfo'] as List)
+                  .map((e) => ConversionInfo.fromJson(e))
+                  .toList(),
+      conversionInfoSingle: json['conversionInfo'] is Map
+          ? true
+          : json['conversionInfo'] is List
+              ? false
+              : null,
       requiredModelInfo: json['requiredModelInfo'] == null
           ? <ModelSpecifier>[]
           : json['requiredModelInfo'] is Map
@@ -128,30 +158,6 @@ class ModelInfo {
       typeInfoSingle: json['typeInfo'] is Map
           ? true
           : json['typeInfo'] is List
-              ? false
-              : null,
-      conversionInfo: json['conversionInfo'] == null
-          ? <ConversionInfo>[]
-          : json['conversionInfo'] is Map
-              ? [ConversionInfo.fromJson(json['conversionInfo'])]
-              : (json['conversionInfo'] as List)
-                  .map((e) => ConversionInfo.fromJson(e))
-                  .toList(),
-      conversionInfoSingle: json['conversionInfo'] is Map
-          ? true
-          : json['conversionInfo'] is List
-              ? false
-              : null,
-      contextInfo: json['contextInfo'] == null
-          ? <ContextInfo>[]
-          : json['contextInfo'] is Map
-              ? [ContextInfo.fromJson(json['contextInfo'])]
-              : (json['contextInfo'] as List)
-                  .map((e) => ContextInfo.fromJson(e))
-                  .toList(),
-      contextInfoSingle: json['contextInfo'] is Map
-          ? true
-          : json['contextInfo'] is List
               ? false
               : null,
     );

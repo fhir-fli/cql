@@ -6,6 +6,7 @@ class ModelSpecifier {
   String name;
 
   Uri? url;
+
   /// Version of the model.
   String? version;
 

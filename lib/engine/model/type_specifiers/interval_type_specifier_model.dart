@@ -13,4 +13,25 @@ class IntervalTypeSpecifierModel extends TypeSpecifierModel {
     this.pointTypeSpecifier,
     this.pointType,
   });
+
+  IntervalTypeSpecifierModel.fromJson(Map<String, dynamic> map)
+      : pointTypeSpecifier = map['pointTypeSpecifier'] != null
+            ? TypeSpecifierModel.fromJson(map['pointTypeSpecifier'])
+            : null,
+        pointType = map['pointType'],
+        super(type: 'IntervalTypeSpecifier');
+
+  @override
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{
+      'type': 'IntervalTypeSpecifier',
+    };
+    if (pointTypeSpecifier != null) {
+      map['pointTypeSpecifier'] = pointTypeSpecifier!.toJson();
+    }
+    if (pointType != null) {
+      map['pointType'] = pointType;
+    }
+    return map;
+  }
 }

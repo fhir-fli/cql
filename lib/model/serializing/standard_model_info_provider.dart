@@ -61,7 +61,9 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
           case "4.0.0":
             return fhirmodelinfo400;
           case "4.0.1":
-            return fhirmodelinfo401;
+            {
+              return fhirmodelinfo401;
+            }
           // case "4.0.1":
           //   return newfhirmodelinfo401;
           // case "4.0.1":

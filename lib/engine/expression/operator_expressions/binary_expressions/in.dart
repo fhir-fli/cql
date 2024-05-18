@@ -219,6 +219,10 @@ class In extends BinaryExpression {
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    return in_(left, right, context);
+  }
+
+  FhirBoolean? in_(dynamic left, dynamic right, Map<String, dynamic> context) {
     final rightReturnTypes = right == null
         ? operand[1].getReturnTypes(context['library'] as CqlLibrary)
         : null;
@@ -243,7 +247,7 @@ class In extends BinaryExpression {
         return FhirBoolean(right.contains(left));
       }
     } else {
-      throw ArgumentError('Right operand must be of type Interval or List');
+      throw ArgumentError('In: Right operand must be of type Interval or List');
     }
   }
 }

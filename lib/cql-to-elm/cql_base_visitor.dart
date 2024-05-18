@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r5/fhir_r5.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
@@ -1198,7 +1199,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                   context: name,
                   expression: SingletonFrom(
                     operand: Retrieve(
-                      templateId: name,
+                      templateId: R5ResourceType.typesAsStrings.contains(name)
+                          ? 'http://hl7.org/fhir/StructureDefinition/$name'
+                          : name,
                       dataType:
                           QName.fromNamespace(modelInfo.url.toString(), name),
                     ),
@@ -1842,7 +1845,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     if (localIdentifier != null || path != null || version != null) {
       library.includes ??= IncludeDefs();
       library.includes!.def.add(IncludeDef(
-          localIdentifier: localIdentifier, path: path, version: version));
+          localIdentifier: localIdentifier ?? path,
+          path: path,
+          version: version));
     }
   }
 
@@ -3922,7 +3927,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   // | functionDefinition;
   @override
   void visitStatement(StatementContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     ExpressionDef? statement;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -3931,7 +3936,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         statement = visitExpressionDefinition(child);
       }
       if (child is ContextDefinitionContext) {
-        throw ctx.text;
+        visitContextDefinition(child);
       } else if (child is FunctionDefinitionContext) {
         statement = visitFunctionDefinition(child);
       }
@@ -4326,7 +4331,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   ///  versionSpecifier if they exist.
   @override
   dynamic visitUsingDefinition(UsingDefinitionContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     String? localIdentifier;
     String? version;

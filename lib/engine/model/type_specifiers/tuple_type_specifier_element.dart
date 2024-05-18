@@ -15,4 +15,15 @@ class TupleTypeSpecifierElement {
     required this.elementType,
     required this.name,
   });
+
+  TupleTypeSpecifierElement.fromJson(Map<String, dynamic> map)
+      : elementType = TypeSpecifierModel.fromJson(map['elementType']),
+        name = map['name'];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'elementType': elementType.toJson(),
+      'name': name,
+    };
+  }
 }

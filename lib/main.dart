@@ -49,7 +49,7 @@ void parseFile(BuildContext context) async {
   int i = 0;
   for (final file in manifestMap.keys) {
     i++;
-    if (i > 4) {
+    if (i > 5) {
       break;
     }
     final pathExpression = await rootBundle.loadString(file);
@@ -75,7 +75,11 @@ void parseFile(BuildContext context) async {
       var resultLibrary = visitor.result['library'];
       (resultLibrary as Map<String, dynamic>).remove('annotation');
       // if (print) {
-      //   log(jsonEncode(visitor.result));
+      if (file.contains('05')) {
+        log(jsonEncode(visitor.result));
+      }
+      // log(file);
+      // throw 'stop';
       // }
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
       // if (file.contains('04')) {

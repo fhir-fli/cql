@@ -147,7 +147,8 @@ class Contains extends BinaryExpression {
       final result = FhirBoolean(left.contains(right));
       return result;
     } else {
-      throw ArgumentError('Left operand must be of type Interval or List');
+      throw ArgumentError(
+          'Constains: Left operand must be of type Interval or List');
     }
   }
 }
