@@ -1,10 +1,10 @@
 import '../../../cql.dart';
 
-class CqlWithoutVisitor extends CqlBaseVisitor<Without> {
-  CqlWithoutVisitor(super.library);
+class CqlWithClauseVisitor extends CqlBaseVisitor<With> {
+  CqlWithClauseVisitor(super.library);
 
   @override
-  Without visitWithoutClause(WithoutClauseContext ctx) {
+  With visitWithClause(WithClauseContext ctx) {
     printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.getChild(1) is AliasedQuerySourceContext) {
@@ -12,11 +12,11 @@ class CqlWithoutVisitor extends CqlBaseVisitor<Without> {
           visitAliasedQuerySource(ctx.getChild(1) as AliasedQuerySourceContext);
       final suchThat =
           ctx.getChild(3) == null ? null : byContext(ctx.getChild(3)!);
-      return Without(
+      return With(
           alias: source.alias,
           expression: source.expression,
           suchThat: suchThat is CqlExpression ? suchThat : null);
     }
-    throw ArgumentError('$thisNode Invalid WithoutClause');
+    throw ArgumentError('$thisNode Invalid WithClause');
   }
 }

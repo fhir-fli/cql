@@ -111,5 +111,5 @@ export 'cql_using_definition_visitor.dart';
 export 'cql_value_set_definition_visitor.dart';
 export 'cql_where_clause_visitor.dart';
 export 'cql_within_interval_operator_phrase_visitor.dart';
-export 'cql_without_visitor.dart';
-export 'cql_with_visitor.dart';
+export 'cql_without_clause_visitor.dart';
+export 'cql_with_clause_visitor.dart';
