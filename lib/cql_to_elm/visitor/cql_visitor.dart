@@ -2,7 +2,7 @@
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
 
-import 'cql_parser.dart';
+import '../antlr/cql_parser.dart';
 
 /// This abstract class defines a complete generic visitor for a parse tree
 /// produced by [cqlParser].

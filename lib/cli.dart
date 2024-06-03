@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:antlr4/antlr4.dart';
-import 'cql-to-elm/cql_to_elm.dart';
+import 'cql.dart';
 
 const bool print = true;
 
@@ -18,7 +18,7 @@ Future<void> main() async {
     final parser = parserAndErrors.parser;
 
     try {
-      final visitor = CqlBaseVisitor();
+      final visitor = CqlBaseVisitor(CqlLibrary());
       visitor.visit(parser.library_());
       final errors = parserAndErrors.errorListener.errors
           .map((e) => e.copyWith(

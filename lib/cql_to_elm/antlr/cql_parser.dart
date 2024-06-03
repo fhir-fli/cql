@@ -5,8 +5,8 @@
 // ignore_for_file: prefer_function_declarations_over_variables
 import 'package:antlr4/antlr4.dart';
 
-import 'cql_visitor.dart';
-import 'cql_base_visitor.dart';
+import '../visitor/cql_visitor.dart';
+import '../visitor/cql_base_visitor.dart';
 
 const int RULE_library = 0,
     RULE_definition = 1,

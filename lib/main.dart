@@ -7,7 +7,7 @@ import 'package:fhir_primitives/fhir_primitives.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'cql-to-elm/cql_to_elm.dart';
+import 'cql.dart';
 import 'results/results.dart';
 
 const bool print = false;
@@ -61,7 +61,7 @@ void parseFile(BuildContext context) async {
     final parser = parserAndErrors.parser;
 
     try {
-      final visitor = CqlBaseVisitor();
+      final visitor = CqlBaseVisitor(CqlLibrary());
       visitor.visit(parser.library_());
       final errors = parserAndErrors.errorListener.errors
           .map((e) => e.copyWith(
@@ -75,9 +75,9 @@ void parseFile(BuildContext context) async {
       var resultLibrary = visitor.result['library'];
       (resultLibrary as Map<String, dynamic>).remove('annotation');
       // if (print) {
-      if (file.contains('05')) {
-        log(jsonEncode(visitor.result));
-      }
+      // if (file.contains('05')) {
+      //   log(jsonEncode(visitor.result));
+      // }
       // log(file);
       // throw 'stop';
       // }

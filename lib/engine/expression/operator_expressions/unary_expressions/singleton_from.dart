@@ -81,7 +81,9 @@ class SingletonFrom extends UnaryExpression {
 
   @override
   dynamic execute(Map<String, dynamic> context) {
+    print(operand);
     final list = operand.execute(context);
+    print(list);
     if (list == null) {
       return null;
     } else if (list is List) {
