@@ -638,439 +638,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   String visitModelIdentifier(ModelIdentifierContext ctx) =>
       noQuoteString(ctx.text);
 
-  Multiply handleMultiply(CqlExpression left, CqlExpression right) {
-    switch (left) {
-      case LiteralInteger _:
-        {
-          if (right is LiteralInteger) {
-            return Multiply(operand: [left, right]);
-          } else if (right is LiteralLong) {
-            return Multiply(operand: [ToLong(operand: left), right]);
-          } else if (right is LiteralDecimal) {
-            return Multiply(operand: [ToDecimal(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralLong _:
-        {
-          if (right is LiteralInteger || right is LiteralLong) {
-            return Multiply(operand: [left, ToLong(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return Multiply(operand: [ToDecimal(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralDecimal _:
-        {
-          if (right is LiteralInteger) {
-            return Multiply(operand: [left, ToDecimal(operand: right)]);
-          } else if (right is LiteralLong) {
-            return Multiply(operand: [left, ToDecimal(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return Multiply(operand: [left, right]);
-          }
-        }
-        break;
-      case LiteralQuantity _:
-        {
-          if (right is LiteralInteger || right is LiteralLong) {
-            return Multiply(operand: [left, ToQuantity(operand: right)]);
-          }
-          if (right is LiteralDecimal || right is LiteralQuantity) {
-            return Multiply(operand: [left, right]);
-          }
-        }
-        break;
-      default:
-        {
-          final leftType = left.getReturnTypes(library);
-          final rightType = right.getReturnTypes(library);
-
-          if (leftType?.length == 1 && rightType?.length == 1) {
-            switch (leftType!.first) {
-              case FhirInteger:
-                {
-                  if (rightType!.first == FhirInteger) {
-                    return Multiply(operand: [left, right]);
-                  } else if (rightType.first == FhirInteger64) {
-                    return Multiply(operand: [ToLong(operand: left), right]);
-                  } else if (rightType.first == FhirDecimal) {
-                    return Multiply(operand: [ToDecimal(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirInteger64:
-                {
-                  if (rightType!.first == FhirInteger ||
-                      right == FhirInteger64) {
-                    return Multiply(operand: [left, ToLong(operand: right)]);
-                  } else if (rightType.first == FhirDecimal) {
-                    return Multiply(operand: [ToDecimal(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirDecimal:
-                {
-                  if (rightType!.first == FhirInteger) {
-                    return Multiply(operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first == FhirInteger64) {
-                    return Multiply(operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first == FhirDecimal) {
-                    return Multiply(operand: [left, right]);
-                  }
-                }
-                break;
-              case ValidatedQuantity:
-                {
-                  if (rightType!.first == FhirInteger ||
-                      rightType.first == FhirInteger64) {
-                    // print('leftType: $leftType rightType: $rightType');
-                    return Multiply(operand: [left, ToDecimal(operand: right)]);
-                  }
-                  if (rightType.first == FhirDecimal ||
-                      rightType.first == ValidatedQuantity) {
-                    return Multiply(operand: [left, right]);
-                  }
-                }
-                break;
-              default:
-                break;
-            }
-          }
-          return Multiply(operand: [left, right]);
-        }
-    }
-    throw ArgumentError('Invalid type for multiplication');
-  }
-
-  CqlExpression handleDivide(CqlExpression left, CqlExpression right) {
-    switch (left) {
-      case LiteralInteger _:
-        {
-          if (right is LiteralInteger || right is LiteralLong) {
-            return Divide(
-                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return Divide(operand: [ToDecimal(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralLong _:
-        {
-          if (right is LiteralInteger || right is LiteralLong) {
-            return Divide(
-                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return Divide(operand: [ToDecimal(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralDecimal _:
-        {
-          if (right is LiteralInteger || right is LiteralLong) {
-            return Divide(operand: [left, ToDecimal(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return Divide(operand: [left, right]);
-          }
-        }
-        break;
-      case LiteralQuantity _:
-        {
-          if (right is LiteralDecimal) {
-            return Divide(operand: [left, ToQuantity(operand: right)]);
-          } else if (right is LiteralQuantity) {
-            return Divide(operand: [left, right]);
-          }
-        }
-        break;
-      default:
-        {
-          final leftType = left.getReturnTypes(library);
-          final rightType = right.getReturnTypes(library);
-          if (leftType?.length == 1 && rightType?.length == 1) {
-            switch (leftType!.first) {
-              case FhirInteger _:
-                {
-                  if (rightType!.first is FhirInteger ||
-                      rightType.first is FhirInteger64) {
-                    return Divide(operand: [
-                      ToDecimal(operand: left),
-                      ToDecimal(operand: right)
-                    ]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return Divide(operand: [ToDecimal(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirInteger64 _:
-                {
-                  if (rightType!.first is FhirInteger ||
-                      rightType.first is FhirInteger64) {
-                    return Divide(operand: [
-                      ToDecimal(operand: left),
-                      ToDecimal(operand: right)
-                    ]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return Divide(operand: [ToDecimal(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirDecimal _:
-                {
-                  if (rightType!.first is FhirInteger ||
-                      rightType.first is FhirInteger64) {
-                    return Divide(operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return Divide(operand: [left, right]);
-                  }
-                }
-                break;
-              case ValidatedQuantity _:
-                {
-                  if (rightType!.first is FhirDecimal) {
-                    return Divide(operand: [left, ToQuantity(operand: right)]);
-                  } else if (rightType.first is ValidatedQuantity) {
-                    return Divide(operand: [left, right]);
-                  }
-                }
-                break;
-              default:
-                break;
-            }
-          }
-          return Divide(operand: [left, right]);
-        }
-    }
-    throw ArgumentError('Invalid type for division');
-  }
-
-  TruncatedDivide handleTruncatedDivide(
-      CqlExpression left, CqlExpression right) {
-    switch (left) {
-      case LiteralInteger _:
-        {
-          if (right is LiteralInteger) {
-            return TruncatedDivide(operand: [left, right]);
-          } else if (right is LiteralLong) {
-            return TruncatedDivide(operand: [ToLong(operand: left), right]);
-          } else if (right is LiteralDecimal) {
-            return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralLong _:
-        {
-          if (right is LiteralInteger) {
-            return TruncatedDivide(operand: [left, ToLong(operand: right)]);
-          } else if (right is LiteralLong) {
-            return TruncatedDivide(operand: [left, right]);
-          } else if (right is LiteralDecimal) {
-            return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralDecimal _:
-        {
-          if (right is LiteralInteger) {
-            return TruncatedDivide(operand: [left, ToDecimal(operand: right)]);
-          } else if (right is LiteralLong) {
-            return TruncatedDivide(operand: [left, ToDecimal(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return TruncatedDivide(operand: [left, right]);
-          } else if (right is LiteralQuantity) {
-            return TruncatedDivide(operand: [ToQuantity(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralQuantity _:
-        {
-          if (right is LiteralDecimal) {
-            return TruncatedDivide(operand: [left, ToQuantity(operand: right)]);
-          } else if (right is LiteralQuantity) {
-            return TruncatedDivide(operand: [left, right]);
-          }
-        }
-      default:
-        {
-          final leftType = left.getReturnTypes(library);
-          final rightType = right.getReturnTypes(library);
-          if (leftType?.length == 1 && rightType?.length == 1) {
-            switch (leftType!.first) {
-              case FhirInteger _:
-                {
-                  if (rightType!.first is FhirInteger) {
-                    return TruncatedDivide(operand: [left, right]);
-                  } else if (rightType.first is FhirInteger64) {
-                    return TruncatedDivide(
-                        operand: [ToLong(operand: left), right]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return TruncatedDivide(
-                        operand: [ToDecimal(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirInteger64 _:
-                {
-                  if (rightType!.first is FhirInteger) {
-                    return TruncatedDivide(
-                        operand: [left, ToLong(operand: right)]);
-                  } else if (rightType.first is FhirInteger64) {
-                    return TruncatedDivide(operand: [left, right]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return TruncatedDivide(
-                        operand: [ToDecimal(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirDecimal _:
-                {
-                  if (rightType!.first is FhirInteger) {
-                    return TruncatedDivide(
-                        operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first is FhirInteger64) {
-                    return TruncatedDivide(
-                        operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return TruncatedDivide(operand: [left, right]);
-                  } else if (rightType.first is ValidatedQuantity) {
-                    return TruncatedDivide(
-                        operand: [ToQuantity(operand: left), right]);
-                  }
-                }
-                break;
-              case ValidatedQuantity _:
-                {
-                  if (rightType!.first is FhirDecimal) {
-                    return TruncatedDivide(
-                        operand: [left, ToQuantity(operand: right)]);
-                  } else if (rightType.first is ValidatedQuantity) {
-                    return TruncatedDivide(operand: [left, right]);
-                  }
-                }
-              default:
-                break;
-            }
-          }
-          return TruncatedDivide(operand: [left, right]);
-        }
-    }
-    throw ArgumentError('Invalid type for truncated division');
-  }
-
-  Modulo handleModulo(CqlExpression left, CqlExpression right) {
-    switch (left) {
-      case LiteralInteger _:
-        {
-          if (right is LiteralInteger) {
-            return Modulo(operand: [left, right]);
-          } else if (right is LiteralLong) {
-            return Modulo(operand: [ToLong(operand: left), right]);
-          } else if (right is LiteralDecimal) {
-            return Modulo(operand: [ToDecimal(operand: left), right]);
-          } else if (right is LiteralQuantity) {
-            return Modulo(operand: [ToQuantity(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralLong _:
-        {
-          if (right is LiteralInteger) {
-            return Modulo(operand: [left, ToLong(operand: right)]);
-          } else if (right is LiteralLong) {
-            return Modulo(operand: [left, right]);
-          } else if (right is LiteralDecimal) {
-            return Modulo(operand: [ToDecimal(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralDecimal _:
-        {
-          if (right is LiteralInteger) {
-            return Modulo(operand: [left, ToDecimal(operand: right)]);
-          } else if (right is LiteralLong) {
-            return Modulo(operand: [left, ToDecimal(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return Modulo(operand: [left, right]);
-          } else if (right is LiteralQuantity) {
-            return Modulo(operand: [ToQuantity(operand: left), right]);
-          }
-        }
-        break;
-      case LiteralQuantity _:
-        {
-          if (right is LiteralInteger) {
-            return Modulo(operand: [left, ToQuantity(operand: right)]);
-          } else if (right is LiteralDecimal) {
-            return Modulo(operand: [left, ToQuantity(operand: right)]);
-          } else if (right is LiteralQuantity) {
-            return Modulo(operand: [left, right]);
-          }
-        }
-        break;
-      default:
-        {
-          final leftType = left.getReturnTypes(library);
-          final rightType = right.getReturnTypes(library);
-          if (leftType?.length == 1 && rightType?.length == 1) {
-            switch (leftType!.first) {
-              case FhirInteger _:
-                {
-                  if (rightType!.first is FhirInteger) {
-                    return Modulo(operand: [left, right]);
-                  } else if (rightType.first is FhirInteger64) {
-                    return Modulo(operand: [ToLong(operand: left), right]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return Modulo(operand: [ToDecimal(operand: left), right]);
-                  } else if (rightType.first is ValidatedQuantity) {
-                    return Modulo(operand: [ToQuantity(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirInteger64 _:
-                {
-                  if (rightType!.first is FhirInteger) {
-                    return Modulo(operand: [left, ToLong(operand: right)]);
-                  } else if (rightType.first is FhirInteger64) {
-                    return Modulo(operand: [left, right]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return Modulo(operand: [ToDecimal(operand: left), right]);
-                  }
-                }
-                break;
-              case FhirDecimal _:
-                {
-                  if (rightType!.first is FhirInteger) {
-                    return Modulo(operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first is FhirInteger64) {
-                    return Modulo(operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return Modulo(operand: [left, right]);
-                  } else if (rightType.first is ValidatedQuantity) {
-                    return Modulo(operand: [ToQuantity(operand: left), right]);
-                  }
-                }
-                break;
-              case ValidatedQuantity _:
-                {
-                  if (rightType!.first is FhirInteger) {
-                    return Modulo(operand: [left, ToQuantity(operand: right)]);
-                  } else if (rightType.first is FhirDecimal) {
-                    return Modulo(operand: [left, ToQuantity(operand: right)]);
-                  } else if (rightType.first is ValidatedQuantity) {
-                    return Modulo(operand: [left, right]);
-                  }
-                }
-                break;
-              default:
-                break;
-            }
-          }
-          return Modulo(operand: [left, right]);
-        }
-    }
-    throw ArgumentError('Invalid type for modulo');
-  }
-
   /// expressionTerm ('*' | '/' | 'div' | 'mod') expressionTerm
   @override
   CqlExpression visitMultiplicationExpressionTerm(
@@ -3205,5 +2772,438 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       default:
         return expression;
     }
+  }
+
+  Multiply handleMultiply(CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger) {
+            return Multiply(operand: [left, right]);
+          } else if (right is LiteralLong) {
+            return Multiply(operand: [ToLong(operand: left), right]);
+          } else if (right is LiteralDecimal) {
+            return Multiply(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Multiply(operand: [left, ToLong(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Multiply(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger) {
+            return Multiply(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralLong) {
+            return Multiply(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Multiply(operand: [left, right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Multiply(operand: [left, ToQuantity(operand: right)]);
+          }
+          if (right is LiteralDecimal || right is LiteralQuantity) {
+            return Multiply(operand: [left, right]);
+          }
+        }
+        break;
+      default:
+        {
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
+
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger:
+                {
+                  if (rightType!.first == FhirInteger) {
+                    return Multiply(operand: [left, right]);
+                  } else if (rightType.first == FhirInteger64) {
+                    return Multiply(operand: [ToLong(operand: left), right]);
+                  } else if (rightType.first == FhirDecimal) {
+                    return Multiply(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64:
+                {
+                  if (rightType!.first == FhirInteger ||
+                      right == FhirInteger64) {
+                    return Multiply(operand: [left, ToLong(operand: right)]);
+                  } else if (rightType.first == FhirDecimal) {
+                    return Multiply(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal:
+                {
+                  if (rightType!.first == FhirInteger) {
+                    return Multiply(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first == FhirInteger64) {
+                    return Multiply(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first == FhirDecimal) {
+                    return Multiply(operand: [left, right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity:
+                {
+                  if (rightType!.first == FhirInteger ||
+                      rightType.first == FhirInteger64) {
+                    // print('leftType: $leftType rightType: $rightType');
+                    return Multiply(operand: [left, ToDecimal(operand: right)]);
+                  }
+                  if (rightType.first == FhirDecimal ||
+                      rightType.first == ValidatedQuantity) {
+                    return Multiply(operand: [left, right]);
+                  }
+                }
+                break;
+              default:
+                break;
+            }
+          }
+          return Multiply(operand: [left, right]);
+        }
+    }
+    throw ArgumentError('Invalid type for multiplication');
+  }
+
+  CqlExpression handleDivide(CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Divide(
+                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Divide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Divide(
+                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Divide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger || right is LiteralLong) {
+            return Divide(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Divide(operand: [left, right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralDecimal) {
+            return Divide(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralQuantity) {
+            return Divide(operand: [left, right]);
+          }
+        }
+        break;
+      default:
+        {
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger _:
+                {
+                  if (rightType!.first is FhirInteger ||
+                      rightType.first is FhirInteger64) {
+                    return Divide(operand: [
+                      ToDecimal(operand: left),
+                      ToDecimal(operand: right)
+                    ]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Divide(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64 _:
+                {
+                  if (rightType!.first is FhirInteger ||
+                      rightType.first is FhirInteger64) {
+                    return Divide(operand: [
+                      ToDecimal(operand: left),
+                      ToDecimal(operand: right)
+                    ]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Divide(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal _:
+                {
+                  if (rightType!.first is FhirInteger ||
+                      rightType.first is FhirInteger64) {
+                    return Divide(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Divide(operand: [left, right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity _:
+                {
+                  if (rightType!.first is FhirDecimal) {
+                    return Divide(operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Divide(operand: [left, right]);
+                  }
+                }
+                break;
+              default:
+                break;
+            }
+          }
+          return Divide(operand: [left, right]);
+        }
+    }
+    throw ArgumentError('Invalid type for division');
+  }
+
+  TruncatedDivide handleTruncatedDivide(
+      CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger) {
+            return TruncatedDivide(operand: [left, right]);
+          } else if (right is LiteralLong) {
+            return TruncatedDivide(operand: [ToLong(operand: left), right]);
+          } else if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger) {
+            return TruncatedDivide(operand: [left, ToLong(operand: right)]);
+          } else if (right is LiteralLong) {
+            return TruncatedDivide(operand: [left, right]);
+          } else if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger) {
+            return TruncatedDivide(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralLong) {
+            return TruncatedDivide(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [left, right]);
+          } else if (right is LiteralQuantity) {
+            return TruncatedDivide(operand: [ToQuantity(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralDecimal) {
+            return TruncatedDivide(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralQuantity) {
+            return TruncatedDivide(operand: [left, right]);
+          }
+        }
+      default:
+        {
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return TruncatedDivide(operand: [left, right]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return TruncatedDivide(
+                        operand: [ToLong(operand: left), right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return TruncatedDivide(
+                        operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64 _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return TruncatedDivide(
+                        operand: [left, ToLong(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return TruncatedDivide(operand: [left, right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return TruncatedDivide(
+                        operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return TruncatedDivide(
+                        operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return TruncatedDivide(
+                        operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return TruncatedDivide(operand: [left, right]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return TruncatedDivide(
+                        operand: [ToQuantity(operand: left), right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity _:
+                {
+                  if (rightType!.first is FhirDecimal) {
+                    return TruncatedDivide(
+                        operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return TruncatedDivide(operand: [left, right]);
+                  }
+                }
+              default:
+                break;
+            }
+          }
+          return TruncatedDivide(operand: [left, right]);
+        }
+    }
+    throw ArgumentError('Invalid type for truncated division');
+  }
+
+  Modulo handleModulo(CqlExpression left, CqlExpression right) {
+    switch (left) {
+      case LiteralInteger _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, right]);
+          } else if (right is LiteralLong) {
+            return Modulo(operand: [ToLong(operand: left), right]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [ToDecimal(operand: left), right]);
+          } else if (right is LiteralQuantity) {
+            return Modulo(operand: [ToQuantity(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralLong _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, ToLong(operand: right)]);
+          } else if (right is LiteralLong) {
+            return Modulo(operand: [left, right]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [ToDecimal(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralDecimal _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralLong) {
+            return Modulo(operand: [left, ToDecimal(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [left, right]);
+          } else if (right is LiteralQuantity) {
+            return Modulo(operand: [ToQuantity(operand: left), right]);
+          }
+        }
+        break;
+      case LiteralQuantity _:
+        {
+          if (right is LiteralInteger) {
+            return Modulo(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralDecimal) {
+            return Modulo(operand: [left, ToQuantity(operand: right)]);
+          } else if (right is LiteralQuantity) {
+            return Modulo(operand: [left, right]);
+          }
+        }
+        break;
+      default:
+        {
+          final leftType = left.getReturnTypes(library);
+          final rightType = right.getReturnTypes(library);
+          if (leftType?.length == 1 && rightType?.length == 1) {
+            switch (leftType!.first) {
+              case FhirInteger _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, right]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return Modulo(operand: [ToLong(operand: left), right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [ToDecimal(operand: left), right]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Modulo(operand: [ToQuantity(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirInteger64 _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, ToLong(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return Modulo(operand: [left, right]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [ToDecimal(operand: left), right]);
+                  }
+                }
+                break;
+              case FhirDecimal _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirInteger64) {
+                    return Modulo(operand: [left, ToDecimal(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [left, right]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Modulo(operand: [ToQuantity(operand: left), right]);
+                  }
+                }
+                break;
+              case ValidatedQuantity _:
+                {
+                  if (rightType!.first is FhirInteger) {
+                    return Modulo(operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is FhirDecimal) {
+                    return Modulo(operand: [left, ToQuantity(operand: right)]);
+                  } else if (rightType.first is ValidatedQuantity) {
+                    return Modulo(operand: [left, right]);
+                  }
+                }
+                break;
+              default:
+                break;
+            }
+          }
+          return Modulo(operand: [left, right]);
+        }
+    }
+    throw ArgumentError('Invalid type for modulo');
   }
 }
