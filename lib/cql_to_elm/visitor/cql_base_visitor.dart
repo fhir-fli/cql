@@ -1442,7 +1442,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       return expression;
     }
     if (!LiteralType.literalTypes.contains(returnTypes.first) &&
-        returnTypes.first != IntervalType) {
+        returnTypes.first != CqlInterval) {
       return expression;
     }
     switch (value) {
@@ -1461,7 +1461,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       return expression;
     }
     if (!LiteralType.literalTypes.contains(returnTypes.first) &&
-        returnTypes.first != IntervalType) {
+        returnTypes.first != CqlInterval) {
       return expression;
     }
     switch (value) {

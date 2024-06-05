@@ -107,13 +107,13 @@ class IntervalExpression extends CqlExpression {
   String get type => 'Interval';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
 
   @override
-  IntervalType? execute(Map<String, dynamic> context) {
+  CqlInterval? execute(Map<String, dynamic> context) {
     final low = this.low?.execute(context);
     final high = this.high?.execute(context);
-    return IntervalType(
+    return CqlInterval(
       low: low,
       lowClosed: lowClosed,
       high: high,

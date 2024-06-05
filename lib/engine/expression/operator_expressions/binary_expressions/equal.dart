@@ -323,8 +323,8 @@ class Equal extends BinaryExpression {
           result = false;
         }
         break;
-      case IntervalType _:
-        result = right is IntervalType && left == right;
+      case CqlInterval _:
+        result = right is CqlInterval && left == right;
         break;
       default:
         result = left == right;

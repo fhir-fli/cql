@@ -90,7 +90,7 @@ class Width extends UnaryExpression {
     final interval = operand.execute(context);
     if (interval == null) {
       return null;
-    } else if (interval is IntervalType) {
+    } else if (interval is CqlInterval) {
       final end = interval.getEnd();
       final start = interval.getStart();
       if (end == null || start == null) {

@@ -129,7 +129,7 @@ class MeetsAfter extends BinaryExpression {
 
     if (left == null || right == null) {
       return null;
-    } else if (left is IntervalType && right is IntervalType) {
+    } else if (left is CqlInterval && right is CqlInterval) {
       final leftStart = left.getStart();
       final rightEnd = right.getEnd();
       return Equal.equal(leftStart, Successor.successor(rightEnd));

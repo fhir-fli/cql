@@ -158,7 +158,7 @@ class IncludedIn extends BinaryExpression {
       return null;
     } else if (right == null) {
       /// For the interval overload, if either argument is null, the result is null.
-      if (left is IntervalType) {
+      if (left is CqlInterval) {
         return null;
       }
 
@@ -177,7 +177,7 @@ class IncludedIn extends BinaryExpression {
       } else {
         return null;
       }
-    } else if (right is IntervalType) {
+    } else if (right is CqlInterval) {
       try {
         final result = FhirBoolean(right.contains(left));
         return result;

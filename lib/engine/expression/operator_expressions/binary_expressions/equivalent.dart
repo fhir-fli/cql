@@ -312,8 +312,8 @@ class Equivalent extends BinaryExpression {
           result = false;
         }
         break;
-      case IntervalType _:
-        result = right is IntervalType ? left.equivalent(right) : false;
+      case CqlInterval _:
+        result = right is CqlInterval ? left.equivalent(right) : false;
         break;
       default:
         result = left == right;

@@ -121,10 +121,10 @@ class Union extends NaryExpression {
   }
 
   static dynamic union(dynamic left, dynamic right) {
-    if (left is IntervalType || right is IntervalType) {
+    if (left is CqlInterval || right is CqlInterval) {
       if (left == null || right == null) {
         return null;
-      } else if (left is! IntervalType || right is! IntervalType) {
+      } else if (left is! CqlInterval || right is! CqlInterval) {
         throw ArgumentError(
             'Union operator is not defined for ${left.runtimeType} and ${right.runtimeType}');
       }
@@ -149,7 +149,7 @@ class Union extends NaryExpression {
       } else if (leftEnd is Comparable && rightEnd is Comparable) {
         finalEnd = leftEnd.compareTo(rightEnd) > 0 ? leftEnd : rightEnd;
       }
-      return IntervalType(low: finalStart, high: finalEnd);
+      return CqlInterval(low: finalStart, high: finalEnd);
     } else if (left is List || right is List) {
       if (left == null) {
         return (right as List).toSet().toList();

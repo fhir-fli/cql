@@ -137,7 +137,7 @@ class Contains extends BinaryExpression {
   static FhirBoolean? contains(dynamic left, dynamic right) {
     if (left == null) {
       return FhirBoolean(false);
-    } else if (left is IntervalType) {
+    } else if (left is CqlInterval) {
       if (right == null) {
         return null;
       }

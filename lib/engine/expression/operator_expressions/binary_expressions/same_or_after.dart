@@ -152,7 +152,7 @@ class SameOrAfter extends BinaryExpression {
       return sameOrAfterDateTime(left, right, precision);
     } else if (left is FhirTime && right is FhirTime) {
       return sameOrAfterTime(left, right, precision);
-    } else if (left is IntervalType && right is IntervalType) {
+    } else if (left is CqlInterval && right is CqlInterval) {
       final leftStart = left.getStart();
       final rightEnd = right.getEnd();
       if (leftStart == null || rightEnd == null) {
@@ -167,7 +167,7 @@ class SameOrAfter extends BinaryExpression {
       } else {
         return null;
       }
-    } else if (left is IntervalType) {
+    } else if (left is CqlInterval) {
       final leftStart = left.getStart();
       if (leftStart == null || right == null) {
         return null;
@@ -180,7 +180,7 @@ class SameOrAfter extends BinaryExpression {
       } else {
         return null;
       }
-    } else if (right is IntervalType) {
+    } else if (right is CqlInterval) {
       final rightEnd = right.getEnd();
       if (left == null || rightEnd == null) {
         return null;

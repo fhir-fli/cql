@@ -703,13 +703,13 @@ class LiteralTime extends LiteralType {
   List<Type>? getReturnTypes(CqlLibrary library) => [FhirTime];
 }
 
-abstract class LiteralIntervalType extends LiteralType {
+abstract class LiteralCqlInterval extends LiteralType {
   final LiteralBoolean? lowClosed;
   final LiteralBoolean? highClosed;
 
-  LiteralIntervalType({this.lowClosed, this.highClosed});
+  LiteralCqlInterval({this.lowClosed, this.highClosed});
 
-  factory LiteralIntervalType.fromJson(Map<String, dynamic> json) {
+  factory LiteralCqlInterval.fromJson(Map<String, dynamic> json) {
     if (json.containsKey('low')) {
       return LiteralIntegerInterval.fromJson(json);
     } else if (json.containsKey('high')) {
@@ -731,7 +731,7 @@ abstract class LiteralIntervalType extends LiteralType {
   Map<String, dynamic> toJson();
 }
 
-class LiteralIntegerInterval extends LiteralIntervalType {
+class LiteralIntegerInterval extends LiteralCqlInterval {
   final LiteralInteger? low;
   final LiteralInteger? high;
 
@@ -765,11 +765,11 @@ class LiteralIntegerInterval extends LiteralIntervalType {
   String get type => 'Interval<Integer>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
 
   @override
-  IntervalType? execute(Map<String, dynamic> context) =>
-      IntervalType<FhirInteger>(
+  CqlInterval? execute(Map<String, dynamic> context) =>
+      CqlInterval<FhirInteger>(
         low: low?.execute(context),
         lowClosed: lowClosed?.execute(context).value,
         high: high?.execute(context),
@@ -777,7 +777,7 @@ class LiteralIntegerInterval extends LiteralIntervalType {
       );
 }
 
-class LiteralDecimalInterval extends LiteralIntervalType {
+class LiteralDecimalInterval extends LiteralCqlInterval {
   final LiteralDecimal? low;
   final LiteralDecimal? high;
 
@@ -811,11 +811,11 @@ class LiteralDecimalInterval extends LiteralIntervalType {
   String get type => 'Interval<Decimal>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
 
   @override
-  IntervalType? execute(Map<String, dynamic> context) =>
-      IntervalType<FhirDecimal>(
+  CqlInterval? execute(Map<String, dynamic> context) =>
+      CqlInterval<FhirDecimal>(
         low: low?.execute(context),
         lowClosed: lowClosed?.execute(context).value,
         high: high?.execute(context),
@@ -823,7 +823,7 @@ class LiteralDecimalInterval extends LiteralIntervalType {
       );
 }
 
-class LiteralQuantityInterval extends LiteralIntervalType {
+class LiteralQuantityInterval extends LiteralCqlInterval {
   final LiteralQuantity? low;
   final LiteralQuantity? high;
 
@@ -857,11 +857,11 @@ class LiteralQuantityInterval extends LiteralIntervalType {
   String get type => 'Interval<Quantity>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
 
   @override
-  IntervalType? execute(Map<String, dynamic> context) =>
-      IntervalType<ValidatedQuantity>(
+  CqlInterval? execute(Map<String, dynamic> context) =>
+      CqlInterval<ValidatedQuantity>(
         low: low?.execute(context),
         lowClosed: lowClosed?.execute(context).value,
         high: high?.execute(context),
@@ -869,7 +869,7 @@ class LiteralQuantityInterval extends LiteralIntervalType {
       );
 }
 
-class LiteralDateInterval extends LiteralIntervalType {
+class LiteralDateInterval extends LiteralCqlInterval {
   final LiteralDate? low;
   final LiteralDate? high;
 
@@ -903,10 +903,10 @@ class LiteralDateInterval extends LiteralIntervalType {
   String get type => 'Interval<Date>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
 
   @override
-  IntervalType? execute(Map<String, dynamic> context) => IntervalType<FhirDate>(
+  CqlInterval? execute(Map<String, dynamic> context) => CqlInterval<FhirDate>(
         low: low?.execute(context),
         lowClosed: lowClosed?.execute(context).value,
         high: high?.execute(context),
@@ -914,7 +914,7 @@ class LiteralDateInterval extends LiteralIntervalType {
       );
 }
 
-class LiteralDateTimeInterval extends LiteralIntervalType {
+class LiteralDateTimeInterval extends LiteralCqlInterval {
   final LiteralDateTime? low;
   final LiteralDateTime? high;
 
@@ -948,11 +948,11 @@ class LiteralDateTimeInterval extends LiteralIntervalType {
   String get type => 'Interval<DateTime>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
 
   @override
-  IntervalType? execute(Map<String, dynamic> context) =>
-      IntervalType<FhirDateTime>(
+  CqlInterval? execute(Map<String, dynamic> context) =>
+      CqlInterval<FhirDateTime>(
         low: low?.execute(context),
         lowClosed: lowClosed?.execute(context).value,
         high: high?.execute(context),
@@ -960,7 +960,7 @@ class LiteralDateTimeInterval extends LiteralIntervalType {
       );
 }
 
-class LiteralTimeInterval extends LiteralIntervalType {
+class LiteralTimeInterval extends LiteralCqlInterval {
   final LiteralTime? low;
   final LiteralTime? high;
 
@@ -994,10 +994,10 @@ class LiteralTimeInterval extends LiteralIntervalType {
   String get type => 'Interval<Time>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
 
   @override
-  IntervalType? execute(Map<String, dynamic> context) => IntervalType<FhirTime>(
+  CqlInterval? execute(Map<String, dynamic> context) => CqlInterval<FhirTime>(
         low: low?.execute(context),
         lowClosed: lowClosed?.execute(context).value,
         high: high?.execute(context),

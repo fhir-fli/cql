@@ -121,7 +121,7 @@ class Ends extends BinaryExpression {
   static FhirBoolean? ends(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
-    } else if (left is IntervalType && right is IntervalType) {
+    } else if (left is CqlInterval && right is CqlInterval) {
       final leftStart = left.getStart();
       final rightStart = right.getStart();
       final leftEnd = left.getEnd();
@@ -144,7 +144,7 @@ class Ends extends BinaryExpression {
       }
     } else {
       throw ArgumentError(
-          'Ends expression must have 2 operands of type IntervalType. '
+          'Ends expression must have 2 operands of type CqlInterval. '
           'Found $left (${left.runtimeType}) and $right (${right.runtimeType}).');
     }
   }

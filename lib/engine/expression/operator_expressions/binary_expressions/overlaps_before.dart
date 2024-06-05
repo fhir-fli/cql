@@ -127,7 +127,7 @@ class OverlapsBefore extends BinaryExpression {
       return null;
     }
 
-    if (left is IntervalType && right is IntervalType) {
+    if (left is CqlInterval && right is CqlInterval) {
       var leftStart = left.getStart();
       var leftEnd = left.getEnd();
       var rightStart = right.getStart();
@@ -148,6 +148,6 @@ class OverlapsBefore extends BinaryExpression {
       }
     }
 
-    throw Exception("Overlaps requires IntervalType arguments.");
+    throw Exception("Overlaps requires CqlInterval arguments.");
   }
 }

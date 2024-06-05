@@ -170,7 +170,7 @@ class Expand extends BinaryExpression {
 
   @override
   List<Type> getReturnTypes(CqlLibrary library) =>
-      [List<IntervalType>, List<Object>];
+      [List<CqlInterval>, List<Object>];
 
   @override
   dynamic execute(Map<String, dynamic> context) {
@@ -188,10 +188,10 @@ class Expand extends BinaryExpression {
       return null;
     }
 
-    if (source is IntervalType) {
+    if (source is CqlInterval) {
       return expandSingleInterval(source, per);
     } else if (source is List &&
-        source.every((element) => element is IntervalType)) {
+        source.every((element) => element is CqlInterval)) {
       return expandList(source, per);
     } else {
       throw ArgumentError(
@@ -199,7 +199,7 @@ class Expand extends BinaryExpression {
     }
   }
 
-  List<dynamic> expandSingleInterval(IntervalType interval, dynamic per) {
+  List<dynamic> expandSingleInterval(CqlInterval interval, dynamic per) {
     final List<dynamic> expandedInterval = [];
     dynamic start = interval.getStart();
     dynamic end = interval.getEnd();
@@ -217,16 +217,16 @@ class Expand extends BinaryExpression {
     return expandedInterval;
   }
 
-  List<IntervalType> expandList(List<dynamic> intervals, dynamic per) {
-    final List<IntervalType> expandedIntervals = [];
+  List<CqlInterval> expandList(List<dynamic> intervals, dynamic per) {
+    final List<CqlInterval> expandedIntervals = [];
     for (final interval in intervals) {
       expandedIntervals.addAll(expandInterval(interval, per));
     }
     return expandedIntervals;
   }
 
-  List<IntervalType> expandInterval(IntervalType interval, dynamic per) {
-    final List<IntervalType> expandedIntervals = [];
+  List<CqlInterval> expandInterval(CqlInterval interval, dynamic per) {
+    final List<CqlInterval> expandedIntervals = [];
     dynamic start = interval.getStart();
     dynamic end = interval.getEnd();
     per ??= perUnit(start);
@@ -236,7 +236,7 @@ class Expand extends BinaryExpression {
     }
 
     while ((LessOrEqual.lessOrEqual(start, end)?.value ?? false)) {
-      expandedIntervals.add(IntervalType(
+      expandedIntervals.add(CqlInterval(
         low: start,
         lowClosed: true,
         high: start,

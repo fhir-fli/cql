@@ -14,7 +14,7 @@ void unionTest() {
       final union = Union(operand: [interval1, interval2]);
       final result = union.execute({});
       expect(result,
-          equals(IntervalType(low: FhirInteger(1), high: FhirInteger(7))));
+          equals(CqlInterval(low: FhirInteger(1), high: FhirInteger(7))));
     });
     test(
         'define "UnionIsNull": Interval[3, 5] union (null as Interval<Integer>)',

@@ -22,7 +22,7 @@ void intersectTest() {
       final result = Intersect(operand: [left, right]);
       expect(
           result.execute({}),
-          equals(IntervalType<FhirInteger>(
+          equals(CqlInterval<FhirInteger>(
             low: FhirInteger(3),
             lowClosed: true,
             high: FhirInteger(5),

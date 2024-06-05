@@ -107,7 +107,7 @@ class Starts extends BinaryExpression {
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
-    if (left is IntervalType && right is IntervalType) {
+    if (left is CqlInterval && right is CqlInterval) {
       return starts(left, right, precision);
     } else {
       return null;
@@ -115,8 +115,8 @@ class Starts extends BinaryExpression {
   }
 
   static FhirBoolean? starts(
-    IntervalType left,
-    IntervalType right, [
+    CqlInterval left,
+    CqlInterval right, [
     CqlDateTimePrecision? precision,
   ]) {
     final leftStart = left.getStart();

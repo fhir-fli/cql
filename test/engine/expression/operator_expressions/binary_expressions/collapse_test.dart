@@ -25,7 +25,7 @@ void collapseTest() {
       final list = ListExpression(element: [interval1, interval2, interval3]);
       final collapse = Collapse(operand: [list]);
       final result = collapse.execute({});
-      expect(result, [IntervalType(low: FhirInteger(1), high: FhirInteger(9))]);
+      expect(result, [CqlInterval(low: FhirInteger(1), high: FhirInteger(9))]);
     });
     test('define "CollapseIsNull": collapse null', () {
       final collapse = Collapse(operand: [LiteralNull()]);

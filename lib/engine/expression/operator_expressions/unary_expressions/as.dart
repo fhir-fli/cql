@@ -238,14 +238,14 @@ class As extends UnaryExpression {
           }
         case 'Interval<Integer>':
           {
-            if (result is IntervalType<FhirInteger>) {
+            if (result is CqlInterval<FhirInteger>) {
               return result;
             }
             break;
           }
         case 'Interval<Long>':
           {
-            if (result is IntervalType<FhirInteger64>) {
+            if (result is CqlInterval<FhirInteger64>) {
               return result;
             }
             break;
@@ -253,35 +253,35 @@ class As extends UnaryExpression {
 
         case 'Interval<Decimal>':
           {
-            if (result is IntervalType<FhirDecimal>) {
+            if (result is CqlInterval<FhirDecimal>) {
               return result;
             }
             break;
           }
         case 'Interval<FhirDate>':
           {
-            if (result is IntervalType<FhirDate>) {
+            if (result is CqlInterval<FhirDate>) {
               return result;
             }
             break;
           }
         case 'Interval<FhirDateTime>':
           {
-            if (result is IntervalType<FhirDateTime>) {
+            if (result is CqlInterval<FhirDateTime>) {
               return result;
             }
             break;
           }
         case 'Interval<FhirTime>':
           {
-            if (result is IntervalType<FhirTime>) {
+            if (result is CqlInterval<FhirTime>) {
               return result;
             }
             break;
           }
         case 'Interval<Quantity>':
           {
-            if (result is IntervalType<ValidatedQuantity>) {
+            if (result is CqlInterval<ValidatedQuantity>) {
               return result;
             }
             break;

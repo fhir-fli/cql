@@ -124,10 +124,10 @@ class Except extends NaryExpression {
   }
 
   static dynamic except(dynamic left, dynamic right) {
-    if (left is IntervalType || right is IntervalType) {
+    if (left is CqlInterval || right is CqlInterval) {
       if (left == null || right == null) {
         return null;
-      } else if (left is IntervalType && right is IntervalType) {
+      } else if (left is CqlInterval && right is CqlInterval) {
         return left.except(right);
       }
     } else if (left is List || right is List) {

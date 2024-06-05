@@ -18,7 +18,7 @@ void exceptTest() {
       final except = Except(operand: [left, right]);
       final result = except.execute({});
       expect(result,
-          equals(IntervalType(low: FhirInteger(0), high: FhirInteger(2))));
+          equals(CqlInterval(low: FhirInteger(0), high: FhirInteger(2))));
     });
     test('define "ExceptIsNull": null except Interval[-1, 7]', () {
       final left = LiteralNull();

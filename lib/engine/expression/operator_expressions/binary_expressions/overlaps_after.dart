@@ -124,7 +124,7 @@ class OverlapsAfter extends BinaryExpression {
       return null;
     }
 
-    if (left is IntervalType && right is IntervalType) {
+    if (left is CqlInterval && right is CqlInterval) {
       var leftEnd = left.getEnd();
       var rightEnd = right.getEnd();
 
@@ -149,6 +149,6 @@ class OverlapsAfter extends BinaryExpression {
       return FhirBoolean(after && overlaps);
     }
 
-    throw Exception("OverlapsAfter requires IntervalType arguments.");
+    throw Exception("OverlapsAfter requires CqlInterval arguments.");
   }
 }

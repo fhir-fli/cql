@@ -228,10 +228,10 @@ class In extends BinaryExpression {
     final rightReturnTypes = right == null
         ? operand[1].getReturnTypes(context['library'] as CqlLibrary)
         : null;
-    if (right is IntervalType ||
+    if (right is CqlInterval ||
         (rightReturnTypes != null &&
             rightReturnTypes.isNotEmpty &&
-            rightReturnTypes.first == IntervalType)) {
+            rightReturnTypes.first == CqlInterval)) {
       if (left == null) {
         return null;
       } else if (right == null) {

@@ -268,10 +268,10 @@ class Subtract extends BinaryExpression {
           }
           return null;
         }
-      case IntervalType _:
+      case CqlInterval _:
         {
-          if (right is IntervalType) {
-            IntervalType(
+          if (right is CqlInterval) {
+            CqlInterval(
                 low: subtract(left.getStart(), right.getStart()),
                 lowClosed: true,
                 high: subtract(left.getEnd(), right.getEnd()),

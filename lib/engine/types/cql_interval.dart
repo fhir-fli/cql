@@ -2,7 +2,7 @@ import 'package:fhir_primitives/fhir_primitives.dart';
 
 import '../../cql.dart';
 
-class IntervalType<T> implements CqlType, Comparable<IntervalType> {
+class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
   T? low;
   bool lowClosed;
   T? high;
@@ -10,7 +10,7 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
   dynamic state; // Adjust based on your State implementation
   bool uncertain = false;
 
-  IntervalType({
+  CqlInterval({
     this.low,
     bool? lowClosed,
     this.high,
@@ -47,7 +47,7 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
 
   bool isUncertain() => uncertain;
 
-  IntervalType setUncertain(bool uncertain) {
+  CqlInterval setUncertain(bool uncertain) {
     this.uncertain = uncertain;
     return this;
   }
@@ -63,7 +63,7 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
       : Predecessor.predecessor(high);
 
   @override
-  int compareTo(IntervalType other) {
+  int compareTo(CqlInterval other) {
     if (_compareTo(getStart(), other.getStart()) == 0) {
       return _compareTo(getEnd(), other.getEnd());
     }
@@ -93,7 +93,7 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
 
   bool contains(dynamic value) => value == null
       ? false
-      : value is IntervalType
+      : value is CqlInterval
           ? (GreaterOrEqual.greaterOrEqual(value.getStart(), getStart())
                       ?.value ??
                   false) &&
@@ -104,14 +104,14 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
               (LessOrEqual.lessOrEqual(value, getEnd())?.value ?? false);
 
   @override
-  bool equivalent(Object other) => other is IntervalType
+  bool equivalent(Object other) => other is CqlInterval
       ? (Equivalent.equivalent(getStart(), other.getStart()).value ?? false) &&
           (Equivalent.equivalent(getEnd(), other.getEnd()).value ?? false)
       : false;
 
   @override
   bool? equal(Object other) {
-    if (other is IntervalType) {
+    if (other is CqlInterval) {
       if (isUncertain()) {
         if (Intersect.intersect(this, other) != null) {
           return null;
@@ -125,7 +125,7 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
 
     if (other is int) {
       // Assuming the constructor and methods to handle this scenario
-      return equal(IntervalType(
+      return equal(CqlInterval(
           low: other,
           lowClosed: true,
           high: other,
@@ -138,7 +138,7 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
   }
 
   /// This method returns the intersection of two intervals.
-  IntervalType? intersect(IntervalType right) {
+  CqlInterval? intersect(CqlInterval right) {
     // Get start and end points for both intervals
     var leftStart = getStart();
     var leftEnd = getEnd();
@@ -172,11 +172,11 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
     }
 
     // Return the new interval representing the intersection
-    return IntervalType(
+    return CqlInterval(
         low: maxStart, lowClosed: true, high: minEnd, highClosed: true);
   }
 
-  IntervalType? except(IntervalType right) {
+  CqlInterval? except(CqlInterval right) {
     // Get start and end points for both intervals
     var leftStart = getStart();
     var leftEnd = getEnd();
@@ -217,13 +217,13 @@ class IntervalType<T> implements CqlType, Comparable<IntervalType> {
     }
 
     // Return the new interval representing the intersection
-    return IntervalType(
+    return CqlInterval(
         low: start, lowClosed: true, high: end, highClosed: true);
   }
 
   @override
   bool operator ==(Object other) {
-    if (other is IntervalType) {
+    if (other is CqlInterval) {
       return equivalent(other);
     }
     return false;

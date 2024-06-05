@@ -123,10 +123,10 @@ class Collapse extends BinaryExpression {
   String get type => 'Collapse';
 
   @override
-  List<Type> getReturnTypes(CqlLibrary library) => [List<IntervalType>];
+  List<Type> getReturnTypes(CqlLibrary library) => [List<CqlInterval>];
 
   @override
-  List<IntervalType>? execute(Map<String, dynamic> context) {
+  List<CqlInterval>? execute(Map<String, dynamic> context) {
     if (operand.isEmpty) {
       return [];
     }
@@ -137,7 +137,7 @@ class Collapse extends BinaryExpression {
   }
 
   // TODO(Dokotela): with precision
-  List<IntervalType>? collapse(dynamic source, dynamic per) {
+  List<CqlInterval>? collapse(dynamic source, dynamic per) {
     if (source == null) {
       return null;
     }
@@ -146,16 +146,16 @@ class Collapse extends BinaryExpression {
       return [];
     }
 
-    if (source is List && source.every((element) => element is IntervalType)) {
+    if (source is List && source.every((element) => element is CqlInterval)) {
       if (source.length == 1) {
-        return source as List<IntervalType>;
+        return source as List<CqlInterval>;
       }
 
       // Sort the source by their start points
       source.sort((a, b) => a.compareTo(b));
 
-      final List<IntervalType> collapsedSource = [];
-      IntervalType? currentInterval = source.first;
+      final List<CqlInterval> collapsedSource = [];
+      CqlInterval? currentInterval = source.first;
 
       for (var i = 1; i < source.length; i++) {
         final nextInterval = source[i];
@@ -174,7 +174,7 @@ class Collapse extends BinaryExpression {
                       false)
                   ? currentInterval?.getEnd()
                   : nextInterval.getEnd();
-          currentInterval = IntervalType(
+          currentInterval = CqlInterval(
             low: currentInterval?.low,
             lowClosed: currentInterval?.lowClosed,
             high: newEnd,

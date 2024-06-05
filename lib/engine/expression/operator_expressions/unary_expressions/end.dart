@@ -96,7 +96,7 @@ class End extends UnaryExpression {
     final interval = operand.execute(context);
     if (interval == null) {
       return null;
-    } else if (interval is IntervalType) {
+    } else if (interval is CqlInterval) {
       return interval.getEnd();
     } else {
       throw Exception(

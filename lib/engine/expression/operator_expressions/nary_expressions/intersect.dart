@@ -107,7 +107,7 @@ class Intersect extends NaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [List, IntervalType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [List, CqlInterval];
 
   @override
   dynamic execute(Map<String, dynamic> context) {
@@ -120,7 +120,7 @@ class Intersect extends NaryExpression {
   }
 
   static dynamic intersect(dynamic left, dynamic right) {
-    if (left is IntervalType && right is IntervalType) {
+    if (left is CqlInterval && right is CqlInterval) {
       return left.intersect(right);
     } else if (left is List && right is List) {
       return List.from(left)..retainWhere((e) => right.contains(e));

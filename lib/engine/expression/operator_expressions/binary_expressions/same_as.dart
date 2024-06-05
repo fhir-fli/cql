@@ -1,5 +1,4 @@
 import 'package:cql/engine/engine.dart';
-import 'package:cql/engine/expression/expression.dart';
 import 'package:fhir_primitives/fhir_primitives.dart';
 
 import '../../../../cql.dart';
@@ -149,20 +148,20 @@ class SameAs extends BinaryExpression {
       return _sameAsDateTime(left, right, precision);
     } else if (left is FhirTime && right is FhirTime) {
       return _sameAsTime(left, right, precision);
-    } else if (left is IntervalType && right is IntervalType) {
+    } else if (left is CqlInterval && right is CqlInterval) {
       final result = left.equal(right);
       return result == null ? null : FhirBoolean(result);
-    } else if (left is IntervalType) {
+    } else if (left is CqlInterval) {
       try {
-        final rightInterval = IntervalType(low: right, high: right);
+        final rightInterval = CqlInterval(low: right, high: right);
         final result = left.equal(rightInterval);
         return result == null ? null : FhirBoolean(result);
       } catch (e) {
         return null;
       }
-    } else if (right is IntervalType) {
+    } else if (right is CqlInterval) {
       try {
-        final leftInterval = IntervalType(low: left, high: left);
+        final leftInterval = CqlInterval(low: left, high: left);
         final result = right.equal(leftInterval);
         return result == null ? null : FhirBoolean(result);
       } catch (e) {

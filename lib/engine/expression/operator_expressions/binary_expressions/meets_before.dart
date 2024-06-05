@@ -129,7 +129,7 @@ class MeetsBefore extends BinaryExpression {
 
     if (left == null || right == null) {
       return null;
-    } else if (left is IntervalType && right is IntervalType) {
+    } else if (left is CqlInterval && right is CqlInterval) {
       final leftEnd = left.getEnd();
       final rightStart = right.getStart();
       return Equal.equal(leftEnd, Predecessor.predecessor(rightStart));

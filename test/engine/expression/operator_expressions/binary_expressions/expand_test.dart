@@ -12,13 +12,13 @@ void expandTest() {
       final list = ListExpression(element: [interval1]);
       final expand = Expand(operand: [list]);
       final result = expand.execute({});
-      final interval2 = IntervalType(
+      final interval2 = CqlInterval(
           low: FhirDate('2018-01-01'), high: FhirDate('2018-01-01'));
-      final interval3 = IntervalType(
+      final interval3 = CqlInterval(
           low: FhirDate('2018-01-02'), high: FhirDate('2018-01-02'));
-      final interval4 = IntervalType(
+      final interval4 = CqlInterval(
           low: FhirDate('2018-01-03'), high: FhirDate('2018-01-03'));
-      final interval5 = IntervalType(
+      final interval5 = CqlInterval(
           low: FhirDate('2018-01-04'), high: FhirDate('2018-01-04'));
       expect(result, [interval2, interval3, interval4, interval5]);
     });

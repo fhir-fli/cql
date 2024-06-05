@@ -148,7 +148,7 @@ class QName {
         'FhirInteger',
         'FhirBoolean',
         'ConceptType',
-        'IntervalType',
+        'CqlInterval',
         'ValidatedQuantity',
         'ValidatedRatio',
         'CodeType',
@@ -170,7 +170,7 @@ class QName {
         return 'Boolean';
       case 'ConceptType':
         return 'Concept';
-      case 'IntervalType':
+      case 'CqlInterval':
         return 'Interval';
       case 'ValidatedQuantity':
         return 'Quantity';
@@ -206,7 +206,7 @@ class QName {
         case 'List':
           return List;
         case 'Interval':
-          return IntervalType;
+          return CqlInterval;
         case 'Date':
           return FhirDate;
         case 'DateTime':
