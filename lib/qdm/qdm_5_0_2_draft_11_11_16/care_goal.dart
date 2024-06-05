@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/literal_types.dart';
+import 'package:cql/engine/types/cql_literal.dart';
 
 ///
 /// Unlike other QDM datatypes, the Care Goal datatype

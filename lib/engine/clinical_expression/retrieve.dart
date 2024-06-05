@@ -354,4 +354,109 @@ class Retrieve extends CqlExpression {
 
   @override
   String get type => 'Retrieve';
+
+  @override
+  List<Type>? getReturnTypes(CqlLibrary library) =>
+      [List<Map<String, dynamic>>];
+
+  /// Helper function to write not null values to the query map
+  void writeNotNullToQuery(
+      Map<String, dynamic> query, String key, dynamic value) {
+    if (value != null) {
+      query[key] = value;
+    }
+  }
+
+  @override
+  List<Map<String, dynamic>> execute(Map<String, dynamic> context) {
+    // Step 1: Build Query
+    Map<String, dynamic> query = <String, dynamic>{};
+
+    // Add dataType to query
+    query['type'] = dataType.toJson();
+
+    // Add code filter to query
+    if (codes != null) {
+      query['codes'] = codes!.execute(context);
+    } else if (codeFilter != null) {
+      query['codeFilter'] = codeFilter!.map((e) => e.toJson()).toList();
+    }
+
+    // Add date filter to query
+    if (dateRange != null) {
+      query['dateRange'] = dateRange!.execute(context);
+    } else if (dateFilter != null) {
+      query['dateFilter'] = dateFilter!.map((e) => e.toJson()).toList();
+    }
+
+    // Add other filters to query
+    if (otherFilter != null) {
+      query['otherFilter'] = otherFilter!.map((e) => e.toJson()).toList();
+    }
+
+    // Add context to query
+    if (this.context != null) {
+      query['context'] = this.context!.execute(context);
+    }
+
+    // Add includes to query
+    if (include != null) {
+      query['include'] = include!.map((e) => e.toJson()).toList();
+    }
+
+    // Add templateId to query
+    if (templateId != null) {
+      query['templateId'] = templateId;
+    }
+
+    // Add other properties to query
+    writeNotNullToQuery(query, 'idProperty', idProperty);
+    writeNotNullToQuery(query, 'idSearch', idSearch);
+    writeNotNullToQuery(query, 'contextProperty', contextProperty);
+    writeNotNullToQuery(query, 'contextSearch', contextSearch);
+    writeNotNullToQuery(query, 'codeProperty', codeProperty);
+    writeNotNullToQuery(query, 'codeSearch', codeSearch);
+    writeNotNullToQuery(query, 'valueSetProperty', valueSetProperty);
+    writeNotNullToQuery(query, 'dateProperty', dateProperty);
+    writeNotNullToQuery(query, 'dateLowProperty', dateLowProperty);
+    writeNotNullToQuery(query, 'dateHighProperty', dateHighProperty);
+    writeNotNullToQuery(query, 'dateSearch', dateSearch);
+
+    // Step 2: Check Context for Data
+    var result = checkContextForData(query, context);
+
+    // Step 3: If not found in context, execute external query
+    result ??= retrieve(query, context);
+
+    // Step 4: Return Results
+    return result;
+  }
+
+  static List<Map<String, dynamic>> retrieve(
+      Map<String, dynamic> query, Map<String, dynamic> executionContext) {
+    var result = <Map<String, dynamic>>[];
+
+    // Dynamically determine the resource type
+    var resourceType = query['type'];
+
+    // Check if the data type exists in the execution context
+    if (executionContext.containsKey(resourceType)) {
+      result.add(executionContext[resourceType] as Map<String, dynamic>);
+    }
+
+    // Example: Here you would implement the actual data retrieval logic
+    // from an external source (e.g., a FHIR server).
+
+    return result;
+  }
+
+  List<Map<String, dynamic>>? checkContextForData(
+      Map<String, dynamic> query, Map<String, dynamic> context) {
+    // Check if the data is available in the context
+    var resourceType = query['type'];
+    if (context.containsKey(resourceType)) {
+      return [context[resourceType]];
+    }
+    return null;
+  }
 }

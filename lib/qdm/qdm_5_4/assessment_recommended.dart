@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/literal_types.dart';
+import 'package:cql/engine/types/cql_literal.dart';
 
 /// Data elements that meet this criteria using this datatype should
 /// document a recommendation for a request by a clinician or appropriately licensed

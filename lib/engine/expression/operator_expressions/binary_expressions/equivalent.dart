@@ -194,10 +194,10 @@ class Equivalent extends BinaryExpression {
       case FhirTime _:
         result = right is FhirTime ? left.isEqual(right) ?? false : false;
         break;
-      case CodeType _:
+      case CqlCode _:
         result = left.equivalent(right);
         break;
-      case ConceptType _:
+      case CqlConcept _:
         result = left.equivalent(right);
         break;
       case num _:
@@ -260,8 +260,8 @@ class Equivalent extends BinaryExpression {
           result = false;
         }
         break;
-      case TupleType _:
-        if (right is TupleType &&
+      case CqlTuple _:
+        if (right is CqlTuple &&
             left.elements?.length == right.elements?.length) {
           if (left.elements == null || right.elements == null) {
             result = false;

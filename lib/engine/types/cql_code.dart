@@ -1,15 +1,15 @@
 import '../../cql.dart';
 
-class CodeType implements CqlType {
+class CqlCode implements CqlType {
   String? code;
   String? display;
   String? system;
   String? version;
 
-  CodeType({this.code, this.display, this.system, this.version});
+  CqlCode({this.code, this.display, this.system, this.version});
 
-  factory CodeType.fromJson(Map<String, dynamic> json) {
-    return CodeType(
+  factory CqlCode.fromJson(Map<String, dynamic> json) {
+    return CqlCode(
       code: json['code'],
       display: json['display'],
       system: json['system'],
@@ -19,7 +19,7 @@ class CodeType implements CqlType {
 
   @override
   bool equivalent(Object other) {
-    if (other is CodeType) {
+    if (other is CqlCode) {
       return code == other.code && system == other.system;
     } else {
       return false;
@@ -28,7 +28,7 @@ class CodeType implements CqlType {
 
   @override
   bool equal(Object other) {
-    if (other is CodeType) {
+    if (other is CqlCode) {
       return code == other.code &&
           display == other.display &&
           system == other.system &&
@@ -48,7 +48,7 @@ class CodeType implements CqlType {
     if (identical(this, other)) {
       return true;
     } else {
-      return other is CodeType &&
+      return other is CqlCode &&
           other.code == code &&
           other.display == display &&
           other.system == system &&

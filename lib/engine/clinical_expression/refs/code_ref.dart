@@ -44,4 +44,17 @@ class CodeRef extends Ref {
     final Map<String, dynamic> val = super.toJson();
     return val;
   }
+
+  @override
+  Code? execute(Map<String, dynamic> context) {
+    // Retrieve the CqlLibrary from the context
+    var library = context['library'];
+    if (library == null || library is! CqlLibrary) {
+      throw ArgumentError('CqlLibrary not found in context');
+    }
+
+    final Code? code = library.resolveCodeRef(name);
+
+    return code;
+  }
 }

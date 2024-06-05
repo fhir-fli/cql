@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/literal_types.dart';
+import 'package:cql/engine/types/cql_literal.dart';
 
 /// Data elements that meet this criterion address immune-mediated
 /// reactions to a substance such as type 1 hypersensitivity reactions, other

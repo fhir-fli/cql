@@ -12,13 +12,13 @@ class TerminologyProviderException implements Exception {
 abstract class TerminologyProvider {
   /// Checks if a given [Code] is a member of a given [ValueSetInfo]
   /// Throws [TerminologyProviderException] if there's an exception during the membership check
-  bool inValueSet(Code code, ValueSetInfo valueSet);
+  bool inValueSet(Code code, CqlValueSet valueSet);
 
   /// Expands the set of [Code]s for a given [ValueSetInfo]
   /// Throws [TerminologyProviderException] if there's an error during expansion
-  Iterable<Code> expand(ValueSetInfo valueSet);
+  Iterable<Code> expand(CqlValueSet valueSet);
 
   /// Looks up the display value for a given [Code] from a given [CodeSystemInfo]
   /// Throws [TerminologyProviderException] if there's an error during lookup
-  Code lookup(Code code, CodeSystemInfo codeSystem);
+  Code lookup(Code code, CqlCodeSystem codeSystem);
 }

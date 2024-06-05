@@ -1,24 +1,23 @@
 import '../../cql.dart';
 
-class TupleType implements CqlType {
+class CqlTuple implements CqlType {
   Map<String, dynamic>? elements;
   State? state;
 
-  TupleType({Map<String, dynamic>? elements, this.state})
+  CqlTuple({Map<String, dynamic>? elements, this.state})
       : elements = elements ?? (state != null ? <String, dynamic>{} : null);
 
-  TupleType copyWith({Map<String, dynamic>? elements, State? state}) =>
-      TupleType(
-          elements: elements ?? this.elements, state: state ?? this.state);
+  CqlTuple copyWith({Map<String, dynamic>? elements, State? state}) =>
+      CqlTuple(elements: elements ?? this.elements, state: state ?? this.state);
 
   @override
-  bool equivalent(Object other) => other is TupleType
+  bool equivalent(Object other) => other is CqlTuple
       ? Equivalent.equivalent(this, other).value ?? false
       : false;
 
   @override
   bool? equal(Object other) =>
-      other is TupleType ? Equal.equal(this, other)?.value : null;
+      other is CqlTuple ? Equal.equal(this, other)?.value : null;
 
   @override
   String toString() {

@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/literal_types.dart';
+import 'package:cql/engine/types/cql_literal.dart';
 
 /// a person with a formal responsibility in the provisioning of
 /// healthcare or related services

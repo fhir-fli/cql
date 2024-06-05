@@ -1,4 +1,4 @@
-import 'package:cql/engine/types/literal_types.dart';
+import 'package:cql/engine/types/cql_literal.dart';
 
 /// Data elements that meet this criterion typically define any untoward
 /// medical occurrence associated with the delivery of clinical care, whether or not

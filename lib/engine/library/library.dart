@@ -153,7 +153,23 @@ class CqlLibrary extends Element {
     return val;
   }
 
-  dynamic execute() {
+  Code? resolveCodeRef(String name) {
+    // Find the code definition in the library JSON
+    List<CodeDef>? codes = this.codes?.def;
+
+    CodeDef? codeDef =
+        codes?.firstWhere((code) => code.name == name, orElse: () {
+      throw Exception("CodeRef not found");
+    });
+
+    return codeDef == null ? null : Code.fromCodeDef(codeDef);
+  }
+
+  dynamic execute([Map<String, dynamic>? executionContext]) {
+    final Map<String, dynamic> context =
+        executionContext ?? <String, dynamic>{};
+    context['library'] = this;
+    context['startTimestamp'] = FhirDateTime(DateTime.now());
     // final usingDefinitionExecuted = usings?.execute();
     // final includeDefinitionExecuted = includes?.execute();
     // final codeSystemsExecuted = codeSystems?.execute();
@@ -162,10 +178,6 @@ class CqlLibrary extends Element {
     // final conceptsExecuted = concepts?.execute();
     // final contextsExecuted = contexts?.execute();
     // final parametersExecuted = parameters?.execute();
-    final Map<String, dynamic> context = <String, dynamic>{
-      'startTimestamp': FhirDateTime(DateTime.now()),
-      'library': this,
-    };
     final statementsExecuted = statements?.execute(context);
     return statementsExecuted;
   }

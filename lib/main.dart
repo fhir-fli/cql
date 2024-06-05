@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'cql.dart';
-import 'results/results.dart';
+import 'inputs/inputs.dart';
 
 const bool print = false;
 
@@ -56,6 +56,9 @@ void parseFile(BuildContext context) async {
     final json =
         jsonDecode(await rootBundle.loadString(file.replaceAll('cql', 'json')));
     final answers = results[file.split("/").last];
+    final dynamic tempContext = contexts[file.split("/").last];
+    final Map<String, dynamic>? context =
+        tempContext is Map<String, dynamic> ? tempContext : null;
 
     final parserAndErrors = parse(pathExpression);
     final parser = parserAndErrors.parser;
@@ -87,7 +90,7 @@ void parseFile(BuildContext context) async {
       // }
       bool areEqual = true;
       String equalReason = '';
-      final results = visitor.library.execute();
+      final results = visitor.library.execute(context);
       if (results is Map<String, dynamic>) {
         results.remove('startTimestamp');
         results.remove('library');

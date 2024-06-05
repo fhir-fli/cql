@@ -219,6 +219,8 @@ class In extends BinaryExpression {
     }
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
+    print('Left: $left ${left.runtimeType}');
+    print('Right: $right ${right.runtimeType}');
     return in_(left, right, context);
   }
 

@@ -236,7 +236,7 @@ class Instance extends CqlExpression {
             for (final e in element!) {
               json[e.name] = e.value.execute(context);
             }
-            return CodeType.fromJson(json);
+            return CqlCode.fromJson(json);
           }
         }
       case 'Concept':
@@ -249,7 +249,7 @@ class Instance extends CqlExpression {
             for (final e in element!) {
               json[e.name] = e.value.execute(context);
             }
-            return ConceptType.fromJson(json);
+            return CqlConcept.fromJson(json);
           }
         }
 

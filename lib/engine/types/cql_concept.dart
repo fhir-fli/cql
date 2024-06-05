@@ -1,32 +1,32 @@
 import '../../cql.dart';
 
-class ConceptType implements CqlType {
+class CqlConcept implements CqlType {
   String? display;
-  List<CodeType> codes = <CodeType>[];
+  List<CqlCode> codes = <CqlCode>[];
 
-  ConceptType({this.display, List<CodeType>? codes})
-      : codes = codes ?? <CodeType>[];
+  CqlConcept({this.display, List<CqlCode>? codes})
+      : codes = codes ?? <CqlCode>[];
 
-  factory ConceptType.fromJson(Map<String, dynamic> json) {
-    return ConceptType(
+  factory CqlConcept.fromJson(Map<String, dynamic> json) {
+    return CqlConcept(
       display: json['display'],
       codes: json['codes'] != null
-          ? (json['codes'] as List).map((e) => CodeType.fromJson(e)).toList()
+          ? (json['codes'] as List).map((e) => CqlCode.fromJson(e)).toList()
           : null,
     );
   }
 
-  ConceptType copyWith({
+  CqlConcept copyWith({
     String? display,
-    List<CodeType>? codes,
+    List<CqlCode>? codes,
   }) =>
-      ConceptType(display: display ?? this.display, codes: codes ?? this.codes);
+      CqlConcept(display: display ?? this.display, codes: codes ?? this.codes);
 
   @override
   bool equivalent(Object other) {
-    if (other is ConceptType) {
+    if (other is CqlConcept) {
       final otherCodes = other.codes.toList();
-      for (CodeType code in codes) {
+      for (CqlCode code in codes) {
         final index =
             otherCodes.indexWhere((element) => element.equivalent(code));
         if (index == -1) {
@@ -43,9 +43,9 @@ class ConceptType implements CqlType {
 
   @override
   bool equal(Object other) {
-    if (other is ConceptType) {
+    if (other is CqlConcept) {
       final otherCodes = other.codes.toList();
-      for (CodeType code in codes) {
+      for (CqlCode code in codes) {
         final index = otherCodes.indexWhere((element) => element.equal(code));
         if (index == -1) {
           return false;
@@ -61,7 +61,7 @@ class ConceptType implements CqlType {
 
   @override
   String toString() {
-    return 'ConceptType(display: $display, codes: $codes)';
+    return 'CqlConcept(display: $display, codes: $codes)';
   }
 
   @override
@@ -69,7 +69,7 @@ class ConceptType implements CqlType {
     if (identical(this, other)) {
       return true;
     } else {
-      return other is ConceptType &&
+      return other is CqlConcept &&
           other.display == display &&
           other.codes == codes;
     }

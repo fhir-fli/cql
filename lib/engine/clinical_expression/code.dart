@@ -77,4 +77,12 @@ class Code extends CqlExpression {
 
   @override
   String get type => 'Code';
+
+  factory Code.fromCodeDef(CodeDef codeDef) {
+    return Code(
+      code: codeDef.id,
+      display: codeDef.display,
+      system: codeDef.codeSystem!,
+    );
+  }
 }

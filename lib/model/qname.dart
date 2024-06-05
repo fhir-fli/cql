@@ -196,11 +196,13 @@ class QName {
         case 'Boolean':
           return FhirBoolean;
         case 'Code':
-          return CodeType;
+          return CqlCode;
         case 'Concept':
-          return ConceptType;
-        // case 'ValueSet': return ValueSet;
-        // case 'CodeSystem': return CodeSystem;
+          return CqlConcept;
+        case 'ValueSet':
+          return CqlValueSet;
+        case 'CodeSystem':
+          return CqlCodeSystem;
         case 'List':
           return List;
         case 'Interval':

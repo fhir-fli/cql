@@ -28,13 +28,13 @@ final exercises03 = {
   'TEqual': FhirBoolean(true),
   'TEqualWithNull': FhirBoolean(true),
   'TEquivalent': FhirBoolean(true),
-  'C1': CodeType.fromJson({
+  'C1': CqlCode.fromJson({
     'code': 'ABC',
     'system': 'http://example.com',
     'version': '2017-01',
     'display': 'Code ABC'
   }),
-  'C2': CodeType.fromJson({
+  'C2': CqlCode.fromJson({
     'code': 'ABC',
     'system': 'http://example.com',
     'version': '2017-05',

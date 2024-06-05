@@ -144,10 +144,10 @@ class LiteralCode extends LiteralType {
   String get type => 'Code';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CodeType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlCode];
 
   @override
-  CodeType execute(Map<String, dynamic> context) => CodeType(
+  CqlCode execute(Map<String, dynamic> context) => CqlCode(
         code: code,
         display: display,
         system: system,
@@ -185,11 +185,11 @@ class LiteralConcept extends LiteralType {
   String get type => 'Concept';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [ConceptType];
+  List<Type>? getReturnTypes(CqlLibrary library) => [CqlConcept];
 
   @override
-  ConceptType execute(Map<String, dynamic> context) {
-    return ConceptType(
+  CqlConcept execute(Map<String, dynamic> context) {
+    return CqlConcept(
         display: display, codes: codes.map((e) => e.execute(context)).toList());
   }
 }

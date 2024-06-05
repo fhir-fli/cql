@@ -4,6 +4,5 @@ export 'expression/expression.dart';
 export 'library/library_.dart';
 export 'model/model.dart';
 export 'retrieve/retrieve.dart';
-export 'terminology/terminology.dart';
 export 'types/types.dart';
 export 'element.dart';
