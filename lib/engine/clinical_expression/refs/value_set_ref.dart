@@ -64,14 +64,15 @@ class ValueSetRef extends Ref {
   String get type => 'ValueSetRef';
 
   @override
-  dynamic execute(Map<String, dynamic> context) {
-    print('ValueSetRef: ${toJson()}');
-    print('Context: $context');
-
+  CqlValueSet? execute(Map<String, dynamic> context) {
     // Retrieve the CqlLibrary from the context
     var library = context['library'];
     if (library == null || library is! CqlLibrary) {
       throw ArgumentError('CqlLibrary not found in context');
     }
+
+    final CqlValueSet? valueSet = library.resolveValueSetRef(name);
+
+    return valueSet;
   }
 }

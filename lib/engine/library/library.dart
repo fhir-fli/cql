@@ -153,7 +153,7 @@ class CqlLibrary extends Element {
     return val;
   }
 
-  Code? resolveCodeRef(String name) {
+  CqlCode? resolveCodeRef(String name) {
     // Find the code definition in the library JSON
     List<CodeDef>? codes = this.codes?.def;
 
@@ -162,7 +162,19 @@ class CqlLibrary extends Element {
       throw Exception("CodeRef not found");
     });
 
-    return codeDef == null ? null : Code.fromCodeDef(codeDef);
+    return codeDef == null ? null : CqlCode.fromCodeDef(codeDef);
+  }
+
+  CqlValueSet? resolveValueSetRef(String name) {
+    // Find the code definition in the library JSON
+    List<ValueSetDef>? valueSets = this.valueSets?.def;
+
+    ValueSetDef? valueSetDef =
+        valueSets?.firstWhere((valueSet) => valueSet.name == name, orElse: () {
+      throw Exception("ValueSetRef not found");
+    });
+
+    return valueSetDef == null ? null : CqlValueSet.fromValueSetDef(valueSetDef);
   }
 
   dynamic execute([Map<String, dynamic>? executionContext]) {

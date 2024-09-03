@@ -150,7 +150,7 @@ class LiteralCode extends LiteralType {
   CqlCode execute(Map<String, dynamic> context) => CqlCode(
         code: code,
         display: display,
-        system: system,
+        // system: system,
         version: version,
       );
 }

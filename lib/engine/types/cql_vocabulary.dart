@@ -3,7 +3,7 @@ import '../../cql.dart';
 
 abstract class CqlVocabulary implements CqlType {
   String id;
-  String version;
+  String? version;
   String name;
 
   CqlVocabulary({

@@ -40,7 +40,7 @@ class CqlCode implements CqlType {
 
   @override
   String toString() {
-    return "Code { code: $code, system: $system, version: $version, display: $display }";
+    return "CqlCode{ code: $code, system: $system, version: $version, display: $display }";
   }
 
   @override
@@ -62,5 +62,13 @@ class CqlCode implements CqlType {
         display.hashCode ^
         system.hashCode ^
         version.hashCode;
+  }
+
+  factory CqlCode.fromCodeDef(CodeDef codeDef) {
+    return CqlCode(
+      code: codeDef.id,
+      display: codeDef.display,
+      system: codeDef.codeSystem?.name,
+    );
   }
 }

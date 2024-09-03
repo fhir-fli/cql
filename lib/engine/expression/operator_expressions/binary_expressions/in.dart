@@ -1,4 +1,5 @@
 import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:http/http.dart';
 
 import '../../../../cql.dart';
 
@@ -217,6 +218,8 @@ class In extends BinaryExpression {
     if (operand.length != 2) {
       throw ArgumentError('After expression must have 2 operands');
     }
+    print('preleft: ${operand[0].runtimeType}');
+    print('preright: ${operand[1].runtimeType}');
     final left = operand[0].execute(context);
     final right = operand[1].execute(context);
     print('Left: $left ${left.runtimeType}');
@@ -248,8 +251,12 @@ class In extends BinaryExpression {
       } else {
         return FhirBoolean(right.contains(left));
       }
+    } else if (right is CqlValueSet) {
+      final String url = right.id;
+      final response = get(Uri.parse(url));
     } else {
-      throw ArgumentError('In: Right operand must be of type Interval or List');
+      throw ArgumentError(
+          'In: Right operand must be of type Interval, List, or include Codes and ValueSets');
     }
   }
 }

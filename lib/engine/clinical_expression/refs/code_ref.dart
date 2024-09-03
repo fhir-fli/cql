@@ -46,14 +46,14 @@ class CodeRef extends Ref {
   }
 
   @override
-  Code? execute(Map<String, dynamic> context) {
+  CqlCode? execute(Map<String, dynamic> context) {
     // Retrieve the CqlLibrary from the context
     var library = context['library'];
     if (library == null || library is! CqlLibrary) {
       throw ArgumentError('CqlLibrary not found in context');
     }
 
-    final Code? code = library.resolveCodeRef(name);
+    final CqlCode? code = library.resolveCodeRef(name);
 
     return code;
   }

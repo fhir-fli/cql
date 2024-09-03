@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../cql.dart';
 
 class ValueSetDefs {
@@ -131,4 +133,7 @@ class ValueSetDef extends Element {
   dynamic execute() {
     throw UnimplementedError();
   }
+
+  @override
+  String toString() => jsonEncode(toJson());
 }

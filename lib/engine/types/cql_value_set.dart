@@ -3,13 +3,13 @@ import 'package:collection/collection.dart';
 import '../../cql.dart';
 
 class CqlValueSet extends CqlVocabulary {
-  List<CqlCodeSystem> codeSystems;
+  List<CqlCodeSystem>? codeSystems;
 
   CqlValueSet({
     required super.id,
     required super.version,
     required super.name,
-    required this.codeSystems,
+    this.codeSystems,
   });
 
   // Static method to create a CqlValueSet from a ValueSet
@@ -21,7 +21,8 @@ class CqlValueSet extends CqlVocabulary {
       codeSystems: <CqlCodeSystem>[],
     );
     for (var cs in vs.codeSystem ?? <CodeSystemRef>[]) {
-      vsi.codeSystems.add(CqlCodeSystem.fromCodeSystem(cs));
+      vsi.codeSystems ??= <CqlCodeSystem>[];
+      vsi.codeSystems!.add(CqlCodeSystem.fromCodeSystem(cs));
     }
     return vsi;
   }
@@ -41,7 +42,9 @@ class CqlValueSet extends CqlVocabulary {
   Map<String, dynamic> toJson() {
     final json = super.toJson();
     json['type'] = 'CqlValueSet';
-    json['codeSystems'] = codeSystems.map((e) => e.toJson()).toList();
+    if (codeSystems != null) {
+      json['codeSystems'] = codeSystems!.map((e) => e.toJson()).toList();
+    }
     return json;
   }
 
@@ -65,7 +68,8 @@ class CqlValueSet extends CqlVocabulary {
       CqlValueSet.fromJson(map);
 
   @override
-  String toString() => 'CqlValueSet(codeSystems: $codeSystems)';
+  String toString() =>
+      'CqlValueSet { id: $id, version: $version, name: $name, codeSystems: $codeSystems }';
 
   @override
   bool operator ==(covariant CqlValueSet other) {
@@ -81,7 +85,22 @@ class CqlValueSet extends CqlVocabulary {
 
   // Method to add a CodeSystemInfo
   CqlValueSet withCodeSystem(CqlCodeSystem codeSystem) {
-    codeSystems.add(codeSystem);
+    codeSystems ??= <CqlCodeSystem>[];
+    codeSystems!.add(codeSystem);
     return this;
+  }
+
+  factory CqlValueSet.fromValueSetDef(ValueSetDef valueSetDef) {
+    if (valueSetDef.id == null || valueSetDef.name == null) {
+      throw ArgumentError('ValueSetDef must have id, version, and name');
+    }
+    return CqlValueSet(
+      id: valueSetDef.id!,
+      version: valueSetDef.version,
+      name: valueSetDef.name!,
+      codeSystems: valueSetDef.codeSystem
+          ?.map((e) => CqlCodeSystem.fromCodeSystemRef(e))
+          .toList(),
+    );
   }
 }
